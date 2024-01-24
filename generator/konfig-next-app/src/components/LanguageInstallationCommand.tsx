@@ -5,11 +5,11 @@ import { notifications } from '@mantine/notifications'
 import { useClipboard } from '@mantine/hooks'
 import { IconTerminal } from '@tabler/icons-react'
 import { linkColor } from '@/utils/link-color'
-import { LanguageExtended } from './DemoCode'
+import { GeneratedCodeLanguage } from './OperationFormGeneratedCode'
 
 interface LanguageInstallationCommandProps {
   codegenArgs: CodeGeneratorConstructorArgs
-  language: LanguageExtended
+  language: GeneratedCodeLanguage
 }
 
 export const LanguageInstallationCommand: React.FC<
@@ -78,7 +78,7 @@ function Links({
   language,
 }: {
   codegenArgs: CodeGeneratorConstructorArgs
-  language: LanguageExtended
+  language: GeneratedCodeLanguage
 }) {
   const pkg = packageLink({ codegenArgs, language })
   return (
@@ -108,7 +108,7 @@ function githubLink({
   language,
 }: {
   codegenArgs: CodeGeneratorConstructorArgs
-  language: LanguageExtended
+  language: GeneratedCodeLanguage
 }) {
   const config = languageConfiguration({ codegenArgs, language })
   if (config === undefined) return ''
@@ -122,7 +122,7 @@ function packageLink({
   language,
 }: {
   codegenArgs: CodeGeneratorConstructorArgs
-  language: LanguageExtended
+  language: GeneratedCodeLanguage
 }): { packageManager: 'npm' | 'PyPI'; link: string } | undefined {
   const config = languageConfiguration({ codegenArgs, language })
   if (config === undefined) return
@@ -145,7 +145,7 @@ function languageConfiguration({
   language,
 }: {
   codegenArgs: CodeGeneratorConstructorArgs
-  language: LanguageExtended
+  language: GeneratedCodeLanguage
 }) {
   if (language === 'typescript') {
     return {
@@ -165,7 +165,7 @@ function installCommand({
   codegenArgs,
   language,
 }: {
-  language: LanguageExtended
+  language: GeneratedCodeLanguage
   codegenArgs: CodeGeneratorConstructorArgs
 }): { cmd: string } | null {
   if (language === 'typescript') {

@@ -204,6 +204,7 @@ export function OperationReferenceMain({
       },
       ...(pythonConfig && {
         python: {
+          disabled: pythonConfig.disabled ?? false,
           clientName: pythonConfig.clientName,
           packageName: pythonConfig.packageName,
           projectName: pythonConfig.projectName,

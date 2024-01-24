@@ -45,6 +45,7 @@ export type CodeGeneratorConstructorArgs = {
       git: GitConfig
     }
     python?: {
+      disabled: boolean
       clientName: string
       packageName: string
       projectName: string

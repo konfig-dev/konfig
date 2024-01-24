@@ -4,10 +4,11 @@ import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { useEffect, useState } from 'react'
 import { DefaultProps } from '@mantine/core'
 import { CodeGeneratorPython } from '@/utils/code-generator-python'
-import { LanguageExtended } from './DemoCode'
+import { Language } from './DemoCode'
 import { CodeGeneratorHttpsnippet } from '@/utils/code-generator-httpsnippet'
 import { CopyButton } from './CopyButton'
 import { Prism as ReactPrism } from 'prism-react-renderer'
+import { LanguageTab } from './OperationRequest'
 ;((typeof global !== 'undefined' ? global : window) as any).Prism = ReactPrism
 require('prismjs/components/prism-csharp')
 require('prismjs/components/prism-kotlin')
@@ -26,6 +27,10 @@ const languageMapping = {
   python: {
     codegen: CodeGeneratorPython,
     args: {},
+  },
+  'python-http': {
+    codegen: CodeGeneratorHttpsnippet,
+    args: { targetId: 'python', clientId: 'requests' },
   },
   bash: {
     codegen: CodeGeneratorHttpsnippet,
@@ -65,38 +70,38 @@ const languageMapping = {
   },
 } as const
 
-type GeneratedCodeLanguage = keyof typeof languageMapping
+export type GeneratedCodeLanguage = keyof typeof languageMapping
 
 export function OperationFormGeneratedCode(
-  args: CodeGeneratorConstructorArgs & { language: GeneratedCodeLanguage }
+  args: CodeGeneratorConstructorArgs & { language: LanguageTab }
 ) {
   const [data, setData] = useState('Loading...')
   const [copyData, setCopyData] = useState('')
 
   useEffect(() => {
     // if args.language not in languageMapping, then this will throw an error
-    if (!languageMapping[args.language]) {
+    if (!languageMapping[args.language.generatorLanguage]) {
       throw new Error(`Language ${args.language} not supported`)
     }
 
-    new languageMapping[args.language].codegen({
+    new languageMapping[args.language.generatorLanguage].codegen({
       ...args,
-      ...languageMapping[args.language].args,
+      ...languageMapping[args.language.generatorLanguage].args,
     } as any)
       .snippet()
       .then((result) => {
         setData(result)
       })
-    new languageMapping[args.language].codegen({
+    new languageMapping[args.language.generatorLanguage].codegen({
       ...args,
-      ...languageMapping[args.language].args,
+      ...languageMapping[args.language.generatorLanguage].args,
       mode: 'copy',
     } as any)
       .snippet()
       .then((result) => {
         setCopyData(result)
       })
-  }, [args, args.language])
+  }, [args, args.language.syntaxHighlightingLanguage])
 
   const styles: DefaultProps<PrismStylesNames> = {
     styles: {
@@ -112,7 +117,12 @@ export function OperationFormGeneratedCode(
 
   return (
     <div className="relative group py-4">
-      <Prism noCopy withLineNumbers {...styles} language={args.language as any}>
+      <Prism
+        noCopy
+        withLineNumbers
+        {...styles}
+        language={args.language.syntaxHighlightingLanguage as Language}
+      >
         {data}
       </Prism>
       <CopyButton value={copyData} />

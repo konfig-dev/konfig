@@ -1,67 +1,89 @@
+import { Button, ScrollArea, clsx, useMantineTheme } from '@mantine/core'
 import {
-  Box,
-  Button,
-  Code,
-  ScrollArea,
-  clsx,
-  useMantineTheme,
-} from '@mantine/core'
-import { OperationFormGeneratedCode } from './OperationFormGeneratedCode'
+  GeneratedCodeLanguage,
+  OperationFormGeneratedCode,
+} from './OperationFormGeneratedCode'
 import { CodeGeneratorConstructorArgs } from '@/utils/code-generator'
 import { Tab } from '@headlessui/react'
-import { LanguageExtended } from './DemoCode'
 import { Fragment } from 'react'
 import { LanguageInstallationCommand } from './LanguageInstallationCommand'
+import { LanguageExtended } from './DemoCode'
 
-const languages: { value: LanguageExtended; isSdk?: boolean; label: string }[] =
-  [
-    {
-      value: 'typescript',
-      label: 'TypeScript',
-      isSdk: true, // TODO this should be dynamic based on konfig.yam
-    },
-    {
-      value: 'python',
-      label: 'Python',
-      isSdk: true,
-    },
-    {
-      value: 'bash',
-      label: 'cURL',
-    },
-    {
-      value: 'java',
-      label: 'Java',
-    },
-    {
-      value: 'csharp',
-      label: 'C#',
-    },
-    {
-      value: 'ruby',
-      label: 'Ruby',
-    },
-    {
-      value: 'php',
-      label: 'PHP',
-    },
-    {
-      value: 'go',
-      label: 'Go',
-    },
-    {
-      value: 'kotlin',
-      label: 'Kotlin',
-    },
-    {
-      value: 'objectivec',
-      label: 'Objective-C',
-    },
-    {
-      value: 'swift',
-      label: 'Swift',
-    },
-  ]
+export type LanguageTab = {
+  syntaxHighlightingLanguage: LanguageExtended
+  generatorLanguage: GeneratedCodeLanguage
+  /**
+   * Is this language configuration generating for Konfig's SDK?
+   */
+  isSdk?: boolean
+  label: string
+}
+const languages: LanguageTab[] = [
+  {
+    syntaxHighlightingLanguage: 'typescript',
+    generatorLanguage: 'typescript',
+    label: 'TypeScript',
+    isSdk: true, // TODO this should be dynamic based on konfig.yam
+  },
+  {
+    // for konfig sdk snippet
+    syntaxHighlightingLanguage: 'python',
+    generatorLanguage: 'python',
+    label: 'Python',
+    isSdk: true,
+  },
+  {
+    // for native http snippet
+    syntaxHighlightingLanguage: 'python',
+    generatorLanguage: 'python-http',
+    label: 'Python',
+  },
+  {
+    syntaxHighlightingLanguage: 'bash',
+    generatorLanguage: 'bash',
+    label: 'cURL',
+  },
+  {
+    syntaxHighlightingLanguage: 'java',
+    generatorLanguage: 'java',
+    label: 'Java',
+  },
+  {
+    syntaxHighlightingLanguage: 'csharp',
+    generatorLanguage: 'csharp',
+    label: 'C#',
+  },
+  {
+    syntaxHighlightingLanguage: 'ruby',
+    generatorLanguage: 'ruby',
+    label: 'Ruby',
+  },
+  {
+    syntaxHighlightingLanguage: 'php',
+    generatorLanguage: 'php',
+    label: 'PHP',
+  },
+  {
+    syntaxHighlightingLanguage: 'go',
+    generatorLanguage: 'go',
+    label: 'Go',
+  },
+  {
+    syntaxHighlightingLanguage: 'kotlin',
+    generatorLanguage: 'kotlin',
+    label: 'Kotlin',
+  },
+  {
+    syntaxHighlightingLanguage: 'objectivec',
+    generatorLanguage: 'objectivec',
+    label: 'Objective-C',
+  },
+  {
+    syntaxHighlightingLanguage: 'swift',
+    generatorLanguage: 'swift',
+    label: 'Swift',
+  },
+]
 
 export function OperationRequest({
   codegenArgs,
@@ -73,9 +95,22 @@ export function OperationRequest({
   hideNonSdkSnippets: boolean
 }) {
   const { colorScheme } = useMantineTheme()
-  const languagesFiltered = languages.filter(({ value, isSdk }) => {
-    return !hideNonSdkSnippets || isSdk
-  })
+  const languagesFiltered = languages.filter(
+    ({ syntaxHighlightingLanguage: value, isSdk }) => {
+      // If Python SDK configuration is disabled, don't show Python SDK snippet
+      // But if Python SDK configuration is enabled, show Python SDK snippet
+      // Why? This is important so we don't show two Python tabs in the
+      // generated code snippet window
+      if (value === 'python') {
+        if (isSdk) {
+          return !codegenArgs.languageConfigurations.python?.disabled
+        } else {
+          return !!codegenArgs.languageConfigurations.python?.disabled
+        }
+      }
+      return !hideNonSdkSnippets || isSdk
+    }
+  )
   return (
     <div className="border rounded-md border-mantine-gray-400 dark:border-mantine-gray-800 overflow-hidden">
       <Tab.Group>
@@ -111,19 +146,19 @@ export function OperationRequest({
           </ScrollArea>
         </div>
         <Tab.Panels>
-          {languagesFiltered.map(({ value }) => {
+          {languagesFiltered.map((language) => {
             return (
               <Tab.Panel
                 className="outline-brand-500 dark:outline-brand-600"
-                key={value}
+                key={language.generatorLanguage}
               >
                 <LanguageInstallationCommand
-                  language={value}
+                  language={language.generatorLanguage}
                   codegenArgs={codegenArgs}
                 />
                 <OperationFormGeneratedCode
                   {...codegenArgs}
-                  language={value as any}
+                  language={language}
                 />
               </Tab.Panel>
             )
