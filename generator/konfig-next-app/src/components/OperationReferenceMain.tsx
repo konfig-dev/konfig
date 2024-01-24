@@ -47,6 +47,7 @@ import { Breadcrumbs } from './Breadcrumbs'
 import { OperationReferenceResponses } from './OperationReferenceResponses'
 import { OperationRequest } from './OperationRequest'
 import { validateValueForParameter } from '@/utils/validate-value-for-parameter'
+import ReactMarkdown from 'react-markdown'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -374,9 +375,11 @@ export function OperationReferenceMain({
                 </Alert>
               )}
               {operation.operation.description && (
-                <Text c="dimmed" fz="sm">
-                  {operation.operation.description}
-                </Text>
+                <Box className="space-y-4 text-mantine-gray-700 dark:text-mantine-gray-500 text-sm">
+                  <ReactMarkdown>
+                    {operation.operation.description}
+                  </ReactMarkdown>
+                </Box>
               )}
             </Stack>
             <OperationForm
