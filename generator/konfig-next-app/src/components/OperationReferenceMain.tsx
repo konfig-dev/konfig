@@ -48,6 +48,7 @@ import { OperationReferenceResponses } from './OperationReferenceResponses'
 import { OperationRequest } from './OperationRequest'
 import { validateValueForParameter } from '@/utils/validate-value-for-parameter'
 import ReactMarkdown from 'react-markdown'
+import { recursivelyRemoveEmptyValues } from '@/utils/recursively-remove-empty-values'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -157,7 +158,7 @@ export function OperationReferenceMain({
       }
     }, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [router.asPath])
 
   useEffect(() => {
     if (formValues.initialValues) {
@@ -258,11 +259,8 @@ export function OperationReferenceMain({
               const parameterNotValid = validateValueForParameter(
                 parameter,
                 parameter.name
-              )(value)
-              if (parameterNotValid) {
-                return true
-              }
-              return false
+              )(recursivelyRemoveEmptyValues(value))
+              return parameterNotValid
             }
           )
 
@@ -270,7 +268,7 @@ export function OperationReferenceMain({
             for (const parameter of missingRequiredParameters) {
               const message =
                 parameter.schema.type === 'array'
-                  ? `Add an item to required parameter "${parameter.name}"`
+                  ? `Add a non-empty item to required parameter "${parameter.name}"`
                   : `Missing required parameter "${parameter.name}"`
               form.setFieldError(
                 `${PARAMETER_FORM_NAME_PREFIX}.${parameter.name}`,
