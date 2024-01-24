@@ -125,6 +125,8 @@ export function OperationReferenceMain({
     requestBodyParameter,
   })
 
+  console.debug('OperationReferenceMain.formValues', formValues)
+
   const form = useForm(formValues)
 
   const router = useRouter()
