@@ -1,4 +1,4 @@
-import { Box, Title, Stack, createStyles } from '@mantine/core'
+import { Box, Stack, createStyles } from '@mantine/core'
 import { OperationParameter, Parameter } from './OperationParameter'
 import { type SchemaObject } from 'konfig-lib'
 import { generateParametersFromRequestBodyProperties } from '@/utils/generate-parameters-from-request-body-properties'

@@ -19,6 +19,7 @@ import { HttpMethodBadge } from './HttpMethodBadge'
 import { OperationForm } from './OperationForm'
 import {
   FORM_VALUES_LOCAL_STORAGE_KEY,
+  PARAMETER_FORM_NAME_PREFIX,
   generateInitialFormValues,
   generateInitialFormValuesWithStorage,
 } from '../utils/generate-initial-operation-form-values'
@@ -45,6 +46,7 @@ import { SocialFooter } from './SocialFooter'
 import { Breadcrumbs } from './Breadcrumbs'
 import { OperationReferenceResponses } from './OperationReferenceResponses'
 import { OperationRequest } from './OperationRequest'
+import { validateValueForParameter } from '@/utils/validate-value-for-parameter'
 
 export function OperationReferenceMain({
   pathParameters,
@@ -243,6 +245,40 @@ export function OperationReferenceMain({
     <FormProvider form={form}>
       <form
         onSubmit={form.onSubmit(async (values) => {
+          // validate that any required parameters are set
+          const requiredParameters = parameters.filter(
+            (parameter) => parameter.required
+          )
+
+          const missingRequiredParameters = requiredParameters.filter(
+            (parameter) => {
+              const value = values[PARAMETER_FORM_NAME_PREFIX][parameter.name]
+              const parameterNotValid = validateValueForParameter(
+                parameter,
+                parameter.name
+              )(value)
+              if (parameterNotValid) {
+                return true
+              }
+              return false
+            }
+          )
+
+          if (missingRequiredParameters.length > 0) {
+            for (const parameter of missingRequiredParameters) {
+              const message =
+                parameter.schema.type === 'array'
+                  ? `Add an item to required parameter "${parameter.name}"`
+                  : `Missing required parameter "${parameter.name}"`
+              form.setFieldError(
+                `${PARAMETER_FORM_NAME_PREFIX}.${parameter.name}`,
+                message
+              )
+              notifications.show({ message, color: 'red', id: parameter.name })
+            }
+            return
+          }
+
           setRequestInProgress(true)
           try {
             // IMPORTANT: files is used by the code generator so its fine that this is not used
