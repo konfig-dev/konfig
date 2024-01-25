@@ -36,13 +36,15 @@ export async function computeDocumentProps({
   repo,
   octokit,
 }: {
-  documentationConfig: DocumentationConfig
+  documentationConfig?: DocumentationConfig
   octokit: Octokit
   owner: string
   repo: string
 }) {
   // get all docs with collectAllDocumentation and generate a map of id to label from first heading text
-  const docs = collectAllDocuments({ docConfig: documentationConfig })
+  const docs = documentationConfig
+    ? collectAllDocuments({ docConfig: documentationConfig })
+    : []
   const idToContent: Record<string, string | undefined> = {}
   const idToLabel: Record<string, string | undefined> = {}
   for (const { id, path } of docs) {
@@ -135,36 +137,38 @@ export async function computeDocumentProps({
   }
 
   const idToBreadcrumbs: Record<string, string[] | undefined> = {}
-  for (const { id } of docs) {
-    // compute breadcrumb for every document in the documentation config
-    // the breadcrumb for a document consists of [section, group, document]
-    // group is optional if the document is not nested in a group
-    const breadcrumb: string[] = []
-    for (const section of documentationConfig.sidebar.sections) {
-      for (const link of section.links) {
-        if (link.type === 'group') {
-          for (const innerLink of link.links) {
-            if (innerLink.id === id) {
-              breadcrumb.push(section.label)
-              breadcrumb.push(link.label)
-              const docLabel = idToLabel[id]
-              if (docLabel === undefined)
-                throw Error(`Couldn't find document label for id: ${id}`)
-              breadcrumb.push(docLabel)
-              break
+  if (documentationConfig !== undefined) {
+    for (const { id } of docs) {
+      // compute breadcrumb for every document in the documentation config
+      // the breadcrumb for a document consists of [section, group, document]
+      // group is optional if the document is not nested in a group
+      const breadcrumb: string[] = []
+      for (const section of documentationConfig.sidebar.sections) {
+        for (const link of section.links) {
+          if (link.type === 'group') {
+            for (const innerLink of link.links) {
+              if (innerLink.id === id) {
+                breadcrumb.push(section.label)
+                breadcrumb.push(link.label)
+                const docLabel = idToLabel[id]
+                if (docLabel === undefined)
+                  throw Error(`Couldn't find document label for id: ${id}`)
+                breadcrumb.push(docLabel)
+                break
+              }
             }
+          } else if (link.id === id) {
+            breadcrumb.push(section.label)
+            const docLabel = idToLabel[id]
+            if (docLabel === undefined)
+              throw Error(`Couldn't find document label for id: ${id}`)
+            breadcrumb.push(docLabel)
+            break
           }
-        } else if (link.id === id) {
-          breadcrumb.push(section.label)
-          const docLabel = idToLabel[id]
-          if (docLabel === undefined)
-            throw Error(`Couldn't find document label for id: ${id}`)
-          breadcrumb.push(docLabel)
-          break
         }
       }
+      idToBreadcrumbs[id] = breadcrumb
     }
-    idToBreadcrumbs[id] = breadcrumb
   }
 
   return {

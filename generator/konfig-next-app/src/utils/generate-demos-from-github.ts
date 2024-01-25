@@ -194,16 +194,14 @@ async function _fetch({
     portals: [portal],
   }
 
-  const allMarkdown = konfigYaml.content.portal?.documentation
-    ? (
-        await computeDocumentProps({
-          documentationConfig: konfigYaml.content.portal?.documentation,
-          owner,
-          repo,
-          octokit,
-        })
-      ).allMarkdown
-    : []
+  const allMarkdown = (
+    await computeDocumentProps({
+      documentationConfig: konfigYaml.content.portal?.documentation,
+      owner,
+      repo,
+      octokit,
+    })
+  ).allMarkdown
 
   return {
     organization,

@@ -269,16 +269,14 @@ export async function generatePropsForReferencePage({
       notFound: true,
     }
 
-  const allMarkdown = props.konfigYaml.portal?.documentation
-    ? (
-        await computeDocumentProps({
-          documentationConfig: props.konfigYaml.portal.documentation,
-          owner,
-          repo,
-          octokit,
-        })
-      ).allMarkdown
-    : []
+  const allMarkdown = (
+    await computeDocumentProps({
+      documentationConfig: props.konfigYaml.portal.documentation,
+      owner,
+      repo,
+      octokit,
+    })
+  ).allMarkdown
 
   return {
     props: {
