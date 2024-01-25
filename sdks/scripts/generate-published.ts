@@ -1,16 +1,21 @@
 import * as path from "path";
 import * as fs from "fs";
 import snakeCase from "lodash.snakecase";
+import { z } from "zod";
+import { SdkPagePropsWithPropertiesOmitted } from "./collect";
+import { SecuritySchemes } from "konfig-lib";
+import camelcase from "konfig-lib/dist/util/camelcase";
+import { Published } from "./util";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
-
-import { z } from "zod";
-import { SdkPagePropsWithPropertiesOmitted } from "./collect";
-import { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
-import { SecuritySchemes } from "konfig-lib";
-import camelcase from "konfig-lib/dist/util/camelcase";
+const logosCsvPath = path.join(path.dirname(__dirname), "db", "logos.csv");
+const dataFromHtmlPath = path.join(
+  path.dirname(__dirname),
+  "db",
+  "data-from-html.json"
+);
 
 const publishJsonSchema = z.object({
   publish: z.record(
@@ -27,14 +32,12 @@ const publishJsonSchema = z.object({
   ),
 });
 
-export type Published = SdkPageProps & {
-  sdkUsageCode: string;
-};
-
 function main() {
   const publishJson = publishJsonSchema.parse(
     JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
   );
+  const dataFromHtml = JSON.parse(fs.readFileSync(dataFromHtmlPath, "utf-8"));
+  const logos = readLogosCsv();
   // delete and recreate "published/" directory
   fs.rmSync(publishedDirPath, { recursive: true, force: true });
   fs.mkdirSync(publishedDirPath, { recursive: true });
@@ -50,16 +53,27 @@ function main() {
     const sdkUsageCode = generateSdkUsageCode({ ...publishData, ...specData });
 
     if (publishData.previewLinkImage === undefined) {
-      console.log("No previewLinkImage for", spec);
-      continue;
+      publishData.previewLinkImage = dataFromHtml[spec]?.imagePreview;
+      if (publishData.previewLinkImage === undefined) {
+        console.log("❌ ERROR: No previewLinkImage for", spec);
+        continue;
+      }
     }
     if (publishData.metaDescription === undefined) {
-      console.log("No metaDescription for", spec);
-      continue;
+      publishData.metaDescription = dataFromHtml[spec]?.description;
+      if (publishData.metaDescription === undefined) {
+        console.log("❌ ERROR: No metaDescription for", spec);
+        continue;
+      }
     }
     if (publishData.logo === undefined) {
-      console.log("No logo for", spec);
-      continue;
+      publishData.logo =
+        dataFromHtml[spec]?.logo ??
+        logos[specData.homepage.replace("https://", "")];
+      if (publishData.logo === undefined) {
+        console.log("❌ ERROR: No logo for", spec);
+        continue;
+      }
     }
 
     const merged: Published = {
@@ -77,6 +91,19 @@ function main() {
     const publishedPath = path.join(publishedDirPath, spec);
     fs.writeFileSync(`${publishedPath}.json`, JSON.stringify(merged, null, 2));
   }
+}
+
+function readLogosCsv(): Record<string, string> {
+  const logosCsv = fs.readFileSync(logosCsvPath, "utf-8");
+  const logos: Record<string, string> = {};
+  for (const line of logosCsv.split("\n")) {
+    const row = line.split(",");
+    // slice to unquote the strings
+    const site = row[1].trim().slice(1, -1);
+    const logo = row[3].trim().slice(1, -1);
+    logos[site] = logo;
+  }
+  return logos;
 }
 
 function generateSdkUsageCode({

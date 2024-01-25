@@ -1,6 +1,6 @@
 import * as path from "path";
 import * as fs from "fs";
-import { specFolder, dbFolder } from "./util";
+import { specFolder, dbFolder, HtmlData } from "./util";
 import axios from "axios";
 
 async function collectData(): Promise<Record<string, object>> {
@@ -29,7 +29,7 @@ async function collectData(): Promise<Record<string, object>> {
       /<meta\s+property="og:image"\s+content="([^"]+)">/;
     const logoRegex: RegExp =
       /<img\b(?:[^>]*\blogo\b[^>]*\bsrc="([^"]*)"[^>]*|[^>]*\bsrc="([^"]*)"[^>]*\blogo\b[^>]*)>/;
-    const siteData = { description: "", imagePreview: "", logo: "" };
+    const siteData: HtmlData = {};
 
     const description = htmlData.match(descriptionRegex);
     const imagePreview = htmlData.match(imagePreviewRegex);
@@ -39,7 +39,7 @@ async function collectData(): Promise<Record<string, object>> {
     if (imagePreview) siteData.imagePreview = imagePreview[1];
     if (logo) siteData.logo = logo[1];
 
-    data[key] = siteData;
+    if (Object.keys(siteData).length > 0) data[key] = siteData;
   }
   return data;
 }
