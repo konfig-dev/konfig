@@ -46,6 +46,7 @@ export type SdkPageProps = {
   providerName: string;
   previewLinkImage: string;
   sdkName: string;
+  language: string;
 };
 
 export enum HttpMethods {

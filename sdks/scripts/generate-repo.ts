@@ -2,42 +2,39 @@ import * as execa from "execa";
 import * as fs from "fs";
 import * as path from "path";
 import * as mustache from "mustache";
+import { Published } from "./util";
 
 // In debug mode, repository is not created and code is not pushed to remote
-export function generateSdkRepository(
-  companyName: string,
-  serviceName: string,
-  language: string,
-  pathToOas: string,
-  siteUrl: string,
-  debug: boolean = false
-) {
-  const repoName = generateRepoName(companyName, language);
-  const repoDescription = generateRepositoryDescription(companyName, language);
-  const repoDir = path.join(__dirname, "..", "sdks", repoName);
+export function generateSdkRepository(key: string, debug: boolean = false) {
+  const data: Published = JSON.parse(
+    fs.readFileSync(
+      path.join(path.dirname(__dirname), "db", "published", `${key}.json`),
+      "utf-8"
+    )
+  );
+  const repoDescription = generateRepositoryDescription(data);
+  const repoDir = path.join(__dirname, "..", "sdks", data.sdkName);
+  const pathToOas = oasFullPathFromKey(key);
 
-  if (!debug && repositoryExists(repoName)) {
-    console.log(`Repository ${repoName} already exists. Aborting...`);
+  if (!debug && repositoryExists(data.sdkName)) {
+    console.log(`Repository ${data.sdkName} already exists. Aborting...`);
     return;
   }
 
   // Create and clone repository. If debug mode, create local directory.
-  if (!debug) createRepository(repoName, repoDescription);
+  if (!debug) createRepository(data.sdkName, repoDescription);
   else if (!fs.existsSync(repoDir)) fs.mkdirSync(repoDir);
 
   // Copy the OAS into the cloned repository
-  fs.copyFileSync(
-    path.join(__dirname, "..", "openapi-directory", "APIs", pathToOas),
-    path.join(repoDir, path.basename(pathToOas))
-  );
+  fs.copyFileSync(pathToOas, path.join(repoDir, path.basename(pathToOas)));
 
   // Copy the header image into the cloned repository
   fs.copyFileSync(
-    path.join(__dirname, "..", "headers", `${companyName}.png`),
+    path.join(__dirname, "..", "headers", `${data.company}.png`),
     path.join(repoDir, "header.png")
   );
 
-  writeKonfigYaml(companyName, language, pathToOas, siteUrl);
+  writeKonfigYaml(data, pathToOas);
 
   // Run konfig generate. If any errors occur, delete the repository and abort.
   try {
@@ -49,23 +46,23 @@ export function generateSdkRepository(
     console.log("Error occurred during konfig generate.");
     console.log("Aborting process and deleting repository...");
     if (!debug) {
-      execa.sync("rm", ["-rf", repoName], {
+      execa.sync("rm", ["-rf", data.sdkName], {
         cwd: path.join(__dirname, "..", "sdks"),
         stdio: "inherit",
       });
-      deleteRepository(repoName);
+      deleteRepository(data.sdkName);
     }
     console.log("Repository deleted.");
     return;
   }
-  addSignupLinkToReadmes(repoDir, companyName, serviceName, language);
+  addSignupLinkToReadmes(repoDir, data);
 
   // Commit and push to remote
   if (!debug) {
     execa.sync("git", ["add", "-A"], { cwd: repoDir, stdio: "inherit" });
     execa.sync(
       "git",
-      ["commit", "-m", `Generate ${companyName} ${language} SDK`],
+      ["commit", "-m", `Generate ${data.company} ${data.language} SDK`],
       { cwd: repoDir, stdio: "inherit" }
     );
     execa.sync("git", ["push", "origin", "HEAD"], {
@@ -73,22 +70,16 @@ export function generateSdkRepository(
       stdio: "inherit",
     });
     // Remove local directory
-    execa.sync("rm", ["-rf", repoName], {
+    execa.sync("rm", ["-rf", data.sdkName], {
       cwd: path.join(__dirname, "..", "sdks"),
       stdio: "inherit",
     });
   }
 }
 
-function addSignupLinkToReadmes(
-  repoDir: string,
-  companyName: string,
-  serviceName: string,
-  language: string
-) {
-  companyName = capitalize(companyName);
-  const signupLink = `https://docs.google.com/forms/d/e/1FAIpQLSedvSvvlpgoeI1BBjTyra7nC-SgMyKjugu2j4_dZNIGZ6Ul1Q/viewform?usp=pp_url&entry.1993275387=${companyName}&entry.2022822177=${serviceName}&entry.2109629584=${language}`;
-  const sdkReadmeFilepath = path.join(repoDir, language, "README.md");
+function addSignupLinkToReadmes(repoDir: string, data: Published) {
+  const signupLink = `https://docs.google.com/forms/d/e/1FAIpQLSedvSvvlpgoeI1BBjTyra7nC-SgMyKjugu2j4_dZNIGZ6Ul1Q/viewform?usp=pp_url&entry.1993275387=${data.company}&entry.2022822177=${data.serviceName}&entry.2109629584=${data.language}`;
+  const sdkReadmeFilepath = path.join(repoDir, data.language, "README.md");
   const sdkReadme = fs.readFileSync(sdkReadmeFilepath, "utf-8");
   const installationSectionRegex = /^## Installation([\s\S]*?)(?=\n##)/im;
   const replacementText = `## Installation<a id="installation"></a>\n\nTo install, please sign up for the SDK [here](${signupLink}).\n`;
@@ -125,31 +116,25 @@ function deleteRepository(name: string) {
   execa.sync("gh", ["repo", "delete", `konfig-sdks/${name}`, "--yes"]);
 }
 
-function writeKonfigYaml(
-  companyName: string,
-  language: string,
-  pathToOas: string,
-  siteUrl: string
-) {
+function writeKonfigYaml(data: Published, pathToOas: string) {
   const template = fs.readFileSync(
     path.join(__dirname, "..", "templates", "konfig.yaml.mustache"),
     "utf-8"
   );
-  companyName = companyName.toLowerCase();
-  const repoName = generateRepoName(companyName, language);
+  const companyName = data.company.toLowerCase();
   const konfigYaml = mustache.render(template, {
     companyName: capitalize(companyName),
-    siteUrl,
-    repoName,
-    lang: language,
-    clientName: generateClientName(companyName, language),
-    packageName: repoName.replace(/-/g, "_"),
+    homepage: data.homepage.replace("https://", ""),
+    repoName: data.sdkName,
+    lang: data.language,
+    clientName: capitalize(data.clientNameCamelCase),
+    packageName: data.sdkName.replace(/-/g, "_"),
     oasFileName: path.basename(pathToOas),
-    ...generateTemplateLanguageData(language),
+    ...generateTemplateLanguageData(data.language),
   });
 
   fs.writeFileSync(
-    path.join(__dirname, "..", "sdks", repoName, "konfig.yaml"),
+    path.join(__dirname, "..", "sdks", data.sdkName, "konfig.yaml"),
     konfigYaml
   );
 }
@@ -179,42 +164,26 @@ function generateTemplateLanguageData(language: string) {
   return data;
 }
 
-function generateRepositoryDescription(companyName: string, language: string) {
-  return `${capitalize(
-    language
-  )} SDK for ${companyName} API. Generated by Konfig (https://konfigthis.com/).`;
+function generateRepositoryDescription(data: Published) {
+  const description = `${data.company}'s ${data.language} SDK for ${data.serviceName} API generated by Konfig (https://konfigthis.com/). `;
+  return description + data.metaDescription;
 }
 
-function generateRepoName(companyName: string, language: string): string {
-  return `${companyName.toLowerCase().replace(/ /g, "-")}-${language}-sdk`;
-}
-
-function generateClientName(companyName: string, language: string): string {
-  return `${capitalize(toCamelCase(companyName))}${capitalize(language)}Client`;
-}
-
-function toCamelCase(str: string): string {
-  return str
-    .split(/[-_ ]+/)
-    .map((word, index) =>
-      index === 0
-        ? word[0].toUpperCase() + word.slice(1)
-        : word[0].toUpperCase() + word.slice(1)
-    )
-    .join("");
+function oasFullPathFromKey(key: string): string {
+  const relativeDir = key.split("_").join("/");
+  const fullDir = path.join(
+    __dirname,
+    "..",
+    "openapi-directory",
+    "APIs",
+    relativeDir
+  );
+  const fileName = fs.readdirSync(fullDir)[0];
+  return path.join(fullDir, fileName);
 }
 
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-// For testing:
-
-generateSdkRepository(
-  "Wikimedia",
-  "N/A",
-  "java",
-  "wikimedia.org/1.0.0/swagger.yaml",
-  "wikimedia.org",
-  true
-);
+// example usage:
+// generateSdkRepository("ably.io_platform_1.1.0", true);
