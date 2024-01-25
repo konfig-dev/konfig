@@ -11,3 +11,7 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from python_union_string_discriminator.model.a import A
+from python_union_string_discriminator.model.b import B
+from python_union_string_discriminator.model.generic_schema import GenericSchema
+from python_union_string_discriminator.model.test_fetch_response import TestFetchResponse

@@ -33,26 +33,29 @@ import frozendict  # noqa: F401
 
 from python_union_string_discriminator import schemas  # noqa: F401
 
+from python_union_string_discriminator.model.test_fetch_response import TestFetchResponse as TestFetchResponseSchema
 
+from python_union_string_discriminator.type.test_fetch_response import TestFetchResponse
 
 from ...api_client import Dictionary
+from python_union_string_discriminator.pydantic.test_fetch_response import TestFetchResponse as TestFetchResponsePydantic
 
 from . import path
 
 _auth = [
     'ApiKey',
 ]
-SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
+SchemaFor200ResponseBodyApplicationJson = TestFetchResponseSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetchResponse
 
 
 @dataclass
 class ApiResponseFor200Async(api_client.AsyncApiResponse):
-    body: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+    body: TestFetchResponse
 
 
 _response_for_200 = api_client.OpenApiResponse(
@@ -274,24 +277,24 @@ class Fetch(BaseApi):
         self,
         validate: bool = False,
         **kwargs,
-    ) -> Dictionary:
+    ) -> TestFetchResponsePydantic:
         raw_response = await self.raw.afetch(
             **kwargs,
         )
         if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
+            return TestFetchResponsePydantic(**raw_response.body)
+        return api_client.construct_model_instance(TestFetchResponsePydantic, raw_response.body)
     
     
     def fetch(
         self,
         validate: bool = False,
-    ) -> Dictionary:
+    ) -> TestFetchResponsePydantic:
         raw_response = self.raw.fetch(
         )
         if validate:
-            return Dictionary(**raw_response.body)
-        return api_client.construct_model_instance(Dictionary, raw_response.body)
+            return TestFetchResponsePydantic(**raw_response.body)
+        return api_client.construct_model_instance(TestFetchResponsePydantic, raw_response.body)
 
 
 class ApiForget(BaseApi):

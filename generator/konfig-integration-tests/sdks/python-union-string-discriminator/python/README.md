@@ -47,6 +47,7 @@ pythonunionstringdiscriminatorclient = PythonUnionStringDiscriminatorClient(
 try:
     # Fetches a JSON value based on input parameter
     fetch_response = pythonunionstringdiscriminatorclient.test.fetch()
+    print(fetch_response)
 except ApiException as e:
     print("Exception when calling TestApi.fetch: %s\n" % e)
     pprint(e.body)
@@ -77,6 +78,7 @@ async def main():
     try:
         # Fetches a JSON value based on input parameter
         fetch_response = await pythonunionstringdiscriminatorclient.test.afetch()
+        print(fetch_response)
     except ApiException as e:
         print("Exception when calling TestApi.fetch: %s\n" % e)
         pprint(e.body)
@@ -107,6 +109,8 @@ pythonunionstringdiscriminatorclient = PythonUnionStringDiscriminatorClient(
 try:
     # Fetches a JSON value based on input parameter
     fetch_response = pythonunionstringdiscriminatorclient.test.raw.fetch()
+    pprint(fetch_response.body)
+    pprint(fetch_response.body["value"])
     pprint(fetch_response.headers)
     pprint(fetch_response.status)
     pprint(fetch_response.round_trip_time)
@@ -130,6 +134,10 @@ Provide an input parameter to receive a JSON value with properties.
 ```python
 fetch_response = pythonunionstringdiscriminatorclient.test.fetch()
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`TestFetchResponse`](./python_union_string_discriminator/pydantic/test_fetch_response.py)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

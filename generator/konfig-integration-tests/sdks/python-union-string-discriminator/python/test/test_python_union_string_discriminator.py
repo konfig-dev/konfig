@@ -2,6 +2,7 @@ import unittest
 
 import os
 from pprint import pprint
+from python_union_string_discriminator.pydantic.a import A
 from python_union_string_discriminator import PythonUnionStringDiscriminatorClient
 
 class TestPythonUnionStringDiscriminator(unittest.TestCase):
@@ -14,7 +15,9 @@ class TestPythonUnionStringDiscriminator(unittest.TestCase):
             api_key='YOUR_API_KEY',
         )
         resp = client.test.fetch()
-        self.assertIsNotNone(resp)
+
+        # assert resp.value is an instance of A
+        self.assertIsInstance(resp.value, A)
 
     def tearDown(self):
         pass

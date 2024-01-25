@@ -40,5 +40,36 @@ components:
   schemas:
     TestFetchResponse:
       type: object
+      properties:
+        value:
+          oneOf:
+            - $ref: '#/components/schemas/A'
+            - $ref: '#/components/schemas/B'
+            - $ref: '#/components/schemas/GenericSchema'
+    A:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - A
+        a:
+          type: string
+    B:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - B
+        b:
+          type: string
+    GenericSchema:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - generic
 security:
   - ApiKey: []
