@@ -16,6 +16,10 @@ const dataFromHtmlPath = path.join(
   "db",
   "data-from-html.json"
 );
+const openapiExamplesPath = path.join(
+  path.dirname(__dirname),
+  "openapi-examples"
+);
 
 const publishJsonSchema = z.object({
   publish: z.record(
@@ -69,15 +73,59 @@ function main() {
 
     const dynamicPath = `${companyKebabCase}${servicePath}`;
 
+    // find existence of files in openapi-examples
+    const openapiExamplesDirPath = path.join(openapiExamplesPath, dynamicPath);
+    const openapiExamplesDirExists = fs.existsSync(openapiExamplesDirPath);
+    if (!openapiExamplesDirExists) {
+      throw Error(
+        `❌ ERROR: openapi-examples directory does not exist at ${openapiExamplesDirPath}`
+      );
+    }
+    // find file that starts with "logo" in openapiExamplesDirPath
+    const logoPath = fs
+      .readdirSync(openapiExamplesDirPath)
+      .find((file) => file.startsWith("logo"));
+    if (logoPath === undefined) {
+      throw Error(`❌ ERROR: logo does not exist at ${openapiExamplesDirPath}`);
+    }
+    // find file that starts with "favicon" in openapiExamplesDirPath
+    const faviconPath = fs
+      .readdirSync(openapiExamplesDirPath)
+      .find((file) => file.startsWith("favicon"));
+    if (faviconPath === undefined) {
+      throw Error(
+        `❌ ERROR: favicon does not exist at ${openapiExamplesDirPath}`
+      );
+    }
+    // find file that starts with "imagePreview" in openapiExamplesDirPath
+    const imagePreviewPath = fs
+      .readdirSync(openapiExamplesDirPath)
+      .find((file) => file.startsWith("imagePreview"));
+    if (imagePreviewPath === undefined) {
+      throw Error(
+        `❌ ERROR: imagePreview does not exist at ${openapiExamplesDirPath}`
+      );
+    }
+    // find file that starts with "openapi" in openapiExamplesDirPath
+    const openapiPath = fs
+      .readdirSync(openapiExamplesDirPath)
+      .find((file) => file.startsWith("openapi"));
+    if (openapiPath === undefined) {
+      throw Error(
+        `❌ ERROR: openapi does not exist at ${openapiExamplesDirPath}`
+      );
+    }
+    const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
+
     const merged: Published = {
       ...specData,
       ...publishData,
       metaDescription: publishData.metaDescription,
       originalSpecUrl: specData.openApiRaw,
-      logo: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/logo.png`,
-      openApiRaw: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/api.yaml`,
-      previewLinkImage: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/imagePreview.png`,
-      faviconUrl: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/favicon.png`,
+      logo: `${githubUrlPrefix}${logoPath}`,
+      openApiRaw: `${githubUrlPrefix}${openapiPath}`,
+      previewLinkImage: `${githubUrlPrefix}${imagePreviewPath}`,
+      faviconUrl: `${githubUrlPrefix}${faviconPath}`,
       clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       typescriptSdkUsageCode,
