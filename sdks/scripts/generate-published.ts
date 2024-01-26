@@ -59,13 +59,22 @@ function main() {
     }
 
     const companyKebabCase = kebabcase(publishData.company.toLowerCase());
+    const serviceKebabCase =
+      publishData.serviceName !== undefined
+        ? kebabcase(publishData.serviceName.toLowerCase())
+        : null;
+    const servicePath = serviceKebabCase ? `/${serviceKebabCase}` : "";
+
+    const dynamicPath = `${companyKebabCase}${servicePath}`;
 
     const merged: Published = {
       ...specData,
       ...publishData,
       metaDescription: publishData.metaDescription,
-      logo: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${companyKebabCase}/logo.png`,
-      previewLinkImage: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${companyKebabCase}/imagePreview.png`,
+      logo: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/logo.png`,
+      openApiRaw: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/api.yaml`,
+      previewLinkImage: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/imagePreview.png`,
+      faviconUrl: `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/favicon.png`,
       clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       sdkUsageCode,

@@ -32,6 +32,7 @@ export type SdkPageProps = {
   apiTitle: string;
   difficultyScore: number;
   apiBaseUrl: string;
+  faviconUrl?: string;
   apiVersion: string;
   endpoints: number;
   apiDescription?: string;
