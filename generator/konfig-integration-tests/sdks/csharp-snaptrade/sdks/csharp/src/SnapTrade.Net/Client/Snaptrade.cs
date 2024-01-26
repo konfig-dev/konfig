@@ -21,47 +21,47 @@ namespace SnapTrade.Net.Client
         /// <summary>
         /// API instance
         /// </summary>
-        public AccountInformationApi AccountInformation { get; private set; }
+        public virtual IAccountInformationApi AccountInformation { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public APIStatusApi APIStatus { get; private set; }
+        public virtual IAPIStatusApi APIStatus { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public AuthenticationApi Authentication { get; private set; }
+        public virtual IAuthenticationApi Authentication { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public ConnectionsApi Connections { get; private set; }
+        public virtual IConnectionsApi Connections { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public ErrorLogsApi ErrorLogs { get; private set; }
+        public virtual IErrorLogsApi ErrorLogs { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public OptionsApi Options { get; private set; }
+        public virtual IOptionsApi Options { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public ReferenceDataApi ReferenceData { get; private set; }
+        public virtual IReferenceDataApi ReferenceData { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public TradingApi Trading { get; private set; }
+        public virtual ITradingApi Trading { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public TransactionsAndReportingApi TransactionsAndReporting { get; private set; }
+        public virtual ITransactionsAndReportingApi TransactionsAndReporting { get; set; }
 
         /// <summary>
         /// Configuration instance
