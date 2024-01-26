@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as fs from "fs";
-import { Published } from "./util";
 import kebabcase from "lodash.kebabcase";
+import { Published } from "./util";
 import camelcase from "konfig-lib/dist/util/camelcase";
 
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
@@ -14,18 +14,19 @@ function main() {
 
   const files = fs.readdirSync(publishedDirPath);
 
-  const sdkDir = path.join(
+  const docsDir = path.join(
     path.dirname(path.dirname(__dirname)),
     "generator",
-    "konfig-docs",
-    "src",
-    "pages",
-    "sdk"
+    "konfig-docs"
   );
+
+  const sdkDir = path.join(docsDir, "src", "pages", "sdk");
 
   // delete everything under sdkDir and remake the directory
   fs.rmSync(sdkDir, { recursive: true });
   fs.mkdirSync(sdkDir, { recursive: true });
+
+  const redirectsJson: Record<string, string> = {};
 
   for (const file of files) {
     const filePath = path.join(publishedDirPath, file);
@@ -34,12 +35,16 @@ function main() {
 
     const indexTsx = generateIndexTsx(json);
 
+    const company = kebabcase(json.company);
+    const service = json.serviceName ? kebabcase(json.serviceName) : undefined;
     const dirPath = path.join(
       sdkDir,
-      kebabcase(json.company),
-      kebabcase(json.serviceName),
+      company,
+      service ? service : "",
       "typescript"
     );
+
+    addToRedirectsJson({ redirectsJson, company, service });
 
     fs.mkdirSync(dirPath, { recursive: true });
 
@@ -56,6 +61,46 @@ function main() {
       path.join(dirPath, "_getting-started.mdx"),
       gettingStartedMdx
     );
+  }
+
+  // write redirects.json
+  fs.writeFileSync(
+    path.join(docsDir, "redirects.json"),
+    JSON.stringify(redirectsJson, null, 2)
+  );
+}
+
+function addToRedirectsJson({
+  redirectsJson,
+  company,
+  service,
+}: {
+  company: string;
+  service?: string;
+  redirectsJson: Record<string, string>;
+}) {
+  // add to redirects where:
+  // if there is a service name:
+  //     "/sdk/company/service" redirects to "/sdk/company/service/typescript"
+  //     "/sdk/company" redirects to "/sdk/company/service/typescript"
+  // else:
+  //     "/sdk/company" redirects to "/sdk/company/typescript" if there is no service
+  // Also include a version with and without an ending slash
+  if (service !== undefined) {
+    const companyRedirectPath = `/sdk/${company}`;
+    const serviceRedirectPath = `/sdk/${company}/${service}`;
+    const redirectTarget = `${serviceRedirectPath}/typescript`;
+    redirectsJson[companyRedirectPath] = redirectTarget;
+    redirectsJson[companyRedirectPath + "/"] = redirectTarget;
+    redirectsJson[serviceRedirectPath] = `${serviceRedirectPath}/typescript`;
+    redirectsJson[
+      serviceRedirectPath + "/"
+    ] = `${serviceRedirectPath}/typescript`;
+  } else {
+    const redirectPath = `/sdk/${company}`;
+    const redirectTarget = `${redirectPath}/typescript`;
+    redirectsJson[redirectPath] = redirectTarget;
+    redirectsJson[redirectPath + "/"] = redirectTarget;
   }
 }
 
@@ -102,10 +147,9 @@ import Description from "./_description.mdx";
 import GettingStarted from "./_getting-started.mdx";
 import { Sdk } from "@site/src/components/Sdk";
 
-export default function ${camelcase(company, { pascalCase: true })}${camelcase(
-    serviceName,
-    { pascalCase: true }
-  )}TypeScriptSdk() {
+export default function ${camelcase(company, { pascalCase: true })}${
+    serviceName ? camelcase(serviceName, { pascalCase: true }) : ""
+  }TypeScriptSdk() {
   return (
     <Sdk
       sdkName="${sdkName}"
@@ -152,6 +196,7 @@ export default function ${camelcase(company, { pascalCase: true })}${camelcase(
           "HttpMethodsEnum.$1"
         )}
     }
+      language="typescript"
       apiTitle="${apiTitle}"
       apiBaseUrl="${apiBaseUrl}"
       apiVersion="${apiVersion}"

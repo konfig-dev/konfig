@@ -16,7 +16,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
       logo="https://www.openbanking.org.uk/wp-content/uploads/2021/03/open-banking-logo.svg"
       clientNameCamelCase="openBanking"
       homepage="openbanking.org.uk"
-      lastUpdated={new Date("2024-01-20T00:56:23.942Z")}
+      lastUpdated={new Date("2024-01-25T00:39:41.208Z")}
       // Missing contactUrl
       contactEmail="ServiceDesk@openbanking.org.uk"
       previewLinkImage="https://www.openbanking.org.uk/wp-content/uploads/Circit-quote-carousel-banner.png"
@@ -1875,6 +1875,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   }
 ]
     }
+      language="typescript"
       apiTitle="Account and Transaction API Specification"
       apiBaseUrl="https://openbanking.org.uk"
       apiVersion="3.1.7"

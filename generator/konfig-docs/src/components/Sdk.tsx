@@ -51,6 +51,7 @@ export function Sdk({
   previewLinkImage,
   sdkName,
   clientNameCamelCase,
+  faviconUrl,
   GettingStarted,
   Description,
 }: Omit<SdkPageProps, "difficultyScore" | "providerName"> & ReactProps) {
@@ -62,7 +63,11 @@ export function Sdk({
       <Head>
         <link
           rel="icon"
-          href={`http://www.google.com/s2/favicons?domain=${homepage}&sz=128`}
+          href={
+            faviconUrl
+              ? faviconUrl
+              : `http://www.google.com/s2/favicons?domain=${homepage}&sz=128`
+          }
         />
         <meta property="og:image" content={previewLinkImage} />
         <meta property="og:description" content={metaDescription} />
@@ -426,7 +431,7 @@ function SignupForm({
   serviceName,
 }: {
   company: string;
-  serviceName: string;
+  serviceName?: string;
 }) {
   const [email, setEmail] = useState("");
   const [signedUp, setSignedUp] = useState(false);
@@ -483,12 +488,12 @@ function SignupForm({
           })}
         >
           {signedUp
-            ? `Thanks for signing up for access to ${company}'s TypeScript SDK!`
+            ? `Thanks for signing up for access to ${company}'s TypeScript SDK 🎉!`
             : `Need a TypeScript SDK for ${company}'s API?`}
         </h2>
         {signedUp ? (
           <>
-            <p>{`Your email, ${signedUpEmail}, has been successfully registered for access to the TypeScript SDK. We will notify you as soon as it is available.`}</p>
+            <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the TypeScript SDK. We will notify you as soon as it is available.`}</p>
             <p className="mb-0">
               For inquiries or support, please contact us at{" "}
               <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>

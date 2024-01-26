@@ -28,7 +28,7 @@ export type SdkPageProps = {
   homepage: string;
   lastUpdated: Date;
   methods: Method[];
-  serviceName: string;
+  serviceName?: string;
   apiTitle: string;
   difficultyScore: number;
   apiBaseUrl: string;

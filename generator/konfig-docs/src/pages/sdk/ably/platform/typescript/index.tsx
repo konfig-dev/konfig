@@ -16,7 +16,7 @@ export default function AblyPlatformTypeScriptSdk() {
       logo="https://voltaire.ably.com/static/ably-logo-46433d9937b94509fc62ef6dd6d94ff1.png"
       clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-01-20T00:56:23.942Z")}
+      lastUpdated={new Date("2024-01-25T00:39:41.208Z")}
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
       previewLinkImage="https://voltaire.ably.com/static/ably-generic-53a7dd8e38ba16fd0190ec91150dad0a.jpeg"
@@ -831,6 +831,7 @@ export default function AblyPlatformTypeScriptSdk() {
   }
 ]
     }
+      language="typescript"
       apiTitle="Platform API"
       apiBaseUrl="https://rest.ably.io"
       apiVersion="1.1.0"
