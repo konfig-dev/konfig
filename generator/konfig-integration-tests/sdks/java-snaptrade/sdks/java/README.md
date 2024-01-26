@@ -1,3 +1,4 @@
+[![Visit SnapTrade](https://raw.githubusercontent.com/konfig-dev/konfig/HEAD/sdks/java/header.png)](https://snaptrade.com)
 # snaptrade-java-sdk
 
 [![Maven Central](https://img.shields.io/badge/Maven%20Central-v4.13.3-blue)](https://central.sonatype.com/artifact/com.konfigthis/snaptrade-java-sdk/4.13.3)
