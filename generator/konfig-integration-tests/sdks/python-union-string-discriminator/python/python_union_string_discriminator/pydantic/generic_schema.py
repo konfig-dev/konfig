@@ -18,4 +18,4 @@ from pydantic import BaseModel, Field, RootModel
 
 
 class GenericSchema(BaseModel):
-    type: typing.Optional[str] = Field(None, alias='type')
+    type: typing.Literal['generic'] = Field(None, alias='type')
