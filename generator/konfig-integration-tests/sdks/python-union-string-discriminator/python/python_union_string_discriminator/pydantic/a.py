@@ -18,6 +18,6 @@ from pydantic import BaseModel, Field, RootModel
 
 
 class A(BaseModel):
-    type: typing.Literal['A'] = Field(None, alias='type')
+    type: typing.Optional[Literal["A"]] = Field(None, alias='type')
 
     a: typing.Optional[str] = Field(None, alias='a')
