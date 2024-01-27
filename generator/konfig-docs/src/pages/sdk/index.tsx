@@ -55,7 +55,7 @@ export default function Sdks() {
                 >
                   <div className="flex flex-col gap-2">
                     <div className="flex gap-2">
-                      <div className="h-5 w-5">
+                      <div className="shrink-0 h-5 w-5">
                         <TsIcon />
                       </div>
                       <div className="font-mono font-semibold text-sm sm:text-base">
@@ -63,7 +63,7 @@ export default function Sdks() {
                       </div>
                     </div>
                     <div className="group/link flex gap-2 w-fit">
-                      <div className="h-5">
+                      <div className="shrink-0 h-5 w-5">
                         <img
                           className="w-full transition-all group-hover/link:opacity-100 h-full object-cover opacity-60"
                           src={favicon}
