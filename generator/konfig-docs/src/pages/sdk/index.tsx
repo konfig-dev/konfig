@@ -5,12 +5,9 @@ import { isMacOs, isMobile } from "react-device-detect";
 import sdkLinksJson from "./sdk-links.json";
 import clsx from "clsx";
 import { IconChevronRight } from "@tabler/icons-react";
+import { TsIcon } from "@site/src/components/TsIcon";
 
 export default function Sdks() {
-  const sdkLinks = sdkLinksJson as Record<
-    string,
-    { link: string; homepage: string }
-  >;
   return (
     <Layout
       title={`SDKs`}
@@ -22,11 +19,13 @@ export default function Sdks() {
       </Head> */}
       <div className="bg-slate-100 border-b">
         <div className="py-44 pb-56 bg-gradient-to-br from-blue-950 to-blue-700">
-          <div className="mx-auto text-center">
-            <h1 className="text-blue-200 text-3xl">
+          <div className="text-center ">
+            <h1 className="text-blue-200 text-3xl md:text-4xl">
               Explore{" "}
-              <span className="text-white">{Object.keys(sdkLinks).length}</span>{" "}
-              SDKs from <br />
+              <span className="text-white">
+                {Object.keys(sdkLinksJson).length}
+              </span>{" "}
+              SDKs for <br />
               <span className="whitespace-nowrap">
                 <span className="italic">up-to-date</span> and{" "}
                 <span className="italic">relevant</span> APIs
@@ -36,37 +35,58 @@ export default function Sdks() {
               <Hotkey />
               for{" "}
               <span className="text-sm rounded-full bg-gradient-to-r from-blue-400/30 via-blue-400 to-sky-blue/30 px-[1px] py-[5px] font-medium text-blue-300">
-                <span className="rounded-full px-2 py-1 bg-slate-800">{`"{company}-{api}-{language}"`}</span>
+                <span className="rounded-full px-2 py-1 bg-slate-800">{`"company/api/language"`}</span>
               </span>
             </div>
           </div>
         </div>
         <div className="flex flex-col bg-gradient-to-b from-slate-50 to-white mx-auto w-fit relative px-5 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
-          {Object.entries(sdkLinks).map(([label, { link, homepage }], idx) => (
-            <a className="hover:no-underline" href={link}>
-              <div
-                className={clsx(
-                  "group hover:bg-slate-200 px-4 py-6 flex items-center gap-6 justify-between",
-                  {
-                    "border-b": idx !== Object.keys(sdkLinks).length - 1,
-                  }
-                )}
-                key={label}
-              >
-                <div className="">
-                  <div className="font-mono text-sm sm:text-base">{label}</div>
-                  <a
-                    className="text-xs sm:text-sm"
-                    target="_blank"
-                    href={homepage}
-                  >
-                    {homepage}
-                  </a>
+          {Object.entries(sdkLinksJson).map(
+            ([label, { link, homepage, favicon }], idx) => (
+              <a className="hover:no-underline" href={link}>
+                <div
+                  className={clsx(
+                    "group hover:bg-slate-200 px-4 py-6 flex items-center gap-6 justify-between",
+                    {
+                      "border-b": idx !== Object.keys(sdkLinksJson).length - 1,
+                    }
+                  )}
+                  key={label}
+                >
+                  <div className="flex flex-col gap-2">
+                    <div className="flex gap-2">
+                      <div className="h-5 w-5">
+                        <TsIcon />
+                      </div>
+                      <div className="font-mono font-semibold text-sm sm:text-base">
+                        {label}
+                      </div>
+                    </div>
+                    <div className="group/link flex gap-2 w-fit">
+                      <div className="h-5">
+                        <img
+                          className="w-full transition-all group-hover/link:opacity-100 h-full object-cover opacity-60"
+                          src={favicon}
+                        />
+                      </div>
+                      <a
+                        className="text-xs sm:text-sm text-slate-400 hover:text-slate-700 hover:no-underline"
+                        target="_blank"
+                        href={homepage}
+                      >
+                        <div>
+                          {homepage
+                            .replace("https://", "")
+                            .replace("http://", "")}
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
                 </div>
-                <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
-              </div>
-            </a>
-          ))}
+              </a>
+            )
+          )}
         </div>
       </div>
     </Layout>
