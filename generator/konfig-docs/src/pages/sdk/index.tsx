@@ -6,6 +6,7 @@ import sdkLinksJson from "./sdk-links.json";
 import clsx from "clsx";
 import { IconChevronRight } from "@tabler/icons-react";
 import { TsIcon } from "@site/src/components/TsIcon";
+import IconExternalLink from "@theme/Icon/ExternalLink";
 
 export default function Sdks() {
   return (
@@ -21,10 +22,7 @@ export default function Sdks() {
         <div className="py-44 pb-56 bg-gradient-to-br from-blue-950 to-blue-700">
           <div className="text-center ">
             <h1 className="text-blue-200 text-3xl md:text-4xl">
-              Explore{" "}
-              <span className="text-white">
-                {Object.keys(sdkLinksJson).length}
-              </span>{" "}
+              Explore <span className="text-white">{sdkLinksJson.length}</span>{" "}
               SDKs for <br />
               <span className="whitespace-nowrap">
                 <span className="italic">up-to-date</span> and{" "}
@@ -41,52 +39,47 @@ export default function Sdks() {
           </div>
         </div>
         <div className="flex flex-col bg-gradient-to-b from-slate-50 to-white mx-auto w-fit relative px-5 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
-          {Object.entries(sdkLinksJson).map(
-            ([label, { link, homepage, favicon }], idx) => (
-              <a className="hover:no-underline" href={link}>
-                <div
-                  className={clsx(
-                    "group hover:bg-slate-200 px-4 py-6 flex items-center gap-6 justify-between",
-                    {
-                      "border-b": idx !== Object.keys(sdkLinksJson).length - 1,
-                    }
-                  )}
-                  key={label}
-                >
-                  <div className="flex flex-col gap-2">
-                    <div className="flex gap-2">
-                      <div className="shrink-0 h-5 w-5">
-                        <TsIcon />
-                      </div>
-                      <div className="font-mono font-semibold text-sm sm:text-base">
-                        {label}
-                      </div>
+          {sdkLinksJson.map(({ index, link, homepage, favicon }, idx) => (
+            <a className="hover:no-underline" href={link}>
+              <div
+                className={clsx(
+                  "group hover:bg-slate-200 px-4 py-6 flex items-center gap-6 justify-between",
+                  {
+                    "border-b": idx !== sdkLinksJson.length - 1,
+                  }
+                )}
+                key={index}
+              >
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    <div className="shrink-0 h-5 w-5">
+                      <TsIcon />
                     </div>
-                    <div className="group/link flex gap-2 w-fit">
-                      <div className="shrink-0 h-5 w-5">
-                        <img
-                          className="w-full transition-all group-hover/link:opacity-100 h-full object-cover opacity-60"
-                          src={favicon}
-                        />
-                      </div>
-                      <a
-                        className="text-xs sm:text-sm text-slate-400 hover:text-slate-700 hover:no-underline"
-                        target="_blank"
-                        href={homepage}
-                      >
-                        <div>
-                          {homepage
-                            .replace("https://", "")
-                            .replace("http://", "")}
-                        </div>
-                      </a>
+                    <div className="font-mono font-semibold text-sm sm:text-base">
+                      {index}
                     </div>
                   </div>
-                  <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
+                  <a
+                    className="flex items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
+                    target="_blank"
+                    href={homepage}
+                  >
+                    <div className="shrink-0 h-5 w-5 mr-1">
+                      <img
+                        className="w-full transition-all group-hover/link:opacity-100 h-full object-cover opacity-30"
+                        src={favicon}
+                      />
+                    </div>
+                    <div>
+                      {homepage.replace("https://", "").replace("http://", "")}
+                    </div>
+                    <IconExternalLink height="11.5" />
+                  </a>
                 </div>
-              </a>
-            )
-          )}
+                <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </Layout>
