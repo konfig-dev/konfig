@@ -88,7 +88,7 @@ export function Sdk({
                 <TsIcon className="h-5 w-5" />
               </h1>
               <div className="flex flex-wrap gap-x-3 gap-y-1 items-center text-xs sm:text-sm md:text-base">
-                <div className="font-mono text-slate-500">1.1.0</div>
+                <div className="font-mono text-slate-500">{apiVersion}</div>
                 <Dot />
                 <div className="font-mono">
                   <a href="https://konfigthis.com" target="_blank">
