@@ -79,7 +79,7 @@ export default function Sdks() {
                     <div className="flex gap-2 items-center">
                       {categories.map((category) => {
                         return (
-                          <button className="bg-emerald-100 border border-emerald-300 font-medium rounded-md text-xs px-2 py-1 transition-all text-emerald-800">
+                          <button className="bg-slate-100 border border-slate-300 font-medium rounded-md text-xs px-2 py-1 transition-all text-slate-800">
                             {category}
                           </button>
                         );
