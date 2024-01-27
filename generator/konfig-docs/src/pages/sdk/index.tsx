@@ -23,7 +23,7 @@ export default function Sdks() {
       <div className="bg-slate-100 border-b">
         <div className="py-44 pb-56 bg-gradient-to-br from-blue-950 to-blue-700">
           <div className="mx-auto text-center">
-            <h1 className="text-blue-300 text-3xl">
+            <h1 className="text-blue-200 text-3xl">
               Explore{" "}
               <span className="text-white">{Object.keys(sdkLinks).length}</span>{" "}
               SDKs from <br />
