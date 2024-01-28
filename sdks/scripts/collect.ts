@@ -308,6 +308,11 @@ function getNumberOfParameters(spec: Spec): number {
   return numberOfParameters;
 }
 
+export type AdditionalSpecDataProps = {
+  securitySchemes: SecuritySchemes;
+  categories: string[];
+};
+
 export type SdkPagePropsWithPropertiesOmitted = Omit<
   SdkPageProps,
   | "previewLinkImage" // DONE IN SEPARATE SCRIPT
@@ -318,7 +323,8 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
   | "clientName" // DO MANUALLY
   | "clientNameCamelCase" // DO MANUALLY
   | "company" // DO MANUALLY
-> & { securitySchemes: SecuritySchemes; categories: string[] };
+> &
+  AdditionalSpecDataProps;
 
 export type Db = {
   specifications: Record<string, SdkPagePropsWithPropertiesOmitted>;
