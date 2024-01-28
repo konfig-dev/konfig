@@ -171,6 +171,11 @@ function getVersion(spec: Spec): string {
   return info.version;
 }
 
+function getCategories(spec: Spec): string[] {
+  const info = spec.spec.info as any;
+  return info["x-apisguru-categories"];
+}
+
 function getInfoContactUrl(spec: Spec): string | undefined {
   const info = spec.spec.info;
   return info.contact?.url;
@@ -313,7 +318,7 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
   | "clientName" // DO MANUALLY
   | "clientNameCamelCase" // DO MANUALLY
   | "company" // DO MANUALLY
-> & { securitySchemes: SecuritySchemes };
+> & { securitySchemes: SecuritySchemes; categories: string[] };
 
 export type Db = {
   specifications: Record<string, SdkPagePropsWithPropertiesOmitted>;
@@ -459,6 +464,7 @@ async function processFiltered(): Promise<Db> {
       providerName: getProviderName(spec),
       openApiRaw: getOpenApiRaw(spec),
       securitySchemes: getSecuritySchemes(spec),
+      categories: getCategories(spec),
       homepage: getProviderName(spec),
       serviceName: getServiceName(spec),
       apiVersion: getVersion(spec),
