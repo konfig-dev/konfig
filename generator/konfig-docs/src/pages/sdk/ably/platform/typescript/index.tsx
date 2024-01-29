@@ -16,10 +16,10 @@ export default function AblyPlatformTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/logo.png"
       clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-01-26T22:43:07.113Z")}
+      lastUpdated={new Date("2024-01-28T00:04:56.300Z")}
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
-      previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/imagePreview.png"
+      previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/imagePreview.jpeg"
       GettingStarted={GettingStarted}
       Description={Description}
       methods={[
@@ -831,7 +831,7 @@ export default function AblyPlatformTypeScriptSdk() {
   }
 ]
     }
-      language="typescript"
+      language="TypeScript"
       apiTitle="Platform API"
       apiBaseUrl="https://rest.ably.io"
       apiVersion="1.1.0"
@@ -840,7 +840,7 @@ export default function AblyPlatformTypeScriptSdk() {
       schemas={14}
       parameters={76}
       difficulty="Easy"
-      openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/api.yaml"
+      openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/openapi.yaml"
     />
   );
 }

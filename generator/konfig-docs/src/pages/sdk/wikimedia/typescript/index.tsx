@@ -16,7 +16,7 @@ export default function WikimediaTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/logo.png"
       clientNameCamelCase="wikimedia"
       homepage="wikimedia.org"
-      lastUpdated={new Date("2024-01-26T22:43:07.113Z")}
+      lastUpdated={new Date("2024-01-28T00:04:56.300Z")}
       contactUrl="http://mediawiki.org/wiki/REST_API"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/imagePreview.png"
@@ -1649,7 +1649,7 @@ export default function WikimediaTypeScriptSdk() {
   }
 ]
     }
-      language="typescript"
+      language="TypeScript"
       apiTitle="Wikimedia"
       apiBaseUrl="https://wikimedia.org/api/rest_v1"
       apiVersion="1.0.0"
@@ -1658,7 +1658,7 @@ export default function WikimediaTypeScriptSdk() {
       schemas={36}
       parameters={155}
       difficulty="Medium"
-      openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/api.yaml"
+      openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/openapi.yaml"
     />
   );
 }

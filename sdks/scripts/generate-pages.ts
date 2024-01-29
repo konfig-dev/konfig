@@ -22,9 +22,13 @@ function main() {
 
   const sdkDir = path.join(docsDir, "src", "pages", "sdk");
 
-  // delete everything under sdkDir and remake the directory
-  fs.rmSync(sdkDir, { recursive: true });
-  fs.mkdirSync(sdkDir, { recursive: true });
+  // delete everything under sdkDir except for "index.tsx" and "sdk-links.json"
+  const sdkFiles = fs.readdirSync(sdkDir);
+  for (const file of sdkFiles) {
+    if (file !== "index.tsx" && file !== "sdk-links.json") {
+      fs.rmSync(path.join(sdkDir, file), { recursive: true });
+    }
+  }
 
   const redirectsJson: Record<string, string> = {};
 
@@ -198,7 +202,7 @@ export default function ${camelcase(company, { pascalCase: true })}${
           "HttpMethodsEnum.$1"
         )}
     }
-      language="typescript"
+      language="TypeScript"
       apiTitle="${apiTitle}"
       apiBaseUrl="${apiBaseUrl}"
       apiVersion="${apiVersion}"
