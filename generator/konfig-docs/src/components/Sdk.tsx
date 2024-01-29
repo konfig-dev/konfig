@@ -24,6 +24,7 @@ import type {
   HttpMethods,
 } from "./SdkComponentProps";
 import { TsIcon } from "./TsIcon";
+import { useSdkSignup } from "../util/use-sdk-signup";
 
 type ReactProps = {
   GettingStarted: React.ComponentType;
@@ -434,47 +435,11 @@ function SignupForm({
   company: string;
   serviceName?: string;
 }) {
-  const [email, setEmail] = useState("");
-  const [signedUp, setSignedUp] = useState(false);
-  const [signedUpEmail, setSignedUpEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit: FormEventHandler = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-
-    const url =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:8911/sdkSignupForm"
-        : "https://api.konfigthis.com/sdkSignupForm";
-
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          company,
-          service: serviceName,
-          language: "TypeScript",
-        }),
-      });
-
-      setLoading(false);
-
-      if (!response.ok) {
-        // handle error
-      }
-
-      setSignedUp(true);
-      setSignedUpEmail(email);
-    } catch (e) {
-      // if error when calling fetch, set loading to false
-      setLoading(false);
-    }
-  };
+  const { setEmail, signedUp, signedUpEmail, loading, handleSubmit, email } =
+    useSdkSignup({
+      company,
+      serviceName,
+    });
 
   return (
     <form
