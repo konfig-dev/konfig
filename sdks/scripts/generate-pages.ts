@@ -210,7 +210,11 @@ export default function ${camelcase(company, { pascalCase: true })}${
       sdkName="${sdkName.replace("{language}", "typescript")}"
       metaDescription="${metaDescription}"
       company="${company}"
-      serviceName="${serviceName}"
+      ${
+        serviceName !== undefined
+          ? `serviceName="${serviceName}"`
+          : "// Missing serviceName"
+      }
       logo="${logo}"
       clientNameCamelCase="${clientNameCamelCase}"
       homepage="${homepage}"

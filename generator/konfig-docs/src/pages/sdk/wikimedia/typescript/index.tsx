@@ -12,7 +12,7 @@ export default function WikimediaTypeScriptSdk() {
       sdkName="wikimedia-typescript-sdk"
       metaDescription="Wikimedia is a global movement whose mission is to bring free educational content to the world."
       company="Wikimedia"
-      serviceName="undefined"
+      // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/logo.png"
       clientNameCamelCase="wikimedia"
       homepage="wikimedia.org"

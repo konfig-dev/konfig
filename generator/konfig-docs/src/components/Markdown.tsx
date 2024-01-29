@@ -7,5 +7,10 @@ export const Markdown = ({ markdownText }) => {
     return { __html: rawMarkup };
   };
 
-  return <div dangerouslySetInnerHTML={getMarkdownText()} />;
+  return (
+    <div
+      className="[&_p]:mb-4 [&_*:last-child]:mb-0"
+      dangerouslySetInnerHTML={getMarkdownText()}
+    />
+  );
 };

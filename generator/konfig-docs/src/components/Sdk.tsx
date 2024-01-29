@@ -147,7 +147,9 @@ export function Sdk({
                     <div>About {company}'s API</div>
                   </div>
                 </AboutTitle>
-                <Description />
+                <div className="[&_p]:mb-6">
+                  <Description />
+                </div>
               </AboutSection>
               <div className="text-slate-500 mb-1 text-sm font-bold">
                 Integrating {company}'s {language} SDK
@@ -256,7 +258,7 @@ function SdkMethod({
       )}
     >
       <button
-        className="w-full"
+        className="w-full text-left"
         onClick={() => {
           setExpanded(!expanded);
         }}
@@ -547,10 +549,12 @@ function Sidebar({
         <div className="text-slate-500 text-sm font-bold">More Info</div>
       </div>
       <div className="bg-white ring-1 ring-slate-200 shadow-md p-8 lg:py-4 lg:px-6 rounded-md">
-        <SidebarSection>
-          <SidebarSectionTitle>Service Name</SidebarSectionTitle>
-          <SidebarSectionContent>{serviceName}</SidebarSectionContent>
-        </SidebarSection>
+        {serviceName !== undefined ? (
+          <SidebarSection>
+            <SidebarSectionTitle>Service Name</SidebarSectionTitle>
+            <SidebarSectionContent>{serviceName}</SidebarSectionContent>
+          </SidebarSection>
+        ) : null}
         <SidebarSection>
           <SidebarSectionTitle>API Title</SidebarSectionTitle>
           <SidebarSectionContent>{apiTitle}</SidebarSectionContent>
