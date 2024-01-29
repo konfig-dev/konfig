@@ -3,7 +3,7 @@ import React from "react";
 import { useSdkSignup } from "../util/use-sdk-signup";
 import clsx from "clsx";
 import { LoadingIcon } from "../components/LoadingIcon";
-import { IconPencil } from "@tabler/icons-react";
+import { IconMailFilled } from "@tabler/icons-react";
 
 export default function SdkSignUp() {
   // get query parameters
@@ -11,70 +11,83 @@ export default function SdkSignUp() {
   const company = urlParams.get("company");
   const serviceName = urlParams.get("serviceName");
   const language = urlParams.get("language");
-  const { handleSubmit, signedUp, signedUpEmail, email, setEmail, loading } =
-    useSdkSignup({ company, serviceName, language });
+  const { handleSubmit, signedUp, email, setEmail, loading } = useSdkSignup({
+    company,
+    serviceName,
+    language,
+  });
 
   return (
     <Layout
       title={`${company} ${serviceName} API ${language} SDK`}
       description={`SDK Signup Form for ${company} ${serviceName} API ${language} SDK`}
     >
-      <form
-        onSubmit={handleSubmit}
-        id="signup"
-        className="p-8 rounded-md bg-emerald-50 ring-1 ring-emerald-300 transition-all hover:scale-[1.01] hover:shadow-lg shadow-md mb-8"
-      >
-        <div className="flex flex-col">
-          <h2
-            className={clsx("text-lg lg:text-xl text-emerald-900 font-bold", {
-              "mb-3": !signedUp,
-            })}
+      <div className="bg-gradient-to-bl py-56 from-blue-950 to-blue-700">
+        <div className="text-blue-300 text-center mx-auto max-w-3xl px-2">
+          <h1
+            className={clsx(
+              "mx-auto text-4xl mb-4 font-bold max-w-sm sm:max-w-3xl text-blue-50"
+            )}
           >
-            {signedUp
-              ? `Thanks for signing up for access to ${company}'s ${language} SDK 🎉!`
-              : `Need a ${language} SDK for ${company}'s API?`}
-          </h2>
-          {signedUp ? (
-            <>
-              <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you as soon as it is available.`}</p>
-              <p className="mb-0">
-                For inquiries or support, please contact us at{" "}
-                <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>
-              </p>
-            </>
-          ) : null}
-          {signedUp ? null : (
-            <input
-              type="email"
-              name="email"
-              className="border rounded-md px-2 py-1 w-full mb-2"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          )}
-          {signedUp ? null : (
-            <button
-              type="submit"
-              className="font-medium group flex gap-3 hover:gap-2 items-center transition-all bg-gradient-to-br text-white w-fit text-center px-3 py-2 from-emerald-600 to-emerald-800 rounded-md text-sm"
-            >
-              {loading ? (
-                <LoadingIcon />
+            Sign up to install {company}'s {language} SDK
+          </h1>
+          <p className="text-lg max-w-sm sm:max-w-xl mx-auto sm:text-xl">
+            Easily Integrate {company}'s {serviceName} API using Konfig's{" "}
+            {language} SDK
+          </p>
+          <form
+            onSubmit={handleSubmit}
+            id="signup"
+            className="mx-auto max-w-sm md:max-w-lg"
+          >
+            <div className="flex items-center mb-3">
+              {signedUp ? (
+                <div className="text-white">
+                  Thanks for signing up for {company}'s {language} SDK. You have
+                  been added to the waitlist and will be notified as soon as the
+                  SDK is available 🎉.
+                </div>
               ) : (
-                <>
-                  <div>
-                    Sign up for access to {company}'s {language} SDK
+                <div className="mr-2 w-full relative">
+                  <div className="absolute bottom-0 top-0 left-0 pl-3 flex items-center">
+                    <IconMailFilled className="w-5 h-5 text-slate-300" />
                   </div>
-                  <IconPencil
-                    size="1rem"
-                    className="transition-all group-hover:text-emerald-50 text-emerald-300"
+                  <input
+                    type="email"
+                    name="email"
+                    className="w-full text-black text-sm p-3 pl-10 rounded-md"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                </>
+                </div>
               )}
-            </button>
-          )}
+              <div className="shrink-0">
+                {signedUp ? null : (
+                  <button
+                    type="submit"
+                    className="font-medium bg-gradient-to-br text-white text-center px-5 py-3 from-blue-600 to-blue-800 rounded-md text-sm"
+                  >
+                    {loading ? <LoadingIcon /> : <div>Sign up</div>}
+                  </button>
+                )}
+              </div>
+            </div>
+            {signedUp ? null : (
+              <div className="text-left text-blue-400 font-medium text-sm">
+                SDK Generated by{" "}
+                <a
+                  target="_blank"
+                  className="text-blue-50 hover:no-underline hover:text-blue-300"
+                  href="https://konfigthis.com"
+                >
+                  Konfig
+                </a>
+              </div>
+            )}
+          </form>
         </div>
-      </form>
+      </div>
     </Layout>
   );
 }
