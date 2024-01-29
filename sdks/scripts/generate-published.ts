@@ -116,13 +116,9 @@ function main() {
       );
     }
 
-    if (publishData.categories === undefined) {
-      throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
-    }
-
     const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
 
-    const nonEmptyCategories = publishData.categories ?? categories;
+    const nonEmptyCategories = publishData.categories ?? categories ?? [];
     if (nonEmptyCategories.length === undefined) {
       throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
     }
@@ -169,7 +165,7 @@ function generateTypescriptSdkUsageCode({
       newLines.push(
         `    ${securityScheme.name}: "${snakeCase(
           securityScheme.name
-        ).toUpperCase()}"}`
+        ).toUpperCase()}"`
       );
     } else if (securityScheme.type === "http") {
       if (securityScheme.scheme.toLocaleLowerCase() === "basic") {
