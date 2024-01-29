@@ -469,7 +469,7 @@ function SignupForm({
         </h2>
         {signedUp ? (
           <>
-            <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you as soon as it is available.`}</p>
+            <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you by email soon.`}</p>
             <p className="mb-0">
               For inquiries or support, please contact us at{" "}
               <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>
