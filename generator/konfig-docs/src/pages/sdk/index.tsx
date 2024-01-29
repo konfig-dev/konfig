@@ -25,11 +25,10 @@ export default function Sdks() {
   return (
     <Layout
       title={`SDKs`}
-      description={`An up-to-date and relevant index of SDKs for up-to-date and relevant APIs.`}
+      description={`Explore SDKs for up-to-date and relevant APIs.`}
     >
       <Head>
-        {/* <meta property="og:image" content={previewLinkImage} />
-        <meta property="og:description" content={metaDescription} /> */}
+        <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
         <style>
           {`
           .navbar__search {
