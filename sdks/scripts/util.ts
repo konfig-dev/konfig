@@ -5,10 +5,21 @@ import { AdditionalSpecDataProps } from "./collect";
 export const dbFolder = path.join(path.dirname(__dirname), "db");
 export const specFolder = path.join(dbFolder, "spec-data");
 
+/**
+ * Sometimes the published properties should be always defined so this type is
+ * used to overwrite the properties from SdkPageProps so downstream code can
+ * assume that the properties are always defined
+ */
+type ExtraOrOverwriteProperties = {
+  categories: string[];
+  faviconUrl: string;
+};
+
 export type Published = SdkPageProps & {
   typescriptSdkUsageCode: string;
   originalSpecUrl: string;
-} & AdditionalSpecDataProps & { categories: string[] };
+} & AdditionalSpecDataProps &
+  ExtraOrOverwriteProperties;
 
 export type HtmlData = {
   description?: string;

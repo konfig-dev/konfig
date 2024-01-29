@@ -6,6 +6,14 @@ import camelcase from "konfig-lib/dist/util/camelcase";
 
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
 
+type SdkLinks = {
+  index: string;
+  link: string;
+  homepage: string;
+  categories: string[];
+  favicon: string;
+}[];
+
 /**
  * For every JSON under "published/", generate a folder under konfig-docs
  */
@@ -31,6 +39,7 @@ function main() {
   }
 
   const redirectsJson: Record<string, string> = {};
+  const sdkLinks: SdkLinks = [];
 
   for (const file of files) {
     const filePath = path.join(publishedDirPath, file);
@@ -49,6 +58,14 @@ function main() {
     );
 
     addToRedirectsJson({ redirectsJson, company, service });
+    addToSdkLinks({
+      sdkLinks,
+      company,
+      service,
+      homepage: json.homepage,
+      categories: json.categories,
+      favicon: json.faviconUrl,
+    });
 
     fs.mkdirSync(dirPath, { recursive: true });
 
@@ -72,6 +89,38 @@ function main() {
     path.join(docsDir, "redirects.json"),
     JSON.stringify(redirectsJson, null, 2)
   );
+
+  // write sdk-links.json
+  fs.writeFileSync(
+    path.join(sdkDir, "sdk-links.json"),
+    JSON.stringify(sdkLinks, null, 2)
+  );
+}
+
+function addToSdkLinks({
+  sdkLinks,
+  company,
+  service,
+  homepage,
+  categories,
+  favicon,
+}: {
+  company: string;
+  service?: string;
+  categories: string[];
+  homepage: string;
+  favicon: string;
+  sdkLinks: SdkLinks;
+}) {
+  const link = `/sdk/${company}/${service ? `${service}/` : ""}typescript`;
+  const index = `${company}/${service ? `${service}/` : ""}typescript`;
+  sdkLinks.push({
+    index,
+    link,
+    homepage,
+    categories,
+    favicon,
+  });
 }
 
 function addToRedirectsJson({

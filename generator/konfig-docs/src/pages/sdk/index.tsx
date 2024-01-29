@@ -87,7 +87,7 @@ export default function Sdks() {
                       <a
                         className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
                         target="_blank"
-                        href={homepage}
+                        href={`https://${homepage}`}
                       >
                         <div className="shrink-0 h-5 w-5 mr-1">
                           <img
@@ -95,11 +95,7 @@ export default function Sdks() {
                             src={favicon}
                           />
                         </div>
-                        <div>
-                          {homepage
-                            .replace("https://", "")
-                            .replace("http://", "")}
-                        </div>
+                        <div>{homepage}</div>
                         <IconExternalLink height="11.5" />
                       </a>
                     </div>
