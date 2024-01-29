@@ -1,14 +1,27 @@
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import { isMacOs, isMobile } from "react-device-detect";
 import sdkLinksJson from "./sdk-links.json";
 import clsx from "clsx";
-import { IconChevronDown, IconChevronRight } from "@tabler/icons-react";
+import {
+  IconCheck,
+  IconChevronDown,
+  IconChevronRight,
+} from "@tabler/icons-react";
 import { TsIcon } from "@site/src/components/TsIcon";
 import IconExternalLink from "@theme/Icon/ExternalLink";
 
 export default function Sdks() {
+  const [filteredCategories, setFilteredCategories] = useState<string[]>([]);
+  const [showAllCategories, setShowAllCategories] = useState(true);
+  const allCategories = sdkLinksJson.flatMap((link) => link.categories);
+  const sdkLinksJsonFiltered = sdkLinksJson.filter((link) => {
+    if (showAllCategories) return true;
+    return link.categories.some((category) =>
+      filteredCategories.includes(category)
+    );
+  });
   return (
     <Layout
       title={`SDKs`}
@@ -50,19 +63,39 @@ export default function Sdks() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col bg-gradient-to-b from-slate-50 to-white mx-auto w-fit relative px-5 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
+        <div className="sm:w-[480px] md:w-[600px] lg:w-[768px] flex flex-col bg-gradient-to-b from-slate-50 to-white mx-auto relative px-5 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
           <div className="absolute flex flex-col z-0 inset-0 m-auto w-fit text-blue-400 font-bold text-sm top-[-50px]">
             <div>Start scrolling to explore 👀</div>
             <IconChevronDown className="mx-auto" />
           </div>
-          {sdkLinksJson.map(
+          <div className="px-4 pb-3 flex flex-wrap gap-2">
+            <CategoryFilter
+              category="Show All Categories"
+              filteredCategories={filteredCategories}
+              showAllCategories={showAllCategories}
+              setShowAllCategories={setShowAllCategories}
+              setFilteredCategories={setFilteredCategories}
+            />
+            {allCategories.map((category) => {
+              return (
+                <CategoryFilter
+                  category={category}
+                  filteredCategories={filteredCategories}
+                  showAllCategories={showAllCategories}
+                  setShowAllCategories={setShowAllCategories}
+                  setFilteredCategories={setFilteredCategories}
+                />
+              );
+            })}
+          </div>
+          {sdkLinksJsonFiltered.map(
             ({ index, link, homepage, favicon, categories }, idx) => (
               <a className="hover:no-underline z-10" href={link}>
                 <div
                   className={clsx(
                     "group hover:bg-slate-200 px-4 py-6 flex items-center gap-6 justify-between",
                     {
-                      "border-b": idx !== sdkLinksJson.length - 1,
+                      "border-b": idx !== sdkLinksJsonFiltered.length - 1,
                     }
                   )}
                   key={index}
@@ -79,9 +112,13 @@ export default function Sdks() {
                     <div className="flex gap-2 items-center">
                       {categories.map((category) => {
                         return (
-                          <button className="bg-slate-100 border border-slate-300 font-medium rounded-md text-xs px-2 py-1 transition-all text-slate-800">
-                            {category}
-                          </button>
+                          <CategoryFilter
+                            category={category}
+                            filteredCategories={filteredCategories}
+                            showAllCategories={showAllCategories}
+                            setShowAllCategories={setShowAllCategories}
+                            setFilteredCategories={setFilteredCategories}
+                          />
                         );
                       })}
                       <a
@@ -108,6 +145,58 @@ export default function Sdks() {
         </div>
       </div>
     </Layout>
+  );
+}
+
+function CategoryFilter({
+  category,
+  filteredCategories,
+  showAllCategories,
+  setShowAllCategories,
+  setFilteredCategories,
+}: {
+  category: string;
+  filteredCategories: string[];
+  showAllCategories: boolean;
+  setShowAllCategories: (showAllCategories: boolean) => void;
+  setFilteredCategories: (filteredCategories: string[]) => void;
+}) {
+  const selected =
+    (!showAllCategories && filteredCategories.includes(category)) ||
+    (showAllCategories && category === "Show All Categories");
+  return (
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        if (category === "Show All Categories") {
+          setShowAllCategories(true);
+          setFilteredCategories([]);
+        } else {
+          setShowAllCategories(false);
+          if (filteredCategories.includes(category)) {
+            const newFilteredCategories = filteredCategories.filter(
+              (c) => c !== category
+            );
+            setFilteredCategories(newFilteredCategories);
+            if (newFilteredCategories.length === 0) setShowAllCategories(true);
+          } else {
+            setFilteredCategories([...filteredCategories, category]);
+          }
+        }
+      }}
+      className={clsx(
+        "z-10 flex items-center gap-1 border font-medium rounded-md text-xs px-2 py-1 transition-all",
+        {
+          "bg-blue-50 hover:bg-blue-100 border-blue-300 text-blue-600 hover:text-blue-800":
+            selected,
+          "bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-400 hover:text-slate-800":
+            !selected,
+        }
+      )}
+    >
+      {selected ? <IconCheck className="h-4 w-4" /> : null}
+      <span>{category}</span>
+    </button>
   );
 }
 
