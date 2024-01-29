@@ -25,7 +25,7 @@ export default function Sdks() {
   return (
     <Layout
       title={`SDKs`}
-      description={`Explore SDKs for up-to-date and relevant APIs.`}
+      description={`Explore SDKs for up-to-date and relevant public APIs.`}
     >
       <Head>
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
@@ -50,7 +50,7 @@ export default function Sdks() {
               SDKs for <br />
               <span className="">
                 <span className="italic">up-to-date</span> and{" "}
-                <span className="italic">relevant</span> APIs
+                <span className="italic">relevant</span> public APIs
               </span>
             </h1>
             <div className="text-blue-300">
@@ -91,7 +91,10 @@ export default function Sdks() {
             })}
           </div>
           {sdkLinksJsonFiltered.map(
-            ({ index, link, homepage, favicon, categories }, idx) => (
+            (
+              { index, link, homepage, favicon, categories, apiVersion },
+              idx
+            ) => (
               <a className="hover:no-underline z-10" href={link}>
                 <div
                   className={clsx(
@@ -137,6 +140,7 @@ export default function Sdks() {
                         <div>{homepage}</div>
                         <IconExternalLink height="11.5" />
                       </a>
+                      <div className="text-slate-400 text-xs">{apiVersion}</div>
                     </div>
                   </div>
                   <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
