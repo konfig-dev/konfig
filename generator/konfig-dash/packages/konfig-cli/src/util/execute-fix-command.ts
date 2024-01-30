@@ -24,6 +24,7 @@ interface FixOptions {
   skipListUsageSecurity?: boolean
   alwaysYes?: boolean
   ci?: boolean
+  useAIForOperationId?: boolean
 }
 
 export async function executeFixCommand(options: FixOptions): Promise<void> {
@@ -32,6 +33,13 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     auto: options.auto ?? true,
     alwaysYes: !!(options.alwaysYes == null || options.alwaysYes || options.ci), // ci mode should always confirm with yes
     ci: options.ci ?? false,
+    useAIForOperationId: options.useAIForOperationId ?? false,
+  }
+
+  if (flags.useAIForOperationId && process.env.OPENAI_API_KEY === undefined) {
+    throw Error(
+      `OPENAI_API_KEY environment variable must be set to use AI for operationId`
+    )
   }
 
   const { parsedKonfigYaml } = parseKonfigYaml({
@@ -122,6 +130,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     ci: flags.ci,
     skipMissingResponseDescription: flags.skipMissingResponseDescriptionFix,
     skipFixListUsageSecurity: flags.skipListUsageSecurity,
+    useAIForOperationId: flags.useAIForOperationId,
   })
 
   fs.writeFileSync(

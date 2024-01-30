@@ -59,7 +59,15 @@ export default class Fix extends Command {
     ci: Flags.boolean({
       name: 'ci',
       default: false,
-      description: 'Run in CI mode: answers default for all prompts if applicable',
+      description:
+        'Run in CI mode: answers default for all prompts if applicable',
+    }),
+    useAIForOperationId: Flags.boolean({
+      name: 'useAIForOperationId',
+      char: 'A',
+      default: false,
+      description:
+        'Use openAI API to generate operationIds based on rules defined here: https://konfigthis.com/docs/tutorials/naming-operation-ids. Requires OPENAI_API_KEY to be set in environment.',
     }),
   }
 

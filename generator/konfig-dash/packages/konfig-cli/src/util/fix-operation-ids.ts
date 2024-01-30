@@ -6,6 +6,7 @@ import { operationIdSchema } from 'konfig-lib'
 import { inquirerConfirm } from './inquirer-confirm'
 import { logOperationDetails } from './log-operation-details'
 import camelcase from 'camelcase'
+import OpenAI from 'openai'
 
 function updateOperationId({
   operation,
@@ -68,16 +69,19 @@ export async function fixOperationIds({
   spec,
   progress,
   alwaysYes,
+  useAIForOperationId,
 }: {
   spec: Spec['spec']
   progress: Progress
   alwaysYes: boolean
+  useAIForOperationId: boolean
 }): Promise<number> {
   let numberOfUpdatedOperationIds = 0
   if (spec.paths === undefined) return numberOfUpdatedOperationIds
   if (spec.tags === undefined || spec.tags.length === 0) {
     throw Error('TODO')
   }
+  const openai = new OpenAI({ apiKey: process.env['OPENAI_API_KEY'] })
   const operations = getOperations({ spec })
   for (const { operation, path, method } of operations) {
     if (operation.operationId !== undefined) {
@@ -100,7 +104,7 @@ export async function fixOperationIds({
       await updateOperationTag({ spec, operation, progress, path, method })
     }
     numberOfUpdatedOperationIds++
-    const { generateOperationId } = generatePrefix({ operation })
+    const { prefix, generateOperationId } = generatePrefix({ operation })
     const operationsWithId = operations
       .map((o) => o.operation)
       .filter((operation) => operation.operationId !== undefined)
@@ -173,30 +177,80 @@ export async function fixOperationIds({
       )
       return suffix
     }
-    const dflt = computeDefault()
 
-    const { suffix } = await inquirer.prompt<{ suffix: string }>([
-      {
-        type: 'input',
-        name: 'suffix',
-        message: `Enter operation ID:`,
-        default: dflt,
-        validate(suffix: string) {
-          if (suffix === '') return 'Please specify a non-empty string'
-          if (suffix.length < 3)
-            return 'Please enter a suffix longer than 2 characters'
-          const conflictingOperationId = operations
-            .map((o) => o.operation.operationId)
-            .find((operationId) => operationId === generateOperationId(suffix))
-          if (conflictingOperationId !== undefined)
-            return `Operation ID must be unique (conflicts with "${conflictingOperationId}")`
-          return true
+    async function generateSuffixWithAI(): Promise<string> {
+      const existingIds = operations
+        .map((o) => o.operation.operationId)
+        .join(', ')
+        .slice(0, -2)
+      const prompt = `Generate an operation ID for this operation in my OpenAPI specification:
+Path: ${path}
+Method: ${method}
+Summary: ${operation.summary}
+Description: ${operation.description}
+
+The operation ID must be prefixed with: ${prefix}, and MUST follow ALL of these rules:
+1. The suffix must be at least 3 characters long.
+2. The suffix must not redundantly re-use words from the prefix.
+(For example: Store_get is preferred over Store_getStore.)
+3. If the suffix contains both a verb and a noun, the noun should generally follow the verb. (For example, Store_placeOrder is preferred over Store_orderPlace).
+4. The suffix must be in camelCase and CANNOT include any underscores.
+
+Existing operation ids for this OpenAPI specification are as follows: ${existingIds}.
+
+Based on these existing ids, the operation id must also follow these rules:
+5. The operation ID must be unique.
+6. If applicable, the same types of actions across different operations should be structured similarly. (For example, Cat_get, Dog_get, and Fish_get are preferred over Cat_get, Dog_retrieve, and Fish_fetch.)
+
+ONLY RESPOND WITH JUST THE OPERATION ID ITSELF. Do not include any other text in your response.`
+
+      const response = (
+        await openai.chat.completions.create({
+          messages: [{ role: 'user', content: prompt }],
+          model: 'gpt-3.5-turbo',
+        })
+      ).choices[0].message.content
+
+      if (response === undefined || response === null || response === '')
+        throw Error('OpenAI returned an empty response')
+
+      if (!response.startsWith(prefix))
+        throw Error(
+          `OpenAI returned an invalid response: "${response}; it should start with prefix "${prefix}"`
+        )
+      console.log(`AI-generated operation id: ${response}`)
+      return response.slice(prefix.length)
+    }
+
+    async function promptForSuffix(): Promise<{ suffix: string }> {
+      return await inquirer.prompt<{ suffix: string }>([
+        {
+          type: 'input',
+          name: 'suffix',
+          message: `Enter operation ID:`,
+          default: computeDefault(),
+          validate(suffix: string) {
+            if (suffix === '') return 'Please specify a non-empty string'
+            if (suffix.length < 3)
+              return 'Please enter a suffix longer than 2 characters'
+            const conflictingOperationId = operations
+              .map((o) => o.operation.operationId)
+              .find((opId) => opId === generateOperationId(suffix))
+            if (conflictingOperationId !== undefined)
+              return `Operation ID must be unique (conflicts with "${conflictingOperationId}")`
+            return true
+          },
+          transformer(suffix: string) {
+            return generateOperationId(suffix)
+          },
         },
-        transformer(suffix: string) {
-          return generateOperationId(suffix)
-        },
-      },
-    ])
+      ])
+    }
+
+    const suffix = useAIForOperationId
+      ? await generateSuffixWithAI()
+      : (await promptForSuffix()).suffix
+
     updateOperationId({
       operation,
       operationId: generateOperationId(suffix),

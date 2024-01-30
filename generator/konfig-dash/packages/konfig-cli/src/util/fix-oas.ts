@@ -43,6 +43,7 @@ export async function fixOas({
   konfigYaml,
   skipMissingResponseDescription,
   skipFixListUsageSecurity,
+  useAIForOperationId,
 }: {
   spec: Spec
   konfigYaml?: KonfigYamlType
@@ -52,6 +53,7 @@ export async function fixOas({
   ci: boolean
   skipMissingResponseDescription?: boolean
   skipFixListUsageSecurity?: boolean
+  useAIForOperationId: boolean
 }) {
   /**
    * ---Start fixing OAS---
@@ -106,6 +108,7 @@ export async function fixOas({
     spec: spec.spec,
     progress,
     alwaysYes,
+    useAIForOperationId,
   })
 
   // Examples
