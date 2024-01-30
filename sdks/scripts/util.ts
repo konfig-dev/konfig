@@ -4,6 +4,7 @@ import { AdditionalSpecDataProps } from "./collect";
 
 export const dbFolder = path.join(path.dirname(__dirname), "db");
 export const specFolder = path.join(dbFolder, "spec-data");
+export const postRequestSpecsDir = path.join(dbFolder, "post-request-specs");
 
 /**
  * Sometimes the published properties should be always defined so this type is
@@ -17,7 +18,7 @@ type ExtraOrOverwriteProperties = {
 
 export type Published = SdkPageProps & {
   typescriptSdkUsageCode: string;
-  originalSpecUrl: string;
+  originalSpecUrl?: string;
 } & AdditionalSpecDataProps &
   ExtraOrOverwriteProperties;
 

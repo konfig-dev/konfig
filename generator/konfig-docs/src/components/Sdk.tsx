@@ -540,7 +540,7 @@ function Sidebar({
   difficulty: string;
   contactUrl: string;
   contactEmail: string;
-  openApiRaw: string;
+  openApiRaw?: string;
 }) {
   return (
     <div className="top-20 sticky w-full lg:w-fit">
@@ -643,24 +643,26 @@ function Sidebar({
             </SidebarSectionContent>
           </SidebarSection>
         )}
-        <SidebarSection>
-          <SidebarSectionTitle>OpenAPI Specification</SidebarSectionTitle>
-          <SidebarSectionContent>
-            <a
-              href={openApiRaw}
-              className="pr-4 mr-4 border-r-2"
-              target="_blank"
-            >
-              Raw
-            </a>
-            <a
-              href={`https://elements-demo.stoplight.io/?spec=${openApiRaw}`}
-              target="_blank"
-            >
-              UI
-            </a>
-          </SidebarSectionContent>
-        </SidebarSection>
+        {openApiRaw === undefined ? null : (
+          <SidebarSection>
+            <SidebarSectionTitle>OpenAPI Specification</SidebarSectionTitle>
+            <SidebarSectionContent>
+              <a
+                href={openApiRaw}
+                className="pr-4 mr-4 border-r-2"
+                target="_blank"
+              >
+                Raw
+              </a>
+              <a
+                href={`https://elements-demo.stoplight.io/?spec=${openApiRaw}`}
+                target="_blank"
+              >
+                UI
+              </a>
+            </SidebarSectionContent>
+          </SidebarSection>
+        )}
       </div>
     </div>
   );

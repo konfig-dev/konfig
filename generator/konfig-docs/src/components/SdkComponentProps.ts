@@ -43,7 +43,7 @@ export type SdkPageProps = {
   difficulty?: string;
   contactUrl?: string;
   contactEmail?: string;
-  openApiRaw: string;
+  openApiRaw?: string;
   providerName: string;
   previewLinkImage: string;
   sdkName: string;

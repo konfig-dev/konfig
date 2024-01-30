@@ -10,7 +10,7 @@ import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
 import type { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
-import { specFolder } from "./util";
+import { postRequestSpecsDir, specFolder } from "./util";
 
 type Paths = { oasPath: string }[];
 
@@ -139,9 +139,10 @@ function getSecuritySchemes(spec: Spec): SecuritySchemes {
   return securitySchemes;
 }
 
-function getOpenApiRaw(spec: Spec): string {
+function getOpenApiRaw(spec: Spec): string | undefined {
   const info = spec.spec.info as any;
   const origin = info["x-origin"];
+  if (origin === undefined) return;
   const url = origin[0].url;
 
   // remove duplicate h at beginning of https if detected
@@ -186,10 +187,20 @@ function getNumberOfParameters(spec: Spec): number {
   return numberOfParameters;
 }
 
+/**
+ * Extra or overwrite properties for SdkPageProps
+ */
 export type AdditionalSpecDataProps = {
   securitySchemes: SecuritySchemes;
   categories?: string[];
-  openapiDirectoryPath: string;
+  // null means it was not originally from openapi-directory repo
+  openapiDirectoryPath: string | null;
+  postRequestSpecFilename?: string;
+  originalSpecPostRequest?: {
+    url: string;
+    body: string;
+  };
+  originalSpecUrl?: string;
 };
 
 export type SdkPagePropsWithPropertiesOmitted = Omit<
@@ -281,6 +292,10 @@ async function collectFilterAndSave(): Promise<void> {
       }`
     );
     const openApiRaw = getOpenApiRaw(spec);
+    if (openApiRaw === undefined) {
+      console.log(`❌ Skipping ${cleanPath} due to missing openApiRaw.`);
+      continue;
+    }
 
     // check if origin url is working
     try {
@@ -393,13 +408,101 @@ async function addDifficulty(db: Db): Promise<Db> {
   return db;
 }
 
+const postRequests: Record<
+  string,
+  AdditionalSpecDataProps["originalSpecPostRequest"]
+> = {
+  /**
+   * Got this from inspecting network tab when going to API Reference page at:
+   * https://developer.walmart.com/api/us/cp/feeds
+   */
+  "walmart.com_price": {
+    url: "https://developer.walmart.com/api/detail",
+    body: `{"params":{"country":"us","category":"cp","apiName":"feeds"}}`,
+  },
+};
+
+async function collectFromPostRequests(): Promise<Db> {
+  const db: Db = { specifications: {} };
+
+  for (const key in postRequests) {
+    const postRequest = postRequests[key];
+    if (postRequest === undefined)
+      throw Error("Expect postRequest to be defined");
+    const { url, body } = postRequest;
+    console.log(`Processing post request for ${key}`);
+
+    const rawSpecString = await fetch(url, {
+      method: "POST",
+      body,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.text());
+
+    const spec = await parseSpec(rawSpecString);
+    const numberOfEndpoints = getNumberOfEndpoints(spec);
+    const numberOfOperations = getNumberOfOperations(spec);
+    const numberOfSchemas = getNumberOfSchemas(spec);
+    const numberOfParameters = getNumberOfParameters(spec);
+    let apiBaseUrl = spec.spec.servers?.[0]?.url;
+    if (apiBaseUrl === undefined) {
+      if (key === "walmart.com_price") {
+        apiBaseUrl = "https://marketplace.walmartapis.com/v3/feeds";
+      } else {
+        console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
+        continue;
+      }
+    }
+    const specFilename = `${key}.yaml`;
+    db.specifications[`from-post-request_${key}`] = {
+      openapiDirectoryPath: key,
+      providerName: getProviderName(spec),
+      openApiRaw: getOpenApiRaw(spec),
+      securitySchemes: getSecuritySchemes(spec),
+      categories: getCategories(spec),
+      homepage: getProviderName(spec),
+      serviceName: getServiceName(spec),
+      apiVersion: getVersion(spec),
+      apiBaseUrl,
+      apiDescription: spec.spec.info.description,
+      apiTitle: spec.spec.info.title,
+      endpoints: numberOfEndpoints,
+      sdkMethods: numberOfOperations,
+      schemas: numberOfSchemas,
+      parameters: numberOfParameters,
+      contactUrl: getInfoContactUrl(spec),
+      contactEmail: getInfoContactEmail(spec),
+      postRequestSpecFilename: specFilename,
+      difficultyScore: computeDifficultyScore(
+        numberOfEndpoints,
+        numberOfOperations,
+        numberOfSchemas,
+        numberOfParameters
+      ),
+    };
+    console.log(`Writing post request spec to disk for ${key}`);
+    fs.writeFileSync(
+      path.join(postRequestSpecsDir, specFilename),
+      JSON.stringify(JSON.parse(rawSpecString), null, 2)
+    );
+  }
+
+  return db;
+}
+
 async function main() {
   if (process.env.FILTER !== undefined && process.env.FILTER !== "") {
     await collectFilterAndSave();
     return;
   }
+  let db = await collectFromPostRequests();
+  writeData(db);
+  if (process.env.POST_REQUESTS !== undefined) {
+    return;
+  }
   console.log("Processing filtered specs");
-  let db = await processFiltered();
+  db = await processFiltered();
   console.log("Adding difficulty scores");
   db = await addDifficulty(db);
   // delete specFolder if it exists
