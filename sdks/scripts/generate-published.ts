@@ -12,6 +12,11 @@ import { getMethodObjects } from "../src/get-method-objects";
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
+const postRequestSpecsDirPath = path.join(
+  path.dirname(__dirname),
+  "db",
+  "post-request-specs"
+);
 const apiDirPath = path.join(
   path.dirname(__dirname),
   "openapi-directory",
@@ -39,7 +44,8 @@ const publishJsonSchema = z.object({
         .string()
         // ensure it does not start with https:// or http://
         .refine(
-          (url) => !url.startsWith("https://") && !url.startsWith("http://")
+          (url) => !url.startsWith("https://") && !url.startsWith("http://"),
+          "URL cannot start with https:// or http://"
         )
         .optional(),
       categories: z.string().array().optional(),
@@ -135,10 +141,7 @@ async function main() {
       throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
     }
 
-    const rawSpecString = fs.readFileSync(
-      path.join(apiDirPath, specData.openapiDirectoryPath),
-      "utf-8"
-    );
+    let rawSpecString = getRawSpecString(specData);
     const oas = await parseSpec(rawSpecString);
 
     const merged: Published = {
@@ -157,9 +160,34 @@ async function main() {
       typescriptSdkUsageCode,
     };
 
+    if (
+      merged.originalSpecUrl === undefined &&
+      merged.originalSpecPostRequest === undefined
+    ) {
+      throw Error(
+        `❌ ERROR: No originalSpecUrl or originalSpecPostRequest for ${spec}`
+      );
+    }
+
     // write to "published/" directory
     const publishedPath = path.join(publishedDirPath, spec);
     fs.writeFileSync(`${publishedPath}.json`, JSON.stringify(merged, null, 2));
+  }
+}
+
+function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
+  if (specData.openapiDirectoryPath) {
+    return fs.readFileSync(
+      path.join(apiDirPath, specData.openapiDirectoryPath),
+      "utf-8"
+    );
+  } else if (specData.postRequestSpecFilename) {
+    return fs.readFileSync(
+      path.join(postRequestSpecsDirPath, specData.postRequestSpecFilename),
+      "utf-8"
+    );
+  } else {
+    throw Error(`❌ ERROR: No spec found for ${specData}`);
   }
 }
 

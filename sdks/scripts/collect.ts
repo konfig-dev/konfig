@@ -197,7 +197,7 @@ export type AdditionalSpecDataProps = {
   securitySchemes: SecuritySchemes;
   categories?: string[];
   // null means it was not originally from openapi-directory repo
-  openapiDirectoryPath: string | null;
+  openapiDirectoryPath?: string;
   postRequestSpecFilename?: string;
   originalSpecPostRequest?: {
     url: string;
@@ -484,7 +484,6 @@ async function collectFromPostRequests(): Promise<Db> {
     }
     const specFilename = `${key}.yaml`;
     db.specifications[`from-post-request_${key}`] = {
-      openapiDirectoryPath: key,
       providerName: getProviderName(spec),
       openApiRaw: getOpenApiRaw(spec),
       securitySchemes: getSecuritySchemes(spec, postRequest.securitySchemes),
@@ -502,6 +501,10 @@ async function collectFromPostRequests(): Promise<Db> {
       contactUrl: getInfoContactUrl(spec),
       contactEmail: getInfoContactEmail(spec),
       postRequestSpecFilename: specFilename,
+      originalSpecPostRequest: {
+        url,
+        body,
+      },
       difficultyScore: computeDifficultyScore(
         numberOfEndpoints,
         numberOfOperations,
