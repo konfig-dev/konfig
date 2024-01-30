@@ -67,7 +67,7 @@ export default function Sdks() {
             <div>Start scrolling to explore 👀</div>
             <IconChevronDown className="mx-auto" />
           </div>
-          <div className="pl-4 text-xs text-slate-400 mb-2">
+          <div className="pl-4 text-xs text-slate-500 font-semibold mb-2">
             Click a category to filter
           </div>
           <div className="px-4 pb-3 flex flex-wrap gap-2">
