@@ -122,9 +122,12 @@ function getNumberOfSchemas(spec: Spec): number {
   return numberOfSchemas;
 }
 
-function getSecuritySchemes(spec: Spec): SecuritySchemes {
+function getSecuritySchemes(
+  spec: Spec,
+  dflt?: SecuritySchemes
+): SecuritySchemes {
   const securitySchemeOrRefs = spec.spec.components?.securitySchemes;
-  if (securitySchemeOrRefs === undefined) return {};
+  if (securitySchemeOrRefs === undefined) return dflt ? dflt : {};
   const securitySchemesKeys = Object.keys(securitySchemeOrRefs);
   const securitySchemes: SecuritySchemes = {};
   for (const key of securitySchemesKeys) {
@@ -410,7 +413,9 @@ async function addDifficulty(db: Db): Promise<Db> {
 
 const postRequests: Record<
   string,
-  AdditionalSpecDataProps["originalSpecPostRequest"]
+  AdditionalSpecDataProps["originalSpecPostRequest"] & {
+    securitySchemes?: SecuritySchemes;
+  }
 > = {
   /**
    * Got this from inspecting network tab when going to API Reference page at:
@@ -419,6 +424,18 @@ const postRequests: Record<
   "walmart.com_price": {
     url: "https://developer.walmart.com/api/detail",
     body: `{"params":{"country":"us","category":"cp","apiName":"feeds"}}`,
+    securitySchemes: {
+      clientId: {
+        type: "apiKey",
+        in: "header",
+        name: "clientId",
+      },
+      privateKey: {
+        type: "apiKey",
+        in: "header",
+        name: "privateKey",
+      },
+    },
   },
 };
 
@@ -445,6 +462,17 @@ async function collectFromPostRequests(): Promise<Db> {
     const numberOfOperations = getNumberOfOperations(spec);
     const numberOfSchemas = getNumberOfSchemas(spec);
     const numberOfParameters = getNumberOfParameters(spec);
+    // if postRequest.securitySchemes then also apply to spec
+    if (postRequest.securitySchemes !== undefined) {
+      if (spec.spec.components === undefined) spec.spec.components = {};
+      spec.spec.components.securitySchemes = postRequest.securitySchemes as any;
+      spec.spec.security = [
+        Object.fromEntries(
+          Object.keys(postRequest.securitySchemes).map((key) => [key, []])
+        ),
+      ];
+    }
+
     let apiBaseUrl = spec.spec.servers?.[0]?.url;
     if (apiBaseUrl === undefined) {
       if (key === "walmart.com_price") {
@@ -459,7 +487,7 @@ async function collectFromPostRequests(): Promise<Db> {
       openapiDirectoryPath: key,
       providerName: getProviderName(spec),
       openApiRaw: getOpenApiRaw(spec),
-      securitySchemes: getSecuritySchemes(spec),
+      securitySchemes: getSecuritySchemes(spec, postRequest.securitySchemes),
       categories: getCategories(spec),
       homepage: getProviderName(spec),
       serviceName: getServiceName(spec),
@@ -484,7 +512,7 @@ async function collectFromPostRequests(): Promise<Db> {
     console.log(`Writing post request spec to disk for ${key}`);
     fs.writeFileSync(
       path.join(postRequestSpecsDir, specFilename),
-      JSON.stringify(JSON.parse(rawSpecString), null, 2)
+      JSON.stringify(spec.spec, null, 2)
     );
   }
 
