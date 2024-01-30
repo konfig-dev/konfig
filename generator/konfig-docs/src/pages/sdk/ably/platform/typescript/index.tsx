@@ -16,7 +16,7 @@ export default function AblyPlatformTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/logo.png"
       clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-01-29T23:27:20.789Z")}
+      lastUpdated={new Date("2024-01-30T00:11:27.494Z")}
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/imagePreview.jpeg"

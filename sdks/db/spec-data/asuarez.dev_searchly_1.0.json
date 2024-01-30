@@ -1,4 +1,5 @@
 {
+  "openapiDirectoryPath": "asuarez.dev/searchly/1.0/openapi.yaml",
   "providerName": "asuarez.dev",
   "openApiRaw": "https://raw.githubusercontent.com/AlbertSuarez/searchly/master/src/searchly/static/openapi/openapi_v1.yaml",
   "securitySchemes": {},
@@ -8,85 +9,6 @@
   "homepage": "asuarez.dev",
   "serviceName": "searchly",
   "apiVersion": "1.0",
-  "methods": [
-    {
-      "url": "/similarity/by_content",
-      "method": "srcSearchlyApiV1ControllersSimilarityByContent",
-      "httpMethod": "post",
-      "tag": "similarity",
-      "typeScriptTag": "similarity",
-      "description": "API endpoint to search similarity using content",
-      "parameters": [
-        {
-          "name": "content",
-          "schema": "string",
-          "description": ""
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": "Error description."
-        }
-      ]
-    },
-    {
-      "url": "/similarity/by_song",
-      "method": "srcSearchlyApiV1ControllersSimilarityBySong",
-      "httpMethod": "get",
-      "tag": "similarity",
-      "typeScriptTag": "similarity",
-      "description": "API endpoint to search similarity using a song identifier",
-      "parameters": [
-        {
-          "name": "songId",
-          "schema": "integer",
-          "required": true,
-          "description": "Song identifier."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": "Error description."
-        }
-      ]
-    },
-    {
-      "url": "/song/search",
-      "method": "srcSearchlyApiV1ControllersSongSearch",
-      "httpMethod": "get",
-      "tag": "song",
-      "typeScriptTag": "song",
-      "description": "API endpoint to search songs from the database given a query",
-      "parameters": [
-        {
-          "name": "query",
-          "schema": "string",
-          "required": true,
-          "description": "Query."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": "Error description."
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://searchly.asuarez.dev/api/v1",
   "apiDescription": "# Introduction\nThe SearchLy API provides similarity searching based on song lyrics.\n\n# Operations\nThe API allows for the `/similarity/by_song` operation, which allows clients to search the similarity for an existing song in the database. Also, the API has an additional `/similarity/by_content` endpoint which allows clients to search similarity given a free String input through a JSON request body. Additional `/song/search` operation is available for searching songs given a query String.\n\n# Endpoint\nThe API endpoint for the SearchLy API v1 is as follows:\n```\nhttps://searchly.asuarez.dev/api/v1\n```\n\n# Motivation\nThis project was built in order to create an API for searching similarities based on song lyrics. There are a lot of songs in the industry and most of them are talking about the same topic. What I wanted to prove with SearchLy was to estimate how similar are two songs between them based on the meaning of their lyrics.\n\nSearchLy is using a database of 100k songs from AZLyrics, using [this scraper](https://github.com/AlbertSuarez/azlyrics-scraper), which is being updated periodically. Then, using word2vec and NMSLIB, it was possible to create an index where you can search similarities using the k-nearest neighbors (KNN) algorithm.\n\n> **Note**: I am currently using a micro-instance from DigitalOcean where the API is deployed, so you should expect a bad performance. However, if this API becomes popular I will deploy it in a bigger instance.\n",
   "apiTitle": "SearchLy API v1",

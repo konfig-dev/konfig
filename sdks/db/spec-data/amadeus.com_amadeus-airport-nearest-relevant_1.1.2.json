@@ -1,72 +1,11 @@
 {
+  "openapiDirectoryPath": "amadeus.com/amadeus-airport-nearest-relevant/1.1.2/swagger.yaml",
   "providerName": "amadeus.com",
   "openApiRaw": "https://raw.githubusercontent.com/amadeus4dev/amadeus-open-api-specification/main/spec/json/AirportNearestRelevant_v1_swagger_specification.json",
   "securitySchemes": {},
   "homepage": "amadeus.com",
   "serviceName": "amadeus-airport-nearest-relevant",
   "apiVersion": "1.1.2",
-  "methods": [
-    {
-      "url": "/reference-data/locations/airports",
-      "method": "getNearestRelevantAirports",
-      "httpMethod": "get",
-      "tag": "location",
-      "typeScriptTag": "location",
-      "description": "Returns a list of relevant airports near to a given point.",
-      "parameters": [
-        {
-          "name": "latitude",
-          "schema": "number",
-          "required": true,
-          "description": "latitude location to be at the center of the search circle"
-        },
-        {
-          "name": "longitude",
-          "schema": "number",
-          "required": true,
-          "description": "longitude location to be at the center of the search circle"
-        },
-        {
-          "name": "radius",
-          "schema": "integer",
-          "required": false,
-          "description": "radius of the search in Kilometer. Can be from 0 to 500, default value is 500 Km."
-        },
-        {
-          "name": "page[limit]",
-          "schema": "integer",
-          "required": false,
-          "description": "maximum items in one page"
-        },
-        {
-          "name": "page[offset]",
-          "schema": "integer",
-          "required": false,
-          "description": "start index of the requested page"
-        },
-        {
-          "name": "sort",
-          "schema": "string",
-          "required": false,
-          "description": "defines on which attribute the sorting will be done from the best option to the worst one:\n* **relevance** - Score value calculated based on distance and traffic analytics\n* **distance** - Distance from the location to the geo-code given in API request parameters\n* **analytics.flights.score** - Approximate score for ranking purposes calculated based on estimated number of flights from/to airport in one reference year (last year)\n* **analytics.travelers.score** - Approximate score for ranking purposes calculated based on estimated number of travelers in the airport for one reference year (last year)\n"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": ""
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token.\n\nPlease also be aware that our test environment is based on a subset of the production, this API in test only returns a few selected cities. You can find the list in our **[data collection](https://github.com/amadeus4dev/data-collection)**.",
   "apiTitle": "Airport Nearest Relevant",

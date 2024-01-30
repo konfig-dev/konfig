@@ -1,4 +1,5 @@
 {
+  "openapiDirectoryPath": "npr.org/sponsorship/2/swagger.yaml",
   "providerName": "npr.org",
   "openApiRaw": "https://sponsorship.api.npr.org/v2/swagger.json",
   "securitySchemes": {
@@ -25,88 +26,6 @@
   "homepage": "npr.org",
   "serviceName": "sponsorship",
   "apiVersion": "2",
-  "methods": [
-    {
-      "url": "/v2/ads",
-      "method": "getAds",
-      "httpMethod": "get",
-      "tag": "sponsorship",
-      "typeScriptTag": "sponsorship",
-      "description": "Request VAST sponsorship units",
-      "parameters": [
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
-        },
-        {
-          "name": "xAdvertisingId",
-          "schema": "string",
-          "required": false,
-          "description": "A device-specific advertising identifier, if possible. Apple's IDFA is an example."
-        },
-        {
-          "name": "forceResult",
-          "schema": "boolean",
-          "required": false,
-          "description": "Whether to force a synchronous call to our external sponsorship provider; the default behavior is asynchronous."
-        },
-        {
-          "name": "adCount",
-          "schema": "integer",
-          "required": false,
-          "description": "How many sponsorship units to request in one call; if left unspecified, the default behavior is to return only 1."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "Please visit <a href='https://www.iab.com/guidelines/digital-video-ad-serving-template-vast/' target='_blank'>https://www.iab.com/guidelines/digital-video-ad-serving-template-vast/</a> for more information on the VAST XML specification."
-        },
-        {
-          "statusCode": "400",
-          "description": "One or more errors represented in a VAST XML document"
-        },
-        {
-          "statusCode": "500",
-          "description": "One or more errors represented in a VAST XML document"
-        }
-      ]
-    },
-    {
-      "url": "/v2/ads",
-      "method": "receiveAdTracking",
-      "httpMethod": "post",
-      "tag": "sponsorship",
-      "typeScriptTag": "sponsorship",
-      "description": "Record tracking data for VAST sponsorship units",
-      "parameters": [
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "Your access token from the Authorization Service. Should start with `Bearer`, followed by a space, followed by the token."
-        },
-        {
-          "name": "xAdvertisingId",
-          "schema": "string",
-          "required": false,
-          "description": "A device-specific advertising identifier, if possible. Apple's IDFA is an example."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "400",
-          "description": "A serialized version of any error encountered when processing this request"
-        },
-        {
-          "statusCode": "500",
-          "description": "A serialized version of any error encountered when processing this request"
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://sponsorship.api.npr.org",
   "apiDescription": "Sponsorship for non-NPR One client applications",
   "apiTitle": "NPR Sponsorship Service",

@@ -1,4 +1,5 @@
 {
+  "openapiDirectoryPath": "deutschebahn.com/fasta/2.1/swagger.yaml",
   "providerName": "deutschebahn.com",
   "openApiRaw": "https://developer.deutschebahn.com/store/api-docs/DBOpenData/FaSta-Station_Facilities_Status/v2",
   "securitySchemes": {
@@ -15,92 +16,6 @@
   "homepage": "deutschebahn.com",
   "serviceName": "fasta",
   "apiVersion": "2.1",
-  "methods": [
-    {
-      "url": "/facilities",
-      "method": "findFacilities",
-      "httpMethod": "get",
-      "description": "Access to public facilities (escalators and elevators) in railway stations",
-      "parameters": [
-        {
-          "name": "type",
-          "schema": "array",
-          "required": false,
-          "description": "Type of the facility."
-        },
-        {
-          "name": "state",
-          "schema": "array",
-          "required": false,
-          "description": "Operational state of the facility."
-        },
-        {
-          "name": "equipmentnumbers",
-          "schema": "array",
-          "required": false,
-          "description": "List of equipmentnumbers to select."
-        },
-        {
-          "name": "stationnumber",
-          "schema": "integer",
-          "required": false,
-          "description": "Number of the station the facilities belong to."
-        },
-        {
-          "name": "area",
-          "schema": "array",
-          "required": false,
-          "description": "Geo coordinate rectangle in WGS84-format to filter facilities by geographical position. Parameters must be 4 numbers exactly as follows: longitudeWest, latitudeSouth, longitudeEast, latitudeNorth."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/facilities/{equipmentnumber}",
-      "method": "getFacilityByEquipmentNumber",
-      "httpMethod": "get",
-      "description": "Returns the facility identified by its equipmentnumber.",
-      "parameters": [
-        {
-          "name": "equipmentnumber",
-          "schema": "integer",
-          "required": true,
-          "description": "Equipmentnumber of the facility to fetch."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": "A facility provided by this API is either a public elevator or escalator located at a German railway station."
-        }
-      ]
-    },
-    {
-      "url": "/stations/{stationnumber}",
-      "method": "findStationByStationNumber",
-      "httpMethod": "get",
-      "description": "Returns information about a station (and its corresponding facilities) identified by a stationnumber.",
-      "parameters": [
-        {
-          "name": "stationnumber",
-          "schema": "integer",
-          "required": true,
-          "description": "Number of the station to fetch."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://api.deutschebahn.com/fasta/v2",
   "apiDescription": "A RESTful webservice to retrieve data about the operational state of public elevators and escalators in german railway stations.",
   "apiTitle": "FaSta - Station Facilities Status",

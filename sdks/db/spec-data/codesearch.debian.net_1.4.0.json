@@ -1,4 +1,5 @@
 {
+  "openapiDirectoryPath": "codesearch.debian.net/1.4.0/openapi.yaml",
   "providerName": "codesearch.debian.net",
   "openApiRaw": "https://codesearch.debian.net/openapi.yaml",
   "securitySchemes": {
@@ -13,62 +14,6 @@
   ],
   "homepage": "codesearch.debian.net",
   "apiVersion": "1.4.0",
-  "methods": [
-    {
-      "url": "/search",
-      "method": "search",
-      "httpMethod": "get",
-      "tag": "search",
-      "typeScriptTag": "search",
-      "description": "Searches through source code",
-      "parameters": [
-        {
-          "name": "query",
-          "schema": "string",
-          "required": true,
-          "description": "The search query, for example `who knows...` (literal) or `who knows\\.\\.\\.` (regular expression). See https://codesearch.debian.net/faq for more details about which keywords are supported. The regular expression flavor is RE2, see https://github.com/google/re2/blob/master/doc/syntax.txt"
-        },
-        {
-          "name": "matchMode",
-          "schema": "string",
-          "description": "Whether the query is to be interpreted as a literal (`literal`) instead of as an RE2 regular expression (`regexp`). Literal searches are faster and do not require escaping special characters, regular expression searches are more powerful."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/searchperpackage",
-      "method": "searchperpackage",
-      "httpMethod": "get",
-      "tag": "search",
-      "typeScriptTag": "search",
-      "description": "Like /search, but aggregates per package",
-      "parameters": [
-        {
-          "name": "query",
-          "schema": "string",
-          "required": true,
-          "description": "The search query, for example `who knows...` (literal) or `who knows\\.\\.\\.` (regular expression). See https://codesearch.debian.net/faq for more details about which keywords are supported. The regular expression flavor is RE2, see https://github.com/google/re2/blob/master/doc/syntax.txt"
-        },
-        {
-          "name": "matchMode",
-          "schema": "string",
-          "description": "Whether the query is to be interpreted as a literal (`literal`) instead of as an RE2 regular expression (`regexp`). Literal searches are faster and do not require escaping special characters, regular expression searches are more powerful."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://codesearch.debian.net/api/v1",
   "apiDescription": "OpenAPI for https://codesearch.debian.net/",
   "apiTitle": "Debian Code Search",

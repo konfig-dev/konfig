@@ -1,96 +1,11 @@
 {
+  "openapiDirectoryPath": "amadeus.com/amadeus-flight-delay-prediction/1.0.6/swagger.yaml",
   "providerName": "amadeus.com",
   "openApiRaw": "https://raw.githubusercontent.com/amadeus4dev/amadeus-open-api-specification/main/spec/json/FlightDelayPrediction_v1_swagger_specification.json",
   "securitySchemes": {},
   "homepage": "amadeus.com",
   "serviceName": "amadeus-flight-delay-prediction",
   "apiVersion": "1.0.6",
-  "methods": [
-    {
-      "url": "/travel/predictions/flight-delay",
-      "method": "getFlightDelayPrediction",
-      "httpMethod": "get",
-      "tag": "flight-delay-prediction",
-      "typeScriptTag": "flightDelayPrediction",
-      "description": "Return the delay segment where the flight is likely to lay.",
-      "parameters": [
-        {
-          "name": "originLocationCode",
-          "schema": "string",
-          "required": true,
-          "description": "city/airport [IATA code](http://www.iata.org/publications/Pages/code-search.aspx) from which the traveler is departing, e.g. PAR for Paris"
-        },
-        {
-          "name": "destinationLocationCode",
-          "schema": "string",
-          "required": true,
-          "description": "city/airport [IATA code](http://www.iata.org/publications/Pages/code-search.aspx) to which the traveler is going, e.g. PAR for Paris"
-        },
-        {
-          "name": "departureDate",
-          "schema": "string",
-          "required": true,
-          "description": "the date on which the traveler will depart from the origin to go to the destination. Dates are specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DD format, e.g. 2019-12-25"
-        },
-        {
-          "name": "departureTime",
-          "schema": "string",
-          "required": true,
-          "description": "local time relative to originLocationCode on which the traveler will depart from the origin. Time respects ISO 8601 standard. e.g. 13:22:00"
-        },
-        {
-          "name": "arrivalDate",
-          "schema": "string",
-          "required": true,
-          "description": "the date on which the traveler will arrive to the destination from the origin. Dates are specified in the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) YYYY-MM-DD format, e.g. 2019-12-25"
-        },
-        {
-          "name": "arrivalTime",
-          "schema": "string",
-          "required": true,
-          "description": "local time relative to destinationLocationCode on which the traveler will arrive to destination. Time respects ISO 8601 standard. e.g. 13:22:00"
-        },
-        {
-          "name": "aircraftCode",
-          "schema": "string",
-          "required": true,
-          "description": "IATA aircraft code (http://www.flugzeuginfo.net/table_accodes_iata_en.php)"
-        },
-        {
-          "name": "carrierCode",
-          "schema": "string",
-          "required": true,
-          "description": "airline / carrier code"
-        },
-        {
-          "name": "flightNumber",
-          "schema": "string",
-          "required": true,
-          "description": "flight number as assigned by the carrier"
-        },
-        {
-          "name": "duration",
-          "schema": "string",
-          "required": true,
-          "description": "flight duration in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) PnYnMnDTnHnMnS format, e.g. PT2H10M"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": ""
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token.",
   "apiTitle": "Flight Delay Prediction",

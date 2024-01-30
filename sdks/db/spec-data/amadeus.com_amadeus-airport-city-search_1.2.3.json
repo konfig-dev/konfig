@@ -1,112 +1,11 @@
 {
+  "openapiDirectoryPath": "amadeus.com/amadeus-airport-&-city-search/1.2.3/swagger.yaml",
   "providerName": "amadeus.com",
   "openApiRaw": "https://raw.githubusercontent.com/amadeus4dev/amadeus-open-api-specification/main/spec/json/AirportCitySearch_v1_swagger_specification.json",
   "securitySchemes": {},
   "homepage": "amadeus.com",
   "serviceName": "amadeus-airport-&-city-search",
   "apiVersion": "1.2.3",
-  "methods": [
-    {
-      "url": "/reference-data/locations",
-      "method": "getAirportCitySearch",
-      "httpMethod": "get",
-      "tag": "location",
-      "typeScriptTag": "location",
-      "description": "Returns a list of airports and cities matching a given keyword.",
-      "parameters": [
-        {
-          "name": "subType",
-          "schema": "array",
-          "required": true,
-          "description": "sub type of the location (AIRPORT and/or CITY)"
-        },
-        {
-          "name": "keyword",
-          "schema": "string",
-          "required": true,
-          "description": "keyword that should represent the start of a word in a city or airport name or code. \n Supported charaters are: A-Za-z0-9./:-'()\""
-        },
-        {
-          "name": "countryCode",
-          "schema": "string",
-          "required": false,
-          "description": "Country code of the location using [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code format (e.g. US)."
-        },
-        {
-          "name": "page[limit]",
-          "schema": "integer",
-          "required": false,
-          "description": "maximum items in one page"
-        },
-        {
-          "name": "page[offset]",
-          "schema": "integer",
-          "required": false,
-          "description": "start index of the requested page"
-        },
-        {
-          "name": "sort",
-          "schema": "string",
-          "required": false,
-          "description": "defines on which attribute the sorting will be done:\n* analytics.travelers.score - sort by the number of travelers by airport or city, the airports and cities with the highest traffic are on top of the results\n"
-        },
-        {
-          "name": "view",
-          "schema": "string",
-          "required": false,
-          "description": "select the level of information of the reply:\n* LIGHT - Gives only the IATACode, name, detailedName, cityName and countryName\n* FULL - Adds on top of the LIGHT information the timeZoneOffset, geocode, detailed address and travelers.score\ndefault option is FULL\n"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/reference-data/locations/{locationId}",
-      "method": "getAirportCity",
-      "httpMethod": "get",
-      "tag": "location",
-      "typeScriptTag": "location",
-      "description": "Returns a specific airports or cities based on its id.",
-      "parameters": [
-        {
-          "name": "locationId",
-          "schema": "string",
-          "required": true,
-          "description": "identifier of the location"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "400",
-          "description": ""
-        },
-        {
-          "statusCode": "404",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": ""
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://test.api.amadeus.com/v1",
   "apiDescription": "\nBefore using this API, we recommend you read our **[Authorization Guide](https://developers.amadeus.com/self-service/apis-docs/guides/authorization-262)** for more information on how to generate an access token. \n\nPlease also be aware that our test environment is based on a subset of the production, in test this API only contains data from the United States, Spain, United Kingdom, Germany and India. ",
   "apiTitle": "Airport & City Search",

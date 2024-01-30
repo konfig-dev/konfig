@@ -16,7 +16,7 @@ export default function WikimediaTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/logo.png"
       clientNameCamelCase="wikimedia"
       homepage="wikimedia.org"
-      lastUpdated={new Date("2024-01-29T23:27:20.789Z")}
+      lastUpdated={new Date("2024-01-30T00:11:27.494Z")}
       contactUrl="http://mediawiki.org/wiki/REST_API"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/imagePreview.png"

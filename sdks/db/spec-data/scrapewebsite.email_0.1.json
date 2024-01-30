@@ -1,4 +1,5 @@
 {
+  "openapiDirectoryPath": "scrapewebsite.email/0.1/swagger.yaml",
   "providerName": "scrapewebsite.email",
   "openApiRaw": "http://scrapewebsite.email/v1/swagger_doc.json",
   "securitySchemes": {},
@@ -8,58 +9,6 @@
   ],
   "homepage": "scrapewebsite.email",
   "apiVersion": "0.1",
-  "methods": [
-    {
-      "url": "/v1/ping.json",
-      "method": "getV1PingFormat",
-      "httpMethod": "get",
-      "tag": "ping",
-      "typeScriptTag": "ping",
-      "description": "Returns whether the system is up.",
-      "parameters": [],
-      "responses": []
-    },
-    {
-      "url": "/v1/scrape_emails.json",
-      "method": "getV1ScrapeEmailsFormat",
-      "httpMethod": "get",
-      "tag": "scrape_emails",
-      "typeScriptTag": "scrapeEmails",
-      "description": "Returns a list of emails scraped by priority (ie. e-mails appear on top level pages are first). Please note that subsequent calls to the same url will be fetched from the <b>cache</b> (14 day flush). <br/><br/>Will also parse patterns such as hello[at]site.com, hello[at]site[dot]com, hello(at)site.com, hello(at)site(dot)com, hello @ site.com, hello @ site . com. <br/><br/>Please do note we cannot parse sites that require a login (for now), so for some Facebook pages it is not possible at the moment to fetch the e-mail.<br/><br/>Finally, please note that the api will fetch links for up to 2 minutes. After that time it will start analysing the pages which have been scraped. <b>Therefore</b> please ensure that your client has a timeout of at least <b>150 seconds</b> (2 mins to fetch and the rest to parse). <br/><br/><b>Please note</b> that due to the fact that the api goes out to fetch the pages, the server allows only 1 concurrent request/ip. Requests which are made while the 1 request is still processing will result in a 429 code.<br/><br/><b>Please note</b> that as of May 25, 2014, the main mechanism of tracking usage will be done via Mashape. You can get the free calls by signing up with the FREE plan.<br/><br/>Please visit <a href='https://www.mashape.com/tommytcchan/scrape-website-email'>https://www.mashape.com/tommytcchan/scrape-website-email</a>.<br/><br/><b>There is now a limit of 5 requests per day using this sample interface.</b><br/><br/>",
-      "parameters": [
-        {
-          "name": "website",
-          "schema": "string",
-          "required": true,
-          "description": "<p>The website (ie. www.soundflair.com)</p>\n"
-        },
-        {
-          "name": "mustInclude",
-          "schema": "string",
-          "required": false,
-          "description": "<table>\n  <tbody>\n    <tr>\n      <td>Optional. The word(s) that the webpage must include (otherwise it will skip scraping that page). Good if you want to scrape only contact pages. Takes regex (ie. about</td>\n      <td>contact).</td>\n    </tr>\n  </tbody>\n</table>\n"
-        }
-      ],
-      "responses": []
-    },
-    {
-      "url": "/v1/scrape_store_links.json",
-      "method": "getV1ScrapeStoreLinksFormat",
-      "httpMethod": "get",
-      "tag": "scrape_store_links",
-      "typeScriptTag": "scrapeStoreLinks",
-      "description": "Attempts to grab the google store url or the ios store url for a site, after searching through the site.",
-      "parameters": [
-        {
-          "name": "website",
-          "schema": "string",
-          "required": true,
-          "description": "<p>The website (ie. www.soundflair.com)</p>\n"
-        }
-      ],
-      "responses": []
-    }
-  ],
   "apiBaseUrl": "http://scrapewebsite.email",
   "apiDescription": "ScrapeWebsiteEmail is a service that exposes an api to fetch e-mails from a website.",
   "apiTitle": "Scrape Website Email API",

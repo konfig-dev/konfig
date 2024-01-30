@@ -1,4 +1,5 @@
 {
+  "openapiDirectoryPath": "fraudlabspro.com/sms-verification/1.0/openapi.yaml",
   "providerName": "fraudlabspro.com",
   "openApiRaw": "https://api.swaggerhub.com/apis/fraudlabs-pro/fraudlabspro-sms-verification/1.0",
   "securitySchemes": {},
@@ -9,86 +10,6 @@
   "homepage": "fraudlabspro.com",
   "serviceName": "sms-verification",
   "apiVersion": "1.0",
-  "methods": [
-    {
-      "url": "/v1/verification/result",
-      "method": "/v1/verification/resultGet",
-      "httpMethod": "get",
-      "description": "Verify that an OTP sent by the Send SMS Verification API is valid.",
-      "parameters": [
-        {
-          "name": "tranId",
-          "schema": "string",
-          "required": true,
-          "description": "The unique ID that was returned by the Send Verification SMS API that triggered the OTP sms."
-        },
-        {
-          "name": "key",
-          "schema": "string",
-          "required": true,
-          "description": "FraudLabs Pro API key."
-        },
-        {
-          "name": "format",
-          "schema": "string",
-          "description": "Returns the API response in json (default) or xml format."
-        },
-        {
-          "name": "otp",
-          "schema": "string",
-          "required": true,
-          "description": "The OTP that was sent to the recipient’s phone."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/v1/verification/send",
-      "method": "/v1/verification/sendPost",
-      "httpMethod": "post",
-      "description": "Send an SMS with verification code and a custom message for authentication purpose.",
-      "parameters": [
-        {
-          "name": "countryCode",
-          "schema": "string",
-          "description": "ISO 3166 country code for the recipient mobile phone number. If parameter is supplied, then some basic telephone number validation is done."
-        },
-        {
-          "name": "format",
-          "schema": "string",
-          "description": "Returns the API response in json (default) or xml format."
-        },
-        {
-          "name": "tel",
-          "schema": "string",
-          "required": true,
-          "description": "The recipient mobile phone number in E164 format which is a plus followed by just numbers with no spaces or parentheses."
-        },
-        {
-          "name": "key",
-          "schema": "string",
-          "required": true,
-          "description": "FraudLabs Pro API key."
-        },
-        {
-          "name": "mesg",
-          "schema": "string",
-          "description": "The message template for the SMS. Add <otp> as placeholder for the actual OTP to be generated. Max length is 140 characters."
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    }
-  ],
   "apiBaseUrl": "https://api.fraudlabspro.com",
   "apiDescription": "Send an SMS with verification code and a custom message for authentication purpose. It helps merchants to minimize chargebacks and fraud for various kinds of payment method, such as credit card, paypal, cod and so on. Please visit https://www.fraudlabspro.com to learn more.",
   "apiTitle": "FraudLabs Pro SMS Verification",
