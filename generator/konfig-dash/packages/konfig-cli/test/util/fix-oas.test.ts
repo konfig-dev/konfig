@@ -45,6 +45,7 @@ describe('fix-oas', () => {
         alwaysYes: true,
         auto: true,
         ci: false,
+        useAIForOperationId: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -95,7 +96,14 @@ describe('fix-oas', () => {
         },
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
 
@@ -138,7 +146,14 @@ describe('fix-oas', () => {
         },
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
   })
@@ -200,7 +215,14 @@ describe('fix-oas', () => {
         },
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
   })
@@ -244,7 +266,14 @@ describe('fix-oas', () => {
         progress: {},
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
   })
@@ -283,7 +312,14 @@ describe('fix-oas', () => {
         progress: { ignorePotentialIncorrectType: true },
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
   })
@@ -342,7 +378,14 @@ describe('fix-oas', () => {
         progress: {},
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
   })
@@ -399,7 +442,14 @@ describe('fix-oas', () => {
         progress: { ignoreObjectsWithNoProperties: false },
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
     it('generate schemas if ignored', async () => {
@@ -408,7 +458,14 @@ describe('fix-oas', () => {
         progress: { ignoreObjectsWithNoProperties: true },
         noSave: true,
       })
-      await fixOas({ spec, progress, alwaysYes: true, auto: true, ci: false })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+      })
       expect(spec.spec).toMatchSnapshot()
     })
   })
