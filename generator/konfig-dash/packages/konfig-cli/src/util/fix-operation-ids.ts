@@ -81,7 +81,10 @@ export async function fixOperationIds({
   if (spec.tags === undefined || spec.tags.length === 0) {
     throw Error('TODO')
   }
-  const openai = new OpenAI({ apiKey: process.env['OPENAI_API_KEY'] })
+  // Dummy key prevents error from being thrown
+  const openai = new OpenAI({
+    apiKey: process.env['OPENAI_API_KEY'] ?? 'dummy',
+  })
   const operations = getOperations({ spec })
   for (const { operation, path, method } of operations) {
     if (operation.operationId !== undefined) {
