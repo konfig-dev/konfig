@@ -35,7 +35,13 @@ const publishJsonSchema = z.object({
       sdkName: z.string(),
       clientName: z.string(),
       metaDescription: z.string().optional(),
-      homepage: z.string().optional(),
+      homepage: z
+        .string()
+        // ensure it does not start with https:// or http://
+        .refine(
+          (url) => !url.startsWith("https://") && !url.startsWith("http://")
+        )
+        .optional(),
       categories: z.string().array().optional(),
     })
   ),
