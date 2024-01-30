@@ -9,13 +9,7 @@ import {
 import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
-import type {
-  Method,
-  Parameter,
-  Response,
-  SdkPageProps,
-} from "../../generator/konfig-docs/src/components/SdkComponentProps";
-import camelcase from "konfig-lib/dist/util/camelcase";
+import type { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
 import { specFolder } from "./util";
 
 type Paths = { oasPath: string }[];
@@ -48,122 +42,6 @@ function getProviderName(spec: Spec): string {
 function getServiceName(spec: Spec): string {
   const info = spec.spec.info as any;
   return info["x-serviceName"];
-}
-
-// See generator/konfig-docs/src/components/Sdk.tsx#Method
-function getMethodObjects(spec: Spec): Method[] {
-  const operations = getOperations(spec);
-  const methods: Method[] = [];
-  for (const { operation, method: httpMethod, path } of operations) {
-    const parameters: Parameter[] = [];
-    if (operation.parameters !== undefined) {
-      for (const parameterOrRef of operation.parameters) {
-        const parameter = resolveRef({
-          refOrObject: parameterOrRef,
-          $ref: spec.$ref,
-        });
-        const schemaOrRef = parameter.schema;
-        const schema =
-          schemaOrRef !== undefined
-            ? resolveRef({ refOrObject: schemaOrRef, $ref: spec.$ref }).type ??
-              "undefined"
-            : "undefined";
-        parameters.push({
-          name: camelcase(parameter.name),
-          schema,
-          required: parameter.required,
-          description: parameter.description ?? "",
-        });
-      }
-    }
-    let requestBody = operation.requestBody;
-    if (requestBody !== undefined) {
-      if ("$ref" in requestBody) {
-        requestBody = resolveRef({ refOrObject: requestBody, $ref: spec.$ref });
-      }
-      if ("$ref" in requestBody) {
-        throw Error("Expect requestBody to be dereferenced");
-      }
-      const mediaTypes = Object.keys(requestBody.content);
-      const mediaType = mediaTypes[0];
-      if (mediaType !== undefined) {
-        let schema = requestBody.content[mediaType].schema;
-        if (schema !== undefined) {
-          if ("$ref" in schema) {
-            schema = resolveRef({ refOrObject: schema, $ref: spec.$ref });
-          }
-          if ("$ref" in schema) {
-            throw Error("Expect schema to be dereferenced");
-          }
-          if (schema.properties !== undefined) {
-            for (const property in schema.properties) {
-              const propertySchemaOrRef = schema.properties[property];
-              // avoid "TypeError: Cannot use 'in' operator to search for '$ref' in false"
-              if (typeof propertySchemaOrRef !== "object") continue;
-              let propertySchema =
-                propertySchemaOrRef !== undefined
-                  ? resolveRef({
-                      refOrObject: propertySchemaOrRef,
-                      $ref: spec.$ref,
-                    }).type ?? "undefined"
-                  : "undefined";
-              const firstSchema = Array.isArray(propertySchema)
-                ? propertySchema[0]
-                : propertySchema;
-              parameters.push({
-                name: property,
-                schema: firstSchema,
-                required: schema.required?.includes(property),
-                description: "",
-              });
-            }
-          }
-        }
-      }
-    }
-
-    const responses: Response[] = [];
-    for (const statusCode in operation.responses) {
-      const mediaObjectOrRef = operation.responses[statusCode];
-      const mediaObject = resolveRef({
-        refOrObject: mediaObjectOrRef,
-        $ref: spec.$ref,
-      }).content;
-      if (mediaObject === undefined) continue;
-      const mediaTypes = Object.keys(mediaObject);
-      const mediaType = mediaTypes[0];
-      const responseObjectOrRef = mediaObject[mediaType];
-      if (responseObjectOrRef === undefined) continue;
-      const responseObject = resolveRef({
-        refOrObject: responseObjectOrRef,
-        $ref: spec.$ref,
-      });
-      const schemaOrRef = responseObject.schema;
-      const schema =
-        schemaOrRef !== undefined
-          ? resolveRef({ refOrObject: schemaOrRef, $ref: spec.$ref })
-          : undefined;
-      const description = schema?.description ?? "";
-      responses.push({
-        statusCode,
-        description,
-      });
-    }
-
-    const method = camelcase(operation.operationId ?? `${path}-${httpMethod}`);
-
-    const tag = operation.tags?.[0];
-    methods.push({
-      url: path,
-      method,
-      httpMethod,
-      ...(tag ? { tag, typeScriptTag: camelcase(tag) } : {}),
-      description: operation.summary ?? operation.description ?? "",
-      parameters,
-      responses,
-    });
-  }
-  return methods;
 }
 
 function getVersion(spec: Spec): string {
@@ -311,6 +189,7 @@ function getNumberOfParameters(spec: Spec): number {
 export type AdditionalSpecDataProps = {
   securitySchemes: SecuritySchemes;
   categories?: string[];
+  openapiDirectoryPath: string;
 };
 
 export type SdkPagePropsWithPropertiesOmitted = Omit<
@@ -319,6 +198,7 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
   | "metaDescription" // DONE IN SEPARATE SCRIPT
   | "lastUpdated" // PICK UP FROM DIFFERENT FILE
   | "logo" // DONE IN SEPARATE SCRIPT
+  | "methods" // DONE IN generate-published.ts
   | "sdkName" // DO MANUALLY
   | "clientName" // DO MANUALLY
   | "clientNameCamelCase" // DO MANUALLY
@@ -467,6 +347,7 @@ async function processFiltered(): Promise<Db> {
       continue;
     }
     db.specifications[key] = {
+      openapiDirectoryPath: cleanPath,
       providerName: getProviderName(spec),
       openApiRaw: getOpenApiRaw(spec),
       securitySchemes: getSecuritySchemes(spec),
@@ -474,7 +355,6 @@ async function processFiltered(): Promise<Db> {
       homepage: getProviderName(spec),
       serviceName: getServiceName(spec),
       apiVersion: getVersion(spec),
-      methods: getMethodObjects(spec),
       apiBaseUrl: apiBaseUrl,
       apiDescription: spec.spec.info.description,
       apiTitle: spec.spec.info.title,

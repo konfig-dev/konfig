@@ -3,14 +3,20 @@ import * as fs from "fs";
 import snakeCase from "lodash.snakecase";
 import { z } from "zod";
 import { SdkPagePropsWithPropertiesOmitted } from "./collect";
-import { SecuritySchemes } from "konfig-lib";
+import { SecuritySchemes, parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
 import { Published } from "./util";
 import kebabcase from "lodash.kebabcase";
+import { getMethodObjects } from "../src/get-method-objects";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
+const apiDirPath = path.join(
+  path.dirname(__dirname),
+  "openapi-directory",
+  "APIs"
+);
 const dataFromHtmlPath = path.join(
   path.dirname(__dirname),
   "db",
@@ -35,7 +41,7 @@ const publishJsonSchema = z.object({
   ),
 });
 
-function main() {
+async function main() {
   const publishJson = publishJsonSchema.parse(
     JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
   );
@@ -123,10 +129,17 @@ function main() {
       throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
     }
 
+    const rawSpecString = fs.readFileSync(
+      path.join(apiDirPath, specData.openapiDirectoryPath),
+      "utf-8"
+    );
+    const oas = await parseSpec(rawSpecString);
+
     const merged: Published = {
       ...specData,
       ...publishData,
       categories: nonEmptyCategories,
+      methods: getMethodObjects(oas),
       metaDescription: publishData.metaDescription,
       originalSpecUrl: specData.openApiRaw,
       logo: `${githubUrlPrefix}${logoPath}`,
@@ -223,4 +236,4 @@ function generateTypescriptSdkUsageCode({
   return lines.join("\n");
 }
 
-main();
+main().then(() => console.log("Done"));
