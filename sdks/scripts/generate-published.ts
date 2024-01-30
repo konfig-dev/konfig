@@ -137,7 +137,7 @@ async function main() {
     const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
 
     const nonEmptyCategories = publishData.categories ?? categories ?? [];
-    if (nonEmptyCategories.length === undefined) {
+    if (nonEmptyCategories.length === 0) {
       throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
     }
 

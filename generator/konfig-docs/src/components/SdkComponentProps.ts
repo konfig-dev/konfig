@@ -33,14 +33,14 @@ export type SdkPageProps = {
   difficultyScore: number;
   apiBaseUrl: string;
   faviconUrl?: string;
-  apiVersion: string;
+  apiVersion?: string;
   endpoints: number;
   apiDescription?: string;
   sdkMethods: number;
   schemas: number;
   parameters: number;
   clientNameCamelCase: string;
-  difficulty?: string;
+  difficulty: string;
   contactUrl?: string;
   contactEmail?: string;
   openApiRaw?: string;

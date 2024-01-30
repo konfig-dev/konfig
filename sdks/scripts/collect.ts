@@ -220,11 +220,23 @@ export type SdkPagePropsWithPropertiesOmitted = Omit<
 > &
   AdditionalSpecDataProps;
 
+export type SdkPagePropsWithPropertiesOmittedWithoutDifficulty = Omit<
+  SdkPagePropsWithPropertiesOmitted,
+  "difficulty"
+>;
+
 export type Db = {
+  specifications: Record<
+    string,
+    SdkPagePropsWithPropertiesOmittedWithoutDifficulty
+  >;
+};
+
+export type DbWithDifficulty = {
   specifications: Record<string, SdkPagePropsWithPropertiesOmitted>;
 };
 
-function writeData(db: Db) {
+function writeData(db: DbWithDifficulty) {
   let i = 0;
   for (const key in db.specifications) {
     console.log(
@@ -393,35 +405,46 @@ async function processFiltered(): Promise<Db> {
   return db;
 }
 
-async function addDifficulty(db: Db): Promise<Db> {
+async function addDifficulty(db: Db): Promise<DbWithDifficulty> {
   const difficultyScores = Object.values(db.specifications).map(
     (specification) => specification.difficultyScore
   );
   const zScores = calculateZScores(difficultyScores);
   let i = 0;
-  for (const spec of Object.values(db.specifications)) {
+  const dbWithDifficulty: DbWithDifficulty = { specifications: {} };
+  for (const key in db.specifications) {
+    const spec = db.specifications[key];
     const z = zScores[i];
-    if (z > 1) spec.difficulty = "Very Hard";
-    else if (z > 0.1) spec.difficulty = "Hard";
-    else if (z > -0.1) spec.difficulty = "Medium";
-    else if (z > -0.3) spec.difficulty = "Easy";
-    else spec.difficulty = "Very Easy";
+    const difficulty = getDifficulty(z);
+    dbWithDifficulty.specifications[key] = {
+      ...spec,
+      difficulty,
+    };
     i++;
   }
-  return db;
+  return dbWithDifficulty;
+}
+
+function getDifficulty(difficultyScore: number): string {
+  if (difficultyScore > 1) return "Very Hard";
+  else if (difficultyScore > 0.1) return "Hard";
+  else if (difficultyScore > -0.1) return "Medium";
+  else if (difficultyScore > -0.3) return "Easy";
+  else return "Very Easy";
 }
 
 const postRequests: Record<
   string,
   AdditionalSpecDataProps["originalSpecPostRequest"] & {
     securitySchemes?: SecuritySchemes;
+    apiBaseUrl?: string;
   }
 > = {
   /**
    * Got this from inspecting network tab when going to API Reference page at:
    * https://developer.walmart.com/api/us/cp/feeds
    */
-  "walmart.com_price": {
+  "walmart.com_content": {
     url: "https://developer.walmart.com/api/detail",
     body: `{"params":{"country":"us","category":"cp","apiName":"feeds"}}`,
     securitySchemes: {
@@ -436,6 +459,7 @@ const postRequests: Record<
         name: "privateKey",
       },
     },
+    apiBaseUrl: "https://marketplace.walmartapis.com/v3/feeds",
   },
 };
 
@@ -475,8 +499,8 @@ async function collectFromPostRequests(): Promise<Db> {
 
     let apiBaseUrl = spec.spec.servers?.[0]?.url;
     if (apiBaseUrl === undefined) {
-      if (key === "walmart.com_price") {
-        apiBaseUrl = "https://marketplace.walmartapis.com/v3/feeds";
+      if (postRequest.apiBaseUrl !== undefined) {
+        apiBaseUrl = postRequest.apiBaseUrl;
       } else {
         console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
         continue;
@@ -527,15 +551,18 @@ async function main() {
     await collectFilterAndSave();
     return;
   }
-  let db = await collectFromPostRequests();
-  writeData(db);
-  if (process.env.POST_REQUESTS !== undefined) {
-    return;
-  }
+  console.log("Processing post requests");
+  let postRequestDb = await collectFromPostRequests();
   console.log("Processing filtered specs");
-  db = await processFiltered();
+  const openapiDirectoryDb = await processFiltered();
+  const mergedDb = {
+    specifications: {
+      ...openapiDirectoryDb.specifications,
+      ...postRequestDb.specifications,
+    },
+  };
   console.log("Adding difficulty scores");
-  db = await addDifficulty(db);
+  const db = await addDifficulty(mergedDb);
   // delete specFolder if it exists
   fs.rmSync(specFolder, { recursive: true });
   // ensure specFolder exists

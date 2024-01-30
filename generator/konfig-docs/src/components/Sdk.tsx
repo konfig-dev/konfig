@@ -567,10 +567,12 @@ function Sidebar({
             </a>
           </SidebarSectionContent>
         </SidebarSection>
-        <SidebarSection>
-          <SidebarSectionTitle>API Version</SidebarSectionTitle>
-          <SidebarSectionContent>{apiVersion}</SidebarSectionContent>
-        </SidebarSection>
+        {apiVersion && (
+          <SidebarSection>
+            <SidebarSectionTitle>API Version</SidebarSectionTitle>
+            <SidebarSectionContent>{apiVersion}</SidebarSectionContent>
+          </SidebarSection>
+        )}
         <SidebarSection>
           <div className="flex justify-between">
             <div className="w-1/2">

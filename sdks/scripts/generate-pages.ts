@@ -114,7 +114,7 @@ function addToSdkLinks({
   homepage: string;
   favicon: string;
   sdkLinks: SdkLinks;
-  apiVersion: string;
+  apiVersion?: string;
 }) {
   const link = `/sdk/${company}/${service ? `${service}/` : ""}typescript`;
   const index = `${company}/${service ? `${service}/` : ""}typescript`;
@@ -124,7 +124,7 @@ function addToSdkLinks({
     homepage,
     categories,
     favicon,
-    apiVersion,
+    apiVersion: apiVersion ?? "",
   });
 }
 
@@ -263,7 +263,7 @@ export default function ${camelcase(company, { pascalCase: true })}${
       language="TypeScript"
       apiTitle="${apiTitle}"
       apiBaseUrl="${apiBaseUrl}"
-      apiVersion="${apiVersion}"
+      ${apiVersion !== undefined ? `apiVersion="${apiVersion}"` : ""}
       endpoints={${endpoints}}
       sdkMethods={${sdkMethods}}
       schemas={${schemas}}
