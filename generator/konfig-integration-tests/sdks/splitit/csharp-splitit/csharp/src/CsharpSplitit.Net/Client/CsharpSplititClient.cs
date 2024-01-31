@@ -20,7 +20,7 @@ namespace CsharpSplitit.Net.Client
         /// <summary>
         /// API instance
         /// </summary>
-        public InstallmentPlanApi InstallmentPlan { get; private set; }
+        public virtual IInstallmentPlanApi InstallmentPlan { get; set; }
 
         /// <summary>
         /// Configuration instance
