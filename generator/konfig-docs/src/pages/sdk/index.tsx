@@ -114,7 +114,7 @@ export default function Sdks() {
                         {index}
                       </div>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 items-center flex-wrap">
                       {categories.map((category) => {
                         return (
                           <CategoryFilter
@@ -195,7 +195,7 @@ function CategoryFilter({
         {
           "bg-blue-50 hover:bg-blue-100 border-blue-300 text-blue-600 hover:text-blue-800":
             selected,
-          "bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-400 hover:text-slate-800":
+          "bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800":
             !selected,
         }
       )}
