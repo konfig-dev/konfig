@@ -204,6 +204,7 @@ export type AdditionalSpecDataProps = {
     body: string;
   };
   originalSpecUrl?: string;
+  fixedSpecFileName?: string;
 };
 
 export type SdkPagePropsWithPropertiesOmitted = Omit<

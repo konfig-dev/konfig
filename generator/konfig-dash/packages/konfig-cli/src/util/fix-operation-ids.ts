@@ -182,47 +182,48 @@ export async function fixOperationIds({
     }
 
     async function generateSuffixWithAI(): Promise<string> {
-      const existingIds = operations
-        .map((o) => o.operation.operationId)
-        .join(', ')
-        .slice(0, -2)
-      const prompt = `Generate an operation ID for this operation in my OpenAPI specification:
-Path: ${path}
-Method: ${method}
-Summary: ${operation.summary}
-Description: ${operation.description}
+      //       const existingIds = operations
+      //         .map((o) => o.operation.operationId)
+      //         .join(', ')
+      //         .slice(0, -2)
+      //       const prompt = `Generate an operation ID for this operation in my OpenAPI specification:
+      // Path: ${path}
+      // Method: ${method}
+      // Summary: ${operation.summary}
+      // Description: ${operation.description}
 
-The operation ID must be prefixed with: ${prefix}, and MUST follow ALL of these rules:
-1. The suffix must be at least 3 characters long.
-2. The suffix must not redundantly re-use words from the prefix.
-(For example: Store_get is preferred over Store_getStore.)
-3. If the suffix contains both a verb and a noun, the noun should generally follow the verb. (For example, Store_placeOrder is preferred over Store_orderPlace).
-4. The suffix must be in camelCase and CANNOT include any underscores.
+      // The operation ID must be prefixed with: ${prefix}, and MUST follow ALL of these rules:
+      // 1. The suffix must be at least 3 characters long.
+      // 2. The suffix must not redundantly re-use words from the prefix.
+      // (For example: Store_get is preferred over Store_getStore.)
+      // 3. If the suffix contains both a verb and a noun, the noun should generally follow the verb. (For example, Store_placeOrder is preferred over Store_orderPlace).
+      // 4. The suffix must be in camelCase and CANNOT include any underscores.
 
-Existing operation ids for this OpenAPI specification are as follows: ${existingIds}.
+      // Existing operation ids for this OpenAPI specification are as follows: ${existingIds}.
 
-Based on these existing ids, the operation id must also follow these rules:
-5. The operation ID must be unique.
-6. If applicable, the same types of actions across different operations should be structured similarly. (For example, Cat_get, Dog_get, and Fish_get are preferred over Cat_get, Dog_retrieve, and Fish_fetch.)
+      // Based on these existing ids, the operation id must also follow these rules:
+      // 5. The operation ID must be unique.
+      // 6. If applicable, the same types of actions across different operations should be structured similarly. (For example, Cat_get, Dog_get, and Fish_get are preferred over Cat_get, Dog_retrieve, and Fish_fetch.)
 
-ONLY RESPOND WITH JUST THE OPERATION ID ITSELF. Do not include any other text in your response.`
+      // ONLY RESPOND WITH JUST THE OPERATION ID ITSELF. Do not include any other text in your response.`
 
-      const response = (
-        await openai.chat.completions.create({
-          messages: [{ role: 'user', content: prompt }],
-          model: 'gpt-3.5-turbo',
-        })
-      ).choices[0].message.content
+      //       const response = (
+      //         await openai.chat.completions.create({
+      //           messages: [{ role: 'user', content: prompt }],
+      //           model: 'gpt-3.5-turbo',
+      //         })
+      //       ).choices[0].message.content
 
-      if (response === undefined || response === null || response === '')
-        throw Error('OpenAI returned an empty response')
+      //       if (response === undefined || response === null || response === '')
+      //         throw Error('OpenAI returned an empty response')
 
-      if (!response.startsWith(prefix))
-        throw Error(
-          `OpenAI returned an invalid response: "${response}; it should start with prefix "${prefix}"`
-        )
-      console.log(`AI-generated operation id: ${response}`)
-      return response.slice(prefix.length)
+      //       if (!response.startsWith(prefix))
+      //         throw Error(
+      //           `OpenAI returned an invalid response: "${response}; it should start with prefix "${prefix}"`
+      //         )
+      //       console.log(`AI-generated operation id: ${response}`)
+      //       return response.slice(prefix.length)
+      return 'suffix'
     }
 
     async function promptForSuffix(): Promise<{ suffix: string }> {

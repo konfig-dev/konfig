@@ -8,6 +8,7 @@ import camelcase from "konfig-lib/dist/util/camelcase";
 import { Published } from "./util";
 import kebabcase from "lodash.kebabcase";
 import { getMethodObjects } from "../src/get-method-objects";
+import execa from "execa";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
@@ -30,6 +31,11 @@ const dataFromHtmlPath = path.join(
 const openapiExamplesPath = path.join(
   path.dirname(__dirname),
   "openapi-examples"
+);
+const fixedSpecsOutputPath = path.join(
+  path.dirname(__dirname),
+  "db",
+  "fixed-specs"
 );
 
 const publishJsonSchema = z.object({
@@ -61,6 +67,8 @@ async function main() {
   // delete and recreate "published/" directory
   fs.rmSync(publishedDirPath, { recursive: true, force: true });
   fs.mkdirSync(publishedDirPath, { recursive: true });
+  if (!fs.existsSync(fixedSpecsOutputPath))
+    fs.mkdirSync(fixedSpecsOutputPath), { recursive: true };
   const now = new Date();
   for (const spec in publishJson.publish) {
     console.log("Generating published data for", spec);
@@ -144,6 +152,12 @@ async function main() {
     let rawSpecString = getRawSpecString(specData);
     const oas = await parseSpec(rawSpecString);
 
+    const fixedSpecFileName = getFixedSpecFileName(
+      specData,
+      publishData.sdkName
+    );
+    fixSpec(specData, fixedSpecFileName);
+
     const merged: Published = {
       ...specData,
       ...publishData,
@@ -158,6 +172,7 @@ async function main() {
       clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       typescriptSdkUsageCode,
+      fixedSpecFileName: fixedSpecFileName,
     };
 
     if (
@@ -175,20 +190,47 @@ async function main() {
   }
 }
 
+function getFixedSpecFileName(
+  specData: SdkPagePropsWithPropertiesOmitted,
+  sdkName: string
+) {
+  const specFileExt = path.extname(getSpecPath(specData));
+  const companyAndPlatform = sdkName.replace("-{language}-sdk", "");
+  return `${companyAndPlatform}-fixed-spec${specFileExt}`;
+}
+
+function fixSpec(
+  specData: SdkPagePropsWithPropertiesOmitted,
+  fixedSpecFileName: string
+) {
+  const fixedSpecFilePath = path.join(fixedSpecsOutputPath, fixedSpecFileName);
+  if (!fs.existsSync(fixedSpecFilePath))
+    fs.writeFileSync(fixedSpecFilePath, "");
+
+  const specPath = getSpecPath(specData);
+  // TODO: switch to use npm konfig-cli
+  execa.sync("../generator/konfig-dash/packages/konfig-cli/bin/dev", [
+    "fix",
+    "--ci",
+    "-A",
+    "-s",
+    fixedSpecFilePath,
+    "-i",
+    specPath,
+  ]);
+}
+
+function getSpecPath(specData: SdkPagePropsWithPropertiesOmitted) {
+  if (specData.openapiDirectoryPath)
+    return path.join(apiDirPath, specData.openapiDirectoryPath);
+  else if (specData.postRequestSpecFilename)
+    return path.join(postRequestSpecsDirPath, specData.postRequestSpecFilename);
+  else throw Error(`❌ ERROR: No spec found for ${specData}`);
+}
+
 function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
-  if (specData.openapiDirectoryPath) {
-    return fs.readFileSync(
-      path.join(apiDirPath, specData.openapiDirectoryPath),
-      "utf-8"
-    );
-  } else if (specData.postRequestSpecFilename) {
-    return fs.readFileSync(
-      path.join(postRequestSpecsDirPath, specData.postRequestSpecFilename),
-      "utf-8"
-    );
-  } else {
-    throw Error(`❌ ERROR: No spec found for ${specData}`);
-  }
+  const specPath = getSpecPath(specData);
+  return fs.readFileSync(specPath, "utf-8");
 }
 
 function generateTypescriptSdkUsageCode({
