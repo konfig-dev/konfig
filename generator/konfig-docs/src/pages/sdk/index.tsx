@@ -106,12 +106,18 @@ export default function Sdks() {
                   key={index}
                 >
                   <div className="flex flex-col gap-2">
-                    <div className="flex gap-2">
-                      <div className="shrink-0 h-5 w-5">
-                        <TsIcon />
+                    <div className="flex gap-2 items-center">
+                      <div className="shrink-0 h-4 w-4">
+                        <img
+                          className="w-full h-full object-cover"
+                          src={favicon}
+                        />
                       </div>
                       <div className="font-mono font-semibold text-sm sm:text-base">
                         {index}
+                      </div>
+                      <div className="shrink-0 h-5 w-5">
+                        <TsIcon />
                       </div>
                     </div>
                     <div className="flex gap-2 items-center flex-wrap">
@@ -131,12 +137,6 @@ export default function Sdks() {
                         target="_blank"
                         href={`https://${homepage}`}
                       >
-                        <div className="shrink-0 h-5 w-5 mr-1">
-                          <img
-                            className="w-full transition-all group-hover/link:opacity-100 h-full object-cover opacity-30"
-                            src={favicon}
-                          />
-                        </div>
                         <div>{homepage}</div>
                         <IconExternalLink height="11.5" />
                       </a>
