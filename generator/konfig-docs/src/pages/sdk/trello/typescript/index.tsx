@@ -16,7 +16,7 @@ export default function TrelloTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/trello/logo.png"
       clientNameCamelCase="trello"
       homepage="developer.atlassian.com/cloud/trello"
-      lastUpdated={new Date("2024-01-31T00:37:43.049Z")}
+      lastUpdated={new Date("2024-01-31T18:07:50.697Z")}
       contactUrl="https://trello.com/home"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/trello/imagePreview.png"
