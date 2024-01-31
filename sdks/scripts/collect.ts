@@ -6,11 +6,12 @@ import {
   parseSpec,
   resolveRef,
 } from "konfig-lib";
+import yaml from "js-yaml";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
 import type { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
-import { postRequestSpecsDir, specFolder } from "./util";
+import { getRequestSpecsDir, postRequestSpecsDir, specFolder } from "./util";
 
 type Paths = { oasPath: string }[];
 
@@ -202,6 +203,11 @@ export type AdditionalSpecDataProps = {
   originalSpecPostRequest?: {
     url: string;
     body: string;
+  };
+  getRequestSpecFilename?: string;
+  originalSpecGetRequest?: {
+    url: string;
+    regex: string;
   };
   originalSpecUrl?: string;
 };
@@ -539,11 +545,143 @@ async function collectFromPostRequests(): Promise<Db> {
     console.log(`Writing post request spec to disk for ${key}`);
     fs.writeFileSync(
       path.join(postRequestSpecsDir, specFilename),
-      JSON.stringify(spec.spec, null, 2)
+      yaml.dump(spec.spec)
     );
   }
 
   return db;
+}
+
+const getRequests: Record<
+  string,
+  AdditionalSpecDataProps["originalSpecGetRequest"] & {
+    securitySchemes?: SecuritySchemes;
+    apiBaseUrl?: string;
+
+    // for overriding "openapi" property
+    // NOTE:
+    // was useful because soundcloud API for some reason has 3.0.4 and we ensure "openapi" is either:
+    // 3.0.0, 3.0.1, 3.0.2, 3.0.3, or 3.1.0
+    // 3.0.4 doesn't even exist so what the heck...
+    openapi?: string;
+  }
+> = {
+  "soundcloud.com": {
+    url: "https://developers.soundcloud.com/docs/api/explorer/swagger-ui-init.js",
+    regex: `"swaggerDoc": (.*),\n.*"customOptions"`,
+    openapi: "3.0.3",
+  },
+};
+
+async function collectFromGetRequests(): Promise<Db> {
+  const db: Db = { specifications: {} };
+
+  for (const key in getRequests) {
+    const getRequest = getRequests[key];
+    if (getRequest === undefined)
+      throw Error("Expect getRequest to be defined");
+    const { url, regex } = getRequest;
+    console.log(`Processing get request for ${key}`);
+
+    const rawString = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.text());
+
+    const rawSpec = extractJsonFromString(rawString, regex);
+
+    if (getRequest.openapi !== undefined) {
+      rawSpec.openapi = getRequest.openapi;
+    }
+
+    const rawSpecString = JSON.stringify(rawSpec);
+
+    if (rawSpecString === undefined) {
+      throw Error("Expect rawSpecString to be defined");
+    }
+
+    const spec = await parseSpec(rawSpecString);
+    const numberOfEndpoints = getNumberOfEndpoints(spec);
+    const numberOfOperations = getNumberOfOperations(spec);
+    const numberOfSchemas = getNumberOfSchemas(spec);
+    const numberOfParameters = getNumberOfParameters(spec);
+
+    // if getRequest.securitySchemes then also apply to spec
+    if (getRequest.securitySchemes !== undefined) {
+      if (spec.spec.components === undefined) spec.spec.components = {};
+      spec.spec.components.securitySchemes = getRequest.securitySchemes as any;
+      spec.spec.security = [
+        Object.fromEntries(
+          Object.keys(getRequest.securitySchemes).map((key) => [key, []])
+        ),
+      ];
+    }
+
+    let apiBaseUrl = spec.spec.servers?.[0]?.url;
+    if (apiBaseUrl === undefined) {
+      if (getRequest.apiBaseUrl !== undefined) {
+        apiBaseUrl = getRequest.apiBaseUrl;
+      } else {
+        console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
+        continue;
+      }
+    }
+
+    const specFilename = `${key}.yaml`;
+    db.specifications[`from-get-request_${key}`] = {
+      providerName: getProviderName(spec),
+      openApiRaw: getOpenApiRaw(spec),
+      securitySchemes: getSecuritySchemes(spec, getRequest.securitySchemes),
+      categories: getCategories(spec),
+      homepage: getProviderName(spec),
+      apiBaseUrl,
+      serviceName: getServiceName(spec),
+      apiVersion: getVersion(spec),
+      apiDescription: spec.spec.info.description,
+      apiTitle: spec.spec.info.title,
+      endpoints: numberOfEndpoints,
+      sdkMethods: numberOfOperations,
+      schemas: numberOfSchemas,
+      parameters: numberOfParameters,
+      contactUrl: getInfoContactUrl(spec),
+      contactEmail: getInfoContactEmail(spec),
+      getRequestSpecFilename: specFilename,
+      originalSpecGetRequest: {
+        url,
+        regex,
+      },
+      difficultyScore: computeDifficultyScore(
+        numberOfEndpoints,
+        numberOfOperations,
+        numberOfSchemas,
+        numberOfParameters
+      ),
+    };
+    console.log(`Writing post request spec to disk for ${key}`);
+    fs.writeFileSync(
+      path.join(getRequestSpecsDir, specFilename),
+      yaml.dump(spec.spec)
+    );
+  }
+
+  return db;
+}
+
+function extractJsonFromString(inputStr: string, regexPattern: string): any {
+  // Convert the string pattern to a RegExp object
+  const regex = new RegExp(regexPattern, "smg");
+
+  // Use the match method to find the pattern
+  const match = regex.exec(inputStr);
+
+  if (!match) throw Error("No match found");
+  // Extract the matched group which contains the JSON
+  const jsonString = match[1];
+
+  // Parse the extracted string into a JSON object
+  return JSON.parse(jsonString);
 }
 
 async function main() {
@@ -551,6 +689,8 @@ async function main() {
     await collectFilterAndSave();
     return;
   }
+  console.log("Processing get requests");
+  let getRequestDb = await collectFromGetRequests();
   console.log("Processing post requests");
   let postRequestDb = await collectFromPostRequests();
   console.log("Processing filtered specs");
@@ -559,6 +699,7 @@ async function main() {
     specifications: {
       ...openapiDirectoryDb.specifications,
       ...postRequestDb.specifications,
+      ...getRequestDb.specifications,
     },
   };
   console.log("Adding difficulty scores");

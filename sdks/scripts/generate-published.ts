@@ -239,6 +239,11 @@ function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
       path.join(postRequestSpecsDirPath, specData.postRequestSpecFilename),
       "utf-8"
     );
+  } else if (specData.getRequestSpecFilename) {
+    return fs.readFileSync(
+      path.join(postRequestSpecsDirPath, specData.getRequestSpecFilename),
+      "utf-8"
+    );
   } else {
     throw Error(`❌ ERROR: No spec found for ${specData}`);
   }
