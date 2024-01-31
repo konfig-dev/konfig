@@ -71,13 +71,9 @@ async function main() {
     JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
   );
   const dataFromHtml = JSON.parse(fs.readFileSync(dataFromHtmlPath, "utf-8"));
-  // delete and recreate "published/" directory
-  fs.rmSync(publishedDirPath, { recursive: true, force: true });
-  fs.mkdirSync(publishedDirPath, { recursive: true });
   const now = new Date();
+  const publishedJsons: Set<string> = new Set();
   for (const spec in publishJson.publish) {
-    console.log("Generating published data for", spec);
-
     const specDataPath = path.join(specDataDirPath, spec);
     const publishData = publishJson.publish[spec];
     const { categories, ...specData }: SdkPagePropsWithPropertiesOmitted =
@@ -195,9 +191,40 @@ async function main() {
       );
     }
 
-    // write to "published/" directory
     const publishedPath = path.join(publishedDirPath, spec);
+    publishedJsons.add(`${publishedPath}.json`);
+
+    // check if JSON in published/ is exactly the same besides the "lastUpdated" property
+    const exists = fs.existsSync(`${publishedPath}.json`);
+    if (exists) {
+      const existing = JSON.parse(
+        fs.readFileSync(`${publishedPath}.json`, "utf-8")
+      );
+
+      // temporarily "lastUpdated" property
+      // copy and delete the property to preserve lastUpdated for merged
+      delete existing.lastUpdated;
+      const mergedCopy: any = { ...merged };
+      delete mergedCopy.lastUpdated;
+
+      if (JSON.stringify(existing) === JSON.stringify(mergedCopy)) {
+        console.log("⚪️ No changes detected for", spec);
+        continue;
+      }
+    }
+
+    // write to "published/" directory
+    console.log(`🟢 Writing ${publishedPath} to disk`);
     fs.writeFileSync(`${publishedPath}.json`, JSON.stringify(merged, null, 2));
+  }
+
+  // delete any specs that are not in publishedJsons
+  const publishedFiles = fs.readdirSync(publishedDirPath);
+  for (const file of publishedFiles) {
+    if (!publishedJsons.has(path.join(publishedDirPath, file))) {
+      console.log("Deleting old file", file);
+      fs.unlinkSync(path.join(publishedDirPath, file));
+    }
   }
 }
 
