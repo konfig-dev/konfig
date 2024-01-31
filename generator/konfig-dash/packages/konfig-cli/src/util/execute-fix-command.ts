@@ -63,19 +63,17 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
   let specInputPath = flags.specInputPath ?? parsedKonfigYaml?.specInputPath
   let specOutputPath = flags.spec ?? parsedKonfigYaml?.specPath
 
+  if (specOutputPath === undefined) {
+    throw Error(
+      `Spec output path must be specified in konfig.yaml (specPath) or with -s flag`
+    )
+  }
   if (specInputPath === undefined) {
     if (flags.ci) {
       console.log(`No specInputPath specified, skipping fix`)
       return
     }
-    throw Error(
-      `Spec input path must be specified in konfig.yaml (specInputPath) or with -i flag`
-    )
-  }
-  if (specOutputPath === undefined) {
-    throw Error(
-      `Spec output path must be specified in konfig.yaml (specPath) or with -s flag`
-    )
+    specInputPath = specOutputPath
   }
 
   specInputPath = prependKonfigDir({ specPath: specInputPath })
