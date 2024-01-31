@@ -1,9 +1,9 @@
 # java-use-schema-title-if-possible
 
+A simple API based for testing java-use-schema-title-if-possible.
+
 [![Maven Central](https://img.shields.io/badge/Maven%20Central-v1.0.0-blue)](https://central.sonatype.com/artifact/com.konfigthis/java-use-schema-title-if-possible/1.0.0)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](http://example.com/support)
-
-A simple API based for testing java-use-schema-title-if-possible.
 
 ## Requirements
 

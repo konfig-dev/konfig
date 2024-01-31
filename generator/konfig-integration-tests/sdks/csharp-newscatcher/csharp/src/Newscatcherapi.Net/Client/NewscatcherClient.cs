@@ -21,32 +21,32 @@ namespace Newscatcherapi.Net.Client
         /// <summary>
         /// API instance
         /// </summary>
-        public AuthorsApi Authors { get; private set; }
+        public virtual IAuthorsApi Authors { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public LatestHeadlinesApi LatestHeadlines { get; private set; }
+        public virtual ILatestHeadlinesApi LatestHeadlines { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public SearchApi Search { get; private set; }
+        public virtual ISearchApi Search { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public SearchSimilarApi SearchSimilar { get; private set; }
+        public virtual ISearchSimilarApi SearchSimilar { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public SourcesApi Sources { get; private set; }
+        public virtual ISourcesApi Sources { get; set; }
 
         /// <summary>
         /// API instance
         /// </summary>
-        public SubscriptionApi Subscription { get; private set; }
+        public virtual ISubscriptionApi Subscription { get; set; }
 
         /// <summary>
         /// Configuration instance

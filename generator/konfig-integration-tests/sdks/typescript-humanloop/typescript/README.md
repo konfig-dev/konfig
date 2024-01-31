@@ -1,4 +1,4 @@
-<div align="center">
+<div align="left">
 
 [![Visit Humanloop](./header.png)](https://humanloop.com)
 

@@ -1,10 +1,15 @@
+<div align="center">
+
 [![Visit SnapTrade](https://raw.githubusercontent.com/konfig-dev/konfig/HEAD/sdks/java/header.png)](https://snaptrade.com)
-# snaptrade-java-sdk
+
+# [SnapTrade](https://snaptrade.com)
+
+Connect brokerage accounts to your app for live positions and trading
 
 [![Maven Central](https://img.shields.io/badge/Maven%20Central-v4.13.3-blue)](https://central.sonatype.com/artifact/com.konfigthis/snaptrade-java-sdk/4.13.3)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](https://snaptrade.com/)
 
-Connect brokerage accounts to your app for live positions and trading
+</div>
 
 ## Requirements
 

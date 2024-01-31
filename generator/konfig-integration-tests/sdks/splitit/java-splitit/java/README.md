@@ -1,8 +1,8 @@
 # splitit-web-java-sdk
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v2.2.2-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.2)
-
 Splitit's Web API
+
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v2.2.2-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.2)
 
 ## Requirements
 
