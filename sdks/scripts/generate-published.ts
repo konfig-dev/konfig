@@ -4,7 +4,7 @@ import { z } from "zod";
 import { SdkPagePropsWithPropertiesOmitted } from "./collect";
 import { parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
-import { Published } from "./util";
+import { Published, getRequestSpecsDir } from "./util";
 import kebabcase from "lodash.kebabcase";
 import yaml from "js-yaml";
 import { getMethodObjects } from "../src/get-method-objects";
@@ -184,7 +184,8 @@ async function main() {
 
     if (
       merged.originalSpecUrl === undefined &&
-      merged.originalSpecPostRequest === undefined
+      merged.originalSpecPostRequest === undefined &&
+      merged.originalSpecGetRequest === undefined
     ) {
       throw Error(
         `❌ ERROR: No originalSpecUrl or originalSpecPostRequest for ${spec}`
@@ -241,7 +242,7 @@ function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
     );
   } else if (specData.getRequestSpecFilename) {
     return fs.readFileSync(
-      path.join(postRequestSpecsDirPath, specData.getRequestSpecFilename),
+      path.join(getRequestSpecsDir, specData.getRequestSpecFilename),
       "utf-8"
     );
   } else {
