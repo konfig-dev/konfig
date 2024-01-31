@@ -604,7 +604,7 @@ function Sidebar({
         <SidebarSection>
           <SidebarSectionTitle>
             <div className="flex items-end gap-1">
-              <div>Difficulty</div>
+              <div>API Difficulty</div>
               <a
                 target="_blank"
                 href="/difficulty-explanation"
