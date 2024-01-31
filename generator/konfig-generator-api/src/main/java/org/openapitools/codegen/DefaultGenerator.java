@@ -312,6 +312,7 @@ public class DefaultGenerator implements Generator {
             config.additionalProperties().put("appDescription", config.escapeText(info.getDescription()));
             config.additionalProperties().put("appDescriptionWithNewLines", config.escapeTextWhileAllowingNewLines(info.getDescription()));
             config.additionalProperties().put("unescapedAppDescription", info.getDescription());
+            config.additionalProperties().put("isAppDescriptionMultiLine", info.getDescription().contains("\n"));
         }
 
         if (info.getContact() != null) {
