@@ -10,6 +10,18 @@ test("splitit/python-splitit", async () => {
           method: "post",
           response: {},
         },
+        {
+          path: "/token",
+          method: "post",
+          response: {
+            access_token: "string",
+            token_type: "string",
+            expires_in: 0,
+            refresh_token: "string",
+            scope: "string",
+            id_token: "string",
+          },
+        },
       ],
     },
   });

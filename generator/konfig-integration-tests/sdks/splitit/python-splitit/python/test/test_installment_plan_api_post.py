@@ -19,13 +19,13 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
     """InstallmentPlanApi unit test stubs"""
 
     def setUp(self):
-        client_id = os.environ["SPLITIT_CLIENT_ID"]
-        client_secret = os.environ["SPLITIT_CLIENT_SECRET"]
+        client_id = "dummy"
+        client_secret = "dummy"
         self.splitit = PythonSplitit(
             client_id=client_id,
             client_secret=client_secret,
             host="http://127.0.0.1:4021",
-            token_url="https://id.sandbox.splitit.com/connect/token"
+            token_url="http://127.0.0.1:4021/token"
         )
 
     def tearDown(self):

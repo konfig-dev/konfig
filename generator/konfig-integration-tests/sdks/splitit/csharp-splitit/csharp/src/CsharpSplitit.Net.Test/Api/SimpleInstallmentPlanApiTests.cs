@@ -30,12 +30,12 @@ namespace CsharpSplitit.Net.Test.Api
         public SimpleInstallmentPlanApiTests()
         {
             Configuration config = new Configuration();
-            string clientId = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
+            string clientId = "dummy";
+            string clientSecret = "dummy";
             config.OAuthClientId = clientId;
             config.OAuthClientSecret = clientSecret;
             config.BasePath = "http://127.0.0.1:4008";
-            config.OAuthTokenUrl = "https://id.sandbox.splitit.com/connect/token";
+            config.OAuthTokenUrl = "http://127.0.0.1:4008/token";
             instance = new InstallmentPlanApi(config);
         }
 
