@@ -202,60 +202,53 @@ function generateTypescriptSdkUsageCode({
 }): string {
   sdkName = sdkName.replace("{language}", "typescript");
   const setupLines: string[] = [];
-  let i = 0;
+  const usedKeys = new Set<string>();
   for (const key in securitySchemes) {
     let newLines: string[] = [];
+    const addKey = (key: string, value: string) => {
+      if (usedKeys.has(key)) {
+        // add with comment
+        newLines.push(`    // ${key}: "${value}",`);
+      } else {
+        newLines.push(`    ${key}: "${value}",`);
+      }
+      usedKeys.add(key);
+    };
     const securityScheme = securitySchemes[key];
     if (securityScheme.description !== undefined)
       newLines.push(`    // ${securityScheme.description}`);
     if (securityScheme.type === "apiKey") {
-      newLines.push(
-        `    ${securityScheme.name}: "${snakeCase(
-          securityScheme.name
-        ).toUpperCase()}"`
-      );
+      addKey(securityScheme.name, snakeCase(securityScheme.name).toUpperCase());
     } else if (securityScheme.type === "http") {
       if (securityScheme.scheme.toLocaleLowerCase() === "basic") {
-        newLines.push(`    username: "USERNAME",`);
-        newLines.push(`    password: "PASSWORD",`);
+        addKey("username", "USERNAME");
+        addKey("password", "PASSWORD");
       } else if (securityScheme.scheme.toLocaleLowerCase() === "bearer") {
-        newLines.push(`    token: "TOKEN",`);
+        addKey("token", "TOKEN");
       } else if (securityScheme.scheme.toLocaleLowerCase() === "digest") {
-        newLines.push(`    username: "USERNAME",`);
-        newLines.push(`    password: "PASSWORD",`);
+        addKey("username", "USERNAME");
+        addKey("password", "PASSWORD");
       }
     } else if (securityScheme.type === "oauth2") {
       if ("flows" in securityScheme) {
         if (securityScheme.flows.implicit !== undefined) {
-          newLines.push(`    clientId: "CLIENT_ID",`);
-          newLines.push(`    redirectUri: "REDIRECT_URI",`);
+          addKey("clientId", "CLIENT_ID");
+          addKey("redirectUri", "REDIRECT_URI");
         } else if (securityScheme.flows.password !== undefined) {
-          newLines.push(`    username: "USERNAME",`);
-          newLines.push(`    password: "PASSWORD",`);
+          addKey("username", "USERNAME");
+          addKey("password", "PASSWORD");
         } else if (securityScheme.flows.clientCredentials !== undefined) {
-          newLines.push(`    clientId: "CLIENT_ID",`);
-          newLines.push(`    clientSecret: "CLIENT_SECRET",`);
+          addKey("clientId", "CLIENT_ID");
+          addKey("clientSecret", "CLIENT_SECRET");
         } else if (securityScheme.flows.authorizationCode !== undefined) {
-          newLines.push(`    clientId: "CLIENT_ID",`);
-          newLines.push(`    clientSecret: "CLIENT_SECRET",`);
-          newLines.push(`    redirectUri: "REDIRECT_URI",`);
+          addKey("clientId", "CLIENT_ID");
+          addKey("clientSecret", "CLIENT_SECRET");
+          addKey("redirectUri", "REDIRECT_URI");
         }
       }
     } else if (securityScheme.type === "openIdConnect") {
-      newLines.push(`    clientId: "CLIENT_ID",`);
-      newLines.push(`    clientSecret: "CLIENT_SECRET",`);
-    }
-
-    // Comment out all but the first security scheme
-    if (i++ > 0) {
-      newLines = newLines.map((line) => {
-        // strip spaces at beginning of line
-        line = line.replace(/^ +/, "");
-
-        // if line starts with comment already, don't add another comment
-        if (line.startsWith("//")) return `    ${line}`;
-        return `    // ${line}`;
-      });
+      addKey("clientId", "CLIENT_ID");
+      addKey("clientSecret", "CLIENT_SECRET");
     }
     setupLines.push(...newLines);
   }
