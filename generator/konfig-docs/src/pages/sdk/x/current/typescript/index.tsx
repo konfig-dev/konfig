@@ -13,10 +13,10 @@ export default function XCurrentTypeScriptSdk() {
       metaDescription="Publish & analyze posts, optimize ads, & create unique customer experiences with the X API, X Ads API, & X Embeds."
       company="X"
       serviceName="current"
-      logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.png"
+      logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.jpg"
       clientNameCamelCase="x"
       homepage="developer.x.com"
-      lastUpdated={new Date("2024-01-31T00:27:36.961Z")}
+      lastUpdated={new Date("2024-01-31T00:30:59.766Z")}
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/imagePreview.png"
