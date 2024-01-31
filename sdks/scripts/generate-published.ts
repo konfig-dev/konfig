@@ -7,6 +7,7 @@ import { SecuritySchemes, parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
 import { Published } from "./util";
 import kebabcase from "lodash.kebabcase";
+import yaml from "js-yaml";
 import { getMethodObjects } from "../src/get-method-objects";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
@@ -40,6 +41,16 @@ const publishJsonSchema = z.object({
       sdkName: z.string(),
       clientName: z.string(),
       metaDescription: z.string().optional(),
+      securitySchemes: z
+        .record(
+          z.object({
+            type: z.literal("apiKey"),
+            description: z.string().optional(),
+            in: z.union([z.literal("query"), z.literal("header")]),
+            name: z.string(),
+          })
+        )
+        .optional(),
       homepage: z
         .string()
         // ensure it does not start with https:// or http://
@@ -53,8 +64,10 @@ const publishJsonSchema = z.object({
   ),
 });
 
+type PublishJson = z.infer<typeof publishJsonSchema>;
+
 async function main() {
-  const publishJson = publishJsonSchema.parse(
+  const publishJson: PublishJson = publishJsonSchema.parse(
     JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
   );
   const dataFromHtml = JSON.parse(fs.readFileSync(dataFromHtmlPath, "utf-8"));
@@ -70,8 +83,8 @@ async function main() {
     const { categories, ...specData }: SdkPagePropsWithPropertiesOmitted =
       JSON.parse(fs.readFileSync(`${specDataPath}.json`, "utf-8"));
     const typescriptSdkUsageCode = generateTypescriptSdkUsageCode({
-      ...publishData,
       ...specData,
+      ...publishData,
     });
 
     if (publishData.metaDescription === undefined) {
@@ -124,15 +137,6 @@ async function main() {
         `❌ ERROR: imagePreview does not exist at ${openapiExamplesDirPath}`
       );
     }
-    // find file that starts with "openapi" in openapiExamplesDirPath
-    const openapiPath = fs
-      .readdirSync(openapiExamplesDirPath)
-      .find((file) => file.startsWith("openapi"));
-    if (openapiPath === undefined) {
-      throw Error(
-        `❌ ERROR: openapi does not exist at ${openapiExamplesDirPath}`
-      );
-    }
 
     const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
 
@@ -143,6 +147,28 @@ async function main() {
 
     let rawSpecString = getRawSpecString(specData);
     const oas = await parseSpec(rawSpecString);
+
+    // if publishData includes securitySchemes then override the securitySchemes in oas
+    if (publishData.securitySchemes) {
+      if (!oas.spec.components) oas.spec.components = {};
+      oas.spec.components.securitySchemes = publishData.securitySchemes;
+    }
+
+    // write oas to openapiExamples directory to file openapi.yaml
+    fs.writeFileSync(
+      path.join(openapiExamplesDirPath, "openapi.yaml"),
+      yaml.dump(oas.spec)
+    );
+
+    // find file that starts with "openapi" in openapiExamplesDirPath
+    const openapiPath = fs
+      .readdirSync(openapiExamplesDirPath)
+      .find((file) => file.startsWith("openapi"));
+    if (openapiPath === undefined) {
+      throw Error(
+        `❌ ERROR: openapi does not exist at ${openapiExamplesDirPath}`
+      );
+    }
 
     const merged: Published = {
       ...specData,
