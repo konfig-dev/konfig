@@ -16,7 +16,7 @@ export default function XCurrentTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.jpg"
       clientNameCamelCase="x"
       homepage="developer.x.com"
-      lastUpdated={new Date("2024-01-31T21:11:30.502Z")}
+      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/imagePreview.png"

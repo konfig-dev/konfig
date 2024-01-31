@@ -2,61 +2,63 @@
 import { StackExchange } from 'stack-exchange-typescript-sdk';
 
 const stackExchange = new StackExchange({
-    // The Stack Exchange API offers user authentication via OAuth 2.0, specifically templated after Facebook's implementation. There are two flows, an explicit grant for server side applications and an implicit one for pure browser based ones.
-
-#The explicit OAuth 2.0 flow consists of the following steps:
-1. Send a user to https://stackexchange.com/oauth, with these query string parameters
-- client_id
-- scope
-- redirect_uri - must be under an apps registered domain
-- state - optional
-2. The user approves your app
-3. The user is redirected to redirect_uri, with these query string parameters
-- code
-- state - optional, only returned if provided in the first step
-4. POST (application/x-www-form-urlencoded) the following parameters to https://stackexchange.com/oauth/access_token
-- client_id
-- client_secret
-- code - from the previous step
-- redirect_uri - must be the same as the provided in the first step
-This request is responded to with either an error (HTTP status code 400) or an access token of the form access_token=...&expires=1234. expires will only be set if scope does not include no_expiry, the use of which is strongly advised against unless your app truly needs perpetual access.
-
-#The implicit OAuth 2.0 flow consists of the following steps:
-
-1. Open a new window at https://stackexchange.com/oauth/dialog, with these query string parameters
-- client_id
-- scope (details)
-- redirect_uri - must be under an apps registered domain
-- state - optional
-2. The user approves your app
-3. The user is redirected to redirect_uri, with these parameters in the hash
-- access_token
-- expires - optional, only if scope doesn't contain no_expiry
-The explicit flow should be used by server-side applications, with special care taken to never leak client_secret. Client side applications should use the implicit flow.
-
-Once you have authenticated a user once, regardless of flow, subsequent re-authorizations will occur without requiring user action. Naturally, should a user revoke an applications permissions then further action will be required to re-authorize.
-
-Applications using the implicit flow can make use of our provided minimalistic Javascript SDK.
-
-#Scope
-
-With an empty scope, authentication will only allow an application to identify a user via the /me method. In order to access other information, different scope values must be sent. Multiple values may be sent in scope by comma or space delimitting them.
-
-- read_inbox - access a user's global inbox
-- no_expiry - access_token's with this scope do not expire
-- write_access - perform write operations as a user 2.1
-- private_info - access full history of a user's private actions on the site 2.1
-
-#Desktop Applications
-
-Desktop applications cannot participate directly in OAuth 2.0 flows, however the embeddable browser controls available in most frameworks make it possible to work around this limitation.
-
-Desktop applications should use the implicit client-side flow, hosting the process within a browser control. For redirect_uri, a value of https://stackexchange.com/oauth/login_success should be used. Upon a successful authentication, access_token will be placed in the url hash as with a standard implicit authentication.
-
-#Usage
-
-Access tokens can be passed (as access_token) to any method to grant applications an increased throttle quota. When passing an access token an app must pass its request key as well, if you don't have a request key you can obtain one by registering your application on Stack Apps (http://stackapps.com/users/login?returnurl=/apps/oauth/register).
-
+    /*
+     * The Stack Exchange API offers user authentication via OAuth 2.0, specifically templated after Facebook's implementation. There are two flows, an explicit grant for server side applications and an implicit one for pure browser based ones.
+     * 
+     * #The explicit OAuth 2.0 flow consists of the following steps:
+     * 1. Send a user to https://stackexchange.com/oauth, with these query string parameters
+     * - client_id
+     * - scope
+     * - redirect_uri - must be under an apps registered domain
+     * - state - optional
+     * 2. The user approves your app
+     * 3. The user is redirected to redirect_uri, with these query string parameters
+     * - code
+     * - state - optional, only returned if provided in the first step
+     * 4. POST (application/x-www-form-urlencoded) the following parameters to https://stackexchange.com/oauth/access_token
+     * - client_id
+     * - client_secret
+     * - code - from the previous step
+     * - redirect_uri - must be the same as the provided in the first step
+     * This request is responded to with either an error (HTTP status code 400) or an access token of the form access_token=...&expires=1234. expires will only be set if scope does not include no_expiry, the use of which is strongly advised against unless your app truly needs perpetual access.
+     * 
+     * #The implicit OAuth 2.0 flow consists of the following steps:
+     * 
+     * 1. Open a new window at https://stackexchange.com/oauth/dialog, with these query string parameters
+     * - client_id
+     * - scope (details)
+     * - redirect_uri - must be under an apps registered domain
+     * - state - optional
+     * 2. The user approves your app
+     * 3. The user is redirected to redirect_uri, with these parameters in the hash
+     * - access_token
+     * - expires - optional, only if scope doesn't contain no_expiry
+     * The explicit flow should be used by server-side applications, with special care taken to never leak client_secret. Client side applications should use the implicit flow.
+     * 
+     * Once you have authenticated a user once, regardless of flow, subsequent re-authorizations will occur without requiring user action. Naturally, should a user revoke an applications permissions then further action will be required to re-authorize.
+     * 
+     * Applications using the implicit flow can make use of our provided minimalistic Javascript SDK.
+     * 
+     * #Scope
+     * 
+     * With an empty scope, authentication will only allow an application to identify a user via the /me method. In order to access other information, different scope values must be sent. Multiple values may be sent in scope by comma or space delimitting them.
+     * 
+     * - read_inbox - access a user's global inbox
+     * - no_expiry - access_token's with this scope do not expire
+     * - write_access - perform write operations as a user 2.1
+     * - private_info - access full history of a user's private actions on the site 2.1
+     * 
+     * #Desktop Applications
+     * 
+     * Desktop applications cannot participate directly in OAuth 2.0 flows, however the embeddable browser controls available in most frameworks make it possible to work around this limitation.
+     * 
+     * Desktop applications should use the implicit client-side flow, hosting the process within a browser control. For redirect_uri, a value of https://stackexchange.com/oauth/login_success should be used. Upon a successful authentication, access_token will be placed in the url hash as with a standard implicit authentication.
+     * 
+     * #Usage
+     * 
+     * Access tokens can be passed (as access_token) to any method to grant applications an increased throttle quota. When passing an access token an app must pass its request key as well, if you don't have a request key you can obtain one by registering your application on Stack Apps (http://stackapps.com/users/login?returnurl=/apps/oauth/register).
+     * 
+     */
     clientId: "CLIENT_ID",
     redirectUri: "REDIRECT_URI",
 })

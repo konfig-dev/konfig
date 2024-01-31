@@ -16,7 +16,7 @@ export default function WalmartContentManagementTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/walmart/content-management/logo.png"
       clientNameCamelCase="walmart"
       homepage="developer.walmart.com/"
-      lastUpdated={new Date("2024-01-31T21:11:30.502Z")}
+      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/walmart/content-management/imagePreview.png"
