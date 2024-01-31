@@ -69,6 +69,11 @@ export default class Fix extends Command {
       description:
         'Use openAI API to generate operationIds based on rules defined here: https://konfigthis.com/docs/tutorials/naming-operation-ids. Requires OPENAI_API_KEY to be set in environment.',
     }),
+    progressYamlOverridePath: Flags.file({
+      name: 'progressYamlOverridePath',
+      char: 'p',
+      description: 'Override path to read and write progress.yaml file.',
+    }),
   }
 
   public async run(): Promise<void> {

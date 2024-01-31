@@ -5,6 +5,7 @@ import {
   parseSpec,
   filterSpecPaths,
   POTENTIAL_INCORRECT_DATA_TYPE_RULE_NAME,
+  KonfigYamlType,
 } from 'konfig-lib'
 import boxen from 'boxen'
 import { Progress } from './fix-progress'
@@ -12,7 +13,7 @@ import { oasYamlDump } from './oas-yaml-dump'
 import { fixOas } from './fix-oas'
 import path from 'path'
 import { oasJsonDump } from './oas-json-dump'
-import { parseKonfigYaml } from './parse-konfig-yaml'
+import { parseKonfigYaml, missingKonfigYamlErrorMsg } from './parse-konfig-yaml'
 
 interface FixOptions {
   format?: boolean
@@ -25,6 +26,7 @@ interface FixOptions {
   alwaysYes?: boolean
   ci?: boolean
   useAIForOperationId?: boolean
+  progressYamlOverridePath?: string
 }
 
 export async function executeFixCommand(options: FixOptions): Promise<void> {
@@ -42,27 +44,15 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     )
   }
 
-  const { parsedKonfigYaml } = parseKonfigYaml({
-    configDir: flags.konfigDir ?? process.cwd(),
-  })
-
-  // We only want to run fix in CI if the konfig.yaml has a specInputPath
-  if (flags.ci && parsedKonfigYaml.specInputPath === undefined) {
-    console.log(`No specInputPath found in konfig.yaml, skipping fix`)
-    return
+  let parsedKonfigYaml: KonfigYamlType | undefined = undefined
+  try {
+    ;({ parsedKonfigYaml } = parseKonfigYaml({
+      configDir: flags.konfigDir ?? process.cwd(),
+    }))
+  } catch (e) {
+    if (e instanceof Error && !e.message.includes(missingKonfigYamlErrorMsg))
+      throw e
   }
-
-  if (flags.spec === undefined) {
-    flags.spec = parsedKonfigYaml.specPath
-    flags.specInputPath = parsedKonfigYaml.specInputPath ?? flags.spec
-  }
-
-  if (flags.spec === undefined)
-    throw Error(
-      `Either specify path to OAS with -s flag or assign "specPath" field in "konfig.yaml"`
-    )
-
-  if (flags.specInputPath === undefined) throw Error(`This shouldn't happen`)
 
   const prependKonfigDir = ({ specPath }: { specPath: string }) => {
     return flags.konfigDir !== undefined
@@ -70,24 +60,46 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
       : specPath
   }
 
-  const specInputPath = prependKonfigDir({ specPath: flags.specInputPath })
-  const specOutputPath = prependKonfigDir({ specPath: flags.spec })
+  let specInputPath = flags.specInputPath ?? parsedKonfigYaml?.specInputPath
+  let specOutputPath = flags.spec ?? parsedKonfigYaml?.specPath
+
+  if (specInputPath === undefined) {
+    if (flags.ci) {
+      console.log(`No specInputPath specified, skipping fix`)
+      return
+    }
+    throw Error(
+      `Spec input path must be specified in konfig.yaml (specInputPath) or with -i flag`
+    )
+  }
+  if (specOutputPath === undefined) {
+    throw Error(
+      `Spec output path must be specified in konfig.yaml (specPath) or with -s flag`
+    )
+  }
+
+  specInputPath = prependKonfigDir({ specPath: specInputPath })
+  specOutputPath = prependKonfigDir({ specPath: specOutputPath })
+
   const rawSpec = fs.readFileSync(specInputPath, 'utf-8')
   let spec = await parseSpec(rawSpec)
 
   // if konfig yaml filters any paths from the spec, remove them now
-  if (parsedKonfigYaml.filterPaths) {
+  if (parsedKonfigYaml?.filterPaths) {
     filterSpecPaths({ spec: spec.spec, filter: parsedKonfigYaml.filterPaths })
   }
 
   if (flags.format) {
-    fs.writeFileSync(flags.spec, oasYamlDump(spec))
+    fs.writeFileSync(specOutputPath, oasYamlDump(spec))
     return
   }
 
+  const progressYamlPathOverride =
+    flags.progressYamlOverridePath ?? parsedKonfigYaml?.progressYamlPath
+
   const progress: Progress = Progress.getSaved({
     konfigDir: flags.konfigDir ?? process.cwd(),
-    progressYamlPathOverride: parsedKonfigYaml.progressYamlPath,
+    progressYamlPathOverride: progressYamlPathOverride,
   })
 
   const {

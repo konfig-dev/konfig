@@ -556,11 +556,9 @@ export class Progress {
     progressYamlPathOverride?: string
   }): string {
     if (progressYamlPathOverride !== undefined) return progressYamlPathOverride
-    // verify that we are in a konfig folder
-    parseKonfigYaml({ configDir: konfigDir })
     const sdkKonfigFolder = getKonfigFolder({ dir: konfigDir })
     fs.ensureDirSync(sdkKonfigFolder)
-    return path.join(sdkKonfigFolder, 'progress.yaml')
+    return path.join(sdkKonfigFolder, PROGRESS_YAML_FILE_NAME)
   }
 }
 
