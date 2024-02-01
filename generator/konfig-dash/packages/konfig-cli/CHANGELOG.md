@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.38.2
+
+### Patch Changes
+
+- [#518](https://github.com/konfig-dev/konfig/pull/518) [`1bb4ee39`](https://github.com/konfig-dev/konfig/commit/1bb4ee39d4e4d09c21e86f4443c08723052508a6) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Make konfig fix not require konfig.yaml if input/output flags are set & add progressOverridePath flag
+
+- [#509](https://github.com/konfig-dev/konfig/pull/509) [`f80a4f34`](https://github.com/konfig-dev/konfig/commit/f80a4f3466051f6875a87aac774042a88f6dfb01) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add --useAIForOperationId flag to konfig fix
+
 ## 1.38.1
 
 ### Patch Changes
