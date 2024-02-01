@@ -26,6 +26,7 @@ import {
 export type CustomRequest = (
   | { url: string; regex: string }
   | { url: string; body: string }
+  | { lambda: () => Promise<string> }
 ) & {
   securitySchemes?: SecuritySchemes;
   apiBaseUrl?: string;
@@ -72,6 +73,10 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
       },
     }).then((res) => res.text());
     return rawSpecString;
+  } else if ("lambda" in customRequest) {
+    const lambdaRequest = customRequest;
+    console.log(`Processing lambda request for ${key}`);
+    return await lambdaRequest.lambda();
   } else {
     throw Error("Unexpected custom request");
   }
@@ -103,6 +108,18 @@ const customRequests: Record<string, CustomRequest> = {
       },
     },
     apiBaseUrl: "https://marketplace.walmartapis.com/v3/feeds",
+  },
+  "snyk.com": {
+    lambda: async () => {
+      // GET request to: https://api.snyk.io/rest/openapi
+      const versions = await fetch("https://api.snyk.io/rest/openapi").then(
+        (res) => res.json()
+      );
+      const latestVersion = versions[versions.length - 1];
+      return fetch(`https://api.snyk.io/rest/openapi/${latestVersion}`).then(
+        (res) => res.text()
+      );
+    },
   },
 };
 
