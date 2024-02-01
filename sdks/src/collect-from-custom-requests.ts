@@ -24,7 +24,7 @@ import {
  * For describing a custom request to get an OAS
  */
 export type CustomRequest = (
-  | { url: string; regex: string }
+  | { url: string; regex?: string; type: "GET" }
   | { url: string; body: string }
   | { lambda: () => Promise<string> }
 ) & {
@@ -40,7 +40,7 @@ export type CustomRequest = (
 };
 
 async function executeCustomRequest(key: string, customRequest: CustomRequest) {
-  if ("regex" in customRequest) {
+  if ("type" in customRequest && customRequest.type === "GET") {
     const getRequest = customRequest;
     const { url, regex } = getRequest;
     console.log(`Processing get request for ${key}`);
@@ -52,7 +52,7 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
       },
     }).then((res) => res.text());
 
-    const rawSpec = extractJsonFromString(rawString, regex);
+    const rawSpec = regex ? extractJsonFromString(rawString, regex) : rawString;
 
     if (getRequest.openapi !== undefined) {
       rawSpec.openapi = getRequest.openapi;
@@ -84,9 +84,14 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 
 const customRequests: Record<string, CustomRequest> = {
   "soundcloud.com": {
+    type: "GET",
     url: "https://developers.soundcloud.com/docs/api/explorer/swagger-ui-init.js",
     regex: `"swaggerDoc": (.*),\n.*"customOptions"`,
     openapi: "3.0.3",
+  },
+  "qualtrics.com_audit-exports": {
+    type: "GET",
+    url: "https://stoplight.io/api/v1/projects/qualtricsv2/publicapidocs/nodes/reference/audit-exports.json?fromExportButton=true&snapshotType=http_service",
   },
   /**
    * Got this from inspecting network tab when going to API Reference page at:
