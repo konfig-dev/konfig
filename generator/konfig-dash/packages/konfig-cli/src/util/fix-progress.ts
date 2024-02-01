@@ -467,6 +467,18 @@ export class Progress {
     this.save()
   }
 
+  getOperationTag({
+    path,
+    method,
+  }: {
+    path: string
+    method: HttpMethods
+  }): string | undefined {
+    return this.progress.operationTags[pathSchema.parse(path)]?.[
+      httpMethodSchema.parse(method)
+    ]
+  }
+
   saveOperationTag({
     path,
     method,

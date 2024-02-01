@@ -1,6 +1,12 @@
 import * as inquirer from 'inquirer'
 import boxen from 'boxen'
-import { Operation, HttpMethods, Spec, getOperations } from 'konfig-lib'
+import {
+  Operation,
+  HttpMethods,
+  Spec,
+  getOperations,
+  TagObject,
+} from 'konfig-lib'
 import { Progress } from './fix-progress'
 import { operationIdSchema } from 'konfig-lib'
 import { inquirerConfirm } from './inquirer-confirm'
@@ -39,16 +45,35 @@ async function updateOperationTag({
   progress: Progress
 }) {
   logOperationDetails({ operation: { operation, method, path } })
+  const tag = await getOperationTag({ path, method, tags: spec.tags, progress })
+  operation.tags = [tag]
+  progress.saveOperationTag({ path, method, operationTag: tag })
+}
+
+async function getOperationTag({
+  path,
+  method,
+  tags,
+  progress,
+}: {
+  path: string
+  method: HttpMethods
+  tags: TagObject[] | undefined
+  progress: Progress
+}): Promise<string> {
+  const existingTag = progress.getOperationTag({ path, method })
+  if (existingTag !== undefined) {
+    return existingTag
+  }
   const { tag } = await inquirer.prompt<{ tag: string }>([
     {
       type: 'list',
       name: 'tag',
-      choices: spec.tags,
+      choices: tags,
       message: 'Choose an existing tag',
     },
   ])
-  operation.tags = [tag]
-  progress.saveOperationTag({ path, method, operationTag: tag })
+  return tag
 }
 
 function generatePrefix({ operation }: { operation: Operation }) {
