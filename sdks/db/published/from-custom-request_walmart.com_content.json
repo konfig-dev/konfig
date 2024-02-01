@@ -18,11 +18,24 @@
   "sdkMethods": 4,
   "schemas": 10,
   "parameters": 34,
-  "postRequestSpecFilename": "walmart.com_content.yaml",
-  "originalSpecPostRequest": {
+  "originalCustomRequest": {
     "url": "https://developer.walmart.com/api/detail",
-    "body": "{\"params\":{\"country\":\"us\",\"category\":\"cp\",\"apiName\":\"feeds\"}}"
+    "body": "{\"params\":{\"country\":\"us\",\"category\":\"cp\",\"apiName\":\"feeds\"}}",
+    "securitySchemes": {
+      "clientId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "clientId"
+      },
+      "privateKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "privateKey"
+      }
+    },
+    "apiBaseUrl": "https://marketplace.walmartapis.com/v3/feeds"
   },
+  "customRequestSpecFilename": "walmart.com_content.yaml",
   "difficultyScore": 17.5,
   "difficulty": "Easy",
   "company": "Walmart",
@@ -309,6 +322,6 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/walmart/content-management/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/walmart/content-management/favicon.png",
   "clientNameCamelCase": "walmart",
-  "lastUpdated": "2024-01-31T21:23:25.312Z",
+  "lastUpdated": "2024-02-01T00:23:52.426Z",
   "typescriptSdkUsageCode": "import { Walmart } from 'walmart-content-management-typescript-sdk';\n\nconst walmart = new Walmart({\n    clientId: \"CLIENT_ID\",\n    privateKey: \"PRIVATE_KEY\",\n})"
 }

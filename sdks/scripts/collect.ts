@@ -1,17 +1,30 @@
 import * as path from "path";
-import {
-  SecuritySchemes,
-  Spec,
-  getOperations,
-  parseSpec,
-  resolveRef,
-} from "konfig-lib";
-import yaml from "js-yaml";
+import { SecuritySchemes, Spec, parseSpec } from "konfig-lib";
 import * as fs from "fs";
 import * as glob from "glob";
 import * as math from "mathjs";
 import type { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
-import { getRequestSpecsDir, postRequestSpecsDir, specFolder } from "./util";
+import {
+  computeDifficultyScore,
+  getCategories,
+  getInfoContactEmail,
+  getInfoContactUrl,
+  getKey,
+  getNumberOfEndpoints,
+  getNumberOfOperations,
+  getNumberOfParameters,
+  getNumberOfSchemas,
+  getOpenApiRaw,
+  getProviderName,
+  getSecuritySchemes,
+  getServiceName,
+  getVersion,
+  specFolder,
+} from "./util";
+import {
+  CustomRequest,
+  collectFromCustomRequests,
+} from "../src/collect-from-custom-requests";
 
 type Paths = { oasPath: string }[];
 
@@ -35,162 +48,6 @@ function collectOasFilePaths(): Paths {
   return paths;
 }
 
-function getProviderName(spec: Spec): string {
-  const info = spec.spec.info as any;
-  return info["x-providerName"];
-}
-
-function getServiceName(spec: Spec): string {
-  const info = spec.spec.info as any;
-  return info["x-serviceName"];
-}
-
-function getVersion(spec: Spec): string {
-  const info = spec.spec.info;
-  return info.version;
-}
-
-function getCategories(spec: Spec): string[] {
-  const info = spec.spec.info as any;
-  return info["x-apisguru-categories"];
-}
-
-function getInfoContactUrl(spec: Spec): string | undefined {
-  const info = spec.spec.info;
-  return info.contact?.url;
-}
-
-function getInfoContactEmail(spec: Spec): string | undefined {
-  const info = spec.spec.info;
-  return info.contact?.email;
-}
-
-function computeDifficultyScore(
-  numberOfEndpoints: number,
-  numberOfOperations: number,
-  numberOfSchemas: number,
-  numberOfParameters: number
-): number {
-  return numberOfOperations + 0.5 * numberOfSchemas + 0.25 * numberOfParameters;
-}
-
-// something that doesn't fail github actions
-// and is not the "-" character since "-" is used to replace special characters
-// can't be "|" or "=" because those are special to shell
-const KEY_DELIMITER = "_";
-function getKey(spec: Spec): string {
-  const serviceName = getServiceName(spec);
-  const parts =
-    serviceName === undefined
-      ? [getProviderName(spec), getVersion(spec)]
-      : [getProviderName(spec), serviceName, getVersion(spec)];
-  return (
-    parts
-      .join(KEY_DELIMITER)
-      // remove any special characters that shell doesn't like
-      // keep dot ".", "-", "_"
-      .replace(/[^a-zA-Z0-9\.\-_]/g, "")
-      // remove any double "-" characters
-      .replaceAll("--", "-")
-      .replaceAll("--", "-")
-      .replaceAll("--", "-")
-      .replaceAll("--", "-")
-      // remove any trailing "-"
-      .replaceAll(/-$/g, "")
-  );
-}
-
-function getNumberOfEndpoints(spec: Spec): number {
-  if (spec.spec.paths === undefined) return 0;
-  const numberOfEndpoints = Object.keys(spec.spec.paths).length;
-  return numberOfEndpoints;
-}
-
-function getNumberOfOperations(spec: Spec): number {
-  if (spec.spec.paths === undefined) return 0;
-  let numberOfOperations = 0;
-  for (const path of Object.values(spec.spec.paths)) {
-    if (path === undefined) continue;
-    numberOfOperations += Object.keys(path).length;
-  }
-  return numberOfOperations;
-}
-
-function getNumberOfSchemas(spec: Spec): number {
-  if (spec.spec.components === undefined) return 0;
-  if (spec.spec.components.schemas === undefined) return 0;
-  const numberOfSchemas = Object.keys(spec.spec.components.schemas).length;
-  return numberOfSchemas;
-}
-
-function getSecuritySchemes(
-  spec: Spec,
-  dflt?: SecuritySchemes
-): SecuritySchemes {
-  const securitySchemeOrRefs = spec.spec.components?.securitySchemes;
-  if (securitySchemeOrRefs === undefined) return dflt ? dflt : {};
-  const securitySchemesKeys = Object.keys(securitySchemeOrRefs);
-  const securitySchemes: SecuritySchemes = {};
-  for (const key of securitySchemesKeys) {
-    const securitySchemeOrRef = securitySchemeOrRefs[key];
-    const securityScheme = resolveRef({
-      refOrObject: securitySchemeOrRef,
-      $ref: spec.$ref,
-    });
-    securitySchemes[key] = securityScheme;
-  }
-
-  return securitySchemes;
-}
-
-function getOpenApiRaw(spec: Spec): string | undefined {
-  const info = spec.spec.info as any;
-  const origin = info["x-origin"];
-  if (origin === undefined) return;
-  const url = origin[0].url;
-
-  // remove duplicate h at beginning of https if detected
-  // for: watchful.li/1.0.0/swagger.yaml
-  const cleanUrl = url.replace("hhttps", "https");
-
-  return cleanUrl;
-}
-
-function getNumberOfParameters(spec: Spec): number {
-  // iterate over all operations and count parameters
-  let numberOfParameters = 0;
-  getOperations(spec).forEach(({ operation }) => {
-    numberOfParameters += operation.parameters
-      ? operation.parameters.length
-      : 0;
-
-    // Also add properties from an object type schema as parameters
-    let requestBody = operation.requestBody;
-    if (requestBody === undefined) return;
-    if ("$ref" in requestBody) {
-      requestBody = resolveRef({ refOrObject: requestBody, $ref: spec.$ref });
-    }
-    if ("$ref" in requestBody) {
-      throw Error("Expect requestBody to be dereferenced");
-    }
-    const mediaTypes = Object.keys(requestBody.content);
-    const mediaType = mediaTypes[0];
-    if (mediaType === undefined) return;
-    let schema = requestBody.content[mediaType].schema;
-    if (schema === undefined) return;
-    if ("$ref" in schema) {
-      schema = resolveRef({ refOrObject: schema, $ref: spec.$ref });
-    }
-    if ("$ref" in schema) {
-      throw Error("Expect schema to be dereferenced");
-    }
-    if (schema.properties === undefined) return;
-    numberOfParameters += Object.keys(schema.properties).length;
-  });
-
-  return numberOfParameters;
-}
-
 /**
  * Extra or overwrite properties for SdkPageProps
  */
@@ -199,16 +56,8 @@ export type AdditionalSpecDataProps = {
   categories?: string[];
   // null means it was not originally from openapi-directory repo
   openapiDirectoryPath?: string;
-  postRequestSpecFilename?: string;
-  originalSpecPostRequest?: {
-    url: string;
-    body: string;
-  };
-  getRequestSpecFilename?: string;
-  originalSpecGetRequest?: {
-    url: string;
-    regex: string;
-  };
+  originalCustomRequest?: CustomRequest;
+  customRequestSpecFilename?: string;
   originalSpecUrl?: string;
 };
 
@@ -439,267 +288,19 @@ function getDifficulty(difficultyScore: number): string {
   else return "Very Easy";
 }
 
-const postRequests: Record<
-  string,
-  AdditionalSpecDataProps["originalSpecPostRequest"] & {
-    securitySchemes?: SecuritySchemes;
-    apiBaseUrl?: string;
-  }
-> = {
-  /**
-   * Got this from inspecting network tab when going to API Reference page at:
-   * https://developer.walmart.com/api/us/cp/feeds
-   */
-  "walmart.com_content": {
-    url: "https://developer.walmart.com/api/detail",
-    body: `{"params":{"country":"us","category":"cp","apiName":"feeds"}}`,
-    securitySchemes: {
-      clientId: {
-        type: "apiKey",
-        in: "header",
-        name: "clientId",
-      },
-      privateKey: {
-        type: "apiKey",
-        in: "header",
-        name: "privateKey",
-      },
-    },
-    apiBaseUrl: "https://marketplace.walmartapis.com/v3/feeds",
-  },
-};
-
-async function collectFromPostRequests(): Promise<Db> {
-  const db: Db = { specifications: {} };
-
-  for (const key in postRequests) {
-    const postRequest = postRequests[key];
-    if (postRequest === undefined)
-      throw Error("Expect postRequest to be defined");
-    const { url, body } = postRequest;
-    console.log(`Processing post request for ${key}`);
-
-    const rawSpecString = await fetch(url, {
-      method: "POST",
-      body,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => res.text());
-
-    const spec = await parseSpec(rawSpecString);
-    const numberOfEndpoints = getNumberOfEndpoints(spec);
-    const numberOfOperations = getNumberOfOperations(spec);
-    const numberOfSchemas = getNumberOfSchemas(spec);
-    const numberOfParameters = getNumberOfParameters(spec);
-    // if postRequest.securitySchemes then also apply to spec
-    if (postRequest.securitySchemes !== undefined) {
-      if (spec.spec.components === undefined) spec.spec.components = {};
-      spec.spec.components.securitySchemes = postRequest.securitySchemes as any;
-      spec.spec.security = [
-        Object.fromEntries(
-          Object.keys(postRequest.securitySchemes).map((key) => [key, []])
-        ),
-      ];
-    }
-
-    let apiBaseUrl = spec.spec.servers?.[0]?.url;
-    if (apiBaseUrl === undefined) {
-      if (postRequest.apiBaseUrl !== undefined) {
-        apiBaseUrl = postRequest.apiBaseUrl;
-      } else {
-        console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
-        continue;
-      }
-    }
-    const specFilename = `${key}.yaml`;
-    db.specifications[`from-post-request_${key}`] = {
-      providerName: getProviderName(spec),
-      openApiRaw: getOpenApiRaw(spec),
-      securitySchemes: getSecuritySchemes(spec, postRequest.securitySchemes),
-      categories: getCategories(spec),
-      homepage: getProviderName(spec),
-      serviceName: getServiceName(spec),
-      apiVersion: getVersion(spec),
-      apiBaseUrl,
-      apiDescription: spec.spec.info.description,
-      apiTitle: spec.spec.info.title,
-      endpoints: numberOfEndpoints,
-      sdkMethods: numberOfOperations,
-      schemas: numberOfSchemas,
-      parameters: numberOfParameters,
-      contactUrl: getInfoContactUrl(spec),
-      contactEmail: getInfoContactEmail(spec),
-      postRequestSpecFilename: specFilename,
-      originalSpecPostRequest: {
-        url,
-        body,
-      },
-      difficultyScore: computeDifficultyScore(
-        numberOfEndpoints,
-        numberOfOperations,
-        numberOfSchemas,
-        numberOfParameters
-      ),
-    };
-    console.log(`Writing post request spec to disk for ${key}`);
-    fs.writeFileSync(
-      path.join(postRequestSpecsDir, specFilename),
-      yaml.dump(spec.spec)
-    );
-  }
-
-  return db;
-}
-
-const getRequests: Record<
-  string,
-  AdditionalSpecDataProps["originalSpecGetRequest"] & {
-    securitySchemes?: SecuritySchemes;
-    apiBaseUrl?: string;
-
-    // for overriding "openapi" property
-    // NOTE:
-    // was useful because soundcloud API for some reason has 3.0.4 and we ensure "openapi" is either:
-    // 3.0.0, 3.0.1, 3.0.2, 3.0.3, or 3.1.0
-    // 3.0.4 doesn't even exist so what the heck...
-    openapi?: string;
-  }
-> = {
-  "soundcloud.com": {
-    url: "https://developers.soundcloud.com/docs/api/explorer/swagger-ui-init.js",
-    regex: `"swaggerDoc": (.*),\n.*"customOptions"`,
-    openapi: "3.0.3",
-  },
-};
-
-async function collectFromGetRequests(): Promise<Db> {
-  const db: Db = { specifications: {} };
-
-  for (const key in getRequests) {
-    const getRequest = getRequests[key];
-    if (getRequest === undefined)
-      throw Error("Expect getRequest to be defined");
-    const { url, regex } = getRequest;
-    console.log(`Processing get request for ${key}`);
-
-    const rawString = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => res.text());
-
-    const rawSpec = extractJsonFromString(rawString, regex);
-
-    if (getRequest.openapi !== undefined) {
-      rawSpec.openapi = getRequest.openapi;
-    }
-
-    const rawSpecString = JSON.stringify(rawSpec);
-
-    if (rawSpecString === undefined) {
-      throw Error("Expect rawSpecString to be defined");
-    }
-
-    const spec = await parseSpec(rawSpecString);
-    const numberOfEndpoints = getNumberOfEndpoints(spec);
-    const numberOfOperations = getNumberOfOperations(spec);
-    const numberOfSchemas = getNumberOfSchemas(spec);
-    const numberOfParameters = getNumberOfParameters(spec);
-
-    // if getRequest.securitySchemes then also apply to spec
-    if (getRequest.securitySchemes !== undefined) {
-      if (spec.spec.components === undefined) spec.spec.components = {};
-      spec.spec.components.securitySchemes = getRequest.securitySchemes as any;
-      spec.spec.security = [
-        Object.fromEntries(
-          Object.keys(getRequest.securitySchemes).map((key) => [key, []])
-        ),
-      ];
-    }
-
-    let apiBaseUrl = spec.spec.servers?.[0]?.url;
-    if (apiBaseUrl === undefined) {
-      if (getRequest.apiBaseUrl !== undefined) {
-        apiBaseUrl = getRequest.apiBaseUrl;
-      } else {
-        console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
-        continue;
-      }
-    }
-
-    const specFilename = `${key}.yaml`;
-    db.specifications[`from-get-request_${key}`] = {
-      providerName: getProviderName(spec),
-      openApiRaw: getOpenApiRaw(spec),
-      securitySchemes: getSecuritySchemes(spec, getRequest.securitySchemes),
-      categories: getCategories(spec),
-      homepage: getProviderName(spec),
-      apiBaseUrl,
-      serviceName: getServiceName(spec),
-      apiVersion: getVersion(spec),
-      apiDescription: spec.spec.info.description,
-      apiTitle: spec.spec.info.title,
-      endpoints: numberOfEndpoints,
-      sdkMethods: numberOfOperations,
-      schemas: numberOfSchemas,
-      parameters: numberOfParameters,
-      contactUrl: getInfoContactUrl(spec),
-      contactEmail: getInfoContactEmail(spec),
-      getRequestSpecFilename: specFilename,
-      originalSpecGetRequest: {
-        url,
-        regex,
-      },
-      difficultyScore: computeDifficultyScore(
-        numberOfEndpoints,
-        numberOfOperations,
-        numberOfSchemas,
-        numberOfParameters
-      ),
-    };
-    console.log(`Writing post request spec to disk for ${key}`);
-    fs.writeFileSync(
-      path.join(getRequestSpecsDir, specFilename),
-      yaml.dump(spec.spec)
-    );
-  }
-
-  return db;
-}
-
-function extractJsonFromString(inputStr: string, regexPattern: string): any {
-  // Convert the string pattern to a RegExp object
-  const regex = new RegExp(regexPattern, "smg");
-
-  // Use the match method to find the pattern
-  const match = regex.exec(inputStr);
-
-  if (!match) throw Error("No match found");
-  // Extract the matched group which contains the JSON
-  const jsonString = match[1];
-
-  // Parse the extracted string into a JSON object
-  return JSON.parse(jsonString);
-}
-
 async function main() {
   if (process.env.FILTER !== undefined && process.env.FILTER !== "") {
     await collectFilterAndSave();
     return;
   }
-  console.log("Processing get requests");
-  let getRequestDb = await collectFromGetRequests();
-  console.log("Processing post requests");
-  let postRequestDb = await collectFromPostRequests();
+  console.log("Processing custom requests");
+  let customRequestDb = await collectFromCustomRequests();
   console.log("Processing filtered specs");
   const openapiDirectoryDb = await processFiltered();
   const mergedDb = {
     specifications: {
       ...openapiDirectoryDb.specifications,
-      ...postRequestDb.specifications,
-      ...getRequestDb.specifications,
+      ...customRequestDb.specifications,
     },
   };
   console.log("Adding difficulty scores");

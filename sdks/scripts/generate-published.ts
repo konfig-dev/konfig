@@ -4,7 +4,7 @@ import { z } from "zod";
 import { SdkPagePropsWithPropertiesOmitted } from "./collect";
 import { parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
-import { Published, getRequestSpecsDir } from "./util";
+import { Published, customRequestSpecsDir } from "./util";
 import kebabcase from "lodash.kebabcase";
 import yaml from "js-yaml";
 import { getMethodObjects } from "../src/get-method-objects";
@@ -13,11 +13,6 @@ import { generateTypescriptSdkUsageCode } from "../src/generate-typescript-sdk-u
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
-const postRequestSpecsDirPath = path.join(
-  path.dirname(__dirname),
-  "db",
-  "post-request-specs"
-);
 const apiDirPath = path.join(
   path.dirname(__dirname),
   "openapi-directory",
@@ -184,8 +179,7 @@ async function main() {
 
     if (
       merged.originalSpecUrl === undefined &&
-      merged.originalSpecPostRequest === undefined &&
-      merged.originalSpecGetRequest === undefined
+      merged.originalCustomRequest === undefined
     ) {
       throw Error(
         `❌ ERROR: No originalSpecUrl or originalSpecPostRequest for ${spec}`
@@ -235,14 +229,9 @@ function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
       path.join(apiDirPath, specData.openapiDirectoryPath),
       "utf-8"
     );
-  } else if (specData.postRequestSpecFilename) {
+  } else if (specData.customRequestSpecFilename) {
     return fs.readFileSync(
-      path.join(postRequestSpecsDirPath, specData.postRequestSpecFilename),
-      "utf-8"
-    );
-  } else if (specData.getRequestSpecFilename) {
-    return fs.readFileSync(
-      path.join(getRequestSpecsDir, specData.getRequestSpecFilename),
+      path.join(customRequestSpecsDir, specData.customRequestSpecFilename),
       "utf-8"
     );
   } else {

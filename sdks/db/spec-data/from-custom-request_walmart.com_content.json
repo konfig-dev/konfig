@@ -18,11 +18,24 @@
   "sdkMethods": 4,
   "schemas": 10,
   "parameters": 34,
-  "postRequestSpecFilename": "walmart.com_content.yaml",
-  "originalSpecPostRequest": {
+  "originalCustomRequest": {
     "url": "https://developer.walmart.com/api/detail",
-    "body": "{\"params\":{\"country\":\"us\",\"category\":\"cp\",\"apiName\":\"feeds\"}}"
+    "body": "{\"params\":{\"country\":\"us\",\"category\":\"cp\",\"apiName\":\"feeds\"}}",
+    "securitySchemes": {
+      "clientId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "clientId"
+      },
+      "privateKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "privateKey"
+      }
+    },
+    "apiBaseUrl": "https://marketplace.walmartapis.com/v3/feeds"
   },
+  "customRequestSpecFilename": "walmart.com_content.yaml",
   "difficultyScore": 17.5,
   "difficulty": "Easy"
 }
