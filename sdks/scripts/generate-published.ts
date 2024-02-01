@@ -30,32 +30,34 @@ const openapiExamplesPath = path.join(
 
 const publishJsonSchema = z.object({
   publish: z.record(
-    z.object({
-      company: z.string(),
-      serviceName: z.string().optional(),
-      sdkName: z.string(),
-      clientName: z.string(),
-      metaDescription: z.string().optional(),
-      securitySchemes: z
-        .record(
-          z.object({
-            type: z.literal("apiKey"),
-            description: z.string().optional(),
-            in: z.union([z.literal("query"), z.literal("header")]),
-            name: z.string(),
-          })
-        )
-        .optional(),
-      homepage: z
-        .string()
-        // ensure it does not start with https:// or http://
-        .refine(
-          (url) => !url.startsWith("https://") && !url.startsWith("http://"),
-          "URL cannot start with https:// or http://"
-        )
-        .optional(),
-      categories: z.string().array().optional(),
-    })
+    z
+      .object({
+        company: z.string(),
+        serviceName: z.string().optional(),
+        sdkName: z.string(),
+        clientName: z.string(),
+        metaDescription: z.string().optional(),
+        securitySchemes: z
+          .record(
+            z.object({
+              type: z.literal("apiKey"),
+              description: z.string().optional(),
+              in: z.union([z.literal("query"), z.literal("header")]),
+              name: z.string(),
+            })
+          )
+          .optional(),
+        homepage: z
+          .string()
+          // ensure it does not start with https:// or http://
+          .refine(
+            (url) => !url.startsWith("https://") && !url.startsWith("http://"),
+            "URL cannot start with https:// or http://"
+          )
+          .optional(),
+        categories: z.string().array().optional(),
+      })
+      .passthrough()
   ),
 });
 
@@ -209,7 +211,7 @@ async function main() {
     }
 
     // write to "published/" directory
-    console.log(`🟢 Writing ${publishedPath} to disk`);
+    console.log(`🔵 Writing ${publishedPath} to disk`);
     fs.writeFileSync(`${publishedPath}.json`, JSON.stringify(merged, null, 2));
   }
 
@@ -217,7 +219,7 @@ async function main() {
   const publishedFiles = fs.readdirSync(publishedDirPath);
   for (const file of publishedFiles) {
     if (!publishedJsons.has(path.join(publishedDirPath, file))) {
-      console.log("Deleting old file", file);
+      console.log("🔴 Deleting old file", file);
       fs.unlinkSync(path.join(publishedDirPath, file));
     }
   }

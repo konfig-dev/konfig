@@ -12,11 +12,12 @@ export default function RottenTomatoesTypeScriptSdk() {
       sdkName="rotten-tomatoes-typescript-sdk"
       metaDescription="Rotten Tomatoes, home of the Tomatometer, is the most trusted measurement of quality for Movies & TV. The definitive site for Reviews, Trailers, Showtimes, and Tickets."
       company="Rotten Tomatoes"
+      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/logo.png"
       clientNameCamelCase="rottenTomatoes"
       homepage="developer.fandango.com/rotten_tomatoes"
-      lastUpdated={new Date("2024-02-01T19:17:32.838Z")}
+      lastUpdated={new Date("2024-02-01T19:41:39.466Z")}
       contactUrl="https://github.com/mermade/mashery2openapi"
       contactEmail="mike.ralphson@gmail.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/imagePreview.jpg"
