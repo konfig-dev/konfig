@@ -253,8 +253,9 @@ function fixSpec(specInputPath: string, specOutputPath: string) {
     progressYamlsPath,
     path.basename(specOutputPath.replace("-fixed-spec", "-progress"))
   );
-  // TODO: switch to use npm konfig-cli
-  execa("../generator/konfig-dash/packages/konfig-cli/bin/run", [
+  const cliName = "konfig";
+  // const cliName = "../generator/konfig-dash/packages/konfig-cli/bin/run"; // for development
+  execa(cliName, [
     "fix",
     "--noInput",
     "-i",
@@ -263,9 +264,11 @@ function fixSpec(specInputPath: string, specOutputPath: string) {
     specOutputPath,
     "-p",
     progressYamlPath,
-  ]).then(() =>
-    console.log(`✅ Fixed spec ${path.dirname(specInputPath)}/openapi.yaml`)
-  );
+  ])
+    .then(() =>
+      console.log(`✅ Fixed spec ${path.dirname(specInputPath)}/openapi.yaml`)
+    )
+    .catch((err) => console.log(`❌ ERROR: ${err}`));
 }
 
 function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {

@@ -18,6 +18,8 @@ const capitalizedLanguage: Record<string, string> = {
   python: "Python",
 };
 
+const OAS_FILE_NAME = "openapi.yaml";
+
 // In debug mode, repository is not created and code is not pushed to remote
 function generateSdkRepository(
   key: string,
@@ -35,7 +37,14 @@ function generateSdkRepository(
   const sdksDir = path.join(path.dirname(__dirname), "sdks");
   const repoDir = path.join(sdksDir, sdkName);
   const tmpSdkDir = path.join(path.dirname(__dirname), "tmp", sdkName);
-  const pathToOas = oasFullPathFromKey(key);
+  if (data.fixedSpecFileName === undefined)
+    throw new Error(`Fixed spec file name not found for ${key}`);
+  const pathToOas = path.join(
+    path.dirname(__dirname),
+    "db",
+    "fixed-specs",
+    data.fixedSpecFileName
+  );
 
   if (!debug && repositoryExists(sdkName)) {
     console.log(`Repository ${sdkName} already exists. Aborting...`);
@@ -51,7 +60,7 @@ function generateSdkRepository(
   else if (!fs.existsSync(repoDir)) fs.mkdirSync(repoDir);
 
   // Copy the OAS into the tmp sdk directory
-  fs.copyFileSync(pathToOas, path.join(tmpSdkDir, path.basename(pathToOas)));
+  fs.copyFileSync(pathToOas, path.join(tmpSdkDir, OAS_FILE_NAME));
 
   // Copy the header image into the tmp sdk directory
   fs.copyFileSync(
@@ -219,22 +228,9 @@ function generateRepositoryDescription(data: Published, language: string) {
   return `${companyDescription} ${description}`;
 }
 
-function oasFullPathFromKey(key: string): string {
-  const relativeDir = key.split("_").join("/");
-  const fullDir = path.join(
-    __dirname,
-    "..",
-    "openapi-directory",
-    "APIs",
-    relativeDir
-  );
-  const fileName = fs.readdirSync(fullDir)[0];
-  return path.join(fullDir, fileName);
-}
-
 function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 //generateSdkRepositories("wikimedia.org_1.0.0");
-//generateSdkRepository("wikimedia.org_1.0.0", "java", true);
+generateSdkRepository("wikimedia.org_1.0.0", "typescript", true);
