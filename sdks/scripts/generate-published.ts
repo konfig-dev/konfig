@@ -70,83 +70,137 @@ const publishJsonSchema = z.object({
 
 type PublishJson = z.infer<typeof publishJsonSchema>;
 
-async function main() {
+function collectAllPublishData() {
   const publishJson: PublishJson = publishJsonSchema.parse(
     JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
   );
   const dataFromHtml = JSON.parse(fs.readFileSync(dataFromHtmlPath, "utf-8"));
+
+  return Object.fromEntries(
+    Object.entries(publishJson.publish).map(([spec, publishData]) => {
+      const specDataPath = path.join(specDataDirPath, spec);
+      const specData: SdkPagePropsWithPropertiesOmitted = JSON.parse(
+        fs.readFileSync(`${specDataPath}.json`, "utf-8")
+      );
+
+      if (publishData.metaDescription === undefined) {
+        publishData.metaDescription = dataFromHtml[spec]?.description;
+        if (publishData.metaDescription === undefined) {
+          throw Error(`❌ ERROR: No metaDescription for ${spec}`);
+        }
+      }
+
+      const companyKebabCase = kebabcase(publishData.company.toLowerCase());
+      const serviceKebabCase =
+        publishData.serviceName !== undefined
+          ? kebabcase(publishData.serviceName.toLowerCase())
+          : null;
+      const servicePath = serviceKebabCase ? `/${serviceKebabCase}` : "";
+
+      const dynamicPath = `${companyKebabCase}${servicePath}`;
+
+      // find existence of files in openapi-examples
+      const openapiExamplesDirPath = path.join(
+        openapiExamplesPath,
+        dynamicPath
+      );
+      if (!fs.existsSync(openapiExamplesDirPath)) {
+        throw Error(
+          `❌ ERROR: openapi-examples directory does not exist at ${openapiExamplesDirPath}`
+        );
+      }
+
+      // find file that starts with "openapi" in openapiExamplesDirPath
+      const openapiPath = fs
+        .readdirSync(openapiExamplesDirPath)
+        .find((file) => file.startsWith("openapi"));
+      if (openapiPath === undefined) {
+        throw Error(
+          `❌ ERROR: openapi does not exist at ${openapiExamplesDirPath}`
+        );
+      }
+
+      // find file that starts with "logo" in openapiExamplesDirPath
+      const logoPath = fs
+        .readdirSync(openapiExamplesDirPath)
+        .find((file) => file.startsWith("logo"));
+      if (logoPath === undefined) {
+        throw Error(
+          `❌ ERROR: logo does not exist at ${openapiExamplesDirPath}`
+        );
+      }
+
+      // find file that starts with "favicon" in openapiExamplesDirPath
+      const faviconPath = fs
+        .readdirSync(openapiExamplesDirPath)
+        .find((file) => file.startsWith("favicon"));
+      if (faviconPath === undefined) {
+        throw Error(
+          `❌ ERROR: favicon does not exist at ${openapiExamplesDirPath}`
+        );
+      }
+
+      // find file that starts with "imagePreview" in openapiExamplesDirPath
+      const imagePreviewPath = fs
+        .readdirSync(openapiExamplesDirPath)
+        .find((file) => file.startsWith("imagePreview"));
+      if (imagePreviewPath === undefined) {
+        throw Error(
+          `❌ ERROR: imagePreview does not exist at ${openapiExamplesDirPath}`
+        );
+      }
+
+      const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
+
+      const nonEmptyCategories =
+        publishData.categories ?? specData.categories ?? [];
+      if (nonEmptyCategories.length === 0) {
+        throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
+      }
+      return [
+        spec,
+        {
+          companyKebabCase,
+          serviceKebabCase,
+          dynamicPath,
+          openapiExamplesDirPath,
+          openapiPath,
+          publishData,
+          githubUrlPrefix,
+          imagePreviewPath,
+          faviconPath,
+          logoPath,
+          specData,
+          nonEmptyCategories,
+          metaDescription: publishData.metaDescription,
+        },
+      ];
+    })
+  );
+}
+
+async function main() {
+  const publishJson: PublishJson = publishJsonSchema.parse(
+    JSON.parse(fs.readFileSync(publishJsonPath, "utf-8"))
+  );
   const now = new Date();
   const publishedJsons: Set<string> = new Set();
+
   if (!fs.existsSync(fixedSpecsOutputPath))
     fs.mkdirSync(fixedSpecsOutputPath), { recursive: true };
   if (!fs.existsSync(progressYamlsPath))
     fs.mkdirSync(progressYamlsPath), { recursive: true };
-  for (const spec in publishJson.publish) {
-    const specDataPath = path.join(specDataDirPath, spec);
+
+  const publishDatum = collectAllPublishData();
+  const fixedSpecFileNames: Record<string, string> = {};
+
+  /**
+   * First pass: fix specs
+   */
+  const promises: Promise<void>[] = [];
+  for (const spec in publishDatum) {
     const publishData = publishJson.publish[spec];
-    const { categories, ...specData }: SdkPagePropsWithPropertiesOmitted =
-      JSON.parse(fs.readFileSync(`${specDataPath}.json`, "utf-8"));
-    const typescriptSdkUsageCode = generateTypescriptSdkUsageCode({
-      ...specData,
-      ...publishData,
-    });
-
-    if (publishData.metaDescription === undefined) {
-      publishData.metaDescription = dataFromHtml[spec]?.description;
-      if (publishData.metaDescription === undefined) {
-        console.log("❌ ERROR: No metaDescription for", spec);
-        continue;
-      }
-    }
-
-    const companyKebabCase = kebabcase(publishData.company.toLowerCase());
-    const serviceKebabCase =
-      publishData.serviceName !== undefined
-        ? kebabcase(publishData.serviceName.toLowerCase())
-        : null;
-    const servicePath = serviceKebabCase ? `/${serviceKebabCase}` : "";
-
-    const dynamicPath = `${companyKebabCase}${servicePath}`;
-
-    // find existence of files in openapi-examples
-    const openapiExamplesDirPath = path.join(openapiExamplesPath, dynamicPath);
-    if (!fs.existsSync(openapiExamplesDirPath)) {
-      throw Error(
-        `❌ ERROR: openapi-examples directory does not exist at ${openapiExamplesDirPath}`
-      );
-    }
-    // find file that starts with "logo" in openapiExamplesDirPath
-    const logoPath = fs
-      .readdirSync(openapiExamplesDirPath)
-      .find((file) => file.startsWith("logo"));
-    if (logoPath === undefined) {
-      throw Error(`❌ ERROR: logo does not exist at ${openapiExamplesDirPath}`);
-    }
-    // find file that starts with "favicon" in openapiExamplesDirPath
-    const faviconPath = fs
-      .readdirSync(openapiExamplesDirPath)
-      .find((file) => file.startsWith("favicon"));
-    if (faviconPath === undefined) {
-      throw Error(
-        `❌ ERROR: favicon does not exist at ${openapiExamplesDirPath}`
-      );
-    }
-    // find file that starts with "imagePreview" in openapiExamplesDirPath
-    const imagePreviewPath = fs
-      .readdirSync(openapiExamplesDirPath)
-      .find((file) => file.startsWith("imagePreview"));
-    if (imagePreviewPath === undefined) {
-      throw Error(
-        `❌ ERROR: imagePreview does not exist at ${openapiExamplesDirPath}`
-      );
-    }
-
-    const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
-
-    const nonEmptyCategories = publishData.categories ?? categories ?? [];
-    if (nonEmptyCategories.length === 0) {
-      throw Error(`❌ ERROR: No categories for ${openapiExamplesDirPath}`);
-    }
+    const { openapiExamplesDirPath, specData } = publishDatum[spec];
 
     let rawSpecString = getRawSpecString(specData);
     const oas = await parseSpec(rawSpecString);
@@ -157,26 +211,57 @@ async function main() {
       oas.spec.components.securitySchemes = publishData.securitySchemes;
     }
 
+    const openapiFilename = "openapi.yaml";
+    const fixedSpecFileName = getFixedSpecFileName(publishData.sdkName);
+    fixedSpecFileNames[spec] = fixedSpecFileName;
+
     // write oas to openapiExamples directory to file openapi.yaml
     fs.writeFileSync(
-      path.join(openapiExamplesDirPath, "openapi.yaml"),
+      path.join(openapiExamplesDirPath, openapiFilename),
       yaml.dump(oas.spec)
     );
 
-    // find file that starts with "openapi" in openapiExamplesDirPath
-    const openapiPath = fs
-      .readdirSync(openapiExamplesDirPath)
-      .find((file) => file.startsWith("openapi"));
-    if (openapiPath === undefined) {
-      throw Error(
-        `❌ ERROR: openapi does not exist at ${openapiExamplesDirPath}`
-      );
-    }
+    promises.push(
+      fixSpec(
+        path.join(openapiExamplesDirPath, openapiFilename),
+        path.join(fixedSpecsOutputPath, fixedSpecFileName)
+      )
+    );
+  }
+  await Promise.all(promises);
 
-    const fixedSpecFileName = getFixedSpecFileName(publishData.sdkName);
-    fixSpec(
-      path.join(openapiExamplesDirPath, openapiPath),
-      path.join(fixedSpecsOutputPath, fixedSpecFileName)
+  /**
+   * Second pass: write to published/
+   */
+  for (const spec in publishDatum) {
+    const {
+      openapiExamplesDirPath,
+      nonEmptyCategories,
+      publishData,
+      githubUrlPrefix,
+      logoPath,
+      openapiPath,
+      imagePreviewPath,
+      faviconPath,
+      metaDescription,
+    } = publishDatum[spec];
+    const specDataPath = path.join(specDataDirPath, spec);
+    const { categories, ...specData }: SdkPagePropsWithPropertiesOmitted =
+      JSON.parse(fs.readFileSync(`${specDataPath}.json`, "utf-8"));
+
+    const typescriptSdkUsageCode = generateTypescriptSdkUsageCode({
+      ...specData,
+      ...publishData,
+    });
+
+    // write fixed oas to openapiExamples directory to file openapi.yaml
+    const fixedSpecFileName = fixedSpecFileNames[spec];
+    const fixedSpecPath = path.join(fixedSpecsOutputPath, fixedSpecFileName);
+    const fixedSpecString = fs.readFileSync(fixedSpecPath, "utf-8");
+    const oas = await parseSpec(fixedSpecString);
+    fs.writeFileSync(
+      path.join(openapiExamplesDirPath, "openapi.yaml"),
+      yaml.dump(oas.spec)
     );
 
     const merged: Published = {
@@ -184,7 +269,7 @@ async function main() {
       ...publishData,
       categories: nonEmptyCategories,
       methods: getMethodObjects(oas),
-      metaDescription: publishData.metaDescription,
+      metaDescription,
       originalSpecUrl: specData.openApiRaw,
       logo: `${githubUrlPrefix}${logoPath}`,
       openApiRaw: `${githubUrlPrefix}${openapiPath}`,
@@ -193,7 +278,7 @@ async function main() {
       clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       typescriptSdkUsageCode,
-      fixedSpecFileName: fixedSpecFileName,
+      fixedSpecFileName: fixedSpecFileNames[spec],
     };
 
     if (
@@ -247,7 +332,10 @@ function getFixedSpecFileName(sdkName: string) {
   return `${companyAndPlatform}-fixed-spec.yaml`;
 }
 
-function fixSpec(specInputPath: string, specOutputPath: string) {
+async function fixSpec(
+  specInputPath: string,
+  specOutputPath: string
+): Promise<void> {
   if (!fs.existsSync(specOutputPath)) fs.writeFileSync(specOutputPath, "");
   const progressYamlPath = path.join(
     progressYamlsPath,
@@ -255,20 +343,21 @@ function fixSpec(specInputPath: string, specOutputPath: string) {
   );
   const cliName = "konfig";
   // const cliName = "../generator/konfig-dash/packages/konfig-cli/bin/run"; // for development
-  execa(cliName, [
-    "fix",
-    "--noInput",
-    "-i",
-    specInputPath,
-    "-s",
-    specOutputPath,
-    "-p",
-    progressYamlPath,
-  ])
-    .then(() =>
-      console.log(`✅ Fixed spec ${path.dirname(specInputPath)}/openapi.yaml`)
-    )
-    .catch((err) => console.log(`❌ ERROR: ${err}`));
+  try {
+    await execa(cliName, [
+      "fix",
+      "--noInput",
+      "-i",
+      specInputPath,
+      "-s",
+      specOutputPath,
+      "-p",
+      progressYamlPath,
+    ]);
+  } catch (err) {
+    console.log(`❌ ERROR: ${err}`);
+  }
+  console.log(`✅ Fixed spec ${path.dirname(specInputPath)}/openapi.yaml`);
 }
 
 function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
