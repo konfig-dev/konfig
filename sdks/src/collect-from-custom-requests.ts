@@ -52,7 +52,9 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
       },
     }).then((res) => res.text());
 
-    const rawSpec = regex ? extractJsonFromString(rawString, regex) : rawString;
+    const rawSpec = regex
+      ? extractJsonFromString(rawString, regex)
+      : JSON.parse(rawString);
 
     if (getRequest.openapi !== undefined) {
       rawSpec.openapi = getRequest.openapi;
@@ -89,9 +91,9 @@ const customRequests: Record<string, CustomRequest> = {
     regex: `"swaggerDoc": (.*),\n.*"customOptions"`,
     openapi: "3.0.3",
   },
-  "qualtrics.com_audit-exports": {
+  "qualtrics.com_survey": {
     type: "GET",
-    url: "https://stoplight.io/api/v1/projects/qualtricsv2/publicapidocs/nodes/reference/audit-exports.json?fromExportButton=true&snapshotType=http_service",
+    url: "https://stoplight.io/api/v1/projects/qualtricsv2/publicapidocs/nodes/reference/surveyDefinitions.json?fromExportButton=true&snapshotType=http_service",
   },
   /**
    * Got this from inspecting network tab when going to API Reference page at:
