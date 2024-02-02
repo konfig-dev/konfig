@@ -37,15 +37,23 @@ async function updateOperationTag({
   progress,
   path,
   method,
+  noInput,
 }: {
   spec: Spec['spec']
   operation: Operation
   path: string
   method: HttpMethods
   progress: Progress
+  noInput: boolean
 }) {
   logOperationDetails({ operation: { operation, method, path } })
-  const tag = await getOperationTag({ path, method, tags: spec.tags, progress })
+  const tag = await getOperationTag({
+    path,
+    method,
+    tags: spec.tags,
+    progress,
+    noInput,
+  })
   operation.tags = [tag]
   progress.saveOperationTag({ path, method, operationTag: tag })
 }
@@ -55,25 +63,43 @@ async function getOperationTag({
   method,
   tags,
   progress,
+  noInput,
 }: {
   path: string
   method: HttpMethods
   tags: TagObject[] | undefined
   progress: Progress
+  noInput: boolean
 }): Promise<string> {
   const existingTag = progress.getOperationTag({ path, method })
   if (existingTag !== undefined) {
     return existingTag
   }
-  const { tag } = await inquirer.prompt<{ tag: string }>([
-    {
-      type: 'list',
-      name: 'tag',
-      choices: tags,
-      message: 'Choose an existing tag',
-    },
-  ])
+  const { tag } = noInput
+    ? chooseTag(path, tags)
+    : await inquirer.prompt<{ tag: string }>([
+        {
+          type: 'list',
+          name: 'tag',
+          choices: tags,
+          message: 'Choose an existing tag',
+        },
+      ])
   return tag
+}
+
+// Chooses a tag when we are in noInput mode
+// If any tag name exists in the path, choose that one. Otherwise, choose the first tag
+function chooseTag(
+  path: string,
+  tags: TagObject[] | undefined
+): { tag: string } {
+  if (tags === undefined || tags.length == 0) throw Error('Tags is empty')
+  for (const tag of tags) {
+    if (path.toLowerCase().includes(tag.name.toLowerCase()))
+      return { tag: tag.name }
+  }
+  return { tag: tags[0].name }
 }
 
 function generatePrefix({ operation }: { operation: Operation }) {
@@ -95,16 +121,19 @@ export async function fixOperationIds({
   progress,
   alwaysYes,
   useAIForOperationId,
+  noInput,
 }: {
   spec: Spec['spec']
   progress: Progress
   alwaysYes: boolean
   useAIForOperationId: boolean
+  noInput: boolean
 }): Promise<number> {
   let numberOfUpdatedOperationIds = 0
   if (spec.paths === undefined) return numberOfUpdatedOperationIds
   if (spec.tags === undefined || spec.tags.length === 0) {
-    throw Error('TODO')
+    if (noInput) spec.tags = [{ name: 'core' }]
+    else throw Error('No tags. Please add tags to your OpenAPI specification')
   }
   // Dummy key prevents error from being thrown
   const openai = new OpenAI({
@@ -129,7 +158,14 @@ export async function fixOperationIds({
       )
     }
     if (operation.tags === undefined || operation.tags.length === 0) {
-      await updateOperationTag({ spec, operation, progress, path, method })
+      await updateOperationTag({
+        spec,
+        operation,
+        progress,
+        path,
+        method,
+        noInput,
+      })
     }
     numberOfUpdatedOperationIds++
     const { prefix, generateOperationId } = generatePrefix({ operation })

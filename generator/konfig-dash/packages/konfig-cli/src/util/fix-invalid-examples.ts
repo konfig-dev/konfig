@@ -3,8 +3,10 @@ import { OpenAPIV3_XDocument, recurseObject } from 'konfig-lib'
 
 export function fixInvalidExamples({
   spec,
+  noInput,
 }: {
   spec: OpenAPIV3_XDocument
+  noInput: boolean
 }): number {
   let numberOfExamplesFixed = 0
   recurseObject(spec, ({ value }) => {
@@ -12,7 +14,7 @@ export function fixInvalidExamples({
     numberOfExamplesFixed += fixParameterExampleNumber(value)
     numberOfExamplesFixed += fixSchemaExampleInteger(value)
     numberOfExamplesFixed += fixSchemaExampleNumber(value)
-    numberOfExamplesFixed += fixSchemaExampleBoolean(value)
+    numberOfExamplesFixed += fixSchemaExampleBoolean(value, noInput)
   })
   return numberOfExamplesFixed
 }
@@ -61,7 +63,7 @@ function fixSchemaExampleInteger(value: any): number {
   return 1
 }
 
-function fixSchemaExampleBoolean(value: any): number {
+function fixSchemaExampleBoolean(value: any, noInput: boolean): number {
   if (typeof value !== 'object') return 0
   if (value === null) return 0
   if (!('type' in value)) return 0
@@ -86,6 +88,11 @@ function fixSchemaExampleBoolean(value: any): number {
   }
   if (value.example === 0) {
     value.example = false
+    return 1
+  }
+  if (noInput) {
+    // Instead of failing, we'll just make up an example
+    value.example = true
     return 1
   }
   throw Error(`Could not parse value "${value.example}" for type of boolean`)

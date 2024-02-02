@@ -7,10 +7,12 @@ import { hasSchemaWithPossibleIncorrectDataType } from './has-schema-with-possib
 export async function ignorePotentialIncorrectTypeIfConfirmed({
   spec,
   alwaysYes,
+  noInput,
   progress,
 }: {
   spec: Spec
   alwaysYes: boolean
+  noInput: boolean
   progress: Progress
 }): Promise<0 | 1> {
   const infoObject: any = spec.spec.info
@@ -36,6 +38,7 @@ export async function ignorePotentialIncorrectTypeIfConfirmed({
   const ignorePotentialIncorrectType = await getIgnorePotentialIncorrectType({
     progress,
     alwaysYes,
+    noInput,
   })
   if (!ignorePotentialIncorrectType) return 0
   if (infoObject['x-konfig-ignore'] === undefined)
@@ -47,9 +50,11 @@ export async function ignorePotentialIncorrectTypeIfConfirmed({
 async function getIgnorePotentialIncorrectType({
   progress,
   alwaysYes,
+  noInput,
 }: {
   progress: Progress
   alwaysYes: boolean
+  noInput: boolean
 }): Promise<boolean> {
   const savedAnswerForIgnorePotentialIncorrectType =
     progress.getIgnorePotentialIncorrectType()
@@ -64,7 +69,7 @@ async function getIgnorePotentialIncorrectType({
   }
   const confirm = await inquirerConfirm({
     message: `Ignore "${POTENTIAL_INCORRECT_DATA_TYPE_RULE_NAME}" lint rule?`,
-    alwaysYes: false,
+    alwaysYes: noInput,
   })
   progress.saveIgnorePotentialIncorrectType({ confirm })
   return confirm

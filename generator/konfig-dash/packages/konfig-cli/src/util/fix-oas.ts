@@ -44,6 +44,7 @@ export async function fixOas({
   skipMissingResponseDescription,
   skipFixListUsageSecurity,
   useAIForOperationId,
+  noInput,
 }: {
   spec: Spec
   konfigYaml?: KonfigYamlType
@@ -54,6 +55,7 @@ export async function fixOas({
   skipMissingResponseDescription?: boolean
   skipFixListUsageSecurity?: boolean
   useAIForOperationId: boolean
+  noInput: boolean
 }) {
   /**
    * ---Start fixing OAS---
@@ -74,6 +76,7 @@ export async function fixOas({
     spec: spec.spec,
     progress,
     alwaysYes,
+    noInput,
   })
 
   // Missing Operation Response description
@@ -109,10 +112,11 @@ export async function fixOas({
     progress,
     alwaysYes,
     useAIForOperationId,
+    noInput,
   })
 
   // Examples
-  const numberOfExamplesFixed = fixInvalidExamples({ spec: spec.spec })
+  const numberOfExamplesFixed = fixInvalidExamples({ spec: spec.spec, noInput })
 
   // Trailing Slashes
   const numberOfTrailingSlashesFixed = fixTrailingSlashes({ spec: spec.spec })
@@ -122,6 +126,7 @@ export async function fixOas({
     spec: spec.spec,
     alwaysYes,
     progress,
+    noInput,
   })
 
   // Redundant security requirement and parameters
@@ -184,6 +189,7 @@ export async function fixOas({
     await ignoreObjectsWithNoProperties({
       spec,
       alwaysYes,
+      noInput,
       progress,
     })
   // Objects with no properties
@@ -210,6 +216,7 @@ export async function fixOas({
     progress,
     alwaysYes,
     auto,
+    noInput,
   })
 
   // Ignore potential incorrect type
@@ -217,6 +224,7 @@ export async function fixOas({
     await ignorePotentialIncorrectTypeIfConfirmed({
       spec,
       alwaysYes,
+      noInput,
       progress,
     })
 

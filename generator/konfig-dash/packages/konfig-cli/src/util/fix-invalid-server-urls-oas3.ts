@@ -9,10 +9,12 @@ export async function fixInvalidServerUrlsOas3({
   spec,
   progress,
   alwaysYes,
+  noInput,
 }: {
   spec: OpenAPIV3_XDocument
   progress: Progress
   alwaysYes: boolean
+  noInput: boolean
 }): Promise<number> {
   let fixes = 0
 
@@ -42,19 +44,21 @@ export async function fixInvalidServerUrlsOas3({
       }
     }
 
-    const { newUrl } = await inquirer.prompt<{ newUrl: string }>([
-      {
-        type: 'input',
-        name: 'newUrl',
-        message: `Enter new URL name:`,
-        validate(url: string) {
-          return (
-            urlRegex.test(url) ||
-            'Please provide valid server URL (e.g. https://api.konfigthis.com)'
-          )
-        },
-      },
-    ])
+    const { newUrl } = noInput
+      ? { newUrl: server.url } // ignore
+      : await inquirer.prompt<{ newUrl: string }>([
+          {
+            type: 'input',
+            name: 'newUrl',
+            message: `Enter new URL name:`,
+            validate(url: string) {
+              return (
+                urlRegex.test(url) ||
+                'Please provide valid server URL (e.g. https://api.konfigthis.com)'
+              )
+            },
+          },
+        ])
     progress.saveServerUrl({ oldUrl: server.url, newUrl })
     server.url = newUrl
   }

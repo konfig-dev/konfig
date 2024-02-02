@@ -7,10 +7,12 @@ export async function fixMissingInfoDescription({
   spec,
   progress,
   alwaysYes,
+  noInput,
 }: {
   spec: Spec['spec']
   progress: Progress
   alwaysYes: boolean
+  noInput: boolean
 }): Promise<number> {
   if (spec.info.description !== undefined) return 0
 
@@ -27,17 +29,19 @@ export async function fixMissingInfoDescription({
     }
   }
 
-  const { description } = await inquirer.prompt<{ description: string }>([
-    {
-      type: 'input',
-      name: 'description',
-      message:
-        'Missing Info "description" field. Enter description (what does your API help developers do?):',
-      validate(input: string) {
-        return descriptionSchema.safeParse(input).success
-      },
-    },
-  ])
+  const { description } = noInput
+    ? { description: 'Missing description placeholder' }
+    : await inquirer.prompt<{ description: string }>([
+        {
+          type: 'input',
+          name: 'description',
+          message:
+            'Missing Info "description" field. Enter description (what does your API help developers do?):',
+          validate(input: string) {
+            return descriptionSchema.safeParse(input).success
+          },
+        },
+      ])
 
   spec.info.description = description
   progress.saveInfoDescription({ description })

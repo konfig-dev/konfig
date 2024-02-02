@@ -2,6 +2,7 @@ import * as inquirer from 'inquirer'
 import {
   getOperations,
   MediaObject,
+  OpenAPIV3_XDocument,
   Operation,
   resolveRef,
   SchemaObject,
@@ -20,11 +21,13 @@ export async function fixComponentsSchemasDefinedOas3({
   progress,
   alwaysYes,
   auto,
+  noInput,
 }: {
   spec: Spec
   progress: Progress
   alwaysYes: boolean
   auto: boolean
+  noInput: boolean
 }): Promise<number> {
   let numberOfComponentsDefined = 0
   const operations = getOperations({ spec: spec.spec })
@@ -71,6 +74,7 @@ export async function fixComponentsSchemasDefinedOas3({
         type: 'request',
         spec: spec.spec,
         auto,
+        noInput,
         operation,
       })
       extractToComponentsSchema({
@@ -129,6 +133,7 @@ export async function fixComponentsSchemasDefinedOas3({
           type: 'response',
           spec: spec.spec,
           auto,
+          noInput,
           operation,
           statusCode,
         })
@@ -171,6 +176,7 @@ async function inquireName({
   type,
   spec,
   auto,
+  noInput,
   operation,
   statusCode,
 }: {
@@ -180,6 +186,7 @@ async function inquireName({
   type: 'response' | 'request'
   statusCode?: string
   auto: boolean
+  noInput: boolean
 }) {
   console.log(
     boxen(JSON.stringify(schema, undefined, 2), {
@@ -198,7 +205,9 @@ async function inquireName({
       const secondNameTry = `${part1}${part2}${statusCode}${part3}`
       if (validateSchemaName({ name: secondNameTry, spec }))
         return secondNameTry
+      if (noInput) return suffixWithInteger(secondNameTry, spec)
     }
+    if (noInput) return suffixWithInteger(name, spec)
   }
   const { name } = await inquirer.prompt<{ name: string }>([
     {
@@ -214,4 +223,10 @@ async function inquireName({
     },
   ])
   return name
+}
+
+function suffixWithInteger(name: string, spec: OpenAPIV3_XDocument) {
+  let i = 1
+  while (!validateSchemaName({ name: `${name}${i}`, spec })) i++
+  return `${name}${i}`
 }

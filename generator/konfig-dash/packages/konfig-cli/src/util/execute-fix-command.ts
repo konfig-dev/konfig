@@ -27,15 +27,23 @@ interface FixOptions {
   ci?: boolean
   useAIForOperationId?: boolean
   progressYamlOverridePath?: string
+  noInput?: boolean
 }
 
 export async function executeFixCommand(options: FixOptions): Promise<void> {
   const flags = {
     ...options,
     auto: options.auto ?? true,
-    alwaysYes: !!(options.alwaysYes == null || options.alwaysYes || options.ci), // ci mode should always confirm with yes
-    ci: options.ci ?? false,
-    useAIForOperationId: options.useAIForOperationId ?? false,
+    alwaysYes: !!(
+      options.alwaysYes == null ||
+      options.alwaysYes ||
+      options.ci ||
+      options.noInput
+    ), // ci & noInput modes should always confirm with yes
+    ci: (options.ci || options.noInput) ?? false,
+    useAIForOperationId:
+      (options.useAIForOperationId || options.noInput) ?? false,
+    noInput: options.noInput ?? false,
   }
 
   if (flags.useAIForOperationId && process.env.OPENAI_API_KEY === undefined) {
@@ -141,6 +149,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     skipMissingResponseDescription: flags.skipMissingResponseDescriptionFix,
     skipFixListUsageSecurity: flags.skipListUsageSecurity,
     useAIForOperationId: flags.useAIForOperationId,
+    noInput: flags.noInput,
   })
 
   fs.writeFileSync(

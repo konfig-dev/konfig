@@ -74,6 +74,15 @@ export default class Fix extends Command {
       char: 'p',
       description: 'Override path to read and write progress.yaml file.',
     }),
+    noInput: Flags.boolean({
+      name: 'noInput',
+      char: 'n',
+      default: false,
+      description:
+        'Run in a mode which requires no input whatsoever from the user. \
+        This flag will enable --alwaysYes, --auto, --ci, and --useAIForOperationId flags; \
+        any other rules which attempt to prompt for input will be ignored.',
+    }),
   }
 
   public async run(): Promise<void> {

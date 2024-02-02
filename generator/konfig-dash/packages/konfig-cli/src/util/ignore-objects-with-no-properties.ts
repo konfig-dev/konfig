@@ -12,10 +12,12 @@ import { findMediaObjects } from './find-media-objects'
 export async function ignoreObjectsWithNoProperties({
   spec,
   alwaysYes,
+  noInput,
   progress,
 }: {
   spec: Spec
   alwaysYes: boolean
+  noInput: boolean
   progress: Progress
 }): Promise<0 | 1> {
   const infoObject: any = spec.spec.info
@@ -45,6 +47,7 @@ export async function ignoreObjectsWithNoProperties({
   const ignorePotentialIncorrectType = await getIgnoreAnswer({
     progress,
     alwaysYes,
+    noInput,
   })
   if (!ignorePotentialIncorrectType) return 0
   if (infoObject['x-konfig-ignore'] === undefined)
@@ -56,9 +59,11 @@ export async function ignoreObjectsWithNoProperties({
 async function getIgnoreAnswer({
   progress,
   alwaysYes,
+  noInput,
 }: {
   progress: Progress
   alwaysYes: boolean
+  noInput: boolean
 }): Promise<boolean> {
   const savedAnswer = progress.getIgnoreObjectsWithNoProperties()
   if (savedAnswer !== undefined) {
@@ -72,7 +77,7 @@ async function getIgnoreAnswer({
   }
   const confirm = await inquirerConfirm({
     message: `Ignore "${OBJECT_WITH_NO_PROPERTIES_RULE_NAME}" lint rule?`,
-    alwaysYes: false,
+    alwaysYes: noInput,
   })
   progress.saveIgnoreObjectsWithNoProperties({ confirm })
   return confirm
