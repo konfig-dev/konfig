@@ -33,7 +33,7 @@
   "methods": [
     {
       "url": "/custom_base_images",
-      "method": "getCustomBaseImages",
+      "method": "list",
       "httpMethod": "get",
       "tag": "Custom Base Images",
       "typeScriptTag": "customBaseImages",
@@ -130,7 +130,7 @@
     },
     {
       "url": "/custom_base_images",
-      "method": "createCustomBaseImage",
+      "method": "markImageAsCustomBase",
       "httpMethod": "post",
       "tag": "Custom Base Images",
       "typeScriptTag": "customBaseImages",
@@ -182,7 +182,7 @@
     },
     {
       "url": "/custom_base_images/{custombaseimage_id}",
-      "method": "deleteCustomBaseImage",
+      "method": "removeCustomBaseImage",
       "httpMethod": "delete",
       "tag": "Custom Base Images",
       "typeScriptTag": "customBaseImages",
@@ -218,7 +218,7 @@
     },
     {
       "url": "/custom_base_images/{custombaseimage_id}",
-      "method": "getCustomBaseImage",
+      "method": "getById",
       "httpMethod": "get",
       "tag": "Custom Base Images",
       "typeScriptTag": "customBaseImages",
@@ -266,7 +266,7 @@
     },
     {
       "url": "/custom_base_images/{custombaseimage_id}",
-      "method": "updateCustomBaseImage",
+      "method": "updateAttributes",
       "httpMethod": "patch",
       "tag": "Custom Base Images",
       "typeScriptTag": "customBaseImages",
@@ -320,7 +320,7 @@
     },
     {
       "url": "/groups/{group_id}/apps/installs",
-      "method": "getAppInstallsForGroup",
+      "method": "listGroupAppInstalls",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -392,7 +392,7 @@
     },
     {
       "url": "/groups/{group_id}/apps/installs",
-      "method": "createGroupAppInstall",
+      "method": "installGroupApp",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -456,7 +456,7 @@
     },
     {
       "url": "/groups/{group_id}/apps/installs/{install_id}",
-      "method": "deleteGroupAppInstallById",
+      "method": "revokeGroupAppInstall",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -510,7 +510,7 @@
     },
     {
       "url": "/groups/{group_id}/apps/installs/{install_id}/secrets",
-      "method": "updateGroupAppInstallSecret",
+      "method": "createInstallSecret",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -574,7 +574,7 @@
     },
     {
       "url": "/groups/{group_id}/audit_logs/search",
-      "method": "listGroupAuditLogs",
+      "method": "searchGroupAuditLogs",
       "httpMethod": "get",
       "tag": "Audit Logs",
       "typeScriptTag": "auditLogs",
@@ -667,7 +667,7 @@
     },
     {
       "url": "/groups/{group_id}/issues",
-      "method": "listGroupIssues",
+      "method": "byGroupId",
       "httpMethod": "get",
       "tag": "Issues",
       "typeScriptTag": "issues",
@@ -776,7 +776,7 @@
     },
     {
       "url": "/groups/{group_id}/issues/{issue_id}",
-      "method": "getGroupIssueByIssueId",
+      "method": "getByIssueId",
       "httpMethod": "get",
       "tag": "Issues",
       "typeScriptTag": "issues",
@@ -834,7 +834,7 @@
     },
     {
       "url": "/groups/{group_id}/service_accounts",
-      "method": "getManyGroupServiceAccount",
+      "method": "listGroupServiceAccounts",
       "httpMethod": "get",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -897,7 +897,7 @@
     },
     {
       "url": "/groups/{group_id}/service_accounts",
-      "method": "createGroupServiceAccount",
+      "method": "createGroup",
       "httpMethod": "post",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -947,7 +947,7 @@
     },
     {
       "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}",
-      "method": "deleteOneGroupServiceAccount",
+      "method": "deleteGroupServiceAccount",
       "httpMethod": "delete",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -997,7 +997,7 @@
     },
     {
       "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}",
-      "method": "getOneGroupServiceAccount",
+      "method": "getGroupServiceAccount",
       "httpMethod": "get",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -1051,7 +1051,7 @@
     },
     {
       "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}",
-      "method": "updateGroupServiceAccount",
+      "method": "updateGroupNameById",
       "httpMethod": "patch",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -1111,7 +1111,7 @@
     },
     {
       "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}/secrets",
-      "method": "updateServiceAccountSecret",
+      "method": "manageClientSecret",
       "httpMethod": "post",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -1171,7 +1171,7 @@
     },
     {
       "url": "/groups/{group_id}/settings/iac",
-      "method": "getIacSettingsForGroup",
+      "method": "getForGroup",
       "httpMethod": "get",
       "tag": "IacSettings",
       "typeScriptTag": "iacSettings",
@@ -1219,7 +1219,7 @@
     },
     {
       "url": "/groups/{group_id}/settings/iac",
-      "method": "updateIacSettingsForGroup",
+      "method": "updateForGroup",
       "httpMethod": "patch",
       "tag": "IacSettings",
       "typeScriptTag": "iacSettings",
@@ -1272,7 +1272,7 @@
     },
     {
       "url": "/openapi",
-      "method": "listApiVersions",
+      "method": "listAvailableVersions",
       "httpMethod": "get",
       "tag": "OpenAPI",
       "typeScriptTag": "openApi",
@@ -1303,7 +1303,7 @@
     },
     {
       "url": "/openapi/{version}",
-      "method": "getApiVersion",
+      "method": "getEffectiveVersion",
       "httpMethod": "get",
       "tag": "OpenAPI",
       "typeScriptTag": "openApi",
@@ -1341,7 +1341,7 @@
     },
     {
       "url": "/orgs",
-      "method": "listOrgs",
+      "method": "listAccessibleOrganizations",
       "httpMethod": "get",
       "tag": "Orgs",
       "typeScriptTag": "orgs",
@@ -1423,7 +1423,7 @@
     },
     {
       "url": "/orgs/{org_id}",
-      "method": "getOrg",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "Orgs",
       "typeScriptTag": "orgs",
@@ -1475,7 +1475,7 @@
     },
     {
       "url": "/orgs/{org_id}",
-      "method": "updateOrg",
+      "method": "updateDetails",
       "httpMethod": "patch",
       "tag": "Orgs",
       "typeScriptTag": "orgs",
@@ -1533,7 +1533,7 @@
     },
     {
       "url": "/orgs/{org_id}/app_bots",
-      "method": "getAppBots",
+      "method": "listAppBots",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1605,7 +1605,7 @@
     },
     {
       "url": "/orgs/{org_id}/app_bots/{bot_id}",
-      "method": "deleteAppBot",
+      "method": "revokeBotAuthorization",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1659,7 +1659,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps",
-      "method": "getApps",
+      "method": "listOrgApps",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1726,7 +1726,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps",
-      "method": "createApp",
+      "method": "createOrganizationApp",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1784,7 +1784,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/creations",
-      "method": "getOrgApps",
+      "method": "listOrgCreations",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1851,7 +1851,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/creations",
-      "method": "createOrgApp",
+      "method": "createNewAppForOrganization",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1909,7 +1909,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/creations/{app_id}",
-      "method": "deleteAppById",
+      "method": "deleteByAppId",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -1963,7 +1963,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/creations/{app_id}",
-      "method": "getAppById",
+      "method": "getByAppId",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2021,7 +2021,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/creations/{app_id}",
-      "method": "updateAppCreationById",
+      "method": "updateCreationAttributesById",
       "httpMethod": "patch",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2085,7 +2085,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/creations/{app_id}/secrets",
-      "method": "manageAppCreationSecret",
+      "method": "manageClientSecretForSnykApp",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2149,7 +2149,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/installs",
-      "method": "getAppInstallsForOrg",
+      "method": "listOrgInstalls",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2221,7 +2221,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/installs",
-      "method": "createOrgAppInstall",
+      "method": "installSnykAppToOrg",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2285,7 +2285,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/installs/{install_id}",
-      "method": "deleteAppOrgInstallById",
+      "method": "byInstallId",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2339,7 +2339,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/installs/{install_id}/secrets",
-      "method": "updateOrgAppInstallSecret",
+      "method": "manageClientSecretForSnykApp",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2403,7 +2403,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/{client_id}",
-      "method": "deleteApp",
+      "method": "deleteAppById",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2457,7 +2457,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/{client_id}",
-      "method": "getApp",
+      "method": "getByClientId",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2515,7 +2515,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/{client_id}",
-      "method": "updateApp",
+      "method": "updateAttributes",
       "httpMethod": "patch",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2579,7 +2579,7 @@
     },
     {
       "url": "/orgs/{org_id}/apps/{client_id}/secrets",
-      "method": "manageSecrets",
+      "method": "manageClientSecrets",
       "httpMethod": "post",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -2649,7 +2649,7 @@
     },
     {
       "url": "/orgs/{org_id}/audit_logs/search",
-      "method": "listOrgAuditLogs",
+      "method": "searchOrganizationAuditLogs",
       "httpMethod": "get",
       "tag": "Audit Logs",
       "typeScriptTag": "auditLogs",
@@ -2742,7 +2742,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections",
-      "method": "getCollections",
+      "method": "getList",
       "httpMethod": "get",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -2825,7 +2825,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections",
-      "method": "createCollection",
+      "method": "createNew",
       "httpMethod": "post",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -2883,7 +2883,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections/{collection_id}",
-      "method": "deleteCollection",
+      "method": "removeById",
       "httpMethod": "delete",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -2937,7 +2937,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections/{collection_id}",
-      "method": "getCollection",
+      "method": "getById",
       "httpMethod": "get",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -2995,7 +2995,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections/{collection_id}",
-      "method": "updateCollection",
+      "method": "editCollection",
       "httpMethod": "patch",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -3059,7 +3059,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections/{collection_id}/relationships/projects",
-      "method": "deleteProjectsCollection",
+      "method": "removeProjects",
       "httpMethod": "delete",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -3119,7 +3119,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections/{collection_id}/relationships/projects",
-      "method": "getProjectsOfCollection",
+      "method": "getProjects",
       "httpMethod": "get",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -3213,7 +3213,7 @@
     },
     {
       "url": "/orgs/{org_id}/collections/{collection_id}/relationships/projects",
-      "method": "updateCollectionWithProjects",
+      "method": "addProjectsTo",
       "httpMethod": "post",
       "tag": "Collection",
       "typeScriptTag": "collection",
@@ -3273,7 +3273,7 @@
     },
     {
       "url": "/orgs/{org_id}/container_images",
-      "method": "listContainerImage",
+      "method": "listInstancesOfContainerImage",
       "httpMethod": "get",
       "tag": "ContainerImage",
       "typeScriptTag": "containerImage",
@@ -3355,7 +3355,7 @@
     },
     {
       "url": "/orgs/{org_id}/container_images/{image_id}",
-      "method": "getContainerImage",
+      "method": "getInstance",
       "httpMethod": "get",
       "tag": "ContainerImage",
       "typeScriptTag": "containerImage",
@@ -3486,7 +3486,7 @@
     },
     {
       "url": "/orgs/{org_id}/invites",
-      "method": "listOrgInvitation",
+      "method": "listPendingUserInvitations",
       "httpMethod": "get",
       "tag": "Invites",
       "typeScriptTag": "invites",
@@ -3549,7 +3549,7 @@
     },
     {
       "url": "/orgs/{org_id}/invites",
-      "method": "createOrgInvitation",
+      "method": "userToOrganization",
       "httpMethod": "post",
       "tag": "Invites",
       "typeScriptTag": "invites",
@@ -3603,7 +3603,7 @@
     },
     {
       "url": "/orgs/{org_id}/invites/{invite_id}",
-      "method": "deleteOrgInvitation",
+      "method": "cancelPendingInvitation",
       "httpMethod": "delete",
       "tag": "Invites",
       "typeScriptTag": "invites",
@@ -3653,7 +3653,7 @@
     },
     {
       "url": "/orgs/{org_id}/issues",
-      "method": "listOrgIssues",
+      "method": "listByOrgId",
       "httpMethod": "get",
       "tag": "Issues",
       "typeScriptTag": "issues",
@@ -3762,7 +3762,7 @@
     },
     {
       "url": "/orgs/{org_id}/issues/{issue_id}",
-      "method": "getOrgIssueByIssueId",
+      "method": "getById",
       "httpMethod": "get",
       "tag": "Issues",
       "typeScriptTag": "issues",
@@ -3820,7 +3820,7 @@
     },
     {
       "url": "/orgs/{org_id}/packages/issues",
-      "method": "listIssuesForManyPurls",
+      "method": "queryForPackages",
       "httpMethod": "post",
       "tag": "Issues",
       "typeScriptTag": "issues",
@@ -3878,7 +3878,7 @@
     },
     {
       "url": "/orgs/{org_id}/packages/{purl}/issues",
-      "method": "fetchIssuesPerPurl",
+      "method": "listByPackage",
       "httpMethod": "get",
       "tag": "Issues",
       "typeScriptTag": "issues",
@@ -3946,7 +3946,7 @@
     },
     {
       "url": "/orgs/{org_id}/projects",
-      "method": "listOrgProjects",
+      "method": "listForOrg",
       "httpMethod": "get",
       "tag": "Projects",
       "typeScriptTag": "projects",
@@ -4104,7 +4104,7 @@
     },
     {
       "url": "/orgs/{org_id}/projects/{project_id}",
-      "method": "deleteOrgProject",
+      "method": "deleteByProjectId",
       "httpMethod": "delete",
       "tag": "Projects",
       "typeScriptTag": "projects",
@@ -4154,7 +4154,7 @@
     },
     {
       "url": "/orgs/{org_id}/projects/{project_id}",
-      "method": "getOrgProject",
+      "method": "getByProjectId",
       "httpMethod": "get",
       "tag": "Projects",
       "typeScriptTag": "projects",
@@ -4223,7 +4223,7 @@
     },
     {
       "url": "/orgs/{org_id}/projects/{project_id}",
-      "method": "updateOrgProject",
+      "method": "updateByProjectId",
       "httpMethod": "patch",
       "tag": "Projects",
       "typeScriptTag": "projects",
@@ -4288,7 +4288,7 @@
     },
     {
       "url": "/orgs/{org_id}/projects/{project_id}/sbom",
-      "method": "getSbom",
+      "method": "getProjectDocument",
       "httpMethod": "get",
       "tag": "SBOM",
       "typeScriptTag": "sbom",
@@ -4351,7 +4351,7 @@
     },
     {
       "url": "/orgs/{org_id}/service_accounts",
-      "method": "getManyOrgServiceAccounts",
+      "method": "listOrganizationServiceAccounts",
       "httpMethod": "get",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -4414,7 +4414,7 @@
     },
     {
       "url": "/orgs/{org_id}/service_accounts",
-      "method": "createOrgServiceAccount",
+      "method": "createForOrganization",
       "httpMethod": "post",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -4464,7 +4464,7 @@
     },
     {
       "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}",
-      "method": "deleteServiceAccount",
+      "method": "deleteOrgServiceAccount",
       "httpMethod": "delete",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -4514,7 +4514,7 @@
     },
     {
       "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}",
-      "method": "getOneOrgServiceAccount",
+      "method": "getOrganizationAccountById",
       "httpMethod": "get",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -4568,7 +4568,7 @@
     },
     {
       "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}",
-      "method": "updateOrgServiceAccount",
+      "method": "updateOrganizationServiceAccountName",
       "httpMethod": "patch",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -4628,7 +4628,7 @@
     },
     {
       "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}/secrets",
-      "method": "updateOrgServiceAccountSecret",
+      "method": "manageClientSecretForOrganizationServiceAccount",
       "httpMethod": "post",
       "tag": "ServiceAccounts",
       "typeScriptTag": "serviceAccounts",
@@ -4688,7 +4688,7 @@
     },
     {
       "url": "/orgs/{org_id}/settings/iac",
-      "method": "getIacSettingsForOrg",
+      "method": "getForOrgIac",
       "httpMethod": "get",
       "tag": "IacSettings",
       "typeScriptTag": "iacSettings",
@@ -4736,7 +4736,7 @@
     },
     {
       "url": "/orgs/{org_id}/settings/iac",
-      "method": "updateIacSettingsForOrg",
+      "method": "updateForOrg",
       "httpMethod": "patch",
       "tag": "IacSettings",
       "typeScriptTag": "iacSettings",
@@ -4789,7 +4789,7 @@
     },
     {
       "url": "/orgs/{org_id}/settings/sast",
-      "method": "getSastSettings",
+      "method": "getForOrg",
       "httpMethod": "get",
       "tag": "SastSettings",
       "typeScriptTag": "sastSettings",
@@ -4837,7 +4837,7 @@
     },
     {
       "url": "/orgs/{org_id}/settings/sast",
-      "method": "updateOrgSastSettings",
+      "method": "toggleSnykCodeSettings",
       "httpMethod": "patch",
       "tag": "SastSettings",
       "typeScriptTag": "sastSettings",
@@ -4891,7 +4891,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}",
-      "method": "deleteSlackDefaultNotificationSettings",
+      "method": "removeIntegration",
       "httpMethod": "delete",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -4945,7 +4945,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}",
-      "method": "getSlackDefaultNotificationSettings",
+      "method": "getDefaultNotificationSettings",
       "httpMethod": "get",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -5003,7 +5003,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}",
-      "method": "createSlackDefaultNotificationSettings",
+      "method": "createDefaultNotificationSettings",
       "httpMethod": "post",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -5067,7 +5067,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}/projects",
-      "method": "getSlackProjectNotificationSettingsCollection",
+      "method": "getOverridesForProjects",
       "httpMethod": "get",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -5140,7 +5140,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}",
-      "method": "deleteSlackProjectNotificationSettings",
+      "method": "removeProjectOverride",
       "httpMethod": "delete",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -5200,7 +5200,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}",
-      "method": "updateSlackProjectNotificationSettings",
+      "method": "updateNotificationSettingsForProject",
       "httpMethod": "patch",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -5269,7 +5269,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}",
-      "method": "createSlackProjectNotificationSettings",
+      "method": "projectOverride",
       "httpMethod": "post",
       "tag": "SlackSettings",
       "typeScriptTag": "slackSettings",
@@ -5339,7 +5339,7 @@
     },
     {
       "url": "/orgs/{org_id}/slack_app/{tenant_id}/channels",
-      "method": "listChannels",
+      "method": "getChannels",
       "httpMethod": "get",
       "tag": "Slack",
       "typeScriptTag": "slack",
@@ -5476,7 +5476,7 @@
     },
     {
       "url": "/self/apps",
-      "method": "getUserInstalledApps",
+      "method": "listApps",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -5537,7 +5537,7 @@
     },
     {
       "url": "/self/apps/installs",
-      "method": "getAppInstallsForUser",
+      "method": "listUserInstalledApps",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -5603,7 +5603,7 @@
     },
     {
       "url": "/self/apps/installs/{install_id}",
-      "method": "deleteUserAppInstallById",
+      "method": "revokeByInstallId",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -5651,7 +5651,7 @@
     },
     {
       "url": "/self/apps/{app_id}",
-      "method": "revokeUserInstalledApp",
+      "method": "revokeAppById",
       "httpMethod": "delete",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -5699,7 +5699,7 @@
     },
     {
       "url": "/self/apps/{app_id}/sessions",
-      "method": "getUserAppSessions",
+      "method": "getActiveSessions",
       "httpMethod": "get",
       "tag": "Apps",
       "typeScriptTag": "apps",
@@ -5824,7 +5824,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico",
   "clientNameCamelCase": "snyk",
-  "lastUpdated": "2024-02-02T19:31:09.871Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { Snyk } from 'snyk-typescript-sdk';\n\nconst snyk = new Snyk({\n    // API key value must be prefixed with \\\"Token \\\".\n    authorization: \"AUTHORIZATION\",\n    token: \"TOKEN\",\n})",
   "fixedSpecFileName": "snyk-fixed-spec.yaml"
 }

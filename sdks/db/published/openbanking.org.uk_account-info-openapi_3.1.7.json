@@ -52,7 +52,7 @@
   "methods": [
     {
       "url": "/account-access-consents",
-      "method": "createAccountAccessConsents",
+      "method": "createConsent",
       "httpMethod": "post",
       "tag": "Account Access",
       "typeScriptTag": "accountAccess",
@@ -75,12 +75,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -122,7 +116,7 @@
     },
     {
       "url": "/account-access-consents/{ConsentId}",
-      "method": "deleteAccountAccessConsentsConsentId",
+      "method": "deleteConsent",
       "httpMethod": "delete",
       "tag": "Account Access",
       "typeScriptTag": "accountAccess",
@@ -153,12 +147,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -182,7 +170,7 @@
     },
     {
       "url": "/account-access-consents/{ConsentId}",
-      "method": "getAccountAccessConsentsConsentId",
+      "method": "getConsent",
       "httpMethod": "get",
       "tag": "Account Access",
       "typeScriptTag": "accountAccess",
@@ -213,12 +201,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -246,7 +228,7 @@
     },
     {
       "url": "/accounts",
-      "method": "getAccounts",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Accounts",
       "typeScriptTag": "accounts",
@@ -269,12 +251,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -304,7 +280,7 @@
     },
     {
       "url": "/accounts/{AccountId}",
-      "method": "getAccountsAccountId",
+      "method": "get",
       "httpMethod": "get",
       "tag": "Accounts",
       "typeScriptTag": "accounts",
@@ -335,12 +311,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -368,7 +338,7 @@
     },
     {
       "url": "/accounts/{AccountId}/balances",
-      "method": "getAccountsAccountIdBalances",
+      "method": "get",
       "httpMethod": "get",
       "tag": "Balances",
       "typeScriptTag": "balances",
@@ -399,12 +369,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -432,7 +396,7 @@
     },
     {
       "url": "/accounts/{AccountId}/beneficiaries",
-      "method": "getAccountsAccountIdBeneficiaries",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Beneficiaries",
       "typeScriptTag": "beneficiaries",
@@ -463,12 +427,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -496,7 +454,7 @@
     },
     {
       "url": "/accounts/{AccountId}/direct-debits",
-      "method": "getAccountsAccountIdDirectDebits",
+      "method": "list",
       "httpMethod": "get",
       "tag": "Direct Debits",
       "typeScriptTag": "directDebits",
@@ -527,12 +485,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -560,7 +512,7 @@
     },
     {
       "url": "/accounts/{AccountId}/offers",
-      "method": "getAccountsAccountIdOffers",
+      "method": "getById",
       "httpMethod": "get",
       "tag": "Offers",
       "typeScriptTag": "offers",
@@ -591,12 +543,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -624,7 +570,7 @@
     },
     {
       "url": "/accounts/{AccountId}/parties",
-      "method": "getAccountsAccountIdParties",
+      "method": "getList",
       "httpMethod": "get",
       "tag": "Parties",
       "typeScriptTag": "parties",
@@ -653,12 +599,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -688,7 +628,7 @@
     },
     {
       "url": "/accounts/{AccountId}/party",
-      "method": "getAccountsAccountIdParty",
+      "method": "getByAccountId",
       "httpMethod": "get",
       "tag": "Parties",
       "typeScriptTag": "parties",
@@ -719,12 +659,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -752,7 +686,7 @@
     },
     {
       "url": "/accounts/{AccountId}/product",
-      "method": "getAccountsAccountIdProduct",
+      "method": "getByAccountId",
       "httpMethod": "get",
       "tag": "Products",
       "typeScriptTag": "products",
@@ -783,12 +717,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -816,7 +744,7 @@
     },
     {
       "url": "/accounts/{AccountId}/scheduled-payments",
-      "method": "getAccountsAccountIdScheduledPayments",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Scheduled Payments",
       "typeScriptTag": "scheduledPayments",
@@ -847,12 +775,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -880,7 +802,7 @@
     },
     {
       "url": "/accounts/{AccountId}/standing-orders",
-      "method": "getAccountsAccountIdStandingOrders",
+      "method": "get",
       "httpMethod": "get",
       "tag": "Standing Orders",
       "typeScriptTag": "standingOrders",
@@ -911,12 +833,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -944,7 +860,7 @@
     },
     {
       "url": "/accounts/{AccountId}/statements",
-      "method": "getAccountsAccountIdStatements",
+      "method": "get",
       "httpMethod": "get",
       "tag": "Statements",
       "typeScriptTag": "statements",
@@ -973,12 +889,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1018,7 +928,7 @@
     },
     {
       "url": "/accounts/{AccountId}/statements/{StatementId}",
-      "method": "getAccountsAccountIdStatementsStatementId",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "Statements",
       "typeScriptTag": "statements",
@@ -1053,12 +963,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1088,7 +992,7 @@
     },
     {
       "url": "/accounts/{AccountId}/statements/{StatementId}/file",
-      "method": "getAccountsAccountIdStatementsStatementIdFile",
+      "method": "getFile",
       "httpMethod": "get",
       "tag": "Statements",
       "typeScriptTag": "statements",
@@ -1125,12 +1029,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -1158,7 +1056,7 @@
     },
     {
       "url": "/accounts/{AccountId}/statements/{StatementId}/transactions",
-      "method": "getAccountsAccountIdStatementsStatementIdTransactions",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "Transactions",
       "typeScriptTag": "transactions",
@@ -1195,12 +1093,6 @@
           "description": "An RFC4122 UID used as a correlation id."
         },
         {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-        },
-        {
           "name": "xCustomerUserAgent",
           "schema": "string",
           "required": false,
@@ -1228,7 +1120,7 @@
     },
     {
       "url": "/accounts/{AccountId}/transactions",
-      "method": "getAccountsAccountIdTransactions",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "Transactions",
       "typeScriptTag": "transactions",
@@ -1257,12 +1149,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1302,7 +1188,7 @@
     },
     {
       "url": "/balances",
-      "method": "getBalances",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Balances",
       "typeScriptTag": "balances",
@@ -1325,12 +1211,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1360,7 +1240,7 @@
     },
     {
       "url": "/beneficiaries",
-      "method": "getBeneficiaries",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Beneficiaries",
       "typeScriptTag": "beneficiaries",
@@ -1383,12 +1263,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1418,7 +1292,7 @@
     },
     {
       "url": "/direct-debits",
-      "method": "getDirectDebits",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Direct Debits",
       "typeScriptTag": "directDebits",
@@ -1441,12 +1315,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1476,7 +1344,7 @@
     },
     {
       "url": "/offers",
-      "method": "getOffers",
+      "method": "list",
       "httpMethod": "get",
       "tag": "Offers",
       "typeScriptTag": "offers",
@@ -1499,12 +1367,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1534,7 +1396,7 @@
     },
     {
       "url": "/party",
-      "method": "getParty",
+      "method": "getList",
       "httpMethod": "get",
       "tag": "Parties",
       "typeScriptTag": "parties",
@@ -1557,12 +1419,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1592,7 +1448,7 @@
     },
     {
       "url": "/products",
-      "method": "getProducts",
+      "method": "list",
       "httpMethod": "get",
       "tag": "Products",
       "typeScriptTag": "products",
@@ -1615,12 +1471,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1650,7 +1500,7 @@
     },
     {
       "url": "/scheduled-payments",
-      "method": "getScheduledPayments",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Scheduled Payments",
       "typeScriptTag": "scheduledPayments",
@@ -1673,12 +1523,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1708,7 +1552,7 @@
     },
     {
       "url": "/standing-orders",
-      "method": "getStandingOrders",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Standing Orders",
       "typeScriptTag": "standingOrders",
@@ -1731,12 +1575,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1766,7 +1604,7 @@
     },
     {
       "url": "/statements",
-      "method": "getStatements",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Statements",
       "typeScriptTag": "statements",
@@ -1789,12 +1627,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "fromStatementDateTime",
@@ -1834,7 +1666,7 @@
     },
     {
       "url": "/transactions",
-      "method": "getTransactions",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "Transactions",
       "typeScriptTag": "transactions",
@@ -1857,12 +1689,6 @@
           "schema": "string",
           "required": false,
           "description": "An RFC4122 UID used as a correlation id."
-        },
-        {
-          "name": "authorization",
-          "schema": "string",
-          "required": true,
-          "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
         },
         {
           "name": "xCustomerUserAgent",
@@ -1906,7 +1732,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/favicon.png",
   "clientNameCamelCase": "openBanking",
-  "lastUpdated": "2024-02-01T19:39:12.790Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { OpenBanking } from 'open-banking-account-and-transaction-typescript-sdk';\n\nconst openBanking = new OpenBanking({\n    // OAuth flow, it is required when the PSU needs to perform SCA with the ASPSP when a TPP wants to access an ASPSP resource owned by the PSU\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n    // TPP client credential authorisation flow with the ASPSP\n    // clientId: \"CLIENT_ID\",\n    // clientSecret: \"CLIENT_SECRET\",\n})",
   "fixedSpecFileName": "open-banking-account-and-transaction-fixed-spec.yaml"
 }

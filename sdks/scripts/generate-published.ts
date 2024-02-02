@@ -198,6 +198,7 @@ async function main() {
    * First pass: fix specs
    */
   const promises: Promise<void>[] = [];
+  const fixSpecNotWorkingList = ["ably.io_platform_1.1.0"];
   for (const spec in publishDatum) {
     const publishData = publishJson.publish[spec];
     const { openapiExamplesDirPath, specData } = publishDatum[spec];
@@ -220,6 +221,15 @@ async function main() {
       path.join(openapiExamplesDirPath, openapiFilename),
       yaml.dump(oas.spec)
     );
+
+    if (fixSpecNotWorkingList.includes(spec)) {
+      console.log(`🟡 Skipping ${spec} because it is in fixSpecNotWorkingList`);
+      fs.writeFileSync(
+        path.join(fixedSpecsOutputPath, fixedSpecFileName),
+        rawSpecString
+      );
+      continue;
+    }
 
     promises.push(
       fixSpec(

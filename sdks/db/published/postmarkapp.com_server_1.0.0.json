@@ -31,18 +31,12 @@
   "methods": [
     {
       "url": "/bounces",
-      "method": "getBounces",
+      "method": "listBounces",
       "httpMethod": "get",
       "tag": "Bounces API",
       "typeScriptTag": "bouncesApi",
       "description": "Get bounces",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "count",
           "schema": "integer",
@@ -104,18 +98,12 @@
     },
     {
       "url": "/bounces/{bounceid}",
-      "method": "getSingleBounce",
+      "method": "getBounce",
       "httpMethod": "get",
       "tag": "Bounces API",
       "typeScriptTag": "bouncesApi",
       "description": "Get a single bounce",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "bounceid",
           "schema": "integer",
@@ -143,12 +131,6 @@
       "description": "Activate a bounce",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "bounceid",
           "schema": "integer",
           "required": true,
@@ -168,18 +150,12 @@
     },
     {
       "url": "/bounces/{bounceid}/dump",
-      "method": "/bounces/{bounceid}/dumpGet",
+      "method": "getDump",
       "httpMethod": "get",
       "tag": "Bounces API",
       "typeScriptTag": "bouncesApi",
       "description": "Get bounce dump",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "bounceid",
           "schema": "integer",
@@ -205,14 +181,7 @@
       "tag": "Bounces API",
       "typeScriptTag": "bouncesApi",
       "description": "Get delivery stats",
-      "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        }
-      ],
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -226,18 +195,12 @@
     },
     {
       "url": "/email",
-      "method": "sendEmail",
+      "method": "sendSingleEmail",
       "httpMethod": "post",
       "tag": "Sending API",
       "typeScriptTag": "sendingApi",
       "description": "Send a single email",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "Attachments",
           "schema": "array",
@@ -317,19 +280,12 @@
     },
     {
       "url": "/email/batch",
-      "method": "sendEmailBatch",
+      "method": "sendBatchEmails",
       "httpMethod": "post",
       "tag": "Sending API",
       "typeScriptTag": "sendingApi",
       "description": "Send a batch of emails",
-      "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        }
-      ],
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -343,18 +299,12 @@
     },
     {
       "url": "/email/batchWithTemplates",
-      "method": "sendEmailBatchWithTemplates",
+      "method": "sendBatchWithTemplates",
       "httpMethod": "post",
       "tag": "Sending API",
       "typeScriptTag": "sendingApi",
       "description": "Send a batch of email using templates.",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "Messages",
           "schema": "array",
@@ -374,18 +324,12 @@
     },
     {
       "url": "/email/withTemplate",
-      "method": "sendEmailWithTemplate",
+      "method": "sendEmailTemplate",
       "httpMethod": "post",
       "tag": "Sending API",
       "typeScriptTag": "sendingApi",
       "description": "Send an email using a Template",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "Attachments",
           "schema": "array",
@@ -491,12 +435,6 @@
       "description": "Inbound message search",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "count",
           "schema": "integer",
           "required": true,
@@ -562,18 +500,12 @@
     },
     {
       "url": "/messages/inbound/{messageid}/bypass",
-      "method": "bypassRulesForInboundMessage",
+      "method": "updateBypassRulesForInboundMessage",
       "httpMethod": "put",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Bypass rules for a blocked inbound message",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "messageid",
           "schema": "string",
@@ -601,12 +533,6 @@
       "description": "Inbound message details",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "messageid",
           "schema": "string",
           "required": true,
@@ -626,18 +552,12 @@
     },
     {
       "url": "/messages/inbound/{messageid}/retry",
-      "method": "retryInboundMessageProcessing",
+      "method": "retryInboundMessage",
       "httpMethod": "put",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Retry a failed inbound message for processing",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "messageid",
           "schema": "string",
@@ -664,12 +584,6 @@
       "typeScriptTag": "messagesApi",
       "description": "Outbound message search",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "count",
           "schema": "integer",
@@ -726,18 +640,12 @@
     },
     {
       "url": "/messages/outbound/clicks",
-      "method": "searchClicksForOutboundMessages",
+      "method": "getAllClicks",
       "httpMethod": "get",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Clicks for a all messages",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "count",
           "schema": "integer",
@@ -836,18 +744,12 @@
     },
     {
       "url": "/messages/outbound/clicks/{messageid}",
-      "method": "getClicksForSingleOutboundMessage",
+      "method": "getMessageClicks",
       "httpMethod": "get",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Retrieve Message Clicks",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "messageid",
           "schema": "string",
@@ -880,18 +782,12 @@
     },
     {
       "url": "/messages/outbound/opens",
-      "method": "searchOpensForOutboundMessages",
+      "method": "listOpensForOutbound",
       "httpMethod": "get",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Opens for all messages",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "count",
           "schema": "integer",
@@ -990,18 +886,12 @@
     },
     {
       "url": "/messages/outbound/opens/{messageid}",
-      "method": "getOpensForSingleOutboundMessage",
+      "method": "getMessageOpens",
       "httpMethod": "get",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Retrieve Message Opens",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "messageid",
           "schema": "string",
@@ -1041,12 +931,6 @@
       "description": "Outbound message details",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "messageid",
           "schema": "string",
           "required": true,
@@ -1066,18 +950,12 @@
     },
     {
       "url": "/messages/outbound/{messageid}/dump",
-      "method": "getOutboundMessageDump",
+      "method": "getMessageDump",
       "httpMethod": "get",
       "tag": "Messages API",
       "typeScriptTag": "messagesApi",
       "description": "Outbound message dump",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "messageid",
           "schema": "string",
@@ -1098,19 +976,12 @@
     },
     {
       "url": "/server",
-      "method": "getCurrentServerConfiguration",
+      "method": "getConfiguration",
       "httpMethod": "get",
       "tag": "Server Configuration API",
       "typeScriptTag": "serverConfigurationApi",
       "description": "Get Server Configuration",
-      "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        }
-      ],
+      "parameters": [],
       "responses": [
         {
           "statusCode": "200",
@@ -1124,18 +995,12 @@
     },
     {
       "url": "/server",
-      "method": "editCurrentServerConfiguration",
+      "method": "updateConfiguration",
       "httpMethod": "put",
       "tag": "Server Configuration API",
       "typeScriptTag": "serverConfigurationApi",
       "description": "Edit Server Configuration",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "BounceHookUrl",
           "schema": "string",
@@ -1220,18 +1085,12 @@
     },
     {
       "url": "/stats/outbound",
-      "method": "getOutboundOverviewStatistics",
+      "method": "getOutboundOverview",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get outbound overview",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1268,12 +1127,6 @@
       "description": "Get bounce counts",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "tag",
           "schema": "string",
           "description": "Filter by tag"
@@ -1309,12 +1162,6 @@
       "description": "Get click counts",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "tag",
           "schema": "string",
           "description": "Filter by tag"
@@ -1333,7 +1180,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "The properties of this object will vary based request parameters."
+          "description": ""
         },
         {
           "statusCode": "422",
@@ -1343,18 +1190,12 @@
     },
     {
       "url": "/stats/outbound/clicks/browserfamilies",
-      "method": "getOutboundClickCountsByBrowserFamily",
+      "method": "getOutboundClicksBrowserFamilies",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get browser usage by family",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1384,18 +1225,12 @@
     },
     {
       "url": "/stats/outbound/clicks/location",
-      "method": "getOutboundClickCountsByLocation",
+      "method": "getOutboundClicksLocation",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get clicks by body location",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1415,7 +1250,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "The properties of this object will vary based request parameters."
+          "description": ""
         },
         {
           "statusCode": "422",
@@ -1425,18 +1260,12 @@
     },
     {
       "url": "/stats/outbound/clicks/platforms",
-      "method": "getOutboundClickCountsByPlatform",
+      "method": "getBrowserPlatformUsage",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get browser plaform usage",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1456,7 +1285,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "The properties of this object will vary based request parameters."
+          "description": ""
         },
         {
           "statusCode": "422",
@@ -1466,18 +1295,12 @@
     },
     {
       "url": "/stats/outbound/opens",
-      "method": "getOutboundOpenCounts",
+      "method": "getEmailOpenCounts",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get email open counts",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1507,18 +1330,12 @@
     },
     {
       "url": "/stats/outbound/opens/emailclients",
-      "method": "getOutboundOpenCountsByEmailClient",
+      "method": "getEmailClientUsage",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get email client usage",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1548,18 +1365,12 @@
     },
     {
       "url": "/stats/outbound/opens/platforms",
-      "method": "getOutboundOpenCountsByPlatform",
+      "method": "getEmailPlatformUsage",
       "httpMethod": "get",
       "tag": "Stats API",
       "typeScriptTag": "statsApi",
       "description": "Get email platform usage",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1596,12 +1407,6 @@
       "description": "Get sent counts",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "tag",
           "schema": "string",
           "description": "Filter by tag"
@@ -1636,12 +1441,6 @@
       "typeScriptTag": "statsApi",
       "description": "Get spam complaints",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "tag",
           "schema": "string",
@@ -1678,12 +1477,6 @@
       "description": "Get tracked email counts",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "tag",
           "schema": "string",
           "description": "Filter by tag"
@@ -1719,12 +1512,6 @@
       "description": "Get the Templates associated with this Server",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "count",
           "schema": "number",
           "required": true,
@@ -1750,18 +1537,12 @@
     },
     {
       "url": "/templates",
-      "method": "/templatesPost",
+      "method": "createTemplate",
       "httpMethod": "post",
       "tag": "Templates API",
       "typeScriptTag": "templatesApi",
       "description": "Create a Template",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "Alias",
           "schema": "string",
@@ -1806,18 +1587,12 @@
     },
     {
       "url": "/templates/validate",
-      "method": "testTemplateContent",
+      "method": "validateTemplateContent",
       "httpMethod": "post",
       "tag": "Templates API",
       "typeScriptTag": "templatesApi",
       "description": "Test Template Content",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "HtmlBody",
           "schema": "string",
@@ -1864,12 +1639,6 @@
       "description": "Delete a Template",
       "parameters": [
         {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
-        {
           "name": "templateIdOrAlias",
           "schema": "string",
           "required": true,
@@ -1889,18 +1658,12 @@
     },
     {
       "url": "/templates/{templateIdOrAlias}",
-      "method": "getSingleTemplate",
+      "method": "getTemplateById",
       "httpMethod": "get",
       "tag": "Templates API",
       "typeScriptTag": "templatesApi",
       "description": "Get a Template",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "templateIdOrAlias",
           "schema": "string",
@@ -1927,12 +1690,6 @@
       "typeScriptTag": "templatesApi",
       "description": "Update a Template",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "templateIdOrAlias",
           "schema": "string",
@@ -1983,18 +1740,12 @@
     },
     {
       "url": "/triggers/inboundrules",
-      "method": "listInboundRules",
+      "method": "listTriggers",
       "httpMethod": "get",
       "tag": "Inbound Rules API",
       "typeScriptTag": "inboundRulesApi",
       "description": "List inbound rule triggers",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "count",
           "schema": "integer",
@@ -2021,18 +1772,12 @@
     },
     {
       "url": "/triggers/inboundrules",
-      "method": "createInboundRule",
+      "method": "createTrigger",
       "httpMethod": "post",
       "tag": "Inbound Rules API",
       "typeScriptTag": "inboundRulesApi",
       "description": "Create an inbound rule trigger",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "Rule",
           "schema": "string",
@@ -2052,18 +1797,12 @@
     },
     {
       "url": "/triggers/inboundrules/{triggerid}",
-      "method": "deleteInboundRule",
+      "method": "deleteSingleTrigger",
       "httpMethod": "delete",
       "tag": "Inbound Rules API",
       "typeScriptTag": "inboundRulesApi",
       "description": "Delete a single trigger",
       "parameters": [
-        {
-          "name": "xPostmarkServerToken",
-          "schema": "string",
-          "required": true,
-          "description": "The token associated with the Server on which this request will operate."
-        },
         {
           "name": "triggerid",
           "schema": "integer",
@@ -2088,7 +1827,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/favicon.png",
   "clientNameCamelCase": "postmark",
-  "lastUpdated": "2024-02-02T19:31:09.871Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { Postmark } from 'postmark-typescript-sdk';\n\nconst postmark = new Postmark({\n    xPostmarkServerToken: \"X_POSTMARK_SERVER_TOKEN\",\n})",
   "fixedSpecFileName": "postmark-fixed-spec.yaml"
 }

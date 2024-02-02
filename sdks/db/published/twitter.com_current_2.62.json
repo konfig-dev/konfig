@@ -66,7 +66,7 @@
   "methods": [
     {
       "url": "/2/compliance/jobs",
-      "method": "listBatchComplianceJobs",
+      "method": "listJobs",
       "httpMethod": "get",
       "tag": "Compliance",
       "typeScriptTag": "compliance",
@@ -104,7 +104,7 @@
     },
     {
       "url": "/2/compliance/jobs",
-      "method": "createBatchComplianceJob",
+      "method": "createJob",
       "httpMethod": "post",
       "tag": "Compliance",
       "typeScriptTag": "compliance",
@@ -142,7 +142,7 @@
     },
     {
       "url": "/2/compliance/jobs/{id}",
-      "method": "getBatchComplianceJob",
+      "method": "getJobById",
       "httpMethod": "get",
       "tag": "Compliance",
       "typeScriptTag": "compliance",
@@ -174,7 +174,7 @@
     },
     {
       "url": "/2/dm_conversations",
-      "method": "dmConversationIdCreate",
+      "method": "createNewDmConversation",
       "httpMethod": "post",
       "tag": "Direct Messages",
       "typeScriptTag": "directMessages",
@@ -212,7 +212,7 @@
     },
     {
       "url": "/2/dm_conversations/with/{participant_id}/dm_events",
-      "method": "getDmConversationsWithParticipantIdDmEvents",
+      "method": "getDmEvents",
       "httpMethod": "get",
       "tag": "Direct Messages",
       "typeScriptTag": "directMessages",
@@ -285,7 +285,7 @@
     },
     {
       "url": "/2/dm_conversations/with/{participant_id}/messages",
-      "method": "dmConversationWithUserEventIdCreate",
+      "method": "sendNewMessageToUser",
       "httpMethod": "post",
       "tag": "Direct Messages",
       "typeScriptTag": "directMessages",
@@ -311,7 +311,7 @@
     },
     {
       "url": "/2/dm_conversations/{dm_conversation_id}/messages",
-      "method": "dmConversationByIdEventIdCreate",
+      "method": "sendNewMessageToDmConversation",
       "httpMethod": "post",
       "tag": "Direct Messages",
       "typeScriptTag": "directMessages",
@@ -337,7 +337,7 @@
     },
     {
       "url": "/2/dm_conversations/{id}/dm_events",
-      "method": "getDmConversationsIdDmEvents",
+      "method": "getDmEvents",
       "httpMethod": "get",
       "tag": "Direct Messages",
       "typeScriptTag": "directMessages",
@@ -410,7 +410,7 @@
     },
     {
       "url": "/2/dm_events",
-      "method": "getDmEvents",
+      "method": "getRecentDmEvents",
       "httpMethod": "get",
       "tag": "Direct Messages",
       "typeScriptTag": "directMessages",
@@ -477,7 +477,7 @@
     },
     {
       "url": "/2/lists",
-      "method": "listIdCreate",
+      "method": "createNewList",
       "httpMethod": "post",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -515,7 +515,7 @@
     },
     {
       "url": "/2/lists/{id}",
-      "method": "listIdDelete",
+      "method": "deleteOwnedList",
       "httpMethod": "delete",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -541,7 +541,7 @@
     },
     {
       "url": "/2/lists/{id}",
-      "method": "listIdGet",
+      "method": "lookupByListId",
       "httpMethod": "get",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -584,7 +584,7 @@
     },
     {
       "url": "/2/lists/{id}",
-      "method": "listIdUpdate",
+      "method": "updateOwnedList",
       "httpMethod": "put",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -625,7 +625,7 @@
     },
     {
       "url": "/2/lists/{id}/followers",
-      "method": "listGetFollowers",
+      "method": "getFollowersByListId",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -680,7 +680,7 @@
     },
     {
       "url": "/2/lists/{id}/members",
-      "method": "listGetMembers",
+      "method": "getMembersByListId",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -735,7 +735,7 @@
     },
     {
       "url": "/2/lists/{id}/members",
-      "method": "listAddMember",
+      "method": "addMember",
       "httpMethod": "post",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -767,7 +767,7 @@
     },
     {
       "url": "/2/lists/{id}/members/{user_id}",
-      "method": "listRemoveMember",
+      "method": "removeMember",
       "httpMethod": "delete",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -799,7 +799,7 @@
     },
     {
       "url": "/2/lists/{id}/tweets",
-      "method": "listsIdTweets",
+      "method": "listByListId",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -887,7 +887,7 @@
     },
     {
       "url": "/2/spaces",
-      "method": "findSpacesByIds",
+      "method": "lookupSpaceIds",
       "httpMethod": "get",
       "tag": "Spaces",
       "typeScriptTag": "spaces",
@@ -936,7 +936,7 @@
     },
     {
       "url": "/2/spaces/by/creator_ids",
-      "method": "findSpacesByCreatorIds",
+      "method": "lookupByCreatorIds",
       "httpMethod": "get",
       "tag": "Spaces",
       "typeScriptTag": "spaces",
@@ -985,7 +985,7 @@
     },
     {
       "url": "/2/spaces/search",
-      "method": "searchSpaces",
+      "method": "findMatchingSpaces",
       "httpMethod": "get",
       "tag": "Spaces",
       "typeScriptTag": "spaces",
@@ -1046,7 +1046,7 @@
     },
     {
       "url": "/2/spaces/{id}",
-      "method": "findSpaceById",
+      "method": "lookupSpaceById",
       "httpMethod": "get",
       "tag": "Spaces",
       "typeScriptTag": "spaces",
@@ -1095,7 +1095,7 @@
     },
     {
       "url": "/2/spaces/{id}/buyers",
-      "method": "spaceBuyers",
+      "method": "getBuyersList",
       "httpMethod": "get",
       "tag": "Spaces",
       "typeScriptTag": "spaces",
@@ -1150,7 +1150,7 @@
     },
     {
       "url": "/2/spaces/{id}/tweets",
-      "method": "spaceTweets",
+      "method": "getTweets",
       "httpMethod": "get",
       "tag": "Spaces",
       "typeScriptTag": "spaces",
@@ -1217,7 +1217,7 @@
     },
     {
       "url": "/2/tweets",
-      "method": "findTweetsById",
+      "method": "lookupByTweetIds",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1353,7 +1353,7 @@
     },
     {
       "url": "/2/tweets/compliance/stream",
-      "method": "getTweetsComplianceStream",
+      "method": "streamData",
       "httpMethod": "get",
       "tag": "Compliance",
       "typeScriptTag": "compliance",
@@ -1397,7 +1397,7 @@
     },
     {
       "url": "/2/tweets/counts/all",
-      "method": "tweetCountsFullArchiveSearch",
+      "method": "getTweetCounts",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1471,7 +1471,7 @@
     },
     {
       "url": "/2/tweets/counts/recent",
-      "method": "tweetCountsRecentSearch",
+      "method": "getRecentTweetCounts",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1545,7 +1545,7 @@
     },
     {
       "url": "/2/tweets/firehose/stream",
-      "method": "getTweetsFirehoseStream",
+      "method": "getFirehoseStream",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1624,7 +1624,7 @@
     },
     {
       "url": "/2/tweets/label/stream",
-      "method": "getTweetsLabelStream",
+      "method": "streamTweetsLabelEvents",
       "httpMethod": "get",
       "tag": "Compliance",
       "typeScriptTag": "compliance",
@@ -1662,7 +1662,7 @@
     },
     {
       "url": "/2/tweets/sample/stream",
-      "method": "sampleStream",
+      "method": "streamSample",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1723,7 +1723,7 @@
     },
     {
       "url": "/2/tweets/sample10/stream",
-      "method": "getTweetsSample10Stream",
+      "method": "streamSample10",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1802,7 +1802,7 @@
     },
     {
       "url": "/2/tweets/search/all",
-      "method": "tweetsFullarchiveSearch",
+      "method": "searchAll",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -1911,7 +1911,7 @@
     },
     {
       "url": "/2/tweets/search/recent",
-      "method": "tweetsRecentSearch",
+      "method": "getRecentTweets",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2020,7 +2020,7 @@
     },
     {
       "url": "/2/tweets/search/stream",
-      "method": "searchStream",
+      "method": "getFilteredStream",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2093,7 +2093,7 @@
     },
     {
       "url": "/2/tweets/search/stream/rules",
-      "method": "getRules",
+      "method": "searchStreamRules",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2157,7 +2157,7 @@
     },
     {
       "url": "/2/tweets/{id}",
-      "method": "deleteTweetById",
+      "method": "deleteById",
       "httpMethod": "delete",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2183,7 +2183,7 @@
     },
     {
       "url": "/2/tweets/{id}",
-      "method": "findTweetById",
+      "method": "lookupById",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2244,7 +2244,7 @@
     },
     {
       "url": "/2/tweets/{id}/liking_users",
-      "method": "tweetsIdLikingUsers",
+      "method": "listLikingUsers",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2299,7 +2299,7 @@
     },
     {
       "url": "/2/tweets/{id}/quote_tweets",
-      "method": "findTweetsThatQuoteATweet",
+      "method": "getQuoteTweets",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2378,7 +2378,7 @@
     },
     {
       "url": "/2/tweets/{id}/retweeted_by",
-      "method": "tweetsIdRetweetingUsers",
+      "method": "getRetweetedByTweetIdUsers",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2433,7 +2433,7 @@
     },
     {
       "url": "/2/tweets/{tweet_id}/hidden",
-      "method": "hideReplyById",
+      "method": "hideReply",
       "httpMethod": "put",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -2465,7 +2465,7 @@
     },
     {
       "url": "/2/users",
-      "method": "findUsersById",
+      "method": "lookupByIds",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2508,7 +2508,7 @@
     },
     {
       "url": "/2/users/by",
-      "method": "findUsersByUsername",
+      "method": "lookupByUsernames",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2551,7 +2551,7 @@
     },
     {
       "url": "/2/users/by/username/{username}",
-      "method": "findUserByUsername",
+      "method": "lookupByUsername",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2594,7 +2594,7 @@
     },
     {
       "url": "/2/users/compliance/stream",
-      "method": "getUsersComplianceStream",
+      "method": "streamUsersData",
       "httpMethod": "get",
       "tag": "Compliance",
       "typeScriptTag": "compliance",
@@ -2638,7 +2638,7 @@
     },
     {
       "url": "/2/users/me",
-      "method": "findMyUser",
+      "method": "lookupMe",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2675,7 +2675,7 @@
     },
     {
       "url": "/2/users/{id}",
-      "method": "findUserById",
+      "method": "lookupById",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2718,7 +2718,7 @@
     },
     {
       "url": "/2/users/{id}/blocking",
-      "method": "usersIdBlocking",
+      "method": "getBlockedUsers",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2773,7 +2773,7 @@
     },
     {
       "url": "/2/users/{id}/blocking",
-      "method": "usersIdBlock",
+      "method": "blockUserById",
       "httpMethod": "post",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -2805,7 +2805,7 @@
     },
     {
       "url": "/2/users/{id}/bookmarks",
-      "method": "getUsersIdBookmarks",
+      "method": "getUserBookmarks",
       "httpMethod": "get",
       "tag": "Bookmarks",
       "typeScriptTag": "bookmarks",
@@ -2878,7 +2878,7 @@
     },
     {
       "url": "/2/users/{id}/bookmarks",
-      "method": "postUsersIdBookmarks",
+      "method": "addTweet",
       "httpMethod": "post",
       "tag": "Bookmarks",
       "typeScriptTag": "bookmarks",
@@ -2910,7 +2910,7 @@
     },
     {
       "url": "/2/users/{id}/bookmarks/{tweet_id}",
-      "method": "usersIdBookmarksDelete",
+      "method": "removeTweet",
       "httpMethod": "delete",
       "tag": "Bookmarks",
       "typeScriptTag": "bookmarks",
@@ -2942,7 +2942,7 @@
     },
     {
       "url": "/2/users/{id}/followed_lists",
-      "method": "userFollowedLists",
+      "method": "getFollowed",
       "httpMethod": "get",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -2997,7 +2997,7 @@
     },
     {
       "url": "/2/users/{id}/followed_lists",
-      "method": "listUserFollow",
+      "method": "followList",
       "httpMethod": "post",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3029,7 +3029,7 @@
     },
     {
       "url": "/2/users/{id}/followed_lists/{list_id}",
-      "method": "listUserUnfollow",
+      "method": "unfollowList",
       "httpMethod": "delete",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3061,7 +3061,7 @@
     },
     {
       "url": "/2/users/{id}/followers",
-      "method": "usersIdFollowers",
+      "method": "getFollowersById",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -3116,7 +3116,7 @@
     },
     {
       "url": "/2/users/{id}/following",
-      "method": "usersIdFollowing",
+      "method": "getFollowingUsers",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -3171,7 +3171,7 @@
     },
     {
       "url": "/2/users/{id}/following",
-      "method": "usersIdFollow",
+      "method": "followUser",
       "httpMethod": "post",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -3203,7 +3203,7 @@
     },
     {
       "url": "/2/users/{id}/liked_tweets",
-      "method": "usersIdLikedTweets",
+      "method": "getLikedTweets",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3276,7 +3276,7 @@
     },
     {
       "url": "/2/users/{id}/likes",
-      "method": "usersIdLike",
+      "method": "likeTweet",
       "httpMethod": "post",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3308,7 +3308,7 @@
     },
     {
       "url": "/2/users/{id}/likes/{tweet_id}",
-      "method": "usersIdUnlike",
+      "method": "unlikeTweetById",
       "httpMethod": "delete",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3340,7 +3340,7 @@
     },
     {
       "url": "/2/users/{id}/list_memberships",
-      "method": "getUserListMemberships",
+      "method": "getUserMemberships",
       "httpMethod": "get",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3395,7 +3395,7 @@
     },
     {
       "url": "/2/users/{id}/mentions",
-      "method": "usersIdMentions",
+      "method": "getMentionsById",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3492,7 +3492,7 @@
     },
     {
       "url": "/2/users/{id}/muting",
-      "method": "usersIdMuting",
+      "method": "getMutedUsersById",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -3547,7 +3547,7 @@
     },
     {
       "url": "/2/users/{id}/muting",
-      "method": "usersIdMute",
+      "method": "muteUserById",
       "httpMethod": "post",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -3579,7 +3579,7 @@
     },
     {
       "url": "/2/users/{id}/owned_lists",
-      "method": "listUserOwnedLists",
+      "method": "getUserOwnedLists",
       "httpMethod": "get",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3634,7 +3634,7 @@
     },
     {
       "url": "/2/users/{id}/pinned_lists",
-      "method": "listUserPinnedLists",
+      "method": "getUserPinnedLists",
       "httpMethod": "get",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3677,7 +3677,7 @@
     },
     {
       "url": "/2/users/{id}/pinned_lists",
-      "method": "listUserPin",
+      "method": "pinList",
       "httpMethod": "post",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3709,7 +3709,7 @@
     },
     {
       "url": "/2/users/{id}/pinned_lists/{list_id}",
-      "method": "listUserUnpin",
+      "method": "unpinList",
       "httpMethod": "delete",
       "tag": "Lists",
       "typeScriptTag": "lists",
@@ -3741,7 +3741,7 @@
     },
     {
       "url": "/2/users/{id}/retweets",
-      "method": "usersIdRetweets",
+      "method": "retweetTweetById",
       "httpMethod": "post",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3773,7 +3773,7 @@
     },
     {
       "url": "/2/users/{id}/retweets/{source_tweet_id}",
-      "method": "usersIdUnretweets",
+      "method": "unretweetById",
       "httpMethod": "delete",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3805,7 +3805,7 @@
     },
     {
       "url": "/2/users/{id}/timelines/reverse_chronological",
-      "method": "usersIdTimeline",
+      "method": "getUserHomeTimeline",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -3908,7 +3908,7 @@
     },
     {
       "url": "/2/users/{id}/tweets",
-      "method": "usersIdTweets",
+      "method": "listByUserId",
       "httpMethod": "get",
       "tag": "Tweets",
       "typeScriptTag": "tweets",
@@ -4011,7 +4011,7 @@
     },
     {
       "url": "/2/users/{source_user_id}/blocking/{target_user_id}",
-      "method": "usersIdUnblock",
+      "method": "unblockUserById",
       "httpMethod": "delete",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -4043,7 +4043,7 @@
     },
     {
       "url": "/2/users/{source_user_id}/following/{target_user_id}",
-      "method": "usersIdUnfollow",
+      "method": "unfollowUser",
       "httpMethod": "delete",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -4075,7 +4075,7 @@
     },
     {
       "url": "/2/users/{source_user_id}/muting/{target_user_id}",
-      "method": "usersIdUnmute",
+      "method": "unmuteByUserId",
       "httpMethod": "delete",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -4111,7 +4111,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/favicon.ico",
   "clientNameCamelCase": "x",
-  "lastUpdated": "2024-02-01T19:39:12.790Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { X } from 'x-typescript-sdk';\n\nconst x = new X({\n    token: \"TOKEN\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n})",
   "fixedSpecFileName": "x-fixed-spec.yaml"
 }

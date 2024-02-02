@@ -47,7 +47,7 @@
   "methods": [
     {
       "url": "/v2/ai/audio/descriptors",
-      "method": "listCustomDescriptors",
+      "method": "listAudioDescriptors",
       "httpMethod": "get",
       "tag": "custom_music",
       "typeScriptTag": "customMusic",
@@ -128,7 +128,7 @@
     },
     {
       "url": "/v2/ai/audio/instruments",
-      "method": "listCustomInstruments",
+      "method": "listComputerAudioInstruments",
       "httpMethod": "get",
       "tag": "custom_music",
       "typeScriptTag": "customMusic",
@@ -169,7 +169,7 @@
     },
     {
       "url": "/v2/ai/audio/renders",
-      "method": "fetchRenders",
+      "method": "getAudioRendersDetails",
       "httpMethod": "get",
       "tag": "custom_music",
       "typeScriptTag": "customMusic",
@@ -191,7 +191,7 @@
     },
     {
       "url": "/v2/ai/audio/renders",
-      "method": "createAudioRenders",
+      "method": "createRenderedAudio",
       "httpMethod": "post",
       "tag": "custom_music",
       "typeScriptTag": "customMusic",
@@ -213,7 +213,7 @@
     },
     {
       "url": "/v2/audio",
-      "method": "getTrackList",
+      "method": "listTracks",
       "httpMethod": "get",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -245,7 +245,7 @@
     },
     {
       "url": "/v2/audio/collections",
-      "method": "getTrackCollectionList",
+      "method": "listCollections",
       "httpMethod": "get",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -276,7 +276,7 @@
     },
     {
       "url": "/v2/audio/collections",
-      "method": "createTrackCollection",
+      "method": "createCollections",
       "httpMethod": "post",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -298,7 +298,7 @@
     },
     {
       "url": "/v2/audio/collections/{id}",
-      "method": "deleteTrackCollection",
+      "method": "deleteCollection",
       "httpMethod": "delete",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -315,7 +315,7 @@
     },
     {
       "url": "/v2/audio/collections/{id}",
-      "method": "getTrackCollection",
+      "method": "getCollectionDetails",
       "httpMethod": "get",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -347,7 +347,7 @@
     },
     {
       "url": "/v2/audio/collections/{id}",
-      "method": "renameTrackCollection",
+      "method": "setCollectionName",
       "httpMethod": "post",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -370,7 +370,7 @@
     },
     {
       "url": "/v2/audio/collections/{id}/items",
-      "method": "deleteTrackCollectionItems",
+      "method": "removeTracksFromCollection",
       "httpMethod": "delete",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -392,7 +392,7 @@
     },
     {
       "url": "/v2/audio/collections/{id}/items",
-      "method": "getTrackCollectionItems",
+      "method": "listCollectionItems",
       "httpMethod": "get",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -434,7 +434,7 @@
     },
     {
       "url": "/v2/audio/collections/{id}/items",
-      "method": "addTrackCollectionItems",
+      "method": "addTracksToCollection",
       "httpMethod": "post",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -499,7 +499,7 @@
     },
     {
       "url": "/v2/audio/licenses",
-      "method": "getTrackLicenseList",
+      "method": "listAudioLicenses",
       "httpMethod": "get",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -565,7 +565,7 @@
     },
     {
       "url": "/v2/audio/licenses",
-      "method": "licenseTrack",
+      "method": "licenseTracks",
       "httpMethod": "post",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -597,7 +597,7 @@
     },
     {
       "url": "/v2/audio/licenses/{id}/downloads",
-      "method": "downloadTracks",
+      "method": "redownloadTracks",
       "httpMethod": "post",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -761,7 +761,7 @@
     },
     {
       "url": "/v2/audio/{id}",
-      "method": "getTrack",
+      "method": "getTrackDetails",
       "httpMethod": "get",
       "tag": "audio",
       "typeScriptTag": "audio",
@@ -793,7 +793,7 @@
     },
     {
       "url": "/v2/bulk_search/images",
-      "method": "bulkSearchImages",
+      "method": "runMultipleSearches",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -984,7 +984,7 @@
     },
     {
       "url": "/v2/catalog/collections",
-      "method": "getCollections",
+      "method": "listCollections",
       "httpMethod": "get",
       "tag": "catalog",
       "typeScriptTag": "catalog",
@@ -1071,7 +1071,7 @@
     },
     {
       "url": "/v2/catalog/collections/{collection_id}",
-      "method": "updateCollection",
+      "method": "updateCollectionMetadata",
       "httpMethod": "patch",
       "tag": "catalog",
       "typeScriptTag": "catalog",
@@ -1108,7 +1108,7 @@
     },
     {
       "url": "/v2/catalog/collections/{collection_id}/items",
-      "method": "deleteFromCollection",
+      "method": "removeItemsFromCollection",
       "httpMethod": "delete",
       "tag": "catalog",
       "typeScriptTag": "catalog",
@@ -1136,7 +1136,7 @@
     },
     {
       "url": "/v2/catalog/collections/{collection_id}/items",
-      "method": "addToCollection",
+      "method": "addToCollectionItems",
       "httpMethod": "post",
       "tag": "catalog",
       "typeScriptTag": "catalog",
@@ -1164,7 +1164,7 @@
     },
     {
       "url": "/v2/catalog/search",
-      "method": "searchCatalog",
+      "method": "searchAssets",
       "httpMethod": "get",
       "tag": "catalog",
       "typeScriptTag": "catalog",
@@ -1210,7 +1210,7 @@
     },
     {
       "url": "/v2/contributors",
-      "method": "getContributorList",
+      "method": "getDetailsMultiple",
       "httpMethod": "get",
       "tag": "contributors",
       "typeScriptTag": "contributors",
@@ -1232,7 +1232,7 @@
     },
     {
       "url": "/v2/contributors/{contributor_id}",
-      "method": "getContributor",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "contributors",
       "typeScriptTag": "contributors",
@@ -1254,7 +1254,7 @@
     },
     {
       "url": "/v2/contributors/{contributor_id}/collections",
-      "method": "getContributorCollectionsList",
+      "method": "listCollections",
       "httpMethod": "get",
       "tag": "contributors",
       "typeScriptTag": "contributors",
@@ -1281,7 +1281,7 @@
     },
     {
       "url": "/v2/contributors/{contributor_id}/collections/{id}",
-      "method": "getContributorCollections",
+      "method": "getCollectionDetails",
       "httpMethod": "get",
       "tag": "contributors",
       "typeScriptTag": "contributors",
@@ -1309,7 +1309,7 @@
     },
     {
       "url": "/v2/contributors/{contributor_id}/collections/{id}/items",
-      "method": "getContributorCollectionItems",
+      "method": "getCollectionItems",
       "httpMethod": "get",
       "tag": "contributors",
       "typeScriptTag": "contributors",
@@ -1374,7 +1374,7 @@
     },
     {
       "url": "/v2/cv/keywords",
-      "method": "getKeywords",
+      "method": "listSuggestedKeywords",
       "httpMethod": "get",
       "tag": "computer_vision",
       "typeScriptTag": "computerVision",
@@ -1396,7 +1396,7 @@
     },
     {
       "url": "/v2/cv/similar/images",
-      "method": "getSimilarImages",
+      "method": "listSimilarImages",
       "httpMethod": "get",
       "tag": "computer_vision",
       "typeScriptTag": "computerVision",
@@ -1448,7 +1448,7 @@
     },
     {
       "url": "/v2/cv/similar/videos",
-      "method": "getSimilarVideos",
+      "method": "listSimilarVideos",
       "httpMethod": "get",
       "tag": "computer_vision",
       "typeScriptTag": "computerVision",
@@ -1500,7 +1500,7 @@
     },
     {
       "url": "/v2/editorial/categories",
-      "method": "getEditorialCategories",
+      "method": "listCategories",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1515,7 +1515,7 @@
     },
     {
       "url": "/v2/editorial/images/categories",
-      "method": "listEditorialImageCategories",
+      "method": "listCategories",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1530,7 +1530,7 @@
     },
     {
       "url": "/v2/editorial/images/licenses",
-      "method": "getEditorialImageLicenseList",
+      "method": "listLicenses",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1596,7 +1596,7 @@
     },
     {
       "url": "/v2/editorial/images/licenses",
-      "method": "licenseEditorialImages",
+      "method": "licenseContent",
       "httpMethod": "post",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1624,7 +1624,7 @@
     },
     {
       "url": "/v2/editorial/images/livefeeds",
-      "method": "getEditorialImageLivefeedList",
+      "method": "listLivefeedImages",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1656,7 +1656,7 @@
     },
     {
       "url": "/v2/editorial/images/livefeeds/{id}",
-      "method": "getEditorialImageLivefeed",
+      "method": "getLivefeedImages",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1684,7 +1684,7 @@
     },
     {
       "url": "/v2/editorial/images/livefeeds/{id}/items",
-      "method": "getEditorialImageLivefeedItems",
+      "method": "getLivefeedItems",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1712,7 +1712,7 @@
     },
     {
       "url": "/v2/editorial/images/search",
-      "method": "searchEditorialImages",
+      "method": "search",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1774,7 +1774,7 @@
     },
     {
       "url": "/v2/editorial/images/updated",
-      "method": "getUpdatedEditorialImages",
+      "method": "listUpdatedContent",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1844,7 +1844,7 @@
     },
     {
       "url": "/v2/editorial/images/{id}",
-      "method": "getEditorialImage",
+      "method": "getImageDetails",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1872,7 +1872,7 @@
     },
     {
       "url": "/v2/editorial/licenses",
-      "method": "licenseEditorialImage",
+      "method": "licenseContent",
       "httpMethod": "post",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1900,7 +1900,7 @@
     },
     {
       "url": "/v2/editorial/livefeeds",
-      "method": "getEditorialLivefeedList",
+      "method": "getLivefeedList",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1932,7 +1932,7 @@
     },
     {
       "url": "/v2/editorial/livefeeds/{id}",
-      "method": "getEditorialLivefeed",
+      "method": "getLivefeedItems",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1960,7 +1960,7 @@
     },
     {
       "url": "/v2/editorial/livefeeds/{id}/items",
-      "method": "getEditorialLivefeedItems",
+      "method": "getLivefeedItems",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -1988,7 +1988,7 @@
     },
     {
       "url": "/v2/editorial/search",
-      "method": "searchEditorial",
+      "method": "searchContent",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -2050,7 +2050,7 @@
     },
     {
       "url": "/v2/editorial/updated",
-      "method": "getUpdatedEditorialImage",
+      "method": "listUpdatedContent",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -2120,7 +2120,7 @@
     },
     {
       "url": "/v2/editorial/videos/categories",
-      "method": "listEditorialVideoCategories",
+      "method": "listVideoCategories",
       "httpMethod": "get",
       "tag": "editorial_video",
       "typeScriptTag": "editorialVideo",
@@ -2135,7 +2135,7 @@
     },
     {
       "url": "/v2/editorial/videos/licenses",
-      "method": "getEditorialVideoLicenseList",
+      "method": "listVideoLicenses",
       "httpMethod": "get",
       "tag": "editorial_video",
       "typeScriptTag": "editorialVideo",
@@ -2201,7 +2201,7 @@
     },
     {
       "url": "/v2/editorial/videos/licenses",
-      "method": "licenseEditorialVideo",
+      "method": "licenseVideos",
       "httpMethod": "post",
       "tag": "editorial_video",
       "typeScriptTag": "editorialVideo",
@@ -2229,7 +2229,7 @@
     },
     {
       "url": "/v2/editorial/videos/search",
-      "method": "searchEditorialVideos",
+      "method": "searchVideoContent",
       "httpMethod": "get",
       "tag": "editorial_video",
       "typeScriptTag": "editorialVideo",
@@ -2301,7 +2301,7 @@
     },
     {
       "url": "/v2/editorial/videos/{id}",
-      "method": "getEditorialVideo",
+      "method": "getContentDetails",
       "httpMethod": "get",
       "tag": "editorial_video",
       "typeScriptTag": "editorialVideo",
@@ -2334,7 +2334,7 @@
     },
     {
       "url": "/v2/editorial/{id}",
-      "method": "/v2/editorial/{id}Get",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "editorial_images",
       "typeScriptTag": "editorialImages",
@@ -2367,7 +2367,7 @@
     },
     {
       "url": "/v2/images",
-      "method": "getImageList",
+      "method": "listInfo",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2399,7 +2399,7 @@
     },
     {
       "url": "/v2/images",
-      "method": "uploadEphemeralImage",
+      "method": "uploadImageEphemeral",
       "httpMethod": "post",
       "tag": "computer_vision",
       "typeScriptTag": "computerVision",
@@ -2421,7 +2421,7 @@
     },
     {
       "url": "/v2/images/categories",
-      "method": "listImageCategories",
+      "method": "listCategories",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2442,7 +2442,7 @@
     },
     {
       "url": "/v2/images/collections",
-      "method": "getImageCollectionList",
+      "method": "listCollections",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2473,7 +2473,7 @@
     },
     {
       "url": "/v2/images/collections",
-      "method": "createImageCollection",
+      "method": "createCollection",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2495,7 +2495,7 @@
     },
     {
       "url": "/v2/images/collections/featured",
-      "method": "getFeaturedImageCollectionList",
+      "method": "listFeaturedCollections",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2526,7 +2526,7 @@
     },
     {
       "url": "/v2/images/collections/featured/{id}",
-      "method": "getFeaturedImageCollection",
+      "method": "featuredCollectionDetails",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2558,7 +2558,7 @@
     },
     {
       "url": "/v2/images/collections/featured/{id}/items",
-      "method": "getFeaturedImageCollectionItems",
+      "method": "getCollectionItems",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2590,7 +2590,7 @@
     },
     {
       "url": "/v2/images/collections/{id}",
-      "method": "deleteImageCollection",
+      "method": "deleteCollection",
       "httpMethod": "delete",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2607,7 +2607,7 @@
     },
     {
       "url": "/v2/images/collections/{id}",
-      "method": "getImageCollection",
+      "method": "getCollectionDetails",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2639,7 +2639,7 @@
     },
     {
       "url": "/v2/images/collections/{id}",
-      "method": "renameImageCollection",
+      "method": "renameCollection",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2662,7 +2662,7 @@
     },
     {
       "url": "/v2/images/collections/{id}/items",
-      "method": "deleteImageCollectionItems",
+      "method": "removeFromCollection",
       "httpMethod": "delete",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2684,7 +2684,7 @@
     },
     {
       "url": "/v2/images/collections/{id}/items",
-      "method": "getImageCollectionItems",
+      "method": "getCollectionItems",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2726,7 +2726,7 @@
     },
     {
       "url": "/v2/images/collections/{id}/items",
-      "method": "addImageCollectionItems",
+      "method": "addToCollectionItems",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2749,7 +2749,7 @@
     },
     {
       "url": "/v2/images/licenses",
-      "method": "getImageLicenseList",
+      "method": "listLicenses",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2815,7 +2815,7 @@
     },
     {
       "url": "/v2/images/licenses",
-      "method": "licenseImages",
+      "method": "licenseImagesForMultiple",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2857,7 +2857,7 @@
     },
     {
       "url": "/v2/images/licenses/{id}/downloads",
-      "method": "downloadImage",
+      "method": "redownloadLicense",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -2899,7 +2899,7 @@
     },
     {
       "url": "/v2/images/recommendations",
-      "method": "getImageRecommendations",
+      "method": "listRecommendedImages",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -3147,7 +3147,7 @@
     },
     {
       "url": "/v2/images/search/suggestions",
-      "method": "getImageSuggestions",
+      "method": "getSearchSuggestions",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -3174,7 +3174,7 @@
     },
     {
       "url": "/v2/images/search/suggestions",
-      "method": "getImageKeywordSuggestions",
+      "method": "extractKeywordsFromText",
       "httpMethod": "post",
       "tag": "images",
       "typeScriptTag": "images",
@@ -3196,7 +3196,7 @@
     },
     {
       "url": "/v2/images/updated",
-      "method": "getUpdatedImages",
+      "method": "listUpdatedContent",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -3247,7 +3247,7 @@
     },
     {
       "url": "/v2/images/{id}",
-      "method": "getImage",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "images",
       "typeScriptTag": "images",
@@ -3326,7 +3326,7 @@
     },
     {
       "url": "/v2/oauth/access_token",
-      "method": "createAccessToken",
+      "method": "getUserAccessToken",
       "httpMethod": "post",
       "tag": "oauth",
       "typeScriptTag": "oauth",
@@ -3384,7 +3384,7 @@
     },
     {
       "url": "/v2/oauth/authorize",
-      "method": "authorize",
+      "method": "authorizeApplications",
       "httpMethod": "get",
       "tag": "oauth",
       "typeScriptTag": "oauth",
@@ -3434,7 +3434,7 @@
     },
     {
       "url": "/v2/sfx",
-      "method": "getSfxListDetails",
+      "method": "listDetails",
       "httpMethod": "get",
       "tag": "sound_effects",
       "typeScriptTag": "soundEffects",
@@ -3476,7 +3476,7 @@
     },
     {
       "url": "/v2/sfx/licenses",
-      "method": "getSfxLicenseList",
+      "method": "listLicenses",
       "httpMethod": "get",
       "tag": "sound_effects",
       "typeScriptTag": "soundEffects",
@@ -3547,7 +3547,7 @@
     },
     {
       "url": "/v2/sfx/licenses",
-      "method": "licensesSfx",
+      "method": "licenseAssets",
       "httpMethod": "post",
       "tag": "sound_effects",
       "typeScriptTag": "soundEffects",
@@ -3569,7 +3569,7 @@
     },
     {
       "url": "/v2/sfx/licenses/{id}/downloads",
-      "method": "downloadSfx",
+      "method": "redownloadLicenses",
       "httpMethod": "post",
       "tag": "sound_effects",
       "typeScriptTag": "soundEffects",
@@ -3591,7 +3591,7 @@
     },
     {
       "url": "/v2/sfx/search",
-      "method": "searchSfx",
+      "method": "searchSoundEffects",
       "httpMethod": "get",
       "tag": "sound_effects",
       "typeScriptTag": "soundEffects",
@@ -3672,7 +3672,7 @@
     },
     {
       "url": "/v2/sfx/{id}",
-      "method": "getSfxDetails",
+      "method": "getDetails",
       "httpMethod": "get",
       "tag": "sound_effects",
       "typeScriptTag": "soundEffects",
@@ -3714,7 +3714,7 @@
     },
     {
       "url": "/v2/test",
-      "method": "echo",
+      "method": "echoText",
       "httpMethod": "get",
       "tag": "test",
       "typeScriptTag": "test",
@@ -3735,7 +3735,7 @@
     },
     {
       "url": "/v2/test/validate",
-      "method": "validate",
+      "method": "inputValidation",
       "httpMethod": "get",
       "tag": "test",
       "typeScriptTag": "test",
@@ -3767,7 +3767,7 @@
     },
     {
       "url": "/v2/user",
-      "method": "getUser",
+      "method": "getUserDetails",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -3782,7 +3782,7 @@
     },
     {
       "url": "/v2/user/access_token",
-      "method": "getAccessToken",
+      "method": "getAccessTokenDetails",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -3797,7 +3797,7 @@
     },
     {
       "url": "/v2/user/subscriptions",
-      "method": "getUserSubscriptionList",
+      "method": "listSubscriptions",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -3812,7 +3812,7 @@
     },
     {
       "url": "/v2/videos",
-      "method": "getVideoList",
+      "method": "listVideo",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3844,7 +3844,7 @@
     },
     {
       "url": "/v2/videos/categories",
-      "method": "listVideoCategories",
+      "method": "listCategories",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3865,7 +3865,7 @@
     },
     {
       "url": "/v2/videos/collections",
-      "method": "getVideoCollectionList",
+      "method": "listCollections",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3896,7 +3896,7 @@
     },
     {
       "url": "/v2/videos/collections",
-      "method": "createVideoCollection",
+      "method": "createVideoCollections",
       "httpMethod": "post",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3918,7 +3918,7 @@
     },
     {
       "url": "/v2/videos/collections/featured",
-      "method": "getFeaturedVideoCollectionList",
+      "method": "listFeaturedVideoCollections",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3939,7 +3939,7 @@
     },
     {
       "url": "/v2/videos/collections/featured/{id}",
-      "method": "getFeaturedVideoCollection",
+      "method": "collectionDetailsGet",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3966,7 +3966,7 @@
     },
     {
       "url": "/v2/videos/collections/featured/{id}/items",
-      "method": "getFeaturedVideoCollectionItems",
+      "method": "getFeaturedCollectionItems",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -3998,7 +3998,7 @@
     },
     {
       "url": "/v2/videos/collections/{id}",
-      "method": "deleteVideoCollection",
+      "method": "deleteCollection",
       "httpMethod": "delete",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4015,7 +4015,7 @@
     },
     {
       "url": "/v2/videos/collections/{id}",
-      "method": "getVideoCollection",
+      "method": "collectionDetailsGet",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4047,7 +4047,7 @@
     },
     {
       "url": "/v2/videos/collections/{id}",
-      "method": "renameVideoCollection",
+      "method": "setNewName",
       "httpMethod": "post",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4070,7 +4070,7 @@
     },
     {
       "url": "/v2/videos/collections/{id}/items",
-      "method": "deleteVideoCollectionItems",
+      "method": "removeFromCollection",
       "httpMethod": "delete",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4092,7 +4092,7 @@
     },
     {
       "url": "/v2/videos/collections/{id}/items",
-      "method": "getVideoCollectionItems",
+      "method": "getCollectionItems",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4134,7 +4134,7 @@
     },
     {
       "url": "/v2/videos/collections/{id}/items",
-      "method": "addVideoCollectionItems",
+      "method": "addToCollectionItems",
       "httpMethod": "post",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4157,7 +4157,7 @@
     },
     {
       "url": "/v2/videos/licenses",
-      "method": "getVideoLicenseList",
+      "method": "listLicenses",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4260,7 +4260,7 @@
     },
     {
       "url": "/v2/videos/licenses/{id}/downloads",
-      "method": "downloadVideos",
+      "method": "redownloadDownloads",
       "httpMethod": "post",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4302,7 +4302,7 @@
     },
     {
       "url": "/v2/videos/search",
-      "method": "searchVideos",
+      "method": "searchVideo",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4463,7 +4463,7 @@
     },
     {
       "url": "/v2/videos/search/suggestions",
-      "method": "getVideoSuggestions",
+      "method": "searchSuggestions",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4490,7 +4490,7 @@
     },
     {
       "url": "/v2/videos/updated",
-      "method": "getUpdatedVideos",
+      "method": "listUpdatedVideos",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4536,7 +4536,7 @@
     },
     {
       "url": "/v2/videos/{id}",
-      "method": "getVideo",
+      "method": "videoDetails",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4573,7 +4573,7 @@
     },
     {
       "url": "/v2/videos/{id}/similar",
-      "method": "findSimilarVideos",
+      "method": "findSimilar",
       "httpMethod": "get",
       "tag": "videos",
       "typeScriptTag": "videos",
@@ -4619,7 +4619,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/favicon.ico",
   "clientNameCamelCase": "shutterstock",
-  "lastUpdated": "2024-02-02T19:23:56.738Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { Shutterstock } from 'shutterstock-typescript-sdk';\n\nconst shutterstock = new Shutterstock({\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n})",
   "fixedSpecFileName": "shutterstock-fixed-spec.yaml"
 }

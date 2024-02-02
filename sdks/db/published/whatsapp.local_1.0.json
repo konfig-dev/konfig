@@ -35,7 +35,7 @@
   "methods": [
     {
       "url": "/account",
-      "method": "requestCode",
+      "method": "accountCreation",
       "httpMethod": "post",
       "tag": "Registration",
       "typeScriptTag": "registration",
@@ -116,7 +116,7 @@
     },
     {
       "url": "/account/verify",
-      "method": "registerAccount",
+      "method": "verifyAccount",
       "httpMethod": "post",
       "tag": "Registration",
       "typeScriptTag": "registration",
@@ -133,7 +133,7 @@
     },
     {
       "url": "/certificates/external",
-      "method": "uploadCertificate",
+      "method": "uploadExternal",
       "httpMethod": "post",
       "tag": "Certificates",
       "typeScriptTag": "certificates",
@@ -158,7 +158,7 @@
     },
     {
       "url": "/certificates/webhooks/ca",
-      "method": "deleteWebhookCaCertificate",
+      "method": "deleteWebhookCa",
       "httpMethod": "delete",
       "tag": "Certificates",
       "typeScriptTag": "certificates",
@@ -183,7 +183,7 @@
     },
     {
       "url": "/certificates/webhooks/ca",
-      "method": "uploadWebhookCaCertificate",
+      "method": "uploadWebhookCa",
       "httpMethod": "post",
       "tag": "Certificates",
       "typeScriptTag": "certificates",
@@ -193,7 +193,7 @@
     },
     {
       "url": "/contacts",
-      "method": "checkContact",
+      "method": "createContact",
       "httpMethod": "post",
       "tag": "Contacts",
       "typeScriptTag": "contacts",
@@ -221,7 +221,7 @@
     },
     {
       "url": "/groups",
-      "method": "getAllGroups",
+      "method": "getAll",
       "httpMethod": "get",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -258,7 +258,7 @@
     },
     {
       "url": "/groups/{GroupId}",
-      "method": "getGroupInfo",
+      "method": "getInfo",
       "httpMethod": "get",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -303,7 +303,7 @@
     },
     {
       "url": "/groups/{GroupId}/admins",
-      "method": "demoteGroupAdmin",
+      "method": "demoteAdmin",
       "httpMethod": "delete",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -326,7 +326,7 @@
     },
     {
       "url": "/groups/{GroupId}/admins",
-      "method": "promoteToGroupAdmin",
+      "method": "promoteToAdmin",
       "httpMethod": "patch",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -349,7 +349,7 @@
     },
     {
       "url": "/groups/{GroupId}/icon",
-      "method": "deleteGroupIcon",
+      "method": "deleteIcon",
       "httpMethod": "delete",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -372,7 +372,7 @@
     },
     {
       "url": "/groups/{GroupId}/icon",
-      "method": "getGroupIconBinary",
+      "method": "getGroupIcon",
       "httpMethod": "get",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -389,7 +389,7 @@
     },
     {
       "url": "/groups/{GroupId}/icon",
-      "method": "setGroupIcon",
+      "method": "setIcon",
       "httpMethod": "post",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -429,7 +429,7 @@
     },
     {
       "url": "/groups/{GroupId}/invite",
-      "method": "getGroupInvite",
+      "method": "getInvite",
       "httpMethod": "get",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -468,7 +468,7 @@
     },
     {
       "url": "/groups/{GroupId}/participants",
-      "method": "removeGroupParticipant",
+      "method": "removeParticipant",
       "httpMethod": "delete",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -491,7 +491,7 @@
     },
     {
       "url": "/health",
-      "method": "checkHealth",
+      "method": "checkStatus",
       "httpMethod": "get",
       "tag": "Health",
       "typeScriptTag": "health",
@@ -501,7 +501,7 @@
     },
     {
       "url": "/media",
-      "method": "uploadMedia",
+      "method": "upload",
       "httpMethod": "post",
       "tag": "Media",
       "typeScriptTag": "media",
@@ -516,7 +516,7 @@
     },
     {
       "url": "/media/{MediaId}",
-      "method": "deleteMedia",
+      "method": "remove",
       "httpMethod": "delete",
       "tag": "Media",
       "typeScriptTag": "media",
@@ -649,7 +649,7 @@
     },
     {
       "url": "/messages/{MessageID}",
-      "method": "markMessageAsRead",
+      "method": "markAsRead",
       "httpMethod": "put",
       "tag": "Messages",
       "typeScriptTag": "messages",
@@ -693,7 +693,7 @@
     },
     {
       "url": "/settings/account/two-step",
-      "method": "disableTwoStep",
+      "method": "disable",
       "httpMethod": "delete",
       "tag": "Two-Step Verification",
       "typeScriptTag": "twoStepVerification",
@@ -703,7 +703,7 @@
     },
     {
       "url": "/settings/account/two-step",
-      "method": "enableTwoStep",
+      "method": "enableAccountSecurity",
       "httpMethod": "post",
       "tag": "Two-Step Verification",
       "typeScriptTag": "twoStepVerification",
@@ -720,7 +720,7 @@
     },
     {
       "url": "/settings/application",
-      "method": "resetApplicationSettings",
+      "method": "resetSettings",
       "httpMethod": "delete",
       "tag": "Application",
       "typeScriptTag": "application",
@@ -730,7 +730,7 @@
     },
     {
       "url": "/settings/application",
-      "method": "getApplicationSettings",
+      "method": "getSettings",
       "httpMethod": "get",
       "tag": "Application",
       "typeScriptTag": "application",
@@ -745,7 +745,7 @@
     },
     {
       "url": "/settings/application",
-      "method": "updateApplicationSettings",
+      "method": "updateSettings",
       "httpMethod": "patch",
       "tag": "Application",
       "typeScriptTag": "application",
@@ -836,7 +836,7 @@
     },
     {
       "url": "/settings/application/media/providers/{ProviderName}",
-      "method": "deleteMediaProviders",
+      "method": "deleteMediaProvider",
       "httpMethod": "delete",
       "tag": "Application",
       "typeScriptTag": "application",
@@ -853,7 +853,7 @@
     },
     {
       "url": "/settings/backup",
-      "method": "backupSettings",
+      "method": "settingsPost",
       "httpMethod": "post",
       "tag": "Backup/Restore",
       "typeScriptTag": "backup/restore",
@@ -875,7 +875,7 @@
     },
     {
       "url": "/settings/business/profile",
-      "method": "getBusinessProfile",
+      "method": "getProfile",
       "httpMethod": "get",
       "tag": "Business Profile",
       "typeScriptTag": "businessProfile",
@@ -890,20 +890,20 @@
     },
     {
       "url": "/settings/business/profile",
-      "method": "updateBusinessProfile",
+      "method": "updateProfile",
       "httpMethod": "post",
       "tag": "Business Profile",
       "typeScriptTag": "businessProfile",
       "description": "Update-Business-Profile",
       "parameters": [
         {
-          "name": "address",
+          "name": "description",
           "schema": "string",
           "required": true,
           "description": ""
         },
         {
-          "name": "description",
+          "name": "address",
           "schema": "string",
           "required": true,
           "description": ""
@@ -931,7 +931,7 @@
     },
     {
       "url": "/settings/profile/about",
-      "method": "getProfileAbout",
+      "method": "getAbout",
       "httpMethod": "get",
       "tag": "Profile",
       "typeScriptTag": "profile",
@@ -946,7 +946,7 @@
     },
     {
       "url": "/settings/profile/about",
-      "method": "updateProfileAbout",
+      "method": "updateAbout",
       "httpMethod": "patch",
       "tag": "Profile",
       "typeScriptTag": "profile",
@@ -963,15 +963,17 @@
     },
     {
       "url": "/settings/profile/photo",
-      "method": "deleteProfilePhoto",
+      "method": "removePhoto",
       "httpMethod": "delete",
+      "tag": "Profile",
+      "typeScriptTag": "profile",
       "description": "Delete-Profile-Photo",
       "parameters": [],
       "responses": []
     },
     {
       "url": "/settings/profile/photo",
-      "method": "getProfilePhoto",
+      "method": "getPhoto",
       "httpMethod": "get",
       "tag": "Profile",
       "typeScriptTag": "profile",
@@ -992,7 +994,7 @@
     },
     {
       "url": "/settings/profile/photo",
-      "method": "updateProfilePhoto",
+      "method": "uploadPhoto",
       "httpMethod": "post",
       "tag": "Profile",
       "typeScriptTag": "profile",
@@ -1009,7 +1011,7 @@
     },
     {
       "url": "/settings/restore",
-      "method": "restoreSettings",
+      "method": "settingsPost",
       "httpMethod": "post",
       "tag": "Backup/Restore",
       "typeScriptTag": "backup/restore",
@@ -1053,7 +1055,7 @@
     },
     {
       "url": "/stats/db",
-      "method": "getDbStats",
+      "method": "dbStatsGet",
       "httpMethod": "get",
       "tag": "Health",
       "typeScriptTag": "health",
@@ -1117,7 +1119,7 @@
     },
     {
       "url": "/users/login",
-      "method": "loginUser",
+      "method": "performLogin",
       "httpMethod": "post",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -1139,7 +1141,7 @@
     },
     {
       "url": "/users/logout",
-      "method": "logoutUser",
+      "method": "performLogout",
       "httpMethod": "post",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -1149,7 +1151,7 @@
     },
     {
       "url": "/users/{UserUsername}",
-      "method": "deleteUser",
+      "method": "removeUser",
       "httpMethod": "delete",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -1171,7 +1173,7 @@
     },
     {
       "url": "/users/{UserUsername}",
-      "method": "getUser",
+      "method": "getByUsername",
       "httpMethod": "get",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -1193,7 +1195,7 @@
     },
     {
       "url": "/users/{UserUsername}",
-      "method": "updateUser",
+      "method": "updateUserByUsername",
       "httpMethod": "put",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -1225,7 +1227,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/favicon.png",
   "clientNameCamelCase": "whatsApp",
-  "lastUpdated": "2024-02-01T19:39:12.790Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { WhatsApp } from 'whatsapp-typescript-sdk';\n\nconst whatsApp = new WhatsApp({\n    token: \"TOKEN\",\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n})",
   "fixedSpecFileName": "whatsapp-fixed-spec.yaml"
 }

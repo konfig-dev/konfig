@@ -35,7 +35,7 @@
   "methods": [
     {
       "url": "/feed/availability",
-      "method": "/feed/availabilityGet",
+      "method": "getByWikiDomain",
       "httpMethod": "get",
       "tag": "Feed content availability",
       "typeScriptTag": "feedContentAvailability",
@@ -54,7 +54,7 @@
     },
     {
       "url": "/media/math/check/{type}",
-      "method": "/media/math/check/{type}Post",
+      "method": "checkFormula",
       "httpMethod": "post",
       "tag": "Math",
       "typeScriptTag": "math",
@@ -86,7 +86,7 @@
     },
     {
       "url": "/media/math/formula/{hash}",
-      "method": "/media/math/formula/{hash}Get",
+      "method": "getFormulaByHash",
       "httpMethod": "get",
       "tag": "Math",
       "typeScriptTag": "math",
@@ -112,7 +112,7 @@
     },
     {
       "url": "/media/math/render/{format}/{hash}",
-      "method": "/media/math/render/{format}/{hash}Get",
+      "method": "renderFormulaByHash",
       "httpMethod": "get",
       "tag": "Math",
       "typeScriptTag": "math",
@@ -144,7 +144,7 @@
     },
     {
       "url": "/metrics/bytes-difference/absolute/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/bytesDifference/absolute/aggregate/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+      "method": "getAbsoluteAggregateByProjectAndDateRange",
       "httpMethod": "get",
       "tag": "Bytes difference data",
       "typeScriptTag": "bytesDifferenceData",
@@ -200,7 +200,7 @@
     },
     {
       "url": "/metrics/bytes-difference/absolute/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/bytesDifference/absolute/perPage/{project}/{pageTitle}/{editorType}/{granularity}/{start}/{end}Get",
+      "method": "getAbsolutePerPage",
       "httpMethod": "get",
       "tag": "Bytes difference data",
       "typeScriptTag": "bytesDifferenceData",
@@ -256,7 +256,7 @@
     },
     {
       "url": "/metrics/bytes-difference/net/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/bytesDifference/net/aggregate/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+      "method": "getNetAggregateByProjectAndDateRange",
       "httpMethod": "get",
       "tag": "Bytes difference data",
       "typeScriptTag": "bytesDifferenceData",
@@ -312,7 +312,7 @@
     },
     {
       "url": "/metrics/bytes-difference/net/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/bytesDifference/net/perPage/{project}/{pageTitle}/{editorType}/{granularity}/{start}/{end}Get",
+      "method": "getSumNetTextBytesDifferencePerPage",
       "httpMethod": "get",
       "tag": "Bytes difference data",
       "typeScriptTag": "bytesDifferenceData",
@@ -368,7 +368,7 @@
     },
     {
       "url": "/metrics/edited-pages/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}",
-      "method": "/metrics/editedPages/aggregate/{project}/{editorType}/{pageType}/{activityLevel}/{granularity}/{start}/{end}Get",
+      "method": "getAggregateByProjectAndDateRange",
       "httpMethod": "get",
       "tag": "Edited pages data",
       "typeScriptTag": "editedPagesData",
@@ -430,7 +430,7 @@
     },
     {
       "url": "/metrics/edited-pages/new/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/editedPages/new/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+      "method": "getNewPagesCountsForProject",
       "httpMethod": "get",
       "tag": "Edited pages data",
       "typeScriptTag": "editedPagesData",
@@ -486,7 +486,7 @@
     },
     {
       "url": "/metrics/edited-pages/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-      "method": "/metrics/editedPages/topByAbsoluteBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+      "method": "getTopByAbsoluteBytesDifference",
       "httpMethod": "get",
       "tag": "Edited pages data",
       "typeScriptTag": "editedPagesData",
@@ -542,7 +542,7 @@
     },
     {
       "url": "/metrics/edited-pages/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-      "method": "/metrics/editedPages/topByEdits/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+      "method": "getTopByEditsCount",
       "httpMethod": "get",
       "tag": "Edited pages data",
       "typeScriptTag": "editedPagesData",
@@ -598,7 +598,7 @@
     },
     {
       "url": "/metrics/edited-pages/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-      "method": "/metrics/editedPages/topByNetBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+      "method": "getTopByNetBytesDifference",
       "httpMethod": "get",
       "tag": "Edited pages data",
       "typeScriptTag": "editedPagesData",
@@ -654,7 +654,7 @@
     },
     {
       "url": "/metrics/editors/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}",
-      "method": "/metrics/editors/aggregate/{project}/{editorType}/{pageType}/{activityLevel}/{granularity}/{start}/{end}Get",
+      "method": "getEditorsCountsForProject",
       "httpMethod": "get",
       "tag": "Editors data",
       "typeScriptTag": "editorsData",
@@ -716,7 +716,7 @@
     },
     {
       "url": "/metrics/editors/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-      "method": "/metrics/editors/topByAbsoluteBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+      "method": "getTopByAbsoluteBytesDifference",
       "httpMethod": "get",
       "tag": "Editors data",
       "typeScriptTag": "editorsData",
@@ -772,7 +772,7 @@
     },
     {
       "url": "/metrics/editors/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-      "method": "/metrics/editors/topByEdits/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+      "method": "getTopEditorsByEditsCount",
       "httpMethod": "get",
       "tag": "Editors data",
       "typeScriptTag": "editorsData",
@@ -828,7 +828,7 @@
     },
     {
       "url": "/metrics/editors/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-      "method": "/metrics/editors/topByNetBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+      "method": "getTopByNetBytesDifference",
       "httpMethod": "get",
       "tag": "Editors data",
       "typeScriptTag": "editorsData",
@@ -884,7 +884,7 @@
     },
     {
       "url": "/metrics/edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/edits/aggregate/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+      "method": "getEditsCountsForProject",
       "httpMethod": "get",
       "tag": "Edits data",
       "typeScriptTag": "editsData",
@@ -940,7 +940,7 @@
     },
     {
       "url": "/metrics/edits/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}",
-      "method": "/metrics/edits/perPage/{project}/{pageTitle}/{editorType}/{granularity}/{start}/{end}Get",
+      "method": "getPageEditCounts",
       "httpMethod": "get",
       "tag": "Edits data",
       "typeScriptTag": "editsData",
@@ -996,7 +996,7 @@
     },
     {
       "url": "/metrics/legacy/pagecounts/aggregate/{project}/{access-site}/{granularity}/{start}/{end}",
-      "method": "/metrics/legacy/pagecounts/aggregate/{project}/{accessSite}/{granularity}/{start}/{end}Get",
+      "method": "getPagecountsAggregateByProjectAndDateRange",
       "httpMethod": "get",
       "tag": "Legacy data",
       "typeScriptTag": "legacyData",
@@ -1046,7 +1046,7 @@
     },
     {
       "url": "/metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}",
-      "method": "/metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}Get",
+      "method": "getPageviewCountsByProject",
       "httpMethod": "get",
       "tag": "Pageviews data",
       "typeScriptTag": "pageviewsData",
@@ -1102,7 +1102,7 @@
     },
     {
       "url": "/metrics/pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}",
-      "method": "/metrics/pageviews/perArticle/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}Get",
+      "method": "getPageviewCountsByArticleDateRange",
       "httpMethod": "get",
       "tag": "Pageviews data",
       "typeScriptTag": "pageviewsData",
@@ -1164,7 +1164,7 @@
     },
     {
       "url": "/metrics/pageviews/top-by-country/{project}/{access}/{year}/{month}",
-      "method": "/metrics/pageviews/topByCountry/{project}/{access}/{year}/{month}Get",
+      "method": "listByCountryAndAccess",
       "httpMethod": "get",
       "tag": "Pageviews data",
       "typeScriptTag": "pageviewsData",
@@ -1208,7 +1208,7 @@
     },
     {
       "url": "/metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}",
-      "method": "/metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}Get",
+      "method": "listMostViewedArticlesByProjectAndTimespan",
       "httpMethod": "get",
       "tag": "Pageviews data",
       "typeScriptTag": "pageviewsData",
@@ -1258,7 +1258,7 @@
     },
     {
       "url": "/metrics/registered-users/new/{project}/{granularity}/{start}/{end}",
-      "method": "/metrics/registeredUsers/new/{project}/{granularity}/{start}/{end}Get",
+      "method": "getNewUserCountsByProjectAndDateRange",
       "httpMethod": "get",
       "tag": "Registered users data",
       "typeScriptTag": "registeredUsersData",
@@ -1302,7 +1302,7 @@
     },
     {
       "url": "/metrics/unique-devices/{project}/{access-site}/{granularity}/{start}/{end}",
-      "method": "/metrics/uniqueDevices/{project}/{accessSite}/{granularity}/{start}/{end}Get",
+      "method": "getByProjectAndDateRange",
       "httpMethod": "get",
       "tag": "Unique devices data",
       "typeScriptTag": "uniqueDevicesData",
@@ -1352,7 +1352,7 @@
     },
     {
       "url": "/transform/html/from/{from_lang}/to/{to_lang}",
-      "method": "/transform/html/from/{fromLang}/to/{toLang}Post",
+      "method": "contentMachineTranslate",
       "httpMethod": "post",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1390,7 +1390,7 @@
     },
     {
       "url": "/transform/html/from/{from_lang}/to/{to_lang}/{provider}",
-      "method": "/transform/html/from/{fromLang}/to/{toLang}/{provider}Post",
+      "method": "contentMachineTranslate",
       "httpMethod": "post",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1433,55 +1433,8 @@
       ]
     },
     {
-      "url": "/transform/list/languagepairs/",
-      "method": "/transform/list/languagepairs/Get",
-      "httpMethod": "get",
-      "tag": "Transform",
-      "typeScriptTag": "transform",
-      "description": "Lists the language pairs supported by the back-end",
-      "parameters": [],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "url": "/transform/list/pair/{from}/{to}/",
-      "method": "/transform/list/pair/{from}/{to}/Get",
-      "httpMethod": "get",
-      "tag": "Transform",
-      "typeScriptTag": "transform",
-      "description": "Lists the tools available for a language pair",
-      "parameters": [
-        {
-          "name": "from",
-          "schema": "string",
-          "required": true,
-          "description": "The source language code"
-        },
-        {
-          "name": "to",
-          "schema": "string",
-          "required": true,
-          "description": "The target language code"
-        }
-      ],
-      "responses": [
-        {
-          "statusCode": "200",
-          "description": ""
-        },
-        {
-          "statusCode": "default",
-          "description": ""
-        }
-      ]
-    },
-    {
       "url": "/transform/list/tool/{tool}",
-      "method": "/transform/list/tool/{tool}Get",
+      "method": "getListToolLanguagePairs",
       "httpMethod": "get",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1507,7 +1460,7 @@
     },
     {
       "url": "/transform/list/tool/{tool}/{from}",
-      "method": "/transform/list/tool/{tool}/{from}Get",
+      "method": "toolLanguagePairsList",
       "httpMethod": "get",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1539,7 +1492,7 @@
     },
     {
       "url": "/transform/list/tool/{tool}/{from}/{to}",
-      "method": "/transform/list/tool/{tool}/{from}/{to}Get",
+      "method": "toolLanguagePairsList",
       "httpMethod": "get",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1577,7 +1530,7 @@
     },
     {
       "url": "/transform/word/from/{from_lang}/to/{to_lang}/{word}",
-      "method": "/transform/word/from/{fromLang}/to/{toLang}/{word}Get",
+      "method": "getDictionaryMeaning",
       "httpMethod": "get",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1615,7 +1568,7 @@
     },
     {
       "url": "/transform/word/from/{from_lang}/to/{to_lang}/{word}/{provider}",
-      "method": "/transform/word/from/{fromLang}/to/{toLang}/{word}/{provider}Get",
+      "method": "getDictionaryMeaning",
       "httpMethod": "get",
       "tag": "Transform",
       "typeScriptTag": "transform",
@@ -1656,6 +1609,53 @@
           "description": ""
         }
       ]
+    },
+    {
+      "url": "/transform/list/languagepairs",
+      "method": "listLanguagePairs",
+      "httpMethod": "get",
+      "tag": "Transform",
+      "typeScriptTag": "transform",
+      "description": "Lists the language pairs supported by the back-end",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/transform/list/pair/{from}/{to}",
+      "method": "languagePairList",
+      "httpMethod": "get",
+      "tag": "Transform",
+      "typeScriptTag": "transform",
+      "description": "Lists the tools available for a language pair",
+      "parameters": [
+        {
+          "name": "from",
+          "schema": "string",
+          "required": true,
+          "description": "The source language code"
+        },
+        {
+          "name": "to",
+          "schema": "string",
+          "required": true,
+          "description": "The target language code"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": ""
+        }
+      ]
     }
   ],
   "originalSpecUrl": "https://wikimedia.org/api/rest_v1/?spec",
@@ -1663,7 +1663,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/favicon.ico",
   "clientNameCamelCase": "wikimedia",
-  "lastUpdated": "2024-02-01T19:39:12.790Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { Wikimedia } from 'wikimedia-typescript-sdk';\n\nconst wikimedia = new Wikimedia({\n    // Checks permissions using MW api\n    cookie: \"COOKIE\",\n})",
   "fixedSpecFileName": "wikimedia-fixed-spec.yaml"
 }

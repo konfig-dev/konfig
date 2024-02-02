@@ -35,7 +35,7 @@
   "methods": [
     {
       "url": "/connect",
-      "method": "/connectGet",
+      "method": "authorizeUser",
       "httpMethod": "get",
       "tag": "oauth",
       "typeScriptTag": "oauth",
@@ -75,7 +75,7 @@
     },
     {
       "url": "/oauth2/token",
-      "method": "/oauth2/tokenPost",
+      "method": "provisionAccessToken",
       "httpMethod": "post",
       "tag": "oauth",
       "typeScriptTag": "oauth",
@@ -135,7 +135,7 @@
     },
     {
       "url": "/me",
-      "method": "/meGet",
+      "method": "getUserInformation",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -154,7 +154,7 @@
     },
     {
       "url": "/me/activities",
-      "method": "/me/activitiesGet",
+      "method": "getActivities",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -185,7 +185,7 @@
     },
     {
       "url": "/me/activities/all/own",
-      "method": "/me/activities/all/ownGet",
+      "method": "getRecentActivities",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -216,7 +216,7 @@
     },
     {
       "url": "/me/activities/tracks",
-      "method": "/me/activities/tracksGet",
+      "method": "getRecentTracks",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -247,7 +247,7 @@
     },
     {
       "url": "/me/likes/tracks",
-      "method": "/me/likes/tracksGet",
+      "method": "listLikedTracks",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -284,7 +284,7 @@
     },
     {
       "url": "/me/likes/playlists",
-      "method": "/me/likes/playlistsGet",
+      "method": "getLikedPlaylists",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -316,7 +316,7 @@
     },
     {
       "url": "/me/followings",
-      "method": "/me/followingsGet",
+      "method": "getFollowedUsers",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -348,7 +348,7 @@
     },
     {
       "url": "/me/followings/tracks",
-      "method": "/me/followings/tracksGet",
+      "method": "listFollowedTracks",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -385,7 +385,7 @@
     },
     {
       "url": "/me/followings/{user_id}",
-      "method": "/me/followings/{userId}Delete",
+      "method": "deleteFollowedUser",
       "httpMethod": "delete",
       "tag": "me",
       "typeScriptTag": "me",
@@ -419,7 +419,7 @@
     },
     {
       "url": "/me/followings/{user_id}",
-      "method": "/me/followings/{userId}Get",
+      "method": "getFollowedUser",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -449,7 +449,7 @@
     },
     {
       "url": "/me/followings/{user_id}",
-      "method": "/me/followings/{userId}Put",
+      "method": "followUser",
       "httpMethod": "put",
       "tag": "me",
       "typeScriptTag": "me",
@@ -483,7 +483,7 @@
     },
     {
       "url": "/me/followers",
-      "method": "/me/followersGet",
+      "method": "getFollowersList",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -509,7 +509,7 @@
     },
     {
       "url": "/me/followers/{follower_id}",
-      "method": "/me/followers/{followerId}Get",
+      "method": "getFollowerById",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -535,7 +535,7 @@
     },
     {
       "url": "/me/playlists",
-      "method": "/me/playlistsGet",
+      "method": "listPlaylistsInfoTracksOwner",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -577,7 +577,7 @@
     },
     {
       "url": "/me/tracks",
-      "method": "/me/tracksGet",
+      "method": "listUserTracks",
       "httpMethod": "get",
       "tag": "me",
       "typeScriptTag": "me",
@@ -609,7 +609,7 @@
     },
     {
       "url": "/tracks",
-      "method": "/tracksGet",
+      "method": "byQuery",
       "httpMethod": "get",
       "tag": "search",
       "typeScriptTag": "search",
@@ -698,7 +698,7 @@
     },
     {
       "url": "/tracks",
-      "method": "/tracksPost",
+      "method": "uploadNewTrack",
       "httpMethod": "post",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -725,7 +725,7 @@
     },
     {
       "url": "/playlists",
-      "method": "/playlistsGet",
+      "method": "byQuery",
       "httpMethod": "get",
       "tag": "search",
       "typeScriptTag": "search",
@@ -784,7 +784,7 @@
     },
     {
       "url": "/playlists",
-      "method": "/playlistsPost",
+      "method": "createNewPlaylist",
       "httpMethod": "post",
       "tag": "playlists",
       "typeScriptTag": "playlists",
@@ -813,7 +813,7 @@
     },
     {
       "url": "/users",
-      "method": "/usersGet",
+      "method": "userQuery",
       "httpMethod": "get",
       "tag": "search",
       "typeScriptTag": "search",
@@ -867,7 +867,7 @@
     },
     {
       "url": "/playlists/{playlist_id}",
-      "method": "/playlists/{playlistId}Delete",
+      "method": "deletePlaylist",
       "httpMethod": "delete",
       "tag": "playlists",
       "typeScriptTag": "playlists",
@@ -889,7 +889,7 @@
     },
     {
       "url": "/playlists/{playlist_id}",
-      "method": "/playlists/{playlistId}Get",
+      "method": "getPlaylistById",
       "httpMethod": "get",
       "tag": "playlists",
       "typeScriptTag": "playlists",
@@ -936,7 +936,7 @@
     },
     {
       "url": "/playlists/{playlist_id}",
-      "method": "/playlists/{playlistId}Put",
+      "method": "updatePlaylistById",
       "httpMethod": "put",
       "tag": "playlists",
       "typeScriptTag": "playlists",
@@ -971,7 +971,7 @@
     },
     {
       "url": "/playlists/{playlist_id}/tracks",
-      "method": "/playlists/{playlistId}/tracksGet",
+      "method": "getTracks",
       "httpMethod": "get",
       "tag": "playlists",
       "typeScriptTag": "playlists",
@@ -1018,7 +1018,7 @@
     },
     {
       "url": "/playlists/{playlist_id}/reposters",
-      "method": "/playlists/{playlistId}/repostersGet",
+      "method": "listReposters",
       "httpMethod": "get",
       "tag": "playlists",
       "typeScriptTag": "playlists",
@@ -1054,7 +1054,7 @@
     },
     {
       "url": "/tracks/{track_id}",
-      "method": "/tracks/{trackId}Delete",
+      "method": "deleteTrack",
       "httpMethod": "delete",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1076,7 +1076,7 @@
     },
     {
       "url": "/tracks/{track_id}",
-      "method": "/tracks/{trackId}Get",
+      "method": "getById",
       "httpMethod": "get",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1112,7 +1112,7 @@
     },
     {
       "url": "/tracks/{track_id}",
-      "method": "/tracks/{trackId}Put",
+      "method": "updateTrackInformation",
       "httpMethod": "put",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1147,7 +1147,7 @@
     },
     {
       "url": "/tracks/{track_id}/streams",
-      "method": "/tracks/{trackId}/streamsGet",
+      "method": "getStreamableUrls",
       "httpMethod": "get",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1183,7 +1183,7 @@
     },
     {
       "url": "/tracks/{track_id}/comments",
-      "method": "/tracks/{trackId}/commentsGet",
+      "method": "getComments",
       "httpMethod": "get",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1231,7 +1231,7 @@
     },
     {
       "url": "/tracks/{track_id}/comments",
-      "method": "/tracks/{trackId}/commentsPost",
+      "method": "createComment",
       "httpMethod": "post",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1266,7 +1266,7 @@
     },
     {
       "url": "/tracks/{track_id}/favoriters",
-      "method": "/tracks/{trackId}/favoritersGet",
+      "method": "getFavoriters",
       "httpMethod": "get",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1308,7 +1308,7 @@
     },
     {
       "url": "/tracks/{track_id}/reposters",
-      "method": "/tracks/{trackId}/repostersGet",
+      "method": "listReposters",
       "httpMethod": "get",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1344,7 +1344,7 @@
     },
     {
       "url": "/tracks/{track_id}/related",
-      "method": "/tracks/{trackId}/relatedGet",
+      "method": "getRelatedTracks",
       "httpMethod": "get",
       "tag": "tracks",
       "typeScriptTag": "tracks",
@@ -1397,7 +1397,7 @@
     },
     {
       "url": "/resolve",
-      "method": "/resolveGet",
+      "method": "resolveSoundcloudUrls",
       "httpMethod": "get",
       "tag": "miscellaneous",
       "typeScriptTag": "miscellaneous",
@@ -1423,7 +1423,7 @@
     },
     {
       "url": "/users/{user_id}",
-      "method": "/users/{userId}Get",
+      "method": "getUser",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1453,7 +1453,7 @@
     },
     {
       "url": "/users/{user_id}/favorites",
-      "method": "/users/{userId}/favoritesGet",
+      "method": "listFavorites",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1491,7 +1491,7 @@
     },
     {
       "url": "/users/{user_id}/followers",
-      "method": "/users/{userId}/followersGet",
+      "method": "getFollowers",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1523,7 +1523,7 @@
     },
     {
       "url": "/users/{user_id}/followings",
-      "method": "/users/{userId}/followingsGet",
+      "method": "getUserFollowings",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1555,7 +1555,7 @@
     },
     {
       "url": "/users/{user_id}/followings/{following_id}",
-      "method": "/users/{userId}/followings/{followingId}Get",
+      "method": "getFollowingById",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1591,7 +1591,7 @@
     },
     {
       "url": "/users/{user_id}/playlists",
-      "method": "/users/{userId}/playlistsGet",
+      "method": "getUserPlaylists",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1640,7 +1640,7 @@
     },
     {
       "url": "/users/{user_id}/tracks",
-      "method": "/users/{userId}/tracksGet",
+      "method": "getUserTracks",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1683,7 +1683,7 @@
     },
     {
       "url": "/users/{user_id}/web-profiles",
-      "method": "/users/{userId}/webProfilesGet",
+      "method": "getUserWebProfiles",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1715,7 +1715,7 @@
     },
     {
       "url": "/users/{user_id}/likes/tracks",
-      "method": "/users/{userId}/likes/tracksGet",
+      "method": "listLikedTracks",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1766,7 +1766,7 @@
     },
     {
       "url": "/users/{user_id}/likes/playlists",
-      "method": "/users/{userId}/likes/playlistsGet",
+      "method": "listLikedPlaylists",
       "httpMethod": "get",
       "tag": "users",
       "typeScriptTag": "users",
@@ -1812,7 +1812,7 @@
     },
     {
       "url": "/likes/tracks/{track_id}",
-      "method": "/likes/tracks/{trackId}Delete",
+      "method": "unlikeTrack",
       "httpMethod": "delete",
       "tag": "likes",
       "typeScriptTag": "likes",
@@ -1842,7 +1842,7 @@
     },
     {
       "url": "/likes/tracks/{track_id}",
-      "method": "/likes/tracks/{trackId}Post",
+      "method": "trackAction",
       "httpMethod": "post",
       "tag": "likes",
       "typeScriptTag": "likes",
@@ -1880,7 +1880,7 @@
     },
     {
       "url": "/likes/playlists/{playlist_id}",
-      "method": "/likes/playlists/{playlistId}Delete",
+      "method": "unlikePlaylist",
       "httpMethod": "delete",
       "tag": "likes",
       "typeScriptTag": "likes",
@@ -1910,7 +1910,7 @@
     },
     {
       "url": "/likes/playlists/{playlist_id}",
-      "method": "/likes/playlists/{playlistId}Post",
+      "method": "playlist",
       "httpMethod": "post",
       "tag": "likes",
       "typeScriptTag": "likes",
@@ -1948,7 +1948,7 @@
     },
     {
       "url": "/reposts/tracks/{track_id}",
-      "method": "/reposts/tracks/{trackId}Delete",
+      "method": "removeRepost",
       "httpMethod": "delete",
       "tag": "reposts",
       "typeScriptTag": "reposts",
@@ -1974,7 +1974,7 @@
     },
     {
       "url": "/reposts/tracks/{track_id}",
-      "method": "/reposts/tracks/{trackId}Post",
+      "method": "trackAsAuthenticatedUser",
       "httpMethod": "post",
       "tag": "reposts",
       "typeScriptTag": "reposts",
@@ -2000,7 +2000,7 @@
     },
     {
       "url": "/reposts/playlists/{playlist_id}",
-      "method": "/reposts/playlists/{playlistId}Delete",
+      "method": "removeRepostOnPlaylist",
       "httpMethod": "delete",
       "tag": "reposts",
       "typeScriptTag": "reposts",
@@ -2026,7 +2026,7 @@
     },
     {
       "url": "/reposts/playlists/{playlist_id}",
-      "method": "/reposts/playlists/{playlistId}Post",
+      "method": "playlistAsAuthenticatedUser",
       "httpMethod": "post",
       "tag": "reposts",
       "typeScriptTag": "reposts",
@@ -2056,7 +2056,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/favicon.jpeg",
   "clientNameCamelCase": "soundCloud",
-  "lastUpdated": "2024-02-02T19:31:09.871Z",
+  "lastUpdated": "2024-02-02T23:02:23.295Z",
   "typescriptSdkUsageCode": "import { SoundCloud } from 'soundcloud-typescript-sdk';\n\nconst soundCloud = new SoundCloud({\n    // The string \"OAuth\" followed by the user’s token: OAuth ACCESS_TOKEN\n    authorization: \"AUTHORIZATION\",\n})",
   "fixedSpecFileName": "soundcloud-fixed-spec.yaml"
 }
