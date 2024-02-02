@@ -17,6 +17,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
       clientNameCamelCase="qualtrics"
       homepage="api.qualtrics.com"
       lastUpdated={new Date("2024-02-02T01:03:12.281Z")}
+      faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/favicon.png"
       contactUrl="https://www.qualtrics.com/support/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/imagePreview.png"

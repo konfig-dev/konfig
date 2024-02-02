@@ -195,6 +195,7 @@ function generateIndexTsx({
   schemas,
   difficulty,
   contactEmail,
+  faviconUrl,
   clientNameCamelCase,
   openApiRaw,
   parameters,
@@ -230,6 +231,7 @@ export default function ${camelcase(company, { pascalCase: true })}${
       clientNameCamelCase="${clientNameCamelCase}"
       homepage="${homepage}"
       lastUpdated={new Date("${lastUpdated}")}
+      faviconUrl="${faviconUrl}"
       ${
         contactUrl !== undefined
           ? `contactUrl="${contactUrl}"`

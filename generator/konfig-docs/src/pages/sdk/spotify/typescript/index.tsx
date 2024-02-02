@@ -17,6 +17,7 @@ export default function SpotifyTypeScriptSdk() {
       clientNameCamelCase="spotify"
       homepage="developer.spotify.com"
       lastUpdated={new Date("2024-01-31T22:00:11.365Z")}
+      faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/imagePreview.png"

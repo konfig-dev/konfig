@@ -17,6 +17,7 @@ export default function StackExchangeTypeScriptSdk() {
       clientNameCamelCase="stackExchange"
       homepage="api.stackexchange.com"
       lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/stack-exchange/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/stack-exchange/imagePreview.png"

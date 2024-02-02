@@ -17,6 +17,7 @@ export default function XCurrentTypeScriptSdk() {
       clientNameCamelCase="x"
       homepage="developer.x.com"
       lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/favicon.ico"
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/imagePreview.png"
