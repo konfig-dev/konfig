@@ -46,6 +46,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -103,6 +104,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -153,6 +155,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -222,6 +225,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -273,6 +277,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -319,6 +324,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -385,6 +391,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -449,6 +456,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
@@ -465,6 +473,7 @@ describe('fix-oas', () => {
         auto: true,
         ci: false,
         useAIForOperationId: false,
+        noInput: false,
       })
       expect(spec.spec).toMatchSnapshot()
     })
