@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.38.3
+
+### Patch Changes
+
+- [#523](https://github.com/konfig-dev/konfig/pull/523) [`1675a390`](https://github.com/konfig-dev/konfig/commit/1675a3909f6eb714c1ec94438db23e3d79f2aa7d) Thanks [@eddiechayes](https://github.com/eddiechayes)! - adding noInput flag to konfig fix
+
+- [`9c3ce0bd`](https://github.com/konfig-dev/konfig/commit/9c3ce0bd6ed993b70e8a79cb94695c2a08faacf2) Thanks [@dphuang2](https://github.com/dphuang2)! - fix operation tag assignment not being used
+
 ## 1.38.2
 
 ### Patch Changes
