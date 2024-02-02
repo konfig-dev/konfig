@@ -1,0 +1,309 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /v1/companies/{companyId}/employees/{employeeId}/deductions:
+    get: Deduction_getAllDeductions
+  /v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}:
+    get: Deduction_getByCode
+  /v1/companies/{companyId}/employees/{employeeId}/deductions/{deductionCode}/{startDate}:
+    delete: Deduction_removeDeductionByCodeAndStartDate
+  /v1/companies/{companyId}/employees/{employeeId}/localTaxes:
+    get: LocalTax_getAllTaxesForEmployee
+    post: LocalTax_createOrUpdateLocalTaxes
+  /v1/companies/{companyId}/employees/{employeeId}/localTaxes/{taxCode}:
+    delete: LocalTax_removeForTaxCode
+    get: LocalTax_getForTaxCode
+    put: LocalTax_updateForTaxCode
+  /v1/companies/{companyId}/onboarding/employees:
+    post: Onboarding_addEmployeeToOnboarding
+  /v1/company/{companyId}/employee/{employeeId}:
+    get: EmployeeV1_getEmployeeData
+  /v1/deduction:
+    post: Deduction_addOrUpdateDeduction
+  /v1/employee:
+    post: EmployeeV1_createNewEmployeeRecord
+  /v1/update-employee:
+    post: EmployeeV1_updateEmployeeDataToPaylocity
+  /v2/companies/{companyId}/codes/{codeResource}:
+    get: CompanyCodes_getAllByResource
+  /v2/companies/{companyId}/customfields/{category}:
+    get: CustomFields_getAllByCategory
+  /v2/companies/{companyId}/employees:
+    get: Employee_getAllEmployees
+    post: Employee_addToPaylocity
+  /v2/companies/{companyId}/employees/{employeeId}:
+    get: Employee_getEmployeeData
+    patch: Employee_updateEmployeeData
+  /v2/companies/{companyId}/employees/{employeeId}/additionalRates:
+    put: AdditionalRates_updateEmployeeAdditionalRates
+  /v2/companies/{companyId}/employees/{employeeId}/benefitSetup:
+    put: EmployeeBenefitSetup_addOrUpdateBenefitSetup
+  /v2/companies/{companyId}/employees/{employeeId}/directDeposit:
+    get: DirectDeposit_getAllDirectDeposits
+  /v2/companies/{companyId}/employees/{employeeId}/earnings:
+    get: Earnings_getAll
+    put: Earnings_addOrUpdateEarning
+  /v2/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}:
+    get: Earnings_getByEarningCode
+  /v2/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}/{startDate}:
+    delete: Earnings_deleteByCodeAndStart
+    get: Earnings_getByCodeAndStart
+  /v2/companies/{companyId}/employees/{employeeId}/emergencyContacts:
+    put: EmergencyContacts_addOrUpdate
+  /v2/companies/{companyId}/employees/{employeeId}/localTaxes:
+    get: LocalTaxes_getAllForEmployee
+    post: LocalTaxes_addNewTax
+  /v2/companies/{companyId}/employees/{employeeId}/localTaxes/{taxCode}:
+    delete: LocalTaxes_deleteByTaxCode
+    get: LocalTaxes_getByTaxCode
+  /v2/companies/{companyId}/employees/{employeeId}/nonprimaryStateTax:
+    put: NonPrimaryStateTax_addOrUpdateStateTax
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/details/{year}:
+    get: PayStatements_getDetailsByYear
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/details/{year}/{checkDate}:
+    get: PayStatements_getDetailsByYearAndCheckDate
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/summary/{year}:
+    get: PayStatements_getSummaryByYear
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/summary/{year}/{checkDate}:
+    get: PayStatements_getSummaryData
+  /v2/companies/{companyId}/employees/{employeeId}/primaryStateTax:
+    put: PrimaryStateTax_addOrUpdateTax
+  /v2/companies/{companyId}/employees/{employeeId}/sensitivedata:
+    get: SensitiveData_getEmployeeSensitiveData
+    put: SensitiveData_addOrUpdateEmployeeSensitiveData
+  /v2/companies/{companyId}/openapi:
+    get: CompanySpecificSchema_getOpenApiDoc
+  /v2/credentials/secrets:
+    post: ClientCredentials_obtainNewClientSecret
+  /v2/weblinkstaging/companies/{companyId}/employees/newemployees:
+    post: EmployeeStaging_addNewEmployeeToWebLink
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /v1/deduction:
+    post:
+      application/json: DeductionAddOrUpdateDeductionRequest
+  /v1/employee:
+    post:
+      application/json: EmployeeV1CreateNewEmployeeRecordRequest
+  /v1/update-employee:
+    post:
+      application/json: EmployeeV1UpdateEmployeeDataToPaylocityRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /v1/companies/{companyId}/employees/{employeeId}/deductions:
+    get:
+      '200':
+        application/json: DeductionGetAllDeductionsResponse
+  /v1/companies/{companyId}/employees/{employeeId}/localTaxes:
+    get:
+      '200':
+        application/json: LocalTaxGetAllTaxesForEmployeeResponse
+  /v2/companies/{companyId}/codes/{codeResource}:
+    get:
+      '200':
+        application/json: CompanyCodesGetAllByResourceResponse
+      '404':
+        application/json: CompanyCodesGetAllByResource404Response
+      '500':
+        application/json: CompanyCodesGetAllByResource500Response
+  /v2/companies/{companyId}/customfields/{category}:
+    get:
+      '200':
+        application/json: CustomFieldsGetAllByCategoryResponse
+      '404':
+        application/json: CustomFieldsGetAllByCategory404Response
+      '500':
+        application/json: CustomFieldsGetAllByCategory500Response
+  /v2/companies/{companyId}/employees:
+    get:
+      '200':
+        application/json: EmployeeGetAllEmployeesResponse
+      '404':
+        application/json: EmployeeGetAllEmployees404Response
+      '500':
+        application/json: EmployeeGetAllEmployees500Response
+    post:
+      '201':
+        application/json: EmployeeAddToPaylocityResponse
+      '400':
+        application/json: EmployeeAddToPaylocity400Response
+      '500':
+        application/json: EmployeeAddToPaylocity500Response
+  /v2/companies/{companyId}/employees/{employeeId}:
+    get:
+      '200':
+        application/json: EmployeeGetEmployeeDataResponse
+      '404':
+        application/json: EmployeeGetEmployeeData404Response
+      '500':
+        application/json: EmployeeGetEmployeeData500Response
+    patch:
+      '400':
+        application/json: EmployeeUpdateEmployeeDataResponse
+      '500':
+        application/json: EmployeeUpdateEmployeeData500Response
+  /v2/companies/{companyId}/employees/{employeeId}/additionalRates:
+    put:
+      '400':
+        application/json: AdditionalRatesUpdateEmployeeAdditionalRatesResponse
+      '500':
+        application/json: AdditionalRatesUpdateEmployeeAdditionalRates500Response
+  /v2/companies/{companyId}/employees/{employeeId}/benefitSetup:
+    put:
+      '400':
+        application/json: EmployeeBenefitSetupAddOrUpdateBenefitSetupResponse
+      '500':
+        application/json: EmployeeBenefitSetupAddOrUpdateBenefitSetup500Response
+  /v2/companies/{companyId}/employees/{employeeId}/directDeposit:
+    get:
+      '200':
+        application/json: DirectDepositGetAllDirectDepositsResponse
+      '404':
+        application/json: DirectDepositGetAllDirectDeposits404Response
+      '500':
+        application/json: DirectDepositGetAllDirectDeposits500Response
+  /v2/companies/{companyId}/employees/{employeeId}/earnings:
+    get:
+      '200':
+        application/json: EarningsGetAllResponse
+      '500':
+        application/json: EarningsGetAll500Response
+    put:
+      '400':
+        application/json: EarningsAddOrUpdateEarningResponse
+      '500':
+        application/json: EarningsAddOrUpdateEarning500Response
+  /v2/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}:
+    get:
+      '200':
+        application/json: EarningsGetByEarningCodeResponse
+      '500':
+        application/json: EarningsGetByEarningCode500Response
+  /v2/companies/{companyId}/employees/{employeeId}/earnings/{earningCode}/{startDate}:
+    delete:
+      '400':
+        application/json: EarningsDeleteByCodeAndStartResponse
+      '500':
+        application/json: EarningsDeleteByCodeAndStart500Response
+    get:
+      '500':
+        application/json: EarningsGetByCodeAndStartResponse
+  /v2/companies/{companyId}/employees/{employeeId}/emergencyContacts:
+    put:
+      '400':
+        application/json: EmergencyContactsAddOrUpdateResponse
+      '500':
+        application/json: EmergencyContactsAddOrUpdate500Response
+  /v2/companies/{companyId}/employees/{employeeId}/localTaxes:
+    get:
+      '200':
+        application/json: LocalTaxesGetAllForEmployeeResponse
+      '500':
+        application/json: LocalTaxesGetAllForEmployee500Response
+    post:
+      '400':
+        application/json: LocalTaxesAddNewTaxResponse
+      '500':
+        application/json: LocalTaxesAddNewTax500Response
+  /v2/companies/{companyId}/employees/{employeeId}/localTaxes/{taxCode}:
+    delete:
+      '400':
+        application/json: LocalTaxesDeleteByTaxCodeResponse
+      '500':
+        application/json: LocalTaxesDeleteByTaxCode500Response
+    get:
+      '200':
+        application/json: LocalTaxesGetByTaxCodeResponse
+      '500':
+        application/json: LocalTaxesGetByTaxCode500Response
+  /v2/companies/{companyId}/employees/{employeeId}/nonprimaryStateTax:
+    put:
+      '400':
+        application/json: NonPrimaryStateTaxAddOrUpdateStateTaxResponse
+      '500':
+        application/json: NonPrimaryStateTaxAddOrUpdateStateTax500Response
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/details/{year}:
+    get:
+      '200':
+        application/json: PayStatementsGetDetailsByYearResponse
+      '404':
+        application/json: PayStatementsGetDetailsByYear404Response
+      '500':
+        application/json: PayStatementsGetDetailsByYear500Response
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/details/{year}/{checkDate}:
+    get:
+      '200':
+        application/json: PayStatementsGetDetailsByYearAndCheckDateResponse
+      '404':
+        application/json: PayStatementsGetDetailsByYearAndCheckDate404Response
+      '500':
+        application/json: PayStatementsGetDetailsByYearAndCheckDate500Response
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/summary/{year}:
+    get:
+      '200':
+        application/json: PayStatementsGetSummaryByYearResponse
+      '404':
+        application/json: PayStatementsGetSummaryByYear404Response
+      '500':
+        application/json: PayStatementsGetSummaryByYear500Response
+  /v2/companies/{companyId}/employees/{employeeId}/paystatement/summary/{year}/{checkDate}:
+    get:
+      '200':
+        application/json: PayStatementsGetSummaryDataResponse
+      '404':
+        application/json: PayStatementsGetSummaryData404Response
+      '500':
+        application/json: PayStatementsGetSummaryData500Response
+  /v2/companies/{companyId}/employees/{employeeId}/primaryStateTax:
+    put:
+      '400':
+        application/json: PrimaryStateTaxAddOrUpdateTaxResponse
+      '500':
+        application/json: PrimaryStateTaxAddOrUpdateTax500Response
+  /v2/companies/{companyId}/employees/{employeeId}/sensitivedata:
+    get:
+      '200':
+        application/json: SensitiveDataGetEmployeeSensitiveDataResponse
+      '400':
+        application/json: SensitiveDataGetEmployeeSensitiveData400Response
+      '500':
+        application/json: SensitiveDataGetEmployeeSensitiveData500Response
+    put:
+      '400':
+        application/json: SensitiveDataAddOrUpdateEmployeeSensitiveDataResponse
+      '500':
+        application/json: SensitiveDataAddOrUpdateEmployeeSensitiveData500Response
+  /v2/companies/{companyId}/openapi:
+    get:
+      '400':
+        application/json: CompanySpecificSchemaGetOpenApiDocResponse
+      '500':
+        application/json: CompanySpecificSchemaGetOpenApiDoc500Response
+  /v2/credentials/secrets:
+    post:
+      '200':
+        application/json: ClientCredentialsObtainNewClientSecretResponse
+      '400':
+        application/json: ClientCredentialsObtainNewClientSecret400Response
+      '500':
+        application/json: ClientCredentialsObtainNewClientSecret500Response
+  /v2/weblinkstaging/companies/{companyId}/employees/newemployees:
+    post:
+      '201':
+        application/json: EmployeeStagingAddNewEmployeeToWebLinkResponse
+      '400':
+        application/json: EmployeeStagingAddNewEmployeeToWebLink400Response
+      '500':
+        application/json: EmployeeStagingAddNewEmployeeToWebLink500Response
+securityParameters:
+  codegroup:
+    query: false
+  includetotalcount:
+    query: false
+  pagenumber:
+    query: false
+  pagesize:
+    query: false
+validServerUrls: {}

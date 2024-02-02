@@ -85,6 +85,23 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "paylocity.com_weblink": {
+    lambda: async () => {
+      const urls = [
+        "https://developer.paylocity.com/integrations/reference/deduction-1?json=on",
+        "https://developer.paylocity.com/integrations/reference/get-all-local-taxes?json=on",
+      ];
+      // try URLs until one has a JSON with "oasDefinition" property defined
+      for (const url of urls) {
+        const rawSpecString = await fetch(url).then((res) => res.text());
+        const rawSpec = JSON.parse(rawSpecString);
+        if (rawSpec.oasDefinition !== undefined) {
+          return JSON.stringify(rawSpec.oasDefinition);
+        }
+      }
+      throw Error("No URL had a JSON with 'oasDefinition' property defined");
+    },
+  },
   "soundcloud.com": {
     type: "GET",
     url: "https://developers.soundcloud.com/docs/api/explorer/swagger-ui-init.js",

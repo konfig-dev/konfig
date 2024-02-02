@@ -35,6 +35,11 @@ const fixedSpecsOutputPath = path.join(
   "fixed-specs"
 );
 
+/**
+ * This is the name of the OAS file inside openapi-examples
+ */
+const openapiFilename = "openapi.yaml";
+
 const publishJsonSchema = z.object({
   publish: z.record(
     z
@@ -110,16 +115,6 @@ function collectAllPublishData() {
         );
       }
 
-      // find file that starts with "openapi" in openapiExamplesDirPath
-      const openapiPath = fs
-        .readdirSync(openapiExamplesDirPath)
-        .find((file) => file.startsWith("openapi"));
-      if (openapiPath === undefined) {
-        throw Error(
-          `❌ ERROR: openapi does not exist at ${openapiExamplesDirPath}`
-        );
-      }
-
       // find file that starts with "logo" in openapiExamplesDirPath
       const logoPath = fs
         .readdirSync(openapiExamplesDirPath)
@@ -164,7 +159,6 @@ function collectAllPublishData() {
           serviceKebabCase,
           dynamicPath,
           openapiExamplesDirPath,
-          openapiPath,
           publishData,
           githubUrlPrefix,
           imagePreviewPath,
@@ -250,7 +244,6 @@ async function main() {
       publishData,
       githubUrlPrefix,
       logoPath,
-      openapiPath,
       imagePreviewPath,
       faviconPath,
       metaDescription,
@@ -282,7 +275,7 @@ async function main() {
       metaDescription,
       originalSpecUrl: specData.openApiRaw,
       logo: `${githubUrlPrefix}${logoPath}`,
-      openApiRaw: `${githubUrlPrefix}${openapiPath}`,
+      openApiRaw: `${githubUrlPrefix}${openapiFilename}`,
       previewLinkImage: `${githubUrlPrefix}${imagePreviewPath}`,
       faviconUrl: `${githubUrlPrefix}${faviconPath}`,
       clientNameCamelCase: camelcase(publishData.clientName),
