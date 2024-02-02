@@ -117,13 +117,19 @@ export function getMethodObjects(spec: Spec): Method[] {
       url: path,
       method,
       httpMethod,
-      ...(tag ? { tag, typeScriptTag: camelcase(tag) } : {}),
+      ...(tag ? { tag, typeScriptTag: getTypescriptTag(tag) } : {}),
       description: operation.summary ?? operation.description ?? "",
       parameters,
       responses,
     });
   }
   return methods;
+}
+
+function getTypescriptTag(tag: string) {
+  // remove parentheses characters ("(" & ")") from tag
+  const withoutParentheses = tag.replace(/[()]/g, "");
+  return camelcase(withoutParentheses);
 }
 
 function getMethodName({

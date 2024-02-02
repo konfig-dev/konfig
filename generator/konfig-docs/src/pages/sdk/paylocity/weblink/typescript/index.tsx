@@ -16,7 +16,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/logo.jpg"
       clientNameCamelCase="paylocity"
       homepage="developer.paylocity.com"
-      lastUpdated={new Date("2024-02-02T23:44:03.993Z")}
+      lastUpdated={new Date("2024-02-02T23:54:52.416Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/favicon.jpg"
       // Missing contactUrl
       contactEmail="webservices@paylocity.com"
@@ -29,7 +29,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     "method": "createNewEmployeeRecord",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Employee (v1)",
-    "typeScriptTag": "employee (v1)",
+    "typeScriptTag": "employeeV1",
     "description": "Add new employee",
     "parameters": [
       {
@@ -50,7 +50,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     "method": "getEmployeeData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Employee (v1)",
-    "typeScriptTag": "employee (v1)",
+    "typeScriptTag": "employeeV1",
     "description": "Get Employee",
     "parameters": [
       {
@@ -82,7 +82,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     "method": "updateEmployeeDataToPaylocity",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Employee (v1)",
-    "typeScriptTag": "employee (v1)",
+    "typeScriptTag": "employeeV1",
     "description": "Update employee",
     "parameters": [
       {
