@@ -106,7 +106,11 @@ export function getMethodObjects(spec: Spec): Method[] {
       });
     }
 
-    const method = camelcase(operation.operationId ?? `${path}-${httpMethod}`);
+    const method = getMethodName({
+      operationId: operation.operationId,
+      path,
+      method: httpMethod,
+    });
 
     const tag = operation.tags?.[0];
     methods.push({
@@ -120,4 +124,22 @@ export function getMethodObjects(spec: Spec): Method[] {
     });
   }
   return methods;
+}
+
+function getMethodName({
+  operationId,
+  path,
+  method,
+}: {
+  operationId?: string;
+  path: string;
+  method: string;
+}) {
+  if (operationId !== undefined) {
+    if (operationId.includes("_") && operationId.split("_").length === 2) {
+      return camelcase(operationId.split("_")[1]);
+    }
+    return camelcase(operationId);
+  }
+  return camelcase(`${path}-${method}`);
 }

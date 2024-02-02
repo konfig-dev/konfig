@@ -16,7 +16,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/logo.svg"
       clientNameCamelCase="qualtrics"
       homepage="api.qualtrics.com"
-      lastUpdated={new Date("2024-02-02T01:29:21.245Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/favicon.png"
       contactUrl="https://www.qualtrics.com/support/"
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
       methods={[
   {
     "url": "/survey-definitions",
-    "method": "createSurvey",
+    "method": "createDefinition",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Surveys",
     "typeScriptTag": "surveys",
@@ -57,7 +57,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}",
-    "method": "deleteSurvey",
+    "method": "removeDefinition",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Surveys",
     "typeScriptTag": "surveys",
@@ -99,7 +99,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}",
-    "method": "getSurvey",
+    "method": "getDefinition",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Surveys",
     "typeScriptTag": "surveys",
@@ -142,7 +142,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/metadata",
-    "method": "getSurveyMetadata",
+    "method": "getMetadata",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Surveys",
     "typeScriptTag": "surveys",
@@ -180,7 +180,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/metadata",
-    "method": "updateSurveyMetadata",
+    "method": "updateMetadata",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Surveys",
     "typeScriptTag": "surveys",
@@ -243,7 +243,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/blocks",
-    "method": "createBlock",
+    "method": "createNewBlock",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Survey Blocks",
     "typeScriptTag": "surveyBlocks",
@@ -281,7 +281,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/blocks/{blockId}",
-    "method": "deleteBlock",
+    "method": "removeBlock",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Survey Blocks",
     "typeScriptTag": "surveyBlocks",
@@ -329,7 +329,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/blocks/{blockId}",
-    "method": "getBlock",
+    "method": "getDefinitionBlock",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Blocks",
     "typeScriptTag": "surveyBlocks",
@@ -377,7 +377,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/blocks/{blockId}",
-    "method": "updateBlock",
+    "method": "updateDefinitionBlock",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Blocks",
     "typeScriptTag": "surveyBlocks",
@@ -425,7 +425,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/questions",
-    "method": "getQuestions",
+    "method": "getList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Questions",
     "typeScriptTag": "surveyQuestions",
@@ -463,7 +463,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/questions",
-    "method": "createQuestion",
+    "method": "createNewQuestion",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Survey Questions",
     "typeScriptTag": "surveyQuestions",
@@ -510,7 +510,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/questions/{questionId}",
-    "method": "deleteQuestion",
+    "method": "removeQuestion",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Survey Questions",
     "typeScriptTag": "surveyQuestions",
@@ -558,7 +558,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/questions/{questionId}",
-    "method": "getQuestion",
+    "method": "getDefinition",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Questions",
     "typeScriptTag": "surveyQuestions",
@@ -606,7 +606,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/questions/{questionId}",
-    "method": "updateQuestion",
+    "method": "updateDefinition",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Questions",
     "typeScriptTag": "surveyQuestions",
@@ -654,7 +654,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/flow",
-    "method": "getFlow",
+    "method": "getFlowDefinition",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Flows",
     "typeScriptTag": "surveyFlows",
@@ -692,7 +692,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/flow",
-    "method": "updateFlow",
+    "method": "updateDefinition",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Flows",
     "typeScriptTag": "surveyFlows",
@@ -754,7 +754,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/flow/{flowId}",
-    "method": "updateFlowElement",
+    "method": "updateFlowElementDefinition",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Flows",
     "typeScriptTag": "surveyFlows",
@@ -802,7 +802,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/options",
-    "method": "getSurveyOptions",
+    "method": "getOptions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Options",
     "typeScriptTag": "surveyOptions",
@@ -840,7 +840,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/options",
-    "method": "updateSurveyOptions",
+    "method": "updateOptions",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Options",
     "typeScriptTag": "surveyOptions",
@@ -1226,7 +1226,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/versions",
-    "method": "listSurveyVersions",
+    "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Versions",
     "typeScriptTag": "surveyVersions",
@@ -1268,7 +1268,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/versions",
-    "method": "createSurveyVersion",
+    "method": "createNewVersion",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Survey Versions",
     "typeScriptTag": "surveyVersions",
@@ -1318,7 +1318,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/versions/{versionId}",
-    "method": "getSurveyVersion",
+    "method": "getDefinition",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Versions",
     "typeScriptTag": "surveyVersions",
@@ -1371,7 +1371,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotas",
-    "method": "getQuotas",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -1423,7 +1423,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotas",
-    "method": "createQuota",
+    "method": "createNewQuota",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -1620,7 +1620,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotas/{quotaId}",
-    "method": "getQuota",
+    "method": "getDefinition",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -1668,7 +1668,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotas/{quotaId}",
-    "method": "updateQuota",
+    "method": "updateDefinition",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -1818,7 +1818,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotagroups",
-    "method": "getQuotaGroups",
+    "method": "listQuotaGroups",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -1954,7 +1954,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotagroups/{quotaGroupId}",
-    "method": "deleteQuotaGroup",
+    "method": "removeQuotaGroup",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -2002,7 +2002,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotagroups/{quotaGroupId}",
-    "method": "getQuotaGroup",
+    "method": "getQuotaGroupDefinition",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -2050,7 +2050,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/survey-definitions/{surveyId}/quotagroups/{quotaGroupId}",
-    "method": "updateQuotaGroup",
+    "method": "updateQuotaGroupDefinition",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Quotas",
     "typeScriptTag": "surveyQuotas",
@@ -2140,7 +2140,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/surveys/{surveyId}/languages",
-    "method": "getSurveyLanguages",
+    "method": "getAvailableLanguages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Languages",
     "typeScriptTag": "surveyLanguages",
@@ -2178,7 +2178,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/surveys/{surveyId}/languages",
-    "method": "updateSurveyLanguages",
+    "method": "updateEnabledLanguages",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Languages",
     "typeScriptTag": "surveyLanguages",
@@ -2222,7 +2222,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/surveys/{surveyId}/translations/{languageCode}",
-    "method": "getSurveyTranslations",
+    "method": "getBySurveyIdAndLanguageCode",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Survey Translations",
     "typeScriptTag": "surveyTranslations",
@@ -2266,7 +2266,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
   },
   {
     "url": "/surveys/{surveyId}/translations/{languageCode}",
-    "method": "updateSurveyTranslations",
+    "method": "updateTranslations",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Survey Translations",
     "typeScriptTag": "surveyTranslations",

@@ -16,7 +16,7 @@ export default function WalmartContentManagementTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/walmart/content-management/logo.png"
       clientNameCamelCase="walmart"
       homepage="developer.walmart.com/"
-      lastUpdated={new Date("2024-02-01T00:23:52.426Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/walmart/content-management/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function WalmartContentManagementTypeScriptSdk() {
       methods={[
   {
     "url": "/v3/feeds",
-    "method": "contentProductFeed",
+    "method": "createContentFeed",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Feeds",
     "typeScriptTag": "feeds",
@@ -90,7 +90,7 @@ export default function WalmartContentManagementTypeScriptSdk() {
   },
   {
     "url": "/v2/feeds",
-    "method": "updateRichMedia",
+    "method": "createRichMediaFeed",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Feeds",
     "typeScriptTag": "feeds",
@@ -148,7 +148,7 @@ export default function WalmartContentManagementTypeScriptSdk() {
   },
   {
     "url": "/feeds",
-    "method": "getAllFeedStatuses",
+    "method": "displayItemStatus",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Feeds",
     "typeScriptTag": "feeds",
@@ -218,7 +218,7 @@ export default function WalmartContentManagementTypeScriptSdk() {
   },
   {
     "url": "/feeds/{feedId}",
-    "method": "getFeedItemStatus",
+    "method": "getFeedStatus",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Feeds",
     "typeScriptTag": "feeds",

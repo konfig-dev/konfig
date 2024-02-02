@@ -16,7 +16,7 @@ export default function TrelloTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/trello/logo.png"
       clientNameCamelCase="trello"
       homepage="developer.atlassian.com/cloud/trello"
-      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/trello/favicon.ico"
       contactUrl="https://trello.com/home"
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function TrelloTypeScriptSdk() {
       methods={[
   {
     "url": "/actions/{idAction}",
-    "method": "deleteActionsByIdAction",
+    "method": "removeByIdAction",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "action",
     "typeScriptTag": "action",
@@ -37,25 +37,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idAction"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}",
-    "method": "getActionsByIdAction",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -108,25 +96,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}",
-    "method": "updateActionsByIdAction",
+    "method": "updateByIdAction",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "action",
     "typeScriptTag": "action",
@@ -139,18 +115,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "text",
         "schema": "string",
         "description": ""
@@ -160,7 +124,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/actions/{idAction}/board",
-    "method": "getActionsBoardByIdAction",
+    "method": "getBoardByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -177,25 +141,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/board/{field}",
-    "method": "getActionsBoardByIdActionByField",
+    "method": "getBoardByIdActionByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -212,25 +164,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/card",
-    "method": "getActionsCardByIdAction",
+    "method": "getCardByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -247,25 +187,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/card/{field}",
-    "method": "getActionsCardByIdActionByField",
+    "method": "getCardByIdActionByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -282,25 +210,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/display",
-    "method": "getActionsDisplayByIdAction",
+    "method": "getDisplayByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -311,25 +227,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idAction"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/entities",
-    "method": "getActionsEntitiesByIdAction",
+    "method": "getEntitiesByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -340,25 +244,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idAction"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/list",
-    "method": "getActionsListByIdAction",
+    "method": "getListByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -375,25 +267,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/list/{field}",
-    "method": "getActionsListByIdActionByField",
+    "method": "getListByIdActionByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -410,25 +290,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/member",
-    "method": "getActionsMemberByIdAction",
+    "method": "getMemberByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -445,25 +313,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/member/{field}",
-    "method": "getActionsMemberByIdActionByField",
+    "method": "getMemberByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -480,25 +336,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/memberCreator",
-    "method": "getActionsMemberCreatorByIdAction",
+    "method": "getMemberCreatorByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -515,25 +359,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/memberCreator/{field}",
-    "method": "getActionsMemberCreatorByIdActionByField",
+    "method": "getMemberByIdActionByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -550,25 +382,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/organization",
-    "method": "getActionsOrganizationByIdAction",
+    "method": "getOrganizationByIdAction",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -585,25 +405,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/organization/{field}",
-    "method": "getActionsOrganizationByIdActionByField",
+    "method": "getOrgByIdActionByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -620,25 +428,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/actions/{idAction}/text",
-    "method": "updateActionsTextByIdAction",
+    "method": "updateTextByIdAction",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "action",
     "typeScriptTag": "action",
@@ -651,18 +447,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -672,7 +456,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/actions/{idAction}/{field}",
-    "method": "getActionsByIdActionByField",
+    "method": "getByIdActionField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "action",
     "typeScriptTag": "action",
@@ -689,25 +473,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/batch",
-    "method": "getBatch",
+    "method": "getData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "batch",
     "typeScriptTag": "batch",
@@ -718,42 +490,18 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "list of API v1 GET routes, not including the version prefix"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards",
-    "method": "addBoards",
+    "method": "createBoard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
     "description": "addBoards()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "closed",
         "schema": "string",
@@ -914,7 +662,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}",
-    "method": "getBoardsByIdBoard",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1147,25 +895,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}",
-    "method": "updateBoardsByIdBoard",
+    "method": "updateById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1176,18 +912,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "closed",
@@ -1349,7 +1073,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/actions",
-    "method": "getBoardsActionsByIdBoard",
+    "method": "listActionsByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1444,25 +1168,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/boardStars",
-    "method": "getBoardsBoardStarsByIdBoard",
+    "method": "getBoardStarsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1479,25 +1191,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: mine or none"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/calendarKey/generate",
-    "method": "addBoardsCalendarKeyGenerateByIdBoard",
+    "method": "generateCalendarKeyById",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1508,25 +1208,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/cards",
-    "method": "getBoardsCardsByIdBoard",
+    "method": "getCardsByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1615,25 +1303,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/cards/{filter}",
-    "method": "getBoardsCardsByIdBoardByFilter",
+    "method": "filterCardsByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1650,25 +1326,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/cards/{idCard}",
-    "method": "getBoardsCardsByIdBoardByIdCard",
+    "method": "getCardsByIdBoardByIdCard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1781,25 +1445,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/checklists",
-    "method": "getBoardsChecklistsByIdBoard",
+    "method": "getChecklistsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1846,25 +1498,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: idBoard, idCard, name or pos"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/checklists",
-    "method": "addBoardsChecklistsByIdBoard",
+    "method": "addChecklists",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1877,18 +1517,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "name",
         "schema": "string",
         "description": ""
@@ -1898,7 +1526,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/closed",
-    "method": "updateBoardsClosedByIdBoard",
+    "method": "updateClosedById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1911,18 +1539,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -1932,7 +1548,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/deltas",
-    "method": "getBoardsDeltasByIdBoard",
+    "method": "getDeltasByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1955,25 +1571,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "a number from -1 to Infinity"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/desc",
-    "method": "updateBoardsDescByIdBoard",
+    "method": "updateDescriptionByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -1986,18 +1590,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2007,7 +1599,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/emailKey/generate",
-    "method": "addBoardsEmailKeyGenerateByIdBoard",
+    "method": "generateEmailKey",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2018,25 +1610,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/idOrganization",
-    "method": "updateBoardsIdOrganizationByIdBoard",
+    "method": "updateOrganizationByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2049,18 +1629,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2070,7 +1638,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labelNames/blue",
-    "method": "updateBoardsLabelNamesBlueByIdBoard",
+    "method": "updateLabelNamesBlueById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2083,18 +1651,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2104,7 +1660,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labelNames/green",
-    "method": "updateBoardsLabelNamesGreenByIdBoard",
+    "method": "updateLabelNamesGreenByIdBoardPut",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2117,18 +1673,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2138,7 +1682,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labelNames/orange",
-    "method": "updateBoardsLabelNamesOrangeByIdBoard",
+    "method": "updateLabelNamesOrangeByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2151,18 +1695,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2172,7 +1704,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labelNames/purple",
-    "method": "updateBoardsLabelNamesPurpleByIdBoard",
+    "method": "updateLabelNamesPurpleByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2185,18 +1717,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2206,7 +1726,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labelNames/red",
-    "method": "updateBoardsLabelNamesRedByIdBoard",
+    "method": "updateLabelNamesRed",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2219,18 +1739,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2240,7 +1748,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labelNames/yellow",
-    "method": "updateBoardsLabelNamesYellowByIdBoard",
+    "method": "updateLabelNamesYellowByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2253,18 +1761,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -2274,7 +1770,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labels",
-    "method": "getBoardsLabelsByIdBoard",
+    "method": "listLabelsByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2297,25 +1793,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "a number from 0 to 1000"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/labels",
-    "method": "addBoardsLabelsByIdBoard",
+    "method": "addLabelsByIdBoard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2326,18 +1810,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "color",
@@ -2354,7 +1826,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/labels/{idLabel}",
-    "method": "getBoardsLabelsByIdBoardByIdLabel",
+    "method": "getLabelsByIdBoardByIdLabel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2377,25 +1849,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: color, idBoard, name or uses"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/lists",
-    "method": "getBoardsListsByIdBoard",
+    "method": "getListsByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2430,25 +1890,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/lists",
-    "method": "addBoardsListsByIdBoard",
+    "method": "createListsByIdBoard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2459,18 +1907,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "name",
@@ -2487,7 +1923,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/lists/{filter}",
-    "method": "getBoardsListsByIdBoardByFilter",
+    "method": "getListsByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2504,25 +1940,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/markAsViewed",
-    "method": "addBoardsMarkAsViewedByIdBoard",
+    "method": "markAsViewedByIdBoard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2533,25 +1957,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/members",
-    "method": "getBoardsMembersByIdBoard",
+    "method": "getMembersByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2580,25 +1992,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "true or false ; works for premium organizations only."
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/members",
-    "method": "updateBoardsMembersByIdBoard",
+    "method": "updateMembersByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2609,18 +2009,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "email",
@@ -2642,7 +2030,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/members/{filter}",
-    "method": "getBoardsMembersByIdBoardByFilter",
+    "method": "getMembersByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2659,25 +2047,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/members/{idMember}",
-    "method": "deleteBoardsMembersByIdBoardByIdMember",
+    "method": "removeMember",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2694,25 +2070,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/members/{idMember}",
-    "method": "updateBoardsMembersByIdBoardByIdMember",
+    "method": "updateMembersByIdBoardByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2729,18 +2093,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "email",
@@ -2762,7 +2114,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/members/{idMember}/cards",
-    "method": "getBoardsMembersCardsByIdBoardByIdMember",
+    "method": "getMembersCardsByIdBoardByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2857,25 +2209,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/membersInvited",
-    "method": "getBoardsMembersInvitedByIdBoard",
+    "method": "getMembersInvitedByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2892,25 +2232,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/membersInvited/{field}",
-    "method": "getBoardsMembersInvitedByIdBoardByField",
+    "method": "getMembersInvitedByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2927,25 +2255,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/memberships",
-    "method": "getBoardsMembershipsByIdBoard",
+    "method": "getMembershipsByIdBoard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -2974,25 +2290,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/memberships/{idMembership}",
-    "method": "getBoardsMembershipsByIdBoardByIdMembership",
+    "method": "getMembershipsByIdBoardByIdMembership",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3021,25 +2325,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/memberships/{idMembership}",
-    "method": "updateBoardsMembershipsByIdBoardByIdMembership",
+    "method": "updateMembershipsByIdBoardByIdMembership",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3058,18 +2350,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMembership"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "member_fields",
         "schema": "string",
         "description": ""
@@ -3084,7 +2364,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs",
-    "method": "getBoardsMyPrefsByIdBoard",
+    "method": "getMyPrefsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3095,25 +2375,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "board_id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/myPrefs/emailPosition",
-    "method": "updateBoardsMyPrefsEmailPositionByIdBoard",
+    "method": "updateMyPrefsEmailPositionByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3126,18 +2394,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3147,7 +2403,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs/idEmailList",
-    "method": "updateBoardsMyPrefsIdEmailListByIdBoard",
+    "method": "updateMyPrefsEmailListByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3160,18 +2416,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3181,7 +2425,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showListGuide",
-    "method": "updateBoardsMyPrefsShowListGuideByIdBoard",
+    "method": "updateMyPrefsShowListGuideByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3194,18 +2438,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3215,7 +2447,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebar",
-    "method": "updateBoardsMyPrefsShowSidebarByIdBoard",
+    "method": "updateMyPrefsShowSidebar",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3228,18 +2460,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3249,7 +2469,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebarActivity",
-    "method": "updateBoardsMyPrefsShowSidebarActivityByIdBoard",
+    "method": "updateMyPrefsShowSidebarActivityByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3262,18 +2482,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3283,7 +2491,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebarBoardActions",
-    "method": "updateBoardsMyPrefsShowSidebarBoardActionsByIdBoard",
+    "method": "updateMyPrefsShowSidebarActionsByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3296,18 +2504,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3317,7 +2513,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebarMembers",
-    "method": "updateBoardsMyPrefsShowSidebarMembersByIdBoard",
+    "method": "updatePrefsShowSidebarMembersById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3330,18 +2526,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3351,7 +2535,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/name",
-    "method": "updateBoardsNameByIdBoard",
+    "method": "updateNameById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3364,18 +2548,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3385,7 +2557,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/organization",
-    "method": "getBoardsOrganizationByIdBoard",
+    "method": "getOrganizationById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3402,25 +2574,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/organization/{field}",
-    "method": "getBoardsOrganizationByIdBoardByField",
+    "method": "getOrganizationByIdBoardByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3437,25 +2597,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/powerUps",
-    "method": "addBoardsPowerUpsByIdBoard",
+    "method": "addPowerUpsByIdBoard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3468,18 +2616,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3489,7 +2625,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/powerUps/{powerUp}",
-    "method": "deleteBoardsPowerUpsByIdBoardByPowerUp",
+    "method": "removePowerUp",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3506,25 +2642,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "powerUp"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/boards/{idBoard}/prefs/background",
-    "method": "updateBoardsPrefsBackgroundByIdBoard",
+    "method": "updatePrefsBackgroundByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3537,18 +2661,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3558,7 +2670,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/calendarFeedEnabled",
-    "method": "updateBoardsPrefsCalendarFeedEnabledByIdBoard",
+    "method": "updatePrefsCalendarFeedEnabledById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3571,18 +2683,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3592,7 +2692,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/cardAging",
-    "method": "updateBoardsPrefsCardAgingByIdBoard",
+    "method": "updatePrefsCardAgingByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3605,18 +2705,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3626,7 +2714,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/cardCovers",
-    "method": "updateBoardsPrefsCardCoversByIdBoard",
+    "method": "updatePrefsCardCoversByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3639,18 +2727,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3660,7 +2736,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/comments",
-    "method": "updateBoardsPrefsCommentsByIdBoard",
+    "method": "updatePrefsCommentsByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3673,18 +2749,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3694,7 +2758,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/invitations",
-    "method": "updateBoardsPrefsInvitationsByIdBoard",
+    "method": "updatePrefsInvitationsByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3707,18 +2771,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3728,7 +2780,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/permissionLevel",
-    "method": "updateBoardsPrefsPermissionLevelByIdBoard",
+    "method": "updatePrefsPermissionLevelById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3741,18 +2793,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3762,7 +2802,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/selfJoin",
-    "method": "updateBoardsPrefsSelfJoinByIdBoard",
+    "method": "updatePrefsSelfJoinByIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3775,18 +2815,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3796,7 +2824,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/prefs/voting",
-    "method": "updateBoardsPrefsVotingByIdBoard",
+    "method": "updateVotingPrefsById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3809,18 +2837,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3830,7 +2846,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/subscribed",
-    "method": "updateBoardsSubscribedByIdBoard",
+    "method": "updateSubscribedById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3843,18 +2859,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -3864,7 +2868,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/boards/{idBoard}/{field}",
-    "method": "getBoardsByIdBoardByField",
+    "method": "getByIdField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "board",
     "typeScriptTag": "board",
@@ -3881,42 +2885,18 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards",
-    "method": "addCards",
+    "method": "createAndUpdate",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
     "description": "addCards()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "closed",
         "schema": "string",
@@ -4002,7 +2982,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}",
-    "method": "deleteCardsByIdCard",
+    "method": "removeByIdCard",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4013,25 +2993,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}",
-    "method": "getCardsByIdCard",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4180,25 +3148,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}",
-    "method": "updateCardsByIdCard",
+    "method": "updateByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4209,18 +3165,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "closed",
@@ -4307,7 +3251,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/actions",
-    "method": "getCardsActionsByIdCard",
+    "method": "listCardActionsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4402,25 +3346,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/actions/comments",
-    "method": "addCardsActionsCommentsByIdCard",
+    "method": "addActionsCommentsByIdCard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4433,18 +3365,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "text",
         "schema": "string",
         "description": ""
@@ -4454,7 +3374,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/actions/{idAction}/comments",
-    "method": "deleteCardsActionsCommentsByIdCardByIdAction",
+    "method": "removeActionCommentByIdCardByIdAction",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4471,25 +3391,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idAction"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/actions/{idAction}/comments",
-    "method": "updateCardsActionsCommentsByIdCardByIdAction",
+    "method": "updateActionCommentByIdCardByIdAction",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4508,18 +3416,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "text",
         "schema": "string",
         "description": ""
@@ -4529,7 +3425,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/attachments",
-    "method": "getCardsAttachmentsByIdCard",
+    "method": "getAttachmentsByIdCard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4552,25 +3448,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "A boolean value or &quot;cover&quot; for only card cover attachments"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/attachments",
-    "method": "addCardsAttachmentsByIdCard",
+    "method": "addAttachmentsByIdCard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4581,18 +3465,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "file",
@@ -4619,7 +3491,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/attachments/{idAttachment}",
-    "method": "deleteCardsAttachmentsByIdCardByIdAttachment",
+    "method": "deleteAttachmentsByIdCardByIdAttachment",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4636,25 +3508,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idAttachment"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/attachments/{idAttachment}",
-    "method": "getCardsAttachmentsByIdCardByIdAttachment",
+    "method": "getAttachmentsByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4677,25 +3537,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: bytes, date, edgeColor, idMember, isUpload, mimeType, name, previews or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/board",
-    "method": "getCardsBoardByIdCard",
+    "method": "getBoardById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4712,25 +3560,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/board/{field}",
-    "method": "getCardsBoardByIdCardByField",
+    "method": "getBoardByIdCardByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4747,25 +3583,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/checkItemStates",
-    "method": "getCardsCheckItemStatesByIdCard",
+    "method": "getCheckItemStatesById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4782,25 +3606,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: idCheckItem or state"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklistCurrent}/checkItem/{idCheckItem}",
-    "method": "updateCardsChecklistCheckItemByIdCardByIdChecklistCurrentByIdCheckItem",
+    "method": "updateChecklistCheckItem",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4823,18 +3635,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idCheckItem"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "idChecklist",
@@ -4861,7 +3661,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem",
-    "method": "addCardsChecklistCheckItemByIdCardByIdChecklist",
+    "method": "addChecklistCheckItem",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4880,18 +3680,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idChecklist"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "name",
         "schema": "string",
         "description": ""
@@ -4906,7 +3694,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}",
-    "method": "deleteCardsChecklistCheckItemByIdCardByIdChecklistByIdCheckItem",
+    "method": "removeChecklistCheckItem",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4929,25 +3717,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idCheckItem"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/convertToCard",
-    "method": "addCardsChecklistCheckItemConvertToCardByIdCardByIdChecklistByIdCheckItem",
+    "method": "convertCheckItemToCard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -4970,25 +3746,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idCheckItem"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/name",
-    "method": "updateCardsChecklistCheckItemNameByIdCardByIdChecklistByIdCheckItem",
+    "method": "updateChecklistCheckItemNameById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5013,18 +3777,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCheckItem"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5034,7 +3786,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/pos",
-    "method": "updateCardsChecklistCheckItemPosByIdCardByIdChecklistByIdCheckItem",
+    "method": "updateCheckItemPosById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5059,18 +3811,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCheckItem"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5080,7 +3820,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/state",
-    "method": "updateCardsChecklistCheckItemStateByIdCardByIdChecklistByIdCheckItem",
+    "method": "updateChecklistCheckItemState",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5105,18 +3845,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCheckItem"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5126,7 +3854,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/checklists",
-    "method": "getCardsChecklistsByIdCard",
+    "method": "getChecklistsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5173,25 +3901,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: idBoard, idCard, name or pos"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/checklists",
-    "method": "addCardsChecklistsByIdCard",
+    "method": "addChecklists",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5202,18 +3918,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "idChecklistSource",
@@ -5235,7 +3939,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/checklists/{idChecklist}",
-    "method": "deleteCardsChecklistsByIdCardByIdChecklist",
+    "method": "deleteChecklistByIdCardByIdChecklist",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5252,25 +3956,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idChecklist"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/closed",
-    "method": "updateCardsClosedByIdCard",
+    "method": "updateClosedById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5283,18 +3975,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5304,7 +3984,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/desc",
-    "method": "updateCardsDescByIdCard",
+    "method": "updateDescriptionByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5317,18 +3997,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5338,7 +4006,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/due",
-    "method": "updateCardsDueByIdCard",
+    "method": "updateDueById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5351,18 +4019,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5372,7 +4028,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idAttachmentCover",
-    "method": "updateCardsIdAttachmentCoverByIdCard",
+    "method": "updateAttachmentCoverByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5385,18 +4041,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5406,7 +4050,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idBoard",
-    "method": "updateCardsIdBoardByIdCard",
+    "method": "updateBoardByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5417,18 +4061,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "idList",
@@ -5445,7 +4077,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idLabels",
-    "method": "addCardsIdLabelsByIdCard",
+    "method": "addIdLabelsToCard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5458,18 +4090,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5479,7 +4099,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idLabels/{idLabel}",
-    "method": "deleteCardsIdLabelsByIdCardByIdLabel",
+    "method": "removeLabelByIdCardByIdLabel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5496,25 +4116,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idLabel"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/idList",
-    "method": "updateCardsIdListByIdCard",
+    "method": "updateIdListByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5527,18 +4135,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5548,7 +4144,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idMembers",
-    "method": "addCardsIdMembersByIdCard",
+    "method": "addMembers",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5561,18 +4157,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5582,7 +4166,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idMembers",
-    "method": "updateCardsIdMembersByIdCard",
+    "method": "updateIdMembers",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5595,18 +4179,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5616,7 +4188,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/idMembers/{idMember}",
-    "method": "deleteCardsIdMembersByIdCardByIdMember",
+    "method": "removeMemberByIdMember",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5633,25 +4205,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/labels",
-    "method": "addCardsLabelsByIdCard",
+    "method": "addLabels",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5662,18 +4222,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "color",
@@ -5695,7 +4243,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/labels",
-    "method": "updateCardsLabelsByIdCard",
+    "method": "updateLabels",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5706,18 +4254,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "color",
@@ -5739,7 +4275,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/labels/{color}",
-    "method": "deleteCardsLabelsByIdCardByColor",
+    "method": "removeLabelsByIdCardByColor",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5756,25 +4292,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "color"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/list",
-    "method": "getCardsListByIdCard",
+    "method": "getListById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5791,18 +4315,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
@@ -5826,25 +4338,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/markAssociatedNotificationsRead",
-    "method": "addCardsMarkAssociatedNotificationsReadByIdCard",
+    "method": "markAssociatedNotificationsRead",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5855,25 +4355,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/members",
-    "method": "getCardsMembersByIdCard",
+    "method": "listMembersByIdCard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5890,25 +4378,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/membersVoted",
-    "method": "getCardsMembersVotedByIdCard",
+    "method": "getMembersVotedByIdCard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5925,25 +4401,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/membersVoted",
-    "method": "addCardsMembersVotedByIdCard",
+    "method": "addMembersVoted",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5956,18 +4420,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -5977,7 +4429,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/membersVoted/{idMember}",
-    "method": "deleteCardsMembersVotedByIdCardByIdMember",
+    "method": "removeMembersVotedByIdCardByIdMember",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -5994,25 +4446,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/name",
-    "method": "updateCardsNameByIdCard",
+    "method": "updateNameById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6025,18 +4465,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -6046,7 +4474,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/pos",
-    "method": "updateCardsPosByIdCard",
+    "method": "updatePosByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6059,18 +4487,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -6080,7 +4496,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/stickers",
-    "method": "getCardsStickersByIdCard",
+    "method": "getStickersByIdCard",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6097,25 +4513,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: image, imageScaled, imageUrl, left, rotate, top or zIndex"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/stickers",
-    "method": "addCardsStickersByIdCard",
+    "method": "addStickersByIdCard",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6126,18 +4530,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "card id or shortlink"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "image",
@@ -6169,7 +4561,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/stickers/{idSticker}",
-    "method": "deleteCardsStickersByIdCardByIdSticker",
+    "method": "removeStickerByIds",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6186,25 +4578,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idSticker"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/stickers/{idSticker}",
-    "method": "getCardsStickersByIdCardByIdSticker",
+    "method": "getStickerByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6227,25 +4607,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: image, imageScaled, imageUrl, left, rotate, top or zIndex"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/cards/{idCard}/stickers/{idSticker}",
-    "method": "updateCardsStickersByIdCardByIdSticker",
+    "method": "updateStickersByIdCardByIdSticker",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6262,18 +4630,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idSticker"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "image",
@@ -6305,7 +4661,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/subscribed",
-    "method": "updateCardsSubscribedByIdCard",
+    "method": "updateSubscribedByIdCard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6318,18 +4674,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -6339,7 +4683,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/cards/{idCard}/{field}",
-    "method": "getCardsByIdCardByField",
+    "method": "getByIdField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "card",
     "typeScriptTag": "card",
@@ -6356,42 +4700,18 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists",
-    "method": "addChecklists",
+    "method": "create",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "checklist",
     "typeScriptTag": "checklist",
     "description": "addChecklists()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "idBoard",
         "schema": "string",
@@ -6422,7 +4742,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/checklists/{idChecklist}",
-    "method": "deleteChecklistsByIdChecklist",
+    "method": "removeById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6433,25 +4753,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idChecklist"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}",
-    "method": "getChecklistsByIdChecklist",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6492,25 +4800,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: idBoard, idCard, name or pos"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}",
-    "method": "updateChecklistsByIdChecklist",
+    "method": "updateByIdChecklist",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6521,18 +4817,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idChecklist"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "idBoard",
@@ -6564,7 +4848,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/checklists/{idChecklist}/board",
-    "method": "getChecklistsBoardByIdChecklist",
+    "method": "getBoardByIdChecklist",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6581,25 +4865,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/board/{field}",
-    "method": "getChecklistsBoardByIdChecklistByField",
+    "method": "getBoardByIdChecklistByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6616,25 +4888,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/cards",
-    "method": "getChecklistsCardsByIdChecklist",
+    "method": "listCardsByIdChecklist",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6723,25 +4983,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/cards/{filter}",
-    "method": "getChecklistsCardsByIdChecklistByFilter",
+    "method": "getCardsByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6758,25 +5006,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/checkItems",
-    "method": "getChecklistsCheckItemsByIdChecklist",
+    "method": "getCheckItemsByIdChecklist",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6799,25 +5035,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: name, nameData, pos, state or type"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/checkItems",
-    "method": "addChecklistsCheckItemsByIdChecklist",
+    "method": "addCheckItemsByIdChecklist",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6828,18 +5052,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idChecklist"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "checked",
@@ -6861,7 +5073,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/checklists/{idChecklist}/checkItems/{idCheckItem}",
-    "method": "deleteChecklistsCheckItemsByIdChecklistByIdCheckItem",
+    "method": "removeByIdCheckItem",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6878,25 +5090,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idCheckItem"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/checkItems/{idCheckItem}",
-    "method": "getChecklistsCheckItemsByIdChecklistByIdCheckItem",
+    "method": "getCheckItemsByIdChecklistByIdCheckItem",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6919,25 +5119,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: name, nameData, pos, state or type"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/checklists/{idChecklist}/idCard",
-    "method": "updateChecklistsIdCardByIdChecklist",
+    "method": "updateIdCardByIdChecklist",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6950,18 +5138,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idChecklist"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -6971,7 +5147,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/checklists/{idChecklist}/name",
-    "method": "updateChecklistsNameByIdChecklist",
+    "method": "updateNameByIdChecklist",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -6984,18 +5160,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idChecklist"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -7005,7 +5169,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/checklists/{idChecklist}/pos",
-    "method": "updateChecklistsPosByIdChecklist",
+    "method": "updatePosByIdChecklist",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -7018,18 +5182,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idChecklist"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -7039,7 +5191,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/checklists/{idChecklist}/{field}",
-    "method": "getChecklistsByIdChecklistByField",
+    "method": "getByIdField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "checklist",
     "typeScriptTag": "checklist",
@@ -7056,42 +5208,18 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/labels",
-    "method": "addLabels",
+    "method": "createLabels",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "label",
     "typeScriptTag": "label",
     "description": "addLabels()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "color",
         "schema": "string",
@@ -7112,7 +5240,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/labels/{idLabel}",
-    "method": "deleteLabelsByIdLabel",
+    "method": "removeByIdLabel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7123,25 +5251,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idLabel"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/labels/{idLabel}",
-    "method": "getLabelsByIdLabel",
+    "method": "getByIdLabel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7158,25 +5274,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: color, idBoard, name or uses"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/labels/{idLabel}",
-    "method": "updateLabelsByIdLabel",
+    "method": "updateByIdLabel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7187,18 +5291,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idLabel"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "color",
@@ -7220,7 +5312,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/labels/{idLabel}/board",
-    "method": "getLabelsBoardByIdLabel",
+    "method": "getBoardByIdLabel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7237,25 +5329,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/labels/{idLabel}/board/{field}",
-    "method": "getLabelsBoardByIdLabelByField",
+    "method": "getBoardByIdLabelByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7272,25 +5352,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/labels/{idLabel}/color",
-    "method": "updateLabelsColorByIdLabel",
+    "method": "updateColorByIdLabel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7303,18 +5371,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idLabel"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -7324,7 +5380,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/labels/{idLabel}/name",
-    "method": "updateLabelsNameByIdLabel",
+    "method": "updateNameByIdLabel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "label",
     "typeScriptTag": "label",
@@ -7337,18 +5393,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idLabel"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -7358,24 +5402,12 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists",
-    "method": "addLists",
+    "method": "createList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "list",
     "typeScriptTag": "list",
     "description": "addLists()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "closed",
         "schema": "string",
@@ -7411,7 +5443,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}",
-    "method": "getListsByIdList",
+    "method": "getByIdList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7452,25 +5484,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}",
-    "method": "updateListsByIdList",
+    "method": "updateByIdList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7481,18 +5501,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idList"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "closed",
@@ -7529,7 +5537,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/actions",
-    "method": "getListsActionsByIdList",
+    "method": "getActionsByIdList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7624,25 +5632,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}/archiveAllCards",
-    "method": "addListsArchiveAllCardsByIdList",
+    "method": "archiveAllCardsByIdList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7653,25 +5649,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idList"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}/board",
-    "method": "getListsBoardByIdList",
+    "method": "idBoardGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7688,25 +5672,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}/board/{field}",
-    "method": "getListsBoardByIdListByField",
+    "method": "getBoardByIdListByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7723,25 +5695,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}/cards",
-    "method": "getListsCardsByIdList",
+    "method": "getCardsByIdList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7830,25 +5790,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}/cards",
-    "method": "addListsCardsByIdList",
+    "method": "createCardsByIdList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7859,18 +5807,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idList"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "desc",
@@ -7902,7 +5838,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/cards/{filter}",
-    "method": "getListsCardsByIdListByFilter",
+    "method": "getCardsByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7919,25 +5855,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/lists/{idList}/closed",
-    "method": "updateListsClosedByIdList",
+    "method": "updateClosedByIdList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7950,18 +5874,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idList"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -7971,7 +5883,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/idBoard",
-    "method": "updateListsIdBoardByIdList",
+    "method": "updateIdBoardByIdList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "list",
     "typeScriptTag": "list",
@@ -7982,18 +5894,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idList"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "pos",
@@ -8010,7 +5910,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/moveAllCards",
-    "method": "addListsMoveAllCardsByIdList",
+    "method": "moveAllCardsByIdList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "list",
     "typeScriptTag": "list",
@@ -8023,18 +5923,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idList"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "idBoard",
         "schema": "string",
         "description": ""
@@ -8044,7 +5932,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/name",
-    "method": "updateListsNameByIdList",
+    "method": "updateNameByIdList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "list",
     "typeScriptTag": "list",
@@ -8057,18 +5945,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idList"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -8078,7 +5954,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/pos",
-    "method": "updateListsPosByIdList",
+    "method": "updatePosByIdList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "list",
     "typeScriptTag": "list",
@@ -8091,18 +5967,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idList"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -8112,7 +5976,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/subscribed",
-    "method": "updateListsSubscribedByIdList",
+    "method": "updateSubscribedByIdList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "list",
     "typeScriptTag": "list",
@@ -8125,18 +5989,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idList"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -8146,7 +5998,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/lists/{idList}/{field}",
-    "method": "getListsByIdListByField",
+    "method": "getByIdListByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "list",
     "typeScriptTag": "list",
@@ -8163,25 +6015,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}",
-    "method": "getMembersByIdMember",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8504,25 +6344,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}",
-    "method": "updateMembersByIdMember",
+    "method": "updateByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8533,18 +6361,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "avatarSource",
@@ -8591,7 +6407,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/actions",
-    "method": "getMembersActionsByIdMember",
+    "method": "listActionsByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8686,25 +6502,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/avatar",
-    "method": "addMembersAvatarByIdMember",
+    "method": "uploadAvatarById",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8717,18 +6521,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "file",
         "schema": "string",
         "description": ""
@@ -8738,7 +6530,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/avatarSource",
-    "method": "updateMembersAvatarSourceByIdMember",
+    "method": "updateAvatarSource",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8751,18 +6543,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -8772,7 +6552,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/bio",
-    "method": "updateMembersBioByIdMember",
+    "method": "updateBioById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8785,18 +6565,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -8806,7 +6574,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boardBackgrounds",
-    "method": "getMembersBoardBackgroundsByIdMember",
+    "method": "getBoardBackgroundsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8823,25 +6591,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all, custom, default, none or premium"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardBackgrounds",
-    "method": "addMembersBoardBackgroundsByIdMember",
+    "method": "addBoardBackgrounds",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8852,18 +6608,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "brightness",
@@ -8885,7 +6629,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boardBackgrounds/{idBoardBackground}",
-    "method": "deleteMembersBoardBackgroundsByIdMemberByIdBoardBackground",
+    "method": "deleteBoardBackground",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8902,25 +6646,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idBoardBackground"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardBackgrounds/{idBoardBackground}",
-    "method": "getMembersBoardBackgroundsByIdMemberByIdBoardBackground",
+    "method": "getBoardBackgroundByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8943,25 +6675,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: brightness, fullSizeUrl, scaled or tile"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardBackgrounds/{idBoardBackground}",
-    "method": "updateMembersBoardBackgroundsByIdMemberByIdBoardBackground",
+    "method": "updateBoardBackgroundsById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -8978,18 +6698,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idBoardBackground"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "brightness",
@@ -9011,7 +6719,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boardStars",
-    "method": "getMembersBoardStarsByIdMember",
+    "method": "getBoardStarsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9022,25 +6730,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardStars",
-    "method": "addMembersBoardStarsByIdMember",
+    "method": "addBoardStarsByIdMember",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9051,18 +6747,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "idBoard",
@@ -9079,7 +6763,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}",
-    "method": "deleteMembersBoardStarsByIdMemberByIdBoardStar",
+    "method": "removeBoardStarByIdMemberByIdBoardStar",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9096,25 +6780,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idBoardStar"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}",
-    "method": "getMembersBoardStarsByIdMemberByIdBoardStar",
+    "method": "getBoardStarByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9131,25 +6803,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idBoardStar"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}",
-    "method": "updateMembersBoardStarsByIdMemberByIdBoardStar",
+    "method": "updateBoardStar",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9168,18 +6828,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardStar"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "idBoard",
         "schema": "string",
         "description": ""
@@ -9194,7 +6842,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}/idBoard",
-    "method": "updateMembersBoardStarsIdBoardByIdMemberByIdBoardStar",
+    "method": "updateBoardStarsIdBoard",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9213,18 +6861,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardStar"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -9234,7 +6870,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}/pos",
-    "method": "updateMembersBoardStarsPosByIdMemberByIdBoardStar",
+    "method": "updateBoardStarPosByIdMemberByIdBoardStar",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9253,18 +6889,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardStar"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -9274,7 +6898,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/boards",
-    "method": "getMembersBoardsByIdMember",
+    "method": "getBoardsByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9357,25 +6981,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all, closed, none or open"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boards/{filter}",
-    "method": "getMembersBoardsByIdMemberByFilter",
+    "method": "getBoards",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9392,25 +7004,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardsInvited",
-    "method": "getMembersBoardsInvitedByIdMember",
+    "method": "getInvitedBoards",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9427,25 +7027,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/boardsInvited/{field}",
-    "method": "getMembersBoardsInvitedByIdMemberByField",
+    "method": "getBoardsInvitedByIdMemberByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9462,25 +7050,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/cards",
-    "method": "getMembersCardsByIdMember",
+    "method": "getCardsByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9569,25 +7145,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/cards/{filter}",
-    "method": "getMembersCardsByIdMemberByFilter",
+    "method": "getCardsByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9604,25 +7168,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds",
-    "method": "getMembersCustomBoardBackgroundsByIdMember",
+    "method": "getCustomBoardBackgroundsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9639,25 +7191,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all or none"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds",
-    "method": "addMembersCustomBoardBackgroundsByIdMember",
+    "method": "addCustomBoardBackgrounds",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9668,18 +7208,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "brightness",
@@ -9701,7 +7229,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds/{idBoardBackground}",
-    "method": "deleteMembersCustomBoardBackgroundsByIdMemberByIdBoardBackground",
+    "method": "removeCustomBoardBackgroundById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9718,25 +7246,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idBoardBackground"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds/{idBoardBackground}",
-    "method": "getMembersCustomBoardBackgroundsByIdMemberByIdBoardBackground",
+    "method": "getCustomBoardBackgroundByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9759,25 +7275,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: brightness, fullSizeUrl, scaled or tile"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds/{idBoardBackground}",
-    "method": "updateMembersCustomBoardBackgroundsByIdMemberByIdBoardBackground",
+    "method": "updateCustomBoardBackgrounds",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9794,18 +7298,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idBoardBackground"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "brightness",
@@ -9827,7 +7319,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/customEmoji",
-    "method": "getMembersCustomEmojiByIdMember",
+    "method": "listCustomEmojiByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9844,25 +7336,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all or none"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customEmoji",
-    "method": "addMembersCustomEmojiByIdMember",
+    "method": "addCustomEmojiByIdMember",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9873,18 +7353,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "file",
@@ -9901,7 +7369,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/customEmoji/{idCustomEmoji}",
-    "method": "getMembersCustomEmojiByIdMemberByIdCustomEmoji",
+    "method": "getCustomEmojiByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9924,25 +7392,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: name or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customStickers",
-    "method": "getMembersCustomStickersByIdMember",
+    "method": "getCustomStickersByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9959,25 +7415,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all or none"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customStickers",
-    "method": "addMembersCustomStickersByIdMember",
+    "method": "addCustomStickers",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -9990,18 +7434,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "file",
         "schema": "string",
         "description": ""
@@ -10011,7 +7443,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/customStickers/{idCustomSticker}",
-    "method": "deleteMembersCustomStickersByIdMemberByIdCustomSticker",
+    "method": "removeCustomStickerByIds",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10028,25 +7460,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idCustomSticker"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/customStickers/{idCustomSticker}",
-    "method": "getMembersCustomStickersByIdMemberByIdCustomSticker",
+    "method": "getCustomStickerByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10069,25 +7489,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: scaled or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/deltas",
-    "method": "getMembersDeltasByIdMember",
+    "method": "getDeltasByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10110,25 +7518,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "a number from -1 to Infinity"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/fullName",
-    "method": "updateMembersFullNameByIdMember",
+    "method": "updateFullName",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10141,18 +7537,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10162,7 +7546,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/initials",
-    "method": "updateMembersInitialsByIdMember",
+    "method": "updateInitialsByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10175,18 +7559,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10196,7 +7568,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/notifications",
-    "method": "getMembersNotificationsByIdMember",
+    "method": "getNotificationsByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10273,25 +7645,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/notifications/{filter}",
-    "method": "getMembersNotificationsByIdMemberByFilter",
+    "method": "getNotificationsByIdMemberByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10308,25 +7668,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/oneTimeMessagesDismissed",
-    "method": "addMembersOneTimeMessagesDismissedByIdMember",
+    "method": "addOneTimeMessagesDismissedByIdMember",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10339,18 +7687,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10360,7 +7696,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/organizations",
-    "method": "getMembersOrganizationsByIdMember",
+    "method": "listOrganizationsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10389,25 +7725,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": " true or false"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/organizations/{filter}",
-    "method": "getMembersOrganizationsByIdMemberByFilter",
+    "method": "getOrganizations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10424,25 +7748,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/organizationsInvited",
-    "method": "getMembersOrganizationsInvitedByIdMember",
+    "method": "listInvitedOrganizationsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10459,25 +7771,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/organizationsInvited/{field}",
-    "method": "getMembersOrganizationsInvitedByIdMemberByField",
+    "method": "listOrganizationsInvitedByIdMemberByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10494,25 +7794,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/prefs/colorBlind",
-    "method": "updateMembersPrefsColorBlindByIdMember",
+    "method": "updatePrefsColorBlindByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10525,18 +7813,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10546,7 +7822,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/prefs/locale",
-    "method": "updateMembersPrefsLocaleByIdMember",
+    "method": "updatePrefsLocaleByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10559,18 +7835,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10580,7 +7844,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/prefs/minutesBetweenSummaries",
-    "method": "updateMembersPrefsMinutesBetweenSummariesByIdMember",
+    "method": "updatePrefsMinutesBetweenSummariesById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10593,18 +7857,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10614,7 +7866,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/savedSearches",
-    "method": "getMembersSavedSearchesByIdMember",
+    "method": "getSavedSearchesByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10625,25 +7877,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/savedSearches",
-    "method": "addMembersSavedSearchesByIdMember",
+    "method": "createSavedSearch",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10654,18 +7894,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "name",
@@ -10687,7 +7915,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}",
-    "method": "deleteMembersSavedSearchesByIdMemberByIdSavedSearch",
+    "method": "removeSavedSearchByIds",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10704,25 +7932,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idSavedSearch"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}",
-    "method": "getMembersSavedSearchesByIdMemberByIdSavedSearch",
+    "method": "getSavedSearchByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10739,25 +7955,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idSavedSearch"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}",
-    "method": "updateMembersSavedSearchesByIdMemberByIdSavedSearch",
+    "method": "updateSavedSearchesByIdMemberByIdSavedSearch",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10774,18 +7978,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idSavedSearch"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "name",
@@ -10807,7 +7999,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}/name",
-    "method": "updateMembersSavedSearchesNameByIdMemberByIdSavedSearch",
+    "method": "updateSavedSearchesNameByIdMemberByIdSavedSearch",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10826,18 +8018,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSavedSearch"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10847,7 +8027,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}/pos",
-    "method": "updateMembersSavedSearchesPosByIdMemberByIdSavedSearch",
+    "method": "updateSavedSearchesPosByIdMemberByIdSavedSearch",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10866,18 +8046,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSavedSearch"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10887,7 +8055,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}/query",
-    "method": "updateMembersSavedSearchesQueryByIdMemberByIdSavedSearch",
+    "method": "updateSavedSearchQueryByIdMemberByIdSavedSearch",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10906,18 +8074,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSavedSearch"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10927,7 +8083,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/tokens",
-    "method": "getMembersTokensByIdMember",
+    "method": "getTokensByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10944,25 +8100,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all or none"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/members/{idMember}/username",
-    "method": "updateMembersUsernameByIdMember",
+    "method": "updateUsernameById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "member",
     "typeScriptTag": "member",
@@ -10975,18 +8119,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -10996,7 +8128,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/members/{idMember}/{field}",
-    "method": "getMembersByIdMemberByField",
+    "method": "getByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "member",
     "typeScriptTag": "member",
@@ -11013,48 +8145,23 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/all/read",
-    "method": "addNotificationsAllRead",
+    "method": "markAllAsRead",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "notification",
     "typeScriptTag": "notification",
     "description": "addNotificationsAllRead()",
-    "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      }
-    ],
+    "parameters": [],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}",
-    "method": "getNotificationsByIdNotification",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11149,25 +8256,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}",
-    "method": "updateNotificationsByIdNotification",
+    "method": "updateByIdNotification",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11180,18 +8275,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idNotification"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "unread",
         "schema": "string",
         "description": ""
@@ -11201,7 +8284,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/notifications/{idNotification}/board",
-    "method": "getNotificationsBoardByIdNotification",
+    "method": "getBoardById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11218,25 +8301,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/board/{field}",
-    "method": "getNotificationsBoardByIdNotificationByField",
+    "method": "getBoardByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11253,25 +8324,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/card",
-    "method": "getNotificationsCardByIdNotification",
+    "method": "getCardById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11288,25 +8347,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/card/{field}",
-    "method": "getNotificationsCardByIdNotificationByField",
+    "method": "getCardByIdNotificationByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11323,25 +8370,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/display",
-    "method": "getNotificationsDisplayByIdNotification",
+    "method": "getDisplayByIdNotification",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11352,25 +8387,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idNotification"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/entities",
-    "method": "getNotificationsEntitiesByIdNotification",
+    "method": "getEntitiesByIdNotification",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11381,25 +8404,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idNotification"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/list",
-    "method": "getNotificationsListByIdNotification",
+    "method": "getListByIdNotification",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11416,25 +8427,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/list/{field}",
-    "method": "getNotificationsListByIdNotificationByField",
+    "method": "getListByIdNotificationByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11451,25 +8450,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/member",
-    "method": "getNotificationsMemberByIdNotification",
+    "method": "getMemberByNotification",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11486,25 +8473,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/member/{field}",
-    "method": "getNotificationsMemberByIdNotificationByField",
+    "method": "getMemberByIdField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11521,25 +8496,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/memberCreator",
-    "method": "getNotificationsMemberCreatorByIdNotification",
+    "method": "getMemberCreatorById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11556,25 +8519,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/memberCreator/{field}",
-    "method": "getNotificationsMemberCreatorByIdNotificationByField",
+    "method": "getMemberByIdNotificationByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11591,25 +8542,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/organization",
-    "method": "getNotificationsOrganizationByIdNotification",
+    "method": "getOrganizationByIdNotification",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11626,25 +8565,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/organization/{field}",
-    "method": "getNotificationsOrganizationByIdNotificationByField",
+    "method": "getOrganizationByIdNotificationByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11661,25 +8588,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/notifications/{idNotification}/unread",
-    "method": "updateNotificationsUnreadByIdNotification",
+    "method": "updateUnreadByIdNotification",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11692,18 +8607,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idNotification"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -11713,7 +8616,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/notifications/{idNotification}/{field}",
-    "method": "getNotificationsByIdNotificationByField",
+    "method": "getByIdField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "notification",
     "typeScriptTag": "notification",
@@ -11730,42 +8633,18 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations",
-    "method": "addOrganizations",
+    "method": "create",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "organization",
     "typeScriptTag": "organization",
     "description": "addOrganizations()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "desc",
         "schema": "string",
@@ -11831,7 +8710,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}",
-    "method": "deleteOrganizationsByIdOrg",
+    "method": "removeByIdOrg",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -11842,25 +8721,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idOrg or name"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}",
-    "method": "getOrganizationsByIdOrg",
+    "method": "getByIdOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12021,25 +8888,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}",
-    "method": "updateOrganizationsByIdOrg",
+    "method": "updateByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12050,18 +8905,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idOrg or name"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "desc",
@@ -12128,7 +8971,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/actions",
-    "method": "getOrganizationsActionsByIdOrg",
+    "method": "getActionsByIdOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12223,25 +9066,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/boards",
-    "method": "getOrganizationsBoardsByIdOrg",
+    "method": "getBoardsByOrgId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12324,25 +9155,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "One of: all, closed, none or open"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/boards/{filter}",
-    "method": "getOrganizationsBoardsByIdOrgByFilter",
+    "method": "getBoardsByIdOrgByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12359,25 +9178,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/deltas",
-    "method": "getOrganizationsDeltasByIdOrg",
+    "method": "getOrganizationDeltas",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12400,25 +9207,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "a number from -1 to Infinity"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/desc",
-    "method": "updateOrganizationsDescByIdOrg",
+    "method": "updateDescriptionByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12431,18 +9226,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -12452,7 +9235,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/displayName",
-    "method": "updateOrganizationsDisplayNameByIdOrg",
+    "method": "updateDisplayNameByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12465,18 +9248,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -12486,7 +9257,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/logo",
-    "method": "deleteOrganizationsLogoByIdOrg",
+    "method": "removeLogoByIdOrg",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12497,25 +9268,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idOrg or name"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/logo",
-    "method": "addOrganizationsLogoByIdOrg",
+    "method": "uploadLogoByIdOrg",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12528,18 +9287,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "file",
         "schema": "string",
         "description": ""
@@ -12549,7 +9296,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/members",
-    "method": "getOrganizationsMembersByIdOrg",
+    "method": "getMembersByIdOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12578,25 +9325,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "true or false ; works for premium organizations only."
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/members",
-    "method": "updateOrganizationsMembersByIdOrg",
+    "method": "updateMembersByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12607,18 +9342,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idOrg or name"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "email",
@@ -12640,7 +9363,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/members/{filter}",
-    "method": "getOrganizationsMembersByIdOrgByFilter",
+    "method": "listMembersByIdOrgByFilter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12657,25 +9380,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "filter"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}",
-    "method": "deleteOrganizationsMembersByIdOrgByIdMember",
+    "method": "removeMemberByIdOrgByIdMember",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12692,25 +9403,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}",
-    "method": "updateOrganizationsMembersByIdOrgByIdMember",
+    "method": "updateMembersByIdOrgByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12727,18 +9426,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "email",
@@ -12760,7 +9447,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}/all",
-    "method": "deleteOrganizationsMembersAllByIdOrgByIdMember",
+    "method": "removeMemberAll",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12777,25 +9464,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idMember"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}/cards",
-    "method": "getOrganizationsMembersCardsByIdOrgByIdMember",
+    "method": "listMembersCardsByIdOrgByIdMember",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12890,25 +9565,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}/deactivated",
-    "method": "updateOrganizationsMembersDeactivatedByIdOrgByIdMember",
+    "method": "updateMembersDeactivatedByIdOrgByIdMember",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12927,18 +9590,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -12948,7 +9599,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/membersInvited",
-    "method": "getOrganizationsMembersInvitedByIdOrg",
+    "method": "getMembersInvitedByIdOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -12965,25 +9616,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/membersInvited/{field}",
-    "method": "getOrganizationsMembersInvitedByIdOrgByField",
+    "method": "getMembersInvitedByIdOrgByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13000,25 +9639,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/memberships",
-    "method": "getOrganizationsMembershipsByIdOrg",
+    "method": "listMembershipsByIdOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13047,25 +9674,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/memberships/{idMembership}",
-    "method": "getOrganizationsMembershipsByIdOrgByIdMembership",
+    "method": "getMembershipsByIdOrgByIdMembership",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13094,25 +9709,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/memberships/{idMembership}",
-    "method": "updateOrganizationsMembershipsByIdOrgByIdMembership",
+    "method": "updateMembershipByIdOrgByIdMembership",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13131,18 +9734,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMembership"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "member_fields",
         "schema": "string",
         "description": ""
@@ -13157,7 +9748,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/name",
-    "method": "updateOrganizationsNameByIdOrg",
+    "method": "updateNameByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13170,18 +9761,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13191,7 +9770,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/associatedDomain",
-    "method": "deleteOrganizationsPrefsAssociatedDomainByIdOrg",
+    "method": "deletePrefsAssociatedDomainByIdOrg",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13202,25 +9781,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idOrg or name"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/prefs/associatedDomain",
-    "method": "updateOrganizationsPrefsAssociatedDomainByIdOrg",
+    "method": "updatePrefsAssociatedDomainByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13233,18 +9800,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13254,7 +9809,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/boardVisibilityRestrict/org",
-    "method": "updateOrganizationsPrefsBoardVisibilityRestrictOrgByIdOrg",
+    "method": "updatePrefsBoardVisibilityRestrictByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13267,18 +9822,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13288,7 +9831,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/boardVisibilityRestrict/private",
-    "method": "updateOrganizationsPrefsBoardVisibilityRestrictPrivateByIdOrg",
+    "method": "updatePrefsVisibilityByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13301,18 +9844,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13322,7 +9853,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/boardVisibilityRestrict/public",
-    "method": "updateOrganizationsPrefsBoardVisibilityRestrictPublicByIdOrg",
+    "method": "updatePrefsBoardVisibilityRestrictPublicByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13335,18 +9866,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13356,7 +9875,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/externalMembersDisabled",
-    "method": "updateOrganizationsPrefsExternalMembersDisabledByIdOrg",
+    "method": "updatePrefsExternalMembersDisabledByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13369,18 +9888,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13390,7 +9897,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/googleAppsVersion",
-    "method": "updateOrganizationsPrefsGoogleAppsVersionByIdOrg",
+    "method": "updatePrefsGoogleAppsVersionByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13403,18 +9910,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13424,7 +9919,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/orgInviteRestrict",
-    "method": "deleteOrganizationsPrefsOrgInviteRestrictByIdOrg",
+    "method": "removeInviteRestrictByIdOrg",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13441,25 +9936,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "An email address with optional expansion tokens"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/organizations/{idOrg}/prefs/orgInviteRestrict",
-    "method": "updateOrganizationsPrefsOrgInviteRestrictByIdOrg",
+    "method": "updatePrefsOrgInviteRestrictByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13472,18 +9955,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13493,7 +9964,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/prefs/permissionLevel",
-    "method": "updateOrganizationsPrefsPermissionLevelByIdOrg",
+    "method": "updatePrefsPermissionLevelByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13506,18 +9977,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13527,7 +9986,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/website",
-    "method": "updateOrganizationsWebsiteByIdOrg",
+    "method": "updateWebsiteByIdOrg",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13540,18 +9999,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13561,7 +10008,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/organizations/{idOrg}/{field}",
-    "method": "getOrganizationsByIdOrgByField",
+    "method": "getByIdAndField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "organization",
     "typeScriptTag": "organization",
@@ -13578,25 +10025,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/search",
-    "method": "getSearch",
+    "method": "getResults",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "search",
     "typeScriptTag": "search",
@@ -13721,25 +10156,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": " true or false"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/search/members",
-    "method": "getSearchMembers",
+    "method": "findMembers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "search",
     "typeScriptTag": "search",
@@ -13774,42 +10197,18 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "A boolean"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/sessions",
-    "method": "addSessions",
+    "method": "createAndUpdate",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "session",
     "typeScriptTag": "session",
     "description": "addSessions()",
     "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
       {
         "name": "idBoard",
         "schema": "string",
@@ -13825,30 +10224,17 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/sessions/socket",
-    "method": "getSessionsSocket",
+    "method": "getSocketSessions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "session",
     "typeScriptTag": "session",
     "description": "getSessionsSocket()",
-    "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      }
-    ],
+    "parameters": [],
     "responses": []
   },
   {
     "url": "/sessions/{idSession}",
-    "method": "updateSessionsByIdSession",
+    "method": "updateStatusByIdSession",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "session",
     "typeScriptTag": "session",
@@ -13859,18 +10245,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idSession"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       },
       {
         "name": "idBoard",
@@ -13887,7 +10261,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/sessions/{idSession}/status",
-    "method": "updateSessionsStatusByIdSession",
+    "method": "updateStatusByIdSession",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "session",
     "typeScriptTag": "session",
@@ -13900,18 +10274,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSession"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -13921,47 +10283,22 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/tokens/{token}",
-    "method": "deleteTokensByToken",
+    "method": "deleteByToken",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "deleteTokensByToken()",
-    "parameters": [
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      }
-    ],
+    "parameters": [],
     "responses": []
   },
   {
     "url": "/tokens/{token}",
-    "method": "getTokensByToken",
+    "method": "getByToken",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "getTokensByToken()",
     "parameters": [
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
       {
         "name": "fields",
         "schema": "string",
@@ -13973,154 +10310,69 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": " true or false"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/tokens/{token}/member",
-    "method": "getTokensMemberByToken",
+    "method": "getMemberByToken",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "getTokensMemberByToken()",
     "parameters": [
       {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
         "name": "fields",
         "schema": "string",
         "required": false,
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/tokens/{token}/member/{field}",
-    "method": "getTokensMemberByTokenByField",
+    "method": "getMemberByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "getTokensMemberByTokenByField()",
     "parameters": [
       {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
         "name": "field",
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/tokens/{token}/webhooks",
-    "method": "getTokensWebhooksByToken",
+    "method": "getWebhooks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "getTokensWebhooksByToken()",
-    "parameters": [
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      }
-    ],
+    "parameters": [],
     "responses": []
   },
   {
     "url": "/tokens/{token}/webhooks",
-    "method": "addTokensWebhooksByToken",
+    "method": "registerWebhook",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "addTokensWebhooksByToken()",
     "parameters": [
       {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
-        "name": "callbackURL",
+        "name": "description",
         "schema": "string",
         "description": ""
       },
       {
-        "name": "description",
+        "name": "callbackURL",
         "schema": "string",
         "description": ""
       },
@@ -14134,37 +10386,19 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/tokens/{token}/webhooks",
-    "method": "updateTokensWebhooksByToken",
+    "method": "updateWebhooksByToken",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "updateTokensWebhooksByToken()",
     "parameters": [
       {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
-        "name": "callbackURL",
+        "name": "description",
         "schema": "string",
         "description": ""
       },
       {
-        "name": "description",
+        "name": "callbackURL",
         "schema": "string",
         "description": ""
       },
@@ -14178,77 +10412,41 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/tokens/{token}/webhooks/{idWebhook}",
-    "method": "deleteTokensWebhooksByTokenByIdWebhook",
+    "method": "removeByTokenByIdWebhook",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "deleteTokensWebhooksByTokenByIdWebhook()",
     "parameters": [
       {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
         "name": "idWebhook",
         "schema": "string",
         "required": true,
         "description": "idWebhook"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/tokens/{token}/webhooks/{idWebhook}",
-    "method": "getTokensWebhooksByTokenByIdWebhook",
+    "method": "getWebhookById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "token",
     "typeScriptTag": "token",
     "description": "getTokensWebhooksByTokenByIdWebhook()",
     "parameters": [
       {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "token"
-      },
-      {
         "name": "idWebhook",
         "schema": "string",
         "required": true,
         "description": "idWebhook"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/tokens/{token}/{field}",
-    "method": "getTokensByTokenByField",
+    "method": "getByTokenByField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "token",
     "typeScriptTag": "token",
@@ -14265,25 +10463,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/types/{id}",
-    "method": "getTypesById",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "type",
     "typeScriptTag": "type",
@@ -14294,84 +10480,22 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "id"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/webhooks",
-    "method": "addWebhooks",
-    "httpMethod": HttpMethodsEnum.POST,
-    "tag": "webhook",
-    "typeScriptTag": "webhook",
-    "description": "addWebhooks()",
-    "parameters": [
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
-        "name": "active",
-        "schema": "string",
-        "description": ""
-      },
-      {
-        "name": "callbackURL",
-        "schema": "string",
-        "description": ""
-      },
-      {
-        "name": "description",
-        "schema": "string",
-        "description": ""
-      },
-      {
-        "name": "idModel",
-        "schema": "string",
-        "description": ""
-      }
-    ],
-    "responses": []
-  },
-  {
-    "url": "/webhooks/",
-    "method": "updateWebhooks",
+    "method": "update",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "webhook",
     "typeScriptTag": "webhook",
     "description": "updateWebhooks()",
     "parameters": [
       {
-        "name": "key",
+        "name": "description",
         "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
+        "description": ""
       },
       {
         "name": "active",
@@ -14380,11 +10504,6 @@ export default function TrelloTypeScriptSdk() {
       },
       {
         "name": "callbackURL",
-        "schema": "string",
-        "description": ""
-      },
-      {
-        "name": "description",
         "schema": "string",
         "description": ""
       },
@@ -14398,7 +10517,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/webhooks/{idWebhook}",
-    "method": "deleteWebhooksByIdWebhook",
+    "method": "removeById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14409,25 +10528,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idWebhook"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/webhooks/{idWebhook}",
-    "method": "getWebhooksByIdWebhook",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14438,25 +10545,13 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "idWebhook"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []
   },
   {
     "url": "/webhooks/{idWebhook}",
-    "method": "updateWebhooksByIdWebhook",
+    "method": "updateByIdWebhook",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14469,16 +10564,9 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       },
       {
-        "name": "key",
+        "name": "description",
         "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
+        "description": ""
       },
       {
         "name": "active",
@@ -14487,11 +10575,6 @@ export default function TrelloTypeScriptSdk() {
       },
       {
         "name": "callbackURL",
-        "schema": "string",
-        "description": ""
-      },
-      {
-        "name": "description",
         "schema": "string",
         "description": ""
       },
@@ -14505,7 +10588,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/webhooks/{idWebhook}/active",
-    "method": "updateWebhooksActiveByIdWebhook",
+    "method": "updateActiveById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14518,18 +10601,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -14539,7 +10610,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/webhooks/{idWebhook}/callbackURL",
-    "method": "updateWebhooksCallbackUrlByIdWebhook",
+    "method": "updateCallbackUrlById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14552,18 +10623,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -14573,7 +10632,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/webhooks/{idWebhook}/description",
-    "method": "updateWebhooksDescriptionByIdWebhook",
+    "method": "updateDescriptionByIdWebhook",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14586,18 +10645,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -14607,7 +10654,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/webhooks/{idWebhook}/idModel",
-    "method": "updateWebhooksIdModelByIdWebhook",
+    "method": "updateModelById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14620,18 +10667,6 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       },
       {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
-      },
-      {
         "name": "value",
         "schema": "string",
         "description": ""
@@ -14641,7 +10676,7 @@ export default function TrelloTypeScriptSdk() {
   },
   {
     "url": "/webhooks/{idWebhook}/{field}",
-    "method": "getWebhooksByIdWebhookByField",
+    "method": "getByIdField",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "webhook",
     "typeScriptTag": "webhook",
@@ -14658,18 +10693,6 @@ export default function TrelloTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "field"
-      },
-      {
-        "name": "key",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/1/appKey/generate\"  target=\"_blank\">Generate your application key</a>"
-      },
-      {
-        "name": "token",
-        "schema": "string",
-        "required": true,
-        "description": "<a href=\"https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user\"  target=\"_blank\">Getting a token from a user</a>"
       }
     ],
     "responses": []

@@ -16,7 +16,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/logo.png"
       clientNameCamelCase="whatsApp"
       homepage="developers.facebook.com/docs/whatsapp"
-      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       methods={[
   {
     "url": "/account",
-    "method": "requestCode",
+    "method": "accountCreation",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Registration",
     "typeScriptTag": "registration",
@@ -107,7 +107,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/account/verify",
-    "method": "registerAccount",
+    "method": "verifyAccount",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Registration",
     "typeScriptTag": "registration",
@@ -124,7 +124,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/certificates/external",
-    "method": "uploadCertificate",
+    "method": "uploadExternal",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Certificates",
     "typeScriptTag": "certificates",
@@ -149,7 +149,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/certificates/webhooks/ca",
-    "method": "deleteWebhookCaCertificate",
+    "method": "deleteWebhookCa",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Certificates",
     "typeScriptTag": "certificates",
@@ -174,7 +174,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/certificates/webhooks/ca",
-    "method": "uploadWebhookCaCertificate",
+    "method": "uploadWebhookCa",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Certificates",
     "typeScriptTag": "certificates",
@@ -184,7 +184,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/contacts",
-    "method": "checkContact",
+    "method": "createContact",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Contacts",
     "typeScriptTag": "contacts",
@@ -212,7 +212,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups",
-    "method": "getAllGroups",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -249,7 +249,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}",
-    "method": "getGroupInfo",
+    "method": "getInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -294,7 +294,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/admins",
-    "method": "demoteGroupAdmin",
+    "method": "demoteAdmin",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -317,7 +317,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/admins",
-    "method": "promoteToGroupAdmin",
+    "method": "promoteToAdmin",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -340,7 +340,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/icon",
-    "method": "deleteGroupIcon",
+    "method": "deleteIcon",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -363,7 +363,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/icon",
-    "method": "getGroupIconBinary",
+    "method": "getGroupIcon",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -380,7 +380,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/icon",
-    "method": "setGroupIcon",
+    "method": "setIcon",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -420,7 +420,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/invite",
-    "method": "getGroupInvite",
+    "method": "getInvite",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -459,7 +459,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/groups/{GroupId}/participants",
-    "method": "removeGroupParticipant",
+    "method": "removeParticipant",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups",
     "typeScriptTag": "groups",
@@ -482,7 +482,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/health",
-    "method": "checkHealth",
+    "method": "checkStatus",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Health",
     "typeScriptTag": "health",
@@ -492,7 +492,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/media",
-    "method": "uploadMedia",
+    "method": "upload",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Media",
     "typeScriptTag": "media",
@@ -507,7 +507,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/media/{MediaId}",
-    "method": "deleteMedia",
+    "method": "remove",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Media",
     "typeScriptTag": "media",
@@ -640,7 +640,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/messages/{MessageID}",
-    "method": "markMessageAsRead",
+    "method": "markAsRead",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Messages",
     "typeScriptTag": "messages",
@@ -684,7 +684,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/account/two-step",
-    "method": "disableTwoStep",
+    "method": "disable",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Two-Step Verification",
     "typeScriptTag": "twoStepVerification",
@@ -694,7 +694,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/account/two-step",
-    "method": "enableTwoStep",
+    "method": "enableAccountSecurity",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Two-Step Verification",
     "typeScriptTag": "twoStepVerification",
@@ -711,7 +711,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/application",
-    "method": "resetApplicationSettings",
+    "method": "resetSettings",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Application",
     "typeScriptTag": "application",
@@ -721,7 +721,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/application",
-    "method": "getApplicationSettings",
+    "method": "getSettings",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Application",
     "typeScriptTag": "application",
@@ -736,7 +736,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/application",
-    "method": "updateApplicationSettings",
+    "method": "updateSettings",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Application",
     "typeScriptTag": "application",
@@ -827,7 +827,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/application/media/providers/{ProviderName}",
-    "method": "deleteMediaProviders",
+    "method": "deleteMediaProvider",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Application",
     "typeScriptTag": "application",
@@ -844,7 +844,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/backup",
-    "method": "backupSettings",
+    "method": "settingsPost",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Backup/Restore",
     "typeScriptTag": "backup/restore",
@@ -866,7 +866,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/business/profile",
-    "method": "getBusinessProfile",
+    "method": "getProfile",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Business Profile",
     "typeScriptTag": "businessProfile",
@@ -881,20 +881,20 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/business/profile",
-    "method": "updateBusinessProfile",
+    "method": "updateProfile",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Business Profile",
     "typeScriptTag": "businessProfile",
     "description": "Update-Business-Profile",
     "parameters": [
       {
-        "name": "address",
+        "name": "description",
         "schema": "string",
         "required": true,
         "description": ""
       },
       {
-        "name": "description",
+        "name": "address",
         "schema": "string",
         "required": true,
         "description": ""
@@ -922,7 +922,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/profile/about",
-    "method": "getProfileAbout",
+    "method": "getAbout",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Profile",
     "typeScriptTag": "profile",
@@ -937,7 +937,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/profile/about",
-    "method": "updateProfileAbout",
+    "method": "updateAbout",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Profile",
     "typeScriptTag": "profile",
@@ -954,15 +954,17 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/profile/photo",
-    "method": "deleteProfilePhoto",
+    "method": "removePhoto",
     "httpMethod": HttpMethodsEnum.DELETE,
+    "tag": "Profile",
+    "typeScriptTag": "profile",
     "description": "Delete-Profile-Photo",
     "parameters": [],
     "responses": []
   },
   {
     "url": "/settings/profile/photo",
-    "method": "getProfilePhoto",
+    "method": "getPhoto",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Profile",
     "typeScriptTag": "profile",
@@ -983,7 +985,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/profile/photo",
-    "method": "updateProfilePhoto",
+    "method": "uploadPhoto",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Profile",
     "typeScriptTag": "profile",
@@ -1000,7 +1002,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/settings/restore",
-    "method": "restoreSettings",
+    "method": "settingsPost",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Backup/Restore",
     "typeScriptTag": "backup/restore",
@@ -1044,7 +1046,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/stats/db",
-    "method": "getDbStats",
+    "method": "dbStatsGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Health",
     "typeScriptTag": "health",
@@ -1108,7 +1110,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/users/login",
-    "method": "loginUser",
+    "method": "performLogin",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1130,7 +1132,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/users/logout",
-    "method": "logoutUser",
+    "method": "performLogout",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1140,7 +1142,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/users/{UserUsername}",
-    "method": "deleteUser",
+    "method": "removeUser",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1162,7 +1164,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/users/{UserUsername}",
-    "method": "getUser",
+    "method": "getByUsername",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1184,7 +1186,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
   },
   {
     "url": "/users/{UserUsername}",
-    "method": "updateUser",
+    "method": "updateUserByUsername",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Users",
     "typeScriptTag": "users",

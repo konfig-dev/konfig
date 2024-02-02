@@ -16,7 +16,7 @@ export default function XCurrentTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.jpg"
       clientNameCamelCase="x"
       homepage="developer.x.com"
-      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/favicon.ico"
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function XCurrentTypeScriptSdk() {
       methods={[
   {
     "url": "/2/compliance/jobs",
-    "method": "listBatchComplianceJobs",
+    "method": "listJobs",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Compliance",
     "typeScriptTag": "compliance",
@@ -64,7 +64,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/compliance/jobs",
-    "method": "createBatchComplianceJob",
+    "method": "createJob",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Compliance",
     "typeScriptTag": "compliance",
@@ -102,7 +102,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/compliance/jobs/{id}",
-    "method": "getBatchComplianceJob",
+    "method": "getJobById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Compliance",
     "typeScriptTag": "compliance",
@@ -134,7 +134,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/dm_conversations",
-    "method": "dmConversationIdCreate",
+    "method": "createNewDmConversation",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Direct Messages",
     "typeScriptTag": "directMessages",
@@ -172,7 +172,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/dm_conversations/with/{participant_id}/dm_events",
-    "method": "getDmConversationsWithParticipantIdDmEvents",
+    "method": "getDmEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Messages",
     "typeScriptTag": "directMessages",
@@ -245,7 +245,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/dm_conversations/with/{participant_id}/messages",
-    "method": "dmConversationWithUserEventIdCreate",
+    "method": "sendNewMessageToUser",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Direct Messages",
     "typeScriptTag": "directMessages",
@@ -271,7 +271,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/dm_conversations/{dm_conversation_id}/messages",
-    "method": "dmConversationByIdEventIdCreate",
+    "method": "sendNewMessageToDmConversation",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Direct Messages",
     "typeScriptTag": "directMessages",
@@ -297,7 +297,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/dm_conversations/{id}/dm_events",
-    "method": "getDmConversationsIdDmEvents",
+    "method": "getDmEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Messages",
     "typeScriptTag": "directMessages",
@@ -370,7 +370,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/dm_events",
-    "method": "getDmEvents",
+    "method": "getRecentDmEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Messages",
     "typeScriptTag": "directMessages",
@@ -437,7 +437,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists",
-    "method": "listIdCreate",
+    "method": "createNewList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -475,7 +475,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}",
-    "method": "listIdDelete",
+    "method": "deleteOwnedList",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -501,7 +501,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}",
-    "method": "listIdGet",
+    "method": "lookupByListId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -544,7 +544,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}",
-    "method": "listIdUpdate",
+    "method": "updateOwnedList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -585,7 +585,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}/followers",
-    "method": "listGetFollowers",
+    "method": "getFollowersByListId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -640,7 +640,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}/members",
-    "method": "listGetMembers",
+    "method": "getMembersByListId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -695,7 +695,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}/members",
-    "method": "listAddMember",
+    "method": "addMember",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -727,7 +727,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}/members/{user_id}",
-    "method": "listRemoveMember",
+    "method": "removeMember",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -759,7 +759,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/lists/{id}/tweets",
-    "method": "listsIdTweets",
+    "method": "listByListId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -847,7 +847,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/spaces",
-    "method": "findSpacesByIds",
+    "method": "lookupSpaceIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Spaces",
     "typeScriptTag": "spaces",
@@ -896,7 +896,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/spaces/by/creator_ids",
-    "method": "findSpacesByCreatorIds",
+    "method": "lookupByCreatorIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Spaces",
     "typeScriptTag": "spaces",
@@ -945,7 +945,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/spaces/search",
-    "method": "searchSpaces",
+    "method": "findMatchingSpaces",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Spaces",
     "typeScriptTag": "spaces",
@@ -1006,7 +1006,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/spaces/{id}",
-    "method": "findSpaceById",
+    "method": "lookupSpaceById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Spaces",
     "typeScriptTag": "spaces",
@@ -1055,7 +1055,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/spaces/{id}/buyers",
-    "method": "spaceBuyers",
+    "method": "getBuyersList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Spaces",
     "typeScriptTag": "spaces",
@@ -1110,7 +1110,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/spaces/{id}/tweets",
-    "method": "spaceTweets",
+    "method": "getTweets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Spaces",
     "typeScriptTag": "spaces",
@@ -1177,7 +1177,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets",
-    "method": "findTweetsById",
+    "method": "lookupByTweetIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1313,7 +1313,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/compliance/stream",
-    "method": "getTweetsComplianceStream",
+    "method": "streamData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Compliance",
     "typeScriptTag": "compliance",
@@ -1357,7 +1357,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/counts/all",
-    "method": "tweetCountsFullArchiveSearch",
+    "method": "getTweetCounts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1431,7 +1431,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/counts/recent",
-    "method": "tweetCountsRecentSearch",
+    "method": "getRecentTweetCounts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1505,7 +1505,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/firehose/stream",
-    "method": "getTweetsFirehoseStream",
+    "method": "getFirehoseStream",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1584,7 +1584,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/label/stream",
-    "method": "getTweetsLabelStream",
+    "method": "streamTweetsLabelEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Compliance",
     "typeScriptTag": "compliance",
@@ -1622,7 +1622,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/sample/stream",
-    "method": "sampleStream",
+    "method": "streamSample",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1683,7 +1683,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/sample10/stream",
-    "method": "getTweetsSample10Stream",
+    "method": "streamSample10",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1762,7 +1762,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/search/all",
-    "method": "tweetsFullarchiveSearch",
+    "method": "searchAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1871,7 +1871,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/search/recent",
-    "method": "tweetsRecentSearch",
+    "method": "getRecentTweets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -1980,7 +1980,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/search/stream",
-    "method": "searchStream",
+    "method": "getFilteredStream",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -2053,7 +2053,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/search/stream/rules",
-    "method": "getRules",
+    "method": "searchStreamRules",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -2117,7 +2117,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/{id}",
-    "method": "deleteTweetById",
+    "method": "deleteById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -2143,7 +2143,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/{id}",
-    "method": "findTweetById",
+    "method": "lookupById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -2204,7 +2204,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/{id}/liking_users",
-    "method": "tweetsIdLikingUsers",
+    "method": "listLikingUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2259,7 +2259,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/{id}/quote_tweets",
-    "method": "findTweetsThatQuoteATweet",
+    "method": "getQuoteTweets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -2338,7 +2338,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/{id}/retweeted_by",
-    "method": "tweetsIdRetweetingUsers",
+    "method": "getRetweetedByTweetIdUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2393,7 +2393,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/tweets/{tweet_id}/hidden",
-    "method": "hideReplyById",
+    "method": "hideReply",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -2425,7 +2425,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users",
-    "method": "findUsersById",
+    "method": "lookupByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2468,7 +2468,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/by",
-    "method": "findUsersByUsername",
+    "method": "lookupByUsernames",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2511,7 +2511,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/by/username/{username}",
-    "method": "findUserByUsername",
+    "method": "lookupByUsername",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2554,7 +2554,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/compliance/stream",
-    "method": "getUsersComplianceStream",
+    "method": "streamUsersData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Compliance",
     "typeScriptTag": "compliance",
@@ -2598,7 +2598,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/me",
-    "method": "findMyUser",
+    "method": "lookupMe",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2635,7 +2635,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}",
-    "method": "findUserById",
+    "method": "lookupById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2678,7 +2678,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/blocking",
-    "method": "usersIdBlocking",
+    "method": "getBlockedUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2733,7 +2733,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/blocking",
-    "method": "usersIdBlock",
+    "method": "blockUserById",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2765,7 +2765,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/bookmarks",
-    "method": "getUsersIdBookmarks",
+    "method": "getUserBookmarks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Bookmarks",
     "typeScriptTag": "bookmarks",
@@ -2838,7 +2838,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/bookmarks",
-    "method": "postUsersIdBookmarks",
+    "method": "addTweet",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Bookmarks",
     "typeScriptTag": "bookmarks",
@@ -2870,7 +2870,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/bookmarks/{tweet_id}",
-    "method": "usersIdBookmarksDelete",
+    "method": "removeTweet",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Bookmarks",
     "typeScriptTag": "bookmarks",
@@ -2902,7 +2902,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/followed_lists",
-    "method": "userFollowedLists",
+    "method": "getFollowed",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -2957,7 +2957,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/followed_lists",
-    "method": "listUserFollow",
+    "method": "followList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -2989,7 +2989,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/followed_lists/{list_id}",
-    "method": "listUserUnfollow",
+    "method": "unfollowList",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -3021,7 +3021,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/followers",
-    "method": "usersIdFollowers",
+    "method": "getFollowersById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -3076,7 +3076,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/following",
-    "method": "usersIdFollowing",
+    "method": "getFollowingUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -3131,7 +3131,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/following",
-    "method": "usersIdFollow",
+    "method": "followUser",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -3163,7 +3163,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/liked_tweets",
-    "method": "usersIdLikedTweets",
+    "method": "getLikedTweets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3236,7 +3236,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/likes",
-    "method": "usersIdLike",
+    "method": "likeTweet",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3268,7 +3268,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/likes/{tweet_id}",
-    "method": "usersIdUnlike",
+    "method": "unlikeTweetById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3300,7 +3300,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/list_memberships",
-    "method": "getUserListMemberships",
+    "method": "getUserMemberships",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -3355,7 +3355,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/mentions",
-    "method": "usersIdMentions",
+    "method": "getMentionsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3452,7 +3452,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/muting",
-    "method": "usersIdMuting",
+    "method": "getMutedUsersById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -3507,7 +3507,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/muting",
-    "method": "usersIdMute",
+    "method": "muteUserById",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -3539,7 +3539,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/owned_lists",
-    "method": "listUserOwnedLists",
+    "method": "getUserOwnedLists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -3594,7 +3594,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/pinned_lists",
-    "method": "listUserPinnedLists",
+    "method": "getUserPinnedLists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -3637,7 +3637,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/pinned_lists",
-    "method": "listUserPin",
+    "method": "pinList",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -3669,7 +3669,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/pinned_lists/{list_id}",
-    "method": "listUserUnpin",
+    "method": "unpinList",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Lists",
     "typeScriptTag": "lists",
@@ -3701,7 +3701,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/retweets",
-    "method": "usersIdRetweets",
+    "method": "retweetTweetById",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3733,7 +3733,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/retweets/{source_tweet_id}",
-    "method": "usersIdUnretweets",
+    "method": "unretweetById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3765,7 +3765,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/timelines/reverse_chronological",
-    "method": "usersIdTimeline",
+    "method": "getUserHomeTimeline",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3868,7 +3868,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{id}/tweets",
-    "method": "usersIdTweets",
+    "method": "listByUserId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tweets",
     "typeScriptTag": "tweets",
@@ -3971,7 +3971,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{source_user_id}/blocking/{target_user_id}",
-    "method": "usersIdUnblock",
+    "method": "unblockUserById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -4003,7 +4003,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{source_user_id}/following/{target_user_id}",
-    "method": "usersIdUnfollow",
+    "method": "unfollowUser",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -4035,7 +4035,7 @@ export default function XCurrentTypeScriptSdk() {
   },
   {
     "url": "/2/users/{source_user_id}/muting/{target_user_id}",
-    "method": "usersIdUnmute",
+    "method": "unmuteByUserId",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users",
     "typeScriptTag": "users",

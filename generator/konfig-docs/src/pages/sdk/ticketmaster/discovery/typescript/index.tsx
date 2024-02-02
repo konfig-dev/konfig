@@ -16,7 +16,7 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/logo.png"
       clientNameCamelCase="ticketmaster"
       homepage="developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/"
-      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/favicon.ico"
       contactUrl="http://developer.ticketmaster.com/support/contact-us/"
       // Missing contactEmail
@@ -26,8 +26,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
       methods={[
   {
     "url": "/discovery/v2/attractions",
-    "method": "find",
+    "method": "searchAttractions",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Attraction Search",
     "parameters": [
       {
@@ -112,8 +114,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/attractions/{id}",
-    "method": "get",
+    "method": "getAttractionDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Attraction Details",
     "parameters": [
       {
@@ -144,8 +148,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/classifications",
-    "method": "/discovery/v2/classificationsGet",
+    "method": "searchClassifications",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Classification Search",
     "parameters": [
       {
@@ -218,8 +224,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/classifications/genres/{id}",
-    "method": "getGenre",
+    "method": "getGenreDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Genre Details",
     "parameters": [
       {
@@ -250,8 +258,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/classifications/segments/{id}",
-    "method": "getSegment",
+    "method": "getSegmentDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Segment Details",
     "parameters": [
       {
@@ -282,8 +292,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/classifications/subgenres/{id}",
-    "method": "getSubgenre",
+    "method": "getSubgenreDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Sub-Genre Details",
     "parameters": [
       {
@@ -314,8 +326,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/classifications/{id}",
-    "method": "/discovery/v2/classifications/{id}Get",
+    "method": "getClassificationDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Classification Details",
     "parameters": [
       {
@@ -346,8 +360,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/events",
-    "method": "/discovery/v2/eventsGet",
+    "method": "eventSearch",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Event Search",
     "parameters": [
       {
@@ -576,8 +592,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/events/{id}",
-    "method": "/discovery/v2/events/{id}Get",
+    "method": "getEventDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Event Details",
     "parameters": [
       {
@@ -608,8 +626,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/events/{id}/images",
-    "method": "getImages",
+    "method": "getEventImages",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Event Images",
     "parameters": [
       {
@@ -640,7 +660,7 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/suggest",
-    "method": "/discovery/v2/suggestGet",
+    "method": "findSuggest",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "v2",
     "typeScriptTag": "v2",
@@ -752,8 +772,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/venues",
-    "method": "/discovery/v2/venuesGet",
+    "method": "findVenues",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Venue Search",
     "parameters": [
       {
@@ -862,8 +884,10 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
   },
   {
     "url": "/discovery/v2/venues/{id}",
-    "method": "/discovery/v2/venues/{id}Get",
+    "method": "getVenueDetails",
     "httpMethod": HttpMethodsEnum.GET,
+    "tag": "v2",
+    "typeScriptTag": "v2",
     "description": "Get Venue Details",
     "parameters": [
       {

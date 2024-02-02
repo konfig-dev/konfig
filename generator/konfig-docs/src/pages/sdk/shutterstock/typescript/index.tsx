@@ -16,7 +16,7 @@ export default function ShutterstockTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/logo.png"
       clientNameCamelCase="shutterstock"
       homepage="developers.shutterstock.com"
-      lastUpdated={new Date("2024-02-01T01:04:20.484Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function ShutterstockTypeScriptSdk() {
       methods={[
   {
     "url": "/v2/ai/audio/descriptors",
-    "method": "listCustomDescriptors",
+    "method": "listAudioDescriptors",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "custom_music",
     "typeScriptTag": "customMusic",
@@ -107,7 +107,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/ai/audio/instruments",
-    "method": "listCustomInstruments",
+    "method": "listComputerAudioInstruments",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "custom_music",
     "typeScriptTag": "customMusic",
@@ -148,7 +148,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/ai/audio/renders",
-    "method": "fetchRenders",
+    "method": "getAudioRendersDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "custom_music",
     "typeScriptTag": "customMusic",
@@ -170,7 +170,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/ai/audio/renders",
-    "method": "createAudioRenders",
+    "method": "createRenderedAudio",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "custom_music",
     "typeScriptTag": "customMusic",
@@ -192,7 +192,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio",
-    "method": "getTrackList",
+    "method": "listTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -224,7 +224,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections",
-    "method": "getTrackCollectionList",
+    "method": "listCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -255,7 +255,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections",
-    "method": "createTrackCollection",
+    "method": "createCollections",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -277,7 +277,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections/{id}",
-    "method": "deleteTrackCollection",
+    "method": "deleteCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -294,7 +294,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections/{id}",
-    "method": "getTrackCollection",
+    "method": "getCollectionDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -326,7 +326,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections/{id}",
-    "method": "renameTrackCollection",
+    "method": "setCollectionName",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -349,7 +349,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections/{id}/items",
-    "method": "deleteTrackCollectionItems",
+    "method": "removeTracksFromCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -371,7 +371,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections/{id}/items",
-    "method": "getTrackCollectionItems",
+    "method": "listCollectionItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -413,7 +413,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/collections/{id}/items",
-    "method": "addTrackCollectionItems",
+    "method": "addTracksToCollection",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -478,7 +478,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/licenses",
-    "method": "getTrackLicenseList",
+    "method": "listAudioLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -544,7 +544,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/licenses",
-    "method": "licenseTrack",
+    "method": "licenseTracks",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -576,7 +576,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/licenses/{id}/downloads",
-    "method": "downloadTracks",
+    "method": "redownloadTracks",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -740,7 +740,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/audio/{id}",
-    "method": "getTrack",
+    "method": "getTrackDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "audio",
     "typeScriptTag": "audio",
@@ -772,7 +772,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/bulk_search/images",
-    "method": "bulkSearchImages",
+    "method": "runMultipleSearches",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -963,7 +963,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/catalog/collections",
-    "method": "getCollections",
+    "method": "listCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "catalog",
     "typeScriptTag": "catalog",
@@ -1050,7 +1050,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/catalog/collections/{collection_id}",
-    "method": "updateCollection",
+    "method": "updateCollectionMetadata",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "catalog",
     "typeScriptTag": "catalog",
@@ -1087,7 +1087,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/catalog/collections/{collection_id}/items",
-    "method": "deleteFromCollection",
+    "method": "removeItemsFromCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "catalog",
     "typeScriptTag": "catalog",
@@ -1115,7 +1115,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/catalog/collections/{collection_id}/items",
-    "method": "addToCollection",
+    "method": "addToCollectionItems",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "catalog",
     "typeScriptTag": "catalog",
@@ -1143,7 +1143,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/catalog/search",
-    "method": "searchCatalog",
+    "method": "searchAssets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "catalog",
     "typeScriptTag": "catalog",
@@ -1189,7 +1189,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/contributors",
-    "method": "getContributorList",
+    "method": "getDetailsMultiple",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "contributors",
     "typeScriptTag": "contributors",
@@ -1211,7 +1211,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/contributors/{contributor_id}",
-    "method": "getContributor",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "contributors",
     "typeScriptTag": "contributors",
@@ -1233,7 +1233,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/contributors/{contributor_id}/collections",
-    "method": "getContributorCollectionsList",
+    "method": "listCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "contributors",
     "typeScriptTag": "contributors",
@@ -1260,7 +1260,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/contributors/{contributor_id}/collections/{id}",
-    "method": "getContributorCollections",
+    "method": "getCollectionDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "contributors",
     "typeScriptTag": "contributors",
@@ -1288,7 +1288,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/contributors/{contributor_id}/collections/{id}/items",
-    "method": "getContributorCollectionItems",
+    "method": "getCollectionItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "contributors",
     "typeScriptTag": "contributors",
@@ -1353,7 +1353,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/cv/keywords",
-    "method": "getKeywords",
+    "method": "listSuggestedKeywords",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "computer_vision",
     "typeScriptTag": "computerVision",
@@ -1375,7 +1375,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/cv/similar/images",
-    "method": "getSimilarImages",
+    "method": "listSimilarImages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "computer_vision",
     "typeScriptTag": "computerVision",
@@ -1427,7 +1427,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/cv/similar/videos",
-    "method": "getSimilarVideos",
+    "method": "listSimilarVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "computer_vision",
     "typeScriptTag": "computerVision",
@@ -1479,7 +1479,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/categories",
-    "method": "getEditorialCategories",
+    "method": "listCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1494,7 +1494,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/categories",
-    "method": "listEditorialImageCategories",
+    "method": "listCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1509,7 +1509,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/licenses",
-    "method": "getEditorialImageLicenseList",
+    "method": "listLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1575,7 +1575,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/licenses",
-    "method": "licenseEditorialImages",
+    "method": "licenseContent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1603,7 +1603,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/livefeeds",
-    "method": "getEditorialImageLivefeedList",
+    "method": "listLivefeedImages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1635,7 +1635,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/livefeeds/{id}",
-    "method": "getEditorialImageLivefeed",
+    "method": "getLivefeedImages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1663,7 +1663,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/livefeeds/{id}/items",
-    "method": "getEditorialImageLivefeedItems",
+    "method": "getLivefeedItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1691,7 +1691,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/search",
-    "method": "searchEditorialImages",
+    "method": "search",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1753,7 +1753,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/updated",
-    "method": "getUpdatedEditorialImages",
+    "method": "listUpdatedContent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1823,7 +1823,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/images/{id}",
-    "method": "getEditorialImage",
+    "method": "getImageDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1851,7 +1851,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/licenses",
-    "method": "licenseEditorialImage",
+    "method": "licenseContent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1879,7 +1879,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/livefeeds",
-    "method": "getEditorialLivefeedList",
+    "method": "getLivefeedList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1911,7 +1911,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/livefeeds/{id}",
-    "method": "getEditorialLivefeed",
+    "method": "getLivefeedItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1939,7 +1939,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/livefeeds/{id}/items",
-    "method": "getEditorialLivefeedItems",
+    "method": "getLivefeedItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -1967,7 +1967,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/search",
-    "method": "searchEditorial",
+    "method": "searchContent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -2029,7 +2029,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/updated",
-    "method": "getUpdatedEditorialImage",
+    "method": "listUpdatedContent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -2099,7 +2099,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/videos/categories",
-    "method": "listEditorialVideoCategories",
+    "method": "listVideoCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_video",
     "typeScriptTag": "editorialVideo",
@@ -2114,7 +2114,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/videos/licenses",
-    "method": "getEditorialVideoLicenseList",
+    "method": "listVideoLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_video",
     "typeScriptTag": "editorialVideo",
@@ -2180,7 +2180,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/videos/licenses",
-    "method": "licenseEditorialVideo",
+    "method": "licenseVideos",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "editorial_video",
     "typeScriptTag": "editorialVideo",
@@ -2208,7 +2208,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/videos/search",
-    "method": "searchEditorialVideos",
+    "method": "searchVideoContent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_video",
     "typeScriptTag": "editorialVideo",
@@ -2280,7 +2280,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/videos/{id}",
-    "method": "getEditorialVideo",
+    "method": "getContentDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_video",
     "typeScriptTag": "editorialVideo",
@@ -2313,7 +2313,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/editorial/{id}",
-    "method": "/v2/editorial/{id}Get",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "editorial_images",
     "typeScriptTag": "editorialImages",
@@ -2346,7 +2346,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images",
-    "method": "getImageList",
+    "method": "listInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2378,7 +2378,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images",
-    "method": "uploadEphemeralImage",
+    "method": "uploadImageEphemeral",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "computer_vision",
     "typeScriptTag": "computerVision",
@@ -2400,7 +2400,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/categories",
-    "method": "listImageCategories",
+    "method": "listCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2421,7 +2421,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections",
-    "method": "getImageCollectionList",
+    "method": "listCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2452,7 +2452,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections",
-    "method": "createImageCollection",
+    "method": "createCollection",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2474,7 +2474,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/featured",
-    "method": "getFeaturedImageCollectionList",
+    "method": "listFeaturedCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2505,7 +2505,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/featured/{id}",
-    "method": "getFeaturedImageCollection",
+    "method": "featuredCollectionDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2537,7 +2537,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/featured/{id}/items",
-    "method": "getFeaturedImageCollectionItems",
+    "method": "getCollectionItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2569,7 +2569,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/{id}",
-    "method": "deleteImageCollection",
+    "method": "deleteCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2586,7 +2586,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/{id}",
-    "method": "getImageCollection",
+    "method": "getCollectionDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2618,7 +2618,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/{id}",
-    "method": "renameImageCollection",
+    "method": "renameCollection",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2641,7 +2641,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/{id}/items",
-    "method": "deleteImageCollectionItems",
+    "method": "removeFromCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2663,7 +2663,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/{id}/items",
-    "method": "getImageCollectionItems",
+    "method": "getCollectionItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2705,7 +2705,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/collections/{id}/items",
-    "method": "addImageCollectionItems",
+    "method": "addToCollectionItems",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2728,7 +2728,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/licenses",
-    "method": "getImageLicenseList",
+    "method": "listLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2794,7 +2794,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/licenses",
-    "method": "licenseImages",
+    "method": "licenseImagesForMultiple",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2836,7 +2836,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/licenses/{id}/downloads",
-    "method": "downloadImage",
+    "method": "redownloadLicense",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -2878,7 +2878,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/recommendations",
-    "method": "getImageRecommendations",
+    "method": "listRecommendedImages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -3126,7 +3126,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/search/suggestions",
-    "method": "getImageSuggestions",
+    "method": "getSearchSuggestions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -3153,7 +3153,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/search/suggestions",
-    "method": "getImageKeywordSuggestions",
+    "method": "extractKeywordsFromText",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "images",
     "typeScriptTag": "images",
@@ -3175,7 +3175,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/updated",
-    "method": "getUpdatedImages",
+    "method": "listUpdatedContent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -3226,7 +3226,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/images/{id}",
-    "method": "getImage",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "images",
     "typeScriptTag": "images",
@@ -3305,7 +3305,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/oauth/access_token",
-    "method": "createAccessToken",
+    "method": "getUserAccessToken",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "oauth",
     "typeScriptTag": "oauth",
@@ -3363,7 +3363,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/oauth/authorize",
-    "method": "authorize",
+    "method": "authorizeApplications",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "oauth",
     "typeScriptTag": "oauth",
@@ -3413,7 +3413,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/sfx",
-    "method": "getSfxListDetails",
+    "method": "listDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "sound_effects",
     "typeScriptTag": "soundEffects",
@@ -3455,7 +3455,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/sfx/licenses",
-    "method": "getSfxLicenseList",
+    "method": "listLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "sound_effects",
     "typeScriptTag": "soundEffects",
@@ -3526,7 +3526,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/sfx/licenses",
-    "method": "licensesSfx",
+    "method": "licenseAssets",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "sound_effects",
     "typeScriptTag": "soundEffects",
@@ -3548,7 +3548,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/sfx/licenses/{id}/downloads",
-    "method": "downloadSfx",
+    "method": "redownloadLicenses",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "sound_effects",
     "typeScriptTag": "soundEffects",
@@ -3570,7 +3570,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/sfx/search",
-    "method": "searchSfx",
+    "method": "searchSoundEffects",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "sound_effects",
     "typeScriptTag": "soundEffects",
@@ -3651,7 +3651,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/sfx/{id}",
-    "method": "getSfxDetails",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "sound_effects",
     "typeScriptTag": "soundEffects",
@@ -3693,7 +3693,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/test",
-    "method": "echo",
+    "method": "echoText",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "test",
     "typeScriptTag": "test",
@@ -3714,7 +3714,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/test/validate",
-    "method": "validate",
+    "method": "inputValidation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "test",
     "typeScriptTag": "test",
@@ -3746,7 +3746,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/user",
-    "method": "getUser",
+    "method": "getUserDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -3761,7 +3761,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/user/access_token",
-    "method": "getAccessToken",
+    "method": "getAccessTokenDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -3776,7 +3776,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/user/subscriptions",
-    "method": "getUserSubscriptionList",
+    "method": "listSubscriptions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -3791,7 +3791,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos",
-    "method": "getVideoList",
+    "method": "listVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3823,7 +3823,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/categories",
-    "method": "listVideoCategories",
+    "method": "listCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3844,7 +3844,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections",
-    "method": "getVideoCollectionList",
+    "method": "listCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3875,7 +3875,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections",
-    "method": "createVideoCollection",
+    "method": "createVideoCollections",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3897,7 +3897,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/featured",
-    "method": "getFeaturedVideoCollectionList",
+    "method": "listFeaturedVideoCollections",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3918,7 +3918,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/featured/{id}",
-    "method": "getFeaturedVideoCollection",
+    "method": "collectionDetailsGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3945,7 +3945,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/featured/{id}/items",
-    "method": "getFeaturedVideoCollectionItems",
+    "method": "getFeaturedCollectionItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3977,7 +3977,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/{id}",
-    "method": "deleteVideoCollection",
+    "method": "deleteCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -3994,7 +3994,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/{id}",
-    "method": "getVideoCollection",
+    "method": "collectionDetailsGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4026,7 +4026,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/{id}",
-    "method": "renameVideoCollection",
+    "method": "setNewName",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4049,7 +4049,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/{id}/items",
-    "method": "deleteVideoCollectionItems",
+    "method": "removeFromCollection",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4071,7 +4071,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/{id}/items",
-    "method": "getVideoCollectionItems",
+    "method": "getCollectionItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4113,7 +4113,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/collections/{id}/items",
-    "method": "addVideoCollectionItems",
+    "method": "addToCollectionItems",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4136,7 +4136,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/licenses",
-    "method": "getVideoLicenseList",
+    "method": "listLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4239,7 +4239,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/licenses/{id}/downloads",
-    "method": "downloadVideos",
+    "method": "redownloadDownloads",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4281,7 +4281,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/search",
-    "method": "searchVideos",
+    "method": "searchVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4442,7 +4442,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/search/suggestions",
-    "method": "getVideoSuggestions",
+    "method": "searchSuggestions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4469,7 +4469,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/updated",
-    "method": "getUpdatedVideos",
+    "method": "listUpdatedVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4515,7 +4515,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/{id}",
-    "method": "getVideo",
+    "method": "videoDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",
@@ -4552,7 +4552,7 @@ export default function ShutterstockTypeScriptSdk() {
   },
   {
     "url": "/v2/videos/{id}/similar",
-    "method": "findSimilarVideos",
+    "method": "findSimilar",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "videos",
     "typeScriptTag": "videos",

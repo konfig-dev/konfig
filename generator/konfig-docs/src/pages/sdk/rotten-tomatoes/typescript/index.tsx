@@ -17,7 +17,7 @@ export default function RottenTomatoesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/logo.png"
       clientNameCamelCase="rottenTomatoes"
       homepage="developer.fandango.com/rotten_tomatoes"
-      lastUpdated={new Date("2024-02-01T19:41:39.466Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/favicon.jpeg"
       contactUrl="https://github.com/mermade/mashery2openapi"
       contactEmail="mike.ralphson@gmail.com"
@@ -27,7 +27,7 @@ export default function RottenTomatoesTypeScriptSdk() {
       methods={[
   {
     "url": "/lists.json",
-    "method": "listsDirectoryTopLevelLists",
+    "method": "getData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Top Level Lists",
     "typeScriptTag": "topLevelLists",
@@ -37,7 +37,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/dvds.json",
-    "method": "dvdListsDirectoryTopLevelLists",
+    "method": "getDvds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Top Level Lists",
     "typeScriptTag": "topLevelLists",
@@ -47,7 +47,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/dvds/current_releases.json",
-    "method": "currentReleaseDvDsDvdLists",
+    "method": "getCurrentReleases",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "DVD Lists",
     "typeScriptTag": "dvdLists",
@@ -76,7 +76,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/dvds/new_releases.json",
-    "method": "newReleaseDvDsDvdLists",
+    "method": "getNewReleasesJson",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "DVD Lists",
     "typeScriptTag": "dvdLists",
@@ -105,7 +105,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/dvds/top_rentals.json",
-    "method": "topRentalsDvdLists",
+    "method": "getTopRentalsJson",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "DVD Lists",
     "typeScriptTag": "dvdLists",
@@ -128,7 +128,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/dvds/upcoming.json",
-    "method": "upcomingDvDsDvdLists",
+    "method": "getUpcomingDvds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "DVD Lists",
     "typeScriptTag": "dvdLists",
@@ -157,7 +157,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/movies.json",
-    "method": "movieListsDirectoryTopLevelLists",
+    "method": "getMoviesJson",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Top Level Lists",
     "typeScriptTag": "topLevelLists",
@@ -167,7 +167,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/movies/box_office.json",
-    "method": "boxOfficeMovieLists",
+    "method": "getBoxOfficeJson",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Movie Lists",
     "typeScriptTag": "movieLists",
@@ -190,7 +190,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/movies/in_theaters.json",
-    "method": "inTheatersMovieLists",
+    "method": "getIntheaterMovies",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Movie Lists",
     "typeScriptTag": "movieLists",
@@ -219,7 +219,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/movies/opening.json",
-    "method": "openingMoviesMovieLists",
+    "method": "getOpeningMovies",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Movie Lists",
     "typeScriptTag": "movieLists",
@@ -242,7 +242,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/lists/movies/upcoming.json",
-    "method": "upcomingMoviesMovieLists",
+    "method": "getUpcomingMovies",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Movie Lists",
     "typeScriptTag": "movieLists",
@@ -271,7 +271,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movie_alias.json",
-    "method": "moviesAliasDetailedInfo",
+    "method": "getMovieAliasInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Detailed Info",
     "typeScriptTag": "detailedInfo",
@@ -294,7 +294,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movies.json",
-    "method": "moviesSearchSearch",
+    "method": "moviesJson",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Search",
     "typeScriptTag": "search",
@@ -323,7 +323,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movies/{id}.json",
-    "method": "moviesInfoDetailedInfo",
+    "method": "getMovieByIdJson",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Detailed Info",
     "typeScriptTag": "detailedInfo",
@@ -340,7 +340,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movies/{id}/cast.json",
-    "method": "castInfoDetailedInfo",
+    "method": "getMovieCast",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Detailed Info",
     "typeScriptTag": "detailedInfo",
@@ -357,7 +357,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movies/{id}/clips.json",
-    "method": "movieClipsDetailedInfo",
+    "method": "getClipById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Detailed Info",
     "typeScriptTag": "detailedInfo",
@@ -374,7 +374,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movies/{id}/reviews.json",
-    "method": "moviesReviewsDetailedInfo",
+    "method": "getMovieReviews",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Detailed Info",
     "typeScriptTag": "detailedInfo",
@@ -415,7 +415,7 @@ export default function RottenTomatoesTypeScriptSdk() {
   },
   {
     "url": "/movies/{id}/similar.json",
-    "method": "moviesSimilarDetailedInfo",
+    "method": "findSimilarMovies",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Detailed Info",
     "typeScriptTag": "detailedInfo",

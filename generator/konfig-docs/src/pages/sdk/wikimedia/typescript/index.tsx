@@ -16,7 +16,7 @@ export default function WikimediaTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/logo.png"
       clientNameCamelCase="wikimedia"
       homepage="wikimedia.org"
-      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/favicon.ico"
       contactUrl="http://mediawiki.org/wiki/REST_API"
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function WikimediaTypeScriptSdk() {
       methods={[
   {
     "url": "/feed/availability",
-    "method": "/feed/availabilityGet",
+    "method": "getByWikiDomain",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Feed content availability",
     "typeScriptTag": "feedContentAvailability",
@@ -45,7 +45,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/media/math/check/{type}",
-    "method": "/media/math/check/{type}Post",
+    "method": "checkFormula",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Math",
     "typeScriptTag": "math",
@@ -77,7 +77,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/media/math/formula/{hash}",
-    "method": "/media/math/formula/{hash}Get",
+    "method": "getFormulaByHash",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Math",
     "typeScriptTag": "math",
@@ -103,7 +103,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/media/math/render/{format}/{hash}",
-    "method": "/media/math/render/{format}/{hash}Get",
+    "method": "renderFormulaByHash",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Math",
     "typeScriptTag": "math",
@@ -135,7 +135,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/bytes-difference/absolute/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/bytesDifference/absolute/aggregate/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+    "method": "getAbsoluteAggregateByProjectAndDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Bytes difference data",
     "typeScriptTag": "bytesDifferenceData",
@@ -191,7 +191,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/bytes-difference/absolute/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/bytesDifference/absolute/perPage/{project}/{pageTitle}/{editorType}/{granularity}/{start}/{end}Get",
+    "method": "getAbsolutePerPage",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Bytes difference data",
     "typeScriptTag": "bytesDifferenceData",
@@ -247,7 +247,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/bytes-difference/net/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/bytesDifference/net/aggregate/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+    "method": "getNetAggregateByProjectAndDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Bytes difference data",
     "typeScriptTag": "bytesDifferenceData",
@@ -303,7 +303,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/bytes-difference/net/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/bytesDifference/net/perPage/{project}/{pageTitle}/{editorType}/{granularity}/{start}/{end}Get",
+    "method": "getSumNetTextBytesDifferencePerPage",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Bytes difference data",
     "typeScriptTag": "bytesDifferenceData",
@@ -359,7 +359,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edited-pages/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}",
-    "method": "/metrics/editedPages/aggregate/{project}/{editorType}/{pageType}/{activityLevel}/{granularity}/{start}/{end}Get",
+    "method": "getAggregateByProjectAndDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edited pages data",
     "typeScriptTag": "editedPagesData",
@@ -421,7 +421,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edited-pages/new/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/editedPages/new/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+    "method": "getNewPagesCountsForProject",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edited pages data",
     "typeScriptTag": "editedPagesData",
@@ -477,7 +477,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edited-pages/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-    "method": "/metrics/editedPages/topByAbsoluteBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+    "method": "getTopByAbsoluteBytesDifference",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edited pages data",
     "typeScriptTag": "editedPagesData",
@@ -533,7 +533,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edited-pages/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-    "method": "/metrics/editedPages/topByEdits/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+    "method": "getTopByEditsCount",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edited pages data",
     "typeScriptTag": "editedPagesData",
@@ -589,7 +589,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edited-pages/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-    "method": "/metrics/editedPages/topByNetBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+    "method": "getTopByNetBytesDifference",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edited pages data",
     "typeScriptTag": "editedPagesData",
@@ -645,7 +645,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/editors/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}",
-    "method": "/metrics/editors/aggregate/{project}/{editorType}/{pageType}/{activityLevel}/{granularity}/{start}/{end}Get",
+    "method": "getEditorsCountsForProject",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Editors data",
     "typeScriptTag": "editorsData",
@@ -707,7 +707,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/editors/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-    "method": "/metrics/editors/topByAbsoluteBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+    "method": "getTopByAbsoluteBytesDifference",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Editors data",
     "typeScriptTag": "editorsData",
@@ -763,7 +763,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/editors/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-    "method": "/metrics/editors/topByEdits/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+    "method": "getTopEditorsByEditsCount",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Editors data",
     "typeScriptTag": "editorsData",
@@ -819,7 +819,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/editors/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}",
-    "method": "/metrics/editors/topByNetBytesDifference/{project}/{editorType}/{pageType}/{year}/{month}/{day}Get",
+    "method": "getTopByNetBytesDifference",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Editors data",
     "typeScriptTag": "editorsData",
@@ -875,7 +875,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/edits/aggregate/{project}/{editorType}/{pageType}/{granularity}/{start}/{end}Get",
+    "method": "getEditsCountsForProject",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edits data",
     "typeScriptTag": "editsData",
@@ -931,7 +931,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/edits/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}",
-    "method": "/metrics/edits/perPage/{project}/{pageTitle}/{editorType}/{granularity}/{start}/{end}Get",
+    "method": "getPageEditCounts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Edits data",
     "typeScriptTag": "editsData",
@@ -987,7 +987,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/legacy/pagecounts/aggregate/{project}/{access-site}/{granularity}/{start}/{end}",
-    "method": "/metrics/legacy/pagecounts/aggregate/{project}/{accessSite}/{granularity}/{start}/{end}Get",
+    "method": "getPagecountsAggregateByProjectAndDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Legacy data",
     "typeScriptTag": "legacyData",
@@ -1037,7 +1037,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}",
-    "method": "/metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}Get",
+    "method": "getPageviewCountsByProject",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Pageviews data",
     "typeScriptTag": "pageviewsData",
@@ -1093,7 +1093,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}",
-    "method": "/metrics/pageviews/perArticle/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}Get",
+    "method": "getPageviewCountsByArticleDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Pageviews data",
     "typeScriptTag": "pageviewsData",
@@ -1155,7 +1155,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/pageviews/top-by-country/{project}/{access}/{year}/{month}",
-    "method": "/metrics/pageviews/topByCountry/{project}/{access}/{year}/{month}Get",
+    "method": "listByCountryAndAccess",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Pageviews data",
     "typeScriptTag": "pageviewsData",
@@ -1199,7 +1199,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}",
-    "method": "/metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}Get",
+    "method": "listMostViewedArticlesByProjectAndTimespan",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Pageviews data",
     "typeScriptTag": "pageviewsData",
@@ -1249,7 +1249,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/registered-users/new/{project}/{granularity}/{start}/{end}",
-    "method": "/metrics/registeredUsers/new/{project}/{granularity}/{start}/{end}Get",
+    "method": "getNewUserCountsByProjectAndDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Registered users data",
     "typeScriptTag": "registeredUsersData",
@@ -1293,7 +1293,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/metrics/unique-devices/{project}/{access-site}/{granularity}/{start}/{end}",
-    "method": "/metrics/uniqueDevices/{project}/{accessSite}/{granularity}/{start}/{end}Get",
+    "method": "getByProjectAndDateRange",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Unique devices data",
     "typeScriptTag": "uniqueDevicesData",
@@ -1343,7 +1343,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/transform/html/from/{from_lang}/to/{to_lang}",
-    "method": "/transform/html/from/{fromLang}/to/{toLang}Post",
+    "method": "contentMachineTranslate",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1381,7 +1381,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/transform/html/from/{from_lang}/to/{to_lang}/{provider}",
-    "method": "/transform/html/from/{fromLang}/to/{toLang}/{provider}Post",
+    "method": "contentMachineTranslate",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1424,55 +1424,8 @@ export default function WikimediaTypeScriptSdk() {
     ]
   },
   {
-    "url": "/transform/list/languagepairs/",
-    "method": "/transform/list/languagepairs/Get",
-    "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Transform",
-    "typeScriptTag": "transform",
-    "description": "Lists the language pairs supported by the back-end",
-    "parameters": [],
-    "responses": [
-      {
-        "statusCode": "200",
-        "description": ""
-      }
-    ]
-  },
-  {
-    "url": "/transform/list/pair/{from}/{to}/",
-    "method": "/transform/list/pair/{from}/{to}/Get",
-    "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Transform",
-    "typeScriptTag": "transform",
-    "description": "Lists the tools available for a language pair",
-    "parameters": [
-      {
-        "name": "from",
-        "schema": "string",
-        "required": true,
-        "description": "The source language code"
-      },
-      {
-        "name": "to",
-        "schema": "string",
-        "required": true,
-        "description": "The target language code"
-      }
-    ],
-    "responses": [
-      {
-        "statusCode": "200",
-        "description": ""
-      },
-      {
-        "statusCode": "default",
-        "description": ""
-      }
-    ]
-  },
-  {
     "url": "/transform/list/tool/{tool}",
-    "method": "/transform/list/tool/{tool}Get",
+    "method": "getListToolLanguagePairs",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1498,7 +1451,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/transform/list/tool/{tool}/{from}",
-    "method": "/transform/list/tool/{tool}/{from}Get",
+    "method": "toolLanguagePairsList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1530,7 +1483,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/transform/list/tool/{tool}/{from}/{to}",
-    "method": "/transform/list/tool/{tool}/{from}/{to}Get",
+    "method": "toolLanguagePairsList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1568,7 +1521,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/transform/word/from/{from_lang}/to/{to_lang}/{word}",
-    "method": "/transform/word/from/{fromLang}/to/{toLang}/{word}Get",
+    "method": "getDictionaryMeaning",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1606,7 +1559,7 @@ export default function WikimediaTypeScriptSdk() {
   },
   {
     "url": "/transform/word/from/{from_lang}/to/{to_lang}/{word}/{provider}",
-    "method": "/transform/word/from/{fromLang}/to/{toLang}/{word}/{provider}Get",
+    "method": "getDictionaryMeaning",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transform",
     "typeScriptTag": "transform",
@@ -1635,6 +1588,53 @@ export default function WikimediaTypeScriptSdk() {
         "schema": "string",
         "required": true,
         "description": "The dictionary provider id"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/transform/list/languagepairs",
+    "method": "listLanguagePairs",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Transform",
+    "typeScriptTag": "transform",
+    "description": "Lists the language pairs supported by the back-end",
+    "parameters": [],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/transform/list/pair/{from}/{to}",
+    "method": "languagePairList",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Transform",
+    "typeScriptTag": "transform",
+    "description": "Lists the tools available for a language pair",
+    "parameters": [
+      {
+        "name": "from",
+        "schema": "string",
+        "required": true,
+        "description": "The source language code"
+      },
+      {
+        "name": "to",
+        "schema": "string",
+        "required": true,
+        "description": "The target language code"
       }
     ],
     "responses": [

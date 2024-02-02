@@ -16,7 +16,7 @@ export default function SpotifyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/logo.png"
       clientNameCamelCase="spotify"
       homepage="developer.spotify.com"
-      lastUpdated={new Date("2024-01-31T22:00:11.365Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -26,7 +26,7 @@ export default function SpotifyTypeScriptSdk() {
       methods={[
   {
     "url": "/albums",
-    "method": "getMultipleAlbums",
+    "method": "listSeveral",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -66,7 +66,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/albums/{id}",
-    "method": "getAnAlbum",
+    "method": "getInformation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -106,7 +106,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/albums/{id}/tracks",
-    "method": "getAnAlbumsTracks",
+    "method": "getTracksById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -158,7 +158,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/artists",
-    "method": "getMultipleArtists",
+    "method": "getCatalogInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Artists",
     "typeScriptTag": "artists",
@@ -192,7 +192,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/artists/{id}",
-    "method": "getAnArtist",
+    "method": "getCatalogInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Artists",
     "typeScriptTag": "artists",
@@ -226,7 +226,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/artists/{id}/albums",
-    "method": "getAnArtistsAlbums",
+    "method": "getAlbumsById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Artists",
     "typeScriptTag": "artists",
@@ -284,7 +284,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/artists/{id}/related-artists",
-    "method": "getAnArtistsRelatedArtists",
+    "method": "getRelatedArtists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Artists",
     "typeScriptTag": "artists",
@@ -318,7 +318,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/artists/{id}/top-tracks",
-    "method": "getAnArtistsTopTracks",
+    "method": "getTopTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Artists",
     "typeScriptTag": "artists",
@@ -392,7 +392,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/audio-features",
-    "method": "getSeveralAudioFeatures",
+    "method": "getMultipleAudioFeatures",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -426,7 +426,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/audio-features/{id}",
-    "method": "getAudioFeatures",
+    "method": "getAudioFeaturesById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -460,7 +460,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/audiobooks",
-    "method": "getMultipleAudiobooks",
+    "method": "getSeveral",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -500,7 +500,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/audiobooks/{id}",
-    "method": "getAnAudiobook",
+    "method": "getCatalogInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -548,7 +548,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/audiobooks/{id}/chapters",
-    "method": "getAudiobookChapters",
+    "method": "getChaptersById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -600,7 +600,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/browse/categories",
-    "method": "getCategories",
+    "method": "listSeveral",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories",
     "typeScriptTag": "categories",
@@ -652,7 +652,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/browse/categories/{category_id}",
-    "method": "getACategory",
+    "method": "getSingle",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories",
     "typeScriptTag": "categories",
@@ -698,7 +698,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/browse/categories/{category_id}/playlists",
-    "method": "getACategoriesPlaylists",
+    "method": "getCategoryPlaylists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -750,7 +750,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/browse/featured-playlists",
-    "method": "getFeaturedPlaylists",
+    "method": "getFeatured",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -854,7 +854,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/chapters",
-    "method": "getSeveralChapters",
+    "method": "getMultipleByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Chapters",
     "typeScriptTag": "chapters",
@@ -894,7 +894,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/chapters/{id}",
-    "method": "getAChapter",
+    "method": "getChapterInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Chapters",
     "typeScriptTag": "chapters",
@@ -934,7 +934,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/episodes",
-    "method": "getMultipleEpisodes",
+    "method": "getSeveral",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Episodes",
     "typeScriptTag": "episodes",
@@ -974,7 +974,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/episodes/{id}",
-    "method": "getAnEpisode",
+    "method": "getSingleById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Episodes",
     "typeScriptTag": "episodes",
@@ -1014,7 +1014,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/markets",
-    "method": "getAvailableMarkets",
+    "method": "listAvailable",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Markets",
     "typeScriptTag": "markets",
@@ -1041,7 +1041,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me",
-    "method": "getCurrentUsersProfile",
+    "method": "getCurrentUserProfile",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1068,7 +1068,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/albums",
-    "method": "removeAlbumsUser",
+    "method": "removeSaved",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -1103,7 +1103,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/albums",
-    "method": "getUsersSavedAlbums",
+    "method": "getSaved",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -1149,7 +1149,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/albums",
-    "method": "saveAlbumsUser",
+    "method": "saveCurrentUserLibrary",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -1184,7 +1184,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/albums/contains",
-    "method": "checkUsersSavedAlbums",
+    "method": "checkSaved",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Albums",
     "typeScriptTag": "albums",
@@ -1218,7 +1218,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/audiobooks",
-    "method": "removeAudiobooksUser",
+    "method": "removeFromLibrary",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -1248,7 +1248,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/audiobooks",
-    "method": "getUsersSavedAudiobooks",
+    "method": "listSaved",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -1288,7 +1288,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/audiobooks",
-    "method": "saveAudiobooksUser",
+    "method": "saveCurrentUserLibrary",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -1318,7 +1318,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/audiobooks/contains",
-    "method": "checkUsersSavedAudiobooks",
+    "method": "checkUserSaved",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audiobooks",
     "typeScriptTag": "audiobooks",
@@ -1352,7 +1352,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/episodes",
-    "method": "removeEpisodesUser",
+    "method": "removeFromLibrary",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Episodes",
     "typeScriptTag": "episodes",
@@ -1387,7 +1387,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/episodes",
-    "method": "getUsersSavedEpisodes",
+    "method": "getUserSavedEpisodes",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Episodes",
     "typeScriptTag": "episodes",
@@ -1433,7 +1433,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/episodes",
-    "method": "saveEpisodesUser",
+    "method": "saveCurrentUserLibrary",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Episodes",
     "typeScriptTag": "episodes",
@@ -1469,7 +1469,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/episodes/contains",
-    "method": "checkUsersSavedEpisodes",
+    "method": "checkSavedEpisodes",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Episodes",
     "typeScriptTag": "episodes",
@@ -1544,7 +1544,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/following",
-    "method": "getFollowed",
+    "method": "getFollowedArtists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1590,7 +1590,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/following",
-    "method": "followArtistsUsers",
+    "method": "followArtistsOrUsers",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1632,7 +1632,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/following/contains",
-    "method": "checkCurrentUserFollows",
+    "method": "checkFollowingArtistsUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -1672,7 +1672,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player",
-    "method": "getInformationAboutTheUsersCurrentPlayback",
+    "method": "getCurrentPlaybackState",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1712,7 +1712,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player",
-    "method": "transferAUsersPlayback",
+    "method": "transferPlaybackToNewDevice",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1748,7 +1748,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/currently-playing",
-    "method": "getTheUsersCurrentlyPlayingTrack",
+    "method": "getCurrentlyPlayingTrack",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1788,7 +1788,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/devices",
-    "method": "getAUsersAvailableDevices",
+    "method": "getAvailableDevices",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1815,7 +1815,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/next",
-    "method": "skipUsersPlaybackToNextTrack",
+    "method": "skipToNextTrack",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1845,7 +1845,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/pause",
-    "method": "pauseAUsersPlayback",
+    "method": "pausePlayback",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1875,7 +1875,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/play",
-    "method": "startAUsersPlayback",
+    "method": "startPlayback",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1925,7 +1925,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/previous",
-    "method": "skipUsersPlaybackToPreviousTrack",
+    "method": "skipToPreviousTrack",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1955,7 +1955,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/queue",
-    "method": "getQueue",
+    "method": "getUserQueue",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -1982,7 +1982,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/queue",
-    "method": "addToQueue",
+    "method": "addItemToQueue",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -2018,7 +2018,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/recently-played",
-    "method": "getRecentlyPlayed",
+    "method": "getRecentlyPlayedTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -2064,7 +2064,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/repeat",
-    "method": "setRepeatModeOnUsersPlayback",
+    "method": "setRepeatMode",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -2100,7 +2100,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/seek",
-    "method": "seekToPositionInCurrentlyPlayingTrack",
+    "method": "seekToPosition",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -2136,7 +2136,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/shuffle",
-    "method": "toggleShuffleForUsersPlayback",
+    "method": "togglePlaybackShuffle",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -2172,7 +2172,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/player/volume",
-    "method": "setVolumeForUsersPlayback",
+    "method": "setPlaybackVolume",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Player",
     "typeScriptTag": "player",
@@ -2208,7 +2208,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/playlists",
-    "method": "getAListOfCurrentUsersPlaylists",
+    "method": "getUserPlaylists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2248,7 +2248,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/shows",
-    "method": "removeShowsUser",
+    "method": "removeUserLibrary",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -2284,7 +2284,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/shows",
-    "method": "getUsersSavedShows",
+    "method": "getUserSavedShows",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -2324,7 +2324,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/shows",
-    "method": "saveShowsUser",
+    "method": "saveCurrentUserLibrary",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -2354,7 +2354,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/shows/contains",
-    "method": "checkUsersSavedShows",
+    "method": "checkSavedShows",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -2388,7 +2388,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/top/{type}",
-    "method": "getUsersTopArtistsAndTracks",
+    "method": "getTopItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2440,7 +2440,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/tracks",
-    "method": "removeTracksUser",
+    "method": "removeFromLibrary",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -2475,7 +2475,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/tracks",
-    "method": "getUsersSavedTracks",
+    "method": "getUserSaved",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -2521,7 +2521,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/tracks",
-    "method": "saveTracksUser",
+    "method": "saveForCurrentUser",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -2557,7 +2557,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/me/tracks/contains",
-    "method": "checkUsersSavedTracks",
+    "method": "checkSaved",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -2591,7 +2591,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}",
-    "method": "getPlaylist",
+    "method": "getPlaylistById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2643,7 +2643,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}",
-    "method": "changePlaylistDetails",
+    "method": "updateDetails",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2656,13 +2656,13 @@ export default function SpotifyTypeScriptSdk() {
         "description": ""
       },
       {
-        "name": "collaborative",
-        "schema": "boolean",
+        "name": "description",
+        "schema": "string",
         "description": ""
       },
       {
-        "name": "description",
-        "schema": "string",
+        "name": "collaborative",
+        "schema": "boolean",
         "description": ""
       },
       {
@@ -2758,7 +2758,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/followers/contains",
-    "method": "checkIfUserFollowsPlaylist",
+    "method": "checkIfFollowsPlaylist",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -2798,7 +2798,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/images",
-    "method": "getPlaylistCover",
+    "method": "getCoverImage",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2832,7 +2832,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/images",
-    "method": "uploadCustomPlaylistCover",
+    "method": "replaceCoverImage",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2862,7 +2862,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/tracks",
-    "method": "removeTracksPlaylist",
+    "method": "removeItems",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2908,7 +2908,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/tracks",
-    "method": "getPlaylistsTracks",
+    "method": "getPlaylistItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -2972,7 +2972,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/tracks",
-    "method": "addTracksToPlaylist",
+    "method": "addItems",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -3028,7 +3028,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/tracks",
-    "method": "reorderOrReplacePlaylistsTracks",
+    "method": "updatePlaylistItems",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -3403,7 +3403,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/recommendations/available-genre-seeds",
-    "method": "getRecommendationGenres",
+    "method": "getAvailableSeeds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Genres",
     "typeScriptTag": "genres",
@@ -3430,7 +3430,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/search",
-    "method": "search",
+    "method": "spotifyCatalogInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Search",
     "typeScriptTag": "search",
@@ -3494,7 +3494,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/shows",
-    "method": "getMultipleShows",
+    "method": "getMultipleShowsInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -3534,7 +3534,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/shows/{id}",
-    "method": "getAShow",
+    "method": "getInformation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -3574,7 +3574,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/shows/{id}/episodes",
-    "method": "getAShowsEpisodes",
+    "method": "getEpisodesById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Shows",
     "typeScriptTag": "shows",
@@ -3626,7 +3626,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/tracks",
-    "method": "getSeveralTracks",
+    "method": "getMultipleByIds",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -3666,7 +3666,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/tracks/{id}",
-    "method": "getTrack",
+    "method": "getBySpotifyId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tracks",
     "typeScriptTag": "tracks",
@@ -3706,7 +3706,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}",
-    "method": "getUsersProfile",
+    "method": "getUserProfile",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users",
     "typeScriptTag": "users",
@@ -3740,7 +3740,7 @@ export default function SpotifyTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/playlists",
-    "method": "getListUsersPlaylists",
+    "method": "getUserPlaylists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Playlists",
     "typeScriptTag": "playlists",
@@ -3799,14 +3799,14 @@ export default function SpotifyTypeScriptSdk() {
         "description": ""
       },
       {
-        "name": "collaborative",
-        "schema": "boolean",
+        "name": "description",
+        "schema": "string",
         "required": false,
         "description": ""
       },
       {
-        "name": "description",
-        "schema": "string",
+        "name": "collaborative",
+        "schema": "boolean",
         "required": false,
         "description": ""
       },

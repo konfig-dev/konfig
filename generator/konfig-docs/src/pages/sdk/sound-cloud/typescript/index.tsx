@@ -17,7 +17,7 @@ export default function SoundCloudTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/logo.jpg"
       clientNameCamelCase="soundCloud"
       homepage="developers.soundcloud.com"
-      lastUpdated={new Date("2024-02-02T01:29:21.245Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/favicon.jpeg"
       contactUrl="https://github.com/soundcloud/api"
       // Missing contactEmail
@@ -27,7 +27,7 @@ export default function SoundCloudTypeScriptSdk() {
       methods={[
   {
     "url": "/connect",
-    "method": "/connectGet",
+    "method": "authorizeUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "oauth",
     "typeScriptTag": "oauth",
@@ -67,7 +67,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/oauth2/token",
-    "method": "/oauth2/tokenPost",
+    "method": "provisionAccessToken",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "oauth",
     "typeScriptTag": "oauth",
@@ -127,7 +127,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me",
-    "method": "/meGet",
+    "method": "getUserInformation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -146,7 +146,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/activities",
-    "method": "/me/activitiesGet",
+    "method": "getActivities",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -177,7 +177,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/activities/all/own",
-    "method": "/me/activities/all/ownGet",
+    "method": "getRecentActivities",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -208,7 +208,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/activities/tracks",
-    "method": "/me/activities/tracksGet",
+    "method": "getRecentTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -239,7 +239,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/likes/tracks",
-    "method": "/me/likes/tracksGet",
+    "method": "listLikedTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -276,7 +276,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/likes/playlists",
-    "method": "/me/likes/playlistsGet",
+    "method": "getLikedPlaylists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -308,7 +308,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followings",
-    "method": "/me/followingsGet",
+    "method": "getFollowedUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -340,7 +340,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followings/tracks",
-    "method": "/me/followings/tracksGet",
+    "method": "listFollowedTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -377,7 +377,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followings/{user_id}",
-    "method": "/me/followings/{userId}Delete",
+    "method": "deleteFollowedUser",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "me",
     "typeScriptTag": "me",
@@ -411,7 +411,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followings/{user_id}",
-    "method": "/me/followings/{userId}Get",
+    "method": "getFollowedUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -441,7 +441,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followings/{user_id}",
-    "method": "/me/followings/{userId}Put",
+    "method": "followUser",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "me",
     "typeScriptTag": "me",
@@ -475,7 +475,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followers",
-    "method": "/me/followersGet",
+    "method": "getFollowersList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -501,7 +501,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/followers/{follower_id}",
-    "method": "/me/followers/{followerId}Get",
+    "method": "getFollowerById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -527,7 +527,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/playlists",
-    "method": "/me/playlistsGet",
+    "method": "listPlaylistsInfoTracksOwner",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -569,7 +569,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/me/tracks",
-    "method": "/me/tracksGet",
+    "method": "listUserTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "me",
     "typeScriptTag": "me",
@@ -601,7 +601,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks",
-    "method": "/tracksGet",
+    "method": "byQuery",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "search",
     "typeScriptTag": "search",
@@ -690,7 +690,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks",
-    "method": "/tracksPost",
+    "method": "uploadNewTrack",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -717,7 +717,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists",
-    "method": "/playlistsGet",
+    "method": "byQuery",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "search",
     "typeScriptTag": "search",
@@ -776,7 +776,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists",
-    "method": "/playlistsPost",
+    "method": "createNewPlaylist",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "playlists",
     "typeScriptTag": "playlists",
@@ -805,7 +805,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users",
-    "method": "/usersGet",
+    "method": "userQuery",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "search",
     "typeScriptTag": "search",
@@ -859,7 +859,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}",
-    "method": "/playlists/{playlistId}Delete",
+    "method": "deletePlaylist",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "playlists",
     "typeScriptTag": "playlists",
@@ -881,7 +881,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}",
-    "method": "/playlists/{playlistId}Get",
+    "method": "getPlaylistById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "playlists",
     "typeScriptTag": "playlists",
@@ -928,7 +928,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}",
-    "method": "/playlists/{playlistId}Put",
+    "method": "updatePlaylistById",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "playlists",
     "typeScriptTag": "playlists",
@@ -963,7 +963,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/tracks",
-    "method": "/playlists/{playlistId}/tracksGet",
+    "method": "getTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "playlists",
     "typeScriptTag": "playlists",
@@ -1010,7 +1010,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/playlists/{playlist_id}/reposters",
-    "method": "/playlists/{playlistId}/repostersGet",
+    "method": "listReposters",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "playlists",
     "typeScriptTag": "playlists",
@@ -1046,7 +1046,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}",
-    "method": "/tracks/{trackId}Delete",
+    "method": "deleteTrack",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1068,7 +1068,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}",
-    "method": "/tracks/{trackId}Get",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1104,7 +1104,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}",
-    "method": "/tracks/{trackId}Put",
+    "method": "updateTrackInformation",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1139,7 +1139,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}/streams",
-    "method": "/tracks/{trackId}/streamsGet",
+    "method": "getStreamableUrls",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1175,7 +1175,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}/comments",
-    "method": "/tracks/{trackId}/commentsGet",
+    "method": "getComments",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1223,7 +1223,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}/comments",
-    "method": "/tracks/{trackId}/commentsPost",
+    "method": "createComment",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1258,7 +1258,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}/favoriters",
-    "method": "/tracks/{trackId}/favoritersGet",
+    "method": "getFavoriters",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1300,7 +1300,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}/reposters",
-    "method": "/tracks/{trackId}/repostersGet",
+    "method": "listReposters",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1336,7 +1336,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/tracks/{track_id}/related",
-    "method": "/tracks/{trackId}/relatedGet",
+    "method": "getRelatedTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "tracks",
     "typeScriptTag": "tracks",
@@ -1389,7 +1389,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/resolve",
-    "method": "/resolveGet",
+    "method": "resolveSoundcloudUrls",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "miscellaneous",
     "typeScriptTag": "miscellaneous",
@@ -1415,7 +1415,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}",
-    "method": "/users/{userId}Get",
+    "method": "getUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1445,7 +1445,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/favorites",
-    "method": "/users/{userId}/favoritesGet",
+    "method": "listFavorites",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1483,7 +1483,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/followers",
-    "method": "/users/{userId}/followersGet",
+    "method": "getFollowers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1515,7 +1515,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/followings",
-    "method": "/users/{userId}/followingsGet",
+    "method": "getUserFollowings",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1547,7 +1547,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/followings/{following_id}",
-    "method": "/users/{userId}/followings/{followingId}Get",
+    "method": "getFollowingById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1583,7 +1583,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/playlists",
-    "method": "/users/{userId}/playlistsGet",
+    "method": "getUserPlaylists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1632,7 +1632,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/tracks",
-    "method": "/users/{userId}/tracksGet",
+    "method": "getUserTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1675,7 +1675,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/web-profiles",
-    "method": "/users/{userId}/webProfilesGet",
+    "method": "getUserWebProfiles",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1707,7 +1707,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/likes/tracks",
-    "method": "/users/{userId}/likes/tracksGet",
+    "method": "listLikedTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1758,7 +1758,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/users/{user_id}/likes/playlists",
-    "method": "/users/{userId}/likes/playlistsGet",
+    "method": "listLikedPlaylists",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "users",
     "typeScriptTag": "users",
@@ -1804,7 +1804,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/likes/tracks/{track_id}",
-    "method": "/likes/tracks/{trackId}Delete",
+    "method": "unlikeTrack",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "likes",
     "typeScriptTag": "likes",
@@ -1834,7 +1834,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/likes/tracks/{track_id}",
-    "method": "/likes/tracks/{trackId}Post",
+    "method": "trackAction",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "likes",
     "typeScriptTag": "likes",
@@ -1872,7 +1872,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/likes/playlists/{playlist_id}",
-    "method": "/likes/playlists/{playlistId}Delete",
+    "method": "unlikePlaylist",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "likes",
     "typeScriptTag": "likes",
@@ -1902,7 +1902,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/likes/playlists/{playlist_id}",
-    "method": "/likes/playlists/{playlistId}Post",
+    "method": "playlist",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "likes",
     "typeScriptTag": "likes",
@@ -1940,7 +1940,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/reposts/tracks/{track_id}",
-    "method": "/reposts/tracks/{trackId}Delete",
+    "method": "removeRepost",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "reposts",
     "typeScriptTag": "reposts",
@@ -1966,7 +1966,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/reposts/tracks/{track_id}",
-    "method": "/reposts/tracks/{trackId}Post",
+    "method": "trackAsAuthenticatedUser",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "reposts",
     "typeScriptTag": "reposts",
@@ -1992,7 +1992,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/reposts/playlists/{playlist_id}",
-    "method": "/reposts/playlists/{playlistId}Delete",
+    "method": "removeRepostOnPlaylist",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "reposts",
     "typeScriptTag": "reposts",
@@ -2018,7 +2018,7 @@ export default function SoundCloudTypeScriptSdk() {
   },
   {
     "url": "/reposts/playlists/{playlist_id}",
-    "method": "/reposts/playlists/{playlistId}Post",
+    "method": "playlistAsAuthenticatedUser",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "reposts",
     "typeScriptTag": "reposts",

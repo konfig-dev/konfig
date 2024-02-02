@@ -17,7 +17,7 @@ export default function SnykTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-02-02T01:29:21.245Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -27,7 +27,7 @@ export default function SnykTypeScriptSdk() {
       methods={[
   {
     "url": "/custom_base_images",
-    "method": "getCustomBaseImages",
+    "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Custom Base Images",
     "typeScriptTag": "customBaseImages",
@@ -124,7 +124,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/custom_base_images",
-    "method": "createCustomBaseImage",
+    "method": "markImageAsCustomBase",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Custom Base Images",
     "typeScriptTag": "customBaseImages",
@@ -176,7 +176,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/custom_base_images/{custombaseimage_id}",
-    "method": "deleteCustomBaseImage",
+    "method": "removeCustomBaseImage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Custom Base Images",
     "typeScriptTag": "customBaseImages",
@@ -212,7 +212,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/custom_base_images/{custombaseimage_id}",
-    "method": "getCustomBaseImage",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Custom Base Images",
     "typeScriptTag": "customBaseImages",
@@ -260,7 +260,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/custom_base_images/{custombaseimage_id}",
-    "method": "updateCustomBaseImage",
+    "method": "updateAttributes",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Custom Base Images",
     "typeScriptTag": "customBaseImages",
@@ -314,7 +314,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/apps/installs",
-    "method": "getAppInstallsForGroup",
+    "method": "listGroupAppInstalls",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -386,7 +386,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/apps/installs",
-    "method": "createGroupAppInstall",
+    "method": "installGroupApp",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -450,7 +450,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/apps/installs/{install_id}",
-    "method": "deleteGroupAppInstallById",
+    "method": "revokeGroupAppInstall",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -504,7 +504,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/apps/installs/{install_id}/secrets",
-    "method": "updateGroupAppInstallSecret",
+    "method": "createInstallSecret",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -568,7 +568,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/audit_logs/search",
-    "method": "listGroupAuditLogs",
+    "method": "searchGroupAuditLogs",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audit Logs",
     "typeScriptTag": "auditLogs",
@@ -661,7 +661,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/issues",
-    "method": "listGroupIssues",
+    "method": "byGroupId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Issues",
     "typeScriptTag": "issues",
@@ -770,7 +770,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/issues/{issue_id}",
-    "method": "getGroupIssueByIssueId",
+    "method": "getByIssueId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Issues",
     "typeScriptTag": "issues",
@@ -828,7 +828,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/service_accounts",
-    "method": "getManyGroupServiceAccount",
+    "method": "listGroupServiceAccounts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -891,7 +891,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/service_accounts",
-    "method": "createGroupServiceAccount",
+    "method": "createGroup",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -941,7 +941,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}",
-    "method": "deleteOneGroupServiceAccount",
+    "method": "deleteGroupServiceAccount",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -991,7 +991,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}",
-    "method": "getOneGroupServiceAccount",
+    "method": "getGroupServiceAccount",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -1045,7 +1045,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}",
-    "method": "updateGroupServiceAccount",
+    "method": "updateGroupNameById",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -1105,7 +1105,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/service_accounts/{serviceaccount_id}/secrets",
-    "method": "updateServiceAccountSecret",
+    "method": "manageClientSecret",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -1165,7 +1165,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/settings/iac",
-    "method": "getIacSettingsForGroup",
+    "method": "getForGroup",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "IacSettings",
     "typeScriptTag": "iacSettings",
@@ -1213,7 +1213,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/settings/iac",
-    "method": "updateIacSettingsForGroup",
+    "method": "updateForGroup",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "IacSettings",
     "typeScriptTag": "iacSettings",
@@ -1266,7 +1266,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/openapi",
-    "method": "listApiVersions",
+    "method": "listAvailableVersions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "OpenAPI",
     "typeScriptTag": "openApi",
@@ -1297,7 +1297,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/openapi/{version}",
-    "method": "getApiVersion",
+    "method": "getEffectiveVersion",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "OpenAPI",
     "typeScriptTag": "openApi",
@@ -1335,7 +1335,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs",
-    "method": "listOrgs",
+    "method": "listAccessibleOrganizations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Orgs",
     "typeScriptTag": "orgs",
@@ -1417,7 +1417,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}",
-    "method": "getOrg",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Orgs",
     "typeScriptTag": "orgs",
@@ -1469,7 +1469,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}",
-    "method": "updateOrg",
+    "method": "updateDetails",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Orgs",
     "typeScriptTag": "orgs",
@@ -1527,7 +1527,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/app_bots",
-    "method": "getAppBots",
+    "method": "listAppBots",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1599,7 +1599,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/app_bots/{bot_id}",
-    "method": "deleteAppBot",
+    "method": "revokeBotAuthorization",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1653,7 +1653,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps",
-    "method": "getApps",
+    "method": "listOrgApps",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1720,7 +1720,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps",
-    "method": "createApp",
+    "method": "createOrganizationApp",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1778,7 +1778,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/creations",
-    "method": "getOrgApps",
+    "method": "listOrgCreations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1845,7 +1845,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/creations",
-    "method": "createOrgApp",
+    "method": "createNewAppForOrganization",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1903,7 +1903,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/creations/{app_id}",
-    "method": "deleteAppById",
+    "method": "deleteByAppId",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -1957,7 +1957,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/creations/{app_id}",
-    "method": "getAppById",
+    "method": "getByAppId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2015,7 +2015,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/creations/{app_id}",
-    "method": "updateAppCreationById",
+    "method": "updateCreationAttributesById",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2079,7 +2079,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/creations/{app_id}/secrets",
-    "method": "manageAppCreationSecret",
+    "method": "manageClientSecretForSnykApp",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2143,7 +2143,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/installs",
-    "method": "getAppInstallsForOrg",
+    "method": "listOrgInstalls",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2215,7 +2215,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/installs",
-    "method": "createOrgAppInstall",
+    "method": "installSnykAppToOrg",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2279,7 +2279,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/installs/{install_id}",
-    "method": "deleteAppOrgInstallById",
+    "method": "byInstallId",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2333,7 +2333,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/installs/{install_id}/secrets",
-    "method": "updateOrgAppInstallSecret",
+    "method": "manageClientSecretForSnykApp",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2397,7 +2397,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/{client_id}",
-    "method": "deleteApp",
+    "method": "deleteAppById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2451,7 +2451,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/{client_id}",
-    "method": "getApp",
+    "method": "getByClientId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2509,7 +2509,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/{client_id}",
-    "method": "updateApp",
+    "method": "updateAttributes",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2573,7 +2573,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/apps/{client_id}/secrets",
-    "method": "manageSecrets",
+    "method": "manageClientSecrets",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -2643,7 +2643,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/audit_logs/search",
-    "method": "listOrgAuditLogs",
+    "method": "searchOrganizationAuditLogs",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Audit Logs",
     "typeScriptTag": "auditLogs",
@@ -2736,7 +2736,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections",
-    "method": "getCollections",
+    "method": "getList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -2819,7 +2819,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections",
-    "method": "createCollection",
+    "method": "createNew",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -2877,7 +2877,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections/{collection_id}",
-    "method": "deleteCollection",
+    "method": "removeById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -2931,7 +2931,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections/{collection_id}",
-    "method": "getCollection",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -2989,7 +2989,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections/{collection_id}",
-    "method": "updateCollection",
+    "method": "editCollection",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -3053,7 +3053,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections/{collection_id}/relationships/projects",
-    "method": "deleteProjectsCollection",
+    "method": "removeProjects",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -3113,7 +3113,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections/{collection_id}/relationships/projects",
-    "method": "getProjectsOfCollection",
+    "method": "getProjects",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -3207,7 +3207,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/collections/{collection_id}/relationships/projects",
-    "method": "updateCollectionWithProjects",
+    "method": "addProjectsTo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Collection",
     "typeScriptTag": "collection",
@@ -3267,7 +3267,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/container_images",
-    "method": "listContainerImage",
+    "method": "listInstancesOfContainerImage",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "ContainerImage",
     "typeScriptTag": "containerImage",
@@ -3349,7 +3349,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/container_images/{image_id}",
-    "method": "getContainerImage",
+    "method": "getInstance",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "ContainerImage",
     "typeScriptTag": "containerImage",
@@ -3480,7 +3480,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/invites",
-    "method": "listOrgInvitation",
+    "method": "listPendingUserInvitations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Invites",
     "typeScriptTag": "invites",
@@ -3543,7 +3543,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/invites",
-    "method": "createOrgInvitation",
+    "method": "userToOrganization",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Invites",
     "typeScriptTag": "invites",
@@ -3597,7 +3597,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/invites/{invite_id}",
-    "method": "deleteOrgInvitation",
+    "method": "cancelPendingInvitation",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Invites",
     "typeScriptTag": "invites",
@@ -3647,7 +3647,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/issues",
-    "method": "listOrgIssues",
+    "method": "listByOrgId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Issues",
     "typeScriptTag": "issues",
@@ -3756,7 +3756,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/issues/{issue_id}",
-    "method": "getOrgIssueByIssueId",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Issues",
     "typeScriptTag": "issues",
@@ -3814,7 +3814,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/packages/issues",
-    "method": "listIssuesForManyPurls",
+    "method": "queryForPackages",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Issues",
     "typeScriptTag": "issues",
@@ -3872,7 +3872,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/packages/{purl}/issues",
-    "method": "fetchIssuesPerPurl",
+    "method": "listByPackage",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Issues",
     "typeScriptTag": "issues",
@@ -3940,7 +3940,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/projects",
-    "method": "listOrgProjects",
+    "method": "listForOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Projects",
     "typeScriptTag": "projects",
@@ -4098,7 +4098,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/projects/{project_id}",
-    "method": "deleteOrgProject",
+    "method": "deleteByProjectId",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Projects",
     "typeScriptTag": "projects",
@@ -4148,7 +4148,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/projects/{project_id}",
-    "method": "getOrgProject",
+    "method": "getByProjectId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Projects",
     "typeScriptTag": "projects",
@@ -4217,7 +4217,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/projects/{project_id}",
-    "method": "updateOrgProject",
+    "method": "updateByProjectId",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Projects",
     "typeScriptTag": "projects",
@@ -4282,7 +4282,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/projects/{project_id}/sbom",
-    "method": "getSbom",
+    "method": "getProjectDocument",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "SBOM",
     "typeScriptTag": "sbom",
@@ -4345,7 +4345,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/service_accounts",
-    "method": "getManyOrgServiceAccounts",
+    "method": "listOrganizationServiceAccounts",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -4408,7 +4408,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/service_accounts",
-    "method": "createOrgServiceAccount",
+    "method": "createForOrganization",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -4458,7 +4458,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}",
-    "method": "deleteServiceAccount",
+    "method": "deleteOrgServiceAccount",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -4508,7 +4508,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}",
-    "method": "getOneOrgServiceAccount",
+    "method": "getOrganizationAccountById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -4562,7 +4562,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}",
-    "method": "updateOrgServiceAccount",
+    "method": "updateOrganizationServiceAccountName",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -4622,7 +4622,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/service_accounts/{serviceaccount_id}/secrets",
-    "method": "updateOrgServiceAccountSecret",
+    "method": "manageClientSecretForOrganizationServiceAccount",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "ServiceAccounts",
     "typeScriptTag": "serviceAccounts",
@@ -4682,7 +4682,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/settings/iac",
-    "method": "getIacSettingsForOrg",
+    "method": "getForOrgIac",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "IacSettings",
     "typeScriptTag": "iacSettings",
@@ -4730,7 +4730,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/settings/iac",
-    "method": "updateIacSettingsForOrg",
+    "method": "updateForOrg",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "IacSettings",
     "typeScriptTag": "iacSettings",
@@ -4783,7 +4783,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/settings/sast",
-    "method": "getSastSettings",
+    "method": "getForOrg",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "SastSettings",
     "typeScriptTag": "sastSettings",
@@ -4831,7 +4831,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/settings/sast",
-    "method": "updateOrgSastSettings",
+    "method": "toggleSnykCodeSettings",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "SastSettings",
     "typeScriptTag": "sastSettings",
@@ -4885,7 +4885,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}",
-    "method": "deleteSlackDefaultNotificationSettings",
+    "method": "removeIntegration",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -4939,7 +4939,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}",
-    "method": "getSlackDefaultNotificationSettings",
+    "method": "getDefaultNotificationSettings",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -4997,7 +4997,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}",
-    "method": "createSlackDefaultNotificationSettings",
+    "method": "createDefaultNotificationSettings",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -5061,7 +5061,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}/projects",
-    "method": "getSlackProjectNotificationSettingsCollection",
+    "method": "getOverridesForProjects",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -5134,7 +5134,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}",
-    "method": "deleteSlackProjectNotificationSettings",
+    "method": "removeProjectOverride",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -5194,7 +5194,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}",
-    "method": "updateSlackProjectNotificationSettings",
+    "method": "updateNotificationSettingsForProject",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -5263,7 +5263,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}",
-    "method": "createSlackProjectNotificationSettings",
+    "method": "projectOverride",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "SlackSettings",
     "typeScriptTag": "slackSettings",
@@ -5333,7 +5333,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/orgs/{org_id}/slack_app/{tenant_id}/channels",
-    "method": "listChannels",
+    "method": "getChannels",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Slack",
     "typeScriptTag": "slack",
@@ -5470,7 +5470,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/self/apps",
-    "method": "getUserInstalledApps",
+    "method": "listApps",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -5531,7 +5531,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/self/apps/installs",
-    "method": "getAppInstallsForUser",
+    "method": "listUserInstalledApps",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -5597,7 +5597,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/self/apps/installs/{install_id}",
-    "method": "deleteUserAppInstallById",
+    "method": "revokeByInstallId",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -5645,7 +5645,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/self/apps/{app_id}",
-    "method": "revokeUserInstalledApp",
+    "method": "revokeAppById",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Apps",
     "typeScriptTag": "apps",
@@ -5693,7 +5693,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/self/apps/{app_id}/sessions",
-    "method": "getUserAppSessions",
+    "method": "getActiveSessions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Apps",
     "typeScriptTag": "apps",

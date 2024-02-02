@@ -16,7 +16,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/logo.svg"
       clientNameCamelCase="openBanking"
       homepage="openbanking.org.uk"
-      lastUpdated={new Date("2024-01-31T21:23:25.312Z")}
+      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/favicon.png"
       // Missing contactUrl
       contactEmail="ServiceDesk@openbanking.org.uk"
@@ -26,7 +26,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
       methods={[
   {
     "url": "/account-access-consents",
-    "method": "createAccountAccessConsents",
+    "method": "createConsent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Account Access",
     "typeScriptTag": "accountAccess",
@@ -49,12 +49,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -96,7 +90,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/account-access-consents/{ConsentId}",
-    "method": "deleteAccountAccessConsentsConsentId",
+    "method": "deleteConsent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Account Access",
     "typeScriptTag": "accountAccess",
@@ -127,12 +121,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -156,7 +144,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/account-access-consents/{ConsentId}",
-    "method": "getAccountAccessConsentsConsentId",
+    "method": "getConsent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Account Access",
     "typeScriptTag": "accountAccess",
@@ -187,12 +175,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -220,7 +202,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts",
-    "method": "getAccounts",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Accounts",
     "typeScriptTag": "accounts",
@@ -243,12 +225,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -278,7 +254,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}",
-    "method": "getAccountsAccountId",
+    "method": "get",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Accounts",
     "typeScriptTag": "accounts",
@@ -309,12 +285,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -342,7 +312,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/balances",
-    "method": "getAccountsAccountIdBalances",
+    "method": "get",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Balances",
     "typeScriptTag": "balances",
@@ -373,12 +343,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -406,7 +370,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/beneficiaries",
-    "method": "getAccountsAccountIdBeneficiaries",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Beneficiaries",
     "typeScriptTag": "beneficiaries",
@@ -437,12 +401,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -470,7 +428,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/direct-debits",
-    "method": "getAccountsAccountIdDirectDebits",
+    "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Debits",
     "typeScriptTag": "directDebits",
@@ -501,12 +459,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -534,7 +486,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/offers",
-    "method": "getAccountsAccountIdOffers",
+    "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Offers",
     "typeScriptTag": "offers",
@@ -565,12 +517,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -598,7 +544,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/parties",
-    "method": "getAccountsAccountIdParties",
+    "method": "getList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Parties",
     "typeScriptTag": "parties",
@@ -627,12 +573,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -662,7 +602,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/party",
-    "method": "getAccountsAccountIdParty",
+    "method": "getByAccountId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Parties",
     "typeScriptTag": "parties",
@@ -693,12 +633,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -726,7 +660,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/product",
-    "method": "getAccountsAccountIdProduct",
+    "method": "getByAccountId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Products",
     "typeScriptTag": "products",
@@ -757,12 +691,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -790,7 +718,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/scheduled-payments",
-    "method": "getAccountsAccountIdScheduledPayments",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Scheduled Payments",
     "typeScriptTag": "scheduledPayments",
@@ -821,12 +749,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -854,7 +776,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/standing-orders",
-    "method": "getAccountsAccountIdStandingOrders",
+    "method": "get",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Standing Orders",
     "typeScriptTag": "standingOrders",
@@ -885,12 +807,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -918,7 +834,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/statements",
-    "method": "getAccountsAccountIdStatements",
+    "method": "get",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
     "typeScriptTag": "statements",
@@ -947,12 +863,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -992,7 +902,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/statements/{StatementId}",
-    "method": "getAccountsAccountIdStatementsStatementId",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
     "typeScriptTag": "statements",
@@ -1027,12 +937,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1062,7 +966,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/statements/{StatementId}/file",
-    "method": "getAccountsAccountIdStatementsStatementIdFile",
+    "method": "getFile",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
     "typeScriptTag": "statements",
@@ -1099,12 +1003,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -1132,7 +1030,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/statements/{StatementId}/transactions",
-    "method": "getAccountsAccountIdStatementsStatementIdTransactions",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transactions",
     "typeScriptTag": "transactions",
@@ -1169,12 +1067,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An RFC4122 UID used as a correlation id."
       },
       {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
-      },
-      {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
@@ -1202,7 +1094,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/accounts/{AccountId}/transactions",
-    "method": "getAccountsAccountIdTransactions",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transactions",
     "typeScriptTag": "transactions",
@@ -1231,12 +1123,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1276,7 +1162,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/balances",
-    "method": "getBalances",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Balances",
     "typeScriptTag": "balances",
@@ -1299,12 +1185,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1334,7 +1214,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/beneficiaries",
-    "method": "getBeneficiaries",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Beneficiaries",
     "typeScriptTag": "beneficiaries",
@@ -1357,12 +1237,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1392,7 +1266,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/direct-debits",
-    "method": "getDirectDebits",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Direct Debits",
     "typeScriptTag": "directDebits",
@@ -1415,12 +1289,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1450,7 +1318,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/offers",
-    "method": "getOffers",
+    "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Offers",
     "typeScriptTag": "offers",
@@ -1473,12 +1341,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1508,7 +1370,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/party",
-    "method": "getParty",
+    "method": "getList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Parties",
     "typeScriptTag": "parties",
@@ -1531,12 +1393,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1566,7 +1422,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/products",
-    "method": "getProducts",
+    "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Products",
     "typeScriptTag": "products",
@@ -1589,12 +1445,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1624,7 +1474,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/scheduled-payments",
-    "method": "getScheduledPayments",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Scheduled Payments",
     "typeScriptTag": "scheduledPayments",
@@ -1647,12 +1497,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1682,7 +1526,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/standing-orders",
-    "method": "getStandingOrders",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Standing Orders",
     "typeScriptTag": "standingOrders",
@@ -1705,12 +1549,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
@@ -1740,7 +1578,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/statements",
-    "method": "getStatements",
+    "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Statements",
     "typeScriptTag": "statements",
@@ -1763,12 +1601,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "fromStatementDateTime",
@@ -1808,7 +1640,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
   },
   {
     "url": "/transactions",
-    "method": "getTransactions",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transactions",
     "typeScriptTag": "transactions",
@@ -1831,12 +1663,6 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "An RFC4122 UID used as a correlation id."
-      },
-      {
-        "name": "authorization",
-        "schema": "string",
-        "required": true,
-        "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
       },
       {
         "name": "xCustomerUserAgent",
