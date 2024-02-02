@@ -1,0 +1,427 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /actions/{idAction}:
+    delete: Action_removeByIdAction
+    get: Action_getById
+    put: Action_updateByIdAction
+  /actions/{idAction}/board:
+    get: Action_getBoardByIdAction
+  /actions/{idAction}/board/{field}:
+    get: Action_getBoardByIdActionByField
+  /actions/{idAction}/card:
+    get: Action_getCardByIdAction
+  /actions/{idAction}/card/{field}:
+    get: Action_getCardByIdActionByField
+  /actions/{idAction}/display:
+    get: Action_getDisplayByIdAction
+  /actions/{idAction}/entities:
+    get: Action_getEntitiesByIdAction
+  /actions/{idAction}/list:
+    get: Action_getListByIdAction
+  /actions/{idAction}/list/{field}:
+    get: Action_getListByIdActionByField
+  /actions/{idAction}/member:
+    get: Action_getMemberByIdAction
+  /actions/{idAction}/member/{field}:
+    get: Action_getMemberByField
+  /actions/{idAction}/memberCreator:
+    get: Action_getMemberCreatorByIdAction
+  /actions/{idAction}/memberCreator/{field}:
+    get: Action_getMemberByIdActionByField
+  /actions/{idAction}/organization:
+    get: Action_getOrganizationByIdAction
+  /actions/{idAction}/organization/{field}:
+    get: Action_getOrgByIdActionByField
+  /actions/{idAction}/text:
+    put: Action_updateTextByIdAction
+  /actions/{idAction}/{field}:
+    get: Action_getByIdActionField
+  /batch:
+    get: Batch_getData
+  /boards:
+    post: Board_createBoard
+  /boards/{idBoard}:
+    get: Board_getById
+    put: Board_updateById
+  /boards/{idBoard}/actions:
+    get: Board_listActionsByIdBoard
+  /boards/{idBoard}/boardStars:
+    get: Board_getBoardStarsById
+  /boards/{idBoard}/calendarKey/generate:
+    post: Board_generateCalendarKeyById
+  /boards/{idBoard}/cards:
+    get: Board_getCardsByIdBoard
+  /boards/{idBoard}/cards/{filter}:
+    get: Board_filterCardsByIdBoard
+  /boards/{idBoard}/cards/{idCard}:
+    get: Board_getCardsByIdBoardByIdCard
+  /boards/{idBoard}/checklists:
+    get: Board_getChecklistsById
+    post: Board_addChecklists
+  /boards/{idBoard}/closed:
+    put: Board_updateClosedById
+  /boards/{idBoard}/deltas:
+    get: Board_getDeltasByIdBoard
+  /boards/{idBoard}/desc:
+    put: Board_updateDescriptionByIdBoard
+  /boards/{idBoard}/emailKey/generate:
+    post: Board_generateEmailKey
+  /boards/{idBoard}/idOrganization:
+    put: Board_updateOrganizationByIdBoard
+  /boards/{idBoard}/labelNames/blue:
+    put: Board_updateLabelNamesBlueById
+  /boards/{idBoard}/labelNames/green:
+    put: Board_updateLabelNamesGreenByIdBoardPut
+  /boards/{idBoard}/labelNames/orange:
+    put: Board_updateLabelNamesOrangeByIdBoard
+  /boards/{idBoard}/labelNames/purple:
+    put: Board_updateLabelNamesPurpleByIdBoard
+  /boards/{idBoard}/labelNames/red:
+    put: Board_updateLabelNamesRed
+  /boards/{idBoard}/labelNames/yellow:
+    put: Board_updateLabelNamesYellowByIdBoard
+  /boards/{idBoard}/labels:
+    get: Board_listLabelsByIdBoard
+    post: Board_addLabelsByIdBoard
+  /boards/{idBoard}/labels/{idLabel}:
+    get: Board_getLabelsByIdBoardByIdLabel
+  /boards/{idBoard}/lists:
+    get: Board_getListsByIdBoard
+    post: Board_createListsByIdBoard
+  /boards/{idBoard}/lists/{filter}:
+    get: Board_getListsByFilter
+  /boards/{idBoard}/markAsViewed:
+    post: Board_markAsViewedByIdBoard
+  /boards/{idBoard}/members:
+    get: Board_getMembersByIdBoard
+    put: Board_updateMembersByIdBoard
+  /boards/{idBoard}/members/{filter}:
+    get: Board_getMembersByFilter
+  /boards/{idBoard}/members/{idMember}:
+    delete: Board_removeMember
+    put: Board_updateMembersByIdBoardByIdMember
+  /boards/{idBoard}/members/{idMember}/cards:
+    get: Board_getMembersCardsByIdBoardByIdMember
+  /boards/{idBoard}/membersInvited:
+    get: Board_getMembersInvitedByIdBoard
+  /boards/{idBoard}/membersInvited/{field}:
+    get: Board_getMembersInvitedByField
+  /boards/{idBoard}/memberships:
+    get: Board_getMembershipsByIdBoard
+  /boards/{idBoard}/memberships/{idMembership}:
+    get: Board_getMembershipsByIdBoardByIdMembership
+    put: Board_updateMembershipsByIdBoardByIdMembership
+  /boards/{idBoard}/myPrefs:
+    get: Board_getMyPrefsById
+  /boards/{idBoard}/myPrefs/emailPosition:
+    put: Board_updateMyPrefsEmailPositionByIdBoard
+  /boards/{idBoard}/myPrefs/idEmailList:
+    put: Board_updateMyPrefsEmailListByIdBoard
+  /boards/{idBoard}/myPrefs/showListGuide:
+    put: Board_updateMyPrefsShowListGuideByIdBoard
+  /boards/{idBoard}/myPrefs/showSidebar:
+    put: Board_updateMyPrefsShowSidebar
+  /boards/{idBoard}/myPrefs/showSidebarActivity:
+    put: Board_updateMyPrefsShowSidebarActivityByIdBoard
+  /boards/{idBoard}/myPrefs/showSidebarBoardActions:
+    put: Board_updateMyPrefsShowSidebarActionsByIdBoard
+  /boards/{idBoard}/myPrefs/showSidebarMembers:
+    put: Board_updatePrefsShowSidebarMembersById
+  /boards/{idBoard}/name:
+    put: Board_updateNameById
+  /boards/{idBoard}/organization:
+    get: Board_getOrganizationById
+  /boards/{idBoard}/organization/{field}:
+    get: Board_getOrganizationByIdBoardByField
+  /boards/{idBoard}/powerUps:
+    post: Board_addPowerUpsByIdBoard
+  /boards/{idBoard}/powerUps/{powerUp}:
+    delete: Board_removePowerUp
+  /boards/{idBoard}/prefs/background:
+    put: Board_updatePrefsBackgroundByIdBoard
+  /boards/{idBoard}/prefs/calendarFeedEnabled:
+    put: Board_updatePrefsCalendarFeedEnabledById
+  /boards/{idBoard}/prefs/cardAging:
+    put: Board_updatePrefsCardAgingByIdBoard
+  /boards/{idBoard}/prefs/cardCovers:
+    put: Board_updatePrefsCardCoversByIdBoard
+  /boards/{idBoard}/prefs/comments:
+    put: Board_updatePrefsCommentsByIdBoard
+  /boards/{idBoard}/prefs/invitations:
+    put: Board_updatePrefsInvitationsByIdBoard
+  /boards/{idBoard}/prefs/permissionLevel:
+    put: Board_updatePrefsPermissionLevelById
+  /boards/{idBoard}/prefs/selfJoin:
+    put: Board_updatePrefsSelfJoinByIdBoard
+  /boards/{idBoard}/prefs/voting:
+    put: Board_updateVotingPrefsById
+  /boards/{idBoard}/subscribed:
+    put: Board_updateSubscribedById
+  /boards/{idBoard}/{field}:
+    get: Board_getByIdField
+  /cards:
+    post: Card_createAndUpdate
+  /cards/{idCard}:
+    delete: Card_removeByIdCard
+    get: Card_getById
+    put: Card_updateByIdCard
+  /cards/{idCard}/actions:
+    get: Card_listCardActionsById
+  /cards/{idCard}/actions/comments:
+    post: Card_addActionsCommentsByIdCard
+  /cards/{idCard}/actions/{idAction}/comments:
+    delete: Card_removeActionCommentByIdCardByIdAction
+    put: Card_updateActionCommentByIdCardByIdAction
+  /cards/{idCard}/attachments:
+    get: Card_getAttachmentsByIdCard
+    post: Card_addAttachmentsByIdCard
+  /cards/{idCard}/attachments/{idAttachment}:
+    delete: Card_deleteAttachmentsByIdCardByIdAttachment
+    get: Card_getAttachmentsByIds
+  /cards/{idCard}/board:
+    get: Card_getBoardById
+  /cards/{idCard}/board/{field}:
+    get: Card_getBoardByIdCardByField
+  /cards/{idCard}/checkItemStates:
+    get: Card_getCheckItemStatesById
+  /cards/{idCard}/checklist/{idChecklistCurrent}/checkItem/{idCheckItem}:
+    put: Card_updateChecklistCheckItem
+  /cards/{idCard}/checklist/{idChecklist}/checkItem:
+    post: Card_addChecklistCheckItem
+  /cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}:
+    delete: Card_removeChecklistCheckItem
+  /cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/convertToCard:
+    post: Card_convertCheckItemToCard
+  /cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/name:
+    put: Card_updateChecklistCheckItemNameById
+  /cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/pos:
+    put: Card_updateCheckItemPosById
+  /cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/state:
+    put: Card_updateChecklistCheckItemState
+  /cards/{idCard}/checklists:
+    get: Card_getChecklistsById
+    post: Card_addChecklists
+  /cards/{idCard}/checklists/{idChecklist}:
+    delete: Card_deleteChecklistByIdCardByIdChecklist
+  /cards/{idCard}/closed:
+    put: Card_updateClosedById
+  /cards/{idCard}/desc:
+    put: Card_updateDescriptionByIdCard
+  /cards/{idCard}/due:
+    put: Card_updateDueById
+  /cards/{idCard}/idAttachmentCover:
+    put: Card_updateAttachmentCoverByIdCard
+  /cards/{idCard}/idBoard:
+    put: Card_updateBoardByIdCard
+  /cards/{idCard}/idLabels:
+    post: Card_addIdLabelsToCard
+  /cards/{idCard}/idLabels/{idLabel}:
+    delete: Card_removeLabelByIdCardByIdLabel
+  /cards/{idCard}/idList:
+    put: Card_updateIdListByIdCard
+  /cards/{idCard}/idMembers:
+    post: Card_addMembers
+    put: Card_updateIdMembers
+  /cards/{idCard}/idMembers/{idMember}:
+    delete: Card_removeMemberByIdMember
+  /cards/{idCard}/labels:
+    post: Card_addLabels
+    put: Card_updateLabels
+  /cards/{idCard}/labels/{color}:
+    delete: Card_removeLabelsByIdCardByColor
+  /cards/{idCard}/list:
+    get: Card_getListById
+  /cards/{idCard}/list/{field}:
+    get: Card_getCardsListByIdCardByField
+  /cards/{idCard}/markAssociatedNotificationsRead:
+    post: Card_markAssociatedNotificationsRead
+  /cards/{idCard}/members:
+    get: Card_listMembersByIdCard
+  /cards/{idCard}/membersVoted:
+    get: Card_getMembersVotedByIdCard
+    post: Card_addMembersVoted
+  /cards/{idCard}/membersVoted/{idMember}:
+    delete: Card_removeMembersVotedByIdCardByIdMember
+  /cards/{idCard}/name:
+    put: Card_updateNameById
+  /cards/{idCard}/pos:
+    put: Card_updatePosByIdCard
+  /cards/{idCard}/stickers:
+    get: Card_getStickersByIdCard
+    post: Card_addStickersByIdCard
+  /cards/{idCard}/stickers/{idSticker}:
+    delete: Card_removeStickerByIds
+    get: Card_getStickerByIds
+    put: Card_updateStickersByIdCardByIdSticker
+  /cards/{idCard}/subscribed:
+    put: Card_updateSubscribedByIdCard
+  /cards/{idCard}/{field}:
+    get: Card_getByIdField
+  /checklists:
+    post: Checklist_create
+  /checklists/{idChecklist}:
+    delete: Checklist_removeById
+    get: Checklist_getById
+    put: Checklist_updateByIdChecklist
+  /checklists/{idChecklist}/board:
+    get: Checklist_getBoardByIdChecklist
+  /checklists/{idChecklist}/board/{field}:
+    get: Checklist_getBoardByIdChecklistByField
+  /checklists/{idChecklist}/cards:
+    get: Checklist_listCardsByIdChecklist
+  /checklists/{idChecklist}/cards/{filter}:
+    get: Checklist_getCardsByFilter
+  /checklists/{idChecklist}/checkItems:
+    get: Checklist_getCheckItemsByIdChecklist
+    post: Checklist_addCheckItemsByIdChecklist
+  /checklists/{idChecklist}/checkItems/{idCheckItem}:
+    delete: Checklist_removeByIdCheckItem
+    get: Checklist_getCheckItemsByIdChecklistByIdCheckItem
+  /checklists/{idChecklist}/idCard:
+    put: Checklist_updateIdCardByIdChecklist
+  /checklists/{idChecklist}/name:
+    put: Checklist_updateNameByIdChecklist
+  /checklists/{idChecklist}/pos:
+    put: Checklist_updatePosByIdChecklist
+  /checklists/{idChecklist}/{field}:
+    get: Checklist_getByIdField
+  /labels:
+    post: Label_createLabels
+  /labels/{idLabel}:
+    delete: Label_removeByIdLabel
+    get: Label_getByIdLabel
+    put: Label_updateByIdLabel
+  /labels/{idLabel}/board:
+    get: Label_getBoardByIdLabel
+  /labels/{idLabel}/board/{field}:
+    get: Label_getBoardByIdLabelByField
+  /labels/{idLabel}/color:
+    put: Label_updateColorByIdLabel
+  /labels/{idLabel}/name:
+    put: Label_updateNameByIdLabel
+  /lists:
+    post: List_createList
+  /lists/{idList}:
+    get: List_getByIdList
+    put: List_updateByIdList
+  /lists/{idList}/actions:
+    get: List_getActionsByIdList
+  /lists/{idList}/archiveAllCards:
+    post: List_archiveAllCardsByIdList
+  /lists/{idList}/board:
+    get: List_idBoardGet
+  /lists/{idList}/board/{field}:
+    get: List_getBoardByIdListByField
+  /lists/{idList}/cards:
+    get: List_getCardsByIdList
+    post: List_createCardsByIdList
+  /lists/{idList}/cards/{filter}:
+    get: List_getCardsByFilter
+  /lists/{idList}/closed:
+    put: List_updateClosedByIdList
+  /lists/{idList}/idBoard:
+    put: List_updateIdBoardByIdList
+  /lists/{idList}/moveAllCards:
+    post: List_moveAllCardsByIdList
+  /lists/{idList}/name:
+    put: List_updateNameByIdList
+  /lists/{idList}/pos:
+    put: List_updatePosByIdList
+  /lists/{idList}/subscribed:
+    put: List_updateSubscribedByIdList
+  /lists/{idList}/{field}:
+    get: List_getByIdListByField
+  /members/{idMember}:
+    get: Member_getById
+    put: Member_updateByIdMember
+  /members/{idMember}/actions:
+    get: Member_listActionsByIdMember
+  /members/{idMember}/avatar:
+    post: Member_uploadAvatarById
+  /members/{idMember}/avatarSource:
+    put: Member_updateAvatarSource
+  /members/{idMember}/bio:
+    put: Member_updateBioById
+  /members/{idMember}/boardBackgrounds:
+    get: Member_getBoardBackgroundsById
+    post: Member_addBoardBackgrounds
+  /members/{idMember}/boardBackgrounds/{idBoardBackground}:
+    delete: Member_deleteBoardBackground
+    get: Member_getBoardBackgroundByIds
+    put: Member_updateBoardBackgroundsById
+  /members/{idMember}/boardStars:
+    get: Member_getBoardStarsById
+    post: Member_addBoardStarsByIdMember
+  /members/{idMember}/boardStars/{idBoardStar}:
+    delete: Member_removeBoardStarByIdMemberByIdBoardStar
+    get: Member_getBoardStarByIdMember
+    put: Member_updateBoardStar
+  /members/{idMember}/boardStars/{idBoardStar}/idBoard:
+    put: Member_updateBoardStarsIdBoard
+  /members/{idMember}/boardStars/{idBoardStar}/pos:
+    put: Member_updateBoardStarPosByIdMemberByIdBoardStar
+  /members/{idMember}/boards:
+    get: Member_getBoardsByIdMember
+  /members/{idMember}/boards/{filter}:
+    get: Member_getBoards
+  /members/{idMember}/boardsInvited:
+    get: Member_getInvitedBoards
+  /members/{idMember}/boardsInvited/{field}:
+    get: Member_getBoardsInvitedByIdMemberByField
+  /members/{idMember}/cards:
+    get: Member_getCardsByIdMember
+  /members/{idMember}/cards/{filter}:
+    get: Member_getCardsByFilter
+  /members/{idMember}/customBoardBackgrounds:
+    get: Member_getCustomBoardBackgroundsById
+    post: Member_addCustomBoardBackgrounds
+  /members/{idMember}/customBoardBackgrounds/{idBoardBackground}:
+    delete: Member_removeCustomBoardBackgroundById
+    get: Member_getCustomBoardBackgroundByIds
+    put: Member_updateCustomBoardBackgrounds
+  /members/{idMember}/customEmoji:
+    get: Member_listCustomEmojiByIdMember
+    post: Member_addCustomEmojiByIdMember
+  /members/{idMember}/customEmoji/{idCustomEmoji}:
+    get: Member_getCustomEmojiByIds
+  /members/{idMember}/customStickers:
+    get: Member_getCustomStickersByIdMember
+    post: Member_addCustomStickers
+  /members/{idMember}/customStickers/{idCustomSticker}:
+    delete: Member_removeCustomStickerByIds
+    get: Member_getCustomStickerByIds
+  /members/{idMember}/deltas:
+    get: Member_getDeltasByIdMember
+  /members/{idMember}/fullName:
+    put: Member_updateFullName
+  /members/{idMember}/initials:
+    put: Member_updateInitialsByIdMember
+  /members/{idMember}/notifications:
+    get: Member_getNotificationsByIdMember
+  /members/{idMember}/notifications/{filter}:
+    get: Member_getNotificationsByIdMemberByFilter
+  /members/{idMember}/oneTimeMessagesDismissed:
+    post: Member_addOneTimeMessagesDismissedByIdMember
+  /members/{idMember}/organizations:
+    get: Member_listOrganizationsById
+  /members/{idMember}/organizations/{filter}:
+    get: Member_getOrganizations
+  /members/{idMember}/organizationsInvited:
+    get: Member_listInvitedOrganizationsById
+  /members/{idMember}/organizationsInvited/{field}:
+    get: Member_listOrganizationsInvitedByIdMemberByField
+  /members/{idMember}/prefs/colorBlind:
+    put: Member_updatePrefsColorBlindByIdMember
+  /members/{idMember}/prefs/locale:
+    put: Member_updatePrefsLocaleByIdMember
+  /members/{idMember}/prefs/minutesBetweenSummaries:
+    put: Member_updatePrefsMinutesBetweenSummariesById
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters: {}
+validServerUrls: {}

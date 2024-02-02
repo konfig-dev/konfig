@@ -1,0 +1,234 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /2/openapi.json:
+    get:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /2/compliance/jobs:
+    get: Compliance_listJobs
+    post: Compliance_createJob
+  /2/compliance/jobs/{id}:
+    get: Compliance_getJobById
+  /2/dm_conversations:
+    post: DirectMessages_createNewDmConversation
+  /2/dm_conversations/with/{participant_id}/dm_events:
+    get: DirectMessages_getDmEvents
+  /2/dm_conversations/with/{participant_id}/messages:
+    post: DirectMessages_sendNewMessageToUser
+  /2/dm_conversations/{dm_conversation_id}/messages:
+    post: DirectMessages_sendNewMessageToDmConversation
+  /2/dm_conversations/{id}/dm_events:
+    get: DirectMessages_getDmEvents
+  /2/dm_events:
+    get: DirectMessages_getRecentDmEvents
+  /2/lists:
+    post: Lists_createNewList
+  /2/lists/{id}:
+    delete: Lists_deleteOwnedList
+    get: Lists_lookupByListId
+    put: Lists_updateOwnedList
+  /2/lists/{id}/followers:
+    get: Users_getFollowersByListId
+  /2/lists/{id}/members:
+    get: Users_getMembersByListId
+    post: Lists_addMember
+  /2/lists/{id}/members/{user_id}:
+    delete: Lists_removeMember
+  /2/lists/{id}/tweets:
+    get: Tweets_listByListId
+  /2/openapi.json:
+    get: General_getOpenApiSpec
+  /2/spaces:
+    get: Spaces_lookupSpaceIds
+  /2/spaces/by/creator_ids:
+    get: Spaces_lookupByCreatorIds
+  /2/spaces/search:
+    get: Spaces_findMatchingSpaces
+  /2/spaces/{id}:
+    get: Spaces_lookupSpaceById
+  /2/spaces/{id}/buyers:
+    get: Spaces_getBuyersList
+  /2/spaces/{id}/tweets:
+    get: Spaces_getTweets
+  /2/tweets:
+    get: Tweets_lookupByTweetIds
+    post: Tweets_createTweet
+  /2/tweets/compliance/stream:
+    get: Compliance_streamData
+  /2/tweets/counts/all:
+    get: Tweets_getTweetCounts
+  /2/tweets/counts/recent:
+    get: Tweets_getRecentTweetCounts
+  /2/tweets/firehose/stream:
+    get: Tweets_getFirehoseStream
+  /2/tweets/label/stream:
+    get: Compliance_streamTweetsLabelEvents
+  /2/tweets/sample/stream:
+    get: Tweets_streamSample
+  /2/tweets/sample10/stream:
+    get: Tweets_streamSample10
+  /2/tweets/search/all:
+    get: Tweets_searchAll
+  /2/tweets/search/recent:
+    get: Tweets_getRecentTweets
+  /2/tweets/search/stream:
+    get: Tweets_getFilteredStream
+  /2/tweets/search/stream/rules:
+    get: Tweets_searchStreamRules
+    post: Tweets_addOrDeleteRules
+  /2/tweets/{id}:
+    delete: Tweets_deleteById
+    get: Tweets_lookupById
+  /2/tweets/{id}/liking_users:
+    get: Users_listLikingUsers
+  /2/tweets/{id}/quote_tweets:
+    get: Tweets_getQuoteTweets
+  /2/tweets/{id}/retweeted_by:
+    get: Users_getRetweetedByTweetIdUsers
+  /2/tweets/{tweet_id}/hidden:
+    put: Tweets_hideReply
+  /2/users:
+    get: Users_lookupByIds
+  /2/users/by:
+    get: Users_lookupByUsernames
+  /2/users/by/username/{username}:
+    get: Users_lookupByUsername
+  /2/users/compliance/stream:
+    get: Compliance_streamUsersData
+  /2/users/me:
+    get: Users_lookupMe
+  /2/users/{id}:
+    get: Users_lookupById
+  /2/users/{id}/blocking:
+    get: Users_getBlockedUsers
+    post: Users_blockUserById
+  /2/users/{id}/bookmarks:
+    get: Bookmarks_getUserBookmarks
+    post: Bookmarks_addTweet
+  /2/users/{id}/bookmarks/{tweet_id}:
+    delete: Bookmarks_removeTweet
+  /2/users/{id}/followed_lists:
+    get: Lists_getFollowed
+    post: Lists_followList
+  /2/users/{id}/followed_lists/{list_id}:
+    delete: Lists_unfollowList
+  /2/users/{id}/followers:
+    get: Users_getFollowersById
+  /2/users/{id}/following:
+    get: Users_getFollowingUsers
+    post: Users_followUser
+  /2/users/{id}/liked_tweets:
+    get: Tweets_getLikedTweets
+  /2/users/{id}/likes:
+    post: Tweets_likeTweet
+  /2/users/{id}/likes/{tweet_id}:
+    delete: Tweets_unlikeTweetById
+  /2/users/{id}/list_memberships:
+    get: Lists_getUserMemberships
+  /2/users/{id}/mentions:
+    get: Tweets_getMentionsById
+  /2/users/{id}/muting:
+    get: Users_getMutedUsersById
+    post: Users_muteUserById
+  /2/users/{id}/owned_lists:
+    get: Lists_getUserOwnedLists
+  /2/users/{id}/pinned_lists:
+    get: Lists_getUserPinnedLists
+    post: Lists_pinList
+  /2/users/{id}/pinned_lists/{list_id}:
+    delete: Lists_unpinList
+  /2/users/{id}/retweets:
+    post: Tweets_retweetTweetById
+  /2/users/{id}/retweets/{source_tweet_id}:
+    delete: Tweets_unretweetById
+  /2/users/{id}/timelines/reverse_chronological:
+    get: Tweets_getUserHomeTimeline
+  /2/users/{id}/tweets:
+    get: Tweets_listByUserId
+  /2/users/{source_user_id}/blocking/{target_user_id}:
+    delete: Users_unblockUserById
+  /2/users/{source_user_id}/following/{target_user_id}:
+    delete: Users_unfollowUser
+  /2/users/{source_user_id}/muting/{target_user_id}:
+    delete: Users_unmuteByUserId
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /2/openapi.json:
+    get:
+      '200':
+        application/json: GeneralGetOpenApiSpecResponse
+securityParameters:
+  backfill_minutes:
+    query: false
+  compliance_job.fields:
+    query: false
+  dm_event.fields:
+    query: false
+  dry_run:
+    query: false
+  end_time:
+    query: false
+  event_types:
+    query: false
+  exclude:
+    query: false
+  expansions:
+    query: false
+  granularity:
+    query: false
+  ids:
+    query: false
+  list.fields:
+    query: false
+  max_results:
+    query: false
+  media.fields:
+    query: false
+  next_token:
+    query: false
+  pagination_token:
+    query: false
+  partition:
+    query: false
+  place.fields:
+    query: false
+  poll.fields:
+    query: false
+  query:
+    query: false
+  search_count.fields:
+    query: false
+  since_id:
+    query: false
+  sort_order:
+    query: false
+  space.fields:
+    query: false
+  start_time:
+    query: false
+  state:
+    query: false
+  status:
+    query: false
+  topic.fields:
+    query: false
+  tweet.fields:
+    query: false
+  type:
+    query: false
+  until_id:
+    query: false
+  user.fields:
+    query: false
+  user_ids:
+    query: false
+  usernames:
+    query: false
+validServerUrls: {}

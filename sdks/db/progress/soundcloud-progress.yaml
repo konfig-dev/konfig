@@ -1,0 +1,169 @@
+description: Missing description placeholder
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /connect:
+    get: Oauth_authorizeUser
+  /likes/playlists/{playlist_id}:
+    delete: Likes_unlikePlaylist
+    post: Likes_playlist
+  /likes/tracks/{track_id}:
+    delete: Likes_unlikeTrack
+    post: Likes_trackAction
+  /me:
+    get: Me_getUserInformation
+  /me/activities:
+    get: Me_getActivities
+  /me/activities/all/own:
+    get: Me_getRecentActivities
+  /me/activities/tracks:
+    get: Me_getRecentTracks
+  /me/followers:
+    get: Me_getFollowersList
+  /me/followers/{follower_id}:
+    get: Me_getFollowerById
+  /me/followings:
+    get: Me_getFollowedUsers
+  /me/followings/tracks:
+    get: Me_listFollowedTracks
+  /me/followings/{user_id}:
+    delete: Me_deleteFollowedUser
+    get: Me_getFollowedUser
+    put: Me_followUser
+  /me/likes/playlists:
+    get: Me_getLikedPlaylists
+  /me/likes/tracks:
+    get: Me_listLikedTracks
+  /me/playlists:
+    get: Me_listPlaylistsInfoTracksOwner
+  /me/tracks:
+    get: Me_listUserTracks
+  /oauth2/token:
+    post: Oauth_provisionAccessToken
+  /playlists:
+    get: Search_byQuery
+    post: Playlists_createNewPlaylist
+  /playlists/{playlist_id}:
+    delete: Playlists_deletePlaylist
+    get: Playlists_getPlaylistById
+    put: Playlists_updatePlaylistById
+  /playlists/{playlist_id}/reposters:
+    get: Playlists_listReposters
+  /playlists/{playlist_id}/tracks:
+    get: Playlists_getTracks
+  /reposts/playlists/{playlist_id}:
+    delete: Reposts_removeRepostOnPlaylist
+    post: Reposts_playlistAsAuthenticatedUser
+  /reposts/tracks/{track_id}:
+    delete: Reposts_removeRepost
+    post: Reposts_trackAsAuthenticatedUser
+  /resolve:
+    get: Miscellaneous_resolveSoundcloudUrls
+  /tracks:
+    get: Search_byQuery
+    post: Tracks_uploadNewTrack
+  /tracks/{track_id}:
+    delete: Tracks_deleteTrack
+    get: Tracks_getById
+    put: Tracks_updateTrackInformation
+  /tracks/{track_id}/comments:
+    get: Tracks_getComments
+    post: Tracks_createComment
+  /tracks/{track_id}/favoriters:
+    get: Tracks_getFavoriters
+  /tracks/{track_id}/related:
+    get: Tracks_getRelatedTracks
+  /tracks/{track_id}/reposters:
+    get: Tracks_listReposters
+  /tracks/{track_id}/streams:
+    get: Tracks_getStreamableUrls
+  /users:
+    get: Search_userQuery
+  /users/{user_id}:
+    get: Users_getUser
+  /users/{user_id}/favorites:
+    get: Users_listFavorites
+  /users/{user_id}/followers:
+    get: Users_getFollowers
+  /users/{user_id}/followings:
+    get: Users_getUserFollowings
+  /users/{user_id}/followings/{following_id}:
+    get: Users_getFollowingById
+  /users/{user_id}/likes/playlists:
+    get: Users_listLikedPlaylists
+  /users/{user_id}/likes/tracks:
+    get: Users_listLikedTracks
+  /users/{user_id}/playlists:
+    get: Users_getUserPlaylists
+  /users/{user_id}/tracks:
+    get: Users_getUserTracks
+  /users/{user_id}/web-profiles:
+    get: Users_getUserWebProfiles
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /playlists:
+    post:
+      multipart/form-data: PlaylistsCreateNewPlaylistRequest
+  /tracks:
+    post:
+      multipart/form-data: TracksUploadNewTrackRequest
+      multipart/x-www-form-urlencoded: TracksUploadNewTrackRequest1
+  /tracks/{track_id}/comments:
+    post:
+      application/json; charset=utf-8: TracksCreateCommentRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /me/likes/playlists:
+    get:
+      '200':
+        application/json; charset=utf-8: MeGetLikedPlaylistsResponse
+  /me/likes/tracks:
+    get:
+      '200':
+        application/json; charset=utf-8: MeListLikedTracksResponse
+  /oauth2/token:
+    post:
+      '400':
+        application/json: OauthProvisionAccessTokenResponse
+      '401':
+        application/json: OauthProvisionAccessToken401Response
+securityParameters:
+  access:
+    query: false
+  bpm:
+    query: false
+  client_id:
+    query: false
+  created_at:
+    query: false
+  duration:
+    query: false
+  genres:
+    query: false
+  ids:
+    query: false
+  limit:
+    query: false
+  linked_partitioning:
+    query: false
+  offset:
+    query: false
+  q:
+    query: false
+  redirect_uri:
+    query: false
+  response_type:
+    query: false
+  secret_token:
+    query: false
+  show_tracks:
+    query: false
+  state:
+    query: false
+  tags:
+    query: false
+  url:
+    query: false
+validServerUrls: {}

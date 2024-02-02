@@ -1,0 +1,573 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /access-tokens/{accessTokens}:
+    get: Core_readAccessTokens
+  /access-tokens/{accessTokens}/invalidate:
+    get: Core_expireAccessTokens
+  /answers:
+    get: Core_getUndeletedAnswers
+  /answers/{ids}:
+    get: Core_getAnswersByIds
+  /answers/{ids}/comments:
+    get: Core_getCommentsOnAnswers
+  /apps/{accessTokens}/de-authenticate:
+    get: Core_deauthenticateAccessTokens
+  /badges:
+    get: Core_listBadges
+  /badges/name:
+    get: Core_getAllExplicitNamedBadges
+  /badges/recipients:
+    get: Core_listRecentAwardedBadges
+  /badges/tags:
+    get: Core_listBadgeTags
+  /badges/{ids}:
+    get: Core_getBadgesByIds
+  /badges/{ids}/recipients:
+    get: Core_getRecentAwardedBadgesByIds
+  /comments:
+    get: Core_getCommentList
+  /comments/{ids}:
+    get: Core_getCommentsByIds
+  /comments/{id}/delete:
+    post: Core_deleteCommentById
+  /comments/{id}/edit:
+    post: Core_updateComment
+  /errors:
+    get: Core_getErrorList
+  /errors/{id}:
+    get: Core_generateError
+  /events:
+    get: Core_listEvents
+  /filters/create:
+    get: Core_createFilter
+  /filters/{filters}:
+    get: Core_getFilters
+  /inbox:
+    get: Core_getInboxItems
+  /inbox/unread:
+    get: Core_getUnreadInboxItems
+  /info:
+    get: Core_getSiteInfo
+  /me:
+    get: Core_getUser
+  /me/answers:
+    get: Core_getUserAnswers
+  /me/associated:
+    get: Core_listAssociatedAccounts
+  /me/badges:
+    get: Core_getUserBadges
+  /me/comments:
+    get: Core_getUserComments
+  /me/comments/{toId}:
+    get: Core_getUserComments
+  /me/favorites:
+    get: Core_getUserFavorites
+  /me/inbox:
+    get: Core_getInboxItems
+  /me/inbox/unread:
+    get: Core_getUnreadInboxItems
+  /me/mentioned:
+    get: Core_getMentionedComments
+  /me/merges:
+    get: Core_getAccountMerges
+  /me/notifications:
+    get: Core_getUserNotifications
+  /me/notifications/unread:
+    get: Core_getUserUnreadNotifications
+  /me/privileges:
+    get: Core_getUserPrivileges
+  /me/questions:
+    get: Core_getUserQuestions
+  /me/questions/featured:
+    get: Core_getFeaturedQuestions
+  /me/questions/no-answers:
+    get: Core_listUnansweredQuestions
+  /me/questions/unaccepted:
+    get: Core_getUnacceptedQuestions
+  /me/questions/unanswered:
+    get: Core_listUnansweredQuestions
+  /me/reputation:
+    get: Core_getUserReputationChanges
+  /me/reputation-history:
+    get: Core_getUserReputationHistory
+  /me/reputation-history/full:
+    get: Core_getUserReputationHistory
+  /me/suggested-edits:
+    get: Core_getUserSuggestedEdits
+  /me/tags:
+    get: Core_getUserTagsList
+  /me/tags/{tags}/top-answers:
+    get: Core_getUserTopAnswers
+  /me/tags/{tags}/top-questions:
+    get: Core_getUserTopQuestionsByTags
+  /me/timeline:
+    get: Core_getUserTimeline
+  /me/top-answer-tags:
+    get: Core_getUserTopAnswerTags
+  /me/top-question-tags:
+    get: Core_getUserTopQuestionTags
+  /me/write-permissions:
+    get: Core_getUserWritePermissions
+  /notifications:
+    get: Core_getUserNotifications
+  /notifications/unread:
+    get: Core_getUserUnreadNotifications
+  /posts:
+    get: Core_listPosts
+  /posts/{ids}:
+    get: Core_getPostsByIds
+  /posts/{ids}/comments:
+    get: Core_getCommentsByIds
+  /posts/{ids}/revisions:
+    get: Core_getPostRevisions
+  /posts/{ids}/suggested-edits:
+    get: Core_listSuggestedEdits
+  /posts/{id}/comments/add:
+    post: Core_createNewComment
+  /privileges:
+    get: Core_listPrivileges
+  /questions:
+    get: Core_listQuestions
+  /questions/featured:
+    get: Core_getFeaturedQuestions
+  /questions/no-answers:
+    get: Core_getUnansweredQuestions
+  /questions/unanswered:
+    get: Core_listUnansweredQuestions
+  /questions/{ids}:
+    get: Core_getQuestionListByIds
+  /questions/{ids}/answers:
+    get: Core_getQuestionAnswers
+  /questions/{ids}/comments:
+    get: Core_getQuestionCommentsList
+  /questions/{ids}/linked:
+    get: Core_getLinkedQuestionsList
+  /questions/{ids}/related:
+    get: Core_getRelatedQuestions
+  /questions/{ids}/timeline:
+    get: Core_getQuestionTimelineEvents
+  /revisions/{ids}:
+    get: Core_getEditRevisionsByIds
+  /search:
+    get: Core_searchQuestions
+  /search/advanced:
+    get: Core_searchAdvancedQuestions
+  /similar:
+    get: Core_getSimilarQuestions
+  /sites:
+    get: Core_getSiteList
+  /suggested-edits:
+    get: Core_getSuggestedEdits
+  /suggested-edits/{ids}:
+    get: Core_getSuggestedEditsByIds
+  /tags:
+    get: Core_getTagList
+  /tags/moderator-only:
+    get: Core_getModeratorTagsList
+  /tags/required:
+    get: Core_listRequiredTags
+  /tags/synonyms:
+    get: Core_listTagSynonyms
+  /tags/{tags}/faq:
+    get: Core_getFrequentlyAskedQuestions
+  /tags/{tags}/info:
+    get: Core_getTagInfo
+  /tags/{tags}/related:
+    get: Core_getRelatedTags
+  /tags/{tags}/synonyms:
+    get: Core_getTagSynonymsList
+  /tags/{tags}/wikis:
+    get: Core_getTagWikis
+  /tags/{tag}/top-answerers/{period}:
+    get: Core_getTopAnswerersByTag
+  /tags/{tag}/top-askers/{period}:
+    get: Core_getTopAskersByTag
+  /users:
+    get: Core_listAllUsers
+  /users/moderators:
+    get: Core_getModeratorsList
+  /users/moderators/elected:
+    get: Core_getElectedModerators
+  /users/{ids}:
+    get: Core_getUserListByIds
+  /users/{ids}/answers:
+    get: Core_getUserAnswers
+  /users/{ids}/associated:
+    get: Core_listAssociatedAccounts
+  /users/{ids}/badges:
+    get: Core_listUserBadges
+  /users/{ids}/comments:
+    get: Core_listUserComments
+  /users/{ids}/comments/{toid}:
+    get: Core_getCommentsByUsersAndTargetUser
+  /users/{ids}/favorites:
+    get: Core_getUserFavorites
+  /users/{ids}/mentioned:
+    get: Core_getUserMentionedComments
+  /users/{ids}/merges:
+    get: Core_getUserAccountMerges
+  /users/{ids}/questions:
+    get: Core_getUserQuestionsByIds
+  /users/{ids}/questions/featured:
+    get: Core_getUserFeaturedQuestions
+  /users/{ids}/questions/no-answers:
+    get: Core_getQuestionsNoAnswers
+  /users/{ids}/questions/unaccepted:
+    get: Core_getUnacceptedQuestions
+  /users/{ids}/questions/unanswered:
+    get: Core_listUnansweredQuestionsByIds
+  /users/{ids}/reputation:
+    get: Core_getUserReputationSubset
+  /users/{ids}/reputation-history:
+    get: Core_getUserReputationHistoryList
+  /users/{ids}/suggested-edits:
+    get: Core_getUserSuggestedEditsList
+  /users/{ids}/tags:
+    get: Core_getUserTagsList
+  /users/{ids}/timeline:
+    get: Core_getUserTimeline
+  /users/{id}/inbox:
+    get: Core_listUserInboxItems
+  /users/{id}/inbox/unread:
+    get: Core_getUserInboxUnreadItems
+  /users/{id}/notifications:
+    get: Core_getUserNotifications
+  /users/{id}/notifications/unread:
+    get: Core_getUserUnreadNotificationsList
+  /users/{id}/privileges:
+    get: Core_getUserPrivilegesList
+  /users/{id}/reputation-history/full:
+    get: Core_getUserReputationHistoryFull
+  /users/{id}/tags/{tags}/top-answers:
+    get: Core_getUserTopAnswersByTags
+  /users/{id}/tags/{tags}/top-questions:
+    get: Core_getUserTopQuestionsByTags
+  /users/{id}/top-answer-tags:
+    get: Core_getUserTopAnswerTags
+  /users/{id}/top-question-tags:
+    get: Core_getUserTopQuestionTags
+  /users/{id}/write-permissions:
+    get: Core_getUserWritePermissions
+operationTags:
+  /access-tokens/{accessTokens}:
+    get: core
+  /access-tokens/{accessTokens}/invalidate:
+    get: core
+  /answers:
+    get: core
+  /answers/{ids}:
+    get: core
+  /answers/{ids}/comments:
+    get: core
+  /apps/{accessTokens}/de-authenticate:
+    get: core
+  /badges:
+    get: core
+  /badges/name:
+    get: core
+  /badges/recipients:
+    get: core
+  /badges/tags:
+    get: core
+  /badges/{ids}:
+    get: core
+  /badges/{ids}/recipients:
+    get: core
+  /comments:
+    get: core
+  /comments/{ids}:
+    get: core
+  /comments/{id}/delete:
+    post: core
+  /comments/{id}/edit:
+    post: core
+  /errors:
+    get: core
+  /errors/{id}:
+    get: core
+  /events:
+    get: core
+  /filters/create:
+    get: core
+  /filters/{filters}:
+    get: core
+  /inbox:
+    get: core
+  /inbox/unread:
+    get: core
+  /info:
+    get: core
+  /me:
+    get: core
+  /me/answers:
+    get: core
+  /me/associated:
+    get: core
+  /me/badges:
+    get: core
+  /me/comments:
+    get: core
+  /me/comments/{toId}:
+    get: core
+  /me/favorites:
+    get: core
+  /me/inbox:
+    get: core
+  /me/inbox/unread:
+    get: core
+  /me/mentioned:
+    get: core
+  /me/merges:
+    get: core
+  /me/notifications:
+    get: core
+  /me/notifications/unread:
+    get: core
+  /me/privileges:
+    get: core
+  /me/questions:
+    get: core
+  /me/questions/featured:
+    get: core
+  /me/questions/no-answers:
+    get: core
+  /me/questions/unaccepted:
+    get: core
+  /me/questions/unanswered:
+    get: core
+  /me/reputation:
+    get: core
+  /me/reputation-history:
+    get: core
+  /me/reputation-history/full:
+    get: core
+  /me/suggested-edits:
+    get: core
+  /me/tags:
+    get: core
+  /me/tags/{tags}/top-answers:
+    get: core
+  /me/tags/{tags}/top-questions:
+    get: core
+  /me/timeline:
+    get: core
+  /me/top-answer-tags:
+    get: core
+  /me/top-question-tags:
+    get: core
+  /me/write-permissions:
+    get: core
+  /notifications:
+    get: core
+  /notifications/unread:
+    get: core
+  /posts:
+    get: core
+  /posts/{ids}:
+    get: core
+  /posts/{ids}/comments:
+    get: core
+  /posts/{ids}/revisions:
+    get: core
+  /posts/{ids}/suggested-edits:
+    get: core
+  /posts/{id}/comments/add:
+    post: core
+  /privileges:
+    get: core
+  /questions:
+    get: core
+  /questions/featured:
+    get: core
+  /questions/no-answers:
+    get: core
+  /questions/unanswered:
+    get: core
+  /questions/{ids}:
+    get: core
+  /questions/{ids}/answers:
+    get: core
+  /questions/{ids}/comments:
+    get: core
+  /questions/{ids}/linked:
+    get: core
+  /questions/{ids}/related:
+    get: core
+  /questions/{ids}/timeline:
+    get: core
+  /revisions/{ids}:
+    get: core
+  /search:
+    get: core
+  /search/advanced:
+    get: core
+  /similar:
+    get: core
+  /sites:
+    get: core
+  /suggested-edits:
+    get: core
+  /suggested-edits/{ids}:
+    get: core
+  /tags:
+    get: core
+  /tags/moderator-only:
+    get: core
+  /tags/required:
+    get: core
+  /tags/synonyms:
+    get: core
+  /tags/{tags}/faq:
+    get: core
+  /tags/{tags}/info:
+    get: core
+  /tags/{tags}/related:
+    get: core
+  /tags/{tags}/synonyms:
+    get: core
+  /tags/{tags}/wikis:
+    get: core
+  /tags/{tag}/top-answerers/{period}:
+    get: core
+  /tags/{tag}/top-askers/{period}:
+    get: core
+  /users:
+    get: core
+  /users/moderators:
+    get: core
+  /users/moderators/elected:
+    get: core
+  /users/{ids}:
+    get: core
+  /users/{ids}/answers:
+    get: core
+  /users/{ids}/associated:
+    get: core
+  /users/{ids}/badges:
+    get: core
+  /users/{ids}/comments:
+    get: core
+  /users/{ids}/comments/{toid}:
+    get: core
+  /users/{ids}/favorites:
+    get: core
+  /users/{ids}/mentioned:
+    get: core
+  /users/{ids}/merges:
+    get: core
+  /users/{ids}/questions:
+    get: core
+  /users/{ids}/questions/featured:
+    get: core
+  /users/{ids}/questions/no-answers:
+    get: core
+  /users/{ids}/questions/unaccepted:
+    get: core
+  /users/{ids}/questions/unanswered:
+    get: core
+  /users/{ids}/reputation:
+    get: core
+  /users/{ids}/reputation-history:
+    get: core
+  /users/{ids}/suggested-edits:
+    get: core
+  /users/{ids}/tags:
+    get: core
+  /users/{ids}/timeline:
+    get: core
+  /users/{id}/inbox:
+    get: core
+  /users/{id}/inbox/unread:
+    get: core
+  /users/{id}/notifications:
+    get: core
+  /users/{id}/notifications/unread:
+    get: core
+  /users/{id}/privileges:
+    get: core
+  /users/{id}/reputation-history/full:
+    get: core
+  /users/{id}/tags/{tags}/top-answers:
+    get: core
+  /users/{id}/tags/{tags}/top-questions:
+    get: core
+  /users/{id}/top-answer-tags:
+    get: core
+  /users/{id}/top-question-tags:
+    get: core
+  /users/{id}/write-permissions:
+    get: core
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  accepted:
+    query: false
+  answers:
+    query: false
+  base:
+    query: false
+  body:
+    query: false
+  callback:
+    query: false
+  closed:
+    query: false
+  exclude:
+    query: false
+  filter:
+    query: false
+  fromdate:
+    query: false
+  include:
+    query: false
+  inname:
+    query: false
+  intitle:
+    query: false
+  max:
+    query: false
+  migrated:
+    query: false
+  min:
+    query: false
+  notice:
+    query: false
+  nottagged:
+    query: false
+  order:
+    query: false
+  page:
+    query: false
+  pagesize:
+    query: false
+  preview:
+    query: false
+  q:
+    query: false
+  since:
+    query: false
+  site:
+    query: false
+  sort:
+    query: false
+  tagged:
+    query: false
+  title:
+    query: false
+  todate:
+    query: false
+  unsafe:
+    query: false
+  url:
+    query: false
+  user:
+    query: false
+  views:
+    query: false
+  wiki:
+    query: false
+validServerUrls: {}

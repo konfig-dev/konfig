@@ -59,6 +59,7 @@ export type AdditionalSpecDataProps = {
   originalCustomRequest?: CustomRequest;
   customRequestSpecFilename?: string;
   originalSpecUrl?: string;
+  fixedSpecFileName?: string;
 };
 
 export type SdkPagePropsWithPropertiesOmitted = Omit<

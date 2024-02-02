@@ -1,0 +1,436 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /albums:
+    get: Albums_listSeveral
+  /albums/{id}:
+    get: Albums_getInformation
+  /albums/{id}/tracks:
+    get: Albums_getTracksById
+  /artists:
+    get: Artists_getCatalogInfo
+  /artists/{id}:
+    get: Artists_getCatalogInfo
+  /artists/{id}/albums:
+    get: Artists_getAlbumsById
+  /artists/{id}/related-artists:
+    get: Artists_getRelatedArtists
+  /artists/{id}/top-tracks:
+    get: Artists_getTopTracks
+  /audio-analysis/{id}:
+    get: Tracks_getAudioAnalysis
+  /audio-features:
+    get: Tracks_getMultipleAudioFeatures
+  /audio-features/{id}:
+    get: Tracks_getAudioFeaturesById
+  /audiobooks:
+    get: Audiobooks_getSeveral
+  /audiobooks/{id}:
+    get: Audiobooks_getCatalogInfo
+  /audiobooks/{id}/chapters:
+    get: Audiobooks_getChaptersById
+  /browse/categories:
+    get: Categories_listSeveral
+  /browse/categories/{category_id}:
+    get: Categories_getSingle
+  /browse/categories/{category_id}/playlists:
+    get: Playlists_getCategoryPlaylists
+  /browse/featured-playlists:
+    get: Playlists_getFeatured
+  /browse/new-releases:
+    get: Albums_getNewReleases
+  /chapters:
+    get: Chapters_getMultipleByIds
+  /chapters/{id}:
+    get: Chapters_getChapterInfo
+  /episodes:
+    get: Episodes_getSeveral
+  /episodes/{id}:
+    get: Episodes_getSingleById
+  /markets:
+    get: Markets_listAvailable
+  /me:
+    get: Users_getCurrentUserProfile
+  /me/albums:
+    delete: Albums_removeSaved
+    get: Albums_getSaved
+    put: Albums_saveCurrentUserLibrary
+  /me/albums/contains:
+    get: Albums_checkSaved
+  /me/audiobooks:
+    delete: Audiobooks_removeFromLibrary
+    get: Audiobooks_listSaved
+    put: Audiobooks_saveCurrentUserLibrary
+  /me/audiobooks/contains:
+    get: Audiobooks_checkUserSaved
+  /me/episodes:
+    delete: Episodes_removeFromLibrary
+    get: Episodes_getUserSavedEpisodes
+    put: Episodes_saveCurrentUserLibrary
+  /me/episodes/contains:
+    get: Episodes_checkSavedEpisodes
+  /me/following:
+    delete: Users_unfollowArtistsUsers
+    get: Users_getFollowedArtists
+    put: Users_followArtistsOrUsers
+  /me/following/contains:
+    get: Users_checkFollowingArtistsUsers
+  /me/player:
+    get: Player_getCurrentPlaybackState
+    put: Player_transferPlaybackToNewDevice
+  /me/player/currently-playing:
+    get: Player_getCurrentlyPlayingTrack
+  /me/player/devices:
+    get: Player_getAvailableDevices
+  /me/player/next:
+    post: Player_skipToNextTrack
+  /me/player/pause:
+    put: Player_pausePlayback
+  /me/player/play:
+    put: Player_startPlayback
+  /me/player/previous:
+    post: Player_skipToPreviousTrack
+  /me/player/queue:
+    get: Player_getUserQueue
+    post: Player_addItemToQueue
+  /me/player/recently-played:
+    get: Player_getRecentlyPlayedTracks
+  /me/player/repeat:
+    put: Player_setRepeatMode
+  /me/player/seek:
+    put: Player_seekToPosition
+  /me/player/shuffle:
+    put: Player_togglePlaybackShuffle
+  /me/player/volume:
+    put: Player_setPlaybackVolume
+  /me/playlists:
+    get: Playlists_getUserPlaylists
+  /me/shows:
+    delete: Shows_removeUserLibrary
+    get: Shows_getUserSavedShows
+    put: Shows_saveCurrentUserLibrary
+  /me/shows/contains:
+    get: Shows_checkSavedShows
+  /me/top/{type}:
+    get: Users_getTopItems
+  /me/tracks:
+    delete: Tracks_removeFromLibrary
+    get: Tracks_getUserSaved
+    put: Tracks_saveForCurrentUser
+  /me/tracks/contains:
+    get: Tracks_checkSaved
+  /playlists/{playlist_id}:
+    get: Playlists_getPlaylistById
+    put: Playlists_updateDetails
+  /playlists/{playlist_id}/followers:
+    delete: Users_unfollowPlaylist
+    put: Users_followPlaylist
+  /playlists/{playlist_id}/followers/contains:
+    get: Users_checkIfFollowsPlaylist
+  /playlists/{playlist_id}/images:
+    get: Playlists_getCoverImage
+    put: Playlists_replaceCoverImage
+  /playlists/{playlist_id}/tracks:
+    delete: Playlists_removeItems
+    get: Playlists_getPlaylistItems
+    post: Playlists_addItems
+    put: Playlists_updatePlaylistItems
+  /recommendations:
+    get: Tracks_getRecommendations
+  /recommendations/available-genre-seeds:
+    get: Genres_getAvailableSeeds
+  /search:
+    get: Search_spotifyCatalogInfo
+  /shows:
+    get: Shows_getMultipleShowsInfo
+  /shows/{id}:
+    get: Shows_getInformation
+  /shows/{id}/episodes:
+    get: Shows_getEpisodesById
+  /tracks:
+    get: Tracks_getMultipleByIds
+  /tracks/{id}:
+    get: Tracks_getBySpotifyId
+  /users/{user_id}:
+    get: Users_getUserProfile
+  /users/{user_id}/playlists:
+    get: Playlists_getUserPlaylists
+    post: Playlists_createPlaylist
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /me/albums:
+    delete:
+      application/json: AlbumsRemoveSavedRequest
+    put:
+      application/json: AlbumsSaveCurrentUserLibraryRequest
+  /me/episodes:
+    delete:
+      application/json: EpisodesRemoveFromLibraryRequest
+    put:
+      application/json: EpisodesSaveCurrentUserLibraryRequest
+  /me/following:
+    delete:
+      application/json: UsersUnfollowArtistsUsersRequest
+    put:
+      application/json: UsersFollowArtistsOrUsersRequest
+  /me/player:
+    put:
+      application/json: PlayerTransferPlaybackToNewDeviceRequest
+  /me/player/play:
+    put:
+      application/json: PlayerStartPlaybackRequest
+  /me/tracks:
+    delete:
+      application/json: TracksRemoveFromLibraryRequest
+    put:
+      application/json: TracksSaveForCurrentUserRequest
+  /playlists/{playlist_id}:
+    put:
+      application/json: PlaylistsUpdateDetailsRequest
+  /playlists/{playlist_id}/followers:
+    put:
+      application/json: UsersFollowPlaylistRequest
+  /playlists/{playlist_id}/images:
+    put:
+      image/jpeg: PlaylistsReplaceCoverImageRequest
+  /playlists/{playlist_id}/tracks:
+    delete:
+      application/json: PlaylistsRemoveItemsRequest
+    post:
+      application/json: PlaylistsAddItemsRequest
+    put:
+      application/json: PlaylistsUpdatePlaylistItemsRequest
+  /users/{user_id}/playlists:
+    post:
+      application/json: PlaylistsCreatePlaylistRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /albums:
+    get:
+      '200':
+        application/json: AlbumsListSeveralResponse
+      '401':
+        application/json: AlbumsListSeveral401Response
+      '403':
+        application/json: AlbumsListSeveral403Response
+      '429':
+        application/json: AlbumsListSeveral429Response
+  /artists:
+    get:
+      '200':
+        application/json: ArtistsGetCatalogInfoResponse
+  /artists/{id}/top-tracks:
+    get:
+      '200':
+        application/json: ArtistsGetTopTracksResponse
+  /audio-features:
+    get:
+      '200':
+        application/json: TracksGetMultipleAudioFeaturesResponse
+  /audiobooks:
+    get:
+      '200':
+        application/json: AudiobooksGetSeveralResponse
+  /audiobooks/{id}:
+    get:
+      '400':
+        application/json: AudiobooksGetCatalogInfoResponse
+      '404':
+        application/json: AudiobooksGetCatalogInfo404Response
+  /browse/categories:
+    get:
+      '200':
+        application/json: CategoriesListSeveralResponse
+  /browse/new-releases:
+    get:
+      '200':
+        application/json: AlbumsGetNewReleasesResponse
+  /chapters:
+    get:
+      '200':
+        application/json: ChaptersGetMultipleByIdsResponse
+  /episodes:
+    get:
+      '200':
+        application/json: EpisodesGetSeveralResponse
+  /markets:
+    get:
+      '200':
+        application/json: MarketsListAvailableResponse
+  /me/albums/contains:
+    get:
+      '200':
+        application/json: AlbumsCheckSavedResponse
+  /me/following:
+    get:
+      '200':
+        application/json: UsersGetFollowedArtistsResponse
+  /me/player/devices:
+    get:
+      '200':
+        application/json: PlayerGetAvailableDevicesResponse
+  /me/top/{type}:
+    get:
+      '200':
+        application/json: UsersGetTopItemsResponse
+  /playlists/{playlist_id}/images:
+    get:
+      '200':
+        application/json: PlaylistsGetCoverImageResponse
+  /playlists/{playlist_id}/tracks:
+    delete:
+      '200':
+        application/json: PlaylistsRemoveItemsResponse
+  /recommendations/available-genre-seeds:
+    get:
+      '200':
+        application/json: GenresGetAvailableSeedsResponse
+  /search:
+    get:
+      '200':
+        application/json: SearchSpotifyCatalogInfoResponse
+  /shows:
+    get:
+      '200':
+        application/json: ShowsGetMultipleShowsInfoResponse
+securityParameters:
+  additional_types:
+    query: false
+  after:
+    query: false
+  before:
+    query: false
+  country:
+    query: false
+  device_id:
+    query: false
+  fields:
+    query: false
+  ids:
+    query: false
+  include_external:
+    query: false
+  include_groups:
+    query: false
+  limit:
+    query: false
+  locale:
+    query: false
+  market:
+    query: false
+  max_acousticness:
+    query: false
+  max_danceability:
+    query: false
+  max_duration_ms:
+    query: false
+  max_energy:
+    query: false
+  max_instrumentalness:
+    query: false
+  max_key:
+    query: false
+  max_liveness:
+    query: false
+  max_loudness:
+    query: false
+  max_mode:
+    query: false
+  max_popularity:
+    query: false
+  max_speechiness:
+    query: false
+  max_tempo:
+    query: false
+  max_time_signature:
+    query: false
+  max_valence:
+    query: false
+  min_acousticness:
+    query: false
+  min_danceability:
+    query: false
+  min_duration_ms:
+    query: false
+  min_energy:
+    query: false
+  min_instrumentalness:
+    query: false
+  min_key:
+    query: false
+  min_liveness:
+    query: false
+  min_loudness:
+    query: false
+  min_mode:
+    query: false
+  min_popularity:
+    query: false
+  min_speechiness:
+    query: false
+  min_tempo:
+    query: false
+  min_time_signature:
+    query: false
+  min_valence:
+    query: false
+  offset:
+    query: false
+  position:
+    query: false
+  position_ms:
+    query: false
+  q:
+    query: false
+  seed_artists:
+    query: false
+  seed_genres:
+    query: false
+  seed_tracks:
+    query: false
+  state:
+    query: false
+  target_acousticness:
+    query: false
+  target_danceability:
+    query: false
+  target_duration_ms:
+    query: false
+  target_energy:
+    query: false
+  target_instrumentalness:
+    query: false
+  target_key:
+    query: false
+  target_liveness:
+    query: false
+  target_loudness:
+    query: false
+  target_mode:
+    query: false
+  target_popularity:
+    query: false
+  target_speechiness:
+    query: false
+  target_tempo:
+    query: false
+  target_time_signature:
+    query: false
+  target_valence:
+    query: false
+  time_range:
+    query: false
+  timestamp:
+    query: false
+  type:
+    query: false
+  uri:
+    query: false
+  uris:
+    query: false
+  volume_percent:
+    query: false
+validServerUrls: {}

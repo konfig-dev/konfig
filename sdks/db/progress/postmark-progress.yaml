@@ -1,0 +1,377 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /bounces/{bounceid}:
+    get:
+      '200':
+        application/json: {}
+  /bounces/{bounceid}/activate:
+    put:
+      '200':
+        application/json: {}
+  /bounces/{bounceid}/dump:
+    get:
+      '200':
+        application/json: {}
+  /messages/inbound/{messageid}/details:
+    get:
+      '200':
+        application/json: {}
+  /messages/outbound/clicks:
+    get:
+      '200':
+        application/json: {}
+  /messages/outbound/clicks/{messageid}:
+    get:
+      '200':
+        application/json: {}
+  /messages/outbound/opens:
+    get:
+      '200':
+        application/json: {}
+  /messages/outbound/opens/{messageid}:
+    get:
+      '200':
+        application/json: {}
+  /messages/outbound/{messageid}/details:
+    get:
+      '200':
+        application/json: {}
+  /messages/outbound/{messageid}/dump:
+    get:
+      '200':
+        application/json: {}
+  /server:
+    get:
+      '200':
+        application/json: {}
+    put:
+      '200':
+        application/json: {}
+  /stats/outbound/bounces:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/clicks:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/clicks/browserfamilies:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/clicks/location:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/clicks/platforms:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/opens:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/opens/emailclients:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/opens/platforms:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/spam:
+    get:
+      '200':
+        application/json: {}
+  /stats/outbound/tracked:
+    get:
+      '200':
+        application/json: {}
+  /templates:
+    get:
+      '200':
+        application/json: {}
+    post:
+      '200':
+        application/json: {}
+  /templates/validate:
+    post:
+      '200':
+        application/json: {}
+  /templates/{templateIdOrAlias}:
+    delete:
+      '200':
+        application/json: {}
+    get:
+      '200':
+        application/json: {}
+    put:
+      '200':
+        application/json: {}
+  /triggers/inboundrules:
+    get:
+      '200':
+        application/json: {}
+    post:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /bounces:
+    get: BouncesApi_listBounces
+  /bounces/{bounceid}:
+    get: BouncesApi_getBounce
+  /bounces/{bounceid}/activate:
+    put: BouncesApi_activateBounce
+  /bounces/{bounceid}/dump:
+    get: BouncesApi_getDump
+  /deliverystats:
+    get: BouncesApi_getDeliveryStats
+  /email:
+    post: SendingApi_sendSingleEmail
+  /email/batch:
+    post: SendingApi_sendBatchEmails
+  /email/batchWithTemplates:
+    post: SendingApi_sendBatchWithTemplates
+  /email/withTemplate:
+    post: SendingApi_sendEmailTemplate
+  /messages/inbound:
+    get: MessagesApi_searchInboundMessages
+  /messages/inbound/{messageid}/bypass:
+    put: MessagesApi_updateBypassRulesForInboundMessage
+  /messages/inbound/{messageid}/details:
+    get: MessagesApi_getInboundMessageDetails
+  /messages/inbound/{messageid}/retry:
+    put: MessagesApi_retryInboundMessage
+  /messages/outbound:
+    get: MessagesApi_searchOutboundMessages
+  /messages/outbound/clicks:
+    get: MessagesApi_getAllClicks
+  /messages/outbound/clicks/{messageid}:
+    get: MessagesApi_getMessageClicks
+  /messages/outbound/opens:
+    get: MessagesApi_listOpensForOutbound
+  /messages/outbound/opens/{messageid}:
+    get: MessagesApi_getMessageOpens
+  /messages/outbound/{messageid}/details:
+    get: MessagesApi_getOutboundMessageDetails
+  /messages/outbound/{messageid}/dump:
+    get: MessagesApi_getMessageDump
+  /server:
+    get: ServerConfigurationApi_getConfiguration
+    put: ServerConfigurationApi_updateConfiguration
+  /stats/outbound:
+    get: StatsApi_getOutboundOverview
+  /stats/outbound/bounces:
+    get: StatsApi_getBounceCounts
+  /stats/outbound/clicks:
+    get: StatsApi_getOutboundClickCounts
+  /stats/outbound/clicks/browserfamilies:
+    get: StatsApi_getOutboundClicksBrowserFamilies
+  /stats/outbound/clicks/location:
+    get: StatsApi_getOutboundClicksLocation
+  /stats/outbound/clicks/platforms:
+    get: StatsApi_getBrowserPlatformUsage
+  /stats/outbound/opens:
+    get: StatsApi_getEmailOpenCounts
+  /stats/outbound/opens/emailclients:
+    get: StatsApi_getEmailClientUsage
+  /stats/outbound/opens/platforms:
+    get: StatsApi_getEmailPlatformUsage
+  /stats/outbound/sends:
+    get: StatsApi_getSentCounts
+  /stats/outbound/spam:
+    get: StatsApi_getSpamComplaints
+  /stats/outbound/tracked:
+    get: StatsApi_getTrackedEmailCounts
+  /templates:
+    get: TemplatesApi_listTemplates
+    post: TemplatesApi_createTemplate
+  /templates/validate:
+    post: TemplatesApi_validateTemplateContent
+  /templates/{templateIdOrAlias}:
+    delete: TemplatesApi_deleteTemplate
+    get: TemplatesApi_getTemplateById
+    put: TemplatesApi_updateTemplate
+  /triggers/inboundrules:
+    get: InboundRulesApi_listTriggers
+    post: InboundRulesApi_createTrigger
+  /triggers/inboundrules/{triggerid}:
+    delete: InboundRulesApi_deleteSingleTrigger
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /bounces/{bounceid}:
+    get:
+      '200':
+        application/json: BouncesApiGetBounceResponse
+  /bounces/{bounceid}/activate:
+    put:
+      '200':
+        application/json: BouncesApiActivateBounceResponse
+  /bounces/{bounceid}/dump:
+    get:
+      '200':
+        application/json: BouncesApiGetDumpResponse
+  /messages/inbound/{messageid}/details:
+    get:
+      '200':
+        application/json: MessagesApiGetInboundMessageDetailsResponse
+  /messages/outbound/clicks:
+    get:
+      '200':
+        application/json: MessagesApiGetAllClicksResponse
+  /messages/outbound/clicks/{messageid}:
+    get:
+      '200':
+        application/json: MessagesApiGetMessageClicksResponse
+  /messages/outbound/opens:
+    get:
+      '200':
+        application/json: MessagesApiListOpensForOutboundResponse
+  /messages/outbound/opens/{messageid}:
+    get:
+      '200':
+        application/json: MessagesApiGetMessageOpensResponse
+  /messages/outbound/{messageid}/details:
+    get:
+      '200':
+        application/json: MessagesApiGetOutboundMessageDetailsResponse
+  /messages/outbound/{messageid}/dump:
+    get:
+      '200':
+        application/json: MessagesApiGetMessageDumpResponse
+  /server:
+    get:
+      '200':
+        application/json: ServerConfigurationApiGetConfigurationResponse
+    put:
+      '200':
+        application/json: ServerConfigurationApiUpdateConfigurationResponse
+  /stats/outbound/bounces:
+    get:
+      '200':
+        application/json: StatsApiGetBounceCountsResponse
+  /stats/outbound/clicks:
+    get:
+      '200':
+        application/json: StatsApiGetOutboundClickCountsResponse
+  /stats/outbound/clicks/browserfamilies:
+    get:
+      '200':
+        application/json: StatsApiGetOutboundClicksBrowserFamiliesResponse
+  /stats/outbound/clicks/location:
+    get:
+      '200':
+        application/json: StatsApiGetOutboundClicksLocationResponse
+  /stats/outbound/clicks/platforms:
+    get:
+      '200':
+        application/json: StatsApiGetBrowserPlatformUsageResponse
+  /stats/outbound/opens:
+    get:
+      '200':
+        application/json: StatsApiGetEmailOpenCountsResponse
+  /stats/outbound/opens/emailclients:
+    get:
+      '200':
+        application/json: StatsApiGetEmailClientUsageResponse
+  /stats/outbound/opens/platforms:
+    get:
+      '200':
+        application/json: StatsApiGetEmailPlatformUsageResponse
+  /stats/outbound/spam:
+    get:
+      '200':
+        application/json: StatsApiGetSpamComplaintsResponse
+  /stats/outbound/tracked:
+    get:
+      '200':
+        application/json: StatsApiGetTrackedEmailCountsResponse
+  /templates:
+    get:
+      '200':
+        application/json: TemplatesApiListTemplatesResponse
+    post:
+      '200':
+        application/json: TemplatesApiCreateTemplateResponse
+  /templates/validate:
+    post:
+      '200':
+        application/json: TemplatesApiValidateTemplateContentResponse
+  /templates/{templateIdOrAlias}:
+    delete:
+      '200':
+        application/json: TemplatesApiDeleteTemplateResponse
+    get:
+      '200':
+        application/json: TemplatesApiGetTemplateByIdResponse
+    put:
+      '200':
+        application/json: TemplatesApiUpdateTemplateResponse
+  /triggers/inboundrules:
+    get:
+      '200':
+        application/json: InboundRulesApiListTriggersResponse
+    post:
+      '200':
+        application/json: InboundRulesApiCreateTriggerResponse
+securityParameters:
+  Count:
+    query: false
+  Offset:
+    query: false
+  city:
+    query: false
+  client_company:
+    query: false
+  client_family:
+    query: false
+  client_name:
+    query: false
+  count:
+    query: false
+  country:
+    query: false
+  emailFilter:
+    query: false
+  fromdate:
+    query: false
+  fromemail:
+    query: false
+  inactive:
+    query: false
+  mailboxhash:
+    query: false
+  messageID:
+    query: false
+  offset:
+    query: false
+  os_company:
+    query: false
+  os_family:
+    query: false
+  os_name:
+    query: false
+  platform:
+    query: false
+  recipient:
+    query: false
+  region:
+    query: false
+  status:
+    query: false
+  subject:
+    query: false
+  tag:
+    query: false
+  todate:
+    query: false
+  type:
+    query: false
+validServerUrls:
+  api.postmarkapp.com:
+    url: api.postmarkapp.com

@@ -1,0 +1,195 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /media/{MediaId}:
+    get:
+      '200':
+        application/json: {}
+  /metrics:
+    get:
+      '200':
+        application/json: {}
+  /stats/app:
+    get:
+      '200':
+        application/json: {}
+  /stats/db:
+    get:
+      '200':
+        application/json: {}
+  /support:
+    get:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /account:
+    post: Registration_accountCreation
+  /account/shards:
+    post: Application_setShards
+  /account/verify:
+    post: Registration_verifyAccount
+  /certificates/external:
+    post: Certificates_uploadExternal
+  /certificates/external/ca:
+    get: Certificates_downloadCaCertificate
+  /certificates/webhooks/ca:
+    delete: Certificates_deleteWebhookCa
+    get: Certificates_downloadWebhookCaCertificate
+    post: Certificates_uploadWebhookCa
+  /contacts:
+    post: Contacts_createContact
+  /groups:
+    get: Groups_getAll
+    post: Groups_createGroup
+  /groups/{GroupId}:
+    get: Groups_getInfo
+    put: Groups_updateGroupInfo
+  /groups/{GroupId}/admins:
+    delete: Groups_demoteAdmin
+    patch: Groups_promoteToAdmin
+  /groups/{GroupId}/icon:
+    delete: Groups_deleteIcon
+    get: Groups_getGroupIcon
+    post: Groups_setIcon
+  /groups/{GroupId}/invite:
+    delete: Groups_deleteGroupInvite
+    get: Groups_getInvite
+  /groups/{GroupId}/leave:
+    post: Groups_leaveGroup
+  /groups/{GroupId}/participants:
+    delete: Groups_removeParticipant
+  /health:
+    get: Health_checkStatus
+  /media:
+    post: Media_upload
+  /media/{MediaId}:
+    delete: Media_remove
+    get: Media_downloadMedia
+  /messages:
+    post: Messages_sendMessage
+  /messages/{MessageID}:
+    put: Messages_markAsRead
+  /metrics:
+    get: Health_getMetrics
+  /settings/account/two-step:
+    delete: TwoStepVerification_disable
+    post: TwoStepVerification_enableAccountSecurity
+  /settings/application:
+    delete: Application_resetSettings
+    get: Application_getSettings
+    patch: Application_updateSettings
+  /settings/application/media/providers:
+    get: Application_getMediaProviders
+    post: Application_updateMediaProviders
+  /settings/application/media/providers/{ProviderName}:
+    delete: Application_deleteMediaProvider
+  /settings/backup:
+    post: BackupRestore_settingsPost
+  /settings/business/profile:
+    get: BusinessProfile_getProfile
+    post: BusinessProfile_updateProfile
+  /settings/profile/about:
+    get: Profile_getAbout
+    patch: Profile_updateAbout
+  /settings/profile/photo:
+    delete: Profile_removePhoto
+    get: Profile_getPhoto
+    post: Profile_uploadPhoto
+  /settings/restore:
+    post: BackupRestore_settingsPost
+  /stats/app:
+    get: Health_getAppStats
+  /stats/db:
+    get: Health_dbStatsGet
+  /support:
+    get: Health_getSupportInfo
+  /users:
+    post: Users_createUser
+  /users/login:
+    post: Users_performLogin
+  /users/logout:
+    post: Users_performLogout
+  /users/{UserUsername}:
+    delete: Users_removeUser
+    get: Users_getByUsername
+    put: Users_updateUserByUsername
+operationTags:
+  /settings/profile/photo:
+    delete: Profile
+renameTags: {}
+requestSchemaNames:
+  /certificates/external:
+    post:
+      text/plain: CertificatesUploadExternalRequest
+  /certificates/webhooks/ca:
+    post:
+      text/plain: CertificatesUploadWebhookCaRequest
+  /groups/{GroupId}/icon:
+    delete:
+      multipart/form-data: GroupsDeleteIconRequest
+    post:
+      multipart/form-data: GroupsSetIconRequest
+  /media:
+    post:
+      application/msword: MediaUploadRequest
+      application/pdf: MediaUploadRequest1
+      application/vnd.ms-excel: MediaUploadRequest2
+      application/vnd.ms-powerpoint: MediaUploadRequest3
+      audio/acc: MediaUploadRequest4
+      audio/amr: MediaUploadRequest5
+      audio/mp4: MediaUploadRequest6
+      audio/mpeg: MediaUploadRequest7
+      audio/ogg: MediaUploadRequest8
+      codecs=opus: MediaUploadRequest9
+      image/jpeg: MediaUploadRequest10
+      image/png: MediaUploadRequest11
+      text/plain: MediaUploadRequest12
+      video/mp4: MediaUploadRequest13
+  /settings/application/media/providers:
+    post:
+      application/json: ApplicationUpdateMediaProvidersRequest
+  /settings/profile/photo:
+    post:
+      multipart/form-data: ProfileUploadPhotoRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /certificates/external/ca:
+    get:
+      '200':
+        text/plain: CertificatesDownloadCaCertificateResponse
+  /certificates/webhooks/ca:
+    get:
+      '200':
+        text/plain: CertificatesDownloadWebhookCaCertificateResponse
+  /media/{MediaId}:
+    get:
+      '200':
+        application/json: MediaDownloadMediaResponse
+  /metrics:
+    get:
+      '200':
+        application/json: HealthGetMetricsResponse
+        text/plain: HealthGetMetrics200Response
+  /settings/profile/photo:
+    get:
+      '200':
+        image/jpeg: ProfileGetPhotoResponse
+  /stats/app:
+    get:
+      '200':
+        application/json: HealthGetAppStatsResponse
+        text/plain: HealthGetAppStats200Response
+  /stats/db:
+    get:
+      '200':
+        application/json: HealthDbStatsGetResponse
+        text/plain: HealthDbStatsGet200Response
+  /support:
+    get:
+      '200':
+        application/json: HealthGetSupportInfoResponse
+securityParameters:
+  format:
+    query: false
+validServerUrls: {}

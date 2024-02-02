@@ -1,0 +1,4513 @@
+openapi: 3.0.0
+info:
+  title: Wikimedia
+  description: >
+    This API provides cacheable and straightforward access to Wikimedia content
+    and data, in machine-readable formats.
+
+    ### Global Rules
+
+    - Limit your clients to no more than 200 requests/s to this API.
+      Each API endpoint's documentation may detail more specific usage limits.
+    - Set a unique `User-Agent` or `Api-User-Agent` header that
+      allows us to contact you quickly. Email addresses or URLs
+      of contact pages work well.
+
+    By using this API, you agree to Wikimedia's  [Terms of
+    Use](https://wikimediafoundation.org/wiki/Terms_of_Use) and [Privacy
+    Policy](https://wikimediafoundation.org/wiki/Privacy_policy). Unless
+    otherwise specified in the endpoint documentation below, content accessed
+    via this API is licensed under the [CC-BY-SA
+    3.0](https://creativecommons.org/licenses/by-sa/3.0/)  and
+    [GFDL](https://www.gnu.org/copyleft/fdl.html) licenses, and you irrevocably
+    agree to release modifications or additions made through this API under
+    these licenses.  See https://www.mediawiki.org/wiki/REST_API for background
+    and details.
+
+    ### Endpoint documentation
+
+    Please consult each endpoint's documentation for details on:
+
+    - Licensing information for the specific type of content
+      and data served via the endpoint.
+    - Stability markers to inform you about development status and
+      change policy, according to
+      [our API version policy](https://www.mediawiki.org/wiki/API_versioning).
+    - Endpoint specific usage limits.
+  version: 1.0.0
+  contact:
+    name: the Wikimedia Services team
+    url: http://mediawiki.org/wiki/REST_API
+  license:
+    name: Software available under the Apache 2 license
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  termsOfService: https://wikimediafoundation.org/wiki/Terms_of_Use
+  x-apisguru-categories:
+    - media
+  x-logo:
+    url: https://twitter.com/Wikipedia/profile_image?size=original
+  x-origin:
+    - version: '2.0'
+      format: swagger
+      url: https://wikimedia.org/api/rest_v1/?spec
+  x-providerName: wikimedia.org
+  x-konfig-ignore:
+    object-with-no-properties: true
+servers:
+  - url: https://wikimedia.org/api/rest_v1
+tags:
+  - name: Transform
+  - name: Edited pages data
+  - name: Bytes difference data
+  - name: Editors data
+  - name: Pageviews data
+  - description: formula rendering
+    name: Math
+  - name: Edits data
+  - name: Feed content availability
+  - name: Legacy data
+  - name: Registered users data
+  - name: Unique devices data
+paths:
+  /feed/availability:
+    get:
+      tags:
+        - Feed content availability
+      summary: Gets availability of featured feed content for the apps by wiki domain.
+      operationId: FeedContentAvailability_getByWikiDomain
+      description: >
+        Gets availability of featured feed content for the apps by wiki domain.
+
+
+        Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+      responses:
+        '200':
+          description: >-
+            JSON containing lists of wiki domains for which feed content is
+            available.
+          content:
+            application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Availability/1.0.1":
+              schema:
+                $ref: '#/components/schemas/availability'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/availability'
+        default:
+          description: Error
+          content:
+            application/json; charset=utf-8; profile="https://www.mediawiki.org/wiki/Specs/Availability/1.0.1":
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /media/math/check/{type}:
+    post:
+      tags:
+        - Math
+      summary: Check and normalize a TeX formula.
+      operationId: Math_checkFormula
+      description: >
+        Checks the supplied TeX formula for correctness and returns the
+
+        normalised formula representation as well as information about
+
+        identifiers. Available types are tex and inline-tex. The response
+
+        contains the `x-resource-location` header which can be used to retrieve
+
+        the render of the checked formula in one of the supported rendering
+
+        formats. Just append the value of the header to `/media/math/{format}/`
+
+        and perform a GET request against that URL.
+
+
+        Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
+      parameters:
+        - description: The input type of the given formula; can be tex or inline-tex
+          in: path
+          name: type
+          required: true
+          schema:
+            type: string
+            enum:
+              - tex
+              - inline-tex
+              - chem
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MathCheckFormulaRequest'
+        required: true
+      responses:
+        '200':
+          description: Information about the checked formula
+        '400':
+          description: Invalid type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-amples:
+        - title: Mathoid - check test formula
+          request:
+            body:
+              q: E=mc^{2}
+            params:
+              domain: wikimedia.org
+              type: tex
+          response:
+            body:
+              checked: /.+/
+              success: true
+            headers:
+              cache-control: no-cache
+              content-type: /^application\/json/
+              x-resource-location: /.+/
+            status: 200
+      x-monitor: true
+  /media/math/formula/{hash}:
+    get:
+      tags:
+        - Math
+      summary: Get a previously-stored formula
+      operationId: Math_getFormulaByHash
+      description: >
+        Returns the previously-stored formula via `/media/math/check/{type}` for
+
+        the given hash.
+
+
+        Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
+      parameters:
+        - description: The hash string of the previous POST data
+          in: path
+          name: hash
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: Information about the checked formula
+        '404':
+          description: Data for the given hash cannot be found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /media/math/render/{format}/{hash}:
+    get:
+      tags:
+        - Math
+      summary: Get rendered formula in the given format.
+      operationId: Math_renderFormulaByHash
+      description: >
+        Given a request hash, renders a TeX formula into its mathematic
+
+        representation in the given format. When a request is issued to the
+
+        `/media/math/check/{format}` POST endpoint, the response contains the
+
+        `x-resource-location` header denoting the hash ID of the POST data. Once
+
+        obtained, this endpoint has to be used to obtain the actual render.
+
+
+        Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable).
+      parameters:
+        - description: The output format; can be svg or mml
+          in: path
+          name: format
+          required: true
+          schema:
+            type: string
+            enum:
+              - svg
+              - mml
+              - png
+        - description: The hash string of the previous POST data
+          in: path
+          name: hash
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        '200':
+          description: The rendered formula
+        '404':
+          description: Unknown format or hash ID
+          content:
+            image/svg+xml:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/mathml+xml:
+              schema:
+                $ref: '#/components/schemas/problem'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+        default:
+          description: Error
+          content:
+            image/svg+xml:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/mathml+xml:
+              schema:
+                $ref: '#/components/schemas/problem'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/bytes-difference/absolute/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Bytes difference data
+      summary: >
+        Get the sum of absolute value of text bytes difference between current
+        edit and
+
+        previous one.
+      operationId: BytesDifferenceData_getAbsoluteAggregateByProjectAndDateRange
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of
+        absolute bytes
+
+        difference sums. You can filter by editors-type (all-editor-types,
+        anonymous, group-bot,
+
+        name-bot, user) and page-type (all-page-types, content, non-content).
+        You can choose
+
+        between daily and monthly granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org. If you're interested in the aggregation of all
+            projects, use
+
+            all-projects.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >
+            Time unit for the response data. As of today, supported values are
+            daily and monthly
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/BytesDifferenceDataGetAbsoluteAggregateByProjectAndDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/absolute-bytes-difference'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/bytes-difference/absolute/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Bytes difference data
+      summary: Get the sum of absolute text bytes difference per page.
+      operationId: BytesDifferenceData_getAbsolutePerPage
+      description: >
+        Given a Mediawiki project, a page-title prefixed with canonical
+        namespace (for
+
+        instance 'User:Jimbo_Wales') and a date range, returns a timeseries of
+        bytes
+
+        difference absolute sums. You can filter by editors-type
+        (all-editor-types, anonymous,
+
+        group-bot, name-bot, user). You can choose between daily and monthly
+        granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            The page-title to request absolute bytes-difference for. Should be
+            prefixed with the
+
+            page canonical namespace.
+          in: path
+          name: page-title
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            Time unit for the response data. As of today, supported values are
+            daily and monthly
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/BytesDifferenceDataGetAbsolutePerPageResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/absolute-bytes-difference-per-page'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/bytes-difference/net/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Bytes difference data
+      summary: >-
+        Get the sum of net text bytes difference between current edit and
+        previous one.
+      operationId: BytesDifferenceData_getNetAggregateByProjectAndDateRange
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of
+        bytes difference net
+
+        sums. You can filter by editors-type (all-editor-types, anonymous,
+        group-bot, name-bot,
+
+        user) and page-type (all-page-types, content or non-content). You can
+        choose between
+
+        daily and monthly granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org. If you're interested in the aggregation of all
+            projects, use
+
+            all-projects.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >
+            Time unit for the response data. As of today, supported values are
+            daily and monthly
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/BytesDifferenceDataGetNetAggregateByProjectAndDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/net-bytes-difference'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/bytes-difference/net/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Bytes difference data
+      summary: Get the sum of net text bytes difference per page.
+      operationId: BytesDifferenceData_getSumNetTextBytesDifferencePerPage
+      description: >
+        Given a Mediawiki project, a page-title prefixed with canonical
+        namespace (for
+
+        instance 'User:Jimbo_Wales') and a date range, returns a timeseries of
+        bytes
+
+        difference net sums. You can filter by editors-type (all-editor-types,
+        anonymous,
+
+        group-bot, name-bot, user). You can choose between daily and monthly
+        granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            The page-title to request net bytes-difference for. Should be
+            prefixed with the
+
+            page canonical namespace.
+          in: path
+          name: page-title
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            Time unit for the response data. As of today, supported values are
+            daily and monthly
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/BytesDifferenceDataGetSumNetTextBytesDifferencePerPageResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/net-bytes-difference-per-page'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edited-pages/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Edited pages data
+      summary: Get edited-pages counts for a project.
+      operationId: EditedPagesData_getAggregateByProjectAndDateRange
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of its
+        edited-pages counts.
+
+        You can filter by editor-type (all-editor-types, anonymous, group-bot,
+        name-bot, user),
+
+        page-type (all-page-types, content or non-content) or activity-level
+        (1..4-edits,
+
+        5..24-edits, 25..99-edits, 100..-edits). You can choose between daily
+        and monthly
+
+        granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off.  For projects like commons without language codes, use
+            commons.wikimedia.
+
+            For projects like www.mediawiki.org, you can use that full string,
+            or just use
+
+            mediawiki or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edited-pages
+            in content
+
+            namespaces) or non-content (edited-pages in non-content namespaces).
+            If you are
+
+            interested in edited-pages regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >
+            If you want to filter by activity-level, use one of 1..4-edits,
+            5..24-edits,
+
+            25..99-edits or 100..-edits. If you are interested in edited-pages
+            regardless
+
+            of their activity level, use all-activity-levels.
+          in: path
+          name: activity-level
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-activity-levels
+              - 1..4-edits
+              - 5..24-edits
+              - 25..99-edits
+              - 100..-edits
+        - description: >
+            The time unit for the response data. As of today, supported values
+            are
+
+            daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditedPagesDataGetAggregateByProjectAndDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/edited-pages'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edited-pages/new/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Edited pages data
+      summary: Get new pages counts for a project.
+      operationId: EditedPagesData_getNewPagesCountsForProject
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of its
+        new pages counts.
+
+        You can filter by editor type (all-editor-types, anonymous, group-bot,
+        name-bot, user)
+
+        or page-type (all-page-types, content or non-content). You can choose
+        between daily and
+
+        monthly granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off.  For projects like commons without language codes, use
+            commons.wikimedia.
+
+            For projects like www.mediawiki.org, you can use that full string,
+            or just use
+
+            mediawiki or mediawiki.org. If you're interested in the aggregation
+            of all
+
+            projects, use all-projects.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging
+
+            to the bot group but having bot-like names) or user (registered
+            account not in bot
+
+            group nor having bot-like name). If you are interested in edits
+            regardless of
+
+            their editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (new pages in
+            content
+
+            namespaces) or non-content (new pages in non-content namespaces). If
+            you are
+
+            interested in new-articles regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >
+            The time unit for the response data. As of today, supported values
+            are
+
+            daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditedPagesDataGetNewPagesCountsForProjectResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/new-pages'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edited-pages/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Edited pages data
+      summary: Get top 100 edited-pages by absolute bytes-difference.
+      operationId: EditedPagesData_getTopByAbsoluteBytesDifference
+      description: >
+        Given a Mediawiki project and a date (day or month), returns a
+        timeseries of the top 100
+
+        edited-pages by absolute bytes-difference. You can filter by editor-type
+        (all-editor-types,
+
+        anonymous, group-bot, name-bot, user) or page-type (all-page-types,
+        content or non-content).
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >-
+            The year of the date for which to retrieve top edited-pages, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The month of the date for which to retrieve top edited-pages, in MM
+            format. If you want to get the top edited-pages of a whole month,
+            the day parameter should be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top edited-pages, in DD
+            format, or all-days for a monthly value.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditedPagesDataGetTopByAbsoluteBytesDifferenceResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/top-edited-pages-by-abs-bytes-diff'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edited-pages/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Edited pages data
+      summary: Get top 100 edited-pages by edits count.
+      operationId: EditedPagesData_getTopByEditsCount
+      description: >
+        Given a Mediawiki project and a date (day or month), returns a
+        timeseries of the top
+
+        100 edited-pages by edits count. You can filter by editor-type
+        (all-editor-types,
+
+        anonymous, group-bot, name-bot, user) or page-type (all-page-types,
+        content or
+
+        non-content).
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >-
+            The year of the date for which to retrieve top edited-pages, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The month of the date for which to retrieve top edited-pages, in MM
+            format. If you want to get the top edited-pages of a whole month,
+            the day parameter should be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top edited-pages, in DD
+            format, or all-days for a monthly value.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditedPagesDataGetTopByEditsCountResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/top-edited-pages-by-edits'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edited-pages/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Edited pages data
+      summary: Get top 100 edited-pages by net bytes-difference.
+      operationId: EditedPagesData_getTopByNetBytesDifference
+      description: >
+        Given a Mediawiki project and a date (day or month), returns a
+        timeseries of the top 100
+
+        edited-pages by net bytes-difference. You can filter by editor-type
+        (all-editor-types,
+
+        anonymous, group-bot, name-bot, user) or page-type (all-page-types,
+        content or non-content).
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >-
+            The year of the date for which to retrieve top edited-pages, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The month of the date for which to retrieve top edited-pages, in MM
+            format. If you want to get the top edited-pages of a whole month,
+            the day parameter should be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top edited-pages, in DD
+            format, or all-days for a monthly value.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditedPagesDataGetTopByNetBytesDifferenceResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/top-edited-pages-by-net-bytes-diff'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/editors/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Editors data
+      summary: Get editors counts for a project.
+      operationId: EditorsData_getEditorsCountsForProject
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of its
+        editors counts.
+
+        You can filter by editory-type (all-editor-types, anonymous, group-bot,
+        name-bot, user),
+
+        page-type (all-page-types, content or non-content) or activity-level
+        (1..4-edits,
+
+        5..24-edits, 25..99-edits or 100..-edits). You can choose between daily
+        and monthly
+
+        granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off.  For projects like commons without language codes, use
+            commons.wikimedia.
+
+            For projects like www.mediawiki.org, you can use that full string,
+            or just use
+
+            mediawiki or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging
+
+            to the bot group but having bot-like names) or user (registered
+            account not in bot
+
+            group nor having bot-like name). If you are interested in edits
+            regardless
+
+            of their editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits made
+            in content
+
+            namespaces) or non-content (edits made in non-content namespaces).
+            If you are
+
+            interested in editors regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >
+            If you want to filter by activity-level, use one of 1..4-edits,
+            5..24-edits,
+
+            25..99-edits or 100..-edits. If you are interested in editors
+            regardless
+
+            of their activity-level, use all-activity-levels.
+          in: path
+          name: activity-level
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-activity-levels
+              - 1..4-edits
+              - 5..24-edits
+              - 25..99-edits
+              - 100..-edits
+        - description: >
+            The time unit for the response data. As of today, supported values
+            are
+
+            daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditorsDataGetEditorsCountsForProjectResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/editors'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/editors/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Editors data
+      summary: Get top 100 editors by absolute bytes-difference.
+      operationId: EditorsData_getTopByAbsoluteBytesDifference
+      description: >
+        Given a Mediawiki project and a date (day or month), returns a
+        timeseries of the top 100
+
+        editors by absolute bytes-difference. You can filter by editor-type
+        (all-editor-types,
+
+        anonymous, group-bot, name-bot, user) or page-type (all-page-types,
+        content or non-content).
+
+        The user_text returned is either the mediawiki user_text if the user is
+        registered, or
+
+        null if user is anonymous.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >-
+            The year of the date for which to retrieve top editors, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The month of the date for which to retrieve top editors, in MM
+            format. If you want to get the top editors of a whole month, the day
+            parameter should be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top editors, in DD format,
+            or all-days for a monthly value.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditorsDataGetTopByAbsoluteBytesDifferenceResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/top-editors-by-abs-bytes-diff'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/editors/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Editors data
+      summary: Get top 100 editors by edits count.
+      operationId: EditorsData_getTopEditorsByEditsCount
+      description: >
+        Given a Mediawiki project and a date (day or month), returns a
+        timeseries of the top
+
+        100 editors by edits count. You can filter by editor-type
+        (all-editor-types,
+
+        anonymous, group-bot, name-bot, user) or page-type (all-page-types,
+        content or
+
+        non-content). The user_text returned is either the mediawiki user_text
+        if the user is
+
+        registered, or null if user is anonymous.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >-
+            The year of the date for which to retrieve top editors, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The month of the date for which to retrieve top editors, in MM
+            format. If you want to get the top editors of a whole month, the day
+            parameter should be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top editors, in DD format,
+            or all-days for a monthly value.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditorsDataGetTopEditorsByEditsCountResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/top-editors-by-edits'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/editors/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Editors data
+      summary: Get top 100 editors by net bytes-difference.
+      operationId: EditorsData_getTopByNetBytesDifference
+      description: >
+        Given a Mediawiki project and a date (day or month), returns a
+        timeseries of the top 100
+
+        editors by net bytes-difference. You can filter by editor-type
+        (all-editor-types, anonymous,
+
+        group-bot, name-bot, user) or page-type (all-page-types, content or
+        non-content). The
+
+        user_text returned is either the mediawiki user_text if the user is
+        registered, or
+
+        "Anonymous Editor" if user is anonymous.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >-
+            The year of the date for which to retrieve top editors, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The month of the date for which to retrieve top editors, in MM
+            format. If you want to get the top editors of a whole month, the day
+            parameter should be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top editors, in DD format,
+            or all-days for a monthly value.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/EditorsDataGetTopByNetBytesDifferenceResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/top-editors-by-net-bytes-diff'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Edits data
+      summary: Get edits counts for a project.
+      operationId: EditsData_getEditsCountsForProject
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of
+        edits counts.
+
+        You can filter by editors-type (all-editor-types, anonymous, bot,
+        registered) and
+
+        page-type (all-page-types, content or non-content). You can choose
+        between daily and
+
+        monthly granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off.  For projects like commons without language codes, use
+            commons.wikimedia.
+
+            For projects like www.mediawiki.org, you can use that full string,
+            or just use
+
+            mediawiki or mediawiki.org. If you're interested in the aggregation
+            of
+
+            all projects, use all-projects.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging
+
+            to the bot group but having bot-like names) or user (registered
+            account not in bot
+
+            group nor having bot-like name). If you are interested in edits
+            regardless
+
+            of their editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            If you want to filter by page-type, use one of content (edits on
+            pages in content
+
+            namespaces) or non-content (edits on pages in non-content
+            namespaces). If you are
+
+            interested in edits regardless of their page-type, use
+            all-page-types.
+          in: path
+          name: page-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-page-types
+              - content
+              - non-content
+        - description: >
+            The time unit for the response data. As of today, supported values
+            are
+
+            daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditsDataGetEditsCountsForProjectResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/edits'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/edits/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Edits data
+      summary: Get edit counts for a page in a project.
+      operationId: EditsData_getPageEditCounts
+      description: >
+        Given a Mediawiki project, a page-title prefixed with its canonical
+        namespace (for
+
+        instance 'User:Jimbo_Wales') and a date range, returns a timeseries of
+        edit counts.
+
+        You can filter by editors-type (all-editor-types, anonymous, group-bot,
+        name-bot, user).
+
+        You can choose between daily and monthly granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia. For
+
+            projects like www.mediawiki.org, you can use that full string, or
+            just use mediawiki
+
+            or mediawiki.org.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            The page-title to request edits for. It should be prefixed with
+            canonical namespace.
+
+            Spaces will be converted to underscores.
+          in: path
+          name: page-title
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by editor-type, use one of anonymous,
+            group-bot (registered
+
+            accounts belonging to the bot group), name-bot (registered accounts
+            not belonging to
+
+            the bot group but having bot-like names) or user (registered account
+            not in bot group
+
+            nor having bot-like name). If you are interested in edits regardless
+            of their
+
+            editor-type, use all-editor-types.
+          in: path
+          name: editor-type
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-editor-types
+              - anonymous
+              - group-bot
+              - name-bot
+              - user
+        - description: >
+            Time unit for the response data. As of today, supported values are
+            daily and monthly
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditsDataGetPageEditCountsResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/edits-per-page'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/legacy/pagecounts/aggregate/{project}/{access-site}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Legacy data
+      operationId: LegacyData_getPagecountsAggregateByProjectAndDateRange
+      description: >
+        Given a project and a date range, returns a timeseries of pagecounts.
+
+        You can filter by access site (mobile or desktop) and you can choose
+        between monthly,
+
+        daily and hourly granularity as well.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 100 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off. For projects like commons without language codes, use
+            commons.wikimedia.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >-
+            If you want to filter by access site, use one of desktop-site or
+            mobile-site. If you are interested in pagecounts regardless of
+            access site use all-sites.
+          in: path
+          name: access-site
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-sites
+              - desktop-site
+              - mobile-site
+        - description: >
+            The time unit for the response data. As of today, the supported
+            granularities for
+
+            this endpoint are hourly, daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - hourly
+              - daily
+              - monthly
+        - description: >-
+            The timestamp of the first hour/day/month to include, in YYYYMMDDHH
+            format.
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: >
+            The timestamp of the last hour/day/month to include, in YYYYMMDDHH
+            format.
+
+            In hourly and daily granularities this value is inclusive, in the
+            monthly granularity
+
+            this value is exclusive.
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/LegacyDataGetPagecountsAggregateByProjectAndDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/pagecounts-project'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Pageviews data
+      summary: Get pageview counts for a project.
+      operationId: PageviewsData_getPageviewCountsByProject
+      description: >
+        Given a date range, returns a timeseries of pageview counts. You can
+        filter by project,
+
+        access method and/or agent type. You can choose between daily and hourly
+        granularity
+
+        as well.
+
+
+        - Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 100 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            If you want to filter by project, use the domain of any Wikimedia
+            project,
+
+            for example 'en.wikipedia.org', 'www.mediawiki.org' or
+            'commons.wikimedia.org'.
+
+            If you are interested in all pageviews regardless of project, use
+            all-projects.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by access method, use one of desktop,
+            mobile-app or mobile-web.
+
+            If you are interested in pageviews regardless of access method, use
+            all-access.
+          in: path
+          name: access
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-access
+              - desktop
+              - mobile-app
+              - mobile-web
+        - description: >
+            If you want to filter by agent type, use one of user or spider. If
+            you are interested
+
+            in pageviews regardless of agent type, use all-agents.
+          in: path
+          name: agent
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-agents
+              - user
+              - spider
+        - description: >
+            The time unit for the response data. As of today, the supported
+            granularities for this
+
+            endpoint are hourly, daily, and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - hourly
+              - daily
+              - monthly
+        - description: >-
+            The timestamp of the first hour/day/month to include, in YYYYMMDDHH
+            format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The timestamp of the last hour/day/month to include, in YYYYMMDDHH
+            format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/PageviewsDataGetPageviewCountsByProjectResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/pageview-project'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-amples:
+        - title: Get aggregate page views
+          request:
+            params:
+              access: all-access
+              agent: all-agents
+              domain: wikimedia.org
+              end: 1970010100
+              granularity: hourly
+              project: en.wikipedia
+              start: 1970010100
+          response:
+            body:
+              items:
+                - access: all-access
+                  agent: all-agents
+                  granularity: hourly
+                  project: en.wikipedia
+                  timestamp: 1970010100
+                  views: 0
+            headers:
+              content-type: application/json
+            status: 200
+      x-monitor: true
+  /metrics/pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Pageviews data
+      summary: Get pageview counts for a page.
+      operationId: PageviewsData_getPageviewCountsByArticleDateRange
+      description: >
+        Given a Mediawiki article and a date range, returns a daily timeseries
+        of its pageview
+
+        counts. You can also filter by access method and/or agent type.
+
+
+        - Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 100 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            If you want to filter by project, use the domain of any Wikimedia
+            project,
+
+            for example 'en.wikipedia.org', 'www.mediawiki.org' or
+            'commons.wikimedia.org'.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by access method, use one of desktop,
+            mobile-app
+
+            or mobile-web. If you are interested in pageviews regardless of
+            access method,
+
+            use all-access.
+          in: path
+          name: access
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-access
+              - desktop
+              - mobile-app
+              - mobile-web
+        - description: >
+            If you want to filter by agent type, use one of user, bot or spider.
+            If you are
+
+            interested in pageviews regardless of agent type, use all-agents.
+          in: path
+          name: agent
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-agents
+              - user
+              - spider
+              - bot
+        - description: >
+            'The title of any article in the specified project. Any spaces
+            should be replaced
+
+            with underscores. It also should be URI-encoded, so that
+            non-URI-safe characters like
+
+            %, / or ? are accepted. Example: Are_You_the_One%3F'.
+          in: path
+          name: article
+          required: true
+          schema:
+            type: string
+        - description: >
+            The time unit for the response data. As of today, the only supported
+            granularity for
+
+            this endpoint is daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: >-
+            The date of the first day to include, in YYYYMMDD or YYYYMMDDHH
+            format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The date of the last day to include, in YYYYMMDD or YYYYMMDDHH
+            format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/PageviewsDataGetPageviewCountsByArticleDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/pageview-article'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/pageviews/top-by-country/{project}/{access}/{year}/{month}:
+    get:
+      tags:
+        - Pageviews data
+      summary: Get pageviews by country and access method.
+      operationId: PageviewsData_listByCountryAndAccess
+      description: >
+        Lists the pageviews to this project, split by country of origin for a
+        given month.
+
+        Because of privacy reasons, pageviews are given in a bucketed format,
+        and countries
+
+        with less than 100 views do not get reported.
+
+        Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 100 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            If you want to filter by project, use the domain of any Wikimedia
+            project,
+
+            for example 'en.wikipedia.org', 'www.mediawiki.org' or
+            'commons.wikimedia.org'.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by access method, use one of desktop,
+            mobile-app or mobile-web.
+
+            If you are interested in pageviews regardless of access method, use
+            all-access.
+          in: path
+          name: access
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-access
+              - desktop
+              - mobile-app
+              - mobile-web
+        - description: >-
+            The year of the date for which to retrieve top countries, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >
+            The month of the date for which to retrieve top countries, in MM
+            format.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of top countries by pageviews in the project
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/PageviewsDataListByCountryAndAccessResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/by-country'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}:
+    get:
+      tags:
+        - Pageviews data
+      summary: Get the most viewed articles for a project.
+      operationId: PageviewsData_listMostViewedArticlesByProjectAndTimespan
+      description: >
+        Lists the 1000 most viewed articles for a given project and timespan
+        (month or day).
+
+        You can filter by access method.
+
+
+        - Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 100 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            If you want to filter by project, use the domain of any Wikimedia
+            project,
+
+            for example 'en.wikipedia.org', 'www.mediawiki.org' or
+            'commons.wikimedia.org'.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by access method, use one of desktop,
+            mobile-app or mobile-web.
+
+            If you are interested in pageviews regardless of access method, use
+            all-access.
+          in: path
+          name: access
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-access
+              - desktop
+              - mobile-app
+              - mobile-web
+        - description: >-
+            The year of the date for which to retrieve top articles, in YYYY
+            format.
+          in: path
+          name: year
+          required: true
+          schema:
+            type: string
+        - description: >
+            The month of the date for which to retrieve top articles, in MM
+            format. If you want
+
+            to get the top articles of a whole month, the day parameter should
+            be all-days.
+          in: path
+          name: month
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The day of the date for which to retrieve top articles, in DD
+            format.
+          in: path
+          name: day
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of top articles in the project
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/PageviewsDataListMostViewedArticlesByProjectAndTimespanResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/pageview-tops'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/registered-users/new/{project}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Registered users data
+      summary: Get newly registered users counts for a project.
+      operationId: RegisteredUsersData_getNewUserCountsByProjectAndDateRange
+      description: >
+        Given a Mediawiki project and a date range, returns a timeseries of its
+        newly registered
+
+        users counts. You can choose between daily and monthly granularity. The
+        newly registered
+
+        users value is computed with self-created users only, not auto-login
+        created ones.
+
+
+        - Stability:
+        [experimental](https://www.mediawiki.org/wiki/API_versioning#Experimental)
+
+        - Rate limit: 25 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            The name of any Wikimedia project formatted like {language
+            code}.{project name},
+
+            for example en.wikipedia. You may pass en.wikipedia.org and the .org
+            will be stripped
+
+            off.  For projects like commons without language codes, use
+            commons.wikimedia.
+
+            For projects like www.mediawiki.org, you can use that full string,
+            or just use
+
+            mediawiki or mediawiki.org. If you're interested in the aggregation
+            of
+
+            all projects, use all.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            The time unit for the response data. As of today, supported values
+            are
+
+            daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The date of the first day to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The date of the last day to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RegisteredUsersDataGetNewUserCountsByProjectAndDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/new-registered-users'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /metrics/unique-devices/{project}/{access-site}/{granularity}/{start}/{end}:
+    get:
+      tags:
+        - Unique devices data
+      summary: Get unique devices count per project
+      operationId: UniqueDevicesData_getByProjectAndDateRange
+      description: >
+        Given a project and a date range, returns a timeseries of unique devices
+        counts.
+
+        You need to specify a project, and can filter by accessed site (mobile
+        or desktop).
+
+        You can choose between daily and hourly granularity as well.
+
+
+        - Stability:
+        [stable](https://www.mediawiki.org/wiki/API_versioning#Stable)
+
+        - Rate limit: 100 req/s
+
+        - License: Data accessible via this endpoint is available under the
+          [CC0 1.0 license](https://creativecommons.org/publicdomain/zero/1.0/).
+      parameters:
+        - description: >
+            If you want to filter by project, use the domain of any Wikimedia
+            project,
+
+            for example 'en.wikipedia.org', 'www.mediawiki.org' or
+            'commons.wikimedia.org'.
+          in: path
+          name: project
+          required: true
+          schema:
+            type: string
+        - description: >
+            If you want to filter by accessed site, use one of desktop-site or
+            mobile-site.
+
+            If you are interested in unique devices regardless of accessed site,
+            use or all-sites.
+          in: path
+          name: access-site
+          required: true
+          schema:
+            type: string
+            enum:
+              - all-sites
+              - desktop-site
+              - mobile-site
+        - description: >
+            The time unit for the response data. As of today, the supported
+            granularities
+
+            for this endpoint are daily and monthly.
+          in: path
+          name: granularity
+          required: true
+          schema:
+            type: string
+            enum:
+              - daily
+              - monthly
+        - description: The timestamp of the first day/month to include, in YYYYMMDD format
+          in: path
+          name: start
+          required: true
+          schema:
+            type: string
+        - description: The timestamp of the last day/month to include, in YYYYMMDD format
+          in: path
+          name: end
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of values
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/UniqueDevicesDataGetByProjectAndDateRangeResponse
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/unique-devices'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/html/from/{from_lang}/to/{to_lang}:
+    parameters: []
+    post:
+      tags:
+        - Transform
+      summary: Machine-translate content
+      operationId: Transform_contentMachineTranslate
+      description: >
+        Fetches the machine translation for the posted content from the source
+
+        to the destination language.
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The source language code
+          in: path
+          name: from_lang
+          required: true
+          schema:
+            type: string
+        - description: The target language code
+          in: path
+          name: to_lang
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/postTransformHtmlFrom_fromLang_to_toLang_'
+      responses:
+        '200':
+          description: The translated content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cx_mt'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_mt'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/html/from/{from_lang}/to/{to_lang}/{provider}:
+    parameters: []
+    post:
+      tags:
+        - Transform
+      summary: Machine-translate content
+      operationId: Transform_contentMachineTranslate
+      description: >
+        Fetches the machine translation for the posted content from the source
+
+        to the destination language.
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The source language code
+          in: path
+          name: from_lang
+          required: true
+          schema:
+            type: string
+        - description: The target language code
+          in: path
+          name: to_lang
+          required: true
+          schema:
+            type: string
+        - description: The machine translation provider id
+          in: path
+          name: provider
+          required: true
+          schema:
+            type: string
+            enum:
+              - Apertium
+              - Yandex
+              - Youdao
+      requestBody:
+        $ref: '#/components/requestBodies/postTransformHtmlFrom_fromLang_to_toLang_'
+      responses:
+        '200':
+          description: The translated content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cx_mt'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_mt'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/list/tool/{tool}:
+    parameters: []
+    get:
+      tags:
+        - Transform
+      summary: Lists the tools and language pairs available for the given tool category
+      operationId: Transform_getListToolLanguagePairs
+      description: >
+        Fetches the list of tools and all of the language pairs it can translate
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The tool category to list tools and language pairs for
+          in: path
+          name: tool
+          required: true
+          schema:
+            type: string
+            enum:
+              - mt
+              - dictionary
+      responses:
+        '200':
+          description: the list of language pairs available for a given translation tool
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformGetListToolLanguagePairsResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_list_pairs_for_tool'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/list/tool/{tool}/{from}:
+    parameters: []
+    get:
+      tags:
+        - Transform
+      summary: Lists the tools and language pairs available for the given tool category
+      operationId: Transform_toolLanguagePairsList
+      description: >
+        Fetches the list of tools and all of the language pairs it can translate
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The tool category to list tools and language pairs for
+          in: path
+          name: tool
+          required: true
+          schema:
+            type: string
+            enum:
+              - mt
+              - dictionary
+        - description: The source language code
+          in: path
+          name: from
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: the list of language pairs available for a given translation tool
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformToolLanguagePairsListResponse'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_list_pairs_for_tool'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/list/tool/{tool}/{from}/{to}:
+    parameters: []
+    get:
+      tags:
+        - Transform
+      summary: Lists the tools and language pairs available for the given tool category
+      operationId: Transform_toolLanguagePairsList
+      description: >
+        Fetches the list of tools and all of the language pairs it can translate
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The tool category to list tools and language pairs for
+          in: path
+          name: tool
+          required: true
+          schema:
+            type: string
+            enum:
+              - mt
+              - dictionary
+        - description: The source language code
+          in: path
+          name: from
+          required: true
+          schema:
+            type: string
+        - description: The target language code
+          in: path
+          name: to
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: the list of language pairs available for a given translation tool
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformToolLanguagePairsList200Response'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_list_pairs_for_tool'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/word/from/{from_lang}/to/{to_lang}/{word}:
+    parameters: []
+    get:
+      tags:
+        - Transform
+      summary: Fetch the dictionary meaning of a word
+      operationId: Transform_getDictionaryMeaning
+      description: >
+        Fetches the dictionary meaning of a word from a language and displays
+
+        it in the target language.
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The source language code
+          in: path
+          name: from_lang
+          required: true
+          schema:
+            type: string
+        - description: The target language code
+          in: path
+          name: to_lang
+          required: true
+          schema:
+            type: string
+        - description: The word to lookup
+          in: path
+          name: word
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: the dictionary translation for the given word
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cx_dict'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_dict'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/word/from/{from_lang}/to/{to_lang}/{word}/{provider}:
+    parameters: []
+    get:
+      tags:
+        - Transform
+      summary: Fetch the dictionary meaning of a word
+      operationId: Transform_getDictionaryMeaning
+      description: >
+        Fetches the dictionary meaning of a word from a language and displays
+
+        it in the target language.
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The source language code
+          in: path
+          name: from_lang
+          required: true
+          schema:
+            type: string
+        - description: The target language code
+          in: path
+          name: to_lang
+          required: true
+          schema:
+            type: string
+        - description: The word to lookup
+          in: path
+          name: word
+          required: true
+          schema:
+            type: string
+        - description: The dictionary provider id
+          in: path
+          name: provider
+          required: true
+          schema:
+            type: string
+            enum:
+              - JsonDict
+              - Dictd
+      responses:
+        '200':
+          description: the dictionary translation for the given word
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cx_dict'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_dict'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+  /transform/list/languagepairs:
+    get:
+      tags:
+        - Transform
+      summary: Lists the language pairs supported by the back-end
+      operationId: Transform_listLanguagePairs
+      description: >
+        Fetches the list of language pairs the back-end service can translate
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      responses:
+        '200':
+          description: the list of source and target languages supported by the API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cx_languagepairs'
+      x-monitor: false
+  /transform/list/pair/{from}/{to}:
+    get:
+      tags:
+        - Transform
+      summary: Lists the tools available for a language pair
+      operationId: Transform_languagePairList
+      description: >
+        Fetches the list of tools that are available for the given pair of
+        languages.
+
+
+        Stability:
+        [unstable](https://www.mediawiki.org/wiki/API_versioning#Unstable)
+      parameters:
+        - description: The source language code
+          in: path
+          name: from
+          required: true
+          schema:
+            type: string
+        - description: The target language code
+          in: path
+          name: to
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: the list of tools available for the language pair
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cx_list_tools'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/cx_list_tools'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem'
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/problem'
+      x-monitor: false
+components:
+  requestBodies:
+    postTransformHtmlFrom_fromLang_to_toLang_:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            $ref: '#/components/schemas/TransformContentMachineTranslateRequest'
+      required: true
+  securitySchemes:
+    mediawiki_auth:
+      description: Checks permissions using MW api
+      in: header
+      name: cookie
+      type: apiKey
+      x-internal-request-whitelist:
+        - /http:\/\/[a-zA-Z0-9\.]+\/w\/api\.php/
+  schemas:
+    summary:
+      properties:
+        title:
+          description: The page title
+          type: string
+        description:
+          description: Wikidata description for the page
+          example: American poet
+          type: string
+        coordinates:
+          description: The coordinates of the item
+          properties:
+            lat:
+              description: The latitude
+              type: number
+            lon:
+              description: The longitude
+              type: number
+          required:
+            - lat
+            - lon
+          type: object
+        dir:
+          description: The page language direction code
+          example: ltr
+          type: string
+        displaytitle:
+          description: The page title how it should be shown to the user
+          type: string
+        extract:
+          description: First several sentences of an article in plain text
+          type: string
+        extract_html:
+          description: First several sentences of an article in simple HTML format
+          type: string
+        lang:
+          description: The page language code
+          example: en
+          type: string
+        originalimage:
+          $ref: '#/components/schemas/originalimage'
+        pageid:
+          description: The page ID
+          type: integer
+        thumbnail:
+          $ref: '#/components/schemas/thumbnail'
+        timestamp:
+          description: >-
+            The time when the page was last editted in the [ISO
+            8601](https://en.wikipedia.org/wiki/ISO_8601) format
+          example: '1970-01-01T00:00:00.000Z'
+          type: string
+      required:
+        - title
+        - extract
+        - lang
+        - dir
+      type: object
+    absolute-bytes-difference:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    abs_bytes_diff:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    absolute-bytes-difference-per-editor:
+      properties:
+        items:
+          items:
+            properties:
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    abs_bytes_diff:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+              user-text:
+                type: string
+          type: array
+    absolute-bytes-difference-per-page:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-title:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    abs_bytes_diff:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    availability:
+      additionalProperties: false
+      properties:
+        in_the_news:
+          description: >-
+            domains for wikis with this feature enabled, or [ '*.<project>.org'
+            ] for all wikis in a project
+          items:
+            type: string
+          type: array
+        most_read:
+          description: >-
+            domains for wikis with this feature enabled, or [ '*.<project>.org'
+            ] for all wikis in a project
+          items:
+            type: string
+          type: array
+        on_this_day:
+          description: >-
+            domains for wikis with this feature enabled, or [ '*.<project>.org'
+            ] for all wikis in a project
+          items:
+            type: string
+          type: array
+        picture_of_the_day:
+          description: >-
+            domains for wikis with this feature enabled, or [ '*.<project>.org'
+            ] for all wikis in a project
+          items:
+            type: string
+          type: array
+        todays_featured_article:
+          description: >-
+            domains for wikis with this feature enabled, or [ '*.<project>.org'
+            ] for all wikis in a project
+          items:
+            type: string
+          type: array
+      required:
+        - todays_featured_article
+        - most_read
+        - picture_of_the_day
+        - in_the_news
+        - on_this_day
+      type: object
+    by-country:
+      properties:
+        items:
+          items:
+            properties:
+              access:
+                type: string
+              countries:
+                items:
+                  properties:
+                    country:
+                      type: string
+                    rank:
+                      format: int32
+                      type: integer
+                    views:
+                      format: int64
+                      type: integer
+                type: array
+              month:
+                type: string
+              project:
+                type: string
+              year:
+                type: string
+          type: array
+    cx_dict:
+      properties:
+        source:
+          description: the original word to look up
+          type: string
+        translations:
+          description: the translations found
+          items:
+            properties:
+              info:
+                description: extra information about the phrase
+                type: string
+              phrase:
+                description: the translated phrase
+                type: string
+              sources:
+                description: the source dictionary used for the translation
+                type: string
+            type: object
+          type: array
+      type: object
+    cx_languagepairs:
+      properties:
+        source:
+          description: the list of available source languages
+          items:
+            description: one source language
+            type: string
+          type: array
+        target:
+          description: the list of available destination languages
+          items:
+            description: one destination language
+            type: string
+          type: array
+      type: object
+    cx_list_pairs_for_tool:
+      type: object
+    cx_list_tools:
+      properties:
+        tools:
+          description: the list of tools available for the given language pair
+          items:
+            description: the tool available
+            type: string
+          type: array
+      type: object
+    cx_mt:
+      properties:
+        contents:
+          description: the translated content
+          type: string
+      type: object
+    edited-pages:
+      properties:
+        items:
+          items:
+            properties:
+              activity-level:
+                type: string
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    edited_pages:
+                      format: int32
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    editors:
+      properties:
+        items:
+          items:
+            properties:
+              activity-level:
+                type: string
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    editors:
+                      format: int32
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    edits:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    edits:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    edits-per-editor:
+      properties:
+        items:
+          items:
+            properties:
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    edits:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+              user-text:
+                type: string
+          type: array
+    edits-per-page:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-title:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    edits:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    listing:
+      description: The result format for listings
+      properties:
+        items:
+          items:
+            type: string
+          type: array
+      required:
+        - items
+    net-bytes-difference:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    net_bytes_diff:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    net-bytes-difference-per-editor:
+      properties:
+        items:
+          items:
+            properties:
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    net_bytes_diff:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+              user-text:
+                type: string
+          type: array
+    net-bytes-difference-per-page:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-title:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    net_bytes_diff:
+                      format: int64
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    new-pages:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    new_pages:
+                      format: int32
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    new-registered-users:
+      properties:
+        items:
+          items:
+            properties:
+              granularity:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    new_registered_users:
+                      format: int32
+                      type: integer
+                    timestamp:
+                      type: string
+                type: array
+          type: array
+    originalimage:
+      properties:
+        height:
+          description: Original image height
+          type: integer
+        source:
+          description: Original image URI
+          type: string
+        width:
+          description: Original image width
+          type: integer
+      required:
+        - source
+        - width
+        - height
+      type: object
+    pagecounts-project:
+      properties:
+        items:
+          items:
+            properties:
+              access-site:
+                type: string
+              count:
+                format: int64
+                type: integer
+              granularity:
+                type: string
+              project:
+                type: string
+              timestamp:
+                type: string
+          type: array
+    pageview-article:
+      properties:
+        items:
+          items:
+            properties:
+              access:
+                type: string
+              agent:
+                type: string
+              article:
+                type: string
+              granularity:
+                type: string
+              project:
+                type: string
+              timestamp:
+                type: string
+              views:
+                format: int64
+                type: integer
+          type: array
+    pageview-project:
+      properties:
+        items:
+          items:
+            properties:
+              access:
+                type: string
+              agent:
+                type: string
+              granularity:
+                type: string
+              project:
+                type: string
+              timestamp:
+                type: string
+              views:
+                format: int64
+                type: integer
+          type: array
+    pageview-tops:
+      properties:
+        items:
+          items:
+            properties:
+              access:
+                type: string
+              articles:
+                items:
+                  properties:
+                    article:
+                      type: string
+                    rank:
+                      format: int32
+                      type: integer
+                    views:
+                      format: int64
+                      type: integer
+                type: array
+              day:
+                type: string
+              month:
+                type: string
+              project:
+                type: string
+              year:
+                type: string
+          type: array
+    problem:
+      properties:
+        title:
+          type: string
+        detail:
+          type: string
+        method:
+          type: string
+        status:
+          type: integer
+        type:
+          type: string
+        uri:
+          type: string
+      required:
+        - type
+    thumbnail:
+      properties:
+        height:
+          description: Thumnail height
+          type: integer
+        source:
+          description: Thumbnail image URI
+          type: string
+        width:
+          description: Thumbnail width
+          type: integer
+      required:
+        - source
+        - width
+        - height
+      type: object
+    top-edited-pages-by-abs-bytes-diff:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    timestamp:
+                      type: string
+                    top:
+                      items:
+                        properties:
+                          abs_bytes_diff:
+                            format: int64
+                            type: integer
+                          page_title:
+                            type: string
+                          rank:
+                            format: int32
+                            type: integer
+                      type: array
+                type: array
+          type: array
+    top-edited-pages-by-edits:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    timestamp:
+                      type: string
+                    top:
+                      items:
+                        properties:
+                          edits:
+                            format: int64
+                            type: integer
+                          page_title:
+                            type: string
+                          rank:
+                            format: int32
+                            type: integer
+                      type: array
+                type: array
+          type: array
+    top-edited-pages-by-net-bytes-diff:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    timestamp:
+                      type: string
+                    top:
+                      items:
+                        properties:
+                          net_bytes_diff:
+                            format: int64
+                            type: integer
+                          page_title:
+                            type: string
+                          rank:
+                            format: int32
+                            type: integer
+                      type: array
+                type: array
+          type: array
+    top-editors-by-abs-bytes-diff:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    timestamp:
+                      type: string
+                    top:
+                      items:
+                        properties:
+                          abs_bytes_diff:
+                            format: int64
+                            type: integer
+                          rank:
+                            format: int32
+                            type: integer
+                          user_text:
+                            type: string
+                      type: array
+                type: array
+          type: array
+    top-editors-by-edits:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    timestamp:
+                      type: string
+                    top:
+                      items:
+                        properties:
+                          edits:
+                            format: int64
+                            type: integer
+                          rank:
+                            format: int32
+                            type: integer
+                          user_text:
+                            type: string
+                      type: array
+                type: array
+          type: array
+    top-editors-by-net-bytes-diff:
+      properties:
+        items:
+          items:
+            properties:
+              editor-type:
+                type: string
+              granularity:
+                type: string
+              page-type:
+                type: string
+              project:
+                type: string
+              results:
+                items:
+                  properties:
+                    timestamp:
+                      type: string
+                    top:
+                      items:
+                        properties:
+                          net_bytes_diff:
+                            format: int64
+                            type: integer
+                          rank:
+                            format: int32
+                            type: integer
+                          user_text:
+                            type: string
+                      type: array
+                type: array
+          type: array
+    unique-devices:
+      properties:
+        items:
+          items:
+            properties:
+              access-site:
+                type: string
+              devices:
+                format: int64
+                type: integer
+              granularity:
+                type: string
+              project:
+                type: string
+              timestamp:
+                type: string
+          type: array
+    MathCheckFormulaRequest:
+      type: object
+      properties:
+        q:
+          description: The formula to check
+          type: string
+      required:
+        - q
+    TransformContentMachineTranslateRequest:
+      type: object
+      properties:
+        html:
+          description: The HTML content to translate
+          type: string
+          x-textarea: true
+      required:
+        - html
+    BytesDifferenceDataGetAbsoluteAggregateByProjectAndDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    BytesDifferenceDataGetAbsolutePerPageResponse:
+      type: object
+      properties: {}
+      example: {}
+    BytesDifferenceDataGetNetAggregateByProjectAndDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    BytesDifferenceDataGetSumNetTextBytesDifferencePerPageResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditedPagesDataGetAggregateByProjectAndDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditedPagesDataGetNewPagesCountsForProjectResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditedPagesDataGetTopByAbsoluteBytesDifferenceResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditedPagesDataGetTopByEditsCountResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditedPagesDataGetTopByNetBytesDifferenceResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditorsDataGetEditorsCountsForProjectResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditorsDataGetTopByAbsoluteBytesDifferenceResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditorsDataGetTopEditorsByEditsCountResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditorsDataGetTopByNetBytesDifferenceResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditsDataGetEditsCountsForProjectResponse:
+      type: object
+      properties: {}
+      example: {}
+    EditsDataGetPageEditCountsResponse:
+      type: object
+      properties: {}
+      example: {}
+    LegacyDataGetPagecountsAggregateByProjectAndDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    PageviewsDataGetPageviewCountsByProjectResponse:
+      type: object
+      properties: {}
+      example: {}
+    PageviewsDataGetPageviewCountsByArticleDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    PageviewsDataListByCountryAndAccessResponse:
+      type: object
+      properties: {}
+      example: {}
+    PageviewsDataListMostViewedArticlesByProjectAndTimespanResponse:
+      type: object
+      properties: {}
+      example: {}
+    RegisteredUsersDataGetNewUserCountsByProjectAndDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    UniqueDevicesDataGetByProjectAndDateRangeResponse:
+      type: object
+      properties: {}
+      example: {}
+    TransformGetListToolLanguagePairsResponse:
+      type: object
+      properties: {}
+      example: {}
+    TransformToolLanguagePairsListResponse:
+      type: object
+      properties: {}
+      example: {}
+    TransformToolLanguagePairsList200Response:
+      type: object
+      properties: {}
+      example: {}
+x-default-params: {}
+x-host-basePath: /api/rest_v1

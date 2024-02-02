@@ -1,0 +1,2762 @@
+openapi: 3.0.0
+info:
+  title: Postmark API
+  description: |
+    Postmark makes sending and receiving email
+    incredibly easy.
+  version: 1.0.0
+  x-apisguru-categories:
+    - email
+  x-logo:
+    url: >-
+      https://pbs.twimg.com/profile_images/879295889185157120/ZYlwxzeY_400x400.jpg
+  x-origin:
+    - version: '2.0'
+      format: swagger
+      url: https://postmarkapp.com/swagger/server.yml
+  x-providerName: postmarkapp.com
+  x-serviceName: server
+  x-konfig-ignore:
+    object-with-no-properties: true
+servers:
+  - url: api.postmarkapp.com
+tags:
+  - name: Stats API
+  - name: Messages API
+  - name: Templates API
+  - name: Bounces API
+  - name: Sending API
+  - name: Inbound Rules API
+  - name: Server Configuration API
+paths:
+  /bounces:
+    get:
+      tags:
+        - Bounces API
+      summary: Get bounces
+      operationId: BouncesApi_listBounces
+      security:
+        - serverToken: []
+      parameters:
+        - description: Number of bounces to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+            maximum: 500
+        - description: Number of bounces to skip.
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+        - description: Filter by type of bounce
+          in: query
+          name: type
+          schema:
+            type: string
+            enum:
+              - HardBounce
+              - Transient
+              - Unsubscribe
+              - Subscribe
+              - AutoResponder
+              - AddressChange
+              - DnsError
+              - SpamNotification
+              - OpenRelayTest
+              - Unknown
+              - SoftBounce
+              - VirusNotification
+              - MailFrontier Matador.
+              - BadEmailAddress
+              - SpamComplaint
+              - ManuallyDeactivated
+              - Unconfirmed
+              - Blocked
+              - SMTPApiError
+              - InboundError
+              - DMARCPolicy
+              - TemplateRenderingFailed
+        - description: >-
+            Filter by emails that were deactivated by Postmark due to the
+            bounce. Set to true or false. If this isn't specified it will return
+            both active and inactive.
+          in: query
+          name: inactive
+          schema:
+            type: boolean
+        - description: Filter by email address
+          in: query
+          name: emailFilter
+          schema:
+            type: string
+            format: email
+        - description: Filter by messageID
+          in: query
+          name: messageID
+          schema:
+            type: string
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter messages up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+        - description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BounceSearchResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /bounces/{bounceid}:
+    get:
+      tags:
+        - Bounces API
+      summary: Get a single bounce
+      operationId: BouncesApi_getBounce
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the bounce to retrieve.
+          in: path
+          name: bounceid
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BouncesApiGetBounceResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /bounces/{bounceid}/activate:
+    put:
+      tags:
+        - Bounces API
+      summary: Activate a bounce
+      operationId: BouncesApi_activateBounce
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the Bounce to activate.
+          in: path
+          name: bounceid
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BouncesApiActivateBounceResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /bounces/{bounceid}/dump:
+    get:
+      tags:
+        - Bounces API
+      summary: Get bounce dump
+      operationId: BouncesApi_getDump
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID for the bounce dump to retrieve.
+          in: path
+          name: bounceid
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BouncesApiGetDumpResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /deliverystats:
+    get:
+      tags:
+        - Bounces API
+      summary: Get delivery stats
+      operationId: BouncesApi_getDeliveryStats
+      security:
+        - serverToken: []
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryStatsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /email:
+    post:
+      tags:
+        - Sending API
+      summary: Send a single email
+      operationId: SendingApi_sendSingleEmail
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /email/batch:
+    post:
+      tags:
+        - Sending API
+      summary: Send a batch of emails
+      operationId: SendingApi_sendBatchEmails
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailBatchRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailBatchResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /email/batchWithTemplates:
+    post:
+      tags:
+        - Sending API
+        - Templates API
+      summary: Send a batch of email using templates.
+      operationId: SendingApi_sendBatchWithTemplates
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailTemplatedBatchRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailBatchResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /email/withTemplate:
+    post:
+      tags:
+        - Sending API
+        - Templates API
+      summary: Send an email using a Template
+      operationId: SendingApi_sendEmailTemplate
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailWithTemplateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/inbound:
+    get:
+      tags:
+        - Messages API
+      summary: Inbound message search
+      operationId: MessagesApi_searchInboundMessages
+      security:
+        - serverToken: []
+      parameters:
+        - description: Number of messages to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+        - description: Number of messages to skip
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+        - description: Filter by the user who was receiving the email
+          in: query
+          name: recipient
+          schema:
+            type: string
+            format: email
+        - description: Filter by the sender email address
+          in: query
+          name: fromemail
+          schema:
+            type: string
+            format: email
+        - description: Filter by email subject
+          in: query
+          name: subject
+          schema:
+            type: string
+        - description: Filter by mailboxhash
+          in: query
+          name: mailboxhash
+          schema:
+            type: string
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: >-
+            Filter by status (`blocked`, `processed`, `queued`, `failed`,
+            `scheduled`)
+          in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - blocked
+              - processed
+              - queued
+              - failed
+              - scheduled
+        - description: Filter messages up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+        - description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboundSearchResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/inbound/{messageid}/bypass:
+    put:
+      tags:
+        - Messages API
+      summary: Bypass rules for a blocked inbound message
+      operationId: MessagesApi_updateBypassRulesForInboundMessage
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the message which should bypass inbound rules.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/inbound/{messageid}/details:
+    get:
+      tags:
+        - Messages API
+      summary: Inbound message details
+      operationId: MessagesApi_getInboundMessageDetails
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the message for which to details will be retrieved.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/MessagesApiGetInboundMessageDetailsResponse
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/inbound/{messageid}/retry:
+    put:
+      tags:
+        - Messages API
+      summary: Retry a failed inbound message for processing
+      operationId: MessagesApi_retryInboundMessage
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the inbound message on which we should retry processing.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound:
+    get:
+      tags:
+        - Messages API
+      summary: Outbound message search
+      operationId: MessagesApi_searchOutboundMessages
+      security:
+        - serverToken: []
+      parameters:
+        - description: Number of messages to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+        - description: Number of messages to skip
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+        - description: Filter by the user who was receiving the email
+          in: query
+          name: recipient
+          schema:
+            type: string
+            format: email
+        - description: Filter by the sender email address
+          in: query
+          name: fromemail
+          schema:
+            type: string
+            format: email
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter by status (`queued` or `sent`)
+          in: query
+          name: status
+          schema:
+            type: string
+            enum:
+              - queued
+              - sent
+        - description: Filter messages up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+        - description: Filter messages starting from the date specified. e.g. `2014-02-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutboundSearchResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound/clicks:
+    get:
+      tags:
+        - Messages API
+      summary: Clicks for a all messages
+      operationId: MessagesApi_getAllClicks
+      security:
+        - serverToken: []
+      parameters:
+        - description: Number of message clicks to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+        - description: Number of messages to skip
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+        - description: Filter by To, Cc, Bcc
+          in: query
+          name: recipient
+          required: false
+          schema:
+            type: string
+        - description: Filter by tag
+          in: query
+          name: tag
+          required: false
+          schema:
+            type: string
+        - description: Filter by client name, i.e. Outlook, Gmail
+          in: query
+          name: client_name
+          required: false
+          schema:
+            type: string
+        - description: Filter by company, i.e. Microsoft, Apple, Google
+          in: query
+          name: client_company
+          required: false
+          schema:
+            type: string
+        - description: Filter by client family, i.e. OS X, Chrome
+          in: query
+          name: client_family
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by full OS name and specific version, i.e. OS X 10.9
+            Mavericks, Windows 7
+          in: query
+          name: os_name
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by kind of OS used without specific version, i.e. OS X,
+            Windows
+          in: query
+          name: os_family
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by company which produced the OS, i.e. Apple Computer, Inc.,
+            Microsoft Corporation
+          in: query
+          name: os_company
+          required: false
+          schema:
+            type: string
+        - description: Filter by platform, i.e. webmail, desktop, mobile
+          in: query
+          name: platform
+          required: false
+          schema:
+            type: string
+        - description: Filter by country messages were opened in, i.e. Denmark, Russia
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          in: query
+          name: region
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          in: query
+          name: city
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesApiGetAllClicksResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound/clicks/{messageid}:
+    get:
+      tags:
+        - Messages API
+      summary: Retrieve Message Clicks
+      operationId: MessagesApi_getMessageClicks
+      security:
+        - serverToken: []
+      parameters:
+        - description: >-
+            The ID of the Outbound Message for which click statistics should be
+            retrieved.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+        - description: Number of message clicks to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 1
+        - description: Number of messages to skip.
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesApiGetMessageClicksResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound/opens:
+    get:
+      tags:
+        - Messages API
+      summary: Opens for all messages
+      operationId: MessagesApi_listOpensForOutbound
+      security:
+        - serverToken: []
+      parameters:
+        - description: Number of message opens to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+        - description: Number of messages to skip
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+        - description: Filter by To, Cc, Bcc
+          in: query
+          name: recipient
+          required: false
+          schema:
+            type: string
+        - description: Filter by tag
+          in: query
+          name: tag
+          required: false
+          schema:
+            type: string
+        - description: Filter by client name, i.e. Outlook, Gmail
+          in: query
+          name: client_name
+          required: false
+          schema:
+            type: string
+        - description: Filter by company, i.e. Microsoft, Apple, Google
+          in: query
+          name: client_company
+          required: false
+          schema:
+            type: string
+        - description: Filter by client family, i.e. OS X, Chrome
+          in: query
+          name: client_family
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by full OS name and specific version, i.e. OS X 10.9
+            Mavericks, Windows 7
+          in: query
+          name: os_name
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by kind of OS used without specific version, i.e. OS X,
+            Windows
+          in: query
+          name: os_family
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by company which produced the OS, i.e. Apple Computer, Inc.,
+            Microsoft Corporation
+          in: query
+          name: os_company
+          required: false
+          schema:
+            type: string
+        - description: Filter by platform, i.e. webmail, desktop, mobile
+          in: query
+          name: platform
+          required: false
+          schema:
+            type: string
+        - description: Filter by country messages were opened in, i.e. Denmark, Russia
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          in: query
+          name: region
+          required: false
+          schema:
+            type: string
+        - description: >-
+            Filter by full name of region messages were opened in, i.e. Moscow,
+            New York
+          in: query
+          name: city
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesApiListOpensForOutboundResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound/opens/{messageid}:
+    get:
+      tags:
+        - Messages API
+      summary: Retrieve Message Opens
+      operationId: MessagesApi_getMessageOpens
+      security:
+        - serverToken: []
+      parameters:
+        - description: >-
+            The ID of the Outbound Message for which open statistics should be
+            retrieved.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+        - description: Number of message opens to return per request. Max 500.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 1
+        - description: Number of messages to skip.
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesApiGetMessageOpensResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound/{messageid}/details:
+    get:
+      tags:
+        - Messages API
+      summary: Outbound message details
+      operationId: MessagesApi_getOutboundMessageDetails
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the message for which to retrieve details.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/MessagesApiGetOutboundMessageDetailsResponse
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /messages/outbound/{messageid}/dump:
+    get:
+      tags:
+        - Messages API
+      summary: Outbound message dump
+      operationId: MessagesApi_getMessageDump
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the message for which to retrieve a dump.
+          in: path
+          name: messageid
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessagesApiGetMessageDumpResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /server:
+    get:
+      tags:
+        - Server Configuration API
+      summary: Get Server Configuration
+      operationId: ServerConfigurationApi_getConfiguration
+      security:
+        - serverToken: []
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ServerConfigurationApiGetConfigurationResponse
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - Server Configuration API
+      summary: Edit Server Configuration
+      operationId: ServerConfigurationApi_updateConfiguration
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        description: The settings that should be modified for the current server.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditServerConfigurationRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ServerConfigurationApiUpdateConfigurationResponse
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound:
+    get:
+      tags:
+        - Stats API
+      summary: Get outbound overview
+      operationId: StatsApi_getOutboundOverview
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutboundOverviewStatsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/bounces:
+    get:
+      tags:
+        - Stats API
+      summary: Get bounce counts
+      operationId: StatsApi_getBounceCounts
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetBounceCountsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/clicks:
+    get:
+      tags:
+        - Stats API
+      summary: Get click counts
+      operationId: StatsApi_getOutboundClickCounts
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetOutboundClickCountsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/clicks/browserfamilies:
+    get:
+      tags:
+        - Stats API
+      summary: Get browser usage by family
+      operationId: StatsApi_getOutboundClicksBrowserFamilies
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/StatsApiGetOutboundClicksBrowserFamiliesResponse
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/clicks/location:
+    get:
+      tags:
+        - Stats API
+      summary: Get clicks by body location
+      operationId: StatsApi_getOutboundClicksLocation
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetOutboundClicksLocationResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/clicks/platforms:
+    get:
+      tags:
+        - Stats API
+      summary: Get browser plaform usage
+      operationId: StatsApi_getBrowserPlatformUsage
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetBrowserPlatformUsageResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/opens:
+    get:
+      tags:
+        - Stats API
+      summary: Get email open counts
+      operationId: StatsApi_getEmailOpenCounts
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetEmailOpenCountsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/opens/emailclients:
+    get:
+      tags:
+        - Stats API
+      summary: Get email client usage
+      operationId: StatsApi_getEmailClientUsage
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetEmailClientUsageResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/opens/platforms:
+    get:
+      tags:
+        - Stats API
+      summary: Get email platform usage
+      operationId: StatsApi_getEmailPlatformUsage
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetEmailPlatformUsageResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/sends:
+    get:
+      tags:
+        - Stats API
+      summary: Get sent counts
+      operationId: StatsApi_getSentCounts
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SentCountsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/spam:
+    get:
+      tags:
+        - Stats API
+      summary: Get spam complaints
+      operationId: StatsApi_getSpamComplaints
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats up to the date specified. e.g. `2014-02-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetSpamComplaintsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /stats/outbound/tracked:
+    get:
+      tags:
+        - Stats API
+      summary: Get tracked email counts
+      operationId: StatsApi_getTrackedEmailCounts
+      security:
+        - serverToken: []
+      parameters:
+        - description: Filter by tag
+          in: query
+          name: tag
+          schema:
+            type: string
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: fromdate
+          schema:
+            type: string
+            format: date
+        - description: Filter stats starting from the date specified. e.g. `2014-01-01`
+          in: query
+          name: todate
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsApiGetTrackedEmailCountsResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /templates:
+    get:
+      tags:
+        - Templates API
+      summary: Get the Templates associated with this Server
+      operationId: TemplatesApi_listTemplates
+      security:
+        - serverToken: []
+      parameters:
+        - description: The number of Templates to return
+          in: query
+          name: Count
+          required: true
+          schema:
+            type: number
+            format: int
+        - description: The number of Templates to "skip" before returning results.
+          in: query
+          name: Offset
+          required: true
+          schema:
+            type: number
+            format: int
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesApiListTemplatesResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+    post:
+      tags:
+        - Templates API
+      summary: Create a Template
+      operationId: TemplatesApi_createTemplate
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesApiCreateTemplateResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /templates/validate:
+    post:
+      tags:
+        - Templates API
+      summary: Test Template Content
+      operationId: TemplatesApi_validateTemplateContent
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateValidationRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/TemplatesApiValidateTemplateContentResponse
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /templates/{templateIdOrAlias}:
+    delete:
+      tags:
+        - Templates API
+      summary: Delete a Template
+      operationId: TemplatesApi_deleteTemplate
+      security:
+        - serverToken: []
+      parameters:
+        - description: >-
+            The 'TemplateID' or 'Alias' value for the Template you wish to
+            delete.
+          in: path
+          name: templateIdOrAlias
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesApiDeleteTemplateResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+    get:
+      tags:
+        - Templates API
+      summary: Get a Template
+      operationId: TemplatesApi_getTemplateById
+      security:
+        - serverToken: []
+      parameters:
+        - description: >-
+            The 'TemplateID' or 'Alias' value for the Template you wish to
+            retrieve.
+          in: path
+          name: templateIdOrAlias
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesApiGetTemplateByIdResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - Templates API
+      summary: Update a Template
+      operationId: TemplatesApi_updateTemplate
+      security:
+        - serverToken: []
+      parameters:
+        - description: >-
+            The 'TemplateID' or 'Alias' value for the Template you wish to
+            update.
+          in: path
+          name: templateIdOrAlias
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesApiUpdateTemplateResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /triggers/inboundrules:
+    get:
+      tags:
+        - Inbound Rules API
+      summary: List inbound rule triggers
+      operationId: InboundRulesApi_listTriggers
+      security:
+        - serverToken: []
+      parameters:
+        - description: Number of records to return per request.
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+        - description: Number of records to skip.
+          in: query
+          name: offset
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboundRulesApiListTriggersResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+    post:
+      tags:
+        - Inbound Rules API
+      summary: Create an inbound rule trigger
+      operationId: InboundRulesApi_createTrigger
+      security:
+        - serverToken: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInboundRuleRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboundRulesApiCreateTriggerResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  /triggers/inboundrules/{triggerid}:
+    delete:
+      tags:
+        - Inbound Rules API
+      summary: Delete a single trigger
+      operationId: InboundRulesApi_deleteSingleTrigger
+      security:
+        - serverToken: []
+      parameters:
+        - description: The ID of the Inbound Rule that should be deleted.
+          in: path
+          name: triggerid
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardPostmarkResponse'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+components:
+  responses:
+    '422':
+      description: >-
+        An error was generated due to incorrect use of the API. See the Message
+        associated with this response for more information.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StandardPostmarkResponse'
+    '500':
+      description: Indicates an internal server error occurred.
+  schemas:
+    Attachment:
+      description: An attachment for an email message.
+      properties:
+        Content:
+          type: string
+        ContentID:
+          type: string
+        ContentType:
+          type: string
+        Name:
+          type: string
+    AttachmentCollection:
+      items:
+        $ref: '#/components/schemas/Attachment'
+      type: array
+    BounceActivationResponse:
+      properties:
+        Bounce:
+          $ref: '#/components/schemas/BounceInfoResponse'
+        Message:
+          type: string
+    BounceCountElement:
+      properties:
+        Count:
+          type: integer
+        Name:
+          type: string
+        Type:
+          type: string
+    BounceDumpResponse:
+      properties:
+        Body:
+          description: >-
+            Raw source of bounce. If no dump is available this will return an
+            empty string.
+          type: string
+    BounceInfoResponse:
+      properties:
+        BouncedAt:
+          format: date-time
+          type: string
+        CanActivate:
+          type: boolean
+        Content:
+          type: string
+        Description:
+          type: string
+        Details:
+          type: string
+        DumpAvailable:
+          type: boolean
+        Email:
+          format: email
+          type: string
+        ID:
+          type: string
+        Inactive:
+          type: boolean
+        MessageID:
+          type: string
+        Name:
+          type: string
+        Subject:
+          type: string
+        Tag:
+          type: string
+        Type:
+          type: string
+        TypeCode:
+          type: integer
+    BounceSearchResponse:
+      description: ''
+      properties:
+        Bounces:
+          items:
+            $ref: '#/components/schemas/BounceInfoResponse'
+          type: array
+        TotalCount:
+          type: integer
+    CreateInboundRuleRequest:
+      description: ''
+      properties:
+        Rule:
+          format: email
+          type: string
+    CreateTemplateRequest:
+      description: The contents required for creating a new template.
+      properties:
+        Alias:
+          description: >-
+            The optional string identifier for referring to this Template
+            (numbers, letters, and '.', '-', '_' characters, starts with a
+            letter).
+          type: string
+        HtmlBody:
+          description: The HTML template definition for this Template.
+          type: string
+        Name:
+          description: The friendly display name for the template.
+          type: string
+        Subject:
+          description: The Subject template definition for this Template.
+          type: string
+        TextBody:
+          description: The Text template definition for this Template.
+          type: string
+      required:
+        - Name
+        - Subject
+    DeliveryStatsResponse:
+      description: ''
+      properties:
+        Bounces:
+          items:
+            $ref: '#/components/schemas/BounceCountElement'
+          type: array
+        InactiveMails:
+          type: integer
+    DynamicResponse:
+      description: The properties of this object will vary based request parameters.
+    EditServerConfigurationRequest:
+      properties:
+        BounceHookUrl:
+          type: string
+        ClickHookUrl:
+          description: >-
+            Webhook url allowing real-time notification when tracked links are
+            clicked.
+          type: string
+        Color:
+          enum:
+            - purple
+            - blue
+            - turqoise
+            - green
+            - red
+            - yellow
+            - grey
+          type: string
+        DeliveryHookUrl:
+          type: string
+        InboundDomain:
+          type: string
+        InboundHookUrl:
+          type: string
+        InboundSpamThreshold:
+          type: integer
+        Name:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        RawEmailEnabled:
+          type: boolean
+        SmtpApiActivated:
+          type: boolean
+        TrackLinks:
+          enum:
+            - None
+            - HtmlAndText
+            - HtmlOnly
+            - TextOnly
+          type: string
+        TrackOpens:
+          type: boolean
+    EditTemplateRequest:
+      description: The contents required for creating a new template.
+      properties:
+        Alias:
+          description: >-
+            The optional string identifier for referring to this Template
+            (numbers, letters, and '.', '-', '_' characters, starts with a
+            letter).
+          type: string
+        HtmlBody:
+          description: The HTML template definition for this Template.
+          type: string
+        Name:
+          description: The friendly display name for the template.
+          type: string
+        Subject:
+          description: The Subject template definition for this Template.
+          type: string
+        TextBody:
+          description: The Text template definition for this Template.
+          type: string
+      required:
+        - TemplateId
+    EmailNameAddressPair:
+      description: ''
+      properties:
+        Email:
+          type: string
+        Name:
+          type: string
+    EmailWithTemplateRequest:
+      properties:
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Bcc:
+          format: email
+          type: string
+        Cc:
+          format: email
+          type: string
+        From:
+          format: email
+          type: string
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        InlineCss:
+          default: true
+          type: boolean
+        ReplyTo:
+          type: string
+        Tag:
+          type: string
+        TemplateAlias:
+          description: Required if 'TemplateId' is not specified.
+          type: string
+        TemplateId:
+          description: Required if 'TemplateAlias' is not specified.
+          type: integer
+        TemplateModel:
+          type: object
+        To:
+          format: email
+          type: string
+        TrackLinks:
+          description: >-
+            Replace links in content to enable "click tracking" stats. Default
+            is 'null', which uses the server's LinkTracking setting'.
+          enum:
+            - None
+            - HtmlAndText
+            - HtmlOnly
+            - TextOnly
+          type: string
+        TrackOpens:
+          description: Activate open tracking for this email.
+          type: boolean
+      required:
+        - TemplateId
+        - TemplateAlias
+        - TemplateModel
+        - To
+        - From
+    ExtendedMessageClickEventInformation:
+      description: ''
+      properties:
+        ClickLocation:
+          type: string
+        Client:
+          description: ''
+          properties:
+            Company:
+              type: string
+            Family:
+              type: string
+            Name:
+              type: string
+        Geo:
+          properties:
+            City:
+              type: string
+            Coords:
+              type: string
+            Country:
+              type: string
+            CountryISOCode:
+              type: string
+            IP:
+              type: string
+            Region:
+              type: string
+            RegionISOCode:
+              type: string
+            Zip:
+              type: string
+        MessageID:
+          type: string
+        OS:
+          properties:
+            Company:
+              type: string
+            Family:
+              type: string
+            Name:
+              type: string
+        OriginalLink:
+          type: string
+        Platform:
+          type: string
+        ReceivedAt:
+          format: date-time
+          type: string
+        Recipient:
+          format: email
+          type: string
+        Tag:
+          type: string
+        UserAgent:
+          type: string
+    ExtendedMessageOpenEventInformation:
+      description: ''
+      properties:
+        Client:
+          description: ''
+          properties:
+            Company:
+              type: string
+            Family:
+              type: string
+            Name:
+              type: string
+        FirstOpen:
+          type: boolean
+        Geo:
+          properties:
+            City:
+              type: string
+            Coords:
+              type: string
+            Country:
+              type: string
+            CountryISOCode:
+              type: string
+            IP:
+              type: string
+            Region:
+              type: string
+            RegionISOCode:
+              type: string
+            Zip:
+              type: string
+        MessageID:
+          type: string
+        OS:
+          properties:
+            Company:
+              type: string
+            Family:
+              type: string
+            Name:
+              type: string
+        Platform:
+          type: string
+        ReceivedAt:
+          format: date-time
+          type: string
+        Recipient:
+          format: email
+          type: string
+        Tag:
+          type: string
+        UserAgent:
+          type: string
+    HeaderCollection:
+      items:
+        $ref: '#/components/schemas/MessageHeader'
+      type: array
+    InboundMessageDetail:
+      description: ''
+      properties:
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Cc:
+          type: string
+        CcFull:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        Date:
+          type: string
+        From:
+          type: string
+        FromFull:
+          description: ''
+          properties:
+            Email:
+              type: string
+            Name:
+              type: string
+        FromName:
+          type: string
+        MailboxHash:
+          type: string
+        MessageID:
+          type: string
+        OriginalRecipient:
+          type: string
+        ReplyTo:
+          type: string
+        Status:
+          type: string
+        Subject:
+          type: string
+        Tag:
+          type: string
+        To:
+          type: string
+        ToFull:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+    InboundMessageFullDetailsResponse:
+      properties:
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        BlockedReason:
+          type: string
+        Cc:
+          type: string
+        CcFull:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        Date:
+          type: string
+        From:
+          type: string
+        FromFull:
+          description: ''
+          properties:
+            Email:
+              type: string
+            Name:
+              type: string
+        FromName:
+          type: string
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        HtmlBody:
+          type: string
+        MailboxHash:
+          type: string
+        MessageID:
+          type: string
+        OriginalRecipient:
+          type: string
+        ReplyTo:
+          type: string
+        Status:
+          type: string
+        Subject:
+          type: string
+        Tag:
+          type: string
+        TextBody:
+          type: string
+        To:
+          type: string
+        ToFull:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+    InboundSearchResponse:
+      description: ''
+      properties:
+        InboundMessages:
+          items:
+            $ref: '#/components/schemas/InboundMessageDetail'
+          type: array
+        TotalCount:
+          type: integer
+    MessageClickSearchResponse:
+      properties:
+        Clicks:
+          items:
+            $ref: '#/components/schemas/ExtendedMessageClickEventInformation'
+          type: array
+        TotalCount:
+          type: integer
+    MessageEventDetails:
+      description: ''
+      properties:
+        Details:
+          properties:
+            BounceID:
+              type: string
+            DeliveryMessage:
+              type: string
+            DestinationIP:
+              type: string
+            DestinationServer:
+              type: string
+            Summary:
+              type: string
+        ReceivedAt:
+          format: date-time
+          type: string
+        Recipient:
+          type: string
+        Type:
+          type: string
+    MessageHeader:
+      description: A single header for an email message.
+      properties:
+        Name:
+          description: The header's name.
+          type: string
+        Value:
+          description: The header's value.
+          type: string
+    MessageOpenSearchResponse:
+      properties:
+        Opens:
+          items:
+            $ref: '#/components/schemas/ExtendedMessageOpenEventInformation'
+          type: array
+        TotalCount:
+          type: integer
+    OutboundMessageDetail:
+      description: ''
+      properties:
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Bcc:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        Cc:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        From:
+          type: string
+        MessageID:
+          type: string
+        ReceivedAt:
+          format: date-time
+          type: string
+        Recipients:
+          items:
+            type: string
+          type: array
+        Status:
+          type: string
+        Subject:
+          type: string
+        Tag:
+          type: string
+        To:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        TrackLinks:
+          enum:
+            - None
+            - HtmlAndText
+            - HtmlOnly
+            - TextOnly
+          type: string
+        TrackOpens:
+          type: boolean
+    OutboundMessageDetailsResponse:
+      properties:
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Bcc:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        Body:
+          type: string
+        Cc:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        From:
+          type: string
+        HtmlBody:
+          type: string
+        MessageEvents:
+          items:
+            $ref: '#/components/schemas/MessageEventDetails'
+          type: array
+        MessageID:
+          type: string
+        ReceivedAt:
+          format: date-time
+          type: string
+        Recipients:
+          items:
+            type: string
+          type: array
+        Status:
+          type: string
+        Subject:
+          type: string
+        Tag:
+          type: string
+        TextBody:
+          type: string
+        To:
+          items:
+            $ref: '#/components/schemas/EmailNameAddressPair'
+          type: array
+        TrackLinks:
+          enum:
+            - None
+            - HtmlAndText
+            - HtmlOnly
+            - TextOnly
+          type: string
+        TrackOpens:
+          type: boolean
+    OutboundMessageDumpResponse:
+      properties:
+        Body:
+          description: >-
+            Raw source of message. If no dump is available this will return an
+            empty string.
+          type: string
+    OutboundOverviewStatsResponse:
+      description: ''
+      properties:
+        BounceRate:
+          type: integer
+        Bounced:
+          type: integer
+        Opens:
+          type: integer
+        SMTPAPIErrors:
+          type: integer
+        Sent:
+          type: integer
+        SpamComplaints:
+          type: integer
+        SpamComplaintsRate:
+          type: integer
+        TotalClicks:
+          type: integer
+        TotalTrackedLinksSent:
+          type: integer
+        Tracked:
+          type: integer
+        UniqueLinksClicked:
+          type: integer
+        UniqueOpens:
+          type: integer
+        WithClientRecorded:
+          type: integer
+        WithLinkTracking:
+          type: integer
+        WithOpenTracking:
+          type: integer
+        WithPlatformRecorded:
+          type: integer
+    OutboundSearchResponse:
+      description: ''
+      properties:
+        Messages:
+          items:
+            $ref: '#/components/schemas/OutboundMessageDetail'
+          type: array
+        TotalCount:
+          type: integer
+    SendEmailBatchRequest:
+      items:
+        $ref: '#/components/schemas/SendEmailRequest'
+      type: array
+    SendEmailBatchResponse:
+      items:
+        $ref: '#/components/schemas/SendEmailResponse'
+      type: array
+    SendEmailRequest:
+      properties:
+        Attachments:
+          $ref: '#/components/schemas/AttachmentCollection'
+        Bcc:
+          description: >-
+            Bcc recipient email address. Multiple addresses are comma seperated.
+            Max 50.
+          type: string
+        Cc:
+          description: >-
+            Recipient email address. Multiple addresses are comma seperated. Max
+            50.
+          type: string
+        From:
+          description: >-
+            The sender email address. Must have a registered and confirmed
+            Sender Signature.
+          type: string
+        Headers:
+          $ref: '#/components/schemas/HeaderCollection'
+        HtmlBody:
+          description: If no TextBody specified HTML email message
+          type: string
+        ReplyTo:
+          description: >-
+            Reply To override email address. Defaults to the Reply To set in the
+            sender signature.
+          type: string
+        Subject:
+          description: Email Subject
+          type: string
+        Tag:
+          description: >-
+            Email tag that allows you to categorize outgoing emails and get
+            detailed statistics.
+          type: string
+        TextBody:
+          description: If no HtmlBody specified Plain text email message
+          type: string
+        To:
+          description: >-
+            Recipient email address. Multiple addresses are comma seperated. Max
+            50.
+          type: string
+        TrackLinks:
+          description: >-
+            Replace links in content to enable "click tracking" stats. Default
+            is 'null', which uses the server's LinkTracking setting'.
+          enum:
+            - None
+            - HtmlAndText
+            - HtmlOnly
+            - TextOnly
+          type: string
+        TrackOpens:
+          description: Activate open tracking for this email.
+          type: boolean
+    SendEmailResponse:
+      description: The standard response when a postmark message is sent
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+        MessageID:
+          type: string
+        SubmittedAt:
+          format: date-time
+          type: string
+        To:
+          type: string
+    SendEmailTemplatedBatchRequest:
+      properties:
+        Messages:
+          items:
+            $ref: '#/components/schemas/EmailWithTemplateRequest'
+          type: array
+    SentCountsResponse:
+      description: The result of a get sent counts operation.
+      properties:
+        Days:
+          items:
+            properties:
+              Date:
+                type: string
+              Sent:
+                type: integer
+          type: array
+        Sent:
+          type: integer
+    ServerConfigurationResponse:
+      properties:
+        ApiTokens:
+          items:
+            type: string
+          type: array
+        BounceHookUrl:
+          type: string
+        ClickHookUrl:
+          type: string
+        Color:
+          enum:
+            - purple
+            - blue
+            - turqoise
+            - green
+            - red
+            - yellow
+            - grey
+          type: string
+        DeliveryHookUrl:
+          type: string
+        ID:
+          type: integer
+        InboundAddress:
+          format: email
+          type: string
+        InboundDomain:
+          type: string
+        InboundHash:
+          type: string
+        InboundHookUrl:
+          type: string
+        InboundSpamThreshold:
+          type: integer
+        Name:
+          type: string
+        OpenHookUrl:
+          type: string
+        PostFirstOpenOnly:
+          type: boolean
+        RawEmailEnabled:
+          type: boolean
+        ServerLink:
+          type: string
+        SmtpApiActivated:
+          type: boolean
+        TrackLinks:
+          enum:
+            - None
+            - HtmlAndText
+            - HtmlOnly
+            - TextOnly
+          type: string
+        TrackOpens:
+          type: boolean
+    StandardPostmarkResponse:
+      description: A Postmark API error.
+      properties:
+        ErrorCode:
+          type: integer
+        Message:
+          type: string
+    TemplateDetailResponse:
+      properties:
+        Active:
+          description: Indicates that this template may be used for sending email.
+          type: boolean
+        Alias:
+          description: The user-supplied alias for this template.
+          type: string
+        AssociatedServerId:
+          description: The ID of the Server with which this template is associated.
+          type: integer
+        HtmlBody:
+          description: >-
+            The content to use for the HtmlBody when this template is used to
+            send email.
+          type: string
+        Name:
+          description: The display name for the template.
+          type: string
+        Subject:
+          description: >-
+            The content to use for the Subject when this template is used to
+            send email.
+          type: string
+        TemplateID:
+          description: The ID associated with the template.
+          type: integer
+        TextBody:
+          description: >-
+            The content to use for the TextBody when this template is used to
+            send email.
+          type: string
+    TemplateListingResponse:
+      properties:
+        Templates API:
+          description: Basic information for each Template returned from the query.
+          items:
+            $ref: '#/components/schemas/TemplateRecordResponse'
+          type: array
+        TotalCount:
+          description: The total number of Templates API associated with this server.
+          type: number
+    TemplateRecordResponse:
+      properties:
+        Active:
+          description: True if this template is currently available for use.
+          type: boolean
+        Alias:
+          description: The user-supplied alias for this template.
+          type: string
+        Name:
+          description: The display name for this template.
+          type: string
+        TemplateId:
+          description: The associated ID for this template.
+          format: int
+          type: number
+    TemplateValidationError:
+      properties:
+        CharacterPosition:
+          type: integer
+        Line:
+          type: integer
+        Message:
+          type: string
+    TemplateValidationRequest:
+      properties:
+        HtmlBody:
+          description: |
+            The html body content to validate. Must be specified if Subject or
+            TextBody are not. See our template language documentation for more
+            information on the syntax for this field.
+          type: string
+        InlineCssForHtmlTestRender:
+          description: >
+            When HtmlBody is specified, the test render will have style blocks
+
+            inlined as style attributes on matching html elements. You may
+            disable
+
+            the css inlining behavior by passing false for this parameter.
+          default: true
+          type: boolean
+        Subject:
+          description: |
+            The subject content to validate. Must be specified if HtmlBody or
+            TextBody are not. See our template language documentation for more
+            information on the syntax for this field.
+          type: string
+        TestRenderModel:
+          description: The model to be used when rendering test content.
+          type: object
+        TextBody:
+          description: |
+            The text body content to validate. Must be specified if HtmlBody or
+            Subject are not. See our template language documentation for more
+            information on the syntax for this field.
+          type: string
+    TemplateValidationResponse:
+      properties:
+        AllContentIsValid:
+          type: boolean
+        HtmlBody:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        Subject:
+          $ref: '#/components/schemas/TemplateValidationResult'
+        SuggestedTemplateModel:
+          type: object
+        TextBody:
+          $ref: '#/components/schemas/TemplateValidationResult'
+    TemplateValidationResult:
+      properties:
+        ContentIsValid:
+          type: boolean
+        RenderedContent:
+          type: string
+        ValidationErrors:
+          items:
+            $ref: '#/components/schemas/TemplateValidationError'
+          type: array
+    BouncesApiGetBounceResponse:
+      type: object
+      properties: {}
+      example: {}
+    BouncesApiActivateBounceResponse:
+      type: object
+      properties: {}
+      example: {}
+    BouncesApiGetDumpResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiGetInboundMessageDetailsResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiGetAllClicksResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiGetMessageClicksResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiListOpensForOutboundResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiGetMessageOpensResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiGetOutboundMessageDetailsResponse:
+      type: object
+      properties: {}
+      example: {}
+    MessagesApiGetMessageDumpResponse:
+      type: object
+      properties: {}
+      example: {}
+    ServerConfigurationApiGetConfigurationResponse:
+      type: object
+      properties: {}
+      example: {}
+    ServerConfigurationApiUpdateConfigurationResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetBounceCountsResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetOutboundClickCountsResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetOutboundClicksBrowserFamiliesResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetOutboundClicksLocationResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetBrowserPlatformUsageResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetEmailOpenCountsResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetEmailClientUsageResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetEmailPlatformUsageResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetSpamComplaintsResponse:
+      type: object
+      properties: {}
+      example: {}
+    StatsApiGetTrackedEmailCountsResponse:
+      type: object
+      properties: {}
+      example: {}
+    TemplatesApiListTemplatesResponse:
+      type: object
+      properties: {}
+      example: {}
+    TemplatesApiCreateTemplateResponse:
+      type: object
+      properties: {}
+      example: {}
+    TemplatesApiValidateTemplateContentResponse:
+      type: object
+      properties: {}
+      example: {}
+    TemplatesApiDeleteTemplateResponse:
+      type: object
+      properties: {}
+      example: {}
+    TemplatesApiGetTemplateByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    TemplatesApiUpdateTemplateResponse:
+      type: object
+      properties: {}
+      example: {}
+    InboundRulesApiListTriggersResponse:
+      type: object
+      properties: {}
+      example: {}
+    InboundRulesApiCreateTriggerResponse:
+      type: object
+      properties: {}
+      example: {}
+  securitySchemes:
+    serverToken:
+      type: apiKey
+      in: header
+      name: X-Postmark-Server-Token

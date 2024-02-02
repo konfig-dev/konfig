@@ -9,10 +9,12 @@ import kebabcase from "lodash.kebabcase";
 import yaml from "js-yaml";
 import { getMethodObjects } from "../src/get-method-objects";
 import { generateTypescriptSdkUsageCode } from "../src/generate-typescript-sdk-usage-code";
+import execa from "execa";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
 const publishedDirPath = path.join(path.dirname(__dirname), "db", "published");
+const progressYamlsPath = path.join(path.dirname(__dirname), "db", "progress");
 const apiDirPath = path.join(
   path.dirname(__dirname),
   "openapi-directory",
@@ -26,6 +28,11 @@ const dataFromHtmlPath = path.join(
 const openapiExamplesPath = path.join(
   path.dirname(__dirname),
   "openapi-examples"
+);
+const fixedSpecsOutputPath = path.join(
+  path.dirname(__dirname),
+  "db",
+  "fixed-specs"
 );
 
 const publishJsonSchema = z.object({
@@ -70,6 +77,10 @@ async function main() {
   const dataFromHtml = JSON.parse(fs.readFileSync(dataFromHtmlPath, "utf-8"));
   const now = new Date();
   const publishedJsons: Set<string> = new Set();
+  if (!fs.existsSync(fixedSpecsOutputPath))
+    fs.mkdirSync(fixedSpecsOutputPath), { recursive: true };
+  if (!fs.existsSync(progressYamlsPath))
+    fs.mkdirSync(progressYamlsPath), { recursive: true };
   for (const spec in publishJson.publish) {
     const specDataPath = path.join(specDataDirPath, spec);
     const publishData = publishJson.publish[spec];
@@ -99,8 +110,7 @@ async function main() {
 
     // find existence of files in openapi-examples
     const openapiExamplesDirPath = path.join(openapiExamplesPath, dynamicPath);
-    const openapiExamplesDirExists = fs.existsSync(openapiExamplesDirPath);
-    if (!openapiExamplesDirExists) {
+    if (!fs.existsSync(openapiExamplesDirPath)) {
       throw Error(
         `❌ ERROR: openapi-examples directory does not exist at ${openapiExamplesDirPath}`
       );
@@ -163,6 +173,12 @@ async function main() {
       );
     }
 
+    const fixedSpecFileName = getFixedSpecFileName(publishData.sdkName);
+    fixSpec(
+      path.join(openapiExamplesDirPath, openapiPath),
+      path.join(fixedSpecsOutputPath, fixedSpecFileName)
+    );
+
     const merged: Published = {
       ...specData,
       ...publishData,
@@ -177,6 +193,7 @@ async function main() {
       clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       typescriptSdkUsageCode,
+      fixedSpecFileName: fixedSpecFileName,
     };
 
     if (
@@ -223,6 +240,32 @@ async function main() {
       fs.unlinkSync(path.join(publishedDirPath, file));
     }
   }
+}
+
+function getFixedSpecFileName(sdkName: string) {
+  const companyAndPlatform = sdkName.replace("-{language}-sdk", "");
+  return `${companyAndPlatform}-fixed-spec.yaml`;
+}
+
+function fixSpec(specInputPath: string, specOutputPath: string) {
+  if (!fs.existsSync(specOutputPath)) fs.writeFileSync(specOutputPath, "");
+  const progressYamlPath = path.join(
+    progressYamlsPath,
+    path.basename(specOutputPath.replace("-fixed-spec", "-progress"))
+  );
+  // TODO: switch to use npm konfig-cli
+  execa("../generator/konfig-dash/packages/konfig-cli/bin/run", [
+    "fix",
+    "--noInput",
+    "-i",
+    specInputPath,
+    "-s",
+    specOutputPath,
+    "-p",
+    progressYamlPath,
+  ]).then(() =>
+    console.log(`✅ Fixed spec ${path.dirname(specInputPath)}/openapi.yaml`)
+  );
 }
 
 function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {

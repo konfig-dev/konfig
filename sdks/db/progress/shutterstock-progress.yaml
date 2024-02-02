@@ -1,0 +1,448 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /v2/ai/audio/descriptors:
+    get: Custommusic_listAudioDescriptors
+  /v2/ai/audio/instruments:
+    get: Custommusic_listComputerAudioInstruments
+  /v2/ai/audio/renders:
+    get: Custommusic_getAudioRendersDetails
+    post: Custommusic_createRenderedAudio
+  /v2/audio:
+    get: Audio_listTracks
+  /v2/audio/collections:
+    get: Audio_listCollections
+    post: Audio_createCollections
+  /v2/audio/collections/{id}:
+    delete: Audio_deleteCollection
+    get: Audio_getCollectionDetails
+    post: Audio_setCollectionName
+  /v2/audio/collections/{id}/items:
+    delete: Audio_removeTracksFromCollection
+    get: Audio_listCollectionItems
+    post: Audio_addTracksToCollection
+  /v2/audio/genres:
+    get: Audio_listGenres
+  /v2/audio/instruments:
+    get: Audio_listInstruments
+  /v2/audio/licenses:
+    get: Audio_listAudioLicenses
+    post: Audio_licenseTracks
+  /v2/audio/licenses/{id}/downloads:
+    post: Audio_redownloadTracks
+  /v2/audio/moods:
+    get: Audio_listMoods
+  /v2/audio/search:
+    get: Audio_searchTracks
+  /v2/audio/{id}:
+    get: Audio_getTrackDetails
+  /v2/bulk_search/images:
+    post: Images_runMultipleSearches
+  /v2/catalog/collections:
+    get: Catalog_listCollections
+    post: Catalog_createCollection
+  /v2/catalog/collections/{collection_id}:
+    delete: Catalog_deleteCollection
+    patch: Catalog_updateCollectionMetadata
+  /v2/catalog/collections/{collection_id}/items:
+    delete: Catalog_removeItemsFromCollection
+    post: Catalog_addToCollectionItems
+  /v2/catalog/search:
+    get: Catalog_searchAssets
+  /v2/contributors:
+    get: Contributors_getDetailsMultiple
+  /v2/contributors/{contributor_id}:
+    get: Contributors_getDetails
+  /v2/contributors/{contributor_id}/collections:
+    get: Contributors_listCollections
+  /v2/contributors/{contributor_id}/collections/{id}:
+    get: Contributors_getCollectionDetails
+  /v2/contributors/{contributor_id}/collections/{id}/items:
+    get: Contributors_getCollectionItems
+  /v2/cv/images:
+    post: Computervision_uploadImage
+  /v2/cv/keywords:
+    get: Computervision_listSuggestedKeywords
+  /v2/cv/similar/images:
+    get: Computervision_listSimilarImages
+  /v2/cv/similar/videos:
+    get: Computervision_listSimilarVideos
+  /v2/editorial/categories:
+    get: Editorialimages_listCategories
+  /v2/editorial/images/categories:
+    get: Editorialimages_listCategories
+  /v2/editorial/images/licenses:
+    get: Editorialimages_listLicenses
+    post: Editorialimages_licenseContent
+  /v2/editorial/images/livefeeds:
+    get: Editorialimages_listLivefeedImages
+  /v2/editorial/images/livefeeds/{id}:
+    get: Editorialimages_getLivefeedImages
+  /v2/editorial/images/livefeeds/{id}/items:
+    get: Editorialimages_getLivefeedItems
+  /v2/editorial/images/search:
+    get: Editorialimages_search
+  /v2/editorial/images/updated:
+    get: Editorialimages_listUpdatedContent
+  /v2/editorial/images/{id}:
+    get: Editorialimages_getImageDetails
+  /v2/editorial/licenses:
+    post: Editorialimages_licenseContent
+  /v2/editorial/livefeeds:
+    get: Editorialimages_getLivefeedList
+  /v2/editorial/livefeeds/{id}:
+    get: Editorialimages_getLivefeedItems
+  /v2/editorial/livefeeds/{id}/items:
+    get: Editorialimages_getLivefeedItems
+  /v2/editorial/search:
+    get: Editorialimages_searchContent
+  /v2/editorial/updated:
+    get: Editorialimages_listUpdatedContent
+  /v2/editorial/videos/categories:
+    get: Editorialvideo_listVideoCategories
+  /v2/editorial/videos/licenses:
+    get: Editorialvideo_listVideoLicenses
+    post: Editorialvideo_licenseVideos
+  /v2/editorial/videos/search:
+    get: Editorialvideo_searchVideoContent
+  /v2/editorial/videos/{id}:
+    get: Editorialvideo_getContentDetails
+  /v2/editorial/{id}:
+    get: Editorialimages_getDetails
+  /v2/images:
+    get: Images_listInfo
+    post: Computervision_uploadImageEphemeral
+  /v2/images/categories:
+    get: Images_listCategories
+  /v2/images/collections:
+    get: Images_listCollections
+    post: Images_createCollection
+  /v2/images/collections/featured:
+    get: Images_listFeaturedCollections
+  /v2/images/collections/featured/{id}:
+    get: Images_featuredCollectionDetails
+  /v2/images/collections/featured/{id}/items:
+    get: Images_getCollectionItems
+  /v2/images/collections/{id}:
+    delete: Images_deleteCollection
+    get: Images_getCollectionDetails
+    post: Images_renameCollection
+  /v2/images/collections/{id}/items:
+    delete: Images_removeFromCollection
+    get: Images_getCollectionItems
+    post: Images_addToCollectionItems
+  /v2/images/licenses:
+    get: Images_listLicenses
+    post: Images_licenseImagesForMultiple
+  /v2/images/licenses/{id}/downloads:
+    post: Images_redownloadLicense
+  /v2/images/recommendations:
+    get: Images_listRecommendedImages
+  /v2/images/search:
+    get: Images_searchImages
+  /v2/images/search/suggestions:
+    get: Images_getSearchSuggestions
+    post: Images_extractKeywordsFromText
+  /v2/images/updated:
+    get: Images_listUpdatedContent
+  /v2/images/{id}:
+    get: Images_getDetails
+  /v2/images/{id}/similar:
+    get: Images_listSimilarImages
+  /v2/oauth/access_token:
+    post: Oauth_getUserAccessToken
+  /v2/oauth/authorize:
+    get: Oauth_authorizeApplications
+  /v2/sfx:
+    get: Soundeffects_listDetails
+  /v2/sfx/licenses:
+    get: Soundeffects_listLicenses
+    post: Soundeffects_licenseAssets
+  /v2/sfx/licenses/{id}/downloads:
+    post: Soundeffects_redownloadLicenses
+  /v2/sfx/search:
+    get: Soundeffects_searchSoundEffects
+  /v2/sfx/{id}:
+    get: Soundeffects_getDetails
+  /v2/test:
+    get: Test_echoText
+  /v2/test/validate:
+    get: Test_inputValidation
+  /v2/user:
+    get: Users_getUserDetails
+  /v2/user/access_token:
+    get: Users_getAccessTokenDetails
+  /v2/user/subscriptions:
+    get: Users_listSubscriptions
+  /v2/videos:
+    get: Videos_listVideo
+  /v2/videos/categories:
+    get: Videos_listCategories
+  /v2/videos/collections:
+    get: Videos_listCollections
+    post: Videos_createVideoCollections
+  /v2/videos/collections/featured:
+    get: Videos_listFeaturedVideoCollections
+  /v2/videos/collections/featured/{id}:
+    get: Videos_collectionDetailsGet
+  /v2/videos/collections/featured/{id}/items:
+    get: Videos_getFeaturedCollectionItems
+  /v2/videos/collections/{id}:
+    delete: Videos_deleteCollection
+    get: Videos_collectionDetailsGet
+    post: Videos_setNewName
+  /v2/videos/collections/{id}/items:
+    delete: Videos_removeFromCollection
+    get: Videos_getCollectionItems
+    post: Videos_addToCollectionItems
+  /v2/videos/licenses:
+    get: Videos_listLicenses
+    post: Videos_licenseVideos
+  /v2/videos/licenses/{id}/downloads:
+    post: Videos_redownloadDownloads
+  /v2/videos/search:
+    get: Videos_searchVideo
+  /v2/videos/search/suggestions:
+    get: Videos_searchSuggestions
+  /v2/videos/updated:
+    get: Videos_listUpdatedVideos
+  /v2/videos/{id}:
+    get: Videos_videoDetails
+  /v2/videos/{id}/similar:
+    get: Videos_findSimilar
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /v2/oauth/access_token:
+    post:
+      application/json: OauthGetUserAccessTokenRequest
+      application/x-www-form-urlencoded: OauthGetUserAccessTokenRequest1
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  added_date:
+    query: false
+  added_date_end:
+    query: false
+  added_date_start:
+    query: false
+  ai_industry:
+    query: false
+  ai_labels_limit:
+    query: false
+  ai_objective:
+    query: false
+  ai_search:
+    query: false
+  artists:
+    query: false
+  aspect_ratio:
+    query: false
+  aspect_ratio_max:
+    query: false
+  aspect_ratio_min:
+    query: false
+  asset_hint:
+    query: false
+  asset_id:
+    query: false
+  asset_type:
+    query: false
+  audio_id:
+    query: false
+  band_id:
+    query: false
+  band_name:
+    query: false
+  bpm:
+    query: false
+  bpm_from:
+    query: false
+  bpm_to:
+    query: false
+  category:
+    query: false
+  client_id:
+    query: false
+  collection_id:
+    query: false
+  color:
+    query: false
+  contributor:
+    query: false
+  contributor_country:
+    query: false
+  country:
+    query: false
+  cursor:
+    query: false
+  date_end:
+    query: false
+  date_start:
+    query: false
+  date_taken_end:
+    query: false
+  date_taken_start:
+    query: false
+  date_updated_end:
+    query: false
+  date_updated_start:
+    query: false
+  download_availability:
+    query: false
+  duration:
+    query: false
+  duration_from:
+    query: false
+  duration_to:
+    query: false
+  embed:
+    query: false
+  end_date:
+    query: false
+  fields:
+    query: false
+  format:
+    query: false
+  fps:
+    query: false
+  fps_from:
+    query: false
+  fps_to:
+    query: false
+  genre:
+    query: false
+  height:
+    query: false
+  height_from:
+    query: false
+  height_to:
+    query: false
+  id:
+    query: false
+  image_id:
+    query: false
+  image_type:
+    query: false
+  instrument_id:
+    query: false
+  instrument_name:
+    query: false
+  instruments:
+    query: false
+  interval:
+    query: false
+  is_instrumental:
+    query: false
+  item_id:
+    query: false
+  keyword_safe_search:
+    query: false
+  language:
+    query: false
+  library:
+    query: false
+  license:
+    query: false
+  license_id:
+    query: false
+  limit:
+    query: false
+  max_items:
+    query: false
+  model:
+    query: false
+  moods:
+    query: false
+  name:
+    query: false
+  orientation:
+    query: false
+  page:
+    query: false
+  people_age:
+    query: false
+  people_ethnicity:
+    query: false
+  people_gender:
+    query: false
+  people_model_released:
+    query: false
+  people_number:
+    query: false
+  per_page:
+    query: false
+  query:
+    query: false
+  realm:
+    query: false
+  redirect_uri:
+    query: false
+  region:
+    query: false
+  render_speed_over:
+    query: false
+  resolution:
+    query: false
+  response_type:
+    query: false
+  safe:
+    query: false
+  scope:
+    query: false
+  search_id:
+    query: false
+  sfx_id:
+    query: false
+  share_code:
+    query: false
+  shared:
+    query: false
+  size:
+    query: false
+  sort:
+    query: false
+  sort_order:
+    query: false
+  spellcheck_query:
+    query: false
+  start_date:
+    query: false
+  state:
+    query: false
+  subscription_id:
+    query: false
+  supplier_code:
+    query: false
+  tag:
+    query: false
+  team_history:
+    query: false
+  tempo:
+    query: false
+  tempo_from:
+    query: false
+  tempo_to:
+    query: false
+  text:
+    query: false
+  type:
+    query: false
+  user-agent:
+    header: false
+  username:
+    query: false
+  video_id:
+    query: false
+  view:
+    query: false
+  vocal_description:
+    query: false
+  width:
+    query: false
+  width_from:
+    query: false
+  width_to:
+    query: false
+validServerUrls: {}

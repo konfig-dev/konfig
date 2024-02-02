@@ -1,0 +1,288 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /metrics/bytes-difference/absolute/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/bytes-difference/absolute/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/bytes-difference/net/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/bytes-difference/net/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edited-pages/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edited-pages/new/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edited-pages/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edited-pages/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edited-pages/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/editors/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/editors/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/editors/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/editors/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/edits/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/legacy/pagecounts/aggregate/{project}/{access-site}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/pageviews/top-by-country/{project}/{access}/{year}/{month}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/registered-users/new/{project}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /metrics/unique-devices/{project}/{access-site}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: {}
+  /transform/list/tool/{tool}:
+    get:
+      '200':
+        application/json: {}
+  /transform/list/tool/{tool}/{from}:
+    get:
+      '200':
+        application/json: {}
+  /transform/list/tool/{tool}/{from}/{to}:
+    get:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /feed/availability:
+    get: FeedContentAvailability_getByWikiDomain
+  /media/math/check/{type}:
+    post: Math_checkFormula
+  /media/math/formula/{hash}:
+    get: Math_getFormulaByHash
+  /media/math/render/{format}/{hash}:
+    get: Math_renderFormulaByHash
+  /metrics/bytes-difference/absolute/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get: BytesDifferenceData_getAbsoluteAggregateByProjectAndDateRange
+  /metrics/bytes-difference/absolute/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get: BytesDifferenceData_getAbsolutePerPage
+  /metrics/bytes-difference/net/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get: BytesDifferenceData_getNetAggregateByProjectAndDateRange
+  /metrics/bytes-difference/net/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get: BytesDifferenceData_getSumNetTextBytesDifferencePerPage
+  /metrics/edited-pages/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get: EditedPagesData_getAggregateByProjectAndDateRange
+  /metrics/edited-pages/new/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get: EditedPagesData_getNewPagesCountsForProject
+  /metrics/edited-pages/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get: EditedPagesData_getTopByAbsoluteBytesDifference
+  /metrics/edited-pages/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get: EditedPagesData_getTopByEditsCount
+  /metrics/edited-pages/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get: EditedPagesData_getTopByNetBytesDifference
+  /metrics/editors/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get: EditorsData_getEditorsCountsForProject
+  /metrics/editors/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get: EditorsData_getTopByAbsoluteBytesDifference
+  /metrics/editors/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get: EditorsData_getTopEditorsByEditsCount
+  /metrics/editors/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get: EditorsData_getTopByNetBytesDifference
+  /metrics/edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get: EditsData_getEditsCountsForProject
+  /metrics/edits/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get: EditsData_getPageEditCounts
+  /metrics/legacy/pagecounts/aggregate/{project}/{access-site}/{granularity}/{start}/{end}:
+    get: LegacyData_getPagecountsAggregateByProjectAndDateRange
+  /metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}:
+    get: PageviewsData_getPageviewCountsByProject
+  /metrics/pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}:
+    get: PageviewsData_getPageviewCountsByArticleDateRange
+  /metrics/pageviews/top-by-country/{project}/{access}/{year}/{month}:
+    get: PageviewsData_listByCountryAndAccess
+  /metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}:
+    get: PageviewsData_listMostViewedArticlesByProjectAndTimespan
+  /metrics/registered-users/new/{project}/{granularity}/{start}/{end}:
+    get: RegisteredUsersData_getNewUserCountsByProjectAndDateRange
+  /metrics/unique-devices/{project}/{access-site}/{granularity}/{start}/{end}:
+    get: UniqueDevicesData_getByProjectAndDateRange
+  /transform/html/from/{from_lang}/to/{to_lang}:
+    post: Transform_contentMachineTranslate
+  /transform/html/from/{from_lang}/to/{to_lang}/{provider}:
+    post: Transform_contentMachineTranslate
+  /transform/list/languagepairs/:
+    get: Transform_listLanguagePairs
+  /transform/list/pair/{from}/{to}/:
+    get: Transform_languagePairList
+  /transform/list/tool/{tool}:
+    get: Transform_getListToolLanguagePairs
+  /transform/list/tool/{tool}/{from}:
+    get: Transform_toolLanguagePairsList
+  /transform/list/tool/{tool}/{from}/{to}:
+    get: Transform_toolLanguagePairsList
+  /transform/word/from/{from_lang}/to/{to_lang}/{word}:
+    get: Transform_getDictionaryMeaning
+  /transform/word/from/{from_lang}/to/{to_lang}/{word}/{provider}:
+    get: Transform_getDictionaryMeaning
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /media/math/check/{type}:
+    post:
+      application/x-www-form-urlencoded: MathCheckFormulaRequest
+  /transform/html/from/{from_lang}/to/{to_lang}:
+    post:
+      application/x-www-form-urlencoded: TransformContentMachineTranslateRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /metrics/bytes-difference/absolute/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: BytesDifferenceDataGetAbsoluteAggregateByProjectAndDateRangeResponse
+  /metrics/bytes-difference/absolute/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: BytesDifferenceDataGetAbsolutePerPageResponse
+  /metrics/bytes-difference/net/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: BytesDifferenceDataGetNetAggregateByProjectAndDateRangeResponse
+  /metrics/bytes-difference/net/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: BytesDifferenceDataGetSumNetTextBytesDifferencePerPageResponse
+  /metrics/edited-pages/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: EditedPagesDataGetAggregateByProjectAndDateRangeResponse
+  /metrics/edited-pages/new/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: EditedPagesDataGetNewPagesCountsForProjectResponse
+  /metrics/edited-pages/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: EditedPagesDataGetTopByAbsoluteBytesDifferenceResponse
+  /metrics/edited-pages/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: EditedPagesDataGetTopByEditsCountResponse
+  /metrics/edited-pages/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: EditedPagesDataGetTopByNetBytesDifferenceResponse
+  /metrics/editors/aggregate/{project}/{editor-type}/{page-type}/{activity-level}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: EditorsDataGetEditorsCountsForProjectResponse
+  /metrics/editors/top-by-absolute-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: EditorsDataGetTopByAbsoluteBytesDifferenceResponse
+  /metrics/editors/top-by-edits/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: EditorsDataGetTopEditorsByEditsCountResponse
+  /metrics/editors/top-by-net-bytes-difference/{project}/{editor-type}/{page-type}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: EditorsDataGetTopByNetBytesDifferenceResponse
+  /metrics/edits/aggregate/{project}/{editor-type}/{page-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: EditsDataGetEditsCountsForProjectResponse
+  /metrics/edits/per-page/{project}/{page-title}/{editor-type}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: EditsDataGetPageEditCountsResponse
+  /metrics/legacy/pagecounts/aggregate/{project}/{access-site}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: LegacyDataGetPagecountsAggregateByProjectAndDateRangeResponse
+  /metrics/pageviews/aggregate/{project}/{access}/{agent}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: PageviewsDataGetPageviewCountsByProjectResponse
+  /metrics/pageviews/per-article/{project}/{access}/{agent}/{article}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: PageviewsDataGetPageviewCountsByArticleDateRangeResponse
+  /metrics/pageviews/top-by-country/{project}/{access}/{year}/{month}:
+    get:
+      '200':
+        application/json: PageviewsDataListByCountryAndAccessResponse
+  /metrics/pageviews/top/{project}/{access}/{year}/{month}/{day}:
+    get:
+      '200':
+        application/json: PageviewsDataListMostViewedArticlesByProjectAndTimespanResponse
+  /metrics/registered-users/new/{project}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: RegisteredUsersDataGetNewUserCountsByProjectAndDateRangeResponse
+  /metrics/unique-devices/{project}/{access-site}/{granularity}/{start}/{end}:
+    get:
+      '200':
+        application/json: UniqueDevicesDataGetByProjectAndDateRangeResponse
+  /transform/list/tool/{tool}:
+    get:
+      '200':
+        application/json: TransformGetListToolLanguagePairsResponse
+  /transform/list/tool/{tool}/{from}:
+    get:
+      '200':
+        application/json: TransformToolLanguagePairsListResponse
+  /transform/list/tool/{tool}/{from}/{to}:
+    get:
+      '200':
+        application/json: TransformToolLanguagePairsList200Response
+securityParameters: {}
+validServerUrls: {}

@@ -1,0 +1,91 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /stats:
+    get:
+      2XX:
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /channels:
+    get: Status_listActiveChannels
+  /channels/{channel_id}:
+    get: Status_channelMetadata
+  /channels/{channel_id}/messages:
+    get: History_channelMessagesGet
+    post: Publishing_messageToChannel
+  /channels/{channel_id}/presence:
+    get: Status_channelPresenceGet
+  /channels/{channel_id}/presence/history:
+    get: History_getChannelPresenceHistory
+  /keys/{keyName}/requestToken:
+    post: Authentication_requestToken
+  /push/channelSubscriptions:
+    delete: Push_deleteDeviceDetails
+    get: Push_listChannelSubscriptions
+    post: Push_subscribeDeviceToChannel
+  /push/channels:
+    get: Push_channelsList
+  /push/deviceRegistrations:
+    delete: Push_unregisterMatchingDevices
+    get: Push_listDeviceRegistrations
+    post: Push_registerDeviceForPushNotifications
+  /push/deviceRegistrations/{device_id}:
+    delete: Push_unregisterDevice
+    get: Push_deviceRegistrationDetailsGet
+    patch: Push_updateDeviceRegistration
+    put: Push_updateDeviceRegistration
+  /push/deviceRegistrations/{device_id}/resetUpdateToken:
+    get: Push_resetDeviceUpdateToken
+  /push/publish:
+    post: Push_publishNotificationToDevice
+  /stats:
+    get: Stats_getUsageStatistics
+  /time:
+    get: Stats_getServiceTime
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /keys/{keyName}/requestToken:
+    post:
+      application/json: AuthenticationRequestTokenRequest
+  /push/channelSubscriptions:
+    post:
+      application/json: PushSubscribeDeviceToChannelRequest
+      application/x-msgpack: PushSubscribeDeviceToChannelRequest1
+      application/x-www-form-urlencoded: PushSubscribeDeviceToChannelRequest2
+  /push/publish:
+    post:
+      application/json: PushPublishNotificationToDeviceRequest
+      application/x-msgpack: PushPublishNotificationToDeviceRequest1
+      application/x-www-form-urlencoded: PushPublishNotificationToDeviceRequest2
+responseDescriptions: {}
+responseSchemaNames:
+  /channels:
+    get:
+      2XX:
+        application/json: StatusListActiveChannelsResponse
+securityParameters:
+  by:
+    query: false
+  channel:
+    query: false
+  clientId:
+    query: false
+  connectionId:
+    query: false
+  deviceId:
+    query: false
+  direction:
+    query: false
+  end:
+    query: false
+  limit:
+    query: false
+  prefix:
+    query: false
+  start:
+    query: false
+  unit:
+    query: false
+validServerUrls: {}

@@ -1,0 +1,580 @@
+openapi: 3.0.0
+info:
+  title: Rotten Tomatoes
+  description: Test our API services using I/O Docs.
+  version: '1.0'
+  contact:
+    email: mike.ralphson@gmail.com
+    name: Mike Ralphson
+    url: https://github.com/mermade/mashery2openapi
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  x-apisguru-categories:
+    - media
+  x-logo:
+    url: https://twitter.com/RottenTomatoes/profile_image?size=original
+  x-mashery-id: '1217'
+  x-origin:
+    - version: '2.0'
+      format: swagger
+      url: >-
+        https://raw.githubusercontent.com/Mermade/openapi_specifications/master/mashery/api.rottentomatoes.com/Rotten-Tomatoes/1.0/swagger.json
+  x-providerName: rottentomatoes.com
+  x-unofficialSpec: true
+servers:
+  - url: http://api.rottentomatoes.com/api/public/v1.0
+tags:
+  - name: Detailed Info
+  - name: Movie Lists
+  - name: DVD Lists
+  - name: Top Level Lists
+  - name: Search
+paths:
+  /lists.json:
+    get:
+      tags:
+        - Top Level Lists
+      summary: ''
+      operationId: TopLevelLists_getData
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/dvds.json:
+    get:
+      tags:
+        - Top Level Lists
+      summary: ''
+      operationId: TopLevelLists_getDvds
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/dvds/current_releases.json:
+    get:
+      tags:
+        - DVD Lists
+      summary: ''
+      operationId: DvdLists_getCurrentReleases
+      parameters:
+        - description: The amount of new release dvds to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: The selected page of current DVD releases
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/dvds/new_releases.json:
+    get:
+      tags:
+        - DVD Lists
+      summary: ''
+      operationId: DvdLists_getNewReleasesJson
+      parameters:
+        - description: The amount of new release dvds to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: The selected page of new release DVDs
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/dvds/top_rentals.json:
+    get:
+      tags:
+        - DVD Lists
+      summary: ''
+      operationId: DvdLists_getTopRentalsJson
+      parameters:
+        - description: Limits the number of top rentals returned
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+            default: '10'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/dvds/upcoming.json:
+    get:
+      tags:
+        - DVD Lists
+      summary: ''
+      operationId: DvdLists_getUpcomingDvds
+      parameters:
+        - description: The amount of upcoming dvds to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: The selected page of upcoming DVDs
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/movies.json:
+    get:
+      tags:
+        - Top Level Lists
+      summary: ''
+      operationId: TopLevelLists_getMoviesJson
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/movies/box_office.json:
+    get:
+      tags:
+        - Movie Lists
+      summary: ''
+      operationId: MovieLists_getBoxOfficeJson
+      parameters:
+        - description: Limits the number of movies returned
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/movies/in_theaters.json:
+    get:
+      tags:
+        - Movie Lists
+      summary: ''
+      operationId: MovieLists_getIntheaterMovies
+      parameters:
+        - description: The amount of movies in theaters to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: The selected page of in theaters movies
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/movies/opening.json:
+    get:
+      tags:
+        - Movie Lists
+      summary: ''
+      operationId: MovieLists_getOpeningMovies
+      parameters:
+        - description: Limits the number of opening movies returned
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /lists/movies/upcoming.json:
+    get:
+      tags:
+        - Movie Lists
+      summary: ''
+      operationId: MovieLists_getUpcomingMovies
+      parameters:
+        - description: The amount of upcoming movies to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '16'
+        - description: The selected page of upcoming movies
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movie_alias.json:
+    get:
+      tags:
+        - Detailed Info
+      summary: ''
+      operationId: DetailedInfo_getMovieAliasInfo
+      parameters:
+        - description: >-
+            Movie ID. You can use the movies search endpoint or peruse the lists
+            of movies/dvds to get the Movie ID
+          in: query
+          name: id
+          required: false
+          schema:
+            type: string
+            default: '0031381'
+        - description: Only supports imdb lookup at this time
+          in: query
+          name: type
+          required: false
+          schema:
+            type: string
+            default: imdb
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movies.json:
+    get:
+      tags:
+        - Search
+      summary: ''
+      operationId: Search_moviesJson
+      parameters:
+        - description: >-
+            The plain text search query to search for a movie. Remember to URI
+            encode this!
+          in: query
+          name: q
+          required: false
+          schema:
+            type: string
+        - description: The amount of movie search results to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '10'
+        - description: The selected page of movie search results
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movies/{id}.json:
+    get:
+      tags:
+        - Detailed Info
+      summary: ''
+      operationId: DetailedInfo_getMovieByIdJson
+      parameters:
+        - description: >-
+            Movie ID. You can use the movies search endpoint or peruse the lists
+            of movies/dvds to get the Movie ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            default: '770672122'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movies/{id}/cast.json:
+    get:
+      tags:
+        - Detailed Info
+      summary: ''
+      operationId: DetailedInfo_getMovieCast
+      parameters:
+        - description: >-
+            Movie ID. You can use the movies search endpoint or peruse the lists
+            of movies/dvds to get the Movie ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            default: '770672122'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movies/{id}/clips.json:
+    get:
+      tags:
+        - Detailed Info
+      summary: ''
+      operationId: DetailedInfo_getClipById
+      parameters:
+        - description: >-
+            Movie ID. You can use the movies search endpoint or peruse the lists
+            of movies/dvds to get the Movie ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            default: '770672122'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movies/{id}/reviews.json:
+    get:
+      tags:
+        - Detailed Info
+      summary: ''
+      operationId: DetailedInfo_getMovieReviews
+      parameters:
+        - description: >-
+            Movie ID. You can use the movies search endpoint or peruse the lists
+            of movies/dvds to get the Movie ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            default: '770672122'
+        - description: >-
+            3 different review types are possible: 'all', 'top_critic' and
+            'dvd'. 'top_critic' shows all the Rotten Tomatoes designated top
+            critics. 'dvd' pulls the reviews given on the DVD of the movie.
+            'all' as the name implies retrieves all reviews.
+          in: query
+          name: review_type
+          required: false
+          schema:
+            type: string
+            default: top_critic
+        - description: The number of reviews to show per page
+          in: query
+          name: page_limit
+          required: false
+          schema:
+            type: string
+            default: '20'
+        - description: The selected page of reviews
+          in: query
+          name: page
+          required: false
+          schema:
+            type: string
+            default: '1'
+        - description: >-
+            Provides localized data for the selected country (ISO 3166-1
+            alpha-2) if available. Otherwise, returns US data.
+          in: query
+          name: country
+          required: false
+          schema:
+            type: string
+            default: us
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  /movies/{id}/similar.json:
+    get:
+      tags:
+        - Detailed Info
+      summary: ''
+      operationId: DetailedInfo_findSimilarMovies
+      parameters:
+        - description: >-
+            Movie ID. You can use the movies search endpoint or peruse the lists
+            of movies/dvds to get the Movie ID
+          in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            default: '770672122'
+        - description: Limit the number of similar movies to show
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+            default: '5'
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+components:
+  securitySchemes:
+    key:
+      in: query
+      name: apikey
+      type: apiKey
+security:
+  - key: []
+externalDocs:
+  description: You can also view our written documentation.
+  url: http://developer.rottentomatoes.com/io-docs/docs

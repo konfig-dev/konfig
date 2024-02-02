@@ -1,0 +1,64 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+fixOnlyOneTagName: false
+operationIds:
+  /feeds:
+    get: Feeds_displayItemStatus
+  /feeds/{feedId}:
+    get: Feeds_getFeedStatus
+  /v2/feeds:
+    post: Feeds_createRichMediaFeed
+  /v3/feeds:
+    post: Feeds_createContentFeed
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /v2/feeds:
+    post:
+      application/xml: FeedsCreateRichMediaFeedRequest
+  /v3/feeds:
+    post:
+      multipart/form-data: FeedsCreateContentFeedRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /feeds:
+    get:
+      '200':
+        application/xml: FeedsDisplayItemStatusResponse
+  /feeds/{feedId}:
+    get:
+      '200':
+        application/xml: FeedsGetFeedStatusResponse
+  /v2/feeds:
+    post:
+      '200':
+        application/xml: FeedsCreateRichMediaFeedResponse
+  /v3/feeds:
+    post:
+      '200':
+        application/xml: FeedsCreateContentFeedResponse
+securityParameters:
+  WM_CONSUMER.CHANNEL.TYPE:
+    header: false
+  WM_CONSUMER.ID:
+    header: false
+  WM_QOS.CORRELATION_ID:
+    header: false
+  WM_SEC.AUTH_SIGNATURE:
+    header: false
+  WM_SEC.TIMESTAMP:
+    header: false
+  WM_SVC.NAME:
+    header: false
+  feedId:
+    query: false
+  feedType:
+    query: false
+  includeDetails:
+    query: false
+  limit:
+    query: false
+  offset:
+    query: false
+validServerUrls: {}
