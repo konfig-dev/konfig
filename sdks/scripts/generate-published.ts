@@ -5,8 +5,8 @@ import { SdkPagePropsWithPropertiesOmitted } from "./collect";
 import { parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
 import { Published, customRequestSpecsDir } from "./util";
-import kebabcase from "lodash.kebabcase";
 import yaml from "js-yaml";
+import { generateSdkDynamicPath } from "./util";
 import { getMethodObjects } from "../src/get-method-objects";
 import { generateTypescriptSdkUsageCode } from "../src/generate-typescript-sdk-usage-code";
 import execa from "execa";
@@ -95,14 +95,10 @@ function collectAllPublishData() {
         }
       }
 
-      const companyKebabCase = kebabcase(publishData.company.toLowerCase());
-      const serviceKebabCase =
-        publishData.serviceName !== undefined
-          ? kebabcase(publishData.serviceName.toLowerCase())
-          : null;
-      const servicePath = serviceKebabCase ? `/${serviceKebabCase}` : "";
-
-      const dynamicPath = `${companyKebabCase}${servicePath}`;
+      const dynamicPath = generateSdkDynamicPath(
+        publishData.company,
+        publishData.serviceName
+      );
 
       // find existence of files in openapi-examples
       const openapiExamplesDirPath = path.join(

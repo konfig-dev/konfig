@@ -2,6 +2,7 @@ import * as path from "path";
 import { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
 import { AdditionalSpecDataProps } from "./collect";
 import { SecuritySchemes, Spec, getOperations, resolveRef } from "konfig-lib";
+import kebabcase from "lodash.kebabcase";
 
 export const dbFolder = path.join(path.dirname(__dirname), "db");
 export const specFolder = path.join(dbFolder, "spec-data");
@@ -186,4 +187,12 @@ export function getNumberOfParameters(spec: Spec): number {
   });
 
   return numberOfParameters;
+}
+
+export function generateSdkDynamicPath(company: string, serviceName?: string) {
+  const companyKebabCase = kebabcase(company.toLowerCase());
+  const serviceKebabCase =
+    serviceName !== undefined ? kebabcase(serviceName.toLowerCase()) : null;
+  const servicePath = serviceKebabCase ? `/${serviceKebabCase}` : "";
+  return `${companyKebabCase}${servicePath}`;
 }

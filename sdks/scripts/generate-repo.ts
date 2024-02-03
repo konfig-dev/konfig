@@ -2,7 +2,7 @@ import * as execa from "execa";
 import * as fs from "fs-extra";
 import * as path from "path";
 import * as mustache from "mustache";
-import { Published } from "./util";
+import { Published, generateSdkDynamicPath } from "./util";
 
 function generateSdkRepositories(key: string, debug: boolean = false) {
   const languages = ["typescript", "java", "python"];
@@ -63,17 +63,29 @@ function generateSdkRepository(
   fs.copyFileSync(pathToOas, path.join(tmpSdkDir, OAS_FILE_NAME));
 
   // Copy the header image into the tmp sdk directory
+  const openapiExamplesDir = path.join(
+    path.dirname(__dirname),
+    "openapi-examples",
+    generateSdkDynamicPath(data.company, data.serviceName)
+  );
+  const imagePreviewFile = fs
+    .readdirSync(openapiExamplesDir)
+    .find((file) => file.match(/imagePreview\.(jpg|png)/));
+  if (!imagePreviewFile) throw new Error(`Image preview not found for ${key}`);
+  const headerFileExt = path.extname(imagePreviewFile);
   fs.copyFileSync(
-    path.join(
-      path.dirname(__dirname),
-      "openapi-examples",
-      data.company.toLowerCase(),
-      "header.png"
-    ),
-    path.join(tmpSdkDir, "header.png")
+    path.join(openapiExamplesDir, imagePreviewFile),
+    path.join(tmpSdkDir, `header${headerFileExt}`)
   );
 
-  writeKonfigYaml(data, sdkName, language, pathToOas, tmpSdkDir);
+  writeKonfigYaml(
+    data,
+    sdkName,
+    language,
+    OAS_FILE_NAME,
+    tmpSdkDir,
+    headerFileExt
+  );
 
   // Run konfig generate. If any errors occur, delete the repository and abort.
   try {
@@ -88,7 +100,7 @@ function generateSdkRepository(
     console.log("Repository deleted.");
     return;
   }
-  addSignupLinkToReadme(tmpSdkDir, language, data);
+  addSignupToReadme(tmpSdkDir, language, data);
 
   // Copy generated sdk into cloned repository
   copySdkToRepository(tmpSdkDir, repoDir, language);
@@ -114,23 +126,32 @@ function generateSdkRepository(
   });
 }
 
-function addSignupLinkToReadme(
-  sdkDir: string,
-  language: string,
-  data: Published
-) {
-  language = capitalizedLanguage[language];
-  const serviceName = data.serviceName ? data.serviceName : "N/A";
-  const signupLink = `https://docs.google.com/forms/d/e/1FAIpQLSedvSvvlpgoeI1BBjTyra7nC-SgMyKjugu2j4_dZNIGZ6Ul1Q/viewform?usp=pp_url&entry.1993275387=${data.company}&entry.2022822177=${serviceName}&entry.2109629584=${language}`;
+function addSignupToReadme(sdkDir: string, language: string, data: Published) {
+  const serviceNameQuery = data.serviceName
+    ? `&serviceName=${data.serviceName}`
+    : "";
+  const capitalizedLang = capitalizedLanguage[language];
+  const signupLink =
+    `https://konfigthis.com/sdk-sign-up?company=${data.company}${serviceNameQuery}&language=${capitalizedLang}`.replaceAll(
+      " ",
+      "%20"
+    );
+
   const sdkReadmeFilepath = path.join(sdkDir, language, "README.md");
-  const sdkReadme = fs.readFileSync(sdkReadmeFilepath, "utf-8");
-  const installationSectionRegex = /^## Installation([\s\S]*?)(?=\n##)/im;
-  const replacementText = `## Installation<a id="installation"></a>\n\nTo install, please sign up for the SDK [here](${signupLink}).\n`;
-  const newReadme = sdkReadme.replace(
-    installationSectionRegex,
-    replacementText
-  );
-  fs.writeFileSync(sdkReadmeFilepath, newReadme);
+  let sdkReadme = fs.readFileSync(sdkReadmeFilepath, "utf-8");
+
+  // Replace badges
+  const badgesRegex = /(\[!\[(npm|PyPI|Maven Central)\][\s\S]*?)(?=<\/div>)/m;
+  const signupBadgeUrl = `https://raw.githubusercontent.com/konfig-dev/brand-assets/HEAD/cta-images/${language}-cta.png`;
+  const singupBadge = `[![Sign up](${signupBadgeUrl})](${signupLink})`;
+  const badges = sdkReadme.match(badgesRegex);
+  if (!badges) throw Error("Badges not found in README.md");
+  sdkReadme = sdkReadme.replace(badges[0], `${singupBadge}\n`);
+
+  const installationSectionRegex = /^## Installation([\s\S]*?)(?=\n##)/m;
+  const replacementText = `## Installation<a id="installation"></a>\n${singupBadge}\n`;
+  sdkReadme = sdkReadme.replace(installationSectionRegex, replacementText);
+  fs.writeFileSync(sdkReadmeFilepath, sdkReadme);
 }
 
 function createRepository(name: string, description: string, dir: string) {
@@ -171,7 +192,8 @@ function writeKonfigYaml(
   sdkName: string,
   language: string,
   pathToOas: string,
-  tmpSdkDir: string
+  tmpSdkDir: string,
+  headerFileExt: string
 ) {
   const template = fs.readFileSync(
     path.join(__dirname, "..", "templates", "konfig.yaml.mustache"),
@@ -186,6 +208,8 @@ function writeKonfigYaml(
     clientName: capitalize(data.clientNameCamelCase),
     packageName: sdkName.replace(/-/g, "_"),
     oasFileName: path.basename(pathToOas),
+    apiVersion: data.apiVersion,
+    headerFileExt: headerFileExt,
     ...generateTemplateLanguageData(language),
   });
 
@@ -232,5 +256,10 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-//generateSdkRepositories("wikimedia.org_1.0.0");
-generateSdkRepository("wikimedia.org_1.0.0", "typescript", true);
+generateSdkRepositories("openbanking.org.uk_account-info-openapi_3.1.7", true);
+// generateSdkRepository("wikimedia.org_1.0.0", "typescript", true);
+// generateSdkRepository(
+//   "openbanking.org.uk_account-info-openapi_3.1.7",
+//   "typescript",
+//   true
+// );
