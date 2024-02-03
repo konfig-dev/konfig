@@ -100,14 +100,32 @@ const customRequests: Record<string, CustomRequest> = {
   "paylocity.com_weblink": {
     lambda: async () => {
       const rawSpecString = await fetch(
-        "https://developer.paylocity.com/integrations/reference/get-all-employees?json=on",
+        "https://developer.paylocity.com/integrations/reference/add-employee?json=on",
         {
           headers: {
-            cookie: "",
+            accept: "*/*",
+            "accept-language": "en-US,en;q=0.9",
+            "cache-control": "no-cache",
+            pragma: "no-cache",
+            "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"macOS"',
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "sentry-trace":
+              "881ac93cc8ba4055af185bdbe9b03eb1-a843912c87ed9d39-0",
+            "x-requested-with": "XMLHttpRequest",
+            cookie:
+              "ekfls=a6ff2e0e-b152-46a9-8ba7-87e557e92053; cf_clearance=bvqKh8aSTOy54p2_IpW3KHRIhZLWXq9N8pIkhY9NvUk-1706916425-1-Aaui19FSzqSBA0o6+swFR+abGo9XudzgfMEfuewJti4sUgY3ahKx8XbGGYssdIHQ9LRMUF3t5PeDnDVnkqqDtf4=; ARRAffinity=63995d25f48e1ae329d94d56f78f963bebcfdec0bf2164c5175c25d1a9b15940; ARRAffinitySameSite=63995d25f48e1ae329d94d56f78f963bebcfdec0bf2164c5175c25d1a9b15940; at_check=true; mbox=session#d18d2ec1a2274b17ace7470fd5b08297#1706918653|PC#d18d2ec1a2274b17ace7470fd5b08297.35_0#1770161593",
+            Referer:
+              "https://developer.paylocity.com/integrations/reference/add-employee",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
           },
+          body: null,
           method: "GET",
         }
-      ).then((res) => res.text());
+      ).then((response) => response.text());
       const rawSpec = JSON.parse(rawSpecString);
       if (rawSpec.oasDefinition !== undefined) {
         return JSON.stringify(rawSpec.oasDefinition);
