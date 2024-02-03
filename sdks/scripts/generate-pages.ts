@@ -173,6 +173,8 @@ function generateDescriptionMdx({ apiDescription }: Published): string {
   if (apiDescription === undefined) {
     return "";
   }
+  // replace any strings wrapped in curly braces with brackets (e.g. {foo} -> [foo])
+  apiDescription = apiDescription.replace(/{/g, "[").replace(/}/g, "]");
   return apiDescription;
 }
 
