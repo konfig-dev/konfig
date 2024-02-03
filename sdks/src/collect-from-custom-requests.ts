@@ -85,21 +85,34 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "nytimes.com_books": {
+    lambda: async () => {
+      const rawSpecString = await (
+        await fetch(
+          "https://developer.nytimes.com/portals/api/sites/nyt-devportal/liveportal/apis/books-product/download_spec",
+          { redirect: "follow" }
+        )
+      ).text();
+      const fromYaml = yaml.load(rawSpecString);
+      return JSON.stringify(fromYaml);
+    },
+  },
   "paylocity.com_weblink": {
     lambda: async () => {
-      const urls = [
-        "https://developer.paylocity.com/integrations/reference/deduction-1?json=on",
-        "https://developer.paylocity.com/integrations/reference/get-all-local-taxes?json=on",
-      ];
-      // try URLs until one has a JSON with "oasDefinition" property defined
-      for (const url of urls) {
-        const rawSpecString = await fetch(url).then((res) => res.text());
-        const rawSpec = JSON.parse(rawSpecString);
-        if (rawSpec.oasDefinition !== undefined) {
-          return JSON.stringify(rawSpec.oasDefinition);
+      const rawSpecString = await fetch(
+        "https://developer.paylocity.com/integrations/reference/get-all-employees?json=on",
+        {
+          headers: {
+            cookie: "",
+          },
+          method: "GET",
         }
+      ).then((res) => res.text());
+      const rawSpec = JSON.parse(rawSpecString);
+      if (rawSpec.oasDefinition !== undefined) {
+        return JSON.stringify(rawSpec.oasDefinition);
       }
-      throw Error("No URL had a JSON with 'oasDefinition' property defined");
+      throw Error("Expecting oasDefinition to be defined");
     },
   },
   "soundcloud.com": {
