@@ -12,7 +12,7 @@ A simple API based for testing python-pydantic-list-in-union.
 <!-- toc -->
 
 - [Requirements](#requirements)
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Raw HTTP Response](#raw-http-response)
@@ -25,7 +25,7 @@ A simple API based for testing python-pydantic-list-in-union.
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 ```sh
 pip install python-pydantic-list-in-union==1.0.0

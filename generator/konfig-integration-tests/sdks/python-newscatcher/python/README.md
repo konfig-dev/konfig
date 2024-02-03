@@ -11,7 +11,7 @@
 <!-- toc -->
 
 - [Requirements](#requirements)
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Raw HTTP Response](#raw-http-response)
@@ -35,7 +35,7 @@
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 ```sh
 pip install newscatcherapi-python-sdk==6.0.1

@@ -12,7 +12,7 @@ A simple API based for testing python-invalid-response.
 <!-- toc -->
 
 - [Requirements](#requirements)
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Raw HTTP Response](#raw-http-response)
@@ -31,7 +31,7 @@ A simple API based for testing python-invalid-response.
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 ```sh
 pip install python-invalid-response==1.0.0

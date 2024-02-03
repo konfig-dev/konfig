@@ -11,7 +11,7 @@ Splitit's Web API
 <!-- toc -->
 
 - [Requirements](#requirements)
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Reference](#reference)
@@ -32,7 +32,7 @@ Splitit's Web API
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 ```sh
 pip install splitit-web-python-sdk==2.6.1

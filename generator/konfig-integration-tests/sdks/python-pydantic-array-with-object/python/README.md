@@ -12,7 +12,7 @@ A simple API based for testing python-pydantic-array-with-object.
 <!-- toc -->
 
 - [Requirements](#requirements)
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Raw HTTP Response](#raw-http-response)
@@ -25,7 +25,7 @@ A simple API based for testing python-pydantic-array-with-object.
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 ```sh
 pip install python-pydantic-array-with-object==1.0.0
