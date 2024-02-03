@@ -51,12 +51,23 @@ const publishJsonSchema = z.object({
         metaDescription: z.string().optional(),
         securitySchemes: z
           .record(
-            z.object({
-              type: z.literal("apiKey"),
-              description: z.string().optional(),
-              in: z.union([z.literal("query"), z.literal("header")]),
-              name: z.string(),
-            })
+            z.union([
+              z.object({
+                type: z.literal("apiKey"),
+                description: z.string().optional(),
+                in: z.union([z.literal("query"), z.literal("header")]),
+                name: z.string(),
+              }),
+              z.object({
+                type: z.literal("http"),
+                description: z.string().optional(),
+                scheme: z.union([
+                  z.literal("basic"),
+                  z.literal("bearer"),
+                  z.literal("digest"),
+                ]),
+              }),
+            ])
           )
           .optional(),
         homepage: z
@@ -204,6 +215,9 @@ async function main() {
     if (publishData.securitySchemes) {
       if (!oas.spec.components) oas.spec.components = {};
       oas.spec.components.securitySchemes = publishData.securitySchemes;
+      oas.spec.security = Object.keys(publishData.securitySchemes).map(
+        (key) => ({ [key]: [] })
+      );
     }
 
     const openapiFilename = "openapi.yaml";

@@ -1,0 +1,252 @@
+description: Missing description placeholder
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /v1/blocks/{block_id}:
+    delete: Core_removeBlock
+    get: Core_getBlock
+    patch: Core_updateBlock
+  /v1/blocks/{block_id}/children:
+    get: Core_getBlockChildren
+    patch: Core_appendBlockChildren
+  /v1/comments:
+    get: Core_getComments
+    post: Core_createComment
+  /v1/databases:
+    post: Core_createDatabase
+  /v1/databases/{database_id}:
+    get: Core_getDatabase
+    patch: Core_updateDatabase
+  /v1/databases/{database_id}/query:
+    post: Core_queryDatabase
+  /v1/oauth/token:
+    post: Core_createToken
+  /v1/pages:
+    post: Core_createPage
+  /v1/pages/{page_id}:
+    get: Core_getPage
+    patch: Core_updatePageProperties
+  /v1/pages/{page_id}/properties/{property_id}:
+    get: Core_getPagePropertyItem
+  /v1/search:
+    post: Core_searchByTitle
+  /v1/users:
+    get: Core_listUsers
+  /v1/users/me:
+    get: Core_getTokenBotUser
+  /v1/users/{user_id}:
+    get: Core_getUser
+operationTags:
+  /v1/blocks/{block_id}:
+    delete: core
+    get: core
+    patch: core
+  /v1/blocks/{block_id}/children:
+    get: core
+    patch: core
+  /v1/comments:
+    get: core
+    post: core
+  /v1/databases:
+    post: core
+  /v1/databases/{database_id}:
+    get: core
+    patch: core
+  /v1/databases/{database_id}/query:
+    post: core
+  /v1/oauth/token:
+    post: core
+  /v1/pages:
+    post: core
+  /v1/pages/{page_id}:
+    get: core
+    patch: core
+  /v1/pages/{page_id}/properties/{property_id}:
+    get: core
+  /v1/search:
+    post: core
+  /v1/users:
+    get: core
+  /v1/users/me:
+    get: core
+  /v1/users/{user_id}:
+    get: core
+renameTags: {}
+requestSchemaNames:
+  /v1/blocks/{block_id}:
+    patch:
+      application/json: CoreUpdateBlockRequest
+  /v1/blocks/{block_id}/children:
+    patch:
+      application/json: CoreAppendBlockChildrenRequest
+  /v1/comments:
+    post:
+      application/json: CoreCreateCommentRequest
+  /v1/databases:
+    post:
+      application/json: CoreCreateDatabaseRequest
+  /v1/databases/{database_id}:
+    patch:
+      application/json: CoreUpdateDatabaseRequest
+  /v1/databases/{database_id}/query:
+    post:
+      application/json: CoreQueryDatabaseRequest
+  /v1/oauth/token:
+    post:
+      application/json: CoreCreateTokenRequest
+  /v1/pages:
+    post:
+      application/json: CoreCreatePageRequest
+  /v1/pages/{page_id}:
+    patch:
+      application/json: CoreUpdatePagePropertiesRequest
+  /v1/search:
+    post:
+      application/json: CoreSearchByTitleRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /v1/blocks/{block_id}:
+    delete:
+      '200':
+        application/json: CoreRemoveBlockResponse
+      '400':
+        application/json: CoreRemoveBlock400Response
+    get:
+      '200':
+        application/json: CoreGetBlockResponse
+      '400':
+        application/json: CoreGetBlock400Response
+    patch:
+      '200':
+        application/json: CoreUpdateBlockResponse
+      '400':
+        application/json: CoreUpdateBlock400Response
+  /v1/blocks/{block_id}/children:
+    get:
+      '200':
+        application/json: CoreGetBlockChildrenResponse
+      '400':
+        application/json: CoreGetBlockChildren400Response
+    patch:
+      '200':
+        application/json: CoreAppendBlockChildrenResponse
+      '400':
+        application/json: CoreAppendBlockChildren400Response
+  /v1/comments:
+    get:
+      '200':
+        application/json: CoreGetCommentsResponse
+      '403':
+        application/json: CoreGetComments403Response
+    post:
+      '200':
+        application/json: CoreCreateCommentResponse
+      '403':
+        application/json: CoreCreateComment403Response
+  /v1/databases:
+    post:
+      '200':
+        application/json: CoreCreateDatabaseResponse
+      '400':
+        application/json: CoreCreateDatabase400Response
+  /v1/databases/{database_id}:
+    get:
+      '200':
+        application/json: CoreGetDatabaseResponse
+      '400':
+        application/json: CoreGetDatabase400Response
+      '404':
+        application/json: CoreGetDatabase404Response
+      '429':
+        application/json: CoreGetDatabase429Response
+    patch:
+      '200':
+        application/json: CoreUpdateDatabaseResponse
+      '400':
+        application/json: CoreUpdateDatabase400Response
+      '404':
+        application/json: CoreUpdateDatabase404Response
+      '429':
+        application/json: CoreUpdateDatabase429Response
+  /v1/databases/{database_id}/query:
+    post:
+      '200':
+        application/json: CoreQueryDatabaseResponse
+      '400':
+        application/json: CoreQueryDatabase400Response
+  /v1/oauth/token:
+    post:
+      '200':
+        application/json: CoreCreateTokenResponse
+      '400':
+        application/json: CoreCreateToken400Response
+  /v1/pages:
+    post:
+      '200':
+        application/json: CoreCreatePageResponse
+      '400':
+        application/json: CoreCreatePage400Response
+      '404':
+        application/json: CoreCreatePage404Response
+      '429':
+        application/json: CoreCreatePage429Response
+  /v1/pages/{page_id}:
+    get:
+      '200':
+        application/json: CoreGetPageResponse
+      '400':
+        application/json: CoreGetPage400Response
+    patch:
+      '200':
+        application/json: CoreUpdatePagePropertiesResponse
+      '400':
+        application/json: CoreUpdatePageProperties400Response
+      '404':
+        application/json: CoreUpdatePageProperties404Response
+      '429':
+        application/json: CoreUpdatePageProperties429Response
+  /v1/pages/{page_id}/properties/{property_id}:
+    get:
+      '200':
+        application/json: CoreGetPagePropertyItemResponse
+  /v1/search:
+    post:
+      '200':
+        application/json: CoreSearchByTitleResponse
+      '400':
+        application/json: CoreSearchByTitle400Response
+      '429':
+        application/json: CoreSearchByTitle429Response
+  /v1/users:
+    get:
+      '200':
+        application/json: CoreListUsersResponse
+      '400':
+        application/json: CoreListUsers400Response
+  /v1/users/me:
+    get:
+      '200':
+        application/json: CoreGetTokenBotUserResponse
+      '400':
+        application/json: CoreGetTokenBotUser400Response
+  /v1/users/{user_id}:
+    get:
+      '200':
+        application/json: CoreGetUserResponse
+      '400':
+        application/json: CoreGetUser400Response
+securityParameters:
+  Notion-Version:
+    header: false
+  block_id:
+    query: false
+  filter_properties:
+    query: false
+  page_size:
+    query: false
+  start_cursor:
+    query: false
+validServerUrls: {}
