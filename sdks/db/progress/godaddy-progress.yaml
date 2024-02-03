@@ -1,0 +1,243 @@
+description: Missing description placeholder
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /v1/domains:
+    get: V1_getDomainsList
+  /v1/domains/agreements:
+    get: V1_getLegalAgreements
+  /v1/domains/available:
+    get: V1_checkDomainAvailability
+    post: V1_checkDomainAvailabilityPost
+  /v1/domains/contacts/validate:
+    post: V1_validateDomainContacts
+  /v1/domains/purchase:
+    post: V1_createDomainPurchase
+  /v1/domains/purchase/schema/{tld}:
+    get: V1_getDomainSchema
+  /v1/domains/purchase/validate:
+    post: V1_validateDomainPurchase
+  /v1/domains/suggest:
+    get: V1_suggestAlternateDomains
+  /v1/domains/tlds:
+    get: V1_getTldsList
+  /v1/domains/{domain}:
+    delete: V1_cancelDomainPurchase
+    get: V1_getDomainDetails
+    patch: V1_updateDomainDetails
+  /v1/domains/{domain}/contacts:
+    patch: V1_updateDomainContacts
+  /v1/domains/{domain}/privacy:
+    delete: V1_cancelPrivacyRequest
+  /v1/domains/{domain}/privacy/purchase:
+    post: V1_purchasePrivacyForDomain
+  /v1/domains/{domain}/records:
+    patch: V1_addDnsRecordsToDomain
+    put: V1_replaceDnsRecords
+  /v1/domains/{domain}/records/{type}:
+    put: V1_replaceDnsRecordsType
+  /v1/domains/{domain}/records/{type}/{name}:
+    delete: V1_deleteAllDnsRecords
+    get: V1_getDnsRecords
+    put: V1_replaceDnsRecordsType
+  /v1/domains/{domain}/renew:
+    post: V1_renewDomain
+  /v1/domains/{domain}/transfer:
+    post: V1_purchaseTransferProcess
+  /v1/domains/{domain}/verifyRegistrantEmail:
+    post: V1_resendContactEmailVerification
+  /v2/customers/{customerId}/domains/forwards/{fqdn}:
+    delete: Domains_cancelForwardingRequest
+    get: Domains_getForwardingInfo
+    post: Domains_createForwardingConfiguration
+    put: Domains_modifyForwardingInfo
+  /v2/customers/{customerId}/domains/notifications:
+    get: Notifications_getNextDomain
+  /v2/customers/{customerId}/domains/notifications/optIn:
+    get: Notifications_listOptedInTypes
+    put: Notifications_optInNotifications
+  /v2/customers/{customerId}/domains/notifications/schemas/{type}:
+    get: Notifications_getSchema
+  /v2/customers/{customerId}/domains/notifications/{notificationId}/acknowledge:
+    post: Notifications_acknowledgeDomainNotification
+  /v2/customers/{customerId}/domains/register:
+    post: Domains_purchaseRegisterDomain
+  /v2/customers/{customerId}/domains/register/schema/{tld}:
+    get: Domains_getRegisterSchema
+  /v2/customers/{customerId}/domains/register/validate:
+    post: Domains_validateDomainRegistration
+  /v2/customers/{customerId}/domains/{domain}:
+    get: Domains_getDetails
+  /v2/customers/{customerId}/domains/{domain}/actions:
+    get: Actions_getRecentList
+  /v2/customers/{customerId}/domains/{domain}/actions/{type}:
+    delete: Actions_cancelRecentAction
+    get: Actions_getRecentAction
+  /v2/customers/{customerId}/domains/{domain}/redeem:
+    post: Domains_redeemDomainRestore
+  /v2/customers/{customerId}/domains/{domain}/renew:
+    post: Domains_renewDomain
+  /v2/customers/{customerId}/domains/{domain}/transfer:
+    post: Domains_purchaseTransferProcess
+  /v2/customers/{customerId}/domains/{domain}/transferInAccept:
+    post: Domains_acceptTransferIn
+  /v2/customers/{customerId}/domains/{domain}/transferInCancel:
+    post: Domains_cancelTransferIn
+  /v2/customers/{customerId}/domains/{domain}/transferInRestart:
+    post: Domains_restartTransferIn
+  /v2/customers/{customerId}/domains/{domain}/transferInRetry:
+    post: Domains_retryTransferInProcess
+  /v2/customers/{customerId}/domains/{domain}/transferOut:
+    post: Domains_initiateTransferOut
+  /v2/customers/{customerId}/domains/{domain}/transferOutAccept:
+    post: Domains_acceptTransferOut
+  /v2/customers/{customerId}/domains/{domain}/transferOutReject:
+    post: Domains_rejectTransferOut
+  /v2/domains/maintenances:
+    get: Domains_getUpcomingMaintenancesList
+  /v2/domains/maintenances/{maintenanceId}:
+    get: Domains_getUpcomingMaintenanceDetails
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /v1/domains/available:
+    post:
+      application/json: V1CheckDomainAvailabilityPostRequest
+      application/xml: V1CheckDomainAvailabilityPostRequest1
+      text/xml: V1CheckDomainAvailabilityPostRequest2
+  /v1/domains/{domain}/records:
+    put:
+      application/json: V1ReplaceDnsRecordsRequest
+      application/xml: V1ReplaceDnsRecordsRequest1
+      text/xml: V1ReplaceDnsRecordsRequest2
+  /v1/domains/{domain}/records/{type}:
+    put:
+      application/json: V1ReplaceDnsRecordsTypeRequest
+      application/xml: V1ReplaceDnsRecordsTypeRequest1
+      text/xml: V1ReplaceDnsRecordsTypeRequest2
+  /v1/domains/{domain}/records/{type}/{name}:
+    put:
+      application/json: V1ReplaceDnsRecordsTypeRequest3
+      application/xml: V1ReplaceDnsRecordsTypeRequest4
+      text/xml: V1ReplaceDnsRecordsTypeRequest5
+responseDescriptions: {}
+responseSchemaNames:
+  /v1/domains:
+    get:
+      '200':
+        application/javascript: V1GetDomainsListResponse
+        application/json: V1GetDomainsList200Response
+        application/xml: V1GetDomainsList200Response1
+        text/javascript: V1GetDomainsList200Response2
+        text/xml: V1GetDomainsList200Response3
+  /v1/domains/agreements:
+    get:
+      '200':
+        application/javascript: V1GetLegalAgreementsResponse
+        application/json: V1GetLegalAgreements200Response
+        application/xml: V1GetLegalAgreements200Response1
+        text/javascript: V1GetLegalAgreements200Response2
+        text/xml: V1GetLegalAgreements200Response3
+  /v1/domains/suggest:
+    get:
+      '200':
+        application/javascript: V1SuggestAlternateDomainsResponse
+        application/json: V1SuggestAlternateDomains200Response
+        application/xml: V1SuggestAlternateDomains200Response1
+        text/javascript: V1SuggestAlternateDomains200Response2
+        text/xml: V1SuggestAlternateDomains200Response3
+  /v1/domains/tlds:
+    get:
+      '200':
+        application/javascript: V1GetTldsListResponse
+        application/json: V1GetTldsList200Response
+        application/xml: V1GetTldsList200Response1
+        text/javascript: V1GetTldsList200Response2
+        text/xml: V1GetTldsList200Response3
+  /v1/domains/{domain}/records/{type}/{name}:
+    get:
+      '200':
+        application/javascript: V1GetDnsRecordsResponse
+        application/json: V1GetDnsRecords200Response
+        application/xml: V1GetDnsRecords200Response1
+        text/javascript: V1GetDnsRecords200Response2
+        text/xml: V1GetDnsRecords200Response3
+  /v2/customers/{customerId}/domains/forwards/{fqdn}:
+    get:
+      '200':
+        application/json: DomainsGetForwardingInfoResponse
+  /v2/customers/{customerId}/domains/notifications/optIn:
+    get:
+      '200':
+        application/json: NotificationsListOptedInTypesResponse
+  /v2/customers/{customerId}/domains/{domain}/actions:
+    get:
+      '200':
+        application/json: ActionsGetRecentListResponse
+securityParameters:
+  X-Market-Id:
+    header: false
+  X-Private-Label-Id:
+    header: false
+  X-Request-Id:
+    header: false
+  X-Shopper-Id:
+    header: false
+  checkType:
+    query: false
+  city:
+    query: false
+  country:
+    query: false
+  domain:
+    query: false
+  forTransfer:
+    query: false
+  includeSubs:
+    query: false
+  includes:
+    query: false
+  lengthMax:
+    query: false
+  lengthMin:
+    query: false
+  limit:
+    query: false
+  marker:
+    query: false
+  marketId:
+    query: false
+  modifiedAtAfter:
+    query: false
+  modifiedDate:
+    query: false
+  offset:
+    query: false
+  privacy:
+    query: false
+  query:
+    query: false
+  reason:
+    query: false
+  registrar:
+    query: false
+  sources:
+    query: false
+  startsAtAfter:
+    query: false
+  status:
+    query: false
+  statusGroups:
+    query: false
+  statuses:
+    query: false
+  tlds:
+    query: false
+  types:
+    query: false
+  waitMs:
+    query: false
+validServerUrls:
+  //api.ote-godaddy.com:
+    url: //api.ote-godaddy.com
