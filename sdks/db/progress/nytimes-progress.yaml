@@ -1,0 +1,83 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /lists.json:
+    get: Core_getBestSellersList
+  /lists/best-sellers/history.json:
+    get: Core_getBestSellersHistory
+  /lists/full-overview.json:
+    get: Core_getBestSellersByDate
+  /lists/names.json:
+    get: Core_getBestSellersListNames
+  /lists/overview.json:
+    get: Core_getBestSellersOverview
+  /lists/{date}/{list}.json:
+    get: Core_getBestSellersByDate
+  /reviews.json:
+    get: Core_getBookReviews
+operationTags:
+  /lists.json:
+    get: core
+  /lists/best-sellers/history.json:
+    get: core
+  /lists/full-overview.json:
+    get: core
+  /lists/names.json:
+    get: core
+  /lists/overview.json:
+    get: core
+  /lists/{date}/{list}.json:
+    get: core
+  /reviews.json:
+    get: core
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /lists.json:
+    get:
+      '200':
+        application/json: CoreGetBestSellersListResponse
+  /lists/best-sellers/history.json:
+    get:
+      '200':
+        application/json: CoreGetBestSellersHistoryResponse
+  /lists/names.json:
+    get:
+      '200':
+        application/json: CoreGetBestSellersListNamesResponse
+  /lists/{date}/{list}.json:
+    get:
+      '200':
+        application/json: CoreGetBestSellersByDateResponse
+  /reviews.json:
+    get:
+      '200':
+        application/json: CoreGetBookReviewsResponse
+securityParameters:
+  age-group:
+    query: false
+  author:
+    query: false
+  bestsellers-date:
+    query: false
+  contributor:
+    query: false
+  isbn:
+    query: false
+  list:
+    query: false
+  offset:
+    query: false
+  price:
+    query: false
+  published-date:
+    query: false
+  published_date:
+    query: false
+  publisher:
+    query: false
+  title:
+    query: false
+validServerUrls: {}

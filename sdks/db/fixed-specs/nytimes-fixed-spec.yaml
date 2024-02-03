@@ -1,0 +1,1007 @@
+openapi: 3.0.0
+info:
+  title: Books API
+  description: >
+    The Books API provides information about book reviews and The New York Times
+    Best Sellers lists.
+
+
+    ## Best Sellers Lists Services
+
+    ### List Names
+
+    The lists/names service returns a list of all the NYT Best Sellers Lists. 
+    Some lists are published weekly and others monthly.  The response includes
+    when each list was first published and last published.
+
+
+    ```
+
+    /lists/names.json
+
+    ```
+
+
+    ### List Data
+
+
+    The lists/{date}/{name} service returns the books on the best sellers list
+    for the specified date and list name.
+
+
+    ```
+
+    /lists/2019-01-20/hardcover-fiction.json
+
+    ```
+
+
+    Use "current" for {date} to get the latest list.
+
+    ```
+
+    /lists/current/hardcover-fiction.json
+
+    ```
+
+
+    ## Book Reviews Services
+
+
+    The book reviews service lets you get NYT book review by author, ISBN, or
+    title.
+
+
+    ```
+
+    /reviews.json?author=Michelle+Obama
+
+    ```
+
+
+    ```
+
+    /reviews.json?isbn=9781524763138
+
+    ```
+
+
+    ```
+
+    /reviews.json?title=Becoming
+
+    ```
+
+
+    ## Example Calls
+
+
+    ```
+
+    https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=yourkey
+
+    ```
+
+
+    ```
+
+    https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=yourkey
+
+    ```
+  version: 3.0.0
+servers:
+  - url: https://api.nytimes.com/svc/books/v3
+tags:
+  - name: core
+paths:
+  /lists.json:
+    get:
+      tags:
+        - core
+      summary: Best Sellers List
+      operationId: Core_getBestSellersList
+      security:
+        - api-key: []
+      description: Get Best Sellers list.  If no date is provided returns the latest list.
+      parameters:
+        - description: >-
+            The name of the Times best sellers list (hardcover-fiction,
+            paperback-nonfiction, ...).
+
+            The /lists/names service returns all the list names.
+
+            The encoded list names are lower case with hyphens instead of spaces
+            (e.g. e-book-fiction, instead of E-Book Fiction).
+          name: list
+          in: query
+          required: true
+          schema:
+            type: string
+            default: hardcover-fiction
+        - description: >-
+            YYYY-MM-DD
+
+
+            The week-ending date for the sales reflected on list-name. Times
+            best sellers lists are compiled using available book sale data. The
+            bestsellers-date may be significantly earlier than published-date.
+            For additional information, see the explanation at the bottom of any
+            best-seller list page on NYTimes.com (example: Hardcover Fiction,
+            published Dec. 5 but reflecting sales to Nov. 29).
+          name: bestsellers-date
+          in: query
+          schema:
+            type: string
+            pattern: ^\d{4}-\d{2}-\d{2}$
+        - description: >-
+            YYYY-MM-DD
+
+
+            The date the best sellers list was published on NYTimes.com
+            (different than bestsellers-date).  Use "current" for latest list.
+          name: published-date
+          in: query
+          schema:
+            type: string
+            pattern: ^\d{4}-\d{2}-\d{2}$
+        - description: >-
+            Sets the starting point of the result set (0, 20, ...).  Used to
+            paginate thru books if list has more than 20. Defaults to 0.  The
+            num_results field indicates how many books are in the list.
+          name: offset
+          in: query
+          schema:
+            type: integer
+            multipleOf: 20
+      responses:
+        '200':
+          description: Best Sellers list books
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreGetBestSellersListResponse'
+              examples:
+                response:
+                  value:
+                    status: OK
+                    copyright: >-
+                      Copyright (c) 2019 The New York Times Company.  All Rights
+                      Reserved.
+                    num_results: 1
+                    last_modified: '2016-03-11T13:09:01-05:00'
+                    results:
+                      - list_name: Hardcover Fiction
+                        display_name: Hardcover Fiction
+                        bestsellers_date: '2016-03-05'
+                        published_date: '2016-03-20'
+                        rank: 5
+                        rank_last_week: 2
+                        weeks_on_list: 2
+                        asterisk: 0
+                        dagger: 0
+                        amazon_product_url: >-
+                          http://www.amazon.com/Girls-Guide-Moving-On-Novel-ebook/dp/B00ZNE17B4?tag=thenewyorktim-20
+                        isbns:
+                          - isbn10: 553391925
+                            isbn13: '9780553391923'
+                        book_details:
+                          - title: A GIRL'S GUIDE TO MOVING ON
+                            description: >-
+                              A mother and her daughter-in-law both leave
+                              unhappy marriages and take up with new men.
+                            contributor: by Debbie Macomber
+                            author: Debbie Macomber
+                            contributor_note: ''
+                            price: 0
+                            age_group: ''
+                            publisher: Ballantine
+                            primary_isbn13: '9780553391923'
+                            primary_isbn10: 553391925
+                        reviews:
+                          - book_review_link: ''
+                            first_chapter_link: ''
+                            sunday_review_link: ''
+                            article_chapter_link: ''
+  /lists/{date}/{list}.json:
+    get:
+      tags:
+        - core
+      summary: Best Sellers List by Date
+      operationId: Core_getBestSellersByDate
+      security:
+        - api-key: []
+      description: Get Best Sellers list by date.
+      parameters:
+        - description: >-
+            YYYY-MM-DD or "current"
+
+
+            The date the best sellers list was published on NYTimes.com.  Use
+            "current" to get latest list.
+          name: date
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: ^(\d{4}-\d{2}-\d{2}|current)$
+        - description: >-
+            Name of the Best Sellers List (e.g. hardcover-fiction). You can get
+            the full list of names from the /lists/names.json service.
+          name: list
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            Sets the starting point of the result set (0, 20, ...).  Used to
+            paginate thru books if list has more than 20. Defaults to 0.  The
+            num_results field indicates how many books are in the list.
+          name: offset
+          in: query
+          schema:
+            type: integer
+            multipleOf: 20
+      responses:
+        '200':
+          description: Best Sellers list books.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreGetBestSellersByDateResponse'
+              examples:
+                response:
+                  value:
+                    status: OK
+                    copyright: >-
+                      Copyright (c) 2019 The New York Times Company.  All Rights
+                      Reserved.
+                    num_results: 15
+                    last_modified: '2015-12-25T13:05:20-05:00'
+                    results:
+                      list_name: Trade Fiction Paperback
+                      bestsellers_date: '2015-12-19'
+                      published_date: '2016-01-03'
+                      display_name: Paperback Trade Fiction
+                      normal_list_ends_at: 10
+                      updated: WEEKLY
+                      books:
+                        - title: THE MARTIAN
+                          description: >-
+                            Separated from his crew, an astronaut embarks on a
+                            quest to stay alive on Mars. The basis of the movie.
+                          rank: 1
+                          rank_last_week: 0
+                          weeks_on_list: 60
+                          asterisk: 0
+                          dagger: 0
+                          primary_isbn10: 553418025
+                          primary_isbn13: '9780553418026'
+                          publisher: Broadway
+                          price: 0
+                          author: Andy Weir
+                          contributor: by Andy Weir
+                          contributor_note: ''
+                          book_image: >-
+                            http://du.ec2.nytimes.com.s3.amazonaws.com/prd/books/9780804139038.jpg
+                          amazon_product_url: >-
+                            http://www.amazon.com/The-Martian-Novel-Andy-Weir-ebook/dp/B00EMXBDMA?tag=thenewyorktim-20
+                          age_group: ''
+                          book_review_link: ''
+                          first_chapter_link: ''
+                          sunday_review_link: ''
+                          article_chapter_link: ''
+                          isbns:
+                            - isbn10: 804139024
+                              isbn13: '9780804139021'
+                      corrections: []
+  /lists/full-overview.json:
+    get:
+      tags:
+        - core
+      summary: Best Sellers List Full Overview
+      operationId: Core_getBestSellersByDate
+      security:
+        - api-key: []
+      description: Get all books for all the Best Sellers lists for specified date.
+      parameters:
+        - description: >-
+            YYYY-MM-DD
+
+
+            The best-seller list publication date.
+
+            You do not have to specify the exact date the list was published.
+            The service will search forward (into the future) for the closest
+            publication date to the date you specify. For example, a request for
+            lists/overview/2013-05-22 will retrieve the list that was published
+            on 05-26.
+
+
+            If you do not include a published date, the current week's best
+            sellers lists will be returned.
+          name: published_date
+          in: query
+          schema:
+            type: string
+            pattern: ^\d{4}-\d{2}-\d{2}$
+      responses:
+        '200':
+          description: Full overview of Best Sellers lists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverviewResponse'
+  /lists/overview.json:
+    get:
+      tags:
+        - core
+      summary: Best Sellers List Overview
+      operationId: Core_getBestSellersOverview
+      security:
+        - api-key: []
+      description: Get top 5 books for all the Best Sellers lists for specified date.
+      parameters:
+        - description: >-
+            YYYY-MM-DD
+
+
+            The best-seller list publication date.
+
+            You do not have to specify the exact date the list was published.
+            The service will search forward (into the future) for the closest
+            publication date to the date you specify. For example, a request for
+            lists/overview/2013-05-22 will retrieve the list that was published
+            on 05-26.
+
+
+            If you do not include a published date, the current week's best
+            sellers lists will be returned.
+          name: published_date
+          in: query
+          schema:
+            type: string
+            pattern: ^\d{4}-\d{2}-\d{2}$
+      responses:
+        '200':
+          description: Overview of Best Sellers lists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverviewResponse'
+              examples:
+                response:
+                  value:
+                    status: OK
+                    copyright: >-
+                      Copyright (c) 2019 The New York Times Company.  All Rights
+                      Reserved.
+                    num_results: 210
+                    results:
+                      bestsellers_date: '2016-03-05'
+                      published_date: '2016-03-20'
+                      lists:
+                        - list_id: 704
+                          list_name: Combined Print and E-Book Fiction
+                          display_name: Combined Print & E-Book Fiction
+                          updated: WEEKLY
+                          list_image: >-
+                            http://du.ec2.nytimes.com.s3.amazonaws.com/prd/books/9780399175954.jpg
+                          books:
+                            - title: THE GANGSTER
+                              description: >-
+                                In the ninth book in this series, set in 1906,
+                                the New York detective Isaac Bell contends with
+                                a crime boss passing as a respectable
+                                businessman and a tycoon’s plot against
+                                President Theodore Roosevelt.
+                              age_group: ''
+                              author: Clive Cussler and Justin Scott
+                              contributor: by Clive Cussler and Justin Scott
+                              contributor_note: ''
+                              created_date: '2016-03-10 12:00:22'
+                              price: 0
+                              primary_isbn13: '9780698406421'
+                              primary_isbn10: 698406427
+                              publisher: Putnam
+                              rank: 1
+                              updated_date: '2016-03-10 17:00:21'
+  /lists/names.json:
+    get:
+      tags:
+        - core
+      summary: Best Sellers List Names
+      operationId: Core_getBestSellersListNames
+      security:
+        - api-key: []
+      description: Get Best Sellers list names.
+      responses:
+        '200':
+          description: Get Best Sellers list names.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreGetBestSellersListNamesResponse'
+              examples:
+                response:
+                  value:
+                    status: OK
+                    copyright: >-
+                      Copyright (c) 2019 The New York Times Company.  All Rights
+                      Reserved.
+                    num_results: 53
+                    results:
+                      - list_name: Combined Print and E-Book Fiction
+                        display_name: Combined Print & E-Book Fiction
+                        list_name_encoded: combined-print-and-e-book-fiction
+                        oldest_published_date: '2011-02-13'
+                        newest_published_date: '2016-03-20'
+                        updated: WEEKLY
+  /lists/best-sellers/history.json:
+    get:
+      tags:
+        - core
+      summary: Best Sellers List History
+      operationId: Core_getBestSellersHistory
+      security:
+        - api-key: []
+      description: Get Best Sellers list history.
+      parameters:
+        - description: The target age group for the best seller.
+          name: age-group
+          in: query
+          schema:
+            type: string
+        - description: >-
+            The author of the best seller. The author field does not include
+            additional contributors (see Data Structure for more details about
+            the author and contributor fields).
+
+
+            When searching the author field, you can specify any combination of
+            first, middle and last names.
+
+
+            When sort-by is set to author, the results will be sorted by
+            author's first name.
+          name: author
+          in: query
+          schema:
+            type: string
+        - description: >-
+            The author of the best seller, as well as other contributors such as
+            the illustrator (to search or sort by author name only, use author
+            instead).
+
+
+            When searching, you can specify any combination of first, middle and
+            last names of any of the contributors.
+
+
+            When sort-by is set to contributor, the results will be sorted by
+            the first name of the first contributor listed.
+          name: contributor
+          in: query
+          schema:
+            type: string
+        - description: >-
+            International Standard Book Number, 10 or 13 digits
+
+
+            A best seller may have both 10-digit and 13-digit ISBNs, and may
+            have multiple ISBNs of each type. To search on multiple ISBNs,
+            separate the ISBNs with semicolons (example:
+            9780446579933;0061374229).
+          name: isbn
+          in: query
+          schema:
+            type: string
+        - description: >-
+            Sets the starting point of the result set (0, 20, ...).  Used to
+            paginate thru results if there are more than 20. Defaults to 0. The
+            num_results field indicates how many results there are total.
+          name: offset
+          in: query
+          schema:
+            type: integer
+            multipleOf: 20
+        - description: >-
+            The publisher's list price of the best seller, including decimal
+            point.
+          name: price
+          in: query
+          schema:
+            type: string
+        - description: The standardized name of the publisher
+          name: publisher
+          in: query
+          schema:
+            type: string
+        - description: >-
+            The title of the best seller
+
+
+            When searching, you can specify a portion of a title or a full
+            title.
+          name: title
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Best Sellers list history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreGetBestSellersHistoryResponse'
+              examples:
+                response:
+                  value:
+                    status: OK
+                    copyright: >-
+                      Copyright (c) 2019 The New York Times Company.  All Rights
+                      Reserved.
+                    num_results: 28970
+                    results:
+                      - title: '#GIRLBOSS'
+                        description: An online fashion retailer traces her path to success.
+                        contributor: by Sophia Amoruso
+                        author: Sophia Amoruso
+                        contributor_note: ''
+                        price: 0
+                        age_group: ''
+                        publisher: Portfolio/Penguin/Putnam
+                        isbns:
+                          - isbn10: 039916927X
+                            isbn13: '9780399169274'
+                        ranks_history:
+                          - primary_isbn10: '1591847931'
+                            primary_isbn13: '9781591847939'
+                            rank: 8
+                            list_name: Business Books
+                            display_name: Business
+                            published_date: '2016-03-13'
+                            bestsellers_date: '2016-02-27'
+                            weeks_on_list: 0
+                            ranks_last_week: null
+                            asterisk: 0
+                            dagger: 0
+                        reviews:
+                          - book_review_link: ''
+                            first_chapter_link: ''
+                            sunday_review_link: ''
+                            article_chapter_link: ''
+  /reviews.json:
+    get:
+      tags:
+        - core
+      summary: Reviews
+      operationId: Core_getBookReviews
+      security:
+        - api-key: []
+      description: Get book reviews.
+      parameters:
+        - description: >-
+            Searching by ISBN is the recommended method. You can enter 10- or
+            13-digit ISBNs.
+          name: isbn
+          in: query
+          schema:
+            type: integer
+        - description: >-
+            You’ll need to enter the full title of the book. Spaces in the title
+            will be converted into the characters %20.
+          name: title
+          in: query
+          schema:
+            type: string
+        - description: >-
+            You’ll need to enter the author’s first and last name, separated by
+            a space. This space will be converted into the characters %20.
+          name: author
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Book reviews.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoreGetBookReviewsResponse'
+              examples:
+                response:
+                  value:
+                    status: OK
+                    copyright: >-
+                      Copyright (c) 2019 The New York Times Company.  All Rights
+                      Reserved.
+                    num_results: 2
+                    results:
+                      - summary: >-
+                          In “1Q84,” the Japanese novelist Haruki Murakami
+                          writes about characters in a Tokyo with two moons.
+                        url: >-
+                          http://www.nytimes.com/2011/11/10/books/1q84-by-haruki-murakami-review.html
+                        publication_dt: '2011-11-10'
+                        byline: JANET MASLIN
+                        book_title: 1Q84
+                        book_author: Haruki Murakami
+                        isbn13:
+                          - '9780307476463'
+components:
+  securitySchemes:
+    api-key:
+      name: api-key
+      type: apiKey
+      in: query
+  schemas:
+    OverviewResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        copyright:
+          type: string
+        num_results:
+          type: integer
+        results:
+          type: object
+          properties:
+            bestsellers_date:
+              type: string
+            published_date:
+              type: string
+            lists:
+              type: array
+              items:
+                type: object
+                properties:
+                  list_id:
+                    type: integer
+                  list_name:
+                    type: string
+                  display_name:
+                    type: string
+                  updated:
+                    type: string
+                  list_image:
+                    type: string
+                  books:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        age_group:
+                          type: string
+                        author:
+                          type: string
+                        contributor:
+                          type: string
+                        contributor_note:
+                          type: string
+                        created_date:
+                          type: string
+                        price:
+                          type: integer
+                        primary_isbn13:
+                          type: string
+                        primary_isbn10:
+                          type: string
+                        publisher:
+                          type: string
+                        rank:
+                          type: integer
+                        updated_date:
+                          type: string
+    CoreGetBestSellersListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        copyright:
+          type: string
+        num_results:
+          type: integer
+        last_modified:
+          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              list_name:
+                type: string
+              display_name:
+                type: string
+              bestsellers_date:
+                type: string
+              published_date:
+                type: string
+              rank:
+                type: integer
+              rank_last_week:
+                type: integer
+              weeks_on_list:
+                type: integer
+              asterisk:
+                type: integer
+              dagger:
+                type: integer
+              amazon_product_url:
+                type: string
+              isbns:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    isbn10:
+                      type: string
+                    isbn13:
+                      type: string
+              book_details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    contributor:
+                      type: string
+                    author:
+                      type: string
+                    contributor_note:
+                      type: string
+                    price:
+                      type: integer
+                    age_group:
+                      type: string
+                    publisher:
+                      type: string
+                    primary_isbn13:
+                      type: string
+                    primary_isbn10:
+                      type: string
+              reviews:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    book_review_link:
+                      type: string
+                    first_chapter_link:
+                      type: string
+                    sunday_review_link:
+                      type: string
+                    article_chapter_link:
+                      type: string
+    CoreGetBestSellersByDateResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        copyright:
+          type: string
+        num_results:
+          type: integer
+        last_modified:
+          type: string
+        results:
+          type: object
+          properties:
+            list_name:
+              type: string
+            bestsellers_date:
+              type: string
+            published_date:
+              type: string
+            display_name:
+              type: string
+            normal_list_ends_at:
+              type: integer
+            updated:
+              type: string
+            books:
+              type: array
+              items:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  rank:
+                    type: integer
+                  rank_last_week:
+                    type: integer
+                  weeks_on_list:
+                    type: integer
+                  asterisk:
+                    type: integer
+                  dagger:
+                    type: integer
+                  primary_isbn10:
+                    type: string
+                  primary_isbn13:
+                    type: string
+                  publisher:
+                    type: string
+                  price:
+                    type: integer
+                  author:
+                    type: string
+                  contributor:
+                    type: string
+                  contributor_note:
+                    type: string
+                  book_image:
+                    type: string
+                  amazon_product_url:
+                    type: string
+                  age_group:
+                    type: string
+                  book_review_link:
+                    type: string
+                  first_chapter_link:
+                    type: string
+                  sunday_review_link:
+                    type: string
+                  article_chapter_link:
+                    type: string
+                  isbns:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        isbn10:
+                          type: string
+                        isbn13:
+                          type: string
+            corrections:
+              type: array
+              items:
+                type: object
+                properties: {}
+    CoreGetBestSellersListNamesResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        copyright:
+          type: string
+        num_results:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              list_name:
+                type: string
+              display_name:
+                type: string
+              list_name_encoded:
+                type: string
+              oldest_published_date:
+                type: string
+              newest_published_date:
+                type: string
+              updated:
+                type: string
+                enum:
+                  - WEEKLY
+                  - MONTHLY
+    CoreGetBestSellersHistoryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        copyright:
+          type: string
+        num_results:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              description:
+                type: string
+              contributor:
+                type: string
+              author:
+                type: string
+              contributor_note:
+                type: string
+              price:
+                type: integer
+              age_group:
+                type: string
+              publisher:
+                type: string
+              isbns:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    isbn10:
+                      type: string
+                    isbn13:
+                      type: string
+              ranks_history:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    primary_isbn10:
+                      type: string
+                    primary_isbn13:
+                      type: string
+                    rank:
+                      type: integer
+                    list_name:
+                      type: string
+                    display_name:
+                      type: string
+                    published_date:
+                      type: string
+                    bestsellers_date:
+                      type: string
+                    weeks_on_list:
+                      type: integer
+                    ranks_last_week:
+                      nullable: true
+                    asterisk:
+                      type: integer
+                    dagger:
+                      type: integer
+              reviews:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    book_review_link:
+                      type: string
+                    first_chapter_link:
+                      type: string
+                    sunday_review_link:
+                      type: string
+                    article_chapter_link:
+                      type: string
+    CoreGetBookReviewsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        copyright:
+          type: string
+        num_results:
+          type: integer
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              summary:
+                type: string
+              url:
+                type: string
+              publication_dt:
+                type: string
+              byline:
+                type: string
+              book_title:
+                type: string
+              book_author:
+                type: string
+              isbn13:
+                type: array
+                items:
+                  type: string
