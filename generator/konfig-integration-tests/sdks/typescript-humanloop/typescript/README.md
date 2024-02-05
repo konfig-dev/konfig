@@ -329,7 +329,9 @@ If specified, model will make a best effort to sample deterministically, but it 
 
 ### `humanloop.chatDeployed`<a id="humanloopchatdeployed"></a>
 
-Get a chat response using the project\'s active deployment.  The active deployment can be a specific model configuration or an experiment.
+Get a chat response using the project's active deployment.
+
+The active deployment can be a specific model configuration or an experiment.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -751,7 +753,9 @@ End-user ID passed through to provider call.
 
 ### `humanloop.completeDeployed`<a id="humanloopcompletedeployed"></a>
 
-Create a completion using the project\'s active deployment.  The active deployment can be a specific model configuration or an experiment.
+Create a completion using the project's active deployment.
+
+The active deployment can be a specific model configuration or an experiment.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1103,7 +1107,11 @@ String ID of datapoint. Starts with `evtc_`.
 
 ### `humanloop.datapoints.update`<a id="humanloopdatapointsupdate"></a>
 
-Edit the input, messages and criteria fields of a datapoint. The fields passed in the request are the ones edited.  Passing `null` as a value for a field will delete that field. In order to signify not changing a field, it should be omitted from the request body.
+Edit the input, messages and criteria fields of a datapoint.
+The fields passed in the request are the ones edited.
+
+Passing `null` as a value for a field will delete that field. In order to
+signify not changing a field, it should be omitted from the request body.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1549,7 +1557,9 @@ Number of evaluation results to retrieve.
 
 ### `humanloop.evaluations.logResult`<a id="humanloopevaluationslogresult"></a>
 
-Log an evaluation result to an evaluation run.  The run must have status \'running\' and the `evaluator_id` of the result must be one of the `evaluator_id`s associated with the run.
+Log an evaluation result to an evaluation run.
+
+The run must have status 'running' and the `evaluator_id` of the result must be one of the `evaluator_id`s associated with the run.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1596,7 +1606,11 @@ An error that occurred during evaluation.
 
 ### `humanloop.evaluations.updateStatus`<a id="humanloopevaluationsupdatestatus"></a>
 
-Update the status of an evaluation run.  Can only be used to update the status of an evaluation run that uses external or human evaluators. The evaluation must currently have status \'running\' if swithcing to completed, or it must have status \'completed\' if switching back to \'running\'.
+Update the status of an evaluation run.
+
+Can only be used to update the status of an evaluation run that uses external or human evaluators.
+The evaluation must currently have status 'running' if swithcing to completed, or it must have status
+'completed' if switching back to 'running'.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1817,7 +1831,11 @@ The code for the evaluator. This code will be executed in a sandboxed environmen
 
 ### `humanloop.experiments.create`<a id="humanloopexperimentscreate"></a>
 
-Create an experiment for your project.  You can optionally specify IDs of your project\'s model configs to include in the experiment, along with a set of labels to consider as positive feedback and whether the experiment should be set as active.
+Create an experiment for your project.
+
+You can optionally specify IDs of your project's model configs to include
+in the experiment, along with a set of labels to consider as positive feedback
+and whether the experiment should be set as active.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1930,7 +1948,7 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.experiments.sample`<a id="humanloopexperimentssample"></a>
 
-Samples a model config from the experiment\'s active model configs.
+Samples a model config from the experiment's active model configs.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1961,7 +1979,8 @@ String ID of experiment. Starts with `exp_`.
 
 ### `humanloop.experiments.update`<a id="humanloopexperimentsupdate"></a>
 
-Update your experiment, including registering and de-registering model configs.
+Update your experiment, including registering and de-registering
+model configs.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2136,7 +2155,9 @@ const listAllForProjectResponse = await humanloop.finetunes.listAllForProject({
 
 ### `humanloop.finetunes.summary`<a id="humanloopfinetunessummary"></a>
 
-Checks data for errors and generates finetune data summary.  Does not actually trigger the finetuning process or persist the data.
+Checks data for errors and generates finetune data summary.
+
+Does not actually trigger the finetuning process or persist the data.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2243,7 +2264,10 @@ const deleteResponse = await humanloop.logs.delete({});
 
 ### `humanloop.logs.list`<a id="humanlooplogslist"></a>
 
-Retrieve paginated logs from the server.  Sorting and filtering are supported through query params. See docstring of get_sorted_filtered_project_data_from_query_params for more details.
+Retrieve paginated logs from the server.
+
+Sorting and filtering are supported through query params.
+See docstring of get_sorted_filtered_project_data_from_query_params for more details.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2436,7 +2460,10 @@ Duration of the logged event in seconds.
 
 ### `humanloop.logs.updateByRef`<a id="humanlooplogsupdatebyref"></a>
 
-Update a logged datapoint by its reference ID.  The `reference_id` query parameter must be provided, and refers to the `reference_id` of a previously-logged datapoint.
+Update a logged datapoint by its reference ID.
+
+The `reference_id` query parameter must be provided, and refers to the
+`reference_id` of a previously-logged datapoint.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2566,7 +2593,17 @@ String ID of the model config. Starts with `config_`.
 
 ### `humanloop.modelConfigs.register`<a id="humanloopmodelconfigsregister"></a>
 
-Register a model config to a project and optionally add it to an experiment.  If the project name provided does not exist, a new project will be created automatically.  If an experiment name is provided, the specified experiment must already exist. Otherwise, an error will be raised.  If the model config is the first to be associated to the project, it will be set as the active model config.
+Register a model config to a project and optionally add it to an
+experiment.
+
+If the project name provided does not exist, a new project will be created
+automatically.
+
+If an experiment name is provided, the specified experiment must already
+exist. Otherwise, an error will be raised.
+
+If the model config is the first to be associated to the project, it will
+be set as the active model config.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2849,7 +2886,9 @@ The data type associated to this feedback type; whether it is a \\\'text\\\'/\\\
 
 ### `humanloop.projects.deactivateConfig`<a id="humanloopprojectsdeactivateconfig"></a>
 
-Remove the project\'s active config, if set.  This has no effect if the project does not have an active model config set.
+Remove the project's active config, if set.
+
+This has no effect if the project does not have an active model config set.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2884,7 +2923,9 @@ Name for the environment. E.g. \'production\'. If not provided, will delete the 
 
 ### `humanloop.projects.deactivateExperiment`<a id="humanloopprojectsdeactivateexperiment"></a>
 
-Remove the project\'s active experiment, if set.  This has no effect if the project does not have an active experiment set.
+Remove the project's active experiment, if set.
+
+This has no effect if the project does not have an active experiment set.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2947,7 +2988,9 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.projects.deleteDeployedConfig`<a id="humanloopprojectsdeletedeployedconfig"></a>
 
-Remove the model config deployed to environment.  This has no effect if the project does not have an active model config set.
+Remove the model config deployed to environment.
+
+This has no effect if the project does not have an active model config set.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -2976,7 +3019,9 @@ const deleteDeployedConfigResponse =
 
 ### `humanloop.projects.deployConfig`<a id="humanloopprojectsdeployconfig"></a>
 
-Deploy a model config to an environment.  If the environment already has a model config deployed, it will be replaced.
+Deploy a model config to an environment.
+
+If the environment already has a model config deployed, it will be replaced.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3017,7 +3062,10 @@ List of environments to associate with the model config.
 
 ### `humanloop.projects.export`<a id="humanloopprojectsexport"></a>
 
-Export all logged datapoints associated to your project.  Results are paginated and sorts the datapoints based on `created_at` in descending order.
+Export all logged datapoints associated to your project.
+
+Results are paginated and sorts the datapoints based on `created_at` in
+descending order.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3089,7 +3137,10 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.projects.getActiveConfig`<a id="humanloopprojectsgetactiveconfig"></a>
 
-Retrieves a config to use to execute your model.  A config will be selected based on the project\'s active config/experiment settings.
+Retrieves a config to use to execute your model.
+
+A config will be selected based on the project's
+active config/experiment settings.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3241,7 +3292,17 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.projects.update`<a id="humanloopprojectsupdate"></a>
 
-Update a specific project.  Set the project\'s active model config/experiment by passing either `active_experiment_id` or `active_model_config_id`. These will be set to the Default environment unless a list of environments are also passed in specifically detailing which environments to assign the active config or experiment.  Set the feedback labels to be treated as positive user feedback used in calculating top-level project metrics by passing a list of labels in `positive_labels`.
+Update a specific project.
+
+Set the project's active model config/experiment by passing either
+`active_experiment_id` or `active_model_config_id`.
+These will be set to the Default environment unless a list of environments
+are also passed in specifically detailing which environments to assign the
+active config or experiment.
+
+Set the feedback labels to be treated as positive user feedback used in
+calculating top-level project metrics by passing a list of labels in
+`positive_labels`.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3292,7 +3353,13 @@ ID of directory to assign project to. Starts with `dir_`.
 
 ### `humanloop.projects.updateFeedbackTypes`<a id="humanloopprojectsupdatefeedbacktypes"></a>
 
-Update feedback types.  Allows enabling the available feedback types and setting status of feedback types/categorical values.  This behaves like an upsert; any feedback categorical values that do not already exist in the project will be created.
+Update feedback types.
+
+Allows enabling the available feedback types and setting status of
+feedback types/categorical values.
+
+This behaves like an upsert; any feedback categorical values that do not
+already exist in the project will be created.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -3331,7 +3398,9 @@ String ID of project. Starts with `pr_`.
 
 ### `humanloop.sessions.create`<a id="humanloopsessionscreate"></a>
 
-Create a new session.  Returns a session ID that can be used to log datapoints to the session.
+Create a new session.
+
+Returns a session ID that can be used to log datapoints to the session.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 

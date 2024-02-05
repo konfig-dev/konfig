@@ -340,7 +340,11 @@ const updateResponse = await bellhop.leads.update({
 
 ### `bellhop.locations.createQuoting`<a id="bellhoplocationscreatequoting"></a>
 
-Create quoting location object from address  Create Quoting Location standardizes input address via USPS and generates geo-location details Google Maps APIs. The location id is a hash of the required fields on the location object.
+Create quoting location object from address
+
+Create Quoting Location standardizes input address via USPS and generates
+geo-location details Google Maps APIs.
+The location id is a hash of the required fields on the location object.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -478,7 +482,11 @@ const getServiceabilityResponse = await bellhop.postalCodes.getServiceability({
 
 ### `bellhop.quoteServiceGroups.changeLocations`<a id="bellhopquoteservicegroupschangelocations"></a>
 
-Overwrite the locations on a service group  The locations included in the request are overwritten as the locations on the service group maintaining the sequence in the request. This action triggers a re-estimation of the service group using the new locations.
+Overwrite the locations on a service group
+
+The locations included in the request are overwritten as the locations on
+the service group maintaining the sequence in the request.
+This action triggers a re-estimation of the service group using the new locations.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -516,7 +524,14 @@ UUID of the service group
 
 ### `bellhop.quoteServiceGroups.create`<a id="bellhopquoteservicegroupscreate"></a>
 
-Creates a new service group  A service group is a collection of services that are performed at the same time and location. The created service group will be created with the provided services, locations, and start date time. The workers, duration, and end date time will be estimated based on the locations and inventory attached to the quote.
+Creates a new service group
+
+A service group is a collection of services that are performed at the
+same time and location.
+The created service group will be created with the provided services,
+locations, and start date time.
+The workers, duration, and end date time will be estimated based on the
+locations and inventory attached to the quote.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -565,7 +580,11 @@ Start datetime of service group
 
 ### `bellhop.quoteServiceGroups.createFlexible`<a id="bellhopquoteservicegroupscreateflexible"></a>
 
-Creates an array of flexible service groups from a service group  Generate an array of flexible service groups. The services and locations will be copied from the source service group. One flexible service group will be created for each day and hour combination in the input.
+Creates an array of flexible service groups from a service group
+
+Generate an array of flexible service groups. The services and locations
+will be copied from the source service group.
+One flexible service group will be created for each day and hour combination in the input.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -684,7 +703,9 @@ UUID of the service group
 
 ### `bellhop.quoteServiceGroups.replace`<a id="bellhopquoteservicegroupsreplace"></a>
 
-Replaces a service group with a flexible service group  Replaces the existing service group with the selected flexible service group.
+Replaces a service group with a flexible service group
+
+Replaces the existing service group with the selected flexible service group.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -723,7 +744,14 @@ UUID of the service group
 
 ### `bellhop.quoteServiceGroups.update`<a id="bellhopquoteservicegroupsupdate"></a>
 
-Update the service configuration on a service group  Update services, workers and duration on a service group. the service_workers object is a mapping of service code and number of workers.  Only the included service codes will be retained on the service group.  Any excluded services will be removed.
+Update the service configuration on a service group
+
+Update services, workers and duration on a service group.
+the service_workers object is a mapping of service code and number of workers.
+
+Only the included service codes will be retained on the service group.
+
+Any excluded services will be removed.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -773,7 +801,12 @@ Duration for all services in group
 
 ### `bellhop.quotes.create`<a id="bellhopquotescreate"></a>
 
-Creates a quote  Creates a quote for a given customer using the provided locations and service code. The LOCALFULLSERVICE service code will generate a service group with LOADINGUNLOADING and TRANSIT services. All other service codes generate service groups with a single service.
+Creates a quote
+
+Creates a quote for a given customer using the provided locations and service code.
+The LOCALFULLSERVICE service code will generate a service group with
+LOADINGUNLOADING and TRANSIT services.
+All other service codes generate service groups with a single service.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
