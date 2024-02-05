@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.4
+
+### Patch Changes
+
+- [#535](https://github.com/konfig-dev/konfig/pull/535) [`3c0fc5ba`](https://github.com/konfig-dev/konfig/commit/3c0fc5bada09ce010e1b245ebd0541473b163edf) Thanks [@dphuang2](https://github.com/dphuang2)! - handle >=3 schemas when converting "type": "null" & anyOf usage back to OAS 3.0.x
+
 ## 1.38.3
 
 ### Patch Changes
