@@ -19,13 +19,10 @@ test("typescript-no-relative-npm-link", async () => {
       );
       const packageJson = JSON.parse(rawPackageJson);
 
-      // ensure "repository" field has object with:
-      // "type": "git"
-      // "url": "https://github.com/konfig-dev/konfig"
-      // "directory": "typescript"
+      // ensure "repository" field is correct
       expect(packageJson.repository).toEqual({
         type: "git",
-        url: "https://github.com/konfig-dev/konfig",
+        url: "https://github.com/konfig-dev/konfig.git",
       });
     },
   });

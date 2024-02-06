@@ -309,6 +309,23 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
     public Map<String, Object> postProcessSupportingFileData(Map<String, Object> objs) {
         Map<String, Object> bundle = super.postProcessSupportingFileData(objs);
 
+        // construct "repository" field as string
+        List<String> repository = new ArrayList<>();
+        repository.add("    \"type\": \"git\"");
+        String gitRepoId = (String) this.additionalProperties.get("gitRepoId");
+        String gitHost = (String) this.additionalProperties.get("gitHost");
+        String gitUserId = (String) this.additionalProperties.get("gitUserId");
+        String gitRepoName = (String) this.additionalProperties.get("gitRepoName");
+        boolean isSdkInSubdirectoryOfGitRepo = gitRepoId.contains("/");
+        repository.add("\"url\": \"" + "https://" + gitHost + "/" + gitUserId + "/" + gitRepoName + ".git\"");
+        if (isSdkInSubdirectoryOfGitRepo) {
+            // find directory by parsing "typescript" from "acme-sdks/tree/main/typescript"
+            String[] parts = gitRepoId.split("/");
+            // combine parts at index 3+
+            String sdkDirectory = String.join("/", Arrays.copyOfRange(parts, 3, parts.length));
+            repository.add("\"directory\": \"" + sdkDirectory + "\"");
+        }
+        bundle.put("repository", String.join(",\n    ", repository));
 
         // construct dependencies as string
         List<String> dependencies = new ArrayList<>();
