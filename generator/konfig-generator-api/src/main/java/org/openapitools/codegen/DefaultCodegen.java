@@ -6982,14 +6982,11 @@ public class DefaultCodegen implements CodegenConfig {
                 ? codegenSecurity.authorizationUrl
                 : codegenSecurity.tokenUrl;
         // relative if it does not include a "://" (protocol)
-        if (StringUtils.isNotEmpty(codegenSecurity.authorizationUrl)) {
-            codegenSecurity.isAuthorizationOrTokenUrlRelative = !codegenSecurity.authorizationUrl.contains("://");
-
-            // assign absoluteAuthorizationOrTokenUrl
-            codegenSecurity.absoluteAuthorizationOrTokenUrl = codegenSecurity.isAuthorizationOrTokenUrlRelative
-                    ? StringUtils.removeEnd(this.basePath, "/") + codegenSecurity.authorizationUrl
-                    : codegenSecurity.authorizationUrl;
-        }
+        codegenSecurity.isAuthorizationOrTokenUrlRelative = !codegenSecurity.authorizationOrTokenUrl.contains("://");
+        // assign absoluteAuthorizationOrTokenUrl
+        codegenSecurity.absoluteAuthorizationOrTokenUrl = codegenSecurity.isAuthorizationOrTokenUrlRelative
+                ? StringUtils.removeEnd(this.basePath, "/") + codegenSecurity.authorizationUrl
+                : codegenSecurity.authorizationUrl;
 
         if (flow.getScopes() != null && !flow.getScopes().isEmpty()) {
             List<Map<String, Object>> scopes = new ArrayList<>();
