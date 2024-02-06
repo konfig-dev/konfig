@@ -318,14 +318,15 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         String gitRepoName = (String) this.additionalProperties.get("gitRepoName");
         boolean isSdkInSubdirectoryOfGitRepo = gitRepoId.contains("/");
         repository.add("\"url\": \"" + "https://" + gitHost + "/" + gitUserId + "/" + gitRepoName + ".git\"");
+        // find directory by parsing "typescript" from "acme-sdks/tree/main/typescript"
+        String[] parts = gitRepoId.split("/");
+        // combine parts at index 3+ if sdk is in subdirectory of git repo, otherwise use gitRepoId
+        String sdkDirectory = isSdkInSubdirectoryOfGitRepo ? String.join("/", Arrays.copyOfRange(parts, 3, parts.length)) : gitRepoId;
         if (isSdkInSubdirectoryOfGitRepo) {
-            // find directory by parsing "typescript" from "acme-sdks/tree/main/typescript"
-            String[] parts = gitRepoId.split("/");
-            // combine parts at index 3+
-            String sdkDirectory = String.join("/", Arrays.copyOfRange(parts, 3, parts.length));
             repository.add("\"directory\": \"" + sdkDirectory + "\"");
         }
         bundle.put("repository", String.join(",\n    ", repository));
+        bundle.put("homepage", "https://" + gitHost + "/" + gitUserId + "/" + gitRepoName + (!isSdkInSubdirectoryOfGitRepo ? "" : "/tree/HEAD/" + sdkDirectory) +  "#readme");
 
         // construct dependencies as string
         List<String> dependencies = new ArrayList<>();

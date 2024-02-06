@@ -25,6 +25,9 @@ test("typescript-relative-npm-links", async () => {
         url: "https://github.com/konfig-dev/konfig.git",
         directory: "typescript",
       });
+      expect(packageJson.homepage).toEqual(
+        "https://github.com/konfig-dev/konfig/tree/HEAD/typescript#readme"
+      );
     },
   });
 });
