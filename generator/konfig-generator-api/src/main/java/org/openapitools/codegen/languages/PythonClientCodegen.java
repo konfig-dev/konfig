@@ -501,7 +501,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         if (additionalProperties.get("useAiohttp38") != null && (boolean) additionalProperties.get("useAiohttp38")) {
             dependencies.add(new PythonDependency("aiohttp", "3.8.4", "~=", "^"));
         } else {
-            dependencies.add(new PythonDependency("aiohttp", "3.9.1", "~=", "^"));
+            dependencies.add(new PythonDependency("aiohttp", "3.9.2", "~=", "^"));
         }
         if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
             dependencies.add(new PythonDependency("pydantic", "2.4.2", "~=", "^"));
