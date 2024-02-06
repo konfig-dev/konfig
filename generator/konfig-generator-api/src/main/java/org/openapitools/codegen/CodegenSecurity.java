@@ -43,7 +43,8 @@ public class CodegenSecurity {
     public String apiKeyIn;
     public Boolean isKeyInQuery, isKeyInHeader, isKeyInCookie;
     // Oauth specific
-    public String flow, authorizationUrl, tokenUrl, refreshUrl;
+    public String flow, authorizationUrl, tokenUrl, refreshUrl, authorizationOrTokenUrl, absoluteAuthorizationOrTokenUrl;
+    public Boolean isAuthorizationOrTokenUrlRelative;
     public List<Map<String, Object>> scopes;
     public Boolean isCode, isPassword, isApplication, isImplicit;
 

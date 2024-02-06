@@ -1033,6 +1033,7 @@ public class DefaultGenerator implements Generator {
         configureOpenAPIInfo();
 
         config.processOpenAPI(openAPI);
+        config.setBasePath(basePath);
 
         processUserDefinedTemplates();
 

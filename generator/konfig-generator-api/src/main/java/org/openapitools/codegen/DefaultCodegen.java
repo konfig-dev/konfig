@@ -180,6 +180,7 @@ public class DefaultCodegen implements CodegenConfig {
     protected Map<String, String> inlineSchemaNameMapping = new HashMap<>();
     // a map to store the inline schema naming conventions
     protected Map<String, String> inlineSchemaNameDefault = new HashMap<>();
+    protected String basePath;
     protected String modelPackage = "", apiPackage = "", fileSuffix;
     protected String typePackage = "";
     protected String additionalModelPackage = "";
@@ -332,6 +333,14 @@ public class DefaultCodegen implements CodegenConfig {
 
     public boolean getAddSuffixToDuplicateOperationNicknames() {
         return addSuffixToDuplicateOperationNicknames;
+    }
+
+    public String basePath() {
+        return basePath;
+    }
+
+    public void setBasePath(String basePath) {
+        this.basePath = basePath;
     }
 
     @Override
@@ -6969,6 +6978,18 @@ public class DefaultCodegen implements CodegenConfig {
         codegenSecurity.authorizationUrl = flow.getAuthorizationUrl();
         codegenSecurity.tokenUrl = flow.getTokenUrl();
         codegenSecurity.refreshUrl = flow.getRefreshUrl();
+        codegenSecurity.authorizationOrTokenUrl = StringUtils.isNotEmpty(codegenSecurity.authorizationUrl)
+                ? codegenSecurity.authorizationUrl
+                : codegenSecurity.tokenUrl;
+        // relative if it does not include a "://" (protocol)
+        if (StringUtils.isNotEmpty(codegenSecurity.authorizationUrl)) {
+            codegenSecurity.isAuthorizationOrTokenUrlRelative = !codegenSecurity.authorizationUrl.contains("://");
+
+            // assign absoluteAuthorizationOrTokenUrl
+            codegenSecurity.absoluteAuthorizationOrTokenUrl = codegenSecurity.isAuthorizationOrTokenUrlRelative
+                    ? StringUtils.removeEnd(this.basePath, "/") + codegenSecurity.authorizationUrl
+                    : codegenSecurity.authorizationUrl;
+        }
 
         if (flow.getScopes() != null && !flow.getScopes().isEmpty()) {
             List<Map<String, Object>> scopes = new ArrayList<>();

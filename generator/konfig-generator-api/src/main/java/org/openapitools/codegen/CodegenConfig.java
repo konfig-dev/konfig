@@ -351,4 +351,8 @@ public interface CodegenConfig {
     boolean getUseInlineModelResolver();
 
     boolean getAddSuffixToDuplicateOperationNicknames();
+
+    String basePath();
+
+    void setBasePath(String basePath);
 }
