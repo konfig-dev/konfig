@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.6
+
+### Patch Changes
+
+- [#543](https://github.com/konfig-dev/konfig/pull/543) [`77b4431f`](https://github.com/konfig-dev/konfig/commit/77b4431f0cac2a5c030c7deb1a706821ce0cc773) Thanks [@dphuang2](https://github.com/dphuang2)! - fix submodule check implementation to be more robust
+
 ## 1.38.5
 
 ### Patch Changes
