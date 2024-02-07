@@ -50,6 +50,11 @@ export function prepareJavaRequestProperties({
     }
   }
 
+  if ('removeDefaultConfigurationParameters' in generatorConfig) {
+    properties['removeDefaultConfigurationParameters'] =
+      generatorConfig.removeDefaultConfigurationParameters
+  }
+
   if ('mockServerPort' in generatorConfig) {
     properties['mockServerPort'] = generatorConfig.mockServerPort
   }

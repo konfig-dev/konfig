@@ -336,11 +336,13 @@ export const typescriptConfig = z.object({
     ),
   pagination: paginationConfigSchema.optional(),
   removeKonfigBranding,
-  useSecurityKeyParamNameAsPropertyName: z
+  useSecurityKeyNameAsPropertyName: z
     .boolean()
     .optional()
     .describe(
-      `Whether to use the security requirement's key as the property name. For example, if the security requirement is called "apiKey" but the "Header" key is "X-Api-Key" then setting this to true will make the parameter name "xApiKey".`
+      `Consider the following security scheme: { accessToken: { type: apiKey, name: authorization, in: header }}.
+The default behavior is to use the (camelCased) header name as the Configuration property name (e.g. "authorization").
+If this flag is set to true, then the key name will be used instead (e.g. "accessToken").`
     ),
   objectPropertyNamingConvention:
     objectPropertyNamingConvention.default('camelCase'),
@@ -352,6 +354,12 @@ export const typescriptConfig = z.object({
   omitApiDocumentation: z.boolean().optional(),
   includeFetchAdapter: z.boolean().optional(),
   includeEventSourceParser: z.boolean().optional(),
+  removeDefaultConfigurationParameters: z
+    .boolean()
+    .optional()
+    .describe(
+      'Removes default fields (username, password, apiKey, and accessToken) from ConfigurationParameters class'
+    ),
 })
 
 export const generatorGitConfig = z

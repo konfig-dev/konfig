@@ -998,8 +998,8 @@ async function queueTypeScriptGeneration({
         readmeSupportingDescriptionSnippet:
           generatorConfig.readmeSupportingDescriptionSnippet,
         readmeDescriptionSnippet: generatorConfig.readmeDescriptionSnippet,
-        useSecurityKeyParamNameAsPropertyName:
-          generatorConfig.useSecurityKeyParamNameAsPropertyName,
+        useSecurityKeyNameAsPropertyName:
+          generatorConfig.useSecurityKeyNameAsPropertyName,
         omitApiDocumentation: generatorConfig.omitApiDocumentation,
         clientName: generatorConfig.clientName,
         apiPackage: 'api',

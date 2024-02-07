@@ -274,6 +274,8 @@ public interface GenerateApi {
 
         if (generator.equals("ruby"))
             putIfPresent(map, "isFaraday", true);
+        if (generator.equals("typescript-axios"))
+            putIfPresent(map, "removeDefaultConfigurationParameters", additionalProperties.getRemoveDefaultConfigurationParameters());
         putIfPresent(map, "apiPackage", additionalProperties.getApiPackage());
         if (additionalProperties.getReadmeOperation() != null)
             putIfPresent(map, "readmeOperationId", additionalProperties.getReadmeOperation().getOperationId());
@@ -322,7 +324,7 @@ public interface GenerateApi {
         putIfPresent(map, "includeFetchAdapter", additionalProperties.getIncludeFetchAdapter());
         putIfPresent(map, "includeEventSourceParser", additionalProperties.getIncludeEventSourceParser());
         putIfPresent(map, "swiftPackagePath", additionalProperties.getSwiftPackagePath());
-        putIfPresent(map, "useSecurityKeyName", additionalProperties.getUseSecurityKeyParamNameAsPropertyName());
+        putIfPresent(map, "useSecurityKeyName", additionalProperties.getUseSecurityKeyNameAsPropertyName());
         putIfPresent(map, "apiDocumentationAuthenticationPartial", additionalProperties.getApiDocumentationAuthenticationPartial());
         putIfPresent(map, "readmeSnippet", additionalProperties.getReadmeSnippet());
         putIfPresent(map, "readmeHeaderSnippet", additionalProperties.getReadmeHeaderSnippet());
@@ -336,7 +338,7 @@ public interface GenerateApi {
             putIfPresent(map, "mockServerPort", 4010);
         }
         putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention());
-        putIfPresent(map, "useSecurityKeyParamNameAsPropertyName", additionalProperties.getUseSecurityKeyParamNameAsPropertyName());
+        putIfPresent(map, "useSecurityKeyNameAsPropertyName", additionalProperties.getUseSecurityKeyNameAsPropertyName());
         if (additionalProperties.getObjectPropertyNamingConvention() != null) {
             putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention().equals("camelCase"));
             putIfPresent(map, "useSnakeCase", additionalProperties.getObjectPropertyNamingConvention().equals("snake_case"));

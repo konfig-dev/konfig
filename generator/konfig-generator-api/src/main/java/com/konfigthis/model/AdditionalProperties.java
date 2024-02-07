@@ -41,6 +41,9 @@ public class AdditionalProperties {
   @JsonProperty("readmeHeader")
   private AdditionalPropertiesReadmeHeader readmeHeader;
 
+  @JsonProperty("removeDefaultConfigurationParameters")
+  private Boolean removeDefaultConfigurationParameters;
+
   @JsonProperty("isGitSubmodule")
   private Boolean isGitSubmodule;
 
@@ -120,8 +123,8 @@ public class AdditionalProperties {
   @JsonProperty("mockServerPort")
   private BigDecimal mockServerPort;
 
-  @JsonProperty("useSecurityKeyParamNameAsPropertyName")
-  private Boolean useSecurityKeyParamNameAsPropertyName;
+  @JsonProperty("useSecurityKeyNameAsPropertyName")
+  private Boolean useSecurityKeyNameAsPropertyName;
 
   @JsonProperty("tagPriority")
   @Valid
@@ -328,6 +331,25 @@ public class AdditionalProperties {
 
   public void setReadmeHeader(AdditionalPropertiesReadmeHeader readmeHeader) {
     this.readmeHeader = readmeHeader;
+  }
+
+  public AdditionalProperties removeDefaultConfigurationParameters(Boolean removeDefaultConfigurationParameters) {
+    this.removeDefaultConfigurationParameters = removeDefaultConfigurationParameters;
+    return this;
+  }
+
+  /**
+   * Get removeDefaultConfigurationParameters
+   * @return removeDefaultConfigurationParameters
+  */
+  
+  @Schema(name = "removeDefaultConfigurationParameters", required = false)
+  public Boolean getRemoveDefaultConfigurationParameters() {
+    return removeDefaultConfigurationParameters;
+  }
+
+  public void setRemoveDefaultConfigurationParameters(Boolean removeDefaultConfigurationParameters) {
+    this.removeDefaultConfigurationParameters = removeDefaultConfigurationParameters;
   }
 
   public AdditionalProperties isGitSubmodule(Boolean isGitSubmodule) {
@@ -832,23 +854,23 @@ public class AdditionalProperties {
     this.mockServerPort = mockServerPort;
   }
 
-  public AdditionalProperties useSecurityKeyParamNameAsPropertyName(Boolean useSecurityKeyParamNameAsPropertyName) {
-    this.useSecurityKeyParamNameAsPropertyName = useSecurityKeyParamNameAsPropertyName;
+  public AdditionalProperties useSecurityKeyNameAsPropertyName(Boolean useSecurityKeyNameAsPropertyName) {
+    this.useSecurityKeyNameAsPropertyName = useSecurityKeyNameAsPropertyName;
     return this;
   }
 
   /**
-   * Get useSecurityKeyParamNameAsPropertyName
-   * @return useSecurityKeyParamNameAsPropertyName
+   * Get useSecurityKeyNameAsPropertyName
+   * @return useSecurityKeyNameAsPropertyName
   */
   
-  @Schema(name = "useSecurityKeyParamNameAsPropertyName", required = false)
-  public Boolean getUseSecurityKeyParamNameAsPropertyName() {
-    return useSecurityKeyParamNameAsPropertyName;
+  @Schema(name = "useSecurityKeyNameAsPropertyName", required = false)
+  public Boolean getUseSecurityKeyNameAsPropertyName() {
+    return useSecurityKeyNameAsPropertyName;
   }
 
-  public void setUseSecurityKeyParamNameAsPropertyName(Boolean useSecurityKeyParamNameAsPropertyName) {
-    this.useSecurityKeyParamNameAsPropertyName = useSecurityKeyParamNameAsPropertyName;
+  public void setUseSecurityKeyNameAsPropertyName(Boolean useSecurityKeyNameAsPropertyName) {
+    this.useSecurityKeyNameAsPropertyName = useSecurityKeyNameAsPropertyName;
   }
 
   public AdditionalProperties tagPriority(List<String> tagPriority) {
@@ -1769,6 +1791,7 @@ public class AdditionalProperties {
     return Objects.equals(this.objectPropertyNamingConvention, additionalProperties.objectPropertyNamingConvention) &&
         Objects.equals(this.dependencies, additionalProperties.dependencies) &&
         Objects.equals(this.readmeHeader, additionalProperties.readmeHeader) &&
+        Objects.equals(this.removeDefaultConfigurationParameters, additionalProperties.removeDefaultConfigurationParameters) &&
         Objects.equals(this.isGitSubmodule, additionalProperties.isGitSubmodule) &&
         Objects.equals(this.gitDefaultBranch, additionalProperties.gitDefaultBranch) &&
         Objects.equals(this.gitRepoName, additionalProperties.gitRepoName) &&
@@ -1795,7 +1818,7 @@ public class AdditionalProperties {
         Objects.equals(this.omitModelDocumentation, additionalProperties.omitModelDocumentation) &&
         Objects.equals(this.omitApiDocumentation, additionalProperties.omitApiDocumentation) &&
         Objects.equals(this.mockServerPort, additionalProperties.mockServerPort) &&
-        Objects.equals(this.useSecurityKeyParamNameAsPropertyName, additionalProperties.useSecurityKeyParamNameAsPropertyName) &&
+        Objects.equals(this.useSecurityKeyNameAsPropertyName, additionalProperties.useSecurityKeyNameAsPropertyName) &&
         Objects.equals(this.tagPriority, additionalProperties.tagPriority) &&
         Objects.equals(this.useDescriptionInOperationTableDocumentation, additionalProperties.useDescriptionInOperationTableDocumentation) &&
         Objects.equals(this.setSkipSerializationToTrueByDefault, additionalProperties.setSkipSerializationToTrueByDefault) &&
@@ -1846,7 +1869,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyParamNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, removeDefaultConfigurationParameters, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1856,6 +1879,7 @@ public class AdditionalProperties {
     sb.append("    objectPropertyNamingConvention: ").append(toIndentedString(objectPropertyNamingConvention)).append("\n");
     sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
     sb.append("    readmeHeader: ").append(toIndentedString(readmeHeader)).append("\n");
+    sb.append("    removeDefaultConfigurationParameters: ").append(toIndentedString(removeDefaultConfigurationParameters)).append("\n");
     sb.append("    isGitSubmodule: ").append(toIndentedString(isGitSubmodule)).append("\n");
     sb.append("    gitDefaultBranch: ").append(toIndentedString(gitDefaultBranch)).append("\n");
     sb.append("    gitRepoName: ").append(toIndentedString(gitRepoName)).append("\n");
@@ -1882,7 +1906,7 @@ public class AdditionalProperties {
     sb.append("    omitModelDocumentation: ").append(toIndentedString(omitModelDocumentation)).append("\n");
     sb.append("    omitApiDocumentation: ").append(toIndentedString(omitApiDocumentation)).append("\n");
     sb.append("    mockServerPort: ").append(toIndentedString(mockServerPort)).append("\n");
-    sb.append("    useSecurityKeyParamNameAsPropertyName: ").append(toIndentedString(useSecurityKeyParamNameAsPropertyName)).append("\n");
+    sb.append("    useSecurityKeyNameAsPropertyName: ").append(toIndentedString(useSecurityKeyNameAsPropertyName)).append("\n");
     sb.append("    tagPriority: ").append(toIndentedString(tagPriority)).append("\n");
     sb.append("    useDescriptionInOperationTableDocumentation: ").append(toIndentedString(useDescriptionInOperationTableDocumentation)).append("\n");
     sb.append("    setSkipSerializationToTrueByDefault: ").append(toIndentedString(setSkipSerializationToTrueByDefault)).append("\n");

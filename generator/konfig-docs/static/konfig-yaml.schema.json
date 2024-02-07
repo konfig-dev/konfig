@@ -1306,9 +1306,9 @@
                 "removeKonfigBranding": {
                   "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                 },
-                "useSecurityKeyParamNameAsPropertyName": {
+                "useSecurityKeyNameAsPropertyName": {
                   "type": "boolean",
-                  "description": "Whether to use the security requirement's key as the property name. For example, if the security requirement is called \"apiKey\" but the \"Header\" key is \"X-Api-Key\" then setting this to true will make the parameter name \"xApiKey\"."
+                  "description": "Consider the following security scheme: { accessToken: { type: apiKey, name: authorization, in: header }}.\nThe default behavior is to use the (camelCased) header name as the Configuration property name (e.g. \"authorization).\nIf this flag is set to true, then the key name will be used instead (e.g. \"accessToken\")."
                 },
                 "objectPropertyNamingConvention": {
                   "$ref": "#/definitions/konfigYaml/properties/generators/properties/python/properties/objectPropertyNamingConvention",
@@ -1340,6 +1340,10 @@
                 },
                 "includeEventSourceParser": {
                   "type": "boolean"
+                },
+                "removeDefaultConfigurationParameters": {
+                  "type": "boolean",
+                  "description": "Removes default fields (username, password, apiKey, and accessToken) from ConfigurationParameters class"
                 }
               },
               "required": [
@@ -2403,8 +2407,8 @@
                   "removeKonfigBranding": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/removeKonfigBranding"
                   },
-                  "useSecurityKeyParamNameAsPropertyName": {
-                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/useSecurityKeyParamNameAsPropertyName"
+                  "useSecurityKeyNameAsPropertyName": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/useSecurityKeyNameAsPropertyName"
                   },
                   "objectPropertyNamingConvention": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/objectPropertyNamingConvention"
@@ -2432,6 +2436,9 @@
                   },
                   "includeEventSourceParser": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/includeEventSourceParser"
+                  },
+                  "removeDefaultConfigurationParameters": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/typescript/properties/removeDefaultConfigurationParameters"
                   }
                 },
                 "required": [

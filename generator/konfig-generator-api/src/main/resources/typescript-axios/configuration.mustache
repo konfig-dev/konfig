@@ -23,11 +23,11 @@ export interface ConfigurationParameters {
 {{#apiKeyMethods}}
     {{> securityKeyName}}?: string;
 {{/apiKeyMethods}}
-{{/hasMultipleApiKeys}}
+{{/hasMultipleApiKeys}}{{^removeDefaultConfigurationParameters}}
     {{> configuration_api_key}}
     username?: string;
     password?: string;
-    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
+    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);{{/removeDefaultConfigurationParameters}}
     basePath?: string;
     baseOptions?: any;
 {{#includeFetchAdapter}}
@@ -123,21 +123,20 @@ export class Configuration {
         this.{{{.}}} = param.{{{.}}}
 {{/clientState}}
 {{#clientStateWithExamples}}
-        this.{{{name}}} = param.{{{name}}}
-{{/clientStateWithExamples}}
-        this.apiKey = param.apiKey
+        this.{{{name}}} = param.{{{name}}}{{/clientStateWithExamples}}{{^removeDefaultConfigurationParameters}}
+        this.apiKey = param.apiKey{{/removeDefaultConfigurationParameters}}
         if (this.apiKey === undefined) {
             this.apiKey = {}
 {{#hasMultipleApiKeys}}
 {{#apiKeyMethods}}
             if (param.{{> securityKeyName}} !== undefined)
-                this.apiKey["{{{keyParamName}}}"] = param.{{> securityKeyName}}
+                this.apiKey["{{> securityKeyName}}"] = param.{{> securityKeyName}}
 {{/apiKeyMethods}}
 {{/hasMultipleApiKeys}}
-        }
+        }{{^removeDefaultConfigurationParameters}}
         this.username = param.username;
         this.password = param.password;
-        this.accessToken = param.accessToken;
+        this.accessToken = param.accessToken;{{/removeDefaultConfigurationParameters}}
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
 {{#includeFetchAdapter}}

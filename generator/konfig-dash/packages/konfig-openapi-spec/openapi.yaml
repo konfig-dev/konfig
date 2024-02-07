@@ -914,12 +914,15 @@ components:
                 removeKonfigBranding:
                   type: boolean
                   description: Don't add Konfig branding to generated SDK
-                useSecurityKeyParamNameAsPropertyName:
+                useSecurityKeyNameAsPropertyName:
                   type: boolean
-                  description: Whether to use the security requirement's key as the property name.
-                    For example, if the security requirement is called "apiKey"
-                    but the "Header" key is "X-Api-Key" then setting this to
-                    true will make the parameter name "xApiKey".
+                  description: >-
+                    Consider the following security scheme: { accessToken: { type:
+                    apiKey, name: authorization, in: header }}.
+
+                    The default behavior is to use the (camelCased) header name as the Configuration property name (e.g. "authorization).
+
+                    If this flag is set to true, then the key name will be used instead (e.g. "accessToken").
                 objectPropertyNamingConvention:
                   anyOf:
                     - type: string
@@ -996,6 +999,10 @@ components:
                   type: boolean
                 includeEventSourceParser:
                   type: boolean
+                removeDefaultConfigurationParameters:
+                  type: boolean
+                  description: Removes default fields (username, password, apiKey, and
+                    accessToken) from ConfigurationParameters class
               required:
                 - version
                 - git
@@ -2816,12 +2823,15 @@ components:
                   removeKonfigBranding:
                     type: boolean
                     description: Don't add Konfig branding to generated SDK
-                  useSecurityKeyParamNameAsPropertyName:
+                  useSecurityKeyNameAsPropertyName:
                     type: boolean
-                    description: Whether to use the security requirement's key as the property name.
-                      For example, if the security requirement is called
-                      "apiKey" but the "Header" key is "X-Api-Key" then setting
-                      this to true will make the parameter name "xApiKey".
+                    description: >-
+                      Consider the following security scheme: { accessToken: { type:
+                      apiKey, name: authorization, in: header }}.
+
+                      The default behavior is to use the (camelCased) header name as the Configuration property name (e.g. "authorization).
+
+                      If this flag is set to true, then the key name will be used instead (e.g. "accessToken").
                   objectPropertyNamingConvention:
                     anyOf:
                       - type: string
@@ -2900,6 +2910,10 @@ components:
                     type: boolean
                   includeEventSourceParser:
                     type: boolean
+                  removeDefaultConfigurationParameters:
+                    type: boolean
+                    description: Removes default fields (username, password, apiKey, and
+                      accessToken) from ConfigurationParameters class
                 required:
                   - generator
                   - version

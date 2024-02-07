@@ -170,7 +170,7 @@ export interface GenerateRequestBodyGeneratorsTypescript {
      * @type {boolean}
      * @memberof GenerateRequestBodyGeneratorsTypescript
      */
-    'useSecurityKeyParamNameAsPropertyName'?: boolean;
+    'useSecurityKeyNameAsPropertyName'?: boolean;
     /**
      * 
      * @type {GenerateRequestBodyGeneratorsTypescriptObjectPropertyNamingConvention}

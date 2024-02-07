@@ -10,6 +10,7 @@ import { tagPrioritySchema } from './KonfigYamlCommon'
 
 const additionalProperties = z
   .object({
+    removeDefaultConfigurationParameters: z.boolean().optional(),
     useDescriptionInOperationTableDocumentation: z.boolean().optional(),
     apiPackage: z.string().optional(),
     readmeHeaderSnippet: readmeHeaderSnippet,
@@ -29,7 +30,7 @@ const additionalProperties = z
     invokerPackage: z.string().optional(),
     useAxios0_27_2: z.boolean().optional(),
     useAiohttp3_8: z.boolean().optional(),
-    useSecurityKeyParamNameAsPropertyName: z.boolean().optional(),
+    useSecurityKeyNameAsPropertyName: z.boolean().optional(),
     dependencies: z.record(z.string(), z.string()).optional(),
     objectPropertyNamingConvention: z.string().optional(),
     clientState: z.string().array().optional(),

@@ -176,7 +176,7 @@ export interface GenerateRequestBodyAdditionalGeneratorsValueAnyOf4 {
      * @type {boolean}
      * @memberof GenerateRequestBodyAdditionalGeneratorsValueAnyOf4
      */
-    'useSecurityKeyParamNameAsPropertyName'?: boolean;
+    'useSecurityKeyNameAsPropertyName'?: boolean;
     /**
      * 
      * @type {GenerateRequestBodyGeneratorsTypescriptObjectPropertyNamingConvention}
