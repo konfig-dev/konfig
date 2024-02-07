@@ -23,9 +23,9 @@ test("typescript-no-relative-npm-link", async () => {
         type: "git",
         url: "https://github.com/konfig-dev/konfig.git",
       });
-      // expect(packageJson.homepage).toEqual(
-      //   "https://github.com/konfig-dev/konfig#readme"
-      // );
+      expect(packageJson.homepage).toEqual(
+        "https://github.com/konfig-dev/konfig#readme"
+      );
     },
   });
 });
