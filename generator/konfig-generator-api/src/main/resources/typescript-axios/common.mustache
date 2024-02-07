@@ -105,14 +105,15 @@ export const setOAuthToObject = async function (object: any, name: string, scope
     {{#authMethods}}
     {{#-first}}
     if (configuration === undefined) return;
+    // Sets the OAuth2 authentication header for the request and saves the token for the next request
     const authenticate = async () => {
         if (configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
-            configuration.accessToken = await wrapAxiosRequest(async () => {
+            const token = await wrapAxiosRequest(async () => {
                 {{#isAuthorizationOrTokenUrlRelative}}
                 if (configuration.basePath === undefined) {
                     throw new Error("basePath must be set to use the oauth2 authentication");
                 }
-                const url = configuration.oauthTokenUrl ?? removeTrailingSlash(configuration.basePath) + "{{{authorizationOrTokenUrl}}}",
+                const url = configuration.oauthTokenUrl ?? removeTrailingSlash(configuration.basePath) + "{{{authorizationOrTokenUrl}}}"
                 {{/isAuthorizationOrTokenUrlRelative}}
                 {{^isAuthorizationOrTokenUrlRelative}}
                 const url = configuration.oauthTokenUrl ?? "{{{absoluteAuthorizationOrTokenUrl}}}"
@@ -126,28 +127,50 @@ export const setOAuthToObject = async function (object: any, name: string, scope
                     data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
                 });
                 const json = await oauthResponse.data;
-                return json.access_token;
+
+                // return the value of any property with the substring "token" in its name
+                const token = Object.keys(json).reduce((acc, key) => {
+                    if (key.toLowerCase().includes("token")) {
+                        return json[key];
+                    }
+                    return acc;
+                }, undefined);
+                return token
             })
+            if (token === undefined)
+                throw new Error("Token not found in OAuth response")
+            configuration.accessToken = token
         }
     }
     {{/-first}}
     {{/authMethods}}
     {{/hasAuthMethods}}
-    const token =
-      typeof configuration.accessToken === "function"
+    const getToken = async () => {
+      return typeof configuration.accessToken === "function"
         ? await configuration.accessToken(name, scopes)
         : await configuration.accessToken;
-    if (token === undefined) {
+    }
+    const previousToken = await getToken()
+
+    /**
+     * Authenticate if the token is not set or if it is expired
+     */
+    if (previousToken === undefined) {
         await authenticate();
     } else {
         // check that the token is still valid
-        const decodedToken = jwtDecode(token);
+        const decodedToken = jwtDecode(previousToken);
         const currentTime = Date.now() / 1000;
-        if ((decodedToken as any)["exp"] < currentTime) {
+        if (decodedToken.exp < currentTime) {
           await authenticate();
         }
     }
-    if (token) {
+
+    /**
+     * Set the token in the request
+     */
+    const token = await getToken()
+    if (token !== undefined) {
         object["Authorization"] = "Bearer " + token;
     }
 }
