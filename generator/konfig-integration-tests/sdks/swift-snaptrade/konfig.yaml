@@ -2,6 +2,48 @@
 
 outputDirectory: /tmp/snaptrade-sdks-out
 specPath: api.yaml
+useSecurityKeyName: true
+readmeHeader:
+  title: SnapTrade
+  image: header.png
+  url: https://snaptrade.com
+filterTags:
+  - Webhooks
+  - Development Tools
+  - Custom Brokerage API Credentials
+filterModels:
+  - SnapTradePartnerAPICredential
+  - WebhookBase
+  - MockSignatureResponse
+filterRequestBodies:
+  - CreateSnapTradeParterAPICredentialsRequestBody
+  - MockSignatureRequestBody
+allObjectsHaveAdditionalProperties:
+  requestBody: false
+  exclude:
+    - encryptedResponse
+    - LoginRedirectURI
+  include:
+    - PortfolioGroup
+order:
+  - tag: API Status
+  - tag: Authentication
+    operations:
+      - Authentication_registerSnapTradeUser
+      - Authentication_loginSnapTradeUser
+  - tag: Connections
+  - tag: Account Information
+    operations:
+      - path: /accounts
+        method: get
+  - tag: Trading
+    operations:
+      - Trading_getUserAccountQuotes
+      - Trading_getOrderImpact
+      - Trading_placeOrder
+      - Trading_placeForceOrder
+      - Trading_placeOCOOrder
+      - Trading_cancelUserAccountOrder
 generators:
   swift:
     version: 1.0.0

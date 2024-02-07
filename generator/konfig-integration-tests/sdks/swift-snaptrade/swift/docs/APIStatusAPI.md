@@ -1,28 +1,28 @@
-# TestAPI
+# APIStatusAPI
 
-All URIs are relative to *https://swift-snaptrade.konfigthis.com*
+All URIs are relative to *https://api.snaptrade.com/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**fetch**](TestAPI.md#fetch) | **GET** /simple-endpoint | Fetches a JSON value based on input parameter
+[**check**](APIStatusAPI.md#check) | **GET** / | Get API Status
 
 
-# **fetch**
+# **check**
 ```swift
-    open class func fetch(completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
+    open class func check(completion: @escaping (_ data: Status?, _ error: Error?) -> Void)
 ```
 
-Fetches a JSON value based on input parameter
+Get API Status
 
-Provide an input parameter to receive a JSON value with properties.
+Check whether the API is operational and verify timestamps.
 
 ### Example
 ```swift
 import Snaptrade
 
 
-// Fetches a JSON value based on input parameter
-TestAPI.fetch() { (response, error) in
+// Get API Status
+APIStatusAPI.check() { (response, error) in
     guard error == nil else {
         print(error!)
         return
@@ -39,11 +39,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**AnyCodable**](AnyCodable.md)
+[**Status**](Status.md)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+No authorization required
 
 ### HTTP request headers
 

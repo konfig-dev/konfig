@@ -6,7 +6,7 @@
 
 import Foundation
 open class SnaptradeAPI {
-    public static var basePath = "https://swift-snaptrade.konfigthis.com"
+    public static var basePath = "https://api.snaptrade.com/api/v1"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()
