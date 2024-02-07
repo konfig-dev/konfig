@@ -97,6 +97,7 @@ export async function getDocumentationUrl({
   const generatorIsInSubmodule = await isSubmodule({
     git: generatorConfig.git,
     configDir: process.cwd(),
+    directory: generatorConfig.outputDirectory,
   })
   const defaultBranch = await getSdkDefaultBranch({
     git: generatorConfig.git,
@@ -143,6 +144,7 @@ export async function getPublishedPackageUrl({
       if (
         await isSubmodule({
           git: generatorConfig.git,
+          directory: generatorConfig.outputDirectory,
           configDir: process.cwd(),
         })
       ) {

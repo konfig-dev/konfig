@@ -12,6 +12,7 @@ export async function getSdkDefaultBranch({
   const generatorIsInSubmodule = await isSubmodule({
     git,
     configDir: process.cwd(),
+    directory: outputDirectory,
   })
   const defaultBranch = generatorIsInSubmodule
     ? getDefaultBranch({ cwd: outputDirectory })

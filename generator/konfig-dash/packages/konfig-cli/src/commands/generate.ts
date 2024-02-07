@@ -539,6 +539,7 @@ export default class Deploy extends Command {
         const isGitSubmodule = await isSubmodule({
           git: config.git,
           configDir,
+          directory: config.outputDirectory,
         })
         Object.assign(config.git, { defaultBranch, isGitSubmodule })
       }
@@ -1039,7 +1040,11 @@ export default class Deploy extends Command {
           if (body.generators.swift) {
             if (
               !flags.ignoreSubmodules &&
-              (await isSubmodule({ git: body.generators.swift.git, configDir }))
+              (await isSubmodule({
+                git: body.generators.swift.git,
+                configDir,
+                directory: body.generators.swift.outputDirectory,
+              }))
             ) {
               await handleSubmodule({
                 outputDirectory: body.generators.swift.outputDirectory,
@@ -1828,7 +1833,11 @@ async function copyGoOutput({
   if (outputDirectory && !flags.doNotCopy) {
     if (
       !flags.ignoreSubmodules &&
-      (await isSubmodule({ git: go.git, configDir }))
+      (await isSubmodule({
+        git: go.git,
+        configDir,
+        directory: outputDirectory,
+      }))
     ) {
       await handleSubmodule({
         outputDirectory: go.outputDirectory,

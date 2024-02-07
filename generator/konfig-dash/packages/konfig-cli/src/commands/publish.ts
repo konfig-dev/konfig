@@ -490,6 +490,7 @@ export default class Publish extends Command {
         const goIsInSubmodule = await isSubmodule({
           git: generatorConfig.git,
           configDir: process.cwd(),
+          directory: generatorConfig.outputDirectory,
         })
         await executePublishScript({
           script: publishScripts['go']({
