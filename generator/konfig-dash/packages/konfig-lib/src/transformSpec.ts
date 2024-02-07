@@ -931,6 +931,18 @@ export const transformSpec = async ({
         delete schema['format']
       }
     })
+
+    // get rid of all "enum" properties that only contains a number type
+    // since Swift SDK doesn't ergonomically support enums with only numbers
+    recurseObject(spec.spec, ({ value: schema }) => {
+      if (schema === null || schema === undefined) return
+      if (typeof schema !== 'object') return
+      if (schema !== null && schema !== undefined && 'enum' in schema) {
+        if (schema['enum'].every((value: any) => typeof value === 'number')) {
+          delete schema['enum']
+        }
+      }
+    })
   }
 
   if (paginationConfig !== undefined) {
