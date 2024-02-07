@@ -11,7 +11,7 @@ class SimpleTest: XCTestCase {
 
     func testGeneratePaymentLink() throws {
         let expectation = XCTestExpectation(description: "Response is not null")
-        APIStatusAPI.checkStatus() { response, error in
+        APIStatusAPI.check() { response, error in
             guard error == nil else {
                 print(error!)
                 return
