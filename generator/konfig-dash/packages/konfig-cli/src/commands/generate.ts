@@ -1536,6 +1536,7 @@ const DO_NOT_DELETE_THESE_FILES = new Set([
   KONFIG_IGNORE_FILE_NAME,
   'CHANGELOG.md', // for all SDKs
   'yarn.lock', // for TypeScript SDK
+  'pnpm-lock.yaml', // for TypeScript SDK
   'poetry.lock', // for Python SDK
   'pubspec.lock', // for Dart SDK
 ])
@@ -2126,8 +2127,8 @@ always-auth=true`
 
   // Update yarn.lock file if applicable
   if (outputDirectory) {
-    CliUx.ux.action.start(`Updating yarn.lock file...`)
-    execa('yarn', { cwd: outputDirectory, stdio: 'inherit', shell: true })
+    CliUx.ux.action.start(`Updating pnpm-lock.yaml file...`)
+    execa('pnpm i', { cwd: outputDirectory, stdio: 'inherit', shell: true })
     CliUx.ux.action.stop()
   }
 }
