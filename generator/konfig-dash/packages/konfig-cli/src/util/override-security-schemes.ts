@@ -13,14 +13,11 @@ import {
 export async function overrideSecuritySchemes(
   spec: Spec,
   securitySchemeOverride: SecuritySchemeOverride
-) {
-  if (securitySchemeOverride?.securitySchemes) {
-    if (!spec.spec.components) spec.spec.components = {}
-    spec.spec.components.securitySchemes =
-      securitySchemeOverride.securitySchemes
-  }
-  if (securitySchemeOverride?.security)
-    await fixOperationsSecurity(spec, securitySchemeOverride.security)
+): Promise<number> {
+  if (securitySchemeOverride === undefined) return 0
+  if (!spec.spec.components) spec.spec.components = {}
+  spec.spec.components.securitySchemes = securitySchemeOverride.securitySchemes
+  return await fixOperationsSecurity(spec, securitySchemeOverride.security)
 }
 
 // For each operation, check if the parameters match one or more security requirements from the securitySchemeOverride
@@ -28,9 +25,10 @@ export async function overrideSecuritySchemes(
 async function fixOperationsSecurity(
   spec: Spec,
   security: SecurityRequirementObject[]
-) {
+): Promise<number> {
   const securityGroups = await getSecurityGroups(spec, security)
   const operations = getOperations({ spec: spec.spec })
+  let numberOfParametersConvertedToSecurityRequirements = 0
   for (const { operation } of operations) {
     if (operation.parameters === undefined) continue
     const paramsToDelete: Set<number> = new Set()
@@ -64,11 +62,13 @@ async function fixOperationsSecurity(
       operation.security.push(securityGroup.securityRequirement)
     }
     // Delete marked parameters
+    numberOfParametersConvertedToSecurityRequirements += paramsToDelete.size
     operation.parameters = operation.parameters.filter(
       (_, index) => !paramsToDelete.has(index)
     )
     if (operation.parameters.length === 0) delete operation.parameters
   }
+  return numberOfParametersConvertedToSecurityRequirements
 }
 
 type SecurityGroup = {

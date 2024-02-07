@@ -217,8 +217,8 @@ const apiKeySecurityScheme = z.object({
 // TODO: add additional security scheme types as necessary
 const securitySchemeOverride = z
   .object({
-    security: z.array(z.record(z.string(), z.array(z.string()))).optional(),
-    securitySchemes: z.record(z.string(), apiKeySecurityScheme).optional(),
+    security: z.array(z.record(z.string(), z.array(z.string()))),
+    securitySchemes: z.record(z.string(), apiKeySecurityScheme),
   })
   .optional()
 

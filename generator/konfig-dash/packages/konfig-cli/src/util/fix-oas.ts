@@ -64,7 +64,8 @@ export async function fixOas({
    * doing.
    */
 
-  await overrideSecuritySchemes(spec, konfigYaml?.securitySchemeOverride)
+  let numberOfParametersConvertedToSecurityRequirements =
+    await overrideSecuritySchemes(spec, konfigYaml?.securitySchemeOverride)
 
   const numberOfOas31UsagesFixed = await fixOas31Usage({ spec })
 
@@ -148,7 +149,7 @@ export async function fixOas({
   })
 
   // Parameters converted to security requirements
-  const numberOfParametersConvertedToSecurityRequirements =
+  numberOfParametersConvertedToSecurityRequirements +=
     await fixParametersThatShouldBeSecurityRequirements({ spec })
 
   // Empty request body
