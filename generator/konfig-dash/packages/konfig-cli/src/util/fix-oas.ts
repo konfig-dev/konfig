@@ -33,6 +33,7 @@ import { fixInvalidServerUrlsOas3 } from './fix-invalid-server-urls-oas3'
 import { fixOas31Usage } from './fix-oas-3-1-usage'
 import { fixAnyOfTypeNullUsage } from './fix-any-of-type-null-usage'
 import { fixExamplesUsage } from './fix-examples-usage'
+import { overrideSecuritySchemes } from './override-security-schemes'
 
 export async function fixOas({
   spec,
@@ -62,6 +63,8 @@ export async function fixOas({
    * Order matters here! Do not mess with order unless you know what you are
    * doing.
    */
+
+  await overrideSecuritySchemes(spec, konfigYaml?.securitySchemeOverride)
 
   const numberOfOas31UsagesFixed = await fixOas31Usage({ spec })
 

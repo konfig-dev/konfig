@@ -207,6 +207,23 @@ export const readmeHeader = z
   .optional()
   .describe('Call to action to be displayed in SDKs README.md')
 
+const apiKeySecurityScheme = z.object({
+  type: z.literal('apiKey'),
+  name: z.string(),
+  in: z.string(),
+  description: z.string().optional(),
+})
+
+// TODO: add additional security scheme types as necessary
+const securitySchemeOverride = z
+  .object({
+    security: z.array(z.record(z.string(), z.array(z.string()))).optional(),
+    securitySchemes: z.record(z.string(), apiKeySecurityScheme).optional(),
+  })
+  .optional()
+
+export type SecuritySchemeOverride = z.infer<typeof securitySchemeOverride>
+
 // Define an operation, which can be either an operationId or a combination of subpath and HTTP method
 const Operation = z.union([
   z
@@ -275,6 +292,7 @@ export const KonfigYamlCommon = z
     portal,
     order: ApiOrderConfigurationSchema.optional(),
     readmeHeader,
+    securitySchemeOverride,
     useSecurityKeyName,
     readmeOperation: z
       .object({

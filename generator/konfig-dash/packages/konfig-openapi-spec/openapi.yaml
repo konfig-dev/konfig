@@ -4068,6 +4068,36 @@ components:
             - title
             - url
           description: Call to action to be displayed in SDKs README.md
+        securitySchemeOverride:
+          type: object
+          properties:
+            security:
+              type: array
+              items:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+            securitySchemes:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - apiKey
+                  name:
+                    type: string
+                  in:
+                    type: string
+                  description:
+                    type: string
+                required:
+                  - type
+                  - name
+                  - in
         useSecurityKeyName:
           type: boolean
           description: >
