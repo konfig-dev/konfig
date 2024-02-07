@@ -207,12 +207,14 @@ export const readmeHeader = z
   .optional()
   .describe('Call to action to be displayed in SDKs README.md')
 
-const apiKeySecurityScheme = z.object({
-  type: z.literal('apiKey'),
-  name: z.string(),
-  in: z.string(),
-  description: z.string().optional(),
-})
+const apiKeySecurityScheme = z
+  .object({
+    type: z.literal('apiKey'),
+    name: z.string(),
+    in: z.string(),
+    description: z.string().optional(),
+  })
+  .passthrough() // to allow x-konfig-prefix
 
 // TODO: add additional security scheme types as necessary
 const securitySchemeOverride = z

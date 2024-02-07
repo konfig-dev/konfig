@@ -129,10 +129,10 @@ export const {{classname}}AxiosParamCreator = function (configuration?: Configur
             // authentication {{name}} required
             {{#isApiKey}}
             {{#isKeyInHeader}}
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "{{keyParamName}}", configuration{{#vendorExtensions.x-konfig-prefix}}, prefix: "{{vendorExtensions.x-konfig-prefix}}"{{/vendorExtensions.x-konfig-prefix}} })
+            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "{{> securityKeyName}}", configuration{{#vendorExtensions.x-konfig-prefix}}, prefix: "{{vendorExtensions.x-konfig-prefix}}"{{/vendorExtensions.x-konfig-prefix}}{{#useSecurityKeyNameAsPropertyName}}, key: "{{keyParamName}}"{{/useSecurityKeyNameAsPropertyName}} })
             {{/isKeyInHeader}}
             {{#isKeyInQuery}}
-            await setApiKeyToObject({object: localVarQueryParameter, keyParamName: "{{keyParamName}}", configuration})
+            await setApiKeyToObject({object: localVarQueryParameter, keyParamName: "{{> securityKeyName}}", configuration})
             {{/isKeyInQuery}}
             {{#isKeyInCookie}}
             await setApiKeyToObject({object: localVarHeaderParameter, type: "Cookie", key: "Cookie", keyParamName: "{{keyParamName}}", configuration})
