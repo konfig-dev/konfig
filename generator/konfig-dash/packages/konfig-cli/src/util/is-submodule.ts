@@ -14,6 +14,10 @@ export async function isSubmodule({
 }: {
   git: GeneratorGitConfig
   configDir: string
+  /**
+   * By providing this parameter, the result of this function should be more
+   * accurate.
+   */
   directory?: string
 }): Promise<boolean> {
   if (directory !== undefined) {
