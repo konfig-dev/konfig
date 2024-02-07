@@ -209,7 +209,7 @@ const defaultTestScripts: Record<
   ((config: KonfigYamlGeneratorConfig) => string[]) | undefined
 > = {
   dart: () => ['dart test'],
-  typescript: () => ['yarn --mutex network', 'yarn test', 'yarn build'],
+  typescript: () => ['pnpm i', 'pnpm test', 'pnpm build'],
   csharp: () => ['dotnet test'],
   java: () => ['mvn test --quiet'],
   ruby: () => [
