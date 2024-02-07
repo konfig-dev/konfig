@@ -18,7 +18,6 @@ test("typescript-no-relative-npm-link", async () => {
         "utf-8"
       );
       const packageJson = JSON.parse(rawPackageJson);
-
       // ensure "repository" field is correct
       expect(packageJson.repository).toEqual({
         type: "git",

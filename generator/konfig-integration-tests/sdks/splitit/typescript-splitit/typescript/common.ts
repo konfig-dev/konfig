@@ -17,6 +17,7 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { requestAfterHook } from "./requestAfterHook";
 import { requestBeforeUrlHook } from "./requestBeforeUrlHook";
 import { readableStreamToString, TypescriptSplititError, parseIfJson } from "./error";
+import { jwtDecode } from "jwt-decode";
 
 /**
  *
@@ -103,25 +104,63 @@ export const setBearerAuthToObject = async function (object: any, configuration?
  * @export
  */
 export const setOAuthToObject = async function (object: any, name: string, scopes: string[], configuration?: Configuration) {
-    if (configuration && configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
-        configuration.accessToken = await wrapAxiosRequest(async () => {
-            const oauthResponse = await axios.request({
-                url: configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token",
-                method: "POST",
-                headers: {
-                    "content-type": "application/x-www-form-urlencoded",
-                },
-                data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
-            });
-            const json = await oauthResponse.data;
-            return json.access_token;
-        })
+    if (configuration === undefined) return;
+    // Sets the OAuth2 authentication header for the request and saves the token for the next request
+    const authenticate = async () => {
+        if (configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
+            const token = await wrapAxiosRequest(async () => {
+                const url = configuration.oauthTokenUrl ?? ""
+                const oauthResponse = await axios.request({
+                    url,
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/x-www-form-urlencoded",
+                    },
+                    data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
+                });
+                const json = await oauthResponse.data;
+
+                // return the value of any property with the substring "token" in its name
+                const token = Object.keys(json).reduce((acc, key) => {
+                    if (key.toLowerCase().includes("token")) {
+                        return json[key];
+                    }
+                    return acc;
+                }, undefined);
+                return token
+            })
+            if (token === undefined)
+                throw new Error("Token not found in OAuth response")
+            configuration.accessToken = token
+        }
     }
-    if (configuration && configuration.accessToken) {
-        const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-            ? await configuration.accessToken(name, scopes)
-            : await configuration.accessToken;
-        object["Authorization"] = "Bearer " + localVarAccessTokenValue;
+    const getToken = async () => {
+      return typeof configuration.accessToken === "function"
+        ? await configuration.accessToken(name, scopes)
+        : await configuration.accessToken;
+    }
+    const previousToken = await getToken()
+
+    /**
+     * Authenticate if the token is not set or if it is expired
+     */
+    if (previousToken === undefined) {
+        await authenticate();
+    } else {
+        // check that the token is still valid
+        const decodedToken = jwtDecode(previousToken);
+        const currentTime = Date.now() / 1000;
+        if (decodedToken.exp < currentTime) {
+          await authenticate();
+        }
+    }
+
+    /**
+     * Set the token in the request
+     */
+    const token = await getToken()
+    if (token !== undefined) {
+        object["Authorization"] = "Bearer " + token;
     }
 }
 
