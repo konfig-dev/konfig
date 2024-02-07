@@ -33,7 +33,7 @@ REQUIRES = [
     "urllib3 ~= 1.26.18",
     "cryptography ~= 41.0.6",
     "frozendict ~= 2.3.4",
-    "aiohttp ~= 3.9.1"
+    "aiohttp ~= 3.9.2"
 ]
 
 setup(
