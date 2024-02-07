@@ -20,6 +20,7 @@ export async function isSubmodule({
    */
   directory?: string
 }): Promise<boolean> {
+  console.log(configDir)
   if (directory !== undefined) {
     /**
      * This should be a more robust implementation that doesn't rely on origin
@@ -39,12 +40,17 @@ export async function isSubmodule({
         return false
       }
 
-      const { stdout: topLevel } = await execa(
+      const { stdout: topLevelOfSdkDirectory } = await execa(
         'git',
         ['rev-parse', '--show-toplevel'],
         { cwd: path.join(process.cwd(), directory) }
       )
-      return topLevel.trim() !== configDir
+      const { stdout: topLevelOfConfigDir } = await execa(
+        'git',
+        ['rev-parse', '--show-toplevel'],
+        { cwd: configDir }
+      )
+      return topLevelOfSdkDirectory.trim() !== topLevelOfConfigDir.trim()
     } catch (error) {
       console.error(`Error checking if directory is a submodule: ${error}`)
       return false
