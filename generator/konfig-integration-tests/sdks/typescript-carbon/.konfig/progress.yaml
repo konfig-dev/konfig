@@ -1,0 +1,174 @@
+description: Connect external data to LLMs, no matter the source.
+examples: {}
+examples_2: {}
+examples_3:
+  /health:
+    get:
+      '200':
+        application/json: {}
+  /integrations/oauth_url:
+    post:
+      '200':
+        application/json: {}
+  /process_sitemap:
+    get:
+      '200':
+        application/json: {}
+  /scrape_sitemap:
+    post:
+      '200':
+        application/json: {}
+  /web_scrape:
+    post:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /add_webhook:
+    post: Webhooks_addUrl
+  /auth/v1/access_token:
+    get: Auth_getAccessToken
+  /auth/v1/white_labeling:
+    get: Auth_getWhiteLabeling
+  /create_user_file_tags:
+    post: Files_createUserFileTags
+  /delete_files:
+    post: Files_deleteMany
+  /delete_user_file_tags:
+    post: Files_deleteFileTags
+  /delete_webhook/{webhook_id}:
+    delete: Webhooks_deleteUrl
+  /deletefile/{file_id}:
+    delete: Files_delete
+  /embeddings:
+    post: Embeddings_getDocuments
+  /fetch_urls:
+    get: Utilities_fetchUrls
+  /fetch_youtube_transcript:
+    get: Utilities_fetchYoutubeTranscripts
+  /health:
+    get: Health_check
+  /integrations/confluence/list:
+    post: Integrations_listConfluencePages
+  /integrations/confluence/sync:
+    post: Integrations_syncConfluence
+  /integrations/files/sync:
+    post: Integrations_syncFiles
+  /integrations/freshdesk:
+    post: Integrations_connectFreshdesk
+  /integrations/gmail/sync:
+    post: Integrations_syncGmail
+  /integrations/items/list:
+    post: Integrations_listDataSourceItems
+  /integrations/items/sync:
+    post: Integrations_syncDataSourceItems
+  /integrations/oauth_url:
+    post: Integrations_getOauthUrl
+  /integrations/outlook/sync:
+    post: Integrations_syncOutlook
+  /integrations/rss_feed:
+    post: Integrations_syncRssFeed
+  /integrations/s3:
+    post: Integrations_createAwsIamUser
+  /integrations/s3/files:
+    post: Integrations_syncS3Files
+  /modify_user_configuration:
+    post: Users_toggleUserFeatures
+  /organization:
+    get: Organizations_get
+  /parsed_file/{file_id}:
+    get: Files_getParsedFile
+  /process_sitemap:
+    get: Utilities_processSitemap
+  /raw_file/{file_id}:
+    get: Files_getRawFile
+  /resync_file:
+    post: Files_resync
+  /revoke_access_token:
+    post: DataSources_revokeAccessToken
+  /scrape_sitemap:
+    post: Utilities_scrapeSitemap
+  /search_urls:
+    get: Utilities_searchUrls
+  /text_chunks:
+    post: Embeddings_getEmbeddingsAndChunks
+  /upload_chunks_and_embeddings:
+    post: Embeddings_uploadChunksAndEmbeddings
+  /upload_file_from_url:
+    post: Files_uploadFromUrl
+  /upload_text:
+    post: Files_uploadText
+  /uploadfile:
+    post: Files_upload
+  /user:
+    post: Users_get
+  /user_data_sources:
+    post: DataSources_queryUserDataSources
+  /user_files:
+    post: Files_queryUserFilesDeprecated
+  /user_files_v2:
+    post: Files_queryUserFiles
+  /web_scrape:
+    post: Utilities_scrapeWeb
+  /webhooks:
+    post: Webhooks_urls
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /web_scrape:
+    post:
+      application/json: UtilitiesScrapeWebRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /health:
+    get:
+      '200':
+        application/json: HealthCheckResponse
+  /integrations/oauth_url:
+    post:
+      '200':
+        application/json: IntegrationsGetOauthUrlResponse
+  /process_sitemap:
+    get:
+      '200':
+        application/json: UtilitiesProcessSitemapResponse
+  /scrape_sitemap:
+    post:
+      '200':
+        application/json: UtilitiesScrapeSitemapResponse
+  /user_files:
+    post:
+      '200':
+        application/json: FilesQueryUserFilesDeprecatedResponse
+  /web_scrape:
+    post:
+      '200':
+        application/json: UtilitiesScrapeWebResponse
+securityParameters:
+  chunk_overlap:
+    query: false
+  chunk_size:
+    query: false
+  embedding_model:
+    query: false
+  generate_sparse_vectors:
+    query: false
+  id:
+    query: false
+  max_items_per_chunk:
+    query: false
+  prepend_filename_to_chunks:
+    query: false
+  query:
+    query: false
+  raw:
+    query: false
+  set_page_as_boundary:
+    query: false
+  skip_embedding_generation:
+    query: false
+  url:
+    query: false
+  use_ocr:
+    query: false
+validServerUrls: {}
