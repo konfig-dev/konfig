@@ -376,7 +376,9 @@ open class AuthenticationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func registerSnapTradeUserAsync(userId: String?) async throws -> UserIDandSecret {
+    open class func registerSnapTradeUserAsync(
+        userId: String?,
+    ) async throws -> UserIDandSecret {
         let snapTradeRegisterUserRequestBody = SnapTradeRegisterUserRequestBody(userId: userId)
         return try await withCheckedThrowingContinuation { continuation in
             registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: snapTradeRegisterUserRequestBody).execute { result in
