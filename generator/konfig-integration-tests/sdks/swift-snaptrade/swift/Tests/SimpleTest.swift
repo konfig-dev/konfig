@@ -4,7 +4,7 @@ import XCTest
 
 class SimpleTest: XCTestCase {
     override func setUpWithError() throws {
-        SnapTradeAPI.basePath = "https://127.0.0.1:4082"
+        SnapTradeAPI.basePath = "http://127.0.0.1:4082"
     }
 
     override func tearDownWithError() throws {}
