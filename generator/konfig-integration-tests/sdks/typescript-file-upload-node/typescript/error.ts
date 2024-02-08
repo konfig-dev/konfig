@@ -52,8 +52,8 @@ export class TypescriptFileUploadNodeClientError extends Error {
     super(axiosError.message);
     this.name = "TypescriptFileUploadNodeClientError";
     this.code = axiosError.code;
-    this.method = axiosError.config.method?.toUpperCase();
-    this.url = axiosError.config.url;
+    this.method = axiosError.config?.method?.toUpperCase();
+    this.url = axiosError.config?.url;
     this.status = axiosError.response?.status;
     this.statusText = axiosError.response?.statusText;
     this.responseBody = responseBody;

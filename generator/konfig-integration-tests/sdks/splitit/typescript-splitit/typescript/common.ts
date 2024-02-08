@@ -150,7 +150,7 @@ export const setOAuthToObject = async function (object: any, name: string, scope
         // check that the token is still valid
         const decodedToken = jwtDecode(previousToken);
         const currentTime = Date.now() / 1000;
-        if (decodedToken.exp < currentTime) {
+        if (decodedToken.exp !== undefined && decodedToken.exp < currentTime) {
           await authenticate();
         }
     }

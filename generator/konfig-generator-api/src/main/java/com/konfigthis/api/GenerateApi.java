@@ -203,7 +203,8 @@ public interface GenerateApi {
         configurator.setRemoveOperationIdPrefix(body.getConfig().getRemoveOperationIdPrefix());
         AdditionalProperties addnProp = body.getConfig().getAdditionalProperties();
         configurator.setAdditionalProperties(transformAdditionalPropertiesToMap(
-                body.getConfig().getAdditionalProperties(), body.getConfig().getPackageName(), body.getConfig().getGeneratorName()));
+                body.getConfig().getAdditionalProperties(), body.getConfig().getPackageName(),
+                body.getConfig().getGeneratorName(), body.getConfig().getGitUserId()));
 
         // Create folder for output
         File outputDir = outputDir(tmpDir, dirName);
@@ -249,7 +250,7 @@ public interface GenerateApi {
      * Constructs a map of additional properties to be passed to the generator.
      */
     default Map<String, Object> transformAdditionalPropertiesToMap(AdditionalProperties additionalProperties,
-                                                                   String packageName, String generator) {
+                                                                   String packageName, String generator, String gitUserId) {
         Map<String, Object> map = new HashMap<>();
 
         // iterate over all properties of AdditionalProperites using reflection and put them in the map
@@ -272,6 +273,11 @@ public interface GenerateApi {
             }
         });
 
+        if ("humanloop".equals(gitUserId)) {
+            putIfPresent(map, "tsConfigStrict", false);
+        } else {
+            putIfPresent(map, "tsConfigStrict", true);
+        }
         if (generator.equals("ruby"))
             putIfPresent(map, "isFaraday", true);
         if (generator.equals("typescript-axios"))
