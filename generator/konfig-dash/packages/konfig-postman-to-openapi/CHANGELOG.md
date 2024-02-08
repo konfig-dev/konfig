@@ -1,5 +1,14 @@
 ### [3.0.1](https://github.com/joolfe/postman-to-openapi/compare/3.0.0...3.0.1) (2023-01-21)
 
+## 3.1.9
+
+### Patch Changes
+
+- [#546](https://github.com/konfig-dev/konfig/pull/546) [`e48b3efc`](https://github.com/konfig-dev/konfig/commit/e48b3efc463b936845d4508492ac7df7e4152491) Thanks [@eddiechayes](https://github.com/eddiechayes)! - - add removeDefaultConfigurationParameters to typescript config
+
+- Updated dependencies [[`e48b3efc`](https://github.com/konfig-dev/konfig/commit/e48b3efc463b936845d4508492ac7df7e4152491)]:
+  - konfig-lib@1.36.4
+
 ## 3.1.8
 
 ### Patch Changes
