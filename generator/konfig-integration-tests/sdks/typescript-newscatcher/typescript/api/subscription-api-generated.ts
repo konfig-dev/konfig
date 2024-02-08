@@ -51,7 +51,7 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -89,7 +89,7 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};

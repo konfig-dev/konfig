@@ -98,7 +98,7 @@ export const SearchSimilarApiAxiosParamCreator = function (configuration?: Confi
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
             if (q !== undefined) {
                 localVarQueryParameter['q'] = q;
             }
@@ -287,7 +287,7 @@ export const SearchSimilarApiAxiosParamCreator = function (configuration?: Confi
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

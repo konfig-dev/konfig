@@ -45,6 +45,7 @@ export interface ConfigurationParameters {
     ai21ApiKey?: string;
     mockApiKey?: string;
     anthropicApiKey?: string;
+
     /**
      * parameter for apiKey security
      * @param name security name
@@ -152,6 +153,7 @@ export class Configuration {
         this.ai21ApiKey = param.ai21ApiKey
         this.mockApiKey = param.mockApiKey
         this.anthropicApiKey = param.anthropicApiKey
+
         this.apiKey = param.apiKey
         if (this.apiKey === undefined) {
             this.apiKey = {}

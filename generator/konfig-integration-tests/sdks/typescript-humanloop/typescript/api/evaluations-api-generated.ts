@@ -92,7 +92,7 @@ export const EvaluationsApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication APIKeyHeader required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-API-KEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -140,7 +140,7 @@ export const EvaluationsApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication APIKeyHeader required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-API-KEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
             if (evaluatorAggregates !== undefined) {
                 localVarQueryParameter['evaluator_aggregates'] = evaluatorAggregates;
             }
@@ -187,7 +187,7 @@ export const EvaluationsApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication APIKeyHeader required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-API-KEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
             if (evaluatorAggregates !== undefined) {
                 localVarQueryParameter['evaluator_aggregates'] = evaluatorAggregates;
             }
@@ -235,7 +235,7 @@ export const EvaluationsApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication APIKeyHeader required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-API-KEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
             }
@@ -288,7 +288,7 @@ export const EvaluationsApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication APIKeyHeader required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-API-KEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -338,7 +338,7 @@ export const EvaluationsApiAxiosParamCreator = function (configuration?: Configu
             const localVarQueryParameter = {} as any;
 
             // authentication APIKeyHeader required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-API-KEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

@@ -55,7 +55,7 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
             if (lang !== undefined) {
                 localVarQueryParameter['lang'] = lang;
             }
@@ -104,7 +104,7 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

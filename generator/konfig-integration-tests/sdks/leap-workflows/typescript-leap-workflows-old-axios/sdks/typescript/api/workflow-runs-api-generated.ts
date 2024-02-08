@@ -55,7 +55,7 @@ export const WorkflowRunsApiAxiosParamCreator = function (configuration?: Config
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-Api-Key", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-Api-Key", keyParamName: "xApiKey", configuration })
 
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -96,7 +96,7 @@ export const WorkflowRunsApiAxiosParamCreator = function (configuration?: Config
             const localVarQueryParameter = {} as any;
 
             // authentication api_key required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "X-Api-Key", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-Api-Key", keyParamName: "xApiKey", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';

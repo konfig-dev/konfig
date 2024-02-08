@@ -88,7 +88,7 @@ export const LatestHeadlinesApiAxiosParamCreator = function (configuration?: Con
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
             if (when !== undefined) {
                 localVarQueryParameter['when'] = when;
             }
@@ -261,7 +261,7 @@ export const LatestHeadlinesApiAxiosParamCreator = function (configuration?: Con
             const localVarQueryParameter = {} as any;
 
             // authentication apiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, keyParamName: "x-api-token", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "x-api-token", keyParamName: "xApiToken", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
