@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.9
+
+### Patch Changes
+
+- [#551](https://github.com/konfig-dev/konfig/pull/551) [`105a4996`](https://github.com/konfig-dev/konfig/commit/105a4996807cd2bb567aa26b7dcee36279116046) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix skipListUsageSecurity flag in konfig fix
+
 ## 1.38.8
 
 ### Patch Changes
