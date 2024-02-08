@@ -377,7 +377,7 @@ open class AuthenticationAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open class func registerSnapTradeUserAsync(
-        userId: String?,
+        userId: String?
     ) async throws -> UserIDandSecret {
         let snapTradeRegisterUserRequestBody = SnapTradeRegisterUserRequestBody(userId: userId)
         return try await withCheckedThrowingContinuation { continuation in
