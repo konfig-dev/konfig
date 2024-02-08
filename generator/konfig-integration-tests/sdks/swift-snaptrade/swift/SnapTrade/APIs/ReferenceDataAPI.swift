@@ -33,6 +33,28 @@ open class ReferenceDataAPI {
 
     /**
      Return the exchange rate of a currency pair
+     
+     - parameter currencyPair: (path) A currency pair based on currency code for example, {CAD-USD} 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getCurrencyExchangeRatePairAsync(currencyPair: String) async throws -> ExchangeRatePairs {
+        return try await withCheckedThrowingContinuation { continuation in
+            getCurrencyExchangeRatePairWithRequestBuilder(currencyPair: currencyPair).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Return the exchange rate of a currency pair
      - GET /currencies/rates/{currencyPair}
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -87,6 +109,27 @@ open class ReferenceDataAPI {
 
     /**
      Get metadata related to Snaptrade partner
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getPartnerInfoAsync() async throws -> PartnerData {
+        return try await withCheckedThrowingContinuation { continuation in
+            getPartnerInfoWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Get metadata related to Snaptrade partner
      - GET /snapTrade/partners
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -134,6 +177,27 @@ open class ReferenceDataAPI {
             }
         }
     }
+
+    /**
+     List of all security types
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getSecurityTypesAsync() async throws -> [SecurityType] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getSecurityTypesWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      List of all security types
@@ -188,6 +252,27 @@ open class ReferenceDataAPI {
 
     /**
      List exchanges
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getStockExchangesAsync() async throws -> [Exchange] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getStockExchangesWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List exchanges
      - GET /exchanges
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -236,6 +321,28 @@ open class ReferenceDataAPI {
             }
         }
     }
+
+    /**
+     Search for symbols
+     
+     - parameter symbolQuery: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getSymbolsAsync(symbolQuery: SymbolQuery? = nil) async throws -> [UniversalSymbol] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getSymbolsWithRequestBuilder(symbolQuery: symbolQuery).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Search for symbols
@@ -288,6 +395,28 @@ open class ReferenceDataAPI {
             }
         }
     }
+
+    /**
+     Get details of a symbol by the ticker or the universal_symbol_id
+     
+     - parameter query: (path) The ticker or universal_symbol_id of the UniversalSymbol to get. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getSymbolsByTickerAsync(query: String) async throws -> UniversalSymbol {
+        return try await withCheckedThrowingContinuation { continuation in
+            getSymbolsByTickerWithRequestBuilder(query: query).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Get details of a symbol by the ticker or the universal_symbol_id
@@ -346,6 +475,28 @@ open class ReferenceDataAPI {
 
     /**
      List of all brokerage authorization types
+     
+     - parameter brokerage: (query) Comma separated value of brokerage slugs (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listAllBrokerageAuthorizationTypeAsync(brokerage: String? = nil) async throws -> [BrokerageAuthorizationTypeReadOnly] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listAllBrokerageAuthorizationTypeWithRequestBuilder(brokerage: brokerage).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List of all brokerage authorization types
      - GET /brokerageAuthorizationTypes
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -400,6 +551,27 @@ open class ReferenceDataAPI {
 
     /**
      List brokerages
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listAllBrokeragesAsync() async throws -> [Brokerage] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listAllBrokeragesWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List brokerages
      - GET /brokerages
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -450,6 +622,27 @@ open class ReferenceDataAPI {
 
     /**
      List currencies
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listAllCurrenciesAsync() async throws -> [Currency] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listAllCurrenciesWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List currencies
      - GET /currencies
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -497,6 +690,27 @@ open class ReferenceDataAPI {
             }
         }
     }
+
+    /**
+     List currency exchange rates
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listAllCurrenciesRatesAsync() async throws -> [ExchangeRatePairs] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listAllCurrenciesRatesWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      List currency exchange rates
@@ -551,6 +765,31 @@ open class ReferenceDataAPI {
             }
         }
     }
+
+    /**
+     Search for symbols available in an account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to search for symbols within. 
+     - parameter symbolQuery: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func symbolSearchUserAccountAsync(userId: String, userSecret: String, accountId: UUID, symbolQuery: SymbolQuery? = nil) async throws -> [UniversalSymbol] {
+        return try await withCheckedThrowingContinuation { continuation in
+            symbolSearchUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbolQuery: symbolQuery).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Search for symbols available in an account

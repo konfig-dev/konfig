@@ -35,6 +35,30 @@ open class ConnectionsAPI {
 
     /**
      Get brokerage authorization details
+     
+     - parameter authorizationId: (path) The ID of a brokerage authorization object. 
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func detailBrokerageAuthorizationAsync(authorizationId: UUID, userId: String, userSecret: String) async throws -> BrokerageAuthorization {
+        return try await withCheckedThrowingContinuation { continuation in
+            detailBrokerageAuthorizationWithRequestBuilder(authorizationId: authorizationId, userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Get brokerage authorization details
      - GET /authorizations/{authorizationId}
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -97,6 +121,29 @@ open class ConnectionsAPI {
 
     /**
      List all brokerage authorizations for the user
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listBrokerageAuthorizationsAsync(userId: String, userSecret: String) async throws -> [BrokerageAuthorization] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listBrokerageAuthorizationsWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List all brokerage authorizations for the user
      - GET /authorizations
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -153,6 +200,30 @@ open class ConnectionsAPI {
             }
         }
     }
+
+    /**
+     Delete brokerage authorization
+     
+     - parameter authorizationId: (path) The ID of the Authorization to delete. 
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func removeBrokerageAuthorizationAsync(authorizationId: UUID, userId: String, userSecret: String) async throws -> Void {
+        return try await withCheckedThrowingContinuation { continuation in
+            removeBrokerageAuthorizationWithRequestBuilder(authorizationId: authorizationId, userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case .success:
+                    continuation.resume(returning: ())
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Delete brokerage authorization
@@ -216,6 +287,30 @@ open class ConnectionsAPI {
             }
         }
     }
+
+    /**
+     List all session events for the partner
+     
+     - parameter partnerClientId: (query)  
+     - parameter userId: (query) Optional comma seperated list of user IDs used to filter the request on specific users (optional)
+     - parameter sessionId: (query) Optional comma seperated list of session IDs used to filter the request on specific users (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func sessionEventsAsync(partnerClientId: String, userId: String? = nil, sessionId: String? = nil) async throws -> [ConnectionsSessionEvents200ResponseInner] {
+        return try await withCheckedThrowingContinuation { continuation in
+            sessionEventsWithRequestBuilder(partnerClientId: partnerClientId, userId: userId, sessionId: sessionId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      List all session events for the partner

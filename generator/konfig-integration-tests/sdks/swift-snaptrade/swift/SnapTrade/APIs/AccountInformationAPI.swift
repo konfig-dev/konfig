@@ -36,6 +36,31 @@ open class AccountInformationAPI {
 
     /**
      List all accounts for the user, plus balances, positions, and orders for each account.
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter brokerageAuthorizations: (query) Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations). (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(*, deprecated, message: "This operation is deprecated.")
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getAllUserHoldingsAsync(userId: String, userSecret: String, brokerageAuthorizations: UUID? = nil) async throws -> [AccountHoldings] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getAllUserHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, brokerageAuthorizations: brokerageAuthorizations).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List all accounts for the user, plus balances, positions, and orders for each account.
      - GET /holdings
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -95,6 +120,30 @@ open class AccountInformationAPI {
             }
         }
     }
+
+    /**
+     List account balances
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to get balances. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserAccountBalanceAsync(userId: String, userSecret: String, accountId: UUID) async throws -> [Balance] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserAccountBalanceWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      List account balances
@@ -159,6 +208,30 @@ open class AccountInformationAPI {
             }
         }
     }
+
+    /**
+     Return details of a specific investment account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to get detail of. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserAccountDetailsAsync(userId: String, userSecret: String, accountId: UUID) async throws -> Account {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserAccountDetailsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Return details of a specific investment account
@@ -236,6 +309,32 @@ open class AccountInformationAPI {
 
     /**
      List account orders
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to get orders. 
+     - parameter state: (query) defaults value is set to \&quot;all\&quot; (optional)
+     - parameter days: (query) Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserAccountOrdersAsync(userId: String, userSecret: String, accountId: UUID, state: State_getUserAccountOrders? = nil, days: Int? = nil) async throws -> [AccountOrderRecord] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserAccountOrdersWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, state: state, days: days).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List account orders
      - GET /accounts/{accountId}/orders
      - Fetch all recent orders from a user's account.
      - API Key:
@@ -304,6 +403,30 @@ open class AccountInformationAPI {
 
     /**
      List account positions
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to get positions. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserAccountPositionsAsync(userId: String, userSecret: String, accountId: UUID) async throws -> [Position] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserAccountPositionsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List account positions
      - GET /accounts/{accountId}/positions
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -364,6 +487,30 @@ open class AccountInformationAPI {
             }
         }
     }
+
+    /**
+     List balances, positions and orders for the specified account
+     
+     - parameter accountId: (path) The ID of the account to fetch holdings for. 
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserHoldingsAsync(accountId: UUID, userId: String, userSecret: String) async throws -> AccountHoldingsAccount {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserHoldingsWithRequestBuilder(accountId: accountId, userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      List balances, positions and orders for the specified account
@@ -429,6 +576,29 @@ open class AccountInformationAPI {
 
     /**
      List accounts
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listUserAccountsAsync(userId: String, userSecret: String) async throws -> [Account] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listUserAccountsWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List accounts
      - GET /accounts
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -485,6 +655,30 @@ open class AccountInformationAPI {
             }
         }
     }
+
+    /**
+     Update details of an investment account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to update. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func updateUserAccountAsync(userId: String, userSecret: String, accountId: UUID) async throws -> [Account] {
+        return try await withCheckedThrowingContinuation { continuation in
+            updateUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Update details of an investment account

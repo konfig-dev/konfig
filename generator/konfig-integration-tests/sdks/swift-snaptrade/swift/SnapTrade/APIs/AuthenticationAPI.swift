@@ -33,6 +33,28 @@ open class AuthenticationAPI {
 
     /**
      Delete SnapTrade user
+     
+     - parameter userId: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func deleteSnapTradeUserAsync(userId: String) async throws -> DeleteUserResponse {
+        return try await withCheckedThrowingContinuation { continuation in
+            deleteSnapTradeUserWithRequestBuilder(userId: userId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Delete SnapTrade user
      - DELETE /snapTrade/deleteUser
      - Deletes a user you've registered over the SnapTrade API, and any data associated with them or their investment accounts.
      - API Key:
@@ -87,6 +109,29 @@ open class AuthenticationAPI {
             }
         }
     }
+
+    /**
+     Generate encrypted JWT token
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserJWTAsync(userId: String, userSecret: String) async throws -> EncryptedResponse {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserJWTWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Generate encrypted JWT token
@@ -146,6 +191,27 @@ open class AuthenticationAPI {
 
     /**
      List SnapTrade users
+     
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listSnapTradeUsersAsync() async throws -> [String] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listSnapTradeUsersWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     List SnapTrade users
      - GET /snapTrade/listUsers
      - Returns a list of users you've registered over the SnapTrade API.
      - API Key:
@@ -197,6 +263,30 @@ open class AuthenticationAPI {
             }
         }
     }
+
+    /**
+     Login user & generate connection link
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter snapTradeLoginUserRequestBody: (body)  (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func loginSnapTradeUserAsync(userId: String, userSecret: String, snapTradeLoginUserRequestBody: SnapTradeLoginUserRequestBody? = nil) async throws -> AuthenticationLoginSnapTradeUser200Response {
+        return try await withCheckedThrowingContinuation { continuation in
+            loginSnapTradeUserWithRequestBuilder(userId: userId, userSecret: userSecret, snapTradeLoginUserRequestBody: snapTradeLoginUserRequestBody).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Login user & generate connection link
@@ -259,6 +349,28 @@ open class AuthenticationAPI {
 
     /**
      Create SnapTrade user
+     
+     - parameter snapTradeRegisterUserRequestBody: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func registerSnapTradeUserAsync(snapTradeRegisterUserRequestBody: SnapTradeRegisterUserRequestBody) async throws -> UserIDandSecret {
+        return try await withCheckedThrowingContinuation { continuation in
+            registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: snapTradeRegisterUserRequestBody).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Create SnapTrade user
      - POST /snapTrade/registerUser
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -308,6 +420,28 @@ open class AuthenticationAPI {
             }
         }
     }
+
+    /**
+     Obtain a new user secret for a user
+     
+     - parameter userIDandSecret: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func resetSnapTradeUserSecretAsync(userIDandSecret: UserIDandSecret) async throws -> UserIDandSecret {
+        return try await withCheckedThrowingContinuation { continuation in
+            resetSnapTradeUserSecretWithRequestBuilder(userIDandSecret: userIDandSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Obtain a new user secret for a user

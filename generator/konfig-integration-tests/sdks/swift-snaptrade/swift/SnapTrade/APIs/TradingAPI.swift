@@ -36,6 +36,31 @@ open class TradingAPI {
 
     /**
      Cancel open order in account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to cancel the order in. 
+     - parameter tradingCancelUserAccountOrderRequest: (body) The Order ID to be canceled 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func cancelUserAccountOrderAsync(userId: String, userSecret: String, accountId: UUID, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            cancelUserAccountOrderWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Cancel open order in account
      - POST /accounts/{accountId}/orders/cancel
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -100,6 +125,30 @@ open class TradingAPI {
 
     /**
      Check impact of trades on account.
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter manualTradeForm: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOrderImpactAsync(userId: String, userSecret: String, manualTradeForm: ManualTradeForm) async throws -> ManualTradeAndImpact {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOrderImpactWithRequestBuilder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Check impact of trades on account.
      - POST /trade/impact
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -159,6 +208,32 @@ open class TradingAPI {
             }
         }
     }
+
+    /**
+     Get symbol quotes
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter symbols: (query) List of universal_symbol_id or tickers to get quotes for. 
+     - parameter accountId: (path) The ID of the account to get quotes. 
+     - parameter useTicker: (query) Should be set to True if providing tickers. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserAccountQuotesAsync(userId: String, userSecret: String, symbols: String, accountId: String, useTicker: Bool? = nil) async throws -> [SymbolsQuotesInner] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserAccountQuotesWithRequestBuilder(userId: userId, userSecret: userSecret, symbols: symbols, accountId: accountId, useTicker: useTicker).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Get symbol quotes
@@ -229,6 +304,30 @@ open class TradingAPI {
 
     /**
      Place a trade with NO validation.
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter manualTradeForm: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeForceOrderAsync(userId: String, userSecret: String, manualTradeForm: ManualTradeForm) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeForceOrderWithRequestBuilder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Place a trade with NO validation.
      - POST /trade/place
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -290,6 +389,31 @@ open class TradingAPI {
 
     /**
      Place a OCO (One Cancels Other) order
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter tradingPlaceOCOOrderRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(*, deprecated, message: "This operation is deprecated.")
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeOCOOrderAsync(userId: String, userSecret: String, tradingPlaceOCOOrderRequest: TradingPlaceOCOOrderRequest) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeOCOOrderWithRequestBuilder(userId: userId, userSecret: userSecret, tradingPlaceOCOOrderRequest: tradingPlaceOCOOrderRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Place a OCO (One Cancels Other) order
      - POST /trade/oco
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -348,6 +472,30 @@ open class TradingAPI {
             }
         }
     }
+
+    /**
+     Place order
+     
+     - parameter tradeId: (path) The ID of trade object obtained from trade/impact endpoint 
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeOrderAsync(tradeId: UUID, userId: String, userSecret: String) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeOrderWithRequestBuilder(tradeId: tradeId, userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Place order

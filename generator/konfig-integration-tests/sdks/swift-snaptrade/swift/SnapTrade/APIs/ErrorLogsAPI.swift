@@ -34,6 +34,29 @@ open class ErrorLogsAPI {
 
     /**
      Retrieve error logs on behalf of your SnapTrade users
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listUserErrorsAsync(userId: String, userSecret: String) async throws -> [UserErrorLog] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listUserErrorsWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Retrieve error logs on behalf of your SnapTrade users
      - GET /snapTrade/listUserErrors
      - API Key:
        - type: apiKey clientId (QUERY)

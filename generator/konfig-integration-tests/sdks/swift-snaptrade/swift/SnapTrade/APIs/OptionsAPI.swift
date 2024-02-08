@@ -36,6 +36,31 @@ open class OptionsAPI {
 
     /**
      Creates an option strategy object that will be used to place an option strategy order
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to create the option strategy object in. 
+     - parameter optionsGetOptionStrategyRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOptionStrategyAsync(userId: String, userSecret: String, accountId: UUID, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest) async throws -> StrategyQuotes {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Creates an option strategy object that will be used to place an option strategy order
      - POST /accounts/{accountId}/optionStrategy
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -98,6 +123,31 @@ open class OptionsAPI {
             }
         }
     }
+
+    /**
+     Get the options chain
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to get the options chain from. 
+     - parameter symbol: (query) Universal symbol ID if symbol 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOptionsChainAsync(userId: String, userSecret: String, accountId: UUID, symbol: UUID) async throws -> [OptionChainInner] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Get the options chain
@@ -164,6 +214,31 @@ open class OptionsAPI {
             }
         }
     }
+
+    /**
+     Get latest market data of option strategy
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account the strategy will be placed in. 
+     - parameter optionStrategyId: (path) Option strategy id obtained from response when creating option strategy object 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOptionsStrategyQuoteAsync(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID) async throws -> StrategyQuotes {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Get latest market data of option strategy
@@ -234,6 +309,30 @@ open class OptionsAPI {
 
     /**
      Get the options holdings in the account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to fetch options holdings for. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listOptionHoldingsAsync(userId: String, userSecret: String, accountId: UUID) async throws -> [OptionsPosition] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Get the options holdings in the account
      - GET /accounts/{accountId}/options
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -296,6 +395,32 @@ open class OptionsAPI {
             }
         }
     }
+
+    /**
+     Place an option strategy order on the brokerage
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to execute the strategy in. 
+     - parameter optionStrategyId: (path) Option strategy id obtained from response when creating option strategy object 
+     - parameter optionsPlaceOptionStrategyRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeOptionStrategyAsync(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest) async throws -> StrategyOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId, optionsPlaceOptionStrategyRequest: optionsPlaceOptionStrategyRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Place an option strategy order on the brokerage

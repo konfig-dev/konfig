@@ -39,6 +39,34 @@ open class TransactionsAndReportingAPI {
 
     /**
      Get transaction history for a user
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter startDate: (query)  (optional)
+     - parameter endDate: (query)  (optional)
+     - parameter accounts: (query) Optional comma seperated list of account IDs used to filter the request on specific accounts (optional)
+     - parameter brokerageAuthorizations: (query) Optional comma seperated list of brokerage authorization IDs used to filter the request on only accounts that belong to those authorizations (optional)
+     - parameter type: (query) Optional comma seperated list of types to filter activities by. This is not an exhaustive list, if we fail to match to these types, we will return the raw description from the brokerage. Potential values include - DIVIDEND - BUY - SELL - CONTRIBUTION - WITHDRAWAL - EXTERNAL_ASSET_TRANSFER_IN - EXTERNAL_ASSET_TRANSFER_OUT - INTERNAL_CASH_TRANSFER_IN - INTERNAL_CASH_TRANSFER_OUT - INTERNAL_ASSET_TRANSFER_IN - INTERNAL_ASSET_TRANSFER_OUT - INTEREST - REBATE - GOV_GRANT - TAX - FEE - REI - FXT (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getActivitiesAsync(userId: String, userSecret: String, startDate: String? = nil, endDate: String? = nil, accounts: String? = nil, brokerageAuthorizations: String? = nil, type: String? = nil) async throws -> [UniversalActivity] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getActivitiesWithRequestBuilder(userId: userId, userSecret: userSecret, startDate: startDate, endDate: endDate, accounts: accounts, brokerageAuthorizations: brokerageAuthorizations, type: type).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+    /**
+     Get transaction history for a user
      - GET /activities
      - Returns activities (transactions) for a user. Specifying start and end date is highly recommended for better performance
      - API Key:
@@ -111,6 +139,35 @@ open class TransactionsAndReportingAPI {
             }
         }
     }
+
+    /**
+     Get performance information for a specific timeframe
+     
+     - parameter startDate: (query)  
+     - parameter endDate: (query)  
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accounts: (query) Optional comma seperated list of account IDs used to filter the request on specific accounts (optional)
+     - parameter detailed: (query) Optional, increases frequency of data points for the total value and contribution charts if set to true (optional)
+     - parameter frequency: (query) Optional frequency for the rate of return chart (defaults to monthly). Possible values are daily, weekly, monthly, quarterly, yearly. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(*, deprecated, message: "This operation is deprecated.")
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getReportingCustomRangeAsync(startDate: String, endDate: String, userId: String, userSecret: String, accounts: String? = nil, detailed: Bool? = nil, frequency: String? = nil) async throws -> PerformanceCustom {
+        return try await withCheckedThrowingContinuation { continuation in
+            getReportingCustomRangeWithRequestBuilder(startDate: startDate, endDate: endDate, userId: userId, userSecret: userSecret, accounts: accounts, detailed: detailed, frequency: frequency).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Get performance information for a specific timeframe
