@@ -44,6 +44,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     useAIForOperationId:
       (options.useAIForOperationId || options.noInput) ?? false,
     noInput: options.noInput ?? false,
+    skipListUsageSecurity: options.skipListUsageSecurity ?? true,
   }
 
   if (flags.useAIForOperationId && process.env.OPENAI_API_KEY === undefined) {
