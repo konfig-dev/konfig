@@ -32,8 +32,8 @@ class SimpleTest: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
 
-    func testStatusCheckAsyncAwait() async throws {
-        let response = try await APIStatusAPI.checkAsync()
+    func testRegisterSnapTradeUser() async throws {
+        let response = try await AuthenticationAPI.registerSnapTradeUserAsync(userId: "1234")
 
         // print the response
         print(response)

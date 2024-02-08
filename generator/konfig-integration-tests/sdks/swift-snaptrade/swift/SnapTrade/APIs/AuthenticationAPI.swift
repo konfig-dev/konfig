@@ -355,7 +355,29 @@ open class AuthenticationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func registerSnapTradeUserAsync(snapTradeRegisterUserRequestBody: SnapTradeRegisterUserRequestBody) async throws -> UserIDandSecret {
+    private class func registerSnapTradeUserAsyncMappedParams(snapTradeRegisterUserRequestBody: SnapTradeRegisterUserRequestBody) async throws -> UserIDandSecret {
+        return try await withCheckedThrowingContinuation { continuation in
+            registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: snapTradeRegisterUserRequestBody).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Create SnapTrade user
+     
+     - parameter snapTradeRegisterUserRequestBody: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func registerSnapTradeUserAsync(userId: String?) async throws -> UserIDandSecret {
+        let snapTradeRegisterUserRequestBody = SnapTradeRegisterUserRequestBody(userId: userId)
         return try await withCheckedThrowingContinuation { continuation in
             registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: snapTradeRegisterUserRequestBody).execute { result in
                 switch result {
