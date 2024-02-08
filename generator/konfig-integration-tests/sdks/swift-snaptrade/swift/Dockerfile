@@ -1,8 +1,12 @@
 # Use the official Swift image.
-FROM swift:latest
+FROM node:18-bullseye
 
 # Set the working directory.
 WORKDIR /app
+
+RUN curl -s https://archive.swiftlang.xyz/install.sh | bash
+RUN apt install -y swiftlang
+RUN swift --version
 
 # Copy your Swift project into the Docker image.
 COPY . .

@@ -2,7 +2,7 @@
 {{>licenseInfo}}
 
 import Foundation
-{{> FoundationNetwork}}
+{{> FoundationNetworking}}
 
 {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} protocol URLSessionProtocol {
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
@@ -558,12 +558,27 @@ private class FormDataEncoding: ParameterEncoding {
 
     func mimeType(for url: URL) -> String {
         let pathExtension = url.pathExtension
-
-        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension as NSString, nil)?.takeRetainedValue() {
-            if let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
-                return mimetype as String
-            }
+        // JSON
+        if pathExtension == "json" {
+            return "application/json"
         }
+        // XML
+        if pathExtension == "xml" {
+            return "application/xml"
+        }
+        // ZIP
+        if pathExtension == "zip" {
+            return "application/zip"
+        }
+        // PDF
+        if pathExtension == "pdf" {
+            return "application/pdf"
+        }
+        // Image
+        if ["png", "jpg", "jpeg", "gif", "bmp", "tiff"].contains(pathExtension) {
+            return "image/\(pathExtension)"
+        }
+        // Default
         return "application/octet-stream"
     }
 

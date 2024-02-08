@@ -6,8 +6,8 @@
 //
 
 import Foundation
-#if canImport(FoundationNetwork)
-import FoundationNetwork
+#if canImport(FoundationNetworking)
+import FoundationNetworking
 #endif
 
 public struct JSONDataEncoding {

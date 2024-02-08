@@ -5,8 +5,8 @@
 //
 
 import Foundation
-#if canImport(FoundationNetwork)
-import FoundationNetwork
+#if canImport(FoundationNetworking)
+import FoundationNetworking
 #endif
 open class SnapTradeAPI {
     public static var basePath = "https://api.snaptrade.com/api/v1"

@@ -1,0 +1,3 @@
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif

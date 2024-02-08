@@ -5,8 +5,8 @@
 //
 
 import Foundation
-#if canImport(FoundationNetwork)
-import FoundationNetwork
+#if canImport(FoundationNetworking)
+import FoundationNetworking
 #endif
 
 public protocol URLSessionProtocol {
@@ -563,12 +563,27 @@ private class FormDataEncoding: ParameterEncoding {
 
     func mimeType(for url: URL) -> String {
         let pathExtension = url.pathExtension
-
-        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension as NSString, nil)?.takeRetainedValue() {
-            if let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?.takeRetainedValue() {
-                return mimetype as String
-            }
+        // JSON
+        if pathExtension == "json" {
+            return "application/json"
         }
+        // XML
+        if pathExtension == "xml" {
+            return "application/xml"
+        }
+        // ZIP
+        if pathExtension == "zip" {
+            return "application/zip"
+        }
+        // PDF
+        if pathExtension == "pdf" {
+            return "application/pdf"
+        }
+        // Image
+        if ["png", "jpg", "jpeg", "gif", "bmp", "tiff"].contains(pathExtension) {
+            return "image/\(pathExtension)"
+        }
+        // Default
         return "application/octet-stream"
     }
 
