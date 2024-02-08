@@ -9,7 +9,7 @@ class SimpleTest: XCTestCase {
 
     override func tearDownWithError() throws {}
 
-    func testGeneratePaymentLink() throws {
+    func testStatusCheck() throws {
         let expectation = XCTestExpectation(description: "Response is not null")
         APIStatusAPI.check() { response, error in
             guard error == nil else {
