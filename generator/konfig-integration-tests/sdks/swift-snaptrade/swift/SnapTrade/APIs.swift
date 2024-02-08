@@ -5,6 +5,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetwork)
+import FoundationNetwork
+#endif
 open class SnapTradeAPI {
     public static var basePath = "https://api.snaptrade.com/api/v1"
     public static var customHeaders: [String: String] = [:]

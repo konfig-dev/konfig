@@ -5,6 +5,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetwork)
+import FoundationNetwork
+#endif
 
 protocol JSONEncodable {
     func encodeToJSON() -> Any

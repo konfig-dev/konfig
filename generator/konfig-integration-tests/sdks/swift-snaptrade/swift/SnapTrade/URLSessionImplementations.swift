@@ -5,8 +5,8 @@
 //
 
 import Foundation
-#if !os(macOS)
-import MobileCoreServices
+#if canImport(FoundationNetwork)
+import FoundationNetwork
 #endif
 
 public protocol URLSessionProtocol {

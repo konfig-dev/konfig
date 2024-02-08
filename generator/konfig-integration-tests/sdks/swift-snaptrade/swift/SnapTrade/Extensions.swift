@@ -5,6 +5,9 @@
 //
 
 import Foundation
+#if canImport(FoundationNetwork)
+import FoundationNetwork
+#endif
 #if canImport(AnyCodable)
 import AnyCodable
 #endif
