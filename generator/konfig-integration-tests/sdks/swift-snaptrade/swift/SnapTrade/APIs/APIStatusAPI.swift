@@ -14,7 +14,7 @@ open class APIStatusAPI {
 
     /**
      Get API Status
-     
+
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -30,11 +30,26 @@ open class APIStatusAPI {
         }
     }
 
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    @discardableResult
+    open class func checkAsync() async throws -> Status {
+        return try await withCheckedThrowingContinuation { continuation in
+            checkWithRequestBuilder().execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
     /**
      Get API Status
      - GET /
      - Check whether the API is operational and verify timestamps.
-     - returns: RequestBuilder<Status> 
+     - returns: RequestBuilder<Status>
      */
     open class func checkWithRequestBuilder() -> RequestBuilder<Status> {
         let localVariablePath = "/"
