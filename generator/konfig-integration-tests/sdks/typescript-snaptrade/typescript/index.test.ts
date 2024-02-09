@@ -22,11 +22,15 @@ function uuid() {
   });
 }
 
+function getEnvVar(name: string): string {
+  return (process.env[name] ?? `dummy_${name}`) as string;
+}
+
 it("getting started", async () => {
   // 1) Initialize a client with your clientID and consumerKey.
   const snaptrade = new Snaptrade({
-    consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
-    clientId: process.env.SNAPTRADE_CLIENT_ID,
+    consumerKey: getEnvVar("SNAPTRADE_CONSUMER_KEY"),
+    clientId: getEnvVar("SNAPTRADE_CLIENT_ID"),
     basePath: "http://127.0.0.1:4051",
   });
 
@@ -71,12 +75,12 @@ it("getting started", async () => {
 
 it("getUserAccountBalance", async () => {
   const snaptrade = new Snaptrade({
-    consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
-    clientId: process.env.SNAPTRADE_CLIENT_ID,
+    consumerKey: getEnvVar("SNAPTRADE_CONSUMER_KEY"),
+    clientId: getEnvVar("SNAPTRADE_CLIENT_ID"),
     basePath: "http://127.0.0.1:4051",
   });
-  const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
-  const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
+  const userId = getEnvVar("SNAPTRADE_TEST_USER_ID");
+  const userSecret = getEnvVar("SNAPTRADE_TEST_USER_SECRET");
   const accounts = await snaptrade.accountInformation.listUserAccounts({
     userId,
     userSecret,
@@ -86,12 +90,12 @@ it("getUserAccountBalance", async () => {
 
 it("getActivities", async () => {
   const snaptrade = new Snaptrade({
-    consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
-    clientId: process.env.SNAPTRADE_CLIENT_ID,
+    consumerKey: getEnvVar("SNAPTRADE_CONSUMER_KEY"),
+    clientId: getEnvVar("SNAPTRADE_CLIENT_ID"),
     basePath: "http://127.0.0.1:4051",
   });
-  const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
-  const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
+  const userId = getEnvVar("SNAPTRADE_TEST_USER_ID");
+  const userSecret = getEnvVar("SNAPTRADE_TEST_USER_SECRET");
   let activities = await snaptrade.transactionsAndReporting.getActivities({
     userId,
     userSecret,
@@ -126,12 +130,12 @@ it("getActivities", async () => {
 
 it("getUserHoldings", async () => {
   const snaptrade = new Snaptrade({
-    consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
-    clientId: process.env.SNAPTRADE_CLIENT_ID,
+    consumerKey: getEnvVar("SNAPTRADE_CONSUMER_KEY"),
+    clientId: getEnvVar("SNAPTRADE_CLIENT_ID"),
     basePath: "http://127.0.0.1:4051",
   });
-  const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
-  const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
+  const userId = getEnvVar("SNAPTRADE_TEST_USER_ID");
+  const userSecret = getEnvVar("SNAPTRADE_TEST_USER_SECRET");
   const accounts = await snaptrade.accountInformation.listUserAccounts({
     userId,
     userSecret,
@@ -148,12 +152,12 @@ it("getUserHoldings", async () => {
 
 it.skip("getOptionsChain", async () => {
   const snaptrade = new Snaptrade({
-    consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
-    clientId: process.env.SNAPTRADE_CLIENT_ID,
+    consumerKey: getEnvVar("SNAPTRADE_CONSUMER_KEY"),
+    clientId: getEnvVar("SNAPTRADE_CLIENT_ID"),
     basePath: "http://127.0.0.1:4051",
   });
-  const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
-  const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
+  const userId = getEnvVar("SNAPTRADE_TEST_USER_ID");
+  const userSecret = getEnvVar("SNAPTRADE_TEST_USER_SECRET");
   const accounts = await snaptrade.accountInformation.listUserAccounts({
     userId,
     userSecret,
