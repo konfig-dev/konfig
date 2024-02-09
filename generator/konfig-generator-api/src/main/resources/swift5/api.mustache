@@ -94,7 +94,52 @@ extension {{projectName}}API {
     @available(*, deprecated, message: "This operation is deprecated.")
     {{/isDeprecated}}
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}Async({{#allParams}}{{paramName}}: {{#isEnum}}{{#isContainer}}[{{enumName}}_{{operationId}}]{{/isContainer}}{{^isContainer}}{{enumName}}_{{operationId}}{{/isContainer}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{^required}}? = nil{{/required}}{{^-last}}, {{/-last}}{{/allParams}}) async throws -> {{{returnType}}}{{^returnType}}Void{{/returnType}} {
+    private class func {{operationId}}AsyncMappedParams({{#allParams}}{{paramName}}: {{#isEnum}}{{#isContainer}}[{{enumName}}_{{operationId}}]{{/isContainer}}{{^isContainer}}{{enumName}}_{{operationId}}{{/isContainer}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{^required}}? = nil{{/required}}{{^-last}}, {{/-last}}{{/allParams}}) async throws -> {{{returnType}}}{{^returnType}}Void{{/returnType}} {
+        return try await withCheckedThrowingContinuation { continuation in
+            {{operationId}}WithRequestBuilder({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).execute { result in
+                switch result {
+                {{#returnType}}
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                {{/returnType}}
+                {{^returnType}}
+                case .success:
+                    continuation.resume(returning: ())
+                {{/returnType}}
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     {{#summary}}
+     {{{.}}}
+     {{/summary}}{{#allParams}}
+     - parameter {{paramName}}: ({{#isFormParam}}form{{/isFormParam}}{{#isQueryParam}}query{{/isQueryParam}}{{#isPathParam}}path{{/isPathParam}}{{#isHeaderParam}}header{{/isHeaderParam}}{{#isBodyParam}}body{{/isBodyParam}}) {{description}} {{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    {{#isDeprecated}}
+    @available(*, deprecated, message: "This operation is deprecated.")
+    {{/isDeprecated}}
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}Async(
+        {{#requiredParamsWithRequestBodyProperties}}
+        {{paramName}}: {{> api_param_data_type}}{{^-last}},{{/-last}}{{#-last}}{{#optionalParamsWithRequestBodyProperties}}{{#-first}},{{/-first}}{{/optionalParamsWithRequestBodyProperties}}{{/-last}}
+        {{/requiredParamsWithRequestBodyProperties}}
+        {{#optionalParamsWithRequestBodyProperties}}
+        {{paramName}}: {{> api_param_data_type}}{{^-last}}, {{/-last}}
+        {{/optionalParamsWithRequestBodyProperties}}
+    ) async throws -> {{{returnType}}}{{^returnType}}Void{{/returnType}} {
+        {{#bodyParam}}
+        let {{paramName}} = {{dataType}}(
+        {{#vars}}
+            {{name}}: {{name}}{{^-last}},{{/-last}}
+        {{/vars}}
+        )
+        {{/bodyParam}}
         return try await withCheckedThrowingContinuation { continuation in
             {{operationId}}WithRequestBuilder({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).execute { result in
                 switch result {
