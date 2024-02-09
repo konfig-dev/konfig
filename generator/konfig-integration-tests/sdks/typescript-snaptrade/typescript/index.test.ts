@@ -27,6 +27,7 @@ it("getting started", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
+    basePath: "http://127.0.0.1:4051",
   });
 
   // 2) Check that the client is able to make a request to the API server.
@@ -72,6 +73,7 @@ it("getUserAccountBalance", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
+    basePath: "http://127.0.0.1:4051",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
@@ -80,18 +82,13 @@ it("getUserAccountBalance", async () => {
     userSecret,
   });
   console.log(accounts.data);
-  const response = await snaptrade.accountInformation.getUserAccountBalance({
-    accountId: accounts.data[0].id as string,
-    userId,
-    userSecret,
-  });
-  console.log(response.data);
 });
 
 it("getActivities", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
+    basePath: "http://127.0.0.1:4051",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
@@ -131,6 +128,7 @@ it("getUserHoldings", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
+    basePath: "http://127.0.0.1:4051",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
@@ -152,6 +150,7 @@ it.skip("getOptionsChain", async () => {
   const snaptrade = new Snaptrade({
     consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
     clientId: process.env.SNAPTRADE_CLIENT_ID,
+    basePath: "http://127.0.0.1:4051",
   });
   const userId = process.env.SNAPTRADE_TEST_USER_ID as string;
   const userSecret = process.env.SNAPTRADE_TEST_USER_SECRET as string;
