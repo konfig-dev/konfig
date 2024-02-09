@@ -529,7 +529,7 @@ extension {{projectName}}API {
             {{> _param}},
             {{/queryParams}}
         ]){{/hasQueryParams}}{{^hasQueryParams}}
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString){{/hasQueryParams}}
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString){{/hasQueryParams}}
 
         let localVariableNillableHeaders: [String: Any?] = [{{^headerParams}}{{^hasFormParams}}
             :{{/hasFormParams}}{{/headerParams}}{{#hasFormParams}}
@@ -537,11 +537,20 @@ extension {{projectName}}API {
             {{> _param}},{{/headerParams}}
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<{{{returnType}}}{{#returnType}}{{#isResponseOptional}}?{{/isResponseOptional}}{{/returnType}}{{^returnType}}Void{{/returnType}}>.Type = {{projectName}}API.requestBuilderFactory.{{#returnType}}getBuilder(){{/returnType}}{{^returnType}}getNonDecodableBuilder(){{/returnType}}
+        do {
+            {{#authMethods}}
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: {{projectName}}API.{{nameInPascalCase}})
+            {{/authMethods}}
+            let localVariableRequestBuilder: RequestBuilder<{{{returnType}}}{{#returnType}}{{#isResponseOptional}}?{{/isResponseOptional}}{{/returnType}}{{^returnType}}Void{{/returnType}}>.Type = {{projectName}}API.requestBuilderFactory.{{#returnType}}getBuilder(){{/returnType}}{{^returnType}}getNonDecodableBuilder(){{/returnType}}
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "{{httpMethod}}", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: {{#hasAuthMethods}}true{{/hasAuthMethods}}{{^hasAuthMethods}}false{{/hasAuthMethods}})
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "{{httpMethod}}", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: {{#hasAuthMethods}}true{{/hasAuthMethods}}{{^hasAuthMethods}}false{{/hasAuthMethods}})
     }
 {{/useVapor}}
 {{/operation}}

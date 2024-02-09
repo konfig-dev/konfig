@@ -45,7 +45,39 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func cancelUserAccountOrderAsync(userId: String, userSecret: String, accountId: UUID, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest) async throws -> AccountOrderRecord {
+    private class func cancelUserAccountOrderAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            cancelUserAccountOrderWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Cancel open order in account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to cancel the order in. 
+     - parameter tradingCancelUserAccountOrderRequest: (body) The Order ID to be canceled 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func cancelUserAccountOrderAsync(
+        userId: String,
+        userSecret: String,
+        accountId: UUID,
+        brokerageOrderId: UUID? = nil
+    ) async throws -> AccountOrderRecord {
+        let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(
+            brokerageOrderId: brokerageOrderId
+        )
         return try await withCheckedThrowingContinuation { continuation in
             cancelUserAccountOrderWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest).execute { result in
                 switch result {
@@ -95,11 +127,20 @@ open class TradingAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -133,7 +174,53 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func getOrderImpactAsync(userId: String, userSecret: String, manualTradeForm: ManualTradeForm) async throws -> ManualTradeAndImpact {
+    private class func getOrderImpactAsyncMappedParams(userId: String, userSecret: String, manualTradeForm: ManualTradeForm) async throws -> ManualTradeAndImpact {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOrderImpactWithRequestBuilder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Check impact of trades on account.
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter manualTradeForm: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOrderImpactAsync(
+        userId: String,
+        userSecret: String,
+        accountId: UUID? = nil, 
+        action: Action? = nil, 
+        orderType: OrderType? = nil, 
+        price: Double? = nil, 
+        stop: Double? = nil, 
+        timeInForce: TimeInForceStrict? = nil, 
+        units: Double? = nil, 
+        universalSymbolId: UUID? = nil, 
+        notionalValue: Double? = nil
+    ) async throws -> ManualTradeAndImpact {
+        let manualTradeForm = ManualTradeForm(
+            accountId: accountId,
+            action: action,
+            orderType: orderType,
+            price: price,
+            stop: stop,
+            timeInForce: timeInForce,
+            units: units,
+            universalSymbolId: universalSymbolId,
+            notionalValue: notionalValue
+        )
         return try await withCheckedThrowingContinuation { continuation in
             getOrderImpactWithRequestBuilder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm).execute { result in
                 switch result {
@@ -179,11 +266,20 @@ open class TradingAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ManualTradeAndImpact>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<ManualTradeAndImpact>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -221,7 +317,38 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func getUserAccountQuotesAsync(userId: String, userSecret: String, symbols: String, accountId: String, useTicker: Bool? = nil) async throws -> [SymbolsQuotesInner] {
+    private class func getUserAccountQuotesAsyncMappedParams(userId: String, userSecret: String, symbols: String, accountId: String, useTicker: Bool? = nil) async throws -> [SymbolsQuotesInner] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getUserAccountQuotesWithRequestBuilder(userId: userId, userSecret: userSecret, symbols: symbols, accountId: accountId, useTicker: useTicker).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Get symbol quotes
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter symbols: (query) List of universal_symbol_id or tickers to get quotes for. 
+     - parameter accountId: (path) The ID of the account to get quotes. 
+     - parameter useTicker: (query) Should be set to True if providing tickers. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getUserAccountQuotesAsync(
+        userId: String,
+        userSecret: String,
+        symbols: String,
+        accountId: String,
+        useTicker: Bool? = nil
+    ) async throws -> [SymbolsQuotesInner] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountQuotesWithRequestBuilder(userId: userId, userSecret: userSecret, symbols: symbols, accountId: accountId, useTicker: useTicker).execute { result in
                 switch result {
@@ -274,11 +401,20 @@ open class TradingAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[SymbolsQuotesInner]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<[SymbolsQuotesInner]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -312,7 +448,53 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func placeForceOrderAsync(userId: String, userSecret: String, manualTradeForm: ManualTradeForm) async throws -> AccountOrderRecord {
+    private class func placeForceOrderAsyncMappedParams(userId: String, userSecret: String, manualTradeForm: ManualTradeForm) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeForceOrderWithRequestBuilder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Place a trade with NO validation.
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter manualTradeForm: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeForceOrderAsync(
+        userId: String,
+        userSecret: String,
+        accountId: UUID? = nil, 
+        action: Action? = nil, 
+        orderType: OrderType? = nil, 
+        price: Double? = nil, 
+        stop: Double? = nil, 
+        timeInForce: TimeInForceStrict? = nil, 
+        units: Double? = nil, 
+        universalSymbolId: UUID? = nil, 
+        notionalValue: Double? = nil
+    ) async throws -> AccountOrderRecord {
+        let manualTradeForm = ManualTradeForm(
+            accountId: accountId,
+            action: action,
+            orderType: orderType,
+            price: price,
+            stop: stop,
+            timeInForce: timeInForce,
+            units: units,
+            universalSymbolId: universalSymbolId,
+            notionalValue: notionalValue
+        )
         return try await withCheckedThrowingContinuation { continuation in
             placeForceOrderWithRequestBuilder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm).execute { result in
                 switch result {
@@ -358,11 +540,20 @@ open class TradingAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -398,7 +589,40 @@ open class TradingAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func placeOCOOrderAsync(userId: String, userSecret: String, tradingPlaceOCOOrderRequest: TradingPlaceOCOOrderRequest) async throws -> AccountOrderRecord {
+    private class func placeOCOOrderAsyncMappedParams(userId: String, userSecret: String, tradingPlaceOCOOrderRequest: TradingPlaceOCOOrderRequest) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeOCOOrderWithRequestBuilder(userId: userId, userSecret: userSecret, tradingPlaceOCOOrderRequest: tradingPlaceOCOOrderRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Place a OCO (One Cancels Other) order
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter tradingPlaceOCOOrderRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(*, deprecated, message: "This operation is deprecated.")
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeOCOOrderAsync(
+        userId: String,
+        userSecret: String,
+        firstTradeId: AnyCodable? = nil, 
+        secondTradeId: AnyCodable? = nil
+    ) async throws -> AccountOrderRecord {
+        let tradingPlaceOCOOrderRequest = TradingPlaceOCOOrderRequest(
+            firstTradeId: firstTradeId,
+            secondTradeId: secondTradeId
+        )
         return try await withCheckedThrowingContinuation { continuation in
             placeOCOOrderWithRequestBuilder(userId: userId, userSecret: userSecret, tradingPlaceOCOOrderRequest: tradingPlaceOCOOrderRequest).execute { result in
                 switch result {
@@ -445,11 +669,20 @@ open class TradingAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -483,7 +716,34 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func placeOrderAsync(tradeId: UUID, userId: String, userSecret: String) async throws -> AccountOrderRecord {
+    private class func placeOrderAsyncMappedParams(tradeId: UUID, userId: String, userSecret: String) async throws -> AccountOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeOrderWithRequestBuilder(tradeId: tradeId, userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Place order
+     
+     - parameter tradeId: (path) The ID of trade object obtained from trade/impact endpoint 
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeOrderAsync(
+        tradeId: UUID,
+        userId: String,
+        userSecret: String
+    ) async throws -> AccountOrderRecord {
         return try await withCheckedThrowingContinuation { continuation in
             placeOrderWithRequestBuilder(tradeId: tradeId, userId: userId, userSecret: userSecret).execute { result in
                 switch result {
@@ -532,10 +792,19 @@ open class TradingAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<AccountOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

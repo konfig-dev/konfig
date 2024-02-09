@@ -14,9 +14,9 @@ open class SnapTradeAPI {
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()
     public static var apiResponseQueue: DispatchQueue = .main
-    public static var clientId: String?
-    public static var signature: String?
-    public static var timestamp: String?
+    public static var partnerClientId: String?;
+    public static var partnerSignature: String?;
+    public static var partnerTimestamp: String?;
 }
 
 open class RequestBuilder<T> {

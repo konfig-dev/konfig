@@ -45,7 +45,43 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func getOptionStrategyAsync(userId: String, userSecret: String, accountId: UUID, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest) async throws -> StrategyQuotes {
+    private class func getOptionStrategyAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest) async throws -> StrategyQuotes {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Creates an option strategy object that will be used to place an option strategy order
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to create the option strategy object in. 
+     - parameter optionsGetOptionStrategyRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOptionStrategyAsync(
+        underlyingSymbolId: UUID,
+        legs: [OptionLeg],
+        strategyType: OptionsGetOptionStrategyRequest.StrategyType,
+        userId: String,
+        userSecret: String,
+        accountId: UUID
+    ) async throws -> StrategyQuotes {
+        let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(
+            underlyingSymbolId: underlyingSymbolId,
+            legs: legs,
+            strategyType: strategyType
+        )
         return try await withCheckedThrowingContinuation { continuation in
             getOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest).execute { result in
                 switch result {
@@ -95,11 +131,20 @@ open class OptionsAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<StrategyQuotes>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<StrategyQuotes>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -135,7 +180,36 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func getOptionsChainAsync(userId: String, userSecret: String, accountId: UUID, symbol: UUID) async throws -> [OptionChainInner] {
+    private class func getOptionsChainAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, symbol: UUID) async throws -> [OptionChainInner] {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Get the options chain
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to get the options chain from. 
+     - parameter symbol: (query) Universal symbol ID if symbol 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOptionsChainAsync(
+        userId: String,
+        userSecret: String,
+        accountId: UUID,
+        symbol: UUID
+    ) async throws -> [OptionChainInner] {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute { result in
                 switch result {
@@ -186,11 +260,20 @@ open class OptionsAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[OptionChainInner]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<[OptionChainInner]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -226,7 +309,36 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func getOptionsStrategyQuoteAsync(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID) async throws -> StrategyQuotes {
+    private class func getOptionsStrategyQuoteAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID) async throws -> StrategyQuotes {
+        return try await withCheckedThrowingContinuation { continuation in
+            getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Get latest market data of option strategy
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account the strategy will be placed in. 
+     - parameter optionStrategyId: (path) Option strategy id obtained from response when creating option strategy object 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func getOptionsStrategyQuoteAsync(
+        userId: String,
+        userSecret: String,
+        accountId: UUID,
+        optionStrategyId: UUID
+    ) async throws -> StrategyQuotes {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute { result in
                 switch result {
@@ -279,11 +391,20 @@ open class OptionsAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<StrategyQuotes>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<StrategyQuotes>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -317,7 +438,34 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func listOptionHoldingsAsync(userId: String, userSecret: String, accountId: UUID) async throws -> [OptionsPosition] {
+    private class func listOptionHoldingsAsyncMappedParams(userId: String, userSecret: String, accountId: UUID) async throws -> [OptionsPosition] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Get the options holdings in the account
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to fetch options holdings for. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listOptionHoldingsAsync(
+        userId: String,
+        userSecret: String,
+        accountId: UUID
+    ) async throws -> [OptionsPosition] {
         return try await withCheckedThrowingContinuation { continuation in
             listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
                 switch result {
@@ -366,11 +514,20 @@ open class OptionsAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[OptionsPosition]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<[OptionsPosition]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 
     /**
@@ -408,7 +565,45 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func placeOptionStrategyAsync(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest) async throws -> StrategyOrderRecord {
+    private class func placeOptionStrategyAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest) async throws -> StrategyOrderRecord {
+        return try await withCheckedThrowingContinuation { continuation in
+            placeOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId, optionsPlaceOptionStrategyRequest: optionsPlaceOptionStrategyRequest).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Place an option strategy order on the brokerage
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter accountId: (path) The ID of the account to execute the strategy in. 
+     - parameter optionStrategyId: (path) Option strategy id obtained from response when creating option strategy object 
+     - parameter optionsPlaceOptionStrategyRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func placeOptionStrategyAsync(
+        orderType: OrderType,
+        timeInForce: TimeInForceStrict,
+        userId: String,
+        userSecret: String,
+        accountId: UUID,
+        optionStrategyId: UUID,
+        price: Double? = nil
+    ) async throws -> StrategyOrderRecord {
+        let optionsPlaceOptionStrategyRequest = OptionsPlaceOptionStrategyRequest(
+            orderType: orderType,
+            timeInForce: timeInForce,
+            price: price
+        )
         return try await withCheckedThrowingContinuation { continuation in
             placeOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId, optionsPlaceOptionStrategyRequest: optionsPlaceOptionStrategyRequest).execute { result in
                 switch result {
@@ -462,10 +657,19 @@ open class OptionsAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<StrategyOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<StrategyOrderRecord>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

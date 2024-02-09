@@ -41,7 +41,32 @@ open class ErrorLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func listUserErrorsAsync(userId: String, userSecret: String) async throws -> [UserErrorLog] {
+    private class func listUserErrorsAsyncMappedParams(userId: String, userSecret: String) async throws -> [UserErrorLog] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listUserErrorsWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+    /**
+     Retrieve error logs on behalf of your SnapTrade users
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open class func listUserErrorsAsync(
+        userId: String,
+        userSecret: String
+    ) async throws -> [UserErrorLog] {
         return try await withCheckedThrowingContinuation { continuation in
             listUserErrorsWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
                 switch result {
@@ -86,10 +111,19 @@ open class ErrorLogsAPI {
             :
         ]
 
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[UserErrorLog]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<[UserErrorLog]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
 }

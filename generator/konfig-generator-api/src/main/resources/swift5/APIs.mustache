@@ -26,6 +26,9 @@ import Vapor
     {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory(){{/useURLSession}}
     {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}public{{/nonPublicApi}} static var apiResponseQueue: DispatchQueue = .main
     {{/useVapor}}
+    {{#authMethods}}
+    public static var {{nameInPascalCase}}: String?;
+    {{/authMethods}}
 }{{^useVapor}}
 
 {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class RequestBuilder<T> {
