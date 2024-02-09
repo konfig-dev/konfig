@@ -13,6 +13,9 @@ class SimpleTest: XCTestCase {
         // Set the base path to the local server http://127.0.0.1:4082
         // if running in docker, then set to http://host.docker.internal:4082
         SnapTradeAPI.basePath = isRunningInDocker() ? "http://host.docker.internal:4082" : "http://127.0.0.1:4082"
+        SnapTradeAPI.signature = "signature"
+        SnapTradeAPI.clientId = "clientId"
+        SnapTradeAPI.timestamp = "timestamp"
     }
 
     override func tearDownWithError() throws {}
@@ -31,6 +34,15 @@ class SimpleTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+
+    // func testLoginSnapTradeUser() async throws {
+    //     let response = try await AuthenticationAPI.loginSnapTradeUserAsync(userId: "1234", userSecret: "1234")
+
+    //     // print the response
+    //     print(response)
+
+    //     XCTAssertNotNil(response)
+    // }
 
     func testRegisterSnapTradeUser() async throws {
         let response = try await AuthenticationAPI.registerSnapTradeUserAsync(userId: "1234")
