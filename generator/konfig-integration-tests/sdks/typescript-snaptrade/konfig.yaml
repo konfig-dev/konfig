@@ -1,0 +1,133 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+order:
+  - tag: API Status
+  - tag: Authentication
+    operations:
+      - Authentication_registerSnapTradeUser
+      - Authentication_loginSnapTradeUser
+  - tag: Connections
+  - tag: Account Information
+    operations:
+      - path: /accounts
+        method: get
+  - tag: Trading
+    operations:
+      - Trading_getUserAccountQuotes
+      - Trading_getOrderImpact
+      - Trading_placeOrder
+      - Trading_placeForceOrder
+      - Trading_placeOCOOrder
+      - Trading_cancelUserAccountOrder
+portal:
+  title: SnapTrade
+  hideNonSdkSnippets: true
+  primaryColor: '#ebb964'
+  favicon: favicon.png
+  logo:
+    light: portal-logo-light.png
+    dark: portal-logo-dark.png
+  socials:
+    website: https://snaptrade.com
+  documentation:
+    sidebar:
+      sections:
+        - label: Guides
+          links:
+            - id: getting-started
+              path: docs/getting-started.md
+            - id: essential-functionalities
+              path: docs/essential-functionalities.md
+            - id: recommended-endpoints-to-get-started
+              path: docs/recommended-endpoints-to-get-started.md
+            - id: request-ids
+              path: docs/request-ids.md
+            - id: ratelimiting
+              path: docs/ratelimiting.md
+            - id: fix-broken-connections
+              path: docs/fix-broken-connections.md
+            - id: display-the-connection-portal-in-an-iframe
+              path: docs/display-the-connection-portal-in-an-iframe.md
+            - id: connection-messaging
+              path: docs/connection-messaging.md
+            - id: trading-with-snaptrade
+              path: docs/trading-with-snaptrade.md
+            - id: webhooks
+              path: docs/webhooks.md
+  demos:
+    - id: getting-started
+      path: demos/getting-started.md
+    - id: registering-users
+      path: demos/registering-users.md
+    - id: list-accounts
+      path: demos/list-accounts.md
+    - id: handling-user-data
+      path: demos/handling-user-data.md
+    - id: placing-trades
+      path: demos/placing-trades.md
+  hideOperations:
+    /holdings:
+      get: true
+    /accounts/{accountId}:
+      put: true
+    /sessionEvents:
+      get: true
+    /snapTrade/listUserErrors:
+      get: true
+    /brokerages:
+      get: true
+    /performance/custom:
+      get: true
+  hideSecurity:
+    - name: PartnerSignature
+    - name: PartnerTimestamp
+filterTags:
+  - Webhooks
+  - Development Tools
+  - Custom Brokerage API Credentials
+filterModels:
+  - SnapTradePartnerAPICredential
+  - WebhookBase
+  - MockSignatureResponse
+filterRequestBodies:
+  - CreateSnapTradeParterAPICredentialsRequestBody
+  - MockSignatureRequestBody
+allObjectsHaveAdditionalProperties:
+  requestBody: false
+  exclude:
+    - encryptedResponse
+    - LoginRedirectURI
+  include:
+    - PortfolioGroup
+requiredEnvironmentVariables:
+  - SNAPTRADE_CONSUMER_KEY
+  - SNAPTRADE_CLIENT_ID
+  - SNAPTRADE_TEST_USER_ID
+  - SNAPTRADE_TEST_USER_SECRET
+outputDirectory: /tmp/snaptrade-sdks-out
+infoContactName: SnapTrade
+infoContactUrl: https://snaptrade.com/
+doNotValidateGloballyRequiredSecurity: true
+tagPriority:
+  - Account Information
+readmeHeader:
+  title: SnapTrade
+  image: header.png
+  url: https://snaptrade.com
+useSecurityKeyName: true
+generators:
+  typescript:
+    version: 9.0.4
+    outputDirectory: sdks/typescript
+    clientState:
+      - consumerKey
+    apiDocumentationAuthenticationPartial: snippets/typescriptDocAuthPartial.ts
+    clientName: Snaptrade
+    useAxios0_27_2: true
+    readmeSnippet: snippets/typescript.ts
+    git:
+      host: github.com
+      userId: konfig-dev
+      repoId: snaptrade-sdks/tree/master/sdks/typescript
+    npmName: snaptrade-typescript-sdk
+specPath: api.yaml
