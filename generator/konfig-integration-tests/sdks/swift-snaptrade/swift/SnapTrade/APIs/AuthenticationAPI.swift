@@ -11,6 +11,11 @@ import AnyCodable
 #endif
 
 open class AuthenticationAPI {
+    let client: SnapTradeClient
+    
+    public init(client: SnapTradeClient) {
+        self.client = client
+    }
 
     /**
      Delete SnapTrade user
@@ -539,6 +544,32 @@ open class AuthenticationAPI {
         }
     }
 
+    /**
+     Create SnapTrade user
+     
+     - parameter snapTradeRegisterUserRequestBody: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open func registerSnapTradeUserAsync(
+        userId: String? = nil
+    ) async throws -> UserIDandSecret {
+        let snapTradeRegisterUserRequestBody = SnapTradeRegisterUserRequestBody(
+            userId: userId
+        )
+        return try await withCheckedThrowingContinuation { continuation in
+            registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: snapTradeRegisterUserRequestBody).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
 
     /**
      Create SnapTrade user
@@ -572,6 +603,48 @@ open class AuthenticationAPI {
             try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
             try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
             try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<UserIDandSecret>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
+
+    }
+
+    /**
+     Create SnapTrade user
+     - POST /snapTrade/registerUser
+     - API Key:
+       - type: apiKey clientId (QUERY)
+       - name: PartnerClientId
+     - API Key:
+       - type: apiKey Signature 
+       - name: PartnerSignature
+     - API Key:
+       - type: apiKey timestamp (QUERY)
+       - name: PartnerTimestamp
+     - parameter snapTradeRegisterUserRequestBody: (body)  
+     - returns: RequestBuilder<UserIDandSecret> 
+     */
+    open func registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: SnapTradeRegisterUserRequestBody) -> RequestBuilder<UserIDandSecret> {
+        let localVariablePath = "/snapTrade/registerUser"
+        let localVariableURLString = SnapTradeAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: snapTradeRegisterUserRequestBody)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: self.client.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: self.client.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: self.client.partnerTimestamp)
             let localVariableRequestBuilder: RequestBuilder<UserIDandSecret>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -667,6 +740,33 @@ open class AuthenticationAPI {
      - returns: RequestBuilder<UserIDandSecret> 
      */
     open class func resetSnapTradeUserSecretWithRequestBuilder(userIDandSecret: UserIDandSecret) -> RequestBuilder<UserIDandSecret> {
+        let localVariablePath = "/snapTrade/resetUserSecret"
+        let localVariableURLString = SnapTradeAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: userIDandSecret)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: SnapTradeAPI.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: SnapTradeAPI.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: SnapTradeAPI.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<UserIDandSecret>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
+
+    }
+
+    open func resetSnapTradeUserSecretWithRequestBuilder(userIDandSecret: UserIDandSecret) -> RequestBuilder<UserIDandSecret> {
         let localVariablePath = "/snapTrade/resetUserSecret"
         let localVariableURLString = SnapTradeAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: userIDandSecret)
