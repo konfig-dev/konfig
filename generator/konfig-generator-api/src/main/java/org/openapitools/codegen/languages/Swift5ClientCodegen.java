@@ -545,6 +545,9 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
         additionalProperties.put("apiDocPath", apiDocPath);
         additionalProperties.put("modelDocPath", modelDocPath);
 
+        supportingFiles.add(new SupportingFile("Authentication.mustache",
+                sourceFolder,
+                "Authentication.swift"));
         if (!getLibrary().equals(LIBRARY_VAPOR)) {
             supportingFiles.add(new SupportingFile("Podspec.mustache",
                     "",
