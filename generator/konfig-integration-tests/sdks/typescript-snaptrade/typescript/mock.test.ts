@@ -8,8 +8,8 @@ describe("trailing slash is stripped", () => {
 
     // Call your function
     await new Snaptrade({
-      consumerKey: process.env.SNAPTRADE_CONSUMER_KEY,
-      clientId: process.env.SNAPTRADE_CLIENT_ID,
+      consumerKey: process.env.SNAPTRADE_CONSUMER_KEY ?? "dummy_key",
+      clientId: process.env.SNAPTRADE_CLIENT_ID ?? "dummy_id",
       basePath: "http://localhost:3000/api/proxy",
     }).apiStatus.check();
 
