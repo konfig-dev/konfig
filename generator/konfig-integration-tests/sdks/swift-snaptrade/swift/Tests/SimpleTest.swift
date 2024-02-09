@@ -3,16 +3,9 @@
 import XCTest
 
 
-func isRunningInDocker() -> Bool {
-    let fileManager = FileManager.default
-    return fileManager.fileExists(atPath: "/.dockerenv")
-}
-
 class SimpleTest: XCTestCase {
     override func setUpWithError() throws {
-        // Set the base path to the local server http://127.0.0.1:4082
-        // if running in docker, then set to http://host.docker.internal:4082
-        SnapTradeAPI.basePath = isRunningInDocker() ? "http://host.docker.internal:4082" : "http://127.0.0.1:4082"
+        SnapTradeAPI.basePath = "http://127.0.0.1:4082"
         SnapTradeAPI.partnerSignature = "signature"
         SnapTradeAPI.partnerClientId = "clientId"
         SnapTradeAPI.partnerTimestamp = "timestamp"
