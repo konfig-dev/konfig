@@ -630,7 +630,7 @@ open class AuthenticationAPI {
      */
     open func registerSnapTradeUserWithRequestBuilder(snapTradeRegisterUserRequestBody: SnapTradeRegisterUserRequestBody) -> RequestBuilder<UserIDandSecret> {
         let localVariablePath = "/snapTrade/registerUser"
-        let localVariableURLString = SnapTradeAPI.basePath + localVariablePath
+        let localVariableURLString = self.client.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: snapTradeRegisterUserRequestBody)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
