@@ -20,7 +20,6 @@ export async function isSubmodule({
    */
   directory?: string
 }): Promise<boolean> {
-  console.log(configDir)
   if (directory !== undefined) {
     /**
      * This should be a more robust implementation that doesn't rely on origin
