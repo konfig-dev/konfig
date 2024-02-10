@@ -3,502 +3,502 @@ examples_2: {}
 examples_3: {}
 operationIds:
   /access-tokens/{accessTokens}:
-    get: Core_readAccessTokens
+    get: AccessToken_listPropertiesForMultipleTokens
   /access-tokens/{accessTokens}/invalidate:
-    get: Core_expireAccessTokens
+    get: AccessToken_invalidateList
   /answers:
-    get: Core_getUndeletedAnswers
+    get: Answer_getList
   /answers/{ids}:
-    get: Core_getAnswersByIds
+    get: Answer_getListByIds
   /answers/{ids}/comments:
-    get: Core_getCommentsOnAnswers
+    get: Answer_getCommentsByIds
   /apps/{accessTokens}/de-authenticate:
-    get: Core_deauthenticateAccessTokens
+    get: AccessToken_deauthenticateList
   /badges:
-    get: Core_listBadges
+    get: Badge_listBadges
   /badges/name:
-    get: Core_getAllExplicitNamedBadges
+    get: Badge_getAllNamedBadges
   /badges/recipients:
-    get: Core_listRecentAwardedBadges
+    get: Badge_getRecentAwardedBadges
   /badges/tags:
-    get: Core_listBadgeTags
+    get: Badge_listTagsBadges
   /badges/{ids}:
-    get: Core_getBadgesByIds
+    get: Badge_getBadgesByIds
   /badges/{ids}/recipients:
-    get: Core_getRecentAwardedBadgesByIds
+    get: Badge_getRecentAwardedRecipients
   /comments:
-    get: Core_getCommentList
+    get: Comment_listComments
   /comments/{ids}:
-    get: Core_getCommentsByIds
+    get: Comment_getCommentsByIds
   /comments/{id}/delete:
-    post: Core_deleteCommentById
+    post: Comment_deleteAction
   /comments/{id}/edit:
-    post: Core_updateComment
+    post: Comment_editExisting
   /errors:
-    get: Core_getErrorList
+    get: Error_listErrors
   /errors/{id}:
-    get: Core_generateError
+    get: Error_generateError
   /events:
-    get: Core_listEvents
+    get: Event_listEvents
   /filters/create:
-    get: Core_createFilter
+    get: Filter_createFilter
   /filters/{filters}:
-    get: Core_getFilters
+    get: Filter_getFilterDetailsByIds
   /inbox:
-    get: Core_getInboxItems
+    get: Message_listInboxItems
   /inbox/unread:
-    get: Core_getUnreadInboxItems
+    get: Message_getUnreadItems
   /info:
-    get: Core_getSiteInfo
+    get: Information_getStatistics
   /me:
-    get: Core_getUser
+    get: User_getUser
   /me/answers:
-    get: Core_getUserAnswers
+    get: Answer_getUserAnswersList
   /me/associated:
-    get: Core_listAssociatedAccounts
+    get: Associated_getUserAccounts
   /me/badges:
-    get: Core_getUserBadges
+    get: Badge_getUserBadges
   /me/comments:
-    get: Core_getUserComments
+    get: Comment_listOwnedComments
   /me/comments/{toId}:
-    get: Core_getUserComments
+    get: Comment_getReplyList
   /me/favorites:
-    get: Core_getUserFavorites
+    get: Favorite_getUserFavorites
   /me/inbox:
-    get: Core_getInboxItems
+    get: Message_getInboxItems
   /me/inbox/unread:
-    get: Core_getUnreadInboxItems
+    get: Notification_getUnreadItemsInInbox
   /me/mentioned:
-    get: Core_getMentionedComments
+    get: Mention_userCommentsList
   /me/merges:
-    get: Core_getAccountMerges
+    get: Merge_getAccountMergeList
   /me/notifications:
-    get: Core_getUserNotifications
+    get: Notification_getUserNotificationsList
   /me/notifications/unread:
-    get: Core_getUserUnreadNotifications
+    get: Notification_getUnreadItemsInInbox
   /me/privileges:
-    get: Core_getUserPrivileges
+    get: Privilege_getUserPrivileges
   /me/questions:
-    get: Core_getUserQuestions
+    get: Question_getUserQuestionsList
   /me/questions/featured:
-    get: Core_getFeaturedQuestions
+    get: Question_getUserFeatured
   /me/questions/no-answers:
-    get: Core_listUnansweredQuestions
+    get: Answer_listNoAnswerQuestions
   /me/questions/unaccepted:
-    get: Core_getUnacceptedQuestions
+    get: Question_getUnacceptedList
   /me/questions/unanswered:
-    get: Core_listUnansweredQuestions
+    get: Answer_userUnansweredQuestionsGet
   /me/reputation:
-    get: Core_getUserReputationChanges
+    get: Reputation_getUserReputationChanges
   /me/reputation-history:
-    get: Core_getUserReputationHistory
+    get: Reputation_getUserReputationHistory
   /me/reputation-history/full:
-    get: Core_getUserReputationHistory
+    get: Reputation_getFullHistory
   /me/suggested-edits:
-    get: Core_getUserSuggestedEdits
+    get: Edit_getUserSuggestedEdits
   /me/tags:
-    get: Core_getUserTagsList
+    get: Tag_getUserTagsList
   /me/tags/{tags}/top-answers:
-    get: Core_getUserTopAnswers
+    get: Answer_getUserTopAnswers
   /me/tags/{tags}/top-questions:
-    get: Core_getUserTopQuestionsByTags
+    get: Tag_getUserTopQuestions
   /me/timeline:
-    get: Core_getUserTimeline
+    get: Timeline_getUserTimeline
   /me/top-answer-tags:
-    get: Core_getUserTopAnswerTags
+    get: Answer_getUserTopTags
   /me/top-question-tags:
-    get: Core_getUserTopQuestionTags
+    get: Tag_getUserTopTagsList
   /me/write-permissions:
-    get: Core_getUserWritePermissions
+    get: Permission_getUserWritePermissions
   /notifications:
-    get: Core_getUserNotifications
+    get: Notification_getUserNotifications
   /notifications/unread:
-    get: Core_getUserUnreadNotifications
+    get: Notification_getUserUnreadNotifications
   /posts:
-    get: Core_listPosts
+    get: Post_getAllPosts
   /posts/{ids}:
-    get: Core_getPostsByIds
+    get: Post_getPostsByIds
   /posts/{ids}/comments:
-    get: Core_getCommentsByIds
+    get: Post_commentsByIdsGet
   /posts/{ids}/revisions:
-    get: Core_getPostRevisions
+    get: Post_getPostRevisionsByIds
   /posts/{ids}/suggested-edits:
-    get: Core_listSuggestedEdits
+    get: Post_listSuggestedEdits
   /posts/{id}/comments/add:
-    post: Core_createNewComment
+    post: Post_addComment
   /privileges:
-    get: Core_listPrivileges
+    get: Privilege_getEarnableList
   /questions:
-    get: Core_listQuestions
+    get: Question_getAllQuestions
   /questions/featured:
-    get: Core_getFeaturedQuestions
+    get: Question_listFeaturedQuestions
   /questions/no-answers:
-    get: Core_getUnansweredQuestions
+    get: Answer_listNoAnswerQuestions
   /questions/unanswered:
-    get: Core_listUnansweredQuestions
+    get: Answer_getListOfUnansweredQuestions
   /questions/{ids}:
-    get: Core_getQuestionListByIds
+    get: Question_getByIds
   /questions/{ids}/answers:
-    get: Core_getQuestionAnswers
+    get: Answer_getListByQuestionIds
   /questions/{ids}/comments:
-    get: Core_getQuestionCommentsList
+    get: Comment_getCommentsList
   /questions/{ids}/linked:
-    get: Core_getLinkedQuestionsList
+    get: Question_getLinkedQuestions
   /questions/{ids}/related:
-    get: Core_getRelatedQuestions
+    get: Question_listRelatedQuestions
   /questions/{ids}/timeline:
-    get: Core_getQuestionTimelineEvents
+    get: Question_getTimelineEvents
   /revisions/{ids}:
-    get: Core_getEditRevisionsByIds
+    get: Revision_listRevisionsByIds
   /search:
-    get: Core_searchQuestions
+    get: Query_siteQuestionsSearch
   /search/advanced:
-    get: Core_searchAdvancedQuestions
+    get: Search_siteQuestionsAdvancedSearch
   /similar:
-    get: Core_getSimilarQuestions
+    get: Query_similarQuestionsSearch
   /sites:
-    get: Core_getSiteList
+    get: Site_listSites
   /suggested-edits:
-    get: Core_getSuggestedEdits
+    get: Edit_listSuggestedEdits
   /suggested-edits/{ids}:
-    get: Core_getSuggestedEditsByIds
+    get: Edit_listSuggestedEdits
   /tags:
-    get: Core_getTagList
+    get: Information_getTagsList
   /tags/moderator-only:
-    get: Core_getModeratorTagsList
+    get: Tag_getModeratorOnlyTagsList
   /tags/required:
-    get: Core_listRequiredTags
+    get: Tag_listRequiredTags
   /tags/synonyms:
-    get: Core_listTagSynonyms
+    get: Tag_synonymsList
   /tags/{tags}/faq:
-    get: Core_getFrequentlyAskedQuestions
+    get: Tag_getFaqQuestions
   /tags/{tags}/info:
-    get: Core_getTagInfo
+    get: Tag_getTagInfo
   /tags/{tags}/related:
-    get: Core_getRelatedTags
+    get: Tag_getRelatedTags
   /tags/{tags}/synonyms:
-    get: Core_getTagSynonymsList
+    get: Tag_listSynonyms
   /tags/{tags}/wikis:
-    get: Core_getTagWikis
+    get: Tag_getTagWikis
   /tags/{tag}/top-answerers/{period}:
-    get: Core_getTopAnswerersByTag
+    get: Answer_tagTopAnswerers
   /tags/{tag}/top-askers/{period}:
-    get: Core_getTopAskersByTag
+    get: Tag_getTopAskersByPeriod
   /users:
-    get: Core_listAllUsers
+    get: User_listUsers
   /users/moderators:
-    get: Core_getModeratorsList
+    get: User_listModeratorUsers
   /users/moderators/elected:
-    get: Core_getElectedModerators
+    get: User_listElectedModeratorUsers
   /users/{ids}:
-    get: Core_getUserListByIds
+    get: User_getUserProfilesByIds
   /users/{ids}/answers:
-    get: Core_getUserAnswers
+    get: User_getUserAnswersList
   /users/{ids}/associated:
-    get: Core_listAssociatedAccounts
+    get: User_getAssociatedAccounts
   /users/{ids}/badges:
-    get: Core_listUserBadges
+    get: User_listUserBadges
   /users/{ids}/comments:
-    get: Core_listUserComments
+    get: User_getCommentsByIds
   /users/{ids}/comments/{toid}:
-    get: Core_getCommentsByUsersAndTargetUser
+    get: User_getUserCommentsByIdsAndToid
   /users/{ids}/favorites:
-    get: Core_getUserFavorites
+    get: User_getFavoritesList
   /users/{ids}/mentioned:
-    get: Core_getUserMentionedComments
+    get: User_mentionedCommentsList
   /users/{ids}/merges:
-    get: Core_getUserAccountMerges
+    get: User_listAccountMerges
   /users/{ids}/questions:
-    get: Core_getUserQuestionsByIds
+    get: User_getQuestionsByUserIds
   /users/{ids}/questions/featured:
-    get: Core_getUserFeaturedQuestions
+    get: User_getFeaturedQuestions
   /users/{ids}/questions/no-answers:
-    get: Core_getQuestionsNoAnswers
+    get: User_listNoAnswerQuestions
   /users/{ids}/questions/unaccepted:
-    get: Core_getUnacceptedQuestions
+    get: User_getUnacceptedQuestions
   /users/{ids}/questions/unanswered:
-    get: Core_listUnansweredQuestionsByIds
+    get: User_getUnansweredQuestions
   /users/{ids}/reputation:
-    get: Core_getUserReputationSubset
+    get: User_getReputationChanges
   /users/{ids}/reputation-history:
-    get: Core_getUserReputationHistoryList
+    get: User_getReputationHistory
   /users/{ids}/suggested-edits:
-    get: Core_getUserSuggestedEditsList
+    get: User_getSuggestedEditsByIds
   /users/{ids}/tags:
-    get: Core_getUserTagsList
+    get: User_getTags
   /users/{ids}/timeline:
-    get: Core_getUserTimeline
+    get: User_getUserTimelineByIds
   /users/{id}/inbox:
-    get: Core_listUserInboxItems
+    get: User_getInboxItems
   /users/{id}/inbox/unread:
-    get: Core_getUserInboxUnreadItems
+    get: User_getInboxUnread
   /users/{id}/notifications:
-    get: Core_getUserNotifications
+    get: User_getNotificationsList
   /users/{id}/notifications/unread:
-    get: Core_getUserUnreadNotificationsList
+    get: User_getUnreadNotifications
   /users/{id}/privileges:
-    get: Core_getUserPrivilegesList
+    get: User_getPrivilegesList
   /users/{id}/reputation-history/full:
-    get: Core_getUserReputationHistoryFull
+    get: User_getFullReputationHistory
   /users/{id}/tags/{tags}/top-answers:
-    get: Core_getUserTopAnswersByTags
+    get: User_getUserTopAnswers
   /users/{id}/tags/{tags}/top-questions:
-    get: Core_getUserTopQuestionsByTags
+    get: User_getTopQuestionsByTags
   /users/{id}/top-answer-tags:
-    get: Core_getUserTopAnswerTags
+    get: User_getUserTopAnswerTags
   /users/{id}/top-question-tags:
-    get: Core_getUserTopQuestionTags
+    get: User_getTopQuestionTags
   /users/{id}/write-permissions:
-    get: Core_getUserWritePermissions
+    get: User_getWritePermissions
 operationTags:
   /access-tokens/{accessTokens}:
-    get: core
+    get: AccessToken
   /access-tokens/{accessTokens}/invalidate:
-    get: core
+    get: AccessToken
   /answers:
-    get: core
+    get: Answer
   /answers/{ids}:
-    get: core
+    get: Answer
   /answers/{ids}/comments:
-    get: core
+    get: Answer
   /apps/{accessTokens}/de-authenticate:
-    get: core
+    get: AccessToken
   /badges:
-    get: core
+    get: Badge
   /badges/name:
-    get: core
+    get: Badge
   /badges/recipients:
-    get: core
+    get: Badge
   /badges/tags:
-    get: core
+    get: Badge
   /badges/{ids}:
-    get: core
+    get: Badge
   /badges/{ids}/recipients:
-    get: core
+    get: Badge
   /comments:
-    get: core
+    get: Comment
   /comments/{ids}:
-    get: core
+    get: Comment
   /comments/{id}/delete:
-    post: core
+    post: Comment
   /comments/{id}/edit:
-    post: core
+    post: Comment
   /errors:
-    get: core
+    get: Error
   /errors/{id}:
-    get: core
+    get: Error
   /events:
-    get: core
+    get: Event
   /filters/create:
-    get: core
+    get: Filter
   /filters/{filters}:
-    get: core
+    get: Filter
   /inbox:
-    get: core
+    get: Message
   /inbox/unread:
-    get: core
+    get: Message
   /info:
-    get: core
+    get: Information
   /me:
-    get: core
+    get: User
   /me/answers:
-    get: core
+    get: Answer
   /me/associated:
-    get: core
+    get: Associated
   /me/badges:
-    get: core
+    get: Badge
   /me/comments:
-    get: core
+    get: Comment
   /me/comments/{toId}:
-    get: core
+    get: Comment
   /me/favorites:
-    get: core
+    get: Favorite
   /me/inbox:
-    get: core
+    get: Message
   /me/inbox/unread:
-    get: core
+    get: Notification
   /me/mentioned:
-    get: core
+    get: Mention
   /me/merges:
-    get: core
+    get: Merge
   /me/notifications:
-    get: core
+    get: Notification
   /me/notifications/unread:
-    get: core
+    get: Notification
   /me/privileges:
-    get: core
+    get: Privilege
   /me/questions:
-    get: core
+    get: Question
   /me/questions/featured:
-    get: core
+    get: Question
   /me/questions/no-answers:
-    get: core
+    get: Answer
   /me/questions/unaccepted:
-    get: core
+    get: Question
   /me/questions/unanswered:
-    get: core
+    get: Answer
   /me/reputation:
-    get: core
+    get: Reputation
   /me/reputation-history:
-    get: core
+    get: Reputation
   /me/reputation-history/full:
-    get: core
+    get: Reputation
   /me/suggested-edits:
-    get: core
+    get: Edit
   /me/tags:
-    get: core
+    get: Tag
   /me/tags/{tags}/top-answers:
-    get: core
+    get: Answer
   /me/tags/{tags}/top-questions:
-    get: core
+    get: Tag
   /me/timeline:
-    get: core
+    get: Timeline
   /me/top-answer-tags:
-    get: core
+    get: Answer
   /me/top-question-tags:
-    get: core
+    get: Tag
   /me/write-permissions:
-    get: core
+    get: Permission
   /notifications:
-    get: core
+    get: Notification
   /notifications/unread:
-    get: core
+    get: Notification
   /posts:
-    get: core
+    get: Post
   /posts/{ids}:
-    get: core
+    get: Post
   /posts/{ids}/comments:
-    get: core
+    get: Post
   /posts/{ids}/revisions:
-    get: core
+    get: Post
   /posts/{ids}/suggested-edits:
-    get: core
+    get: Post
   /posts/{id}/comments/add:
-    post: core
+    post: Post
   /privileges:
-    get: core
+    get: Privilege
   /questions:
-    get: core
+    get: Question
   /questions/featured:
-    get: core
+    get: Question
   /questions/no-answers:
-    get: core
+    get: Answer
   /questions/unanswered:
-    get: core
+    get: Answer
   /questions/{ids}:
-    get: core
+    get: Question
   /questions/{ids}/answers:
-    get: core
+    get: Answer
   /questions/{ids}/comments:
-    get: core
+    get: Comment
   /questions/{ids}/linked:
-    get: core
+    get: Question
   /questions/{ids}/related:
-    get: core
+    get: Question
   /questions/{ids}/timeline:
-    get: core
+    get: Question
   /revisions/{ids}:
-    get: core
+    get: Revision
   /search:
-    get: core
+    get: Query
   /search/advanced:
-    get: core
+    get: Search
   /similar:
-    get: core
+    get: Query
   /sites:
-    get: core
+    get: Site
   /suggested-edits:
-    get: core
+    get: Edit
   /suggested-edits/{ids}:
-    get: core
+    get: Edit
   /tags:
-    get: core
+    get: Information
   /tags/moderator-only:
-    get: core
+    get: Tag
   /tags/required:
-    get: core
+    get: Tag
   /tags/synonyms:
-    get: core
+    get: Tag
   /tags/{tags}/faq:
-    get: core
+    get: Tag
   /tags/{tags}/info:
-    get: core
+    get: Tag
   /tags/{tags}/related:
-    get: core
+    get: Tag
   /tags/{tags}/synonyms:
-    get: core
+    get: Tag
   /tags/{tags}/wikis:
-    get: core
+    get: Tag
   /tags/{tag}/top-answerers/{period}:
-    get: core
+    get: Answer
   /tags/{tag}/top-askers/{period}:
-    get: core
+    get: Tag
   /users:
-    get: core
+    get: User
   /users/moderators:
-    get: core
+    get: User
   /users/moderators/elected:
-    get: core
+    get: User
   /users/{ids}:
-    get: core
+    get: User
   /users/{ids}/answers:
-    get: core
+    get: User
   /users/{ids}/associated:
-    get: core
+    get: User
   /users/{ids}/badges:
-    get: core
+    get: User
   /users/{ids}/comments:
-    get: core
+    get: User
   /users/{ids}/comments/{toid}:
-    get: core
+    get: User
   /users/{ids}/favorites:
-    get: core
+    get: User
   /users/{ids}/mentioned:
-    get: core
+    get: User
   /users/{ids}/merges:
-    get: core
+    get: User
   /users/{ids}/questions:
-    get: core
+    get: User
   /users/{ids}/questions/featured:
-    get: core
+    get: User
   /users/{ids}/questions/no-answers:
-    get: core
+    get: User
   /users/{ids}/questions/unaccepted:
-    get: core
+    get: User
   /users/{ids}/questions/unanswered:
-    get: core
+    get: User
   /users/{ids}/reputation:
-    get: core
+    get: User
   /users/{ids}/reputation-history:
-    get: core
+    get: User
   /users/{ids}/suggested-edits:
-    get: core
+    get: User
   /users/{ids}/tags:
-    get: core
+    get: User
   /users/{ids}/timeline:
-    get: core
+    get: User
   /users/{id}/inbox:
-    get: core
+    get: User
   /users/{id}/inbox/unread:
-    get: core
+    get: User
   /users/{id}/notifications:
-    get: core
+    get: User
   /users/{id}/notifications/unread:
-    get: core
+    get: User
   /users/{id}/privileges:
-    get: core
+    get: User
   /users/{id}/reputation-history/full:
-    get: core
+    get: User
   /users/{id}/tags/{tags}/top-answers:
-    get: core
+    get: User
   /users/{id}/tags/{tags}/top-questions:
-    get: core
+    get: User
   /users/{id}/top-answer-tags:
-    get: core
+    get: User
   /users/{id}/top-question-tags:
-    get: core
+    get: User
   /users/{id}/write-permissions:
-    get: core
+    get: User
 renameTags: {}
 requestSchemaNames: {}
 responseDescriptions: {}

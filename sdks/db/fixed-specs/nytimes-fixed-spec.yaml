@@ -92,14 +92,15 @@ info:
 servers:
   - url: https://api.nytimes.com/svc/books/v3
 tags:
-  - name: core
+  - name: List
+  - name: Review
 paths:
   /lists.json:
     get:
       tags:
-        - core
+        - List
       summary: Best Sellers List
-      operationId: Core_getBestSellersList
+      operationId: List_getBestSellers
       security:
         - api-key: []
       description: Get Best Sellers list.  If no date is provided returns the latest list.
@@ -159,7 +160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CoreGetBestSellersListResponse'
+                $ref: '#/components/schemas/ListGetBestSellersResponse'
               examples:
                 response:
                   value:
@@ -205,9 +206,9 @@ paths:
   /lists/{date}/{list}.json:
     get:
       tags:
-        - core
+        - List
       summary: Best Sellers List by Date
-      operationId: Core_getBestSellersByDate
+      operationId: List_getByDate
       security:
         - api-key: []
       description: Get Best Sellers list by date.
@@ -247,7 +248,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CoreGetBestSellersByDateResponse'
+                $ref: '#/components/schemas/ListGetByDateResponse'
               examples:
                 response:
                   value:
@@ -297,9 +298,9 @@ paths:
   /lists/full-overview.json:
     get:
       tags:
-        - core
+        - List
       summary: Best Sellers List Full Overview
-      operationId: Core_getBestSellersByDate
+      operationId: List_getAllBestSellers
       security:
         - api-key: []
       description: Get all books for all the Best Sellers lists for specified date.
@@ -334,9 +335,9 @@ paths:
   /lists/overview.json:
     get:
       tags:
-        - core
+        - List
       summary: Best Sellers List Overview
-      operationId: Core_getBestSellersOverview
+      operationId: List_getBestSellersOverview
       security:
         - api-key: []
       description: Get top 5 books for all the Best Sellers lists for specified date.
@@ -408,9 +409,9 @@ paths:
   /lists/names.json:
     get:
       tags:
-        - core
+        - List
       summary: Best Sellers List Names
-      operationId: Core_getBestSellersListNames
+      operationId: List_getNames
       security:
         - api-key: []
       description: Get Best Sellers list names.
@@ -420,7 +421,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CoreGetBestSellersListNamesResponse'
+                $ref: '#/components/schemas/ListGetNamesResponse'
               examples:
                 response:
                   value:
@@ -439,9 +440,9 @@ paths:
   /lists/best-sellers/history.json:
     get:
       tags:
-        - core
+        - List
       summary: Best Sellers List History
-      operationId: Core_getBestSellersHistory
+      operationId: List_getHistory
       security:
         - api-key: []
       description: Get Best Sellers list history.
@@ -532,7 +533,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CoreGetBestSellersHistoryResponse'
+                $ref: '#/components/schemas/ListGetHistoryResponse'
               examples:
                 response:
                   value:
@@ -573,9 +574,9 @@ paths:
   /reviews.json:
     get:
       tags:
-        - core
+        - Review
       summary: Reviews
-      operationId: Core_getBookReviews
+      operationId: Review_getBookReviews
       security:
         - api-key: []
       description: Get book reviews.
@@ -607,7 +608,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CoreGetBookReviewsResponse'
+                $ref: '#/components/schemas/ReviewGetBookReviewsResponse'
               examples:
                 response:
                   value:
@@ -697,7 +698,7 @@ components:
                           type: integer
                         updated_date:
                           type: string
-    CoreGetBestSellersListResponse:
+    ListGetBestSellersResponse:
       type: object
       properties:
         status:
@@ -780,7 +781,7 @@ components:
                       type: string
                     article_chapter_link:
                       type: string
-    CoreGetBestSellersByDateResponse:
+    ListGetByDateResponse:
       type: object
       properties:
         status:
@@ -867,7 +868,7 @@ components:
               items:
                 type: object
                 properties: {}
-    CoreGetBestSellersListNamesResponse:
+    ListGetNamesResponse:
       type: object
       properties:
         status:
@@ -896,7 +897,7 @@ components:
                 enum:
                   - WEEKLY
                   - MONTHLY
-    CoreGetBestSellersHistoryResponse:
+    ListGetHistoryResponse:
       type: object
       properties:
         status:
@@ -975,7 +976,7 @@ components:
                       type: string
                     article_chapter_link:
                       type: string
-    CoreGetBookReviewsResponse:
+    ReviewGetBookReviewsResponse:
       type: object
       properties:
         status:

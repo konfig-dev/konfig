@@ -6,238 +6,238 @@ ignoreObjectsWithNoProperties: true
 ignorePotentialIncorrectType: true
 operationIds:
   /v1/blocks/{block_id}:
-    delete: Core_removeBlock
-    get: Core_getBlock
-    patch: Core_updateBlock
+    delete: Block_removeBlockById
+    get: Block_getDetails
+    patch: Block_updateBlockById
   /v1/blocks/{block_id}/children:
-    get: Core_getBlockChildren
-    patch: Core_appendBlockChildren
+    get: Block_getChildren
+    patch: Block_appendChildren
   /v1/comments:
-    get: Core_getComments
-    post: Core_createComment
+    get: Comment_getList
+    post: Comment_createNew
   /v1/databases:
-    post: Core_createDatabase
+    post: Database_createNewDatabase
   /v1/databases/{database_id}:
-    get: Core_getDatabase
-    patch: Core_updateDatabase
+    get: Database_getDatabase
+    patch: Database_updateDatabase
   /v1/databases/{database_id}/query:
-    post: Core_queryDatabase
+    post: Database_executeQuery
   /v1/oauth/token:
-    post: Core_createToken
+    post: Token_generateAccess
   /v1/pages:
-    post: Core_createPage
+    post: Page_createNewPage
   /v1/pages/{page_id}:
-    get: Core_getPage
-    patch: Core_updatePageProperties
+    get: Page_getPage
+    patch: Page_updateProperties
   /v1/pages/{page_id}/properties/{property_id}:
-    get: Core_getPagePropertyItem
+    get: Page_getPropertyItem
   /v1/search:
-    post: Core_searchByTitle
+    post: Search_byTitle
   /v1/users:
-    get: Core_listUsers
+    get: User_listAllUsers
   /v1/users/me:
-    get: Core_getTokenBotUser
+    get: User_getTokenBotUser
   /v1/users/{user_id}:
-    get: Core_getUser
+    get: User_getUserById
 operationTags:
   /v1/blocks/{block_id}:
-    delete: core
-    get: core
-    patch: core
+    delete: Block
+    get: Block
+    patch: Block
   /v1/blocks/{block_id}/children:
-    get: core
-    patch: core
+    get: Block
+    patch: Block
   /v1/comments:
-    get: core
-    post: core
+    get: Comment
+    post: Comment
   /v1/databases:
-    post: core
+    post: Database
   /v1/databases/{database_id}:
-    get: core
-    patch: core
+    get: Database
+    patch: Database
   /v1/databases/{database_id}/query:
-    post: core
+    post: Database
   /v1/oauth/token:
-    post: core
+    post: Token
   /v1/pages:
-    post: core
+    post: Page
   /v1/pages/{page_id}:
-    get: core
-    patch: core
+    get: Page
+    patch: Page
   /v1/pages/{page_id}/properties/{property_id}:
-    get: core
+    get: Page
   /v1/search:
-    post: core
+    post: Search
   /v1/users:
-    get: core
+    get: User
   /v1/users/me:
-    get: core
+    get: User
   /v1/users/{user_id}:
-    get: core
+    get: User
 renameTags: {}
 requestSchemaNames:
   /v1/blocks/{block_id}:
     patch:
-      application/json: CoreUpdateBlockRequest
+      application/json: BlockUpdateBlockByIdRequest
   /v1/blocks/{block_id}/children:
     patch:
-      application/json: CoreAppendBlockChildrenRequest
+      application/json: BlockAppendChildrenRequest
   /v1/comments:
     post:
-      application/json: CoreCreateCommentRequest
+      application/json: CommentCreateNewRequest
   /v1/databases:
     post:
-      application/json: CoreCreateDatabaseRequest
+      application/json: DatabaseCreateNewDatabaseRequest
   /v1/databases/{database_id}:
     patch:
-      application/json: CoreUpdateDatabaseRequest
+      application/json: DatabaseUpdateDatabaseRequest
   /v1/databases/{database_id}/query:
     post:
-      application/json: CoreQueryDatabaseRequest
+      application/json: DatabaseExecuteQueryRequest
   /v1/oauth/token:
     post:
-      application/json: CoreCreateTokenRequest
+      application/json: TokenGenerateAccessRequest
   /v1/pages:
     post:
-      application/json: CoreCreatePageRequest
+      application/json: PageCreateNewPageRequest
   /v1/pages/{page_id}:
     patch:
-      application/json: CoreUpdatePagePropertiesRequest
+      application/json: PageUpdatePropertiesRequest
   /v1/search:
     post:
-      application/json: CoreSearchByTitleRequest
+      application/json: SearchByTitleRequest
 responseDescriptions: {}
 responseSchemaNames:
   /v1/blocks/{block_id}:
     delete:
       '200':
-        application/json: CoreRemoveBlockResponse
+        application/json: BlockRemoveBlockByIdResponse
       '400':
-        application/json: CoreRemoveBlock400Response
+        application/json: BlockRemoveBlockById400Response
     get:
       '200':
-        application/json: CoreGetBlockResponse
+        application/json: BlockGetDetailsResponse
       '400':
-        application/json: CoreGetBlock400Response
+        application/json: BlockGetDetails400Response
     patch:
       '200':
-        application/json: CoreUpdateBlockResponse
+        application/json: BlockUpdateBlockByIdResponse
       '400':
-        application/json: CoreUpdateBlock400Response
+        application/json: BlockUpdateBlockById400Response
   /v1/blocks/{block_id}/children:
     get:
       '200':
-        application/json: CoreGetBlockChildrenResponse
+        application/json: BlockGetChildrenResponse
       '400':
-        application/json: CoreGetBlockChildren400Response
+        application/json: BlockGetChildren400Response
     patch:
       '200':
-        application/json: CoreAppendBlockChildrenResponse
+        application/json: BlockAppendChildrenResponse
       '400':
-        application/json: CoreAppendBlockChildren400Response
+        application/json: BlockAppendChildren400Response
   /v1/comments:
     get:
       '200':
-        application/json: CoreGetCommentsResponse
+        application/json: CommentGetListResponse
       '403':
-        application/json: CoreGetComments403Response
+        application/json: CommentGetList403Response
     post:
       '200':
-        application/json: CoreCreateCommentResponse
+        application/json: CommentCreateNewResponse
       '403':
-        application/json: CoreCreateComment403Response
+        application/json: CommentCreateNew403Response
   /v1/databases:
     post:
       '200':
-        application/json: CoreCreateDatabaseResponse
+        application/json: DatabaseCreateNewDatabaseResponse
       '400':
-        application/json: CoreCreateDatabase400Response
+        application/json: DatabaseCreateNewDatabase400Response
   /v1/databases/{database_id}:
     get:
       '200':
-        application/json: CoreGetDatabaseResponse
+        application/json: DatabaseGetDatabaseResponse
       '400':
-        application/json: CoreGetDatabase400Response
+        application/json: DatabaseGetDatabase400Response
       '404':
-        application/json: CoreGetDatabase404Response
+        application/json: DatabaseGetDatabase404Response
       '429':
-        application/json: CoreGetDatabase429Response
+        application/json: DatabaseGetDatabase429Response
     patch:
       '200':
-        application/json: CoreUpdateDatabaseResponse
+        application/json: DatabaseUpdateDatabaseResponse
       '400':
-        application/json: CoreUpdateDatabase400Response
+        application/json: DatabaseUpdateDatabase400Response
       '404':
-        application/json: CoreUpdateDatabase404Response
+        application/json: DatabaseUpdateDatabase404Response
       '429':
-        application/json: CoreUpdateDatabase429Response
+        application/json: DatabaseUpdateDatabase429Response
   /v1/databases/{database_id}/query:
     post:
       '200':
-        application/json: CoreQueryDatabaseResponse
+        application/json: DatabaseExecuteQueryResponse
       '400':
-        application/json: CoreQueryDatabase400Response
+        application/json: DatabaseExecuteQuery400Response
   /v1/oauth/token:
     post:
       '200':
-        application/json: CoreCreateTokenResponse
+        application/json: TokenGenerateAccessResponse
       '400':
-        application/json: CoreCreateToken400Response
+        application/json: TokenGenerateAccess400Response
   /v1/pages:
     post:
       '200':
-        application/json: CoreCreatePageResponse
+        application/json: PageCreateNewPageResponse
       '400':
-        application/json: CoreCreatePage400Response
+        application/json: PageCreateNewPage400Response
       '404':
-        application/json: CoreCreatePage404Response
+        application/json: PageCreateNewPage404Response
       '429':
-        application/json: CoreCreatePage429Response
+        application/json: PageCreateNewPage429Response
   /v1/pages/{page_id}:
     get:
       '200':
-        application/json: CoreGetPageResponse
+        application/json: PageGetPageResponse
       '400':
-        application/json: CoreGetPage400Response
+        application/json: PageGetPage400Response
     patch:
       '200':
-        application/json: CoreUpdatePagePropertiesResponse
+        application/json: PageUpdatePropertiesResponse
       '400':
-        application/json: CoreUpdatePageProperties400Response
+        application/json: PageUpdateProperties400Response
       '404':
-        application/json: CoreUpdatePageProperties404Response
+        application/json: PageUpdateProperties404Response
       '429':
-        application/json: CoreUpdatePageProperties429Response
+        application/json: PageUpdateProperties429Response
   /v1/pages/{page_id}/properties/{property_id}:
     get:
       '200':
-        application/json: CoreGetPagePropertyItemResponse
+        application/json: PageGetPropertyItemResponse
   /v1/search:
     post:
       '200':
-        application/json: CoreSearchByTitleResponse
+        application/json: SearchByTitleResponse
       '400':
-        application/json: CoreSearchByTitle400Response
+        application/json: SearchByTitle400Response
       '429':
-        application/json: CoreSearchByTitle429Response
+        application/json: SearchByTitle429Response
   /v1/users:
     get:
       '200':
-        application/json: CoreListUsersResponse
+        application/json: UserListAllUsersResponse
       '400':
-        application/json: CoreListUsers400Response
+        application/json: UserListAllUsers400Response
   /v1/users/me:
     get:
       '200':
-        application/json: CoreGetTokenBotUserResponse
+        application/json: UserGetTokenBotUserResponse
       '400':
-        application/json: CoreGetTokenBotUser400Response
+        application/json: UserGetTokenBotUser400Response
   /v1/users/{user_id}:
     get:
       '200':
-        application/json: CoreGetUserResponse
+        application/json: UserGetUserByIdResponse
       '400':
-        application/json: CoreGetUser400Response
+        application/json: UserGetUserById400Response
 securityParameters:
   Notion-Version:
     header: false

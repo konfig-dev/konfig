@@ -69,6 +69,13 @@ export default class Fix extends Command {
       description:
         'Use openAI API to generate operationIds based on rules defined here: https://konfigthis.com/docs/tutorials/naming-operation-ids. Requires OPENAI_API_KEY to be set in environment.',
     }),
+    useAIForTags: Flags.boolean({
+      name: 'useAIForTags',
+      char: 'T',
+      default: false,
+      description:
+        'Use openAI API to assign tags to operations which do not have tags, and to generate tags for the OAS if they are missing. Requires OPENAI_API_KEY to be set in environment.',
+    }),
     progressYamlOverridePath: Flags.file({
       name: 'progressYamlOverridePath',
       char: 'p',
@@ -79,9 +86,7 @@ export default class Fix extends Command {
       char: 'n',
       default: false,
       description:
-        'Run in a mode which requires no input whatsoever from the user. \
-        This flag will enable --alwaysYes, --auto, --ci, and --useAIForOperationId flags; \
-        any other rules which attempt to prompt for input will be ignored.',
+        'Run in a mode which requires no input whatsoever from the user. This flag will enable --alwaysYes, --auto, --ci, --useAIForOperationId, and --useAIForTags flags; any other rules which attempt to prompt for input will be ignored.',
     }),
   }
 

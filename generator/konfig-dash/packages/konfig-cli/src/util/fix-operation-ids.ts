@@ -6,13 +6,15 @@ import {
   Spec,
   getOperations,
   TagObject,
+  OperationObject,
 } from 'konfig-lib'
 import { Progress } from './fix-progress'
 import { operationIdSchema } from 'konfig-lib'
 import { inquirerConfirm } from './inquirer-confirm'
 import { logOperationDetails } from './log-operation-details'
+import { aiGenerateOperationIdSuffix } from './ai-generate-operation-id-suffix'
+import { aiGenerateOrChooseTag } from './ai-generate-or-choose-tag'
 import camelcase from 'camelcase'
-import OpenAI from 'openai'
 
 function updateOperationId({
   operation,
@@ -37,69 +39,60 @@ async function updateOperationTag({
   progress,
   path,
   method,
-  noInput,
+  useAIForTags,
 }: {
   spec: Spec['spec']
   operation: Operation
   path: string
   method: HttpMethods
   progress: Progress
-  noInput: boolean
+  useAIForTags: boolean
 }) {
   logOperationDetails({ operation: { operation, method, path } })
   const tag = await getOperationTag({
+    operation,
     path,
     method,
     tags: spec.tags,
     progress,
-    noInput,
+    useAIForTags,
   })
   operation.tags = [tag]
   progress.saveOperationTag({ path, method, operationTag: tag })
 }
 
 async function getOperationTag({
+  operation,
   path,
   method,
   tags,
   progress,
-  noInput,
+  useAIForTags,
 }: {
+  operation: Operation
   path: string
   method: HttpMethods
   tags: TagObject[] | undefined
   progress: Progress
-  noInput: boolean
+  useAIForTags: boolean
 }): Promise<string> {
   const existingTag = progress.getOperationTag({ path, method })
-  if (existingTag !== undefined) {
-    return existingTag
-  }
-  const { tag } = noInput
-    ? chooseTag(path, tags)
-    : await inquirer.prompt<{ tag: string }>([
-        {
-          type: 'list',
-          name: 'tag',
-          choices: tags,
-          message: 'Choose an existing tag',
-        },
-      ])
-  return tag
+  if (existingTag !== undefined) return existingTag
+  return useAIForTags
+    ? await aiGenerateOrChooseTag(operation, path, method, tags ?? [])
+    : await promptForTag(tags)
 }
 
-// Chooses a tag when we are in noInput mode
-// If any tag name exists in the path, choose that one. Otherwise, choose the first tag
-function chooseTag(
-  path: string,
-  tags: TagObject[] | undefined
-): { tag: string } {
-  if (tags === undefined || tags.length == 0) throw Error('Tags is empty')
-  for (const tag of tags) {
-    if (path.toLowerCase().includes(tag.name.toLowerCase()))
-      return { tag: tag.name }
-  }
-  return { tag: tags[0].name }
+async function promptForTag(tags: TagObject[] | undefined) {
+  const { tag } = await inquirer.prompt<{ tag: string }>([
+    {
+      type: 'list',
+      name: 'tag',
+      choices: tags,
+      message: 'Choose an existing tag',
+    },
+  ])
+  return tag
 }
 
 function generatePrefix({ operation }: { operation: Operation }) {
@@ -121,25 +114,23 @@ export async function fixOperationIds({
   progress,
   alwaysYes,
   useAIForOperationId,
-  noInput,
+  useAIForTags,
 }: {
   spec: Spec['spec']
   progress: Progress
   alwaysYes: boolean
   useAIForOperationId: boolean
-  noInput: boolean
+  useAIForTags: boolean
 }): Promise<number> {
   let numberOfUpdatedOperationIds = 0
   if (spec.paths === undefined) return numberOfUpdatedOperationIds
   if (spec.tags === undefined || spec.tags.length === 0) {
-    if (noInput) spec.tags = [{ name: 'core' }]
+    if (useAIForTags) spec.tags = []
     else throw Error('No tags. Please add tags to your OpenAPI specification')
   }
-  // Dummy key prevents error from being thrown
-  const openai = new OpenAI({
-    apiKey: process.env['OPENAI_API_KEY'] ?? 'dummy',
-  })
-  const operations = getOperations({ spec })
+  const operations = getOperations({ spec }).sort(
+    (a, b) => a.path.length - b.path.length
+  )
   for (const { operation, path, method } of operations) {
     if (operation.operationId !== undefined) {
       const result = operationIdSchema.safeParse(operation.operationId)
@@ -164,7 +155,7 @@ export async function fixOperationIds({
         progress,
         path,
         method,
-        noInput,
+        useAIForTags,
       })
     }
     numberOfUpdatedOperationIds++
@@ -242,66 +233,6 @@ export async function fixOperationIds({
       return suffix
     }
 
-    async function generateSuffixWithAI(): Promise<string> {
-      const existingIds = operations.map((o) => o.operation.operationId)
-      const existingIdsStr = existingIds.join(', ').slice(0, -2)
-      const systemPrompt = `You are a generator of operation IDs for an OpenAPI specification. \
-You generate operation IDs in json format: "{ prefix: ... , suffix: ...}"`
-      const prompt = `Generate an operation ID for this operation in my OpenAPI specification:
-Path: ${path}
-Method: ${method}
-Summary: ${operation.summary}
-Description: ${operation.description}
-
-The operation ID is in the format "prefix_suffix". The prefix is: ${prefix}. Generate the suffix and respond in json format.
-The operation ID MUST follow ALL of these rules:
-
-1. The suffix must be at least 3 characters long.
-2. The suffix must be in camelCase and CANNOT include any underscores.
-3. The suffix must not redundantly re-use words from the prefix. (For example: Store_get is preferred over Store_getStore.)
-4. If the suffix contains both a verb and a noun, the noun should generally follow the verb. (For example, Store_placeOrder is better than Store_orderPlace).
-5. Prefer simple verbs like "get", "create", "update", "delete", and "list" when possible.
-
-Existing operation ids for this OpenAPI specification are as follows: ${existingIdsStr}.
-The operation ID MUST be unique within this list of existing operation IDs. You can also use them as a reference to generate this operation id.`
-
-      const response = (
-        await openai.chat.completions.create({
-          response_format: { type: 'json_object' },
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: prompt },
-          ],
-          model: 'gpt-3.5-turbo-1106',
-        })
-      ).choices[0].message.content
-
-      if (response === undefined || response === null || response === '')
-        throw Error('OpenAI returned an empty response')
-
-      const responseJson = JSON.parse(response)
-      if (responseJson === undefined || responseJson === null)
-        throw Error(
-          'OpenAI returned an invalid response: it is not a valid json'
-        )
-      if (responseJson.suffix === undefined || responseJson.suffix === null)
-        throw Error(
-          'OpenAI returned an invalid json: it does not contain a suffix'
-        )
-      if (responseJson.suffix.includes('_'))
-        throw Error(
-          'OpenAI returned an invalid json: the suffix contains an underscore'
-        )
-
-      // Post-process to ensure that rules are followed
-      let suffix = responseJson.suffix.replace('_', '')
-      suffix = suffix.charAt(0).toLowerCase() + suffix.slice(1)
-      suffix = suffix.replace('retrieve', 'get')
-      suffix = suffix.replace('fetch', 'get')
-      console.log(`AI-generated operation id: ${prefix}${suffix}`)
-      return suffix
-    }
-
     async function promptForSuffix(): Promise<{ suffix: string }> {
       return await inquirer.prompt<{ suffix: string }>([
         {
@@ -328,7 +259,13 @@ The operation ID MUST be unique within this list of existing operation IDs. You 
     }
 
     const suffix = useAIForOperationId
-      ? await generateSuffixWithAI()
+      ? await aiGenerateOperationIdSuffix({
+          prefix,
+          path,
+          method,
+          operation,
+          operations,
+        })
       : (await promptForSuffix()).suffix
 
     updateOperationId({

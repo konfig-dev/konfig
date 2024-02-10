@@ -45,6 +45,7 @@ export async function fixOas({
   skipMissingResponseDescription,
   skipFixListUsageSecurity,
   useAIForOperationId,
+  useAIForTags,
   noInput,
 }: {
   spec: Spec
@@ -56,6 +57,7 @@ export async function fixOas({
   skipMissingResponseDescription?: boolean
   skipFixListUsageSecurity?: boolean
   useAIForOperationId: boolean
+  useAIForTags: boolean
   noInput: boolean
 }) {
   /**
@@ -94,7 +96,7 @@ export async function fixOas({
         })
 
   // Missing Tags
-  const numberOfMissingTags = fixMissingGlobalTags({ spec: spec.spec })
+  let numberOfMissingTags = fixMissingGlobalTags({ spec: spec.spec })
 
   // Fix Improper Tag Names
   const numberOfImproperlyNamedTags = await fixImproperlyNamedTags({
@@ -116,8 +118,12 @@ export async function fixOas({
     progress,
     alwaysYes,
     useAIForOperationId,
-    noInput,
+    useAIForTags,
   })
+
+  // Run this again in case ai generated new tags for operations in `fixOerationIds`
+  if (useAIForTags)
+    numberOfMissingTags += fixMissingGlobalTags({ spec: spec.spec })
 
   // Examples
   const numberOfExamplesFixed = fixInvalidExamples({ spec: spec.spec, noInput })

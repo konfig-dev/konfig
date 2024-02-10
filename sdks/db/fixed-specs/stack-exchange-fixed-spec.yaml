@@ -26,13 +26,39 @@ info:
 servers:
   - url: https://api.stackexchange.com/2.0
 tags:
-  - name: core
+  - name: User
+  - name: Answer
+  - name: Tag
+  - name: Question
+  - name: Badge
+  - name: Comment
+  - name: Post
+  - name: Notification
+  - name: Message
+  - name: Reputation
+  - name: Edit
+  - name: AccessToken
+  - name: Information
+  - name: Error
+  - name: Query
+  - name: Privilege
+  - name: Filter
+  - name: Site
+  - name: Event
+  - name: Merge
+  - name: Timeline
+  - name: Favorite
+  - name: Mention
+  - name: Associated
+  - name: Revision
+  - name: Search
+  - name: Permission
 paths:
   /access-tokens/{accessTokens}:
     get:
       tags:
-        - core
-      operationId: Core_readAccessTokens
+        - AccessToken
+      operationId: AccessToken_listPropertiesForMultipleTokens
       description: >
         Reads the properties for a set of access tokens.
          
@@ -207,8 +233,8 @@ paths:
   /access-tokens/{accessTokens}/invalidate:
     get:
       tags:
-        - core
-      operationId: Core_expireAccessTokens
+        - AccessToken
+      operationId: AccessToken_invalidateList
       description: >
         Immediately expires the access tokens passed. This method is meant to
         allow an application to discard any active access tokens it no longer
@@ -385,8 +411,8 @@ paths:
   /answers:
     get:
       tags:
-        - core
-      operationId: Core_getUndeletedAnswers
+        - Answer
+      operationId: Answer_getList
       description: >
         Returns all the undeleted answers in the system.
          
@@ -613,8 +639,8 @@ paths:
   /answers/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getAnswersByIds
+        - Answer
+      operationId: Answer_getListByIds
       description: >
         Gets the set of answers identified by ids.
          
@@ -854,8 +880,8 @@ paths:
   /answers/{ids}/comments:
     get:
       tags:
-        - core
-      operationId: Core_getCommentsOnAnswers
+        - Answer
+      operationId: Answer_getCommentsByIds
       description: >
         Gets the comments on a set of answers.
          
@@ -1091,8 +1117,8 @@ paths:
   /apps/{accessTokens}/de-authenticate:
     get:
       tags:
-        - core
-      operationId: Core_deauthenticateAccessTokens
+        - AccessToken
+      operationId: AccessToken_deauthenticateList
       description: >
         Passing valid access_tokens to this method causes the application that
         created them to be de-authorized by the user associated with each
@@ -1278,8 +1304,8 @@ paths:
   /badges:
     get:
       tags:
-        - core
-      operationId: Core_listBadges
+        - Badge
+      operationId: Badge_listBadges
       description: >
         Returns all the badges in the system.
          
@@ -1513,8 +1539,8 @@ paths:
   /badges/name:
     get:
       tags:
-        - core
-      operationId: Core_getAllExplicitNamedBadges
+        - Badge
+      operationId: Badge_getAllNamedBadges
       description: >
         Gets all explicitly named badges in the system.
          
@@ -1741,8 +1767,8 @@ paths:
   /badges/recipients:
     get:
       tags:
-        - core
-      operationId: Core_listRecentAwardedBadges
+        - Badge
+      operationId: Badge_getRecentAwardedBadges
       description: >
         Returns recently awarded badges in the system.
          
@@ -1931,8 +1957,8 @@ paths:
   /badges/tags:
     get:
       tags:
-        - core
-      operationId: Core_listBadgeTags
+        - Badge
+      operationId: Badge_listTagsBadges
       description: >
         Returns the badges that are awarded for participation in specific tags.
          
@@ -2156,8 +2182,8 @@ paths:
   /badges/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getBadgesByIds
+        - Badge
+      operationId: Badge_getBadgesByIds
       description: >
         Gets the badges identified in id.
          
@@ -2400,8 +2426,8 @@ paths:
   /badges/{ids}/recipients:
     get:
       tags:
-        - core
-      operationId: Core_getRecentAwardedBadgesByIds
+        - Badge
+      operationId: Badge_getRecentAwardedRecipients
       description: >
         Returns recently awarded badges in the system, constrained to a certain
         set of badges.
@@ -2600,8 +2626,8 @@ paths:
   /comments:
     get:
       tags:
-        - core
-      operationId: Core_getCommentList
+        - Comment
+      operationId: Comment_listComments
       description: >
         Gets all the comments on the site.
          
@@ -2830,8 +2856,8 @@ paths:
   /comments/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getCommentsByIds
+        - Comment
+      operationId: Comment_getCommentsByIds
       description: >
         Gets the comments identified in id.
          
@@ -3067,8 +3093,8 @@ paths:
   /comments/{id}/delete:
     post:
       tags:
-        - core
-      operationId: Core_deleteCommentById
+        - Comment
+      operationId: Comment_deleteAction
       description: |
         Deletes a comment.
          
@@ -3243,8 +3269,8 @@ paths:
   /comments/{id}/edit:
     post:
       tags:
-        - core
-      operationId: Core_updateComment
+        - Comment
+      operationId: Comment_editExisting
       description: |
         Edit an existing comment.
          
@@ -3427,8 +3453,8 @@ paths:
   /errors:
     get:
       tags:
-        - core
-      operationId: Core_getErrorList
+        - Error
+      operationId: Error_listErrors
       description: >
         Returns the various error codes that can be produced by the API.
          
@@ -3601,8 +3627,8 @@ paths:
   /errors/{id}:
     get:
       tags:
-        - core
-      operationId: Core_generateError
+        - Error
+      operationId: Error_generateError
       description: >
         This method allows you to generate an error.
          
@@ -3676,8 +3702,8 @@ paths:
   /events:
     get:
       tags:
-        - core
-      operationId: Core_listEvents
+        - Event
+      operationId: Event_listEvents
       description: >
         Returns a stream of events that have occurred on the site.
          
@@ -3875,8 +3901,8 @@ paths:
   /filters/create:
     get:
       tags:
-        - core
-      operationId: Core_createFilter
+        - Filter
+      operationId: Filter_createFilter
       description: >
         Creates a new filter given a list of includes, excludes, a base filter,
         and whether or not this filter should be "unsafe".
@@ -3980,8 +4006,8 @@ paths:
   /filters/{filters}:
     get:
       tags:
-        - core
-      operationId: Core_getFilters
+        - Filter
+      operationId: Filter_getFilterDetailsByIds
       description: >
         Returns the fields included by the given filters, and the "safeness" of
         those filters.
@@ -4058,8 +4084,8 @@ paths:
   /inbox:
     get:
       tags:
-        - core
-      operationId: Core_getInboxItems
+        - Message
+      operationId: Message_listInboxItems
       description: >
         Returns a user's inbox.
          
@@ -4228,8 +4254,8 @@ paths:
   /inbox/unread:
     get:
       tags:
-        - core
-      operationId: Core_getUnreadInboxItems
+        - Message
+      operationId: Message_getUnreadItems
       description: >
         Returns the unread items in a user's inbox.
          
@@ -4403,8 +4429,8 @@ paths:
   /info:
     get:
       tags:
-        - core
-      operationId: Core_getSiteInfo
+        - Information
+      operationId: Information_getStatistics
       description: >
         Returns a collection of statistics about the site.
          
@@ -4484,8 +4510,8 @@ paths:
   /me:
     get:
       tags:
-        - core
-      operationId: Core_getUser
+        - User
+      operationId: User_getUser
       description: |
         Returns the user associated with the passed access_token.
          
@@ -4705,8 +4731,8 @@ paths:
   /me/answers:
     get:
       tags:
-        - core
-      operationId: Core_getUserAnswers
+        - Answer
+      operationId: Answer_getUserAnswersList
       description: >
         Returns the answers owned by the user associated with the given
         access_token.
@@ -4924,8 +4950,8 @@ paths:
   /me/associated:
     get:
       tags:
-        - core
-      operationId: Core_listAssociatedAccounts
+        - Associated
+      operationId: Associated_getUserAccounts
       description: >
         Returns all of a user's associated accounts, given an access_token for
         them.
@@ -5092,8 +5118,8 @@ paths:
   /me/badges:
     get:
       tags:
-        - core
-      operationId: Core_getUserBadges
+        - Badge
+      operationId: Badge_getUserBadges
       description: >
         Returns the badges earned by the user associated with the given
         access_token.
@@ -5311,8 +5337,8 @@ paths:
   /me/comments:
     get:
       tags:
-        - core
-      operationId: Core_getUserComments
+        - Comment
+      operationId: Comment_listOwnedComments
       description: >
         Returns the comments owned by the user associated with the given
         access_token.
@@ -5527,8 +5553,8 @@ paths:
   /me/comments/{toId}:
     get:
       tags:
-        - core
-      operationId: Core_getUserComments
+        - Comment
+      operationId: Comment_getReplyList
       description: >
         Returns the comments owned by the user associated with the given
         access_token that are in reply to the user identified by {toId}.
@@ -5748,8 +5774,8 @@ paths:
   /me/favorites:
     get:
       tags:
-        - core
-      operationId: Core_getUserFavorites
+        - Favorite
+      operationId: Favorite_getUserFavorites
       description: >
         Returns the questions favorites by the user associated with the given
         access_token.
@@ -5970,8 +5996,8 @@ paths:
   /me/inbox:
     get:
       tags:
-        - core
-      operationId: Core_getInboxItems
+        - Message
+      operationId: Message_getInboxItems
       description: >
         Returns the user identified by access_token's inbox.
          
@@ -6150,8 +6176,8 @@ paths:
   /me/inbox/unread:
     get:
       tags:
-        - core
-      operationId: Core_getUnreadInboxItems
+        - Notification
+      operationId: Notification_getUnreadItemsInInbox
       description: >
         Returns the unread items in the user identified by access_token's inbox.
          
@@ -6335,8 +6361,8 @@ paths:
   /me/mentioned:
     get:
       tags:
-        - core
-      operationId: Core_getMentionedComments
+        - Mention
+      operationId: Mention_userCommentsList
       description: >
         Returns the comments mentioning the user associated with the given
         access_token.
@@ -6551,8 +6577,8 @@ paths:
   /me/merges:
     get:
       tags:
-        - core
-      operationId: Core_getAccountMerges
+        - Merge
+      operationId: Merge_getAccountMergeList
       description: >
         Returns a record of merges that have occurred involving a user
         identified by an access_token.
@@ -6733,8 +6759,8 @@ paths:
   /me/notifications:
     get:
       tags:
-        - core
-      operationId: Core_getUserNotifications
+        - Notification
+      operationId: Notification_getUserNotificationsList
       description: >
         Returns a user's notifications, given an access_token.
          
@@ -6913,8 +6939,8 @@ paths:
   /me/notifications/unread:
     get:
       tags:
-        - core
-      operationId: Core_getUserUnreadNotifications
+        - Notification
+      operationId: Notification_getUnreadItemsInInbox
       description: >
         Returns a user's unread notifications, given an access_token.
          
@@ -7093,8 +7119,8 @@ paths:
   /me/privileges:
     get:
       tags:
-        - core
-      operationId: Core_getUserPrivileges
+        - Privilege
+      operationId: Privilege_getUserPrivileges
       description: |
         Returns the privileges the user identified by access_token has.
          
@@ -7270,8 +7296,8 @@ paths:
   /me/questions:
     get:
       tags:
-        - core
-      operationId: Core_getUserQuestions
+        - Question
+      operationId: Question_getUserQuestionsList
       description: >
         Returns the questions owned by the user associated with the given
         access_token.
@@ -7489,8 +7515,8 @@ paths:
   /me/questions/featured:
     get:
       tags:
-        - core
-      operationId: Core_getFeaturedQuestions
+        - Question
+      operationId: Question_getUserFeatured
       description: >
         Returns the questions that have active bounties offered by the user
         associated with the given access_token.
@@ -7708,8 +7734,8 @@ paths:
   /me/questions/no-answers:
     get:
       tags:
-        - core
-      operationId: Core_listUnansweredQuestions
+        - Answer
+      operationId: Answer_listNoAnswerQuestions
       description: >
         Returns the questions owned by the user associated with the given
         access_token that have no answers.
@@ -7927,8 +7953,8 @@ paths:
   /me/questions/unaccepted:
     get:
       tags:
-        - core
-      operationId: Core_getUnacceptedQuestions
+        - Question
+      operationId: Question_getUnacceptedList
       description: >
         Returns the questions owned by the user associated with the given
         access_token that have no accepted answer.
@@ -8146,8 +8172,8 @@ paths:
   /me/questions/unanswered:
     get:
       tags:
-        - core
-      operationId: Core_listUnansweredQuestions
+        - Answer
+      operationId: Answer_userUnansweredQuestionsGet
       description: >
         Returns the questions owned by the user associated with the given
         access_token that are not considered answered.
@@ -8365,8 +8391,8 @@ paths:
   /me/reputation:
     get:
       tags:
-        - core
-      operationId: Core_getUserReputationChanges
+        - Reputation
+      operationId: Reputation_getUserReputationChanges
       description: >
         Returns the reputation changed for the user associated with the given
         access_token.
@@ -8535,8 +8561,8 @@ paths:
   /me/reputation-history:
     get:
       tags:
-        - core
-      operationId: Core_getUserReputationHistory
+        - Reputation
+      operationId: Reputation_getUserReputationHistory
       description: |
         Returns user's public reputation history.
          
@@ -8712,8 +8738,8 @@ paths:
   /me/reputation-history/full:
     get:
       tags:
-        - core
-      operationId: Core_getUserReputationHistory
+        - Reputation
+      operationId: Reputation_getFullHistory
       description: |
         Returns user's full reputation history, including private events.
          
@@ -8892,8 +8918,8 @@ paths:
   /me/suggested-edits:
     get:
       tags:
-        - core
-      operationId: Core_getUserSuggestedEdits
+        - Edit
+      operationId: Edit_getUserSuggestedEdits
       description: >
         Returns the suggested edits the user identified by access_token has
         submitted.
@@ -9111,8 +9137,8 @@ paths:
   /me/tags:
     get:
       tags:
-        - core
-      operationId: Core_getUserTagsList
+        - Tag
+      operationId: Tag_getUserTagsList
       description: >
         Returns the tags the user identified by the access_token passed is
         active in.
@@ -9330,8 +9356,8 @@ paths:
   /me/tags/{tags}/top-answers:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopAnswers
+        - Answer
+      operationId: Answer_getUserTopAnswers
       description: >
         Returns the top 30 answers the user associated with the given
         access_token has posted in response to questions with the given tags.
@@ -9555,8 +9581,8 @@ paths:
   /me/tags/{tags}/top-questions:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopQuestionsByTags
+        - Tag
+      operationId: Tag_getUserTopQuestions
       description: >
         Returns the top 30 questions the user associated with the given
         access_token has posted in response to questions with the given tags.
@@ -9792,8 +9818,8 @@ paths:
   /me/timeline:
     get:
       tags:
-        - core
-      operationId: Core_getUserTimeline
+        - Timeline
+      operationId: Timeline_getUserTimeline
       description: >
         Returns a subset of the actions the user identified by the passed
         access_token has taken on the site.
@@ -9980,8 +10006,8 @@ paths:
   /me/top-answer-tags:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopAnswerTags
+        - Answer
+      operationId: Answer_getUserTopTags
       description: >
         Returns the user identified by access_token's top 30 tags by answer
         score.
@@ -10158,8 +10184,8 @@ paths:
   /me/top-question-tags:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopQuestionTags
+        - Tag
+      operationId: Tag_getUserTopTagsList
       description: >
         Returns the user identified by access_token's top 30 tags by question
         score.
@@ -10336,8 +10362,8 @@ paths:
   /me/write-permissions:
     get:
       tags:
-        - core
-      operationId: Core_getUserWritePermissions
+        - Permission
+      operationId: Permission_getUserWritePermissions
       description: >
         Returns the write permissions a user has via the api, given an access
         token.
@@ -10523,8 +10549,8 @@ paths:
   /notifications:
     get:
       tags:
-        - core
-      operationId: Core_getUserNotifications
+        - Notification
+      operationId: Notification_getUserNotifications
       description: >
         Returns a user's notifications.
          
@@ -10693,8 +10719,8 @@ paths:
   /notifications/unread:
     get:
       tags:
-        - core
-      operationId: Core_getUserUnreadNotifications
+        - Notification
+      operationId: Notification_getUserUnreadNotifications
       description: >
         Returns a user's unread notifications.
          
@@ -10863,8 +10889,8 @@ paths:
   /posts:
     get:
       tags:
-        - core
-      operationId: Core_listPosts
+        - Post
+      operationId: Post_getAllPosts
       description: >
         Fetches all posts (questions and answers) on the site.
          
@@ -11099,8 +11125,8 @@ paths:
   /posts/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getPostsByIds
+        - Post
+      operationId: Post_getPostsByIds
       description: >
         Fetches a set of posts by ids.
          
@@ -11341,8 +11367,8 @@ paths:
   /posts/{ids}/comments:
     get:
       tags:
-        - core
-      operationId: Core_getCommentsByIds
+        - Post
+      operationId: Post_commentsByIdsGet
       description: >
         Gets the comments on the posts identified in ids, regardless of the type
         of the posts.
@@ -11580,8 +11606,8 @@ paths:
   /posts/{ids}/revisions:
     get:
       tags:
-        - core
-      operationId: Core_getPostRevisions
+        - Post
+      operationId: Post_getPostRevisionsByIds
       description: >
         Returns edit revisions for the posts identified in ids.
          
@@ -11777,8 +11803,8 @@ paths:
   /posts/{ids}/suggested-edits:
     get:
       tags:
-        - core
-      operationId: Core_listSuggestedEdits
+        - Post
+      operationId: Post_listSuggestedEdits
       description: |
         Returns suggsted edits on the posts identified in ids.
          
@@ -12009,8 +12035,8 @@ paths:
   /posts/{id}/comments/add:
     post:
       tags:
-        - core
-      operationId: Core_createNewComment
+        - Post
+      operationId: Post_addComment
       description: |
         Create a new comment.
          
@@ -12193,8 +12219,8 @@ paths:
   /privileges:
     get:
       tags:
-        - core
-      operationId: Core_listPrivileges
+        - Privilege
+      operationId: Privilege_getEarnableList
       description: >
         Returns the earnable privileges on a site.
          
@@ -12377,8 +12403,8 @@ paths:
   /questions:
     get:
       tags:
-        - core
-      operationId: Core_listQuestions
+        - Question
+      operationId: Question_getAllQuestions
       description: >
         Gets all the questions on the site.
          
@@ -12637,8 +12663,8 @@ paths:
   /questions/featured:
     get:
       tags:
-        - core
-      operationId: Core_getFeaturedQuestions
+        - Question
+      operationId: Question_listFeaturedQuestions
       description: >
         Returns all the questions with active bounties in the system.
          
@@ -12870,8 +12896,8 @@ paths:
   /questions/no-answers:
     get:
       tags:
-        - core
-      operationId: Core_getUnansweredQuestions
+        - Answer
+      operationId: Answer_listNoAnswerQuestions
       description: >
         Returns questions which have received no answers.
          
@@ -13114,8 +13140,8 @@ paths:
   /questions/unanswered:
     get:
       tags:
-        - core
-      operationId: Core_listUnansweredQuestions
+        - Answer
+      operationId: Answer_getListOfUnansweredQuestions
       description: >
         Returns questions the site considers to be unanswered.
          
@@ -13362,8 +13388,8 @@ paths:
   /questions/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getQuestionListByIds
+        - Question
+      operationId: Question_getByIds
       description: >
         Returns the questions identified in {ids}.
          
@@ -13602,8 +13628,8 @@ paths:
   /questions/{ids}/answers:
     get:
       tags:
-        - core
-      operationId: Core_getQuestionAnswers
+        - Answer
+      operationId: Answer_getListByQuestionIds
       description: >
         Gets the answers to a set of questions identified in id.
          
@@ -13843,8 +13869,8 @@ paths:
   /questions/{ids}/comments:
     get:
       tags:
-        - core
-      operationId: Core_getQuestionCommentsList
+        - Comment
+      operationId: Comment_getCommentsList
       description: >
         Gets the comments on a question.
          
@@ -14080,8 +14106,8 @@ paths:
   /questions/{ids}/linked:
     get:
       tags:
-        - core
-      operationId: Core_getLinkedQuestionsList
+        - Question
+      operationId: Question_getLinkedQuestions
       description: >
         Gets questions which link to those questions identified in {ids}.
          
@@ -14327,8 +14353,8 @@ paths:
   /questions/{ids}/related:
     get:
       tags:
-        - core
-      operationId: Core_getRelatedQuestions
+        - Question
+      operationId: Question_listRelatedQuestions
       description: >
         Returns questions that the site considers related to those identified in
         {ids}.
@@ -14577,8 +14603,8 @@ paths:
   /questions/{ids}/timeline:
     get:
       tags:
-        - core
-      operationId: Core_getQuestionTimelineEvents
+        - Question
+      operationId: Question_getTimelineEvents
       description: >
         Returns a subset of the events that have happened to the questions
         identified in id.
@@ -14778,8 +14804,8 @@ paths:
   /revisions/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getEditRevisionsByIds
+        - Revision
+      operationId: Revision_listRevisionsByIds
       description: >
         Returns edit revisions identified by ids in {ids}.
          
@@ -14975,8 +15001,8 @@ paths:
   /search:
     get:
       tags:
-        - core
-      operationId: Core_searchQuestions
+        - Query
+      operationId: Query_siteQuestionsSearch
       description: >
         Searches a site for any questions which fit the given criteria.
          
@@ -15232,8 +15258,8 @@ paths:
   /search/advanced:
     get:
       tags:
-        - core
-      operationId: Core_searchAdvancedQuestions
+        - Search
+      operationId: Search_siteQuestionsAdvancedSearch
       description: >
         Searches a site for any questions which fit the given criteria.
          
@@ -15557,8 +15583,8 @@ paths:
   /similar:
     get:
       tags:
-        - core
-      operationId: Core_getSimilarQuestions
+        - Query
+      operationId: Query_similarQuestionsSearch
       description: >
         Returns questions which are similar to a hypothetical one based on a
         title and tag combination.
@@ -15817,8 +15843,8 @@ paths:
   /sites:
     get:
       tags:
-        - core
-      operationId: Core_getSiteList
+        - Site
+      operationId: Site_listSites
       description: >
         Returns all sites in the network.
          
@@ -15995,8 +16021,8 @@ paths:
   /suggested-edits:
     get:
       tags:
-        - core
-      operationId: Core_getSuggestedEdits
+        - Edit
+      operationId: Edit_listSuggestedEdits
       description: >
         Returns all the suggested edits in the systems.
          
@@ -16222,8 +16248,8 @@ paths:
   /suggested-edits/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getSuggestedEditsByIds
+        - Edit
+      operationId: Edit_listSuggestedEdits
       description: >
         Returns suggested edits identified in ids.
          
@@ -16459,8 +16485,8 @@ paths:
   /tags:
     get:
       tags:
-        - core
-      operationId: Core_getTagList
+        - Information
+      operationId: Information_getTagsList
       description: >
         Returns the tags found on a site.
          
@@ -16694,8 +16720,8 @@ paths:
   /tags/moderator-only:
     get:
       tags:
-        - core
-      operationId: Core_getModeratorTagsList
+        - Tag
+      operationId: Tag_getModeratorOnlyTagsList
       description: >
         Returns the tags found on a site that only moderators can use.
          
@@ -16929,8 +16955,8 @@ paths:
   /tags/required:
     get:
       tags:
-        - core
-      operationId: Core_listRequiredTags
+        - Tag
+      operationId: Tag_listRequiredTags
       description: >
         Returns the tags found on a site that fulfill required tag constraints
         on questions.
@@ -17165,8 +17191,8 @@ paths:
   /tags/synonyms:
     get:
       tags:
-        - core
-      operationId: Core_listTagSynonyms
+        - Tag
+      operationId: Tag_synonymsList
       description: >
         Returns all tag synonyms found a site.
          
@@ -17396,8 +17422,8 @@ paths:
   /tags/{tags}/faq:
     get:
       tags:
-        - core
-      operationId: Core_getFrequentlyAskedQuestions
+        - Tag
+      operationId: Tag_getFaqQuestions
       description: >
         Returns the frequently asked questions for the given set of tags in
         {tags}.
@@ -17586,8 +17612,8 @@ paths:
   /tags/{tags}/info:
     get:
       tags:
-        - core
-      operationId: Core_getTagInfo
+        - Tag
+      operationId: Tag_getTagInfo
       description: >
         Returns tag objects representing the tags in {tags} found on the site.
          
@@ -17823,8 +17849,8 @@ paths:
   /tags/{tags}/related:
     get:
       tags:
-        - core
-      operationId: Core_getRelatedTags
+        - Tag
+      operationId: Tag_getRelatedTags
       description: >
         Returns the tags that are most related to those in {tags}.
          
@@ -18014,8 +18040,8 @@ paths:
   /tags/{tags}/synonyms:
     get:
       tags:
-        - core
-      operationId: Core_getTagSynonymsList
+        - Tag
+      operationId: Tag_listSynonyms
       description: >
         Gets all the synonyms that point to the tags identified in {tags}. If
         you're looking to discover all the tag synonyms on a site, use the
@@ -18252,8 +18278,8 @@ paths:
   /tags/{tags}/wikis:
     get:
       tags:
-        - core
-      operationId: Core_getTagWikis
+        - Tag
+      operationId: Tag_getTagWikis
       description: |
         Returns the wikis that go with the given set of tags in {tags}.
          
@@ -18439,8 +18465,8 @@ paths:
   /tags/{tag}/top-answerers/{period}:
     get:
       tags:
-        - core
-      operationId: Core_getTopAnswerersByTag
+        - Answer
+      operationId: Answer_tagTopAnswerers
       description: >
         Returns the top 30 answerers active in a single tag, of either all-time
         or the last 30 days.
@@ -18633,8 +18659,8 @@ paths:
   /tags/{tag}/top-askers/{period}:
     get:
       tags:
-        - core
-      operationId: Core_getTopAskersByTag
+        - Tag
+      operationId: Tag_getTopAskersByPeriod
       description: >
         Returns the top 30 askers active in a single tag, of either all-time or
         the last 30 days.
@@ -18827,8 +18853,8 @@ paths:
   /users:
     get:
       tags:
-        - core
-      operationId: Core_listAllUsers
+        - User
+      operationId: User_listUsers
       description: >
         Returns all users on a site.
          
@@ -19069,8 +19095,8 @@ paths:
   /users/moderators:
     get:
       tags:
-        - core
-      operationId: Core_getModeratorsList
+        - User
+      operationId: User_listModeratorUsers
       description: >
         Gets those users on a site who can exercise moderation powers.
          
@@ -19306,8 +19332,8 @@ paths:
   /users/moderators/elected:
     get:
       tags:
-        - core
-      operationId: Core_getElectedModerators
+        - User
+      operationId: User_listElectedModeratorUsers
       description: >
         Returns those users on a site who both have moderator powers, and were
         actually elected.
@@ -19543,8 +19569,8 @@ paths:
   /users/{ids}:
     get:
       tags:
-        - core
-      operationId: Core_getUserListByIds
+        - User
+      operationId: User_getUserProfilesByIds
       description: >
         Gets the users identified in ids in {ids}.
          
@@ -19787,8 +19813,8 @@ paths:
   /users/{ids}/answers:
     get:
       tags:
-        - core
-      operationId: Core_getUserAnswers
+        - User
+      operationId: User_getUserAnswersList
       description: >
         Returns the answers the users in {ids} have posted.
          
@@ -20024,8 +20050,8 @@ paths:
   /users/{ids}/associated:
     get:
       tags:
-        - core
-      operationId: Core_listAssociatedAccounts
+        - User
+      operationId: User_getAssociatedAccounts
       description: >
         Returns all of a user's associated accounts, given their account_ids in
         {ids}.
@@ -20201,8 +20227,8 @@ paths:
   /users/{ids}/badges:
     get:
       tags:
-        - core
-      operationId: Core_listUserBadges
+        - User
+      operationId: User_listUserBadges
       description: >
         Get the badges the users in {ids} have earned.
          
@@ -20444,8 +20470,8 @@ paths:
   /users/{ids}/comments:
     get:
       tags:
-        - core
-      operationId: Core_listUserComments
+        - User
+      operationId: User_getCommentsByIds
       description: >
         Get the comments posted by users in {ids}.
          
@@ -20677,8 +20703,8 @@ paths:
   /users/{ids}/comments/{toid}:
     get:
       tags:
-        - core
-      operationId: Core_getCommentsByUsersAndTargetUser
+        - User
+      operationId: User_getUserCommentsByIdsAndToid
       description: >
         Get the comments that the users in {ids} have posted in reply to the
         single user identified in {toid}.
@@ -20920,8 +20946,8 @@ paths:
   /users/{ids}/favorites:
     get:
       tags:
-        - core
-      operationId: Core_getUserFavorites
+        - User
+      operationId: User_getFavoritesList
       description: >
         Get the questions that users in {ids} have favorited.
          
@@ -21163,8 +21189,8 @@ paths:
   /users/{ids}/mentioned:
     get:
       tags:
-        - core
-      operationId: Core_getUserMentionedComments
+        - User
+      operationId: User_mentionedCommentsList
       description: >
         Gets all the comments that the users in {ids} were mentioned in.
          
@@ -21398,8 +21424,8 @@ paths:
   /users/{ids}/merges:
     get:
       tags:
-        - core
-      operationId: Core_getUserAccountMerges
+        - User
+      operationId: User_listAccountMerges
       description: >
         Returns a record of merges that have occurred involving the passed
         account ids.
@@ -21586,8 +21612,8 @@ paths:
   /users/{ids}/questions:
     get:
       tags:
-        - core
-      operationId: Core_getUserQuestionsByIds
+        - User
+      operationId: User_getQuestionsByUserIds
       description: >
         Gets the questions asked by the users in {ids}.
          
@@ -21823,8 +21849,8 @@ paths:
   /users/{ids}/questions/featured:
     get:
       tags:
-        - core
-      operationId: Core_getUserFeaturedQuestions
+        - User
+      operationId: User_getFeaturedQuestions
       description: >
         Gets the questions on which the users in {ids} have active bounties.
          
@@ -22060,8 +22086,8 @@ paths:
   /users/{ids}/questions/no-answers:
     get:
       tags:
-        - core
-      operationId: Core_getQuestionsNoAnswers
+        - User
+      operationId: User_listNoAnswerQuestions
       description: >
         Gets the questions asked by the users in {ids} which have no answers.
          
@@ -22302,8 +22328,8 @@ paths:
   /users/{ids}/questions/unaccepted:
     get:
       tags:
-        - core
-      operationId: Core_getUnacceptedQuestions
+        - User
+      operationId: User_getUnacceptedQuestions
       description: >
         Gets the questions asked by the users in {ids} which have at least one
         answer, but no accepted answer.
@@ -22543,8 +22569,8 @@ paths:
   /users/{ids}/questions/unanswered:
     get:
       tags:
-        - core
-      operationId: Core_listUnansweredQuestionsByIds
+        - User
+      operationId: User_getUnansweredQuestions
       description: >
         Gets the questions asked by the users in {ids} which the site consideres
         unanswered, while still having at least one answer posted.
@@ -22790,8 +22816,8 @@ paths:
   /users/{ids}/reputation:
     get:
       tags:
-        - core
-      operationId: Core_getUserReputationSubset
+        - User
+      operationId: User_getReputationChanges
       description: >
         Gets a subset of the reputation changes for users in {ids}.
          
@@ -22991,8 +23017,8 @@ paths:
   /users/{ids}/reputation-history:
     get:
       tags:
-        - core
-      operationId: Core_getUserReputationHistoryList
+        - User
+      operationId: User_getReputationHistory
       description: |
         Returns users' public reputation history.
          
@@ -23174,8 +23200,8 @@ paths:
   /users/{ids}/suggested-edits:
     get:
       tags:
-        - core
-      operationId: Core_getUserSuggestedEditsList
+        - User
+      operationId: User_getSuggestedEditsByIds
       description: >
         Returns the suggested edits a users in {ids} have submitted.
          
@@ -23411,8 +23437,8 @@ paths:
   /users/{ids}/tags:
     get:
       tags:
-        - core
-      operationId: Core_getUserTagsList
+        - User
+      operationId: User_getTags
       description: >
         Returns the tags the users identified in {ids} have been active in.
          
@@ -23652,8 +23678,8 @@ paths:
   /users/{ids}/timeline:
     get:
       tags:
-        - core
-      operationId: Core_getUserTimeline
+        - User
+      operationId: User_getUserTimelineByIds
       description: >
         Returns a subset of the actions the users in {ids} have taken on the
         site.
@@ -23853,8 +23879,8 @@ paths:
   /users/{id}/inbox:
     get:
       tags:
-        - core
-      operationId: Core_listUserInboxItems
+        - User
+      operationId: User_getInboxItems
       description: >
         Returns a user's inbox.
          
@@ -24045,8 +24071,8 @@ paths:
   /users/{id}/inbox/unread:
     get:
       tags:
-        - core
-      operationId: Core_getUserInboxUnreadItems
+        - User
+      operationId: User_getInboxUnread
       description: >
         Returns the unread items in a user's inbox.
          
@@ -24243,8 +24269,8 @@ paths:
   /users/{id}/notifications:
     get:
       tags:
-        - core
-      operationId: Core_getUserNotifications
+        - User
+      operationId: User_getNotificationsList
       description: >
         Returns a user's notifications.
          
@@ -24428,8 +24454,8 @@ paths:
   /users/{id}/notifications/unread:
     get:
       tags:
-        - core
-      operationId: Core_getUserUnreadNotificationsList
+        - User
+      operationId: User_getUnreadNotifications
       description: >
         Returns a user's unread notifications.
          
@@ -24613,8 +24639,8 @@ paths:
   /users/{id}/privileges:
     get:
       tags:
-        - core
-      operationId: Core_getUserPrivilegesList
+        - User
+      operationId: User_getPrivilegesList
       description: >
         Returns the privileges a user has.
          
@@ -24802,8 +24828,8 @@ paths:
   /users/{id}/reputation-history/full:
     get:
       tags:
-        - core
-      operationId: Core_getUserReputationHistoryFull
+        - User
+      operationId: User_getFullReputationHistory
       description: >
         Returns a user's full reputation history, including private events.
          
@@ -24987,8 +25013,8 @@ paths:
   /users/{id}/tags/{tags}/top-answers:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopAnswersByTags
+        - User
+      operationId: User_getUserTopAnswers
       description: >
         Returns the top 30 answers a user has posted in response to questions
         with the given tags.
@@ -25231,8 +25257,8 @@ paths:
   /users/{id}/tags/{tags}/top-questions:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopQuestionsByTags
+        - User
+      operationId: User_getTopQuestionsByTags
       description: >
         Returns the top 30 questions a user has asked with the given tags.
          
@@ -25474,8 +25500,8 @@ paths:
   /users/{id}/top-answer-tags:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopAnswerTags
+        - User
+      operationId: User_getUserTopAnswerTags
       description: >
         Returns a single user's top tags by answer score.
          
@@ -25661,8 +25687,8 @@ paths:
   /users/{id}/top-question-tags:
     get:
       tags:
-        - core
-      operationId: Core_getUserTopQuestionTags
+        - User
+      operationId: User_getTopQuestionTags
       description: >
         Returns a single user's top tags by question score.
          
@@ -25848,8 +25874,8 @@ paths:
   /users/{id}/write-permissions:
     get:
       tags:
-        - core
-      operationId: Core_getUserWritePermissions
+        - User
+      operationId: User_getWritePermissions
       description: >
         Returns the write permissions a user has via the api.
          

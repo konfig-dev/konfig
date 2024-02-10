@@ -26,6 +26,7 @@ interface FixOptions {
   alwaysYes?: boolean
   ci?: boolean
   useAIForOperationId?: boolean
+  useAIForTags?: boolean
   progressYamlOverridePath?: string
   noInput?: boolean
 }
@@ -33,7 +34,7 @@ interface FixOptions {
 export async function executeFixCommand(options: FixOptions): Promise<void> {
   const flags = {
     ...options,
-    auto: options.auto ?? true,
+    auto: (options.auto || options.noInput) ?? true,
     alwaysYes: !!(
       options.alwaysYes == null ||
       options.alwaysYes ||
@@ -43,6 +44,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     ci: (options.ci || options.noInput) ?? false,
     useAIForOperationId:
       (options.useAIForOperationId || options.noInput) ?? false,
+    useAIForTags: (options.useAIForTags || options.noInput) ?? false,
     noInput: options.noInput ?? false,
     skipListUsageSecurity: options.skipListUsageSecurity ?? true,
   }
@@ -150,6 +152,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     skipMissingResponseDescription: flags.skipMissingResponseDescriptionFix,
     skipFixListUsageSecurity: flags.skipListUsageSecurity,
     useAIForOperationId: flags.useAIForOperationId,
+    useAIForTags: flags.useAIForTags,
     noInput: flags.noInput,
   })
 

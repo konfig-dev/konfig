@@ -10,6 +10,7 @@ import { generateSdkDynamicPath } from "./util";
 import { getMethodObjects } from "../src/get-method-objects";
 import { generateTypescriptSdkUsageCode } from "../src/generate-typescript-sdk-usage-code";
 import execa from "execa";
+import kebabcase from "lodash.kebabcase";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
@@ -105,6 +106,12 @@ function collectAllPublishData() {
           throw Error(`❌ ERROR: No metaDescription for ${spec}`);
         }
       }
+
+      const companyKebabCase = kebabcase(publishData.company.toLowerCase());
+      const serviceKebabCase =
+        publishData.serviceName !== undefined
+          ? kebabcase(publishData.serviceName.toLowerCase())
+          : null;
 
       const dynamicPath = generateSdkDynamicPath(
         publishData.company,
@@ -354,8 +361,8 @@ async function fixSpec(
     progressYamlsPath,
     path.basename(specOutputPath.replace("-fixed-spec", "-progress"))
   );
-  const cliName = "konfig";
-  // const cliName = "../generator/konfig-dash/packages/konfig-cli/bin/run"; // for development
+  // const cliName = "konfig";
+  const cliName = "../generator/konfig-dash/packages/konfig-cli/bin/run"; // for development
   try {
     await execa(cliName, [
       "fix",
