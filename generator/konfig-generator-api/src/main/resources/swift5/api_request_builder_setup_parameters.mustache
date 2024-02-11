@@ -1,0 +1,38 @@
+        {{^pathParams}}let{{/pathParams}}{{#pathParams}}{{#-first}}var{{/-first}}{{/pathParams}} localVariablePath = "{{{path}}}"{{#pathParams}}
+        let {{paramName}}PreEscape = "\({{#isEnum}}{{paramName}}{{#isContainer}}{{{dataType}}}{{/isContainer}}{{^isContainer}}.rawValue{{/isContainer}}{{/isEnum}}{{^isEnum}}APIHelper.mapValueToPathItem({{paramName}}){{/isEnum}})"
+        let {{paramName}}PostEscape = {{paramName}}PreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{{=<% %>=}}{<%baseName%>}<%={{ }}=%>", with: {{paramName}}PostEscape, options: .literal, range: nil){{/pathParams}}
+        let localVariableURLString = basePath + localVariablePath
+        {{#bodyParam}}
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: {{paramName}})
+        {{/bodyParam}}
+        {{^bodyParam}}
+            {{#hasFormParams}}
+        let localVariableFormParams: [String: Any?] = [
+                {{#formParams}}
+            {{> _param}},
+                {{/formParams}}
+        ]
+
+        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
+        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
+            {{/hasFormParams}}
+            {{^hasFormParams}}
+        let localVariableParameters: [String: Any]? = nil
+            {{/hasFormParams}}
+{{/bodyParam}}{{#hasQueryParams}}
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([{{^queryParams}}:{{/queryParams}}
+            {{#queryParams}}
+            {{> _param}},
+            {{/queryParams}}
+        ]){{/hasQueryParams}}{{^hasQueryParams}}
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString){{/hasQueryParams}}
+
+        let localVariableNillableHeaders: [String: Any?] = [{{^headerParams}}{{^hasFormParams}}
+            :{{/hasFormParams}}{{/headerParams}}{{#hasFormParams}}
+            "Content-Type": {{^consumes}}"multipart/form-data"{{/consumes}}{{#consumes.0}}"{{{mediaType}}}"{{/consumes.0}},{{/hasFormParams}}{{#headerParams}}
+            {{> _param}},{{/headerParams}}
+        ]
+
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)

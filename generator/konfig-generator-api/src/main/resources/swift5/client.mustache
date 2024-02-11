@@ -1,0 +1,24 @@
+public class  {{projectName}}Client {
+{{#authMethods}}
+    var {{nameInPascalCase}}: String?;
+{{/authMethods}}
+    var basePath: String
+{{#apiInfo}}
+{{#apis}}
+    lazy var {{classNameCamelCase}}: {{classname}} = { return {{classname}}(client: self) }()
+{{/apis}}
+{{/apiInfo}}
+
+    init(
+{{#authMethods}}
+        {{nameInPascalCase}}: String?,
+{{/authMethods}}
+        basePath: String = "{{{basePath}}}"
+    ) {
+{{#authMethods}}
+        self.{{nameInPascalCase}} = {{nameInPascalCase}}
+{{/authMethods}}
+        self.basePath = basePath
+    }
+
+}

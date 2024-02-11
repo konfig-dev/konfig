@@ -1,0 +1,7 @@
+        {{#requiredParamsWithRequestBodyProperties}}
+        {{paramName}}: {{> api_param_data_type}}{{^-last}},{{/-last}}{{#-last}}{{#optionalParamsWithRequestBodyProperties}}{{#-first}},{{/-first}}{{/optionalParamsWithRequestBodyProperties}}{{/-last}}
+        {{/requiredParamsWithRequestBodyProperties}}
+        {{#optionalParamsWithRequestBodyProperties}}
+        {{paramName}}: {{> api_param_data_type}}{{^-last}}, {{/-last}}
+        {{/optionalParamsWithRequestBodyProperties}}
+    ) async throws -> {{{returnType}}}{{^returnType}}Void{{/returnType}} {

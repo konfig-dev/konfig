@@ -19,6 +19,12 @@ extension {{projectName}}API {
 {{#description}}
 /** {{{.}}} */{{/description}}
 {{#objcCompatible}}@objc {{/objcCompatible}}{{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class {{classname}}{{#objcCompatible}} : NSObject{{/objcCompatible}} {
+
+    let client: {{projectName}}Client
+
+    public init(client: {{projectName}}Client) {
+        self.client = client
+    }
 {{#operation}}
     {{#allParams}}
     {{#isEnum}}
@@ -65,7 +71,7 @@ extension {{projectName}}API {
     @available(*, deprecated, message: "This operation is deprecated.")
     {{/isDeprecated}}
     @discardableResult
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}({{#allParams}}{{paramName}}: {{#isEnum}}{{#isContainer}}[{{enumName}}_{{operationId}}]{{/isContainer}}{{^isContainer}}{{enumName}}_{{operationId}}{{/isContainer}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{^required}}? = nil{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{#hasParams}}, {{/hasParams}}apiResponseQueue: DispatchQueue = {{projectName}}API.apiResponseQueue, completion: @escaping ((_ data: {{{returnType}}}{{^returnType}}Void{{/returnType}}?, _ error: Error?) -> Void)) -> RequestTask {
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}Sync({{#allParams}}{{paramName}}: {{#isEnum}}{{#isContainer}}[{{enumName}}_{{operationId}}]{{/isContainer}}{{^isContainer}}{{enumName}}_{{operationId}}{{/isContainer}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{^required}}? = nil{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{#hasParams}}, {{/hasParams}}apiResponseQueue: DispatchQueue = {{projectName}}API.apiResponseQueue, completion: @escaping ((_ data: {{{returnType}}}{{^returnType}}Void{{/returnType}}?, _ error: Error?) -> Void)) -> RequestTask {
         return {{operationId}}WithRequestBuilder({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).execute(apiResponseQueue) { result in
             switch result {
             {{#returnType}}
@@ -113,50 +119,15 @@ extension {{projectName}}API {
         }
     }
 
-    /**
-     {{#summary}}
-     {{{.}}}
-     {{/summary}}{{#allParams}}
-     - parameter {{paramName}}: ({{#isFormParam}}form{{/isFormParam}}{{#isQueryParam}}query{{/isQueryParam}}{{#isPathParam}}path{{/isPathParam}}{{#isHeaderParam}}header{{/isHeaderParam}}{{#isBodyParam}}body{{/isBodyParam}}) {{description}} {{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}{{/allParams}}
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    {{#isDeprecated}}
-    @available(*, deprecated, message: "This operation is deprecated.")
-    {{/isDeprecated}}
-    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}Async(
-        {{#requiredParamsWithRequestBodyProperties}}
-        {{paramName}}: {{> api_param_data_type}}{{^-last}},{{/-last}}{{#-last}}{{#optionalParamsWithRequestBodyProperties}}{{#-first}},{{/-first}}{{/optionalParamsWithRequestBodyProperties}}{{/-last}}
-        {{/requiredParamsWithRequestBodyProperties}}
-        {{#optionalParamsWithRequestBodyProperties}}
-        {{paramName}}: {{> api_param_data_type}}{{^-last}}, {{/-last}}
-        {{/optionalParamsWithRequestBodyProperties}}
-    ) async throws -> {{{returnType}}}{{^returnType}}Void{{/returnType}} {
-        {{#bodyParam}}
-        let {{paramName}} = {{dataType}}(
-        {{#vars}}
-            {{name}}: {{name}}{{^-last}},{{/-last}}
-        {{/vars}}
-        )
-        {{/bodyParam}}
-        return try await withCheckedThrowingContinuation { continuation in
-            {{operationId}}WithRequestBuilder({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).execute { result in
-                switch result {
-                {{#returnType}}
-                case let .success(response):
-                    continuation.resume(returning: response.body)
-                {{/returnType}}
-                {{^returnType}}
-                case .success:
-                    continuation.resume(returning: ())
-                {{/returnType}}
-                case let .failure(error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        }
-    }
+{{> api_operation_comments}}
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}(
+{{> api_operation_signature}}
+{{> api_operation_implementation}}
+
+{{> api_operation_comments}}
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} func {{operationId}}(
+{{> api_operation_signature}}
+{{> api_operation_implementation}}
 
 {{/useAsyncAwait}}
 {{/useCombine}}
@@ -472,86 +443,38 @@ extension {{projectName}}API {
 {{/useVapor}}
 {{^useVapor}}
 
-    /**
-     {{#summary}}
-     {{{.}}}
-     {{/summary}}
-     - {{httpMethod}} {{{path}}}{{#notes}}
-     - {{{.}}}{{/notes}}{{#subresourceOperation}}
-     - subresourceOperation: {{.}}{{/subresourceOperation}}{{#defaultResponse}}
-     - defaultResponse: {{.}}{{/defaultResponse}}
-     {{#authMethods}}
-     - {{#isBasic}}BASIC{{/isBasic}}{{#isOAuth}}OAuth{{/isOAuth}}{{#isApiKey}}API Key{{/isApiKey}}:
-       - type: {{type}}{{#keyParamName}} {{keyParamName}} {{#isKeyInQuery}}(QUERY){{/isKeyInQuery}}{{#isKeyInHeaer}}(HEADER){{/isKeyInHeaer}}{{/keyParamName}}
-       - name: {{name}}
-       {{/authMethods}}
-     {{#hasResponseHeaders}}
-     - responseHeaders: [{{#responseHeaders}}{{{baseName}}}({{{dataType}}}){{^-last}}, {{/-last}}{{/responseHeaders}}]
-     {{/hasResponseHeaders}}
-     {{#externalDocs}}
-     - externalDocs: {{.}}
-     {{/externalDocs}}
-     {{#allParams}}
-     - parameter {{paramName}}: ({{#isFormParam}}form{{/isFormParam}}{{#isQueryParam}}query{{/isQueryParam}}{{#isPathParam}}path{{/isPathParam}}{{#isHeaderParam}}header{{/isHeaderParam}}{{#isBodyParam}}body{{/isBodyParam}}) {{description}} {{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
-     {{/allParams}}
-     - returns: RequestBuilder<{{{returnType}}}{{#returnType}}{{#isResponseOptional}}?{{/isResponseOptional}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {{description}}
-     */
-    {{#isDeprecated}}
-    @available(*, deprecated, message: "This operation is deprecated.")
-    {{/isDeprecated}}
-    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}WithRequestBuilder({{#allParams}}{{paramName}}: {{#isEnum}}{{#isContainer}}[{{enumName}}_{{operationId}}]{{/isContainer}}{{^isContainer}}{{enumName}}_{{operationId}}{{/isContainer}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{/isEnum}}{{^required}}? = nil{{/required}}{{^-last}}, {{/-last}}{{/allParams}}) -> RequestBuilder<{{{returnType}}}{{#returnType}}{{#isResponseOptional}}?{{/isResponseOptional}}{{/returnType}}{{^returnType}}Void{{/returnType}}> {
-        {{^pathParams}}let{{/pathParams}}{{#pathParams}}{{#-first}}var{{/-first}}{{/pathParams}} localVariablePath = "{{{path}}}"{{#pathParams}}
-        let {{paramName}}PreEscape = "\({{#isEnum}}{{paramName}}{{#isContainer}}{{{dataType}}}{{/isContainer}}{{^isContainer}}.rawValue{{/isContainer}}{{/isEnum}}{{^isEnum}}APIHelper.mapValueToPathItem({{paramName}}){{/isEnum}})"
-        let {{paramName}}PostEscape = {{paramName}}PreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{{=<% %>=}}{<%baseName%>}<%={{ }}=%>", with: {{paramName}}PostEscape, options: .literal, range: nil){{/pathParams}}
-        let localVariableURLString = {{projectName}}API.basePath + localVariablePath
-        {{#bodyParam}}
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: {{paramName}})
-        {{/bodyParam}}
-        {{^bodyParam}}
-            {{#hasFormParams}}
-        let localVariableFormParams: [String: Any?] = [
-                {{#formParams}}
-            {{> _param}},
-                {{/formParams}}
-        ]
-
-        let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
-        let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-            {{/hasFormParams}}
-            {{^hasFormParams}}
-        let localVariableParameters: [String: Any]? = nil
-            {{/hasFormParams}}
-{{/bodyParam}}{{#hasQueryParams}}
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([{{^queryParams}}:{{/queryParams}}
-            {{#queryParams}}
-            {{> _param}},
-            {{/queryParams}}
-        ]){{/hasQueryParams}}{{^hasQueryParams}}
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString){{/hasQueryParams}}
-
-        let localVariableNillableHeaders: [String: Any?] = [{{^headerParams}}{{^hasFormParams}}
-            :{{/hasFormParams}}{{/headerParams}}{{#hasFormParams}}
-            "Content-Type": {{^consumes}}"multipart/form-data"{{/consumes}}{{#consumes.0}}"{{{mediaType}}}"{{/consumes.0}},{{/hasFormParams}}{{#headerParams}}
-            {{> _param}},{{/headerParams}}
-        ]
-
-        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
+{{> api_request_builder_comments}}
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class func {{operationId}}WithRequestBuilder(
+{{> api_request_builder_signature}}
+        let basePath = {{projectName}}API.basePath;
+{{> api_request_builder_setup_parameters}}
         do {
             {{#authMethods}}
             try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: {{projectName}}API.{{nameInPascalCase}})
             {{/authMethods}}
-            let localVariableRequestBuilder: RequestBuilder<{{{returnType}}}{{#returnType}}{{#isResponseOptional}}?{{/isResponseOptional}}{{/returnType}}{{^returnType}}Void{{/returnType}}>.Type = {{projectName}}API.requestBuilderFactory.{{#returnType}}getBuilder(){{/returnType}}{{^returnType}}getNonDecodableBuilder(){{/returnType}}
-            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
-            return localVariableRequestBuilder.init(method: "{{httpMethod}}", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: {{#hasAuthMethods}}true{{/hasAuthMethods}}{{^hasAuthMethods}}false{{/hasAuthMethods}})
+{{> api_request_builder_init}}
         } catch {
             print("Error: \(error)")
         }
-        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
-
+        fatalError("Error: Unable to send request to {{httpMethod}} {{{path}}}")
     }
+
+{{> api_request_builder_comments}}
+    {{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} func {{operationId}}WithRequestBuilder(
+{{> api_request_builder_signature}}
+        let basePath = self.client.basePath;
+{{> api_request_builder_setup_parameters}}
+        do {
+            {{#authMethods}}
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: self.client.{{nameInPascalCase}})
+            {{/authMethods}}
+{{> api_request_builder_init}}
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to {{httpMethod}} {{{path}}}")
+    }
+
 {{/useVapor}}
 {{/operation}}
 }

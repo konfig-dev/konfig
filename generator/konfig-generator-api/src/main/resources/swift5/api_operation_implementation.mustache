@@ -1,0 +1,24 @@
+        {{#bodyParam}}
+        let {{paramName}} = {{dataType}}(
+        {{#vars}}
+            {{name}}: {{name}}{{^-last}},{{/-last}}
+        {{/vars}}
+        )
+        {{/bodyParam}}
+        return try await withCheckedThrowingContinuation { continuation in
+            {{operationId}}WithRequestBuilder({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).execute { result in
+                switch result {
+                {{#returnType}}
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                {{/returnType}}
+                {{^returnType}}
+                case .success:
+                    continuation.resume(returning: ())
+                {{/returnType}}
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
