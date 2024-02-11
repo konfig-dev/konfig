@@ -937,6 +937,8 @@ public class DefaultGenerator implements Generator {
             bundle.put("packageVersionWithoutDashes", ((String) bundle.get("packageVersion")).replaceAll("-", ""));
         if (bundle.get("npmVersion") != null)
             bundle.put("npmVersionWithoutDashes", ((String) bundle.get("npmVersion")).replaceAll("-", ""));
+        if (bundle.get("podVersion") != null)
+            bundle.put("podVersionWithoutDashes", ((String) bundle.get("podVersion")).replaceAll("-", ""));
         if (bundle.get("artifactVersion") != null)
             bundle.put("artifactVersionWithoutDashes", ((String) bundle.get("artifactVersion")).replaceAll("-", ""));
 
