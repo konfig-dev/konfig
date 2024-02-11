@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.10
+
+### Patch Changes
+
+- [#550](https://github.com/konfig-dev/konfig/pull/550) [`6eb0cac6`](https://github.com/konfig-dev/konfig/commit/6eb0cac63c542fc8e7f38d9a02294c15c35aae53) Thanks [@dphuang2](https://github.com/dphuang2)! - remove unnecessary console.log statement
+
 ## 1.38.9
 
 ### Patch Changes
