@@ -18,7 +18,7 @@ class ClientInstanceTest: XCTestCase {
     override func tearDownWithError() throws {}
 
     func testRegisterSnapTradeUser() async throws {
-        let response = try await self.snapTrade.authentication.registerSnapTradeUserAsync(userId: "1234")
+        let response = try await self.snapTrade.authentication.registerSnapTradeUser(userId: "1234")
 
         // print the response
         print(response)

@@ -15,7 +15,7 @@ class SimpleTest: XCTestCase {
 
     func testStatusCheck() throws {
         let expectation = XCTestExpectation(description: "Response is not null")
-        APIStatusAPI.check() { response, error in
+        ApiStatusAPI.checkSync() { response, error in
             guard error == nil else {
                 print(error!)
                 return
@@ -38,7 +38,7 @@ class SimpleTest: XCTestCase {
     // }
 
     func testRegisterSnapTradeUser() async throws {
-        let response = try await AuthenticationAPI.registerSnapTradeUserAsync(userId: "1234")
+        let response = try await AuthenticationAPI.registerSnapTradeUser(userId: "1234")
 
         // print the response
         print(response)

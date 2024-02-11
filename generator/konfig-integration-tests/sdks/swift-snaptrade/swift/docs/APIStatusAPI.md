@@ -1,10 +1,10 @@
-# APIStatusAPI
+# ApiStatusAPI
 
 All URIs are relative to *https://api.snaptrade.com/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**check**](APIStatusAPI.md#check) | **GET** / | Get API Status
+[**check**](ApiStatusAPI.md#check) | **GET** / | Get API Status
 
 
 # **check**
@@ -22,7 +22,7 @@ import SnapTrade
 
 
 // Get API Status
-APIStatusAPI.check() { (response, error) in
+ApiStatusAPI.check() { (response, error) in
     guard error == nil else {
         print(error!)
         return

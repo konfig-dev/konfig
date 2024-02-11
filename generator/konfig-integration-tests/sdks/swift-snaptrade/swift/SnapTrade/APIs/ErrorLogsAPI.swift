@@ -12,6 +12,12 @@ import AnyCodable
 
 open class ErrorLogsAPI {
 
+    let client: SnapTradeClient
+
+    public init(client: SnapTradeClient) {
+        self.client = client
+    }
+
     /**
      Retrieve error logs on behalf of your SnapTrade users
      
@@ -21,7 +27,7 @@ open class ErrorLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listUserErrors(userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [UserErrorLog]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listUserErrorsSync(userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [UserErrorLog]?, _ error: Error?) -> Void)) -> RequestTask {
         return listUserErrorsWithRequestBuilder(userId: userId, userSecret: userSecret).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -63,7 +69,7 @@ open class ErrorLogsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    open class func listUserErrorsAsync(
+    open class func listUserErrors(
         userId: String,
         userSecret: String
     ) async throws -> [UserErrorLog] {
@@ -82,6 +88,33 @@ open class ErrorLogsAPI {
 
     /**
      Retrieve error logs on behalf of your SnapTrade users
+     
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    open func listUserErrors(
+        userId: String,
+        userSecret: String
+    ) async throws -> [UserErrorLog] {
+        return try await withCheckedThrowingContinuation { continuation in
+            listUserErrorsWithRequestBuilder(userId: userId, userSecret: userSecret).execute { result in
+                switch result {
+                case let .success(response):
+                    continuation.resume(returning: response.body)
+                case let .failure(error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+
+
+
+    /**
+     Retrieve error logs on behalf of your SnapTrade users
      - GET /snapTrade/listUserErrors
      - API Key:
        - type: apiKey clientId (QUERY)
@@ -96,9 +129,13 @@ open class ErrorLogsAPI {
      - parameter userSecret: (query)  
      - returns: RequestBuilder<[UserErrorLog]> 
      */
-    open class func listUserErrorsWithRequestBuilder(userId: String, userSecret: String) -> RequestBuilder<[UserErrorLog]> {
+    open class func listUserErrorsWithRequestBuilder(
+            userId: String,
+            userSecret: String
+    ) -> RequestBuilder<[UserErrorLog]> {
+        let basePath = SnapTradeAPI.basePath;
         let localVariablePath = "/snapTrade/listUserErrors"
-        let localVariableURLString = SnapTradeAPI.basePath + localVariablePath
+        let localVariableURLString = basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -123,7 +160,57 @@ open class ErrorLogsAPI {
         } catch {
             print("Error: \(error)")
         }
-        fatalError("Error: Unable to send request to /snapTrade/registerUser POST")
-
+        fatalError("Error: Unable to send request to GET /snapTrade/listUserErrors")
     }
+
+    /**
+     Retrieve error logs on behalf of your SnapTrade users
+     - GET /snapTrade/listUserErrors
+     - API Key:
+       - type: apiKey clientId (QUERY)
+       - name: PartnerClientId
+     - API Key:
+       - type: apiKey Signature 
+       - name: PartnerSignature
+     - API Key:
+       - type: apiKey timestamp (QUERY)
+       - name: PartnerTimestamp
+     - parameter userId: (query)  
+     - parameter userSecret: (query)  
+     - returns: RequestBuilder<[UserErrorLog]> 
+     */
+    open func listUserErrorsWithRequestBuilder(
+            userId: String,
+            userSecret: String
+    ) -> RequestBuilder<[UserErrorLog]> {
+        let basePath = self.client.basePath;
+        let localVariablePath = "/snapTrade/listUserErrors"
+        let localVariableURLString = basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "userId": (wrappedValue: userId.encodeToJSON(), isExplode: true),
+            "userSecret": (wrappedValue: userSecret.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        do {
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "clientId", value: self.client.partnerClientId)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Signature", value: self.client.partnerSignature)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "query", name: "timestamp", value: self.client.partnerTimestamp)
+            let localVariableRequestBuilder: RequestBuilder<[UserErrorLog]>.Type = SnapTradeAPI.requestBuilderFactory.getBuilder()
+            let URLString = localVariableUrlComponents?.string ?? localVariableURLString
+            return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        } catch {
+            print("Error: \(error)")
+        }
+        fatalError("Error: Unable to send request to GET /snapTrade/listUserErrors")
+    }
+
 }
