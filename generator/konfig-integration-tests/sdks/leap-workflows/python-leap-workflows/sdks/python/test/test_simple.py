@@ -22,10 +22,19 @@ class TestSimple(unittest.TestCase):
 
     def test_client(self):
         leap = Leap(
-        
             api_key = 'YOUR_API_KEY',
         )
         self.assertIsNotNone(leap)
+
+    def test_get_workflow(self):
+        leap = Leap(
+            api_key = 'YOUR_API_KEY',
+            host = "http://127.0.0.1:4020"
+        )
+        resp = leap.workflow_runs.get_workflow_run("rnp_x3p27VQk6MyJfLe")
+        self.assertIsNotNone(resp)
+        pprint(resp)
+        pprint(resp.status)
 
     def tearDown(self):
         pass
