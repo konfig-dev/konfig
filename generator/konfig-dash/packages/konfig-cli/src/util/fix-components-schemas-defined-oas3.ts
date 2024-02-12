@@ -202,7 +202,6 @@ async function inquireName({
     const part3 = camelcase(type, { pascalCase: true })
     const name = `${part1}${part2}${part3}`
     if (validateSchemaName({ name, spec })) return name
-    if (matchesExistingSchemaWithName({ name, spec, schema })) return name
     if (statusCode !== undefined) {
       const secondNameTry = `${part1}${part2}${statusCode}${part3}`
       if (validateSchemaName({ name: secondNameTry, spec }))
