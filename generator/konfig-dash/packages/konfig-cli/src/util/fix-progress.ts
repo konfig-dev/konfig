@@ -162,13 +162,24 @@ const progressSchema = z.object({
             z.record(mediaSchema, nameSchema.optional())
           )
           .refine(
-            // make sure there are no duplicate names otherwise one schema will
-            // override the other causing an invalid schema for a particular response
+            // make sure there are no duplicate names for different response codes
+            // but duplicate schema names within the same status code is fine as its common for the following response
+            // schemas to be valid:
+            /*
+            /users/{userId}/devices:
+              get:
+                '400':
+                  application/json: DeviceList400Response
+                  text/json: DeviceList400Response
+                  text/plain: DeviceList400Response
+            */
             (obj) => {
-              const names = Object.values(obj).flatMap((o) => Object.values(o))
+              const names = Object.values(obj).flatMap((o) =>
+                Array.from(new Set(Object.values(o)))
+              )
               return names.length === new Set(names).size
             },
-            `Detected duplicate schema names for response media types`
+            `Detected duplicate schema names for different resposne codes`
           )
       )
     )

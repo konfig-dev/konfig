@@ -9,12 +9,13 @@ import {
   Spec,
   updateOrSetComponentsSchema,
 } from 'konfig-lib'
-import { nameSchema, Progress } from './fix-progress'
+import { Progress } from './fix-progress'
 import { inquirerConfirm } from './inquirer-confirm'
 import { logOperationDetails } from './log-operation-details'
 import camelcase from 'camelcase'
 import boxen from 'boxen'
 import { validateSchemaName } from './validate-schema-name'
+import { matchesExistingSchemaWithName } from './matches-existing-schema-with-name'
 
 export async function fixComponentsSchemasDefinedOas3({
   spec,
@@ -201,9 +202,12 @@ async function inquireName({
     const part3 = camelcase(type, { pascalCase: true })
     const name = `${part1}${part2}${part3}`
     if (validateSchemaName({ name, spec })) return name
+    if (matchesExistingSchemaWithName({ name, spec, schema })) return name
     if (statusCode !== undefined) {
       const secondNameTry = `${part1}${part2}${statusCode}${part3}`
       if (validateSchemaName({ name: secondNameTry, spec }))
+        return secondNameTry
+      if (matchesExistingSchemaWithName({ name: secondNameTry, spec, schema }))
         return secondNameTry
       if (noInput) return suffixWithInteger(secondNameTry, spec)
     }
