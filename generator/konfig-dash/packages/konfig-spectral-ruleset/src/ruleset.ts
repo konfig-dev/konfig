@@ -75,7 +75,7 @@ export default {
           notMatch: 'basic',
         },
       },
-      severity: DiagnosticSeverity.Error,
+      severity: DiagnosticSeverity.Information,
     },
     'no-parameter-named-requestbody': {
       given: rulesetJsonPaths.ParameterObjectNames,
