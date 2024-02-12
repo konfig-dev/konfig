@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.12
+
+### Patch Changes
+
+- [#559](https://github.com/konfig-dev/konfig/pull/559) [`7882881f`](https://github.com/konfig-dev/konfig/commit/7882881fd0fb02dad40196ab316e89c212e789fd) Thanks [@dphuang2](https://github.com/dphuang2)! - support multiple media types for a response code in "konfig fix"
+
 ## 1.38.11
 
 ### Patch Changes
