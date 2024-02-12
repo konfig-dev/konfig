@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.38.11
+
+### Patch Changes
+
+- [#557](https://github.com/konfig-dev/konfig/pull/557) [`252552f6`](https://github.com/konfig-dev/konfig/commit/252552f60a82de7c90cebcfd80e735af66246b31) Thanks [@dphuang2](https://github.com/dphuang2)! - Generate table of contents for README.md of Swift SDK
+
+- [#555](https://github.com/konfig-dev/konfig/pull/555) [`886d5d69`](https://github.com/konfig-dev/konfig/commit/886d5d69ba2ce234d4171b5fab1e9a279ec531de) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add --useAiForTags flag to konfig fix
+
 ## 1.38.10
 
 ### Patch Changes
