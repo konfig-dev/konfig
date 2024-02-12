@@ -16,7 +16,7 @@ $ npm install -g konfig-cli
 $ konfig COMMAND
 running command...
 $ konfig (--version)
-konfig-cli/1.38.10 linux-x64 node-v16.20.2
+konfig-cli/1.38.11 linux-x64 node-v16.20.2
 $ konfig --help [COMMAND]
 USAGE
   $ konfig COMMAND
@@ -79,7 +79,7 @@ EXAMPLES
   $ konfig bump
 ```
 
-_See code: [dist/commands/bump.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/bump.ts)_
+_See code: [dist/commands/bump.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/bump.ts)_
 
 ## `konfig changeset`
 
@@ -107,7 +107,7 @@ EXAMPLES
   $ konfig changeset -g python
 ```
 
-_See code: [dist/commands/changeset.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/changeset.ts)_
+_See code: [dist/commands/changeset.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/changeset.ts)_
 
 ## `konfig detect-breaking-change`
 
@@ -128,7 +128,7 @@ EXAMPLES
   $ konfig detect-breaking-change
 ```
 
-_See code: [dist/commands/detect-breaking-change.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/detect-breaking-change.ts)_
+_See code: [dist/commands/detect-breaking-change.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/detect-breaking-change.ts)_
 
 ## `konfig diff`
 
@@ -145,7 +145,7 @@ EXAMPLES
   $ konfig diff
 ```
 
-_See code: [dist/commands/diff.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/diff.ts)_
+_See code: [dist/commands/diff.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/diff.ts)_
 
 ## `konfig fix`
 
@@ -154,20 +154,24 @@ Tool for automatically fixing an OpenAPI Specification.
 ```
 USAGE
   $ konfig fix [-f] [-i <value>] [-s <value>] [-a] [-k <value>] [--skipMissingResponseDescriptionFix]
-    [--skipListUsageSecurity] [-Y] [--ci] [-A] [-p <value>] [-n]
+    [--skipListUsageSecurity] [-Y] [--ci] [-A] [-T] [-p <value>] [-n]
 
 FLAGS
   -A, --useAIForOperationId                 Use openAI API to generate operationIds based on rules defined here:
                                             https://konfigthis.com/docs/tutorials/naming-operation-ids. Requires
                                             OPENAI_API_KEY to be set in environment.
+  -T, --useAIForTags                        Use openAI API to assign tags to operations which do not have tags, and to
+                                            generate tags for the OAS if they are missing. Requires OPENAI_API_KEY to be
+                                            set in environment.
   -Y, --[no-]alwaysYes                      Always confirm with "Yes"("Y") when asked
   -a, --[no-]auto                           Automatically generate names if asked
   -f, --format                              Formats input specification
   -i, --specInputPath=<value>               Path to input OpenAPI Specification
   -k, --konfigDir=<value>                   Directory containing konfig.yaml
-  -n, --noInput                             Run in a mode which requires no input whatsoever from the user.         This
-                                            flag will enable --alwaysYes, --auto, --ci, and --useAIForOperationId flags;
-                                            any other rules which attempt to prompt for input will be ignored.
+  -n, --noInput                             Run in a mode which requires no input whatsoever from the user. This flag
+                                            will enable --alwaysYes, --auto, --ci, --useAIForOperationId, and
+                                            --useAIForTags flags; any other rules which attempt to prompt for input will
+                                            be ignored.
   -p, --progressYamlOverridePath=<value>    Override path to read and write progress.yaml file.
   -s, --spec=<value>                        Path to output OpenAPI Specification
   --ci                                      Run in CI mode: answers default for all prompts if applicable
@@ -181,7 +185,7 @@ EXAMPLES
   $ konfig fix
 ```
 
-_See code: [dist/commands/fix.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/fix.ts)_
+_See code: [dist/commands/fix.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/fix.ts)_
 
 ## `konfig generate`
 
@@ -230,7 +234,7 @@ EXAMPLES
   $ konfig generate
 ```
 
-_See code: [dist/commands/generate.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/generate.ts)_
+_See code: [dist/commands/generate.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/generate.ts)_
 
 ## `konfig help [COMMAND]`
 
@@ -270,7 +274,7 @@ EXAMPLES
   $ konfig ignore
 ```
 
-_See code: [dist/commands/ignore.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/ignore.ts)_
+_See code: [dist/commands/ignore.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/ignore.ts)_
 
 ## `konfig init`
 
@@ -293,7 +297,7 @@ EXAMPLES
   $ konfig init
 ```
 
-_See code: [dist/commands/init.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/init.ts)_
+_See code: [dist/commands/init.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/init.ts)_
 
 ## `konfig lint`
 
@@ -310,7 +314,7 @@ EXAMPLES
   $ konfig lint
 ```
 
-_See code: [dist/commands/lint.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/lint.ts)_
+_See code: [dist/commands/lint.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/lint.ts)_
 
 ## `konfig lint-python`
 
@@ -338,7 +342,7 @@ EXAMPLES
   $ konfig lint-python -f -p test/simple_test.py
 ```
 
-_See code: [dist/commands/lint-python.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/lint-python.ts)_
+_See code: [dist/commands/lint-python.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/lint-python.ts)_
 
 ## `konfig list-sdk-submodules`
 
@@ -355,7 +359,7 @@ EXAMPLES
   $ konfig list-sdk-submodules
 ```
 
-_See code: [dist/commands/list-sdk-submodules.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/list-sdk-submodules.ts)_
+_See code: [dist/commands/list-sdk-submodules.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/list-sdk-submodules.ts)_
 
 ## `konfig login`
 
@@ -372,7 +376,7 @@ EXAMPLES
   $ konfig login
 ```
 
-_See code: [dist/commands/login.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/login.ts)_
+_See code: [dist/commands/login.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/login.ts)_
 
 ## `konfig logout`
 
@@ -389,7 +393,7 @@ EXAMPLES
   $ konfig logout
 ```
 
-_See code: [dist/commands/logout.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/logout.ts)_
+_See code: [dist/commands/logout.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/logout.ts)_
 
 ## `konfig mock`
 
@@ -406,7 +410,7 @@ EXAMPLES
   $ konfig mock
 ```
 
-_See code: [dist/commands/mock.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/mock.ts)_
+_See code: [dist/commands/mock.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/mock.ts)_
 
 ## `konfig openapi-schema-validate`
 
@@ -429,7 +433,7 @@ EXAMPLES
   $ konfig openapi-schema-validate
 ```
 
-_See code: [dist/commands/openapi-schema-validate.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/openapi-schema-validate.ts)_
+_See code: [dist/commands/openapi-schema-validate.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/openapi-schema-validate.ts)_
 
 ## `konfig p2o`
 
@@ -450,7 +454,7 @@ EXAMPLES
   $ konfig p2o
 ```
 
-_See code: [dist/commands/p2o.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/p2o.ts)_
+_See code: [dist/commands/p2o.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/p2o.ts)_
 
 ## `konfig pr-create`
 
@@ -475,7 +479,7 @@ EXAMPLES
   $ konfig pr-create
 ```
 
-_See code: [dist/commands/pr-create.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/pr-create.ts)_
+_See code: [dist/commands/pr-create.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/pr-create.ts)_
 
 ## `konfig pr-merge`
 
@@ -498,7 +502,7 @@ EXAMPLES
   $ konfig pr-merge
 ```
 
-_See code: [dist/commands/pr-merge.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/pr-merge.ts)_
+_See code: [dist/commands/pr-merge.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/pr-merge.ts)_
 
 ## `konfig publish`
 
@@ -530,7 +534,7 @@ EXAMPLES
   $ konfig publish
 ```
 
-_See code: [dist/commands/publish.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/publish.ts)_
+_See code: [dist/commands/publish.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/publish.ts)_
 
 ## `konfig published`
 
@@ -550,7 +554,7 @@ EXAMPLES
   $ konfig published
 ```
 
-_See code: [dist/commands/published.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/published.ts)_
+_See code: [dist/commands/published.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/published.ts)_
 
 ## `konfig pull`
 
@@ -571,7 +575,7 @@ EXAMPLES
   $ konfig pull
 ```
 
-_See code: [dist/commands/pull.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/pull.ts)_
+_See code: [dist/commands/pull.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/pull.ts)_
 
 ## `konfig push`
 
@@ -595,7 +599,7 @@ EXAMPLES
   $ konfig push
 ```
 
-_See code: [dist/commands/push.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/push.ts)_
+_See code: [dist/commands/push.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/push.ts)_
 
 ## `konfig revalidate-demos [FILE]`
 
@@ -617,7 +621,7 @@ EXAMPLES
   $ konfig revalidate-demos
 ```
 
-_See code: [dist/commands/revalidate-demos.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/revalidate-demos.ts)_
+_See code: [dist/commands/revalidate-demos.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/revalidate-demos.ts)_
 
 ## `konfig revalidate-portal [FILE]`
 
@@ -639,7 +643,7 @@ EXAMPLES
   $ konfig revalidate-portal
 ```
 
-_See code: [dist/commands/revalidate-portal.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/revalidate-portal.ts)_
+_See code: [dist/commands/revalidate-portal.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/revalidate-portal.ts)_
 
 ## `konfig slack-msg [FILE]`
 
@@ -660,7 +664,7 @@ EXAMPLES
   $ konfig slack-msg
 ```
 
-_See code: [dist/commands/slack-msg.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/slack-msg.ts)_
+_See code: [dist/commands/slack-msg.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/slack-msg.ts)_
 
 ## `konfig test`
 
@@ -684,7 +688,7 @@ EXAMPLES
   $ konfig test
 ```
 
-_See code: [dist/commands/test.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/test.ts)_
+_See code: [dist/commands/test.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/test.ts)_
 
 ## `konfig version`
 
@@ -701,5 +705,5 @@ EXAMPLES
   $ konfig version
 ```
 
-_See code: [dist/commands/version.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.10/dist/commands/version.ts)_
+_See code: [dist/commands/version.ts](https://github.com/konfig-dev/konfig-cli/blob/v1.38.11/dist/commands/version.ts)_
 <!-- commandsstop -->
