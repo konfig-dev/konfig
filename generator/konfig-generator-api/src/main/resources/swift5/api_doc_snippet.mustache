@@ -1,0 +1,13 @@
+import {{projectName}}
+
+let {{clientNameLowercase}} = {{projectName}}Client(
+{{#authMethods}}
+{{#isApiKey}}
+    {{nameInPascalCase}}: "{{keyParamNameSnakeCaseUppercase}}"{{^-last}},{{/-last}}
+{{/isApiKey}}
+{{/authMethods}}
+    // Defining the base path is optional and defaults to {{{basePath}}}
+    // basePath: "{{{basePath}}}"
+)
+
+{{> api_doc_snippet_call}}

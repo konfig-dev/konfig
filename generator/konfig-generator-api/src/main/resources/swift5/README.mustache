@@ -68,77 +68,82 @@ Pod installation complete! There is 1 dependency from the Podfile and 2 total po
 {{{.}}}
 {{/readmeSnippet}}
 {{^readmeSnippet}}
-import {{projectName}}
-{{#authMethods}}
-{{#isApiKey}}{{#isKeyInHeader}}
-let apiKey = ProcessInfo.processInfo.environment["API_KEY"]!
-{{{projectName}}}API.customHeaders = [
-    "{{{keyParamName}}}": apiKey,
-]
-{{/isKeyInHeader}}{{/isApiKey}}
-{{/authMethods}}
 {{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
-{{#allParams}}let {{paramName}} = {{{vendorExtensions.x-swift-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
-{{/allParams}}
-
-{{^usePromiseKit}}
-{{^useRxSwift}}
-{{^useVapor}}
-{{#summary}}
-// {{{.}}}
-{{/summary}}
-{{classname}}.{{{operationId}}}({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) { (response, error) in
-    guard error == nil else {
-        print(error!)
-        return
-    }
-
-    if response != nil {
-        dump(response)
-    }
-}
-{{/useVapor}}
-{{/useRxSwift}}
-{{/usePromiseKit}}
-{{#usePromiseKit}}
-{{#summary}}
-// {{{.}}}
-{{/summary}}
-{{classname}}.{{{operationId}}}({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).then {
-         // when the promise is fulfilled
-     }.always {
-         // regardless of whether the promise is fulfilled, or rejected
-     }.catch { errorType in
-         // when the promise is rejected
-}
-{{/usePromiseKit}}
-{{#useRxSwift}}
-// TODO RxSwift sample code not yet implemented. To contribute, please open a ticket via http://github.com/OpenAPITools/openapi-generator/issues/new
-{{/useRxSwift}}
-{{#useVapor}}
-{{#summary}}
-// {{{.}}}
-{{/summary}}
-{{classname}}.{{{operationId}}}({{#allParams}}{{paramName}}: {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}).whenComplete { result in
-    switch result {
-    case .failure(let error):
-    // process error
-    case .success(let response):
-        switch response {
-        // process decoded response value or raw ClientResponse
-        {{#responses}}
-        case .http{{code}}(let value, let raw):
-        {{/responses}}
-        {{^hasDefaultResponse}}
-        case .http0(let value, let raw):
-        {{/hasDefaultResponse}}
-        }
-    }
-}
-{{/useVapor}}
+{{> api_doc_snippet}}
 {{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
 {{/readmeSnippet}}
 ```
+
+## Reference
+
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}
+### `{{{clientNameLowercase}}}.{{classNameCamelCase}}.{{operationId}}`
+
+{{#notes}}
+{{{unescapedNotes}}}
+
+{{/notes}}
+{{^notes}}
+{{summary}}
+
+{{/notes}}
+#### 🛠️ Usage
+
+```swift
+{{> api_doc_snippet_call}}
+```
+
+{{#hasParams}}
+{{#allParamsWithRequestBodyProperties}}
+{{#-first}}
+#### ⚙️ Parameters
+
+{{/-first}}
+{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### {{> README_parameter_name}}: {{> README_parameter_data_type}}
+
+{{> README_parameter_description}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{^isFromBodyParam}}
+##### {{> README_parameter_name}}: {{> README_parameter_data_type}}
+
+{{> README_parameter_description}}
+{{/isFromBodyParam}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{/allParamsWithRequestBodyProperties}}
+{{#bodyParam}}
+{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### requestBody: {{> README_parameter_data_type}}
+
+{{> README_parameter_description}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{#isArray}}
+#### ⚙️ Request Body
+
+{{> README_parameter_data_type}}
+
+{{> README_parameter_description}}
+{{/isArray}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{/bodyParam}}
+{{/hasParams}}
+{{#returnModel}}
+#### 🔄 Return
+
+[{{{classname}}}](./{{projectName}}/Models/{{{classFilename}}}.swift)
+
+{{/returnModel}}
+#### 🌐 Endpoint
+
+`{{path}}` `{{httpMethod}}`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
 {{^removeKonfigBranding}}
 ## Author

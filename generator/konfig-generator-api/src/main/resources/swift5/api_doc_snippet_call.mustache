@@ -1,0 +1,8 @@
+{{#allParamsWithRequestBodyProperties}}
+let {{paramName}} = {{{vendorExtensions.x-swift-example}}}
+{{/allParamsWithRequestBodyProperties}}
+let {{operationId}}Response = {{clientNameLowercase}}.{{{operationId}}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}(
+    {{#allParamsWithRequestBodyProperties}}
+    {{paramName}}: {{paramName}}{{^-last}},{{/-last}}
+    {{/allParamsWithRequestBodyProperties}}
+){{/hasParams}}

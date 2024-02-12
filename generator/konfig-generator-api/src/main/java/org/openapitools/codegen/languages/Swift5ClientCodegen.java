@@ -1253,6 +1253,9 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
             for (CodegenParameter cp : operation.allParams) {
                 cp.vendorExtensions.put("x-swift-example", constructExampleCode(cp, modelMaps, new HashSet<>()));
             }
+            for (CodegenParameter cp : operation.allParamsWithRequestBodyProperties) {
+                cp.vendorExtensions.put("x-swift-example", constructExampleCode(cp, modelMaps, new HashSet<>()));
+            }
         }
         return objs;
     }

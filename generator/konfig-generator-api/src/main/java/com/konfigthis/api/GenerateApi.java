@@ -392,6 +392,9 @@ public interface GenerateApi {
         putIfPresent(map, "clientName", additionalProperties.getClientName());
         if (additionalProperties.getClientName() != null)
             putIfPresent(map, "clientNameLowercase", additionalProperties.getClientName().toLowerCase());
+        if ("swift5".equals(generator)) {
+            putIfPresent(map, "clientNameLowercase", additionalProperties.getProjectName().toLowerCase());
+        }
         putIfPresent(map, "clientStateIsOptional", additionalProperties.getClientStateIsOptional());
 
 
