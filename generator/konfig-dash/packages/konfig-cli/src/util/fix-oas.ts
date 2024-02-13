@@ -208,6 +208,7 @@ export async function fixOas({
       noInput,
       progress,
     })
+
   // Objects with no properties
   const numberOfObjectsWithNoPropertiesFixed = await fixObjectWithNoProperties({
     spec,
