@@ -15,7 +15,7 @@ export function fixAdditionalPropertiesFalse({ spec }: { spec: Spec }): number {
     if (schema === null) return
     if (schema.type !== 'object') return
     if (schema.additionalProperties === undefined) return
-    if (schema.additionalProperties === true) return
+    if (schema.additionalProperties !== false) return
     delete schema.additionalProperties
     numberOfAdditionalPropertiesFixed++
   })
