@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **symbol** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **currency** | [**Currency**](Currency.md) |  | [optional] 

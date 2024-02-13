@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**underlyingSymbolId** | **UUID** |  | 
+**underlyingSymbolId** | **String** |  | 
 **legs** | [OptionLeg] |  | 
 **strategyType** | **String** |  | 
 

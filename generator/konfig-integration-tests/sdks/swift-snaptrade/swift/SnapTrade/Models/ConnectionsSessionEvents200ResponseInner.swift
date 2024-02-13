@@ -21,17 +21,17 @@ public struct ConnectionsSessionEvents200ResponseInner: Codable, JSONEncodable, 
         case connectionSuccessful = "CONNECTION_SUCCESSFUL"
         case partnerRedirect = "PARTNER_REDIRECT"
     }
-    public var id: UUID?
+    public var id: String?
     public var sessionEventType: SessionEventType?
-    public var sessionId: UUID?
+    public var sessionId: String?
     /** SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user */
     public var userId: String?
     /** Time */
     public var createdDate: String?
     public var brokerageStatusCode: Int?
-    public var brokerageAuthorizationId: UUID?
+    public var brokerageAuthorizationId: String?
 
-    public init(id: UUID? = nil, sessionEventType: SessionEventType? = nil, sessionId: UUID? = nil, userId: String? = nil, createdDate: String? = nil, brokerageStatusCode: Int? = nil, brokerageAuthorizationId: UUID? = nil) {
+    public init(id: String? = nil, sessionEventType: SessionEventType? = nil, sessionId: String? = nil, userId: String? = nil, createdDate: String? = nil, brokerageStatusCode: Int? = nil, brokerageAuthorizationId: String? = nil) {
         self.id = id
         self.sessionEventType = sessionEventType
         self.sessionId = sessionId

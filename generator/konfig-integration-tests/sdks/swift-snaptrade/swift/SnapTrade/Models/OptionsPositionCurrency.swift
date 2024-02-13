@@ -12,11 +12,11 @@ import AnyCodable
 
 public struct OptionsPositionCurrency: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var code: String?
     public var name: String?
 
-    public init(id: UUID? = nil, code: String? = nil, name: String? = nil) {
+    public init(id: String? = nil, code: String? = nil, name: String? = nil) {
         self.id = id
         self.code = code
         self.name = name

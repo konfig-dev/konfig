@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
-**account** | **UUID** |  | [optional] 
-**currency** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
+**account** | **String** |  | [optional] 
+**currency** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
 **amount** | **Double** |  | [optional] 
 

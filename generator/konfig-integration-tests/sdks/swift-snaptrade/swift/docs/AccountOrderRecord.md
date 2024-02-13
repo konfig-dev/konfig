@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **brokerageOrderId** | **String** | Order id returned by brokerage | [optional] 
 **status** | [**AccountOrderRecordStatus**](AccountOrderRecordStatus.md) |  | [optional] 
-**symbol** | **UUID** |  | [optional] 
+**symbol** | **String** |  | [optional] 
 **universalSymbol** | [**UniversalSymbol**](UniversalSymbol.md) |  | [optional] 
 **optionSymbol** | [**OptionsSymbol**](OptionsSymbol.md) |  | [optional] 
 **action** | [**Action**](Action.md) |  | [optional] 

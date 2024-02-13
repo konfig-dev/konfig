@@ -13,14 +13,14 @@ import AnyCodable
 /** Symbol returned in position object */
 public struct PositionSymbol: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var description: String?
     public var symbol: UniversalSymbol?
     public var localId: String?
     public var isQuotable: Bool?
     public var isTradable: Bool?
 
-    public init(id: UUID? = nil, description: String? = nil, symbol: UniversalSymbol? = nil, localId: String? = nil, isQuotable: Bool? = nil, isTradable: Bool? = nil) {
+    public init(id: String? = nil, description: String? = nil, symbol: UniversalSymbol? = nil, localId: String? = nil, isQuotable: Bool? = nil, isTradable: Bool? = nil) {
         self.id = id
         self.description = description
         self.symbol = symbol
@@ -72,7 +72,7 @@ public struct PositionSymbol: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         symbol = try container.decodeIfPresent(UniversalSymbol.self, forKey: .symbol)
         localId = try container.decodeIfPresent(String.self, forKey: .localId)

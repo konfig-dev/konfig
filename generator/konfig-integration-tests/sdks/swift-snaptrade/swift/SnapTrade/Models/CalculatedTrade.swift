@@ -13,10 +13,10 @@ import AnyCodable
 /** Array of trades to make to rebalance portfolio */
 public struct CalculatedTrade: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var trades: [Trade]?
 
-    public init(id: UUID? = nil, trades: [Trade]? = nil) {
+    public init(id: String? = nil, trades: [Trade]? = nil) {
         self.id = id
         self.trades = trades
     }
@@ -56,7 +56,7 @@ public struct CalculatedTrade: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         trades = try container.decodeIfPresent([Trade].self, forKey: .trades)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("id")

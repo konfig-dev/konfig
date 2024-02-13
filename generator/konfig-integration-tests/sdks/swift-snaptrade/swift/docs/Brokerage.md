@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **displayName** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **isRealTimeConnection** | **Bool** |  | [optional] 
 **allowsTradingThroughSnaptradeApi** | **Bool** |  | [optional] 
 **isScrapingIntegration** | **Bool** |  | [optional] 
-**defaultCurrency** | **UUID** |  | [optional] 
+**defaultCurrency** | **String** |  | [optional] 
 **brokerageType** | [**BrokerageType**](BrokerageType.md) |  | [optional] 
 **exchanges** | [AnyCodable] | List of exchange ID supported by brokerage | [optional] 
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **detailBrokerageAuthorization**
 ```swift
-    open class func detailBrokerageAuthorization(authorizationId: UUID, userId: String, userSecret: String, completion: @escaping (_ data: BrokerageAuthorization?, _ error: Error?) -> Void)
+    open class func detailBrokerageAuthorization(authorizationId: String, userId: String, userSecret: String, completion: @escaping (_ data: BrokerageAuthorization?, _ error: Error?) -> Void)
 ```
 
 Get brokerage authorization details
@@ -21,7 +21,7 @@ Get brokerage authorization details
 ```swift
 import SnapTrade
 
-let authorizationId = 987 // UUID | The ID of a brokerage authorization object.
+let authorizationId = "authorizationId_example" // String | The ID of a brokerage authorization object.
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 
@@ -42,7 +42,7 @@ ConnectionsAPI.detailBrokerageAuthorization(authorizationId: authorizationId, us
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorizationId** | **UUID** | The ID of a brokerage authorization object. | 
+ **authorizationId** | **String** | The ID of a brokerage authorization object. | 
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 
 # **removeBrokerageAuthorization**
 ```swift
-    open class func removeBrokerageAuthorization(authorizationId: UUID, userId: String, userSecret: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+    open class func removeBrokerageAuthorization(authorizationId: String, userId: String, userSecret: String, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
 ```
 
 Delete brokerage authorization
@@ -121,7 +121,7 @@ Delete brokerage authorization
 ```swift
 import SnapTrade
 
-let authorizationId = 987 // UUID | The ID of the Authorization to delete.
+let authorizationId = "authorizationId_example" // String | The ID of the Authorization to delete.
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 
@@ -142,7 +142,7 @@ ConnectionsAPI.removeBrokerageAuthorization(authorizationId: authorizationId, us
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorizationId** | **UUID** | The ID of the Authorization to delete. | 
+ **authorizationId** | **String** | The ID of the Authorization to delete. | 
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
 

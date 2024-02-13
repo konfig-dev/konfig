@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Options information | [optional] 
-**symbol** | **UUID** |  | [optional] 
+**symbol** | **String** |  | [optional] 
 **optionSymbol** | [**OptionsSymbol**](OptionsSymbol.md) |  | [optional] 
 **price** | **Double** | Trade Price if limit or stop limit order | [optional] 
 **currency** | [**Currency**](Currency.md) |  | [optional] 

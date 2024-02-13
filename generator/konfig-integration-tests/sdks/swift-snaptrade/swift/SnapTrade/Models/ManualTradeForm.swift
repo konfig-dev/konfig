@@ -13,7 +13,7 @@ import AnyCodable
 /** Manual Trade Form */
 public struct ManualTradeForm: Codable, JSONEncodable, Hashable {
 
-    public var accountId: UUID?
+    public var accountId: String?
     public var action: Action?
     public var orderType: OrderType?
     /** Trade Price if limit or stop limit order */
@@ -22,10 +22,10 @@ public struct ManualTradeForm: Codable, JSONEncodable, Hashable {
     public var stop: Double?
     public var timeInForce: TimeInForceStrict?
     public var units: Double?
-    public var universalSymbolId: UUID?
+    public var universalSymbolId: String?
     public var notionalValue: Double?
 
-    public init(accountId: UUID? = nil, action: Action? = nil, orderType: OrderType? = nil, price: Double? = nil, stop: Double? = nil, timeInForce: TimeInForceStrict? = nil, units: Double? = nil, universalSymbolId: UUID? = nil, notionalValue: Double? = nil) {
+    public init(accountId: String? = nil, action: Action? = nil, orderType: OrderType? = nil, price: Double? = nil, stop: Double? = nil, timeInForce: TimeInForceStrict? = nil, units: Double? = nil, universalSymbolId: String? = nil, notionalValue: Double? = nil) {
         self.accountId = accountId
         self.action = action
         self.orderType = orderType

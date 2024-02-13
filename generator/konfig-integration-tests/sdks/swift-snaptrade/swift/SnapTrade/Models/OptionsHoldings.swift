@@ -15,7 +15,7 @@ public struct OptionsHoldings: Codable, JSONEncodable, Hashable {
 
     /** Options information */
     public var id: String?
-    public var symbol: UUID?
+    public var symbol: String?
     public var optionSymbol: OptionsSymbol?
     /** Trade Price if limit or stop limit order */
     public var price: Double?
@@ -23,7 +23,7 @@ public struct OptionsHoldings: Codable, JSONEncodable, Hashable {
     /** Average purchase price for this position */
     public var averagePurchasePrice: Double?
 
-    public init(id: String? = nil, symbol: UUID? = nil, optionSymbol: OptionsSymbol? = nil, price: Double? = nil, currency: Currency? = nil, averagePurchasePrice: Double? = nil) {
+    public init(id: String? = nil, symbol: String? = nil, optionSymbol: OptionsSymbol? = nil, price: Double? = nil, currency: Currency? = nil, averagePurchasePrice: Double? = nil) {
         self.id = id
         self.symbol = symbol
         self.optionSymbol = optionSymbol
@@ -76,7 +76,7 @@ public struct OptionsHoldings: Codable, JSONEncodable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         id = try container.decodeIfPresent(String.self, forKey: .id)
-        symbol = try container.decodeIfPresent(UUID.self, forKey: .symbol)
+        symbol = try container.decodeIfPresent(String.self, forKey: .symbol)
         optionSymbol = try container.decodeIfPresent(OptionsSymbol.self, forKey: .optionSymbol)
         price = try container.decodeIfPresent(Double.self, forKey: .price)
         currency = try container.decodeIfPresent(Currency.self, forKey: .currency)

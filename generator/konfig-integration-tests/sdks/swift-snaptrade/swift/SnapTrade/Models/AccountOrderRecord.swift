@@ -16,7 +16,7 @@ public struct AccountOrderRecord: Codable, JSONEncodable, Hashable {
     /** Order id returned by brokerage */
     public var brokerageOrderId: String?
     public var status: AccountOrderRecordStatus?
-    public var symbol: UUID?
+    public var symbol: String?
     public var universalSymbol: UniversalSymbol?
     public var optionSymbol: OptionsSymbol?
     public var action: Action?
@@ -44,7 +44,7 @@ public struct AccountOrderRecord: Codable, JSONEncodable, Hashable {
     /** Time */
     public var expiryDate: String?
 
-    public init(brokerageOrderId: String? = nil, status: AccountOrderRecordStatus? = nil, symbol: UUID? = nil, universalSymbol: UniversalSymbol? = nil, optionSymbol: OptionsSymbol? = nil, action: Action? = nil, totalQuantity: Double? = nil, openQuantity: Double? = nil, canceledQuantity: Double? = nil, filledQuantity: Double? = nil, executionPrice: Double? = nil, limitPrice: Double? = nil, stopPrice: Double? = nil, orderType: OrderType? = nil, timeInForce: String? = nil, timePlaced: String? = nil, timeUpdated: String? = nil, expiryDate: String? = nil) {
+    public init(brokerageOrderId: String? = nil, status: AccountOrderRecordStatus? = nil, symbol: String? = nil, universalSymbol: UniversalSymbol? = nil, optionSymbol: OptionsSymbol? = nil, action: Action? = nil, totalQuantity: Double? = nil, openQuantity: Double? = nil, canceledQuantity: Double? = nil, filledQuantity: Double? = nil, executionPrice: Double? = nil, limitPrice: Double? = nil, stopPrice: Double? = nil, orderType: OrderType? = nil, timeInForce: String? = nil, timePlaced: String? = nil, timeUpdated: String? = nil, expiryDate: String? = nil) {
         self.brokerageOrderId = brokerageOrderId
         self.status = status
         self.symbol = symbol
@@ -134,7 +134,7 @@ public struct AccountOrderRecord: Codable, JSONEncodable, Hashable {
 
         brokerageOrderId = try container.decodeIfPresent(String.self, forKey: .brokerageOrderId)
         status = try container.decodeIfPresent(AccountOrderRecordStatus.self, forKey: .status)
-        symbol = try container.decodeIfPresent(UUID.self, forKey: .symbol)
+        symbol = try container.decodeIfPresent(String.self, forKey: .symbol)
         universalSymbol = try container.decodeIfPresent(UniversalSymbol.self, forKey: .universalSymbol)
         optionSymbol = try container.decodeIfPresent(OptionsSymbol.self, forKey: .optionSymbol)
         action = try container.decodeIfPresent(Action.self, forKey: .action)

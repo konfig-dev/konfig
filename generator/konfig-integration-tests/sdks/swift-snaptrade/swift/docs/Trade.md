@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **account** | [**Account**](Account.md) |  | [optional] 
 **symbol** | [**BrokerageSymbol**](BrokerageSymbol.md) |  | [optional] 
 **universalSymbol** | [**UniversalSymbol**](UniversalSymbol.md) |  | [optional] 

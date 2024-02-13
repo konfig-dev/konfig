@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **underlyingSymbolId** | [**UniversalSymbol**](UniversalSymbol.md) |  | [optional] 
 **strategyType** | **String** |  | [optional] 
 **numberOfLegs** | **Double** |  | [optional] 

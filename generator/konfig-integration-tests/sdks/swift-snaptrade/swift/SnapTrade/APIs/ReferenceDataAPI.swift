@@ -1775,7 +1775,7 @@ open class ReferenceDataAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func symbolSearchUserAccountSync(userId: String, userSecret: String, accountId: UUID, symbolQuery: SymbolQuery? = nil, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [UniversalSymbol]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func symbolSearchUserAccountSync(userId: String, userSecret: String, accountId: String, symbolQuery: SymbolQuery? = nil, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [UniversalSymbol]?, _ error: Error?) -> Void)) -> RequestTask {
         return symbolSearchUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbolQuery: symbolQuery).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1797,7 +1797,7 @@ open class ReferenceDataAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func symbolSearchUserAccountAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, symbolQuery: SymbolQuery? = nil) async throws -> [UniversalSymbol] {
+    private class func symbolSearchUserAccountAsyncMappedParams(userId: String, userSecret: String, accountId: String, symbolQuery: SymbolQuery? = nil) async throws -> [UniversalSymbol] {
         return try await withCheckedThrowingContinuation { continuation in
             symbolSearchUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbolQuery: symbolQuery).execute { result in
                 switch result {
@@ -1824,7 +1824,7 @@ open class ReferenceDataAPI {
     open class func symbolSearchUserAccount(
         userId: String,
         userSecret: String,
-        accountId: UUID,
+        accountId: String,
         substring: String? = nil
     ) async throws -> [UniversalSymbol] {
         let symbolQuery = SymbolQuery(
@@ -1857,7 +1857,7 @@ open class ReferenceDataAPI {
     open func symbolSearchUserAccount(
         userId: String,
         userSecret: String,
-        accountId: UUID,
+        accountId: String,
         substring: String? = nil
     ) async throws -> [UniversalSymbol] {
         let symbolQuery = SymbolQuery(
@@ -1898,7 +1898,7 @@ open class ReferenceDataAPI {
     open class func symbolSearchUserAccountWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             symbolQuery: SymbolQuery? = nil
     ) -> RequestBuilder<[UniversalSymbol]> {
         let basePath = SnapTradeAPI.basePath;
@@ -1955,7 +1955,7 @@ open class ReferenceDataAPI {
     open func symbolSearchUserAccountWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             symbolQuery: SymbolQuery? = nil
     ) -> RequestBuilder<[UniversalSymbol]> {
         let basePath = self.client.basePath;

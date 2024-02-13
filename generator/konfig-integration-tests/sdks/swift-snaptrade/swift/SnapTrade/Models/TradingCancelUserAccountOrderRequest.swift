@@ -12,9 +12,9 @@ import AnyCodable
 
 public struct TradingCancelUserAccountOrderRequest: Codable, JSONEncodable, Hashable {
 
-    public var brokerageOrderId: UUID?
+    public var brokerageOrderId: String?
 
-    public init(brokerageOrderId: UUID? = nil) {
+    public init(brokerageOrderId: String? = nil) {
         self.brokerageOrderId = brokerageOrderId
     }
 

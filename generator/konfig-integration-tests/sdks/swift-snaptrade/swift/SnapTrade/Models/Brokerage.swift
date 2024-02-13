@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct Brokerage: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var name: String?
     public var displayName: String?
     public var description: String?
@@ -27,12 +27,12 @@ public struct Brokerage: Codable, JSONEncodable, Hashable {
     public var isRealTimeConnection: Bool?
     public var allowsTradingThroughSnaptradeApi: Bool?
     public var isScrapingIntegration: Bool?
-    public var defaultCurrency: UUID?
+    public var defaultCurrency: String?
     public var brokerageType: BrokerageType?
     /** List of exchange ID supported by brokerage */
     public var exchanges: [AnyCodable]?
 
-    public init(id: UUID? = nil, name: String? = nil, displayName: String? = nil, description: String? = nil, awsS3LogoUrl: String? = nil, slug: String? = nil, url: String? = nil, enabled: Bool? = nil, maintenanceMode: Bool? = nil, allowsFractionalUnits: Bool? = nil, allowsTrading: Bool? = nil, hasReporting: Bool? = nil, isRealTimeConnection: Bool? = nil, allowsTradingThroughSnaptradeApi: Bool? = nil, isScrapingIntegration: Bool? = nil, defaultCurrency: UUID? = nil, brokerageType: BrokerageType? = nil, exchanges: [AnyCodable]? = nil) {
+    public init(id: String? = nil, name: String? = nil, displayName: String? = nil, description: String? = nil, awsS3LogoUrl: String? = nil, slug: String? = nil, url: String? = nil, enabled: Bool? = nil, maintenanceMode: Bool? = nil, allowsFractionalUnits: Bool? = nil, allowsTrading: Bool? = nil, hasReporting: Bool? = nil, isRealTimeConnection: Bool? = nil, allowsTradingThroughSnaptradeApi: Bool? = nil, isScrapingIntegration: Bool? = nil, defaultCurrency: String? = nil, brokerageType: BrokerageType? = nil, exchanges: [AnyCodable]? = nil) {
         self.id = id
         self.name = name
         self.displayName = displayName
@@ -120,7 +120,7 @@ public struct Brokerage: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         displayName = try container.decodeIfPresent(String.self, forKey: .displayName)
         description = try container.decodeIfPresent(String.self, forKey: .description)
@@ -135,7 +135,7 @@ public struct Brokerage: Codable, JSONEncodable, Hashable {
         isRealTimeConnection = try container.decodeIfPresent(Bool.self, forKey: .isRealTimeConnection)
         allowsTradingThroughSnaptradeApi = try container.decodeIfPresent(Bool.self, forKey: .allowsTradingThroughSnaptradeApi)
         isScrapingIntegration = try container.decodeIfPresent(Bool.self, forKey: .isScrapingIntegration)
-        defaultCurrency = try container.decodeIfPresent(UUID.self, forKey: .defaultCurrency)
+        defaultCurrency = try container.decodeIfPresent(String.self, forKey: .defaultCurrency)
         brokerageType = try container.decodeIfPresent(BrokerageType.self, forKey: .brokerageType)
         exchanges = try container.decodeIfPresent([AnyCodable].self, forKey: .exchanges)
         var nonAdditionalPropertyKeys = Set<String>()

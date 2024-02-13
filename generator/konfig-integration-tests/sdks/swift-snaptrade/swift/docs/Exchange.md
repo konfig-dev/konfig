@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **code** | **String** |  | [optional] 
 **micCode** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 

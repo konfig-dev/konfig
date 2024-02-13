@@ -467,7 +467,7 @@ This endpoint does not need any parameter.
 
 # **symbolSearchUserAccount**
 ```swift
-    open class func symbolSearchUserAccount(userId: String, userSecret: String, accountId: UUID, symbolQuery: SymbolQuery? = nil, completion: @escaping (_ data: [UniversalSymbol]?, _ error: Error?) -> Void)
+    open class func symbolSearchUserAccount(userId: String, userSecret: String, accountId: String, symbolQuery: SymbolQuery? = nil, completion: @escaping (_ data: [UniversalSymbol]?, _ error: Error?) -> Void)
 ```
 
 Search for symbols available in an account
@@ -478,7 +478,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account to search for symbols within.
+let accountId = "accountId_example" // String | The ID of the account to search for symbols within.
 let symbolQuery = SymbolQuery(substring: "substring_example") // SymbolQuery |  (optional)
 
 // Search for symbols available in an account
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account to search for symbols within. | 
+ **accountId** | **String** | The ID of the account to search for symbols within. | 
  **symbolQuery** | [**SymbolQuery**](SymbolQuery.md) |  | [optional] 
 
 ### Return type

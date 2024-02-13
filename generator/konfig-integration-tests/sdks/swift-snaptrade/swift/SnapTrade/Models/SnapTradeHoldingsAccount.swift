@@ -13,16 +13,16 @@ import AnyCodable
 /** SnapTradeUser Investment Account */
 public struct SnapTradeHoldingsAccount: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var brokerageAuthorization: BrokerageAuthorization?
-    public var portfolioGroup: UUID?
+    public var portfolioGroup: String?
     public var name: String?
     public var number: String?
     public var institutionName: String?
     public var syncStatus: AccountSyncStatus?
     public var meta: [String: AnyCodable]?
 
-    public init(id: UUID? = nil, brokerageAuthorization: BrokerageAuthorization? = nil, portfolioGroup: UUID? = nil, name: String? = nil, number: String? = nil, institutionName: String? = nil, syncStatus: AccountSyncStatus? = nil, meta: [String: AnyCodable]? = nil) {
+    public init(id: String? = nil, brokerageAuthorization: BrokerageAuthorization? = nil, portfolioGroup: String? = nil, name: String? = nil, number: String? = nil, institutionName: String? = nil, syncStatus: AccountSyncStatus? = nil, meta: [String: AnyCodable]? = nil) {
         self.id = id
         self.brokerageAuthorization = brokerageAuthorization
         self.portfolioGroup = portfolioGroup
@@ -80,9 +80,9 @@ public struct SnapTradeHoldingsAccount: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         brokerageAuthorization = try container.decodeIfPresent(BrokerageAuthorization.self, forKey: .brokerageAuthorization)
-        portfolioGroup = try container.decodeIfPresent(UUID.self, forKey: .portfolioGroup)
+        portfolioGroup = try container.decodeIfPresent(String.self, forKey: .portfolioGroup)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         number = try container.decodeIfPresent(String.self, forKey: .number)
         institutionName = try container.decodeIfPresent(String.self, forKey: .institutionName)

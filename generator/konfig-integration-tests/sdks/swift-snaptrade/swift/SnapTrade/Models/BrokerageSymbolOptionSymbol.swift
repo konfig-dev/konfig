@@ -16,7 +16,7 @@ public struct BrokerageSymbolOptionSymbol: Codable, JSONEncodable, Hashable {
         case call = "CALL"
         case put = "PUT"
     }
-    public var id: UUID
+    public var id: String
     public var ticker: String
     public var optionType: OptionType
     public var strikePrice: Double
@@ -24,9 +24,9 @@ public struct BrokerageSymbolOptionSymbol: Codable, JSONEncodable, Hashable {
     public var isMiniOption: Bool?
     public var underlyingSymbol: UnderlyingSymbol
     public var localId: String?
-    public var exchangeId: UUID?
+    public var exchangeId: String?
 
-    public init(id: UUID, ticker: String, optionType: OptionType, strikePrice: Double, expirationDate: String, isMiniOption: Bool? = nil, underlyingSymbol: UnderlyingSymbol, localId: String? = nil, exchangeId: UUID? = nil) {
+    public init(id: String, ticker: String, optionType: OptionType, strikePrice: Double, expirationDate: String, isMiniOption: Bool? = nil, underlyingSymbol: UnderlyingSymbol, localId: String? = nil, exchangeId: String? = nil) {
         self.id = id
         self.ticker = ticker
         self.optionType = optionType

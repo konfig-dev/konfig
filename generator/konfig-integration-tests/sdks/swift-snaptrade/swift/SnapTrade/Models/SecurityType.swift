@@ -13,12 +13,12 @@ import AnyCodable
 /** Security Type */
 public struct SecurityType: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var code: String?
     public var description: String?
     public var isSupported: Bool?
 
-    public init(id: UUID? = nil, code: String? = nil, description: String? = nil, isSupported: Bool? = nil) {
+    public init(id: String? = nil, code: String? = nil, description: String? = nil, isSupported: Bool? = nil) {
         self.id = id
         self.code = code
         self.description = description
@@ -64,7 +64,7 @@ public struct SecurityType: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         code = try container.decodeIfPresent(String.self, forKey: .code)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         isSupported = try container.decodeIfPresent(Bool.self, forKey: .isSupported)

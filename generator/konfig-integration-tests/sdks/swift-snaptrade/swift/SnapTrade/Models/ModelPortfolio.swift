@@ -12,12 +12,12 @@ import AnyCodable
 
 public struct ModelPortfolio: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var name: String?
     /** Enum definitions -> [-1: Unassigned, 0: Security Model Portfolio, 1: Asset Class Portfolio] */
     public var modelType: Int? = -1
 
-    public init(id: UUID? = nil, name: String? = nil, modelType: Int? = -1) {
+    public init(id: String? = nil, name: String? = nil, modelType: Int? = -1) {
         self.id = id
         self.name = name
         self.modelType = modelType
@@ -60,7 +60,7 @@ public struct ModelPortfolio: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         modelType = try container.decodeIfPresent(Int.self, forKey: .modelType)
         var nonAdditionalPropertyKeys = Set<String>()

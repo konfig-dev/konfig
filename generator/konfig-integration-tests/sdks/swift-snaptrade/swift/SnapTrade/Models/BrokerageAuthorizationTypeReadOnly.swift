@@ -22,12 +22,12 @@ public struct BrokerageAuthorizationTypeReadOnly: Codable, JSONEncodable, Hashab
         case unofficialApi = "UNOFFICIAL_API"
         case token = "TOKEN"
     }
-    public var id: UUID?
+    public var id: String?
     public var type: ModelType?
     public var authType: AuthType?
     public var brokerage: BrokerageAuthorizationTypeReadOnlyBrokerage?
 
-    public init(id: UUID? = nil, type: ModelType? = nil, authType: AuthType? = nil, brokerage: BrokerageAuthorizationTypeReadOnlyBrokerage? = nil) {
+    public init(id: String? = nil, type: ModelType? = nil, authType: AuthType? = nil, brokerage: BrokerageAuthorizationTypeReadOnlyBrokerage? = nil) {
         self.id = id
         self.type = type
         self.authType = authType
@@ -73,7 +73,7 @@ public struct BrokerageAuthorizationTypeReadOnly: Codable, JSONEncodable, Hashab
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         type = try container.decodeIfPresent(ModelType.self, forKey: .type)
         authType = try container.decodeIfPresent(AuthType.self, forKey: .authType)
         brokerage = try container.decodeIfPresent(BrokerageAuthorizationTypeReadOnlyBrokerage.self, forKey: .brokerage)

@@ -13,14 +13,14 @@ import AnyCodable
 /** Target percentage of a certain asset */
 public struct TargetAsset: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var symbol: UniversalSymbol?
     public var percent: Double?
     public var isSupported: Bool?
     public var isExcluded: Bool?
     public var meta: [String: AnyCodable]?
 
-    public init(id: UUID? = nil, symbol: UniversalSymbol? = nil, percent: Double? = nil, isSupported: Bool? = nil, isExcluded: Bool? = nil, meta: [String: AnyCodable]? = nil) {
+    public init(id: String? = nil, symbol: UniversalSymbol? = nil, percent: Double? = nil, isSupported: Bool? = nil, isExcluded: Bool? = nil, meta: [String: AnyCodable]? = nil) {
         self.id = id
         self.symbol = symbol
         self.percent = percent
@@ -72,7 +72,7 @@ public struct TargetAsset: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         symbol = try container.decodeIfPresent(UniversalSymbol.self, forKey: .symbol)
         percent = try container.decodeIfPresent(Double.self, forKey: .percent)
         isSupported = try container.decodeIfPresent(Bool.self, forKey: .isSupported)

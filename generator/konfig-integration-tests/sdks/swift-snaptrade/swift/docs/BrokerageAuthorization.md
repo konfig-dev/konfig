@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **createdDate** | **String** | Time | [optional] 
 **updatedDate** | **String** | Time | [optional] 
 **brokerage** | [**Brokerage**](Brokerage.md) |  | [optional] 

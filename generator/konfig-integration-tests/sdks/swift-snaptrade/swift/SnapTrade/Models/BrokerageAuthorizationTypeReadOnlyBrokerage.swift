@@ -12,13 +12,13 @@ import AnyCodable
 
 public struct BrokerageAuthorizationTypeReadOnlyBrokerage: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     /** Name of Brokerage */
     public var name: String?
     /** Slug of Brokerage. It is usually the name of the brokerage in capital letters */
     public var slug: String?
 
-    public init(id: UUID? = nil, name: String? = nil, slug: String? = nil) {
+    public init(id: String? = nil, name: String? = nil, slug: String? = nil) {
         self.id = id
         self.name = name
         self.slug = slug
@@ -61,7 +61,7 @@ public struct BrokerageAuthorizationTypeReadOnlyBrokerage: Codable, JSONEncodabl
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         slug = try container.decodeIfPresent(String.self, forKey: .slug)
         var nonAdditionalPropertyKeys = Set<String>()

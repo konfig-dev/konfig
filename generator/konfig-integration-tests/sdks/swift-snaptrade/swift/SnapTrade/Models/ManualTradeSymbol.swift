@@ -13,14 +13,14 @@ import AnyCodable
 /** Manual trade symbol object */
 public struct ManualTradeSymbol: Codable, JSONEncodable, Hashable {
 
-    public var brokerageSymbolId: UUID?
-    public var universalSymbolId: UUID?
+    public var brokerageSymbolId: String?
+    public var universalSymbolId: String?
     public var currency: Currency?
     public var localId: String?
     public var description: String?
     public var symbol: String?
 
-    public init(brokerageSymbolId: UUID? = nil, universalSymbolId: UUID? = nil, currency: Currency? = nil, localId: String? = nil, description: String? = nil, symbol: String? = nil) {
+    public init(brokerageSymbolId: String? = nil, universalSymbolId: String? = nil, currency: Currency? = nil, localId: String? = nil, description: String? = nil, symbol: String? = nil) {
         self.brokerageSymbolId = brokerageSymbolId
         self.universalSymbolId = universalSymbolId
         self.currency = currency
@@ -72,8 +72,8 @@ public struct ManualTradeSymbol: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        brokerageSymbolId = try container.decodeIfPresent(UUID.self, forKey: .brokerageSymbolId)
-        universalSymbolId = try container.decodeIfPresent(UUID.self, forKey: .universalSymbolId)
+        brokerageSymbolId = try container.decodeIfPresent(String.self, forKey: .brokerageSymbolId)
+        universalSymbolId = try container.decodeIfPresent(String.self, forKey: .universalSymbolId)
         currency = try container.decodeIfPresent(Currency.self, forKey: .currency)
         localId = try container.decodeIfPresent(String.self, forKey: .localId)
         description = try container.decodeIfPresent(String.self, forKey: .description)

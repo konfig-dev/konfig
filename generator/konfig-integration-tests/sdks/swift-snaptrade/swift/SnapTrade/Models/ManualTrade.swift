@@ -13,7 +13,7 @@ import AnyCodable
 /** A manual trade object */
 public struct ManualTrade: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var account: String?
     public var orderType: OrderType?
     /** Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date  */
@@ -25,7 +25,7 @@ public struct ManualTrade: Codable, JSONEncodable, Hashable {
     /** Trade Price if limit or stop limit order */
     public var price: Double?
 
-    public init(id: UUID? = nil, account: String? = nil, orderType: OrderType? = nil, timeInForce: String? = nil, symbol: ManualTradeSymbol? = nil, action: Action? = nil, units: Double? = nil, price: Double? = nil) {
+    public init(id: String? = nil, account: String? = nil, orderType: OrderType? = nil, timeInForce: String? = nil, symbol: ManualTradeSymbol? = nil, action: Action? = nil, units: Double? = nil, price: Double? = nil) {
         self.id = id
         self.account = account
         self.orderType = orderType
@@ -83,7 +83,7 @@ public struct ManualTrade: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         account = try container.decodeIfPresent(String.self, forKey: .account)
         orderType = try container.decodeIfPresent(OrderType.self, forKey: .orderType)
         timeInForce = try container.decodeIfPresent(String.self, forKey: .timeInForce)

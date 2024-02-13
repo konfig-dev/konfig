@@ -13,11 +13,11 @@ import AnyCodable
 /** Currency */
 public struct Currency: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var code: String?
     public var name: String?
 
-    public init(id: UUID? = nil, code: String? = nil, name: String? = nil) {
+    public init(id: String? = nil, code: String? = nil, name: String? = nil) {
         self.id = id
         self.code = code
         self.name = name
@@ -60,7 +60,7 @@ public struct Currency: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         code = try container.decodeIfPresent(String.self, forKey: .code)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         var nonAdditionalPropertyKeys = Set<String>()

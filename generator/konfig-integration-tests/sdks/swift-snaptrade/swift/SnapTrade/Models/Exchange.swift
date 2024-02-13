@@ -13,7 +13,7 @@ import AnyCodable
 /** Stock Exchange */
 public struct Exchange: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var code: String?
     public var micCode: String?
     public var name: String?
@@ -22,7 +22,7 @@ public struct Exchange: Codable, JSONEncodable, Hashable {
     public var closeTime: String?
     public var suffix: String?
 
-    public init(id: UUID? = nil, code: String? = nil, micCode: String? = nil, name: String? = nil, timezone: String? = nil, startTime: String? = nil, closeTime: String? = nil, suffix: String? = nil) {
+    public init(id: String? = nil, code: String? = nil, micCode: String? = nil, name: String? = nil, timezone: String? = nil, startTime: String? = nil, closeTime: String? = nil, suffix: String? = nil) {
         self.id = id
         self.code = code
         self.micCode = micCode
@@ -80,7 +80,7 @@ public struct Exchange: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         code = try container.decodeIfPresent(String.self, forKey: .code)
         micCode = try container.decodeIfPresent(String.self, forKey: .micCode)
         name = try container.decodeIfPresent(String.self, forKey: .name)

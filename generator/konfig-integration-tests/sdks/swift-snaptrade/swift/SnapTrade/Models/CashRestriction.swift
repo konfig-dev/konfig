@@ -17,13 +17,13 @@ public struct CashRestriction: Codable, JSONEncodable, Hashable {
         case allocateMax = "ALLOCATE_MAX"
         case retainMin = "RETAIN_MIN"
     }
-    public var id: UUID?
-    public var account: UUID?
-    public var currency: UUID?
+    public var id: String?
+    public var account: String?
+    public var currency: String?
     public var type: ModelType?
     public var amount: Double?
 
-    public init(id: UUID? = nil, account: UUID? = nil, currency: UUID? = nil, type: ModelType? = nil, amount: Double? = nil) {
+    public init(id: String? = nil, account: String? = nil, currency: String? = nil, type: ModelType? = nil, amount: Double? = nil) {
         self.id = id
         self.account = account
         self.currency = currency
@@ -72,9 +72,9 @@ public struct CashRestriction: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
-        account = try container.decodeIfPresent(UUID.self, forKey: .account)
-        currency = try container.decodeIfPresent(UUID.self, forKey: .currency)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        account = try container.decodeIfPresent(String.self, forKey: .account)
+        currency = try container.decodeIfPresent(String.self, forKey: .currency)
         type = try container.decodeIfPresent(ModelType.self, forKey: .type)
         amount = try container.decodeIfPresent(Double.self, forKey: .amount)
         var nonAdditionalPropertyKeys = Set<String>()

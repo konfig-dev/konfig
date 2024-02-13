@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **symbol** | **String** |  | [optional] 
 **rawSymbol** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 

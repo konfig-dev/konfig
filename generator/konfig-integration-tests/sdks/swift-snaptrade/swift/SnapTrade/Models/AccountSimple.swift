@@ -13,12 +13,12 @@ import AnyCodable
 /** SnapTradeUser Investment Account */
 public struct AccountSimple: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var name: String?
     public var number: String?
     public var syncStatus: AccountSyncStatus?
 
-    public init(id: UUID? = nil, name: String? = nil, number: String? = nil, syncStatus: AccountSyncStatus? = nil) {
+    public init(id: String? = nil, name: String? = nil, number: String? = nil, syncStatus: AccountSyncStatus? = nil) {
         self.id = id
         self.name = name
         self.number = number
@@ -64,7 +64,7 @@ public struct AccountSimple: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         number = try container.decodeIfPresent(String.self, forKey: .number)
         syncStatus = try container.decodeIfPresent(AccountSyncStatus.self, forKey: .syncStatus)

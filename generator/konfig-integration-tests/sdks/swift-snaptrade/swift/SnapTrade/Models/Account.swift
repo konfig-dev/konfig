@@ -13,9 +13,9 @@ import AnyCodable
 /** SnapTradeUser Investment Account */
 public struct Account: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
-    public var brokerageAuthorization: UUID?
-    public var portfolioGroup: UUID?
+    public var id: String?
+    public var brokerageAuthorization: String?
+    public var portfolioGroup: String?
     public var name: String?
     public var number: String?
     public var institutionName: String?
@@ -25,7 +25,7 @@ public struct Account: Codable, JSONEncodable, Hashable {
     public var syncStatus: AccountSyncStatus?
     public var balance: AccountBalance?
 
-    public init(id: UUID? = nil, brokerageAuthorization: UUID? = nil, portfolioGroup: UUID? = nil, name: String? = nil, number: String? = nil, institutionName: String? = nil, createdDate: String? = nil, meta: [String: AnyCodable]? = nil, cashRestrictions: [CashRestriction]? = nil, syncStatus: AccountSyncStatus? = nil, balance: AccountBalance? = nil) {
+    public init(id: String? = nil, brokerageAuthorization: String? = nil, portfolioGroup: String? = nil, name: String? = nil, number: String? = nil, institutionName: String? = nil, createdDate: String? = nil, meta: [String: AnyCodable]? = nil, cashRestrictions: [CashRestriction]? = nil, syncStatus: AccountSyncStatus? = nil, balance: AccountBalance? = nil) {
         self.id = id
         self.brokerageAuthorization = brokerageAuthorization
         self.portfolioGroup = portfolioGroup
@@ -92,9 +92,9 @@ public struct Account: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
-        brokerageAuthorization = try container.decodeIfPresent(UUID.self, forKey: .brokerageAuthorization)
-        portfolioGroup = try container.decodeIfPresent(UUID.self, forKey: .portfolioGroup)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        brokerageAuthorization = try container.decodeIfPresent(String.self, forKey: .brokerageAuthorization)
+        portfolioGroup = try container.decodeIfPresent(String.self, forKey: .portfolioGroup)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         number = try container.decodeIfPresent(String.self, forKey: .number)
         institutionName = try container.decodeIfPresent(String.self, forKey: .institutionName)

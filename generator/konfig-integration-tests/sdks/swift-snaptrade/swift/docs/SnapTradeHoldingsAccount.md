@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **brokerageAuthorization** | [**BrokerageAuthorization**](BrokerageAuthorization.md) |  | [optional] 
-**portfolioGroup** | **UUID** |  | [optional] 
+**portfolioGroup** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **number** | **String** |  | [optional] 
 **institutionName** | **String** |  | [optional] 

@@ -21,17 +21,17 @@ public struct SessionEvent: Codable, JSONEncodable, Hashable {
         case connectionSuccessful = "CONNECTION_SUCCESSFUL"
         case partnerRedirect = "PARTNER_REDIRECT"
     }
-    public var id: UUID?
+    public var id: String?
     public var sessionEventType: SessionEventType?
-    public var sessionId: UUID?
+    public var sessionId: String?
     /** SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user */
     public var userId: String?
     /** Time */
     public var createdDate: String?
     public var brokerageStatusCode: Int?
-    public var brokerageAuthorizationId: UUID?
+    public var brokerageAuthorizationId: String?
 
-    public init(id: UUID? = nil, sessionEventType: SessionEventType? = nil, sessionId: UUID? = nil, userId: String? = nil, createdDate: String? = nil, brokerageStatusCode: Int? = nil, brokerageAuthorizationId: UUID? = nil) {
+    public init(id: String? = nil, sessionEventType: SessionEventType? = nil, sessionId: String? = nil, userId: String? = nil, createdDate: String? = nil, brokerageStatusCode: Int? = nil, brokerageAuthorizationId: String? = nil) {
         self.id = id
         self.sessionEventType = sessionEventType
         self.sessionId = sessionId
@@ -86,13 +86,13 @@ public struct SessionEvent: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         sessionEventType = try container.decodeIfPresent(SessionEventType.self, forKey: .sessionEventType)
-        sessionId = try container.decodeIfPresent(UUID.self, forKey: .sessionId)
+        sessionId = try container.decodeIfPresent(String.self, forKey: .sessionId)
         userId = try container.decodeIfPresent(String.self, forKey: .userId)
         createdDate = try container.decodeIfPresent(String.self, forKey: .createdDate)
         brokerageStatusCode = try container.decodeIfPresent(Int.self, forKey: .brokerageStatusCode)
-        brokerageAuthorizationId = try container.decodeIfPresent(UUID.self, forKey: .brokerageAuthorizationId)
+        brokerageAuthorizationId = try container.decodeIfPresent(String.self, forKey: .brokerageAuthorizationId)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("id")
         nonAdditionalPropertyKeys.insert("session_event_type")

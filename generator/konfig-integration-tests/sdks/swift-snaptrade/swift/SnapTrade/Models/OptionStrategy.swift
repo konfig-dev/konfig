@@ -12,13 +12,13 @@ import AnyCodable
 
 public struct OptionStrategy: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var underlyingSymbolId: UniversalSymbol?
     public var strategyType: String?
     public var numberOfLegs: Double?
     public var legs: [OptionStrategyLegsInner]?
 
-    public init(id: UUID? = nil, underlyingSymbolId: UniversalSymbol? = nil, strategyType: String? = nil, numberOfLegs: Double? = nil, legs: [OptionStrategyLegsInner]? = nil) {
+    public init(id: String? = nil, underlyingSymbolId: UniversalSymbol? = nil, strategyType: String? = nil, numberOfLegs: Double? = nil, legs: [OptionStrategyLegsInner]? = nil) {
         self.id = id
         self.underlyingSymbolId = underlyingSymbolId
         self.strategyType = strategyType
@@ -67,7 +67,7 @@ public struct OptionStrategy: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         underlyingSymbolId = try container.decodeIfPresent(UniversalSymbol.self, forKey: .underlyingSymbolId)
         strategyType = try container.decodeIfPresent(String.self, forKey: .strategyType)
         numberOfLegs = try container.decodeIfPresent(Double.self, forKey: .numberOfLegs)

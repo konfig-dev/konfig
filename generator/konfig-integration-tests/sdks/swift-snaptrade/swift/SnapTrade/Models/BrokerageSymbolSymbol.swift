@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct BrokerageSymbolSymbol: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID
+    public var id: String
     public var symbol: String
     public var rawSymbol: String
     public var description: String?
@@ -22,7 +22,7 @@ public struct BrokerageSymbolSymbol: Codable, JSONEncodable, Hashable {
     public var currencies: [Currency]
     public var figiCode: String?
 
-    public init(id: UUID, symbol: String, rawSymbol: String, description: String? = nil, currency: Currency, exchange: Exchange? = nil, type: SecurityType, currencies: [Currency], figiCode: String? = nil) {
+    public init(id: String, symbol: String, rawSymbol: String, description: String? = nil, currency: Currency, exchange: Exchange? = nil, type: SecurityType, currencies: [Currency], figiCode: String? = nil) {
         self.id = id
         self.symbol = symbol
         self.rawSymbol = rawSymbol

@@ -15,11 +15,11 @@ public struct OptionsGetOptionStrategyRequest: Codable, JSONEncodable, Hashable 
     public enum StrategyType: String, Codable, CaseIterable {
         case custom = "CUSTOM"
     }
-    public var underlyingSymbolId: UUID
+    public var underlyingSymbolId: String
     public var legs: [OptionLeg]
     public var strategyType: StrategyType
 
-    public init(underlyingSymbolId: UUID, legs: [OptionLeg], strategyType: StrategyType) {
+    public init(underlyingSymbolId: String, legs: [OptionLeg], strategyType: StrategyType) {
         self.underlyingSymbolId = underlyingSymbolId
         self.legs = legs
         self.strategyType = strategyType

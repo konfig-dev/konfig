@@ -13,7 +13,7 @@ import AnyCodable
 /** Underlying Symbol */
 public struct UnderlyingSymbol: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var symbol: String?
     public var description: String?
     public var currency: Currency?
@@ -22,7 +22,7 @@ public struct UnderlyingSymbol: Codable, JSONEncodable, Hashable {
     public var currencies: [Currency]?
     public var figiCode: String?
 
-    public init(id: UUID? = nil, symbol: String? = nil, description: String? = nil, currency: Currency? = nil, exchange: USExchange? = nil, type: SecurityType? = nil, currencies: [Currency]? = nil, figiCode: String? = nil) {
+    public init(id: String? = nil, symbol: String? = nil, description: String? = nil, currency: Currency? = nil, exchange: USExchange? = nil, type: SecurityType? = nil, currencies: [Currency]? = nil, figiCode: String? = nil) {
         self.id = id
         self.symbol = symbol
         self.description = description
@@ -80,7 +80,7 @@ public struct UnderlyingSymbol: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         symbol = try container.decodeIfPresent(String.self, forKey: .symbol)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         currency = try container.decodeIfPresent(Currency.self, forKey: .currency)

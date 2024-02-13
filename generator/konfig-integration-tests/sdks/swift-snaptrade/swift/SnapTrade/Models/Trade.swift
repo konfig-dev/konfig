@@ -17,7 +17,7 @@ public struct Trade: Codable, JSONEncodable, Hashable {
         case buy = "BUY"
         case sell = "SELL"
     }
-    public var id: UUID?
+    public var id: String?
     public var account: Account?
     public var symbol: BrokerageSymbol?
     public var universalSymbol: UniversalSymbol?
@@ -26,7 +26,7 @@ public struct Trade: Codable, JSONEncodable, Hashable {
     public var price: Double?
     public var sequence: Int?
 
-    public init(id: UUID? = nil, account: Account? = nil, symbol: BrokerageSymbol? = nil, universalSymbol: UniversalSymbol? = nil, action: Action? = nil, units: Int? = nil, price: Double? = nil, sequence: Int? = nil) {
+    public init(id: String? = nil, account: Account? = nil, symbol: BrokerageSymbol? = nil, universalSymbol: UniversalSymbol? = nil, action: Action? = nil, units: Int? = nil, price: Double? = nil, sequence: Int? = nil) {
         self.id = id
         self.account = account
         self.symbol = symbol
@@ -84,7 +84,7 @@ public struct Trade: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         account = try container.decodeIfPresent(Account.self, forKey: .account)
         symbol = try container.decodeIfPresent(BrokerageSymbol.self, forKey: .symbol)
         universalSymbol = try container.decodeIfPresent(UniversalSymbol.self, forKey: .universalSymbol)

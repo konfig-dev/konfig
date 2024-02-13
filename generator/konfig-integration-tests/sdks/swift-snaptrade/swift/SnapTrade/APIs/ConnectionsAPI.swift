@@ -28,7 +28,7 @@ open class ConnectionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func detailBrokerageAuthorizationSync(authorizationId: UUID, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: BrokerageAuthorization?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func detailBrokerageAuthorizationSync(authorizationId: String, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: BrokerageAuthorization?, _ error: Error?) -> Void)) -> RequestTask {
         return detailBrokerageAuthorizationWithRequestBuilder(authorizationId: authorizationId, userId: userId, userSecret: userSecret).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -49,7 +49,7 @@ open class ConnectionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func detailBrokerageAuthorizationAsyncMappedParams(authorizationId: UUID, userId: String, userSecret: String) async throws -> BrokerageAuthorization {
+    private class func detailBrokerageAuthorizationAsyncMappedParams(authorizationId: String, userId: String, userSecret: String) async throws -> BrokerageAuthorization {
         return try await withCheckedThrowingContinuation { continuation in
             detailBrokerageAuthorizationWithRequestBuilder(authorizationId: authorizationId, userId: userId, userSecret: userSecret).execute { result in
                 switch result {
@@ -73,7 +73,7 @@ open class ConnectionsAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open class func detailBrokerageAuthorization(
-        authorizationId: UUID,
+        authorizationId: String,
         userId: String,
         userSecret: String
     ) async throws -> BrokerageAuthorization {
@@ -101,7 +101,7 @@ open class ConnectionsAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open func detailBrokerageAuthorization(
-        authorizationId: UUID,
+        authorizationId: String,
         userId: String,
         userSecret: String
     ) async throws -> BrokerageAuthorization {
@@ -137,7 +137,7 @@ open class ConnectionsAPI {
      - returns: RequestBuilder<BrokerageAuthorization> 
      */
     open class func detailBrokerageAuthorizationWithRequestBuilder(
-            authorizationId: UUID,
+            authorizationId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<BrokerageAuthorization> {
@@ -192,7 +192,7 @@ open class ConnectionsAPI {
      - returns: RequestBuilder<BrokerageAuthorization> 
      */
     open func detailBrokerageAuthorizationWithRequestBuilder(
-            authorizationId: UUID,
+            authorizationId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<BrokerageAuthorization> {
@@ -436,7 +436,7 @@ open class ConnectionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func removeBrokerageAuthorizationSync(authorizationId: UUID, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func removeBrokerageAuthorizationSync(authorizationId: String, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return removeBrokerageAuthorizationWithRequestBuilder(authorizationId: authorizationId, userId: userId, userSecret: userSecret).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -457,7 +457,7 @@ open class ConnectionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func removeBrokerageAuthorizationAsyncMappedParams(authorizationId: UUID, userId: String, userSecret: String) async throws -> Void {
+    private class func removeBrokerageAuthorizationAsyncMappedParams(authorizationId: String, userId: String, userSecret: String) async throws -> Void {
         return try await withCheckedThrowingContinuation { continuation in
             removeBrokerageAuthorizationWithRequestBuilder(authorizationId: authorizationId, userId: userId, userSecret: userSecret).execute { result in
                 switch result {
@@ -481,7 +481,7 @@ open class ConnectionsAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open class func removeBrokerageAuthorization(
-        authorizationId: UUID,
+        authorizationId: String,
         userId: String,
         userSecret: String
     ) async throws -> Void {
@@ -509,7 +509,7 @@ open class ConnectionsAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open func removeBrokerageAuthorization(
-        authorizationId: UUID,
+        authorizationId: String,
         userId: String,
         userSecret: String
     ) async throws -> Void {
@@ -545,7 +545,7 @@ open class ConnectionsAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func removeBrokerageAuthorizationWithRequestBuilder(
-            authorizationId: UUID,
+            authorizationId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<Void> {
@@ -600,7 +600,7 @@ open class ConnectionsAPI {
      - returns: RequestBuilder<Void> 
      */
     open func removeBrokerageAuthorizationWithRequestBuilder(
-            authorizationId: UUID,
+            authorizationId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<Void> {

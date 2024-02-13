@@ -12,7 +12,7 @@ import AnyCodable
 
 public struct BrokerageAuthorization: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     /** Time */
     public var createdDate: String?
     /** Time */
@@ -27,7 +27,7 @@ public struct BrokerageAuthorization: Codable, JSONEncodable, Hashable {
     /** Additional data about brokerage authorization */
     public var meta: [String: AnyCodable]?
 
-    public init(id: UUID? = nil, createdDate: String? = nil, updatedDate: String? = nil, brokerage: Brokerage? = nil, name: String? = nil, type: String? = nil, disabled: Bool? = nil, disabledDate: String? = nil, meta: [String: AnyCodable]? = nil) {
+    public init(id: String? = nil, createdDate: String? = nil, updatedDate: String? = nil, brokerage: Brokerage? = nil, name: String? = nil, type: String? = nil, disabled: Bool? = nil, disabledDate: String? = nil, meta: [String: AnyCodable]? = nil) {
         self.id = id
         self.createdDate = createdDate
         self.updatedDate = updatedDate
@@ -88,7 +88,7 @@ public struct BrokerageAuthorization: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         createdDate = try container.decodeIfPresent(String.self, forKey: .createdDate)
         updatedDate = try container.decodeIfPresent(String.self, forKey: .updatedDate)
         brokerage = try container.decodeIfPresent(Brokerage.self, forKey: .brokerage)

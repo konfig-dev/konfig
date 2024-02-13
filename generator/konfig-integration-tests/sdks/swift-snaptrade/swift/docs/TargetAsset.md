@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **symbol** | [**UniversalSymbol**](UniversalSymbol.md) |  | [optional] 
 **percent** | **Double** |  | [optional] 
 **isSupported** | **Bool** |  | [optional] 

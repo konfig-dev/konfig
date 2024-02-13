@@ -12,10 +12,10 @@ import AnyCodable
 
 public struct PortfolioGroup: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var name: String?
 
-    public init(id: UUID? = nil, name: String? = nil) {
+    public init(id: String? = nil, name: String? = nil) {
         self.id = id
         self.name = name
     }
@@ -55,7 +55,7 @@ public struct PortfolioGroup: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("id")

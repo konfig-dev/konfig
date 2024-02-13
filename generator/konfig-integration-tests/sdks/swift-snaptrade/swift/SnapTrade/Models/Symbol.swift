@@ -13,7 +13,7 @@ import AnyCodable
 /** Symbol */
 public struct Symbol: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var symbol: String?
     public var rawSymbol: String?
     public var name: String?
@@ -22,7 +22,7 @@ public struct Symbol: Codable, JSONEncodable, Hashable {
     public var type: SecurityType?
     public var figiCode: String?
 
-    public init(id: UUID? = nil, symbol: String? = nil, rawSymbol: String? = nil, name: String? = nil, currency: Currency? = nil, exchange: Exchange? = nil, type: SecurityType? = nil, figiCode: String? = nil) {
+    public init(id: String? = nil, symbol: String? = nil, rawSymbol: String? = nil, name: String? = nil, currency: Currency? = nil, exchange: Exchange? = nil, type: SecurityType? = nil, figiCode: String? = nil) {
         self.id = id
         self.symbol = symbol
         self.rawSymbol = rawSymbol
@@ -80,7 +80,7 @@ public struct Symbol: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         symbol = try container.decodeIfPresent(String.self, forKey: .symbol)
         rawSymbol = try container.decodeIfPresent(String.self, forKey: .rawSymbol)
         name = try container.decodeIfPresent(String.self, forKey: .name)

@@ -13,14 +13,14 @@ import AnyCodable
 /** Brokerage symbol */
 public struct BrokerageSymbol: Codable, JSONEncodable, Hashable {
 
-    public var id: UUID?
+    public var id: String?
     public var symbol: BrokerageSymbolSymbol?
     public var brokerageAuthorization: BrokerageAuthorization?
     public var description: String?
     public var allowsFractionalUnits: Bool?
     public var optionSymbol: BrokerageSymbolOptionSymbol?
 
-    public init(id: UUID? = nil, symbol: BrokerageSymbolSymbol? = nil, brokerageAuthorization: BrokerageAuthorization? = nil, description: String? = nil, allowsFractionalUnits: Bool? = nil, optionSymbol: BrokerageSymbolOptionSymbol? = nil) {
+    public init(id: String? = nil, symbol: BrokerageSymbolSymbol? = nil, brokerageAuthorization: BrokerageAuthorization? = nil, description: String? = nil, allowsFractionalUnits: Bool? = nil, optionSymbol: BrokerageSymbolOptionSymbol? = nil) {
         self.id = id
         self.symbol = symbol
         self.brokerageAuthorization = brokerageAuthorization
@@ -72,7 +72,7 @@ public struct BrokerageSymbol: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decodeIfPresent(UUID.self, forKey: .id)
+        id = try container.decodeIfPresent(String.self, forKey: .id)
         symbol = try container.decodeIfPresent(BrokerageSymbolSymbol.self, forKey: .symbol)
         brokerageAuthorization = try container.decodeIfPresent(BrokerageAuthorization.self, forKey: .brokerageAuthorization)
         description = try container.decodeIfPresent(String.self, forKey: .description)

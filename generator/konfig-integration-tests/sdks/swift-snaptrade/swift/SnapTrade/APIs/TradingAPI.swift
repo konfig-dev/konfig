@@ -29,7 +29,7 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func cancelUserAccountOrderSync(userId: String, userSecret: String, accountId: UUID, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: AccountOrderRecord?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func cancelUserAccountOrderSync(userId: String, userSecret: String, accountId: String, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: AccountOrderRecord?, _ error: Error?) -> Void)) -> RequestTask {
         return cancelUserAccountOrderWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -51,7 +51,7 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func cancelUserAccountOrderAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest) async throws -> AccountOrderRecord {
+    private class func cancelUserAccountOrderAsyncMappedParams(userId: String, userSecret: String, accountId: String, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest) async throws -> AccountOrderRecord {
         return try await withCheckedThrowingContinuation { continuation in
             cancelUserAccountOrderWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest).execute { result in
                 switch result {
@@ -78,8 +78,8 @@ open class TradingAPI {
     open class func cancelUserAccountOrder(
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        brokerageOrderId: UUID? = nil
+        accountId: String,
+        brokerageOrderId: String? = nil
     ) async throws -> AccountOrderRecord {
         let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(
             brokerageOrderId: brokerageOrderId
@@ -111,8 +111,8 @@ open class TradingAPI {
     open func cancelUserAccountOrder(
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        brokerageOrderId: UUID? = nil
+        accountId: String,
+        brokerageOrderId: String? = nil
     ) async throws -> AccountOrderRecord {
         let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(
             brokerageOrderId: brokerageOrderId
@@ -152,7 +152,7 @@ open class TradingAPI {
     open class func cancelUserAccountOrderWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest
     ) -> RequestBuilder<AccountOrderRecord> {
         let basePath = SnapTradeAPI.basePath;
@@ -209,7 +209,7 @@ open class TradingAPI {
     open func cancelUserAccountOrderWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest
     ) -> RequestBuilder<AccountOrderRecord> {
         let basePath = self.client.basePath;
@@ -303,14 +303,14 @@ open class TradingAPI {
     open class func getOrderImpact(
         userId: String,
         userSecret: String,
-        accountId: UUID? = nil, 
+        accountId: String? = nil, 
         action: Action? = nil, 
         orderType: OrderType? = nil, 
         price: Double? = nil, 
         stop: Double? = nil, 
         timeInForce: TimeInForceStrict? = nil, 
         units: Double? = nil, 
-        universalSymbolId: UUID? = nil, 
+        universalSymbolId: String? = nil, 
         notionalValue: Double? = nil
     ) async throws -> ManualTradeAndImpact {
         let manualTradeForm = ManualTradeForm(
@@ -350,14 +350,14 @@ open class TradingAPI {
     open func getOrderImpact(
         userId: String,
         userSecret: String,
-        accountId: UUID? = nil, 
+        accountId: String? = nil, 
         action: Action? = nil, 
         orderType: OrderType? = nil, 
         price: Double? = nil, 
         stop: Double? = nil, 
         timeInForce: TimeInForceStrict? = nil, 
         units: Double? = nil, 
-        universalSymbolId: UUID? = nil, 
+        universalSymbolId: String? = nil, 
         notionalValue: Double? = nil
     ) async throws -> ManualTradeAndImpact {
         let manualTradeForm = ManualTradeForm(
@@ -783,14 +783,14 @@ open class TradingAPI {
     open class func placeForceOrder(
         userId: String,
         userSecret: String,
-        accountId: UUID? = nil, 
+        accountId: String? = nil, 
         action: Action? = nil, 
         orderType: OrderType? = nil, 
         price: Double? = nil, 
         stop: Double? = nil, 
         timeInForce: TimeInForceStrict? = nil, 
         units: Double? = nil, 
-        universalSymbolId: UUID? = nil, 
+        universalSymbolId: String? = nil, 
         notionalValue: Double? = nil
     ) async throws -> AccountOrderRecord {
         let manualTradeForm = ManualTradeForm(
@@ -830,14 +830,14 @@ open class TradingAPI {
     open func placeForceOrder(
         userId: String,
         userSecret: String,
-        accountId: UUID? = nil, 
+        accountId: String? = nil, 
         action: Action? = nil, 
         orderType: OrderType? = nil, 
         price: Double? = nil, 
         stop: Double? = nil, 
         timeInForce: TimeInForceStrict? = nil, 
         units: Double? = nil, 
-        universalSymbolId: UUID? = nil, 
+        universalSymbolId: String? = nil, 
         notionalValue: Double? = nil
     ) async throws -> AccountOrderRecord {
         let manualTradeForm = ManualTradeForm(
@@ -1202,7 +1202,7 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func placeOrderSync(tradeId: UUID, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: AccountOrderRecord?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func placeOrderSync(tradeId: String, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: AccountOrderRecord?, _ error: Error?) -> Void)) -> RequestTask {
         return placeOrderWithRequestBuilder(tradeId: tradeId, userId: userId, userSecret: userSecret).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1223,7 +1223,7 @@ open class TradingAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func placeOrderAsyncMappedParams(tradeId: UUID, userId: String, userSecret: String) async throws -> AccountOrderRecord {
+    private class func placeOrderAsyncMappedParams(tradeId: String, userId: String, userSecret: String) async throws -> AccountOrderRecord {
         return try await withCheckedThrowingContinuation { continuation in
             placeOrderWithRequestBuilder(tradeId: tradeId, userId: userId, userSecret: userSecret).execute { result in
                 switch result {
@@ -1247,7 +1247,7 @@ open class TradingAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open class func placeOrder(
-        tradeId: UUID,
+        tradeId: String,
         userId: String,
         userSecret: String
     ) async throws -> AccountOrderRecord {
@@ -1275,7 +1275,7 @@ open class TradingAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open func placeOrder(
-        tradeId: UUID,
+        tradeId: String,
         userId: String,
         userSecret: String
     ) async throws -> AccountOrderRecord {
@@ -1311,7 +1311,7 @@ open class TradingAPI {
      - returns: RequestBuilder<AccountOrderRecord> 
      */
     open class func placeOrderWithRequestBuilder(
-            tradeId: UUID,
+            tradeId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<AccountOrderRecord> {
@@ -1366,7 +1366,7 @@ open class TradingAPI {
      - returns: RequestBuilder<AccountOrderRecord> 
      */
     open func placeOrderWithRequestBuilder(
-            tradeId: UUID,
+            tradeId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<AccountOrderRecord> {

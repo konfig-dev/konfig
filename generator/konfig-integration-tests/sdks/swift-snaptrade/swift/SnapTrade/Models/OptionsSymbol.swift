@@ -17,7 +17,7 @@ public struct OptionsSymbol: Codable, JSONEncodable, Hashable {
         case call = "CALL"
         case put = "PUT"
     }
-    public var id: UUID
+    public var id: String
     public var ticker: String
     public var optionType: OptionType
     public var strikePrice: Double
@@ -25,9 +25,9 @@ public struct OptionsSymbol: Codable, JSONEncodable, Hashable {
     public var isMiniOption: Bool?
     public var underlyingSymbol: UnderlyingSymbol
     public var localId: String?
-    public var exchangeId: UUID?
+    public var exchangeId: String?
 
-    public init(id: UUID, ticker: String, optionType: OptionType, strikePrice: Double, expirationDate: String, isMiniOption: Bool? = nil, underlyingSymbol: UnderlyingSymbol, localId: String? = nil, exchangeId: UUID? = nil) {
+    public init(id: String, ticker: String, optionType: OptionType, strikePrice: Double, expirationDate: String, isMiniOption: Bool? = nil, underlyingSymbol: UnderlyingSymbol, localId: String? = nil, exchangeId: String? = nil) {
         self.id = id
         self.ticker = ticker
         self.optionType = optionType
@@ -88,7 +88,7 @@ public struct OptionsSymbol: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try container.decode(UUID.self, forKey: .id)
+        id = try container.decode(String.self, forKey: .id)
         ticker = try container.decode(String.self, forKey: .ticker)
         optionType = try container.decode(OptionType.self, forKey: .optionType)
         strikePrice = try container.decode(Double.self, forKey: .strikePrice)
@@ -96,7 +96,7 @@ public struct OptionsSymbol: Codable, JSONEncodable, Hashable {
         isMiniOption = try container.decodeIfPresent(Bool.self, forKey: .isMiniOption)
         underlyingSymbol = try container.decode(UnderlyingSymbol.self, forKey: .underlyingSymbol)
         localId = try container.decodeIfPresent(String.self, forKey: .localId)
-        exchangeId = try container.decodeIfPresent(UUID.self, forKey: .exchangeId)
+        exchangeId = try container.decodeIfPresent(String.self, forKey: .exchangeId)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("id")
         nonAdditionalPropertyKeys.insert("ticker")

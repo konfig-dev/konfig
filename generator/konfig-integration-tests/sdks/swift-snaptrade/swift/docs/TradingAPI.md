@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **cancelUserAccountOrder**
 ```swift
-    open class func cancelUserAccountOrder(userId: String, userSecret: String, accountId: UUID, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest, completion: @escaping (_ data: AccountOrderRecord?, _ error: Error?) -> Void)
+    open class func cancelUserAccountOrder(userId: String, userSecret: String, accountId: String, tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest, completion: @escaping (_ data: AccountOrderRecord?, _ error: Error?) -> Void)
 ```
 
 Cancel open order in account
@@ -25,8 +25,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account to cancel the order in.
-let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(brokerageOrderId: 123) // TradingCancelUserAccountOrderRequest | The Order ID to be canceled
+let accountId = "accountId_example" // String | The ID of the account to cancel the order in.
+let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(brokerageOrderId: "brokerageOrderId_example") // TradingCancelUserAccountOrderRequest | The Order ID to be canceled
 
 // Cancel open order in account
 TradingAPI.cancelUserAccountOrder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest) { (response, error) in
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account to cancel the order in. | 
+ **accountId** | **String** | The ID of the account to cancel the order in. | 
  **tradingCancelUserAccountOrderRequest** | [**TradingCancelUserAccountOrderRequest**](TradingCancelUserAccountOrderRequest.md) | The Order ID to be canceled | 
 
 ### Return type
@@ -78,7 +78,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let manualTradeForm = ManualTradeForm(accountId: 123, action: Action(), orderType: OrderType(), price: 123, stop: 123, timeInForce: TimeInForceStrict(), units: 123, universalSymbolId: 123, notionalValue: 123) // ManualTradeForm | 
+let manualTradeForm = ManualTradeForm(accountId: "accountId_example", action: Action(), orderType: OrderType(), price: 123, stop: 123, timeInForce: TimeInForceStrict(), units: 123, universalSymbolId: "universalSymbolId_example", notionalValue: 123) // ManualTradeForm | 
 
 // Check impact of trades on account.
 TradingAPI.getOrderImpact(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm) { (response, error) in
@@ -184,7 +184,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let manualTradeForm = ManualTradeForm(accountId: 123, action: Action(), orderType: OrderType(), price: 123, stop: 123, timeInForce: TimeInForceStrict(), units: 123, universalSymbolId: 123, notionalValue: 123) // ManualTradeForm | 
+let manualTradeForm = ManualTradeForm(accountId: "accountId_example", action: Action(), orderType: OrderType(), price: 123, stop: 123, timeInForce: TimeInForceStrict(), units: 123, universalSymbolId: "universalSymbolId_example", notionalValue: 123) // ManualTradeForm | 
 
 // Place a trade with NO validation.
 TradingAPI.placeForceOrder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm) { (response, error) in
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 # **placeOrder**
 ```swift
-    open class func placeOrder(tradeId: UUID, userId: String, userSecret: String, completion: @escaping (_ data: AccountOrderRecord?, _ error: Error?) -> Void)
+    open class func placeOrder(tradeId: String, userId: String, userSecret: String, completion: @escaping (_ data: AccountOrderRecord?, _ error: Error?) -> Void)
 ```
 
 Place order
@@ -284,7 +284,7 @@ Place order
 ```swift
 import SnapTrade
 
-let tradeId = 987 // UUID | The ID of trade object obtained from trade/impact endpoint
+let tradeId = "tradeId_example" // String | The ID of trade object obtained from trade/impact endpoint
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 
@@ -305,7 +305,7 @@ TradingAPI.placeOrder(tradeId: tradeId, userId: userId, userSecret: userSecret) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tradeId** | **UUID** | The ID of trade object obtained from trade/impact endpoint | 
+ **tradeId** | **String** | The ID of trade object obtained from trade/impact endpoint | 
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
 

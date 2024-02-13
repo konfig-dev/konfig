@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **getOptionStrategy**
 ```swift
-    open class func getOptionStrategy(userId: String, userSecret: String, accountId: UUID, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest, completion: @escaping (_ data: StrategyQuotes?, _ error: Error?) -> Void)
+    open class func getOptionStrategy(userId: String, userSecret: String, accountId: String, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest, completion: @escaping (_ data: StrategyQuotes?, _ error: Error?) -> Void)
 ```
 
 Creates an option strategy object that will be used to place an option strategy order
@@ -24,8 +24,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account to create the option strategy object in.
-let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(underlyingSymbolId: 123, legs: [OptionLeg(action: "action_example", optionSymbolId: "optionSymbolId_example", quantity: 123)], strategyType: "strategyType_example") // OptionsGetOptionStrategyRequest | 
+let accountId = "accountId_example" // String | The ID of the account to create the option strategy object in.
+let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(underlyingSymbolId: "underlyingSymbolId_example", legs: [OptionLeg(action: "action_example", optionSymbolId: "optionSymbolId_example", quantity: 123)], strategyType: "strategyType_example") // OptionsGetOptionStrategyRequest | 
 
 // Creates an option strategy object that will be used to place an option strategy order
 OptionsAPI.getOptionStrategy(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest) { (response, error) in
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account to create the option strategy object in. | 
+ **accountId** | **String** | The ID of the account to create the option strategy object in. | 
  **optionsGetOptionStrategyRequest** | [**OptionsGetOptionStrategyRequest**](OptionsGetOptionStrategyRequest.md) |  | 
 
 ### Return type
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 # **getOptionsChain**
 ```swift
-    open class func getOptionsChain(userId: String, userSecret: String, accountId: UUID, symbol: UUID, completion: @escaping (_ data: [OptionChainInner]?, _ error: Error?) -> Void)
+    open class func getOptionsChain(userId: String, userSecret: String, accountId: String, symbol: String, completion: @escaping (_ data: [OptionChainInner]?, _ error: Error?) -> Void)
 ```
 
 Get the options chain
@@ -77,8 +77,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account to get the options chain from.
-let symbol = 987 // UUID | Universal symbol ID if symbol
+let accountId = "accountId_example" // String | The ID of the account to get the options chain from.
+let symbol = "symbol_example" // String | Universal symbol ID if symbol
 
 // Get the options chain
 OptionsAPI.getOptionsChain(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol) { (response, error) in
@@ -99,8 +99,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account to get the options chain from. | 
- **symbol** | **UUID** | Universal symbol ID if symbol | 
+ **accountId** | **String** | The ID of the account to get the options chain from. | 
+ **symbol** | **String** | Universal symbol ID if symbol | 
 
 ### Return type
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 # **getOptionsStrategyQuote**
 ```swift
-    open class func getOptionsStrategyQuote(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, completion: @escaping (_ data: StrategyQuotes?, _ error: Error?) -> Void)
+    open class func getOptionsStrategyQuote(userId: String, userSecret: String, accountId: String, optionStrategyId: String, completion: @escaping (_ data: StrategyQuotes?, _ error: Error?) -> Void)
 ```
 
 Get latest market data of option strategy
@@ -130,8 +130,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account the strategy will be placed in.
-let optionStrategyId = 987 // UUID | Option strategy id obtained from response when creating option strategy object
+let accountId = "accountId_example" // String | The ID of the account the strategy will be placed in.
+let optionStrategyId = "optionStrategyId_example" // String | Option strategy id obtained from response when creating option strategy object
 
 // Get latest market data of option strategy
 OptionsAPI.getOptionsStrategyQuote(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId) { (response, error) in
@@ -152,8 +152,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account the strategy will be placed in. | 
- **optionStrategyId** | **UUID** | Option strategy id obtained from response when creating option strategy object | 
+ **accountId** | **String** | The ID of the account the strategy will be placed in. | 
+ **optionStrategyId** | **String** | Option strategy id obtained from response when creating option strategy object | 
 
 ### Return type
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 # **listOptionHoldings**
 ```swift
-    open class func listOptionHoldings(userId: String, userSecret: String, accountId: UUID, completion: @escaping (_ data: [OptionsPosition]?, _ error: Error?) -> Void)
+    open class func listOptionHoldings(userId: String, userSecret: String, accountId: String, completion: @escaping (_ data: [OptionsPosition]?, _ error: Error?) -> Void)
 ```
 
 Get the options holdings in the account
@@ -183,7 +183,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account to fetch options holdings for.
+let accountId = "accountId_example" // String | The ID of the account to fetch options holdings for.
 
 // Get the options holdings in the account
 OptionsAPI.listOptionHoldings(userId: userId, userSecret: userSecret, accountId: accountId) { (response, error) in
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account to fetch options holdings for. | 
+ **accountId** | **String** | The ID of the account to fetch options holdings for. | 
 
 ### Return type
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 # **placeOptionStrategy**
 ```swift
-    open class func placeOptionStrategy(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest, completion: @escaping (_ data: StrategyOrderRecord?, _ error: Error?) -> Void)
+    open class func placeOptionStrategy(userId: String, userSecret: String, accountId: String, optionStrategyId: String, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest, completion: @escaping (_ data: StrategyOrderRecord?, _ error: Error?) -> Void)
 ```
 
 Place an option strategy order on the brokerage
@@ -234,8 +234,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = 987 // UUID | The ID of the account to execute the strategy in.
-let optionStrategyId = 987 // UUID | Option strategy id obtained from response when creating option strategy object
+let accountId = "accountId_example" // String | The ID of the account to execute the strategy in.
+let optionStrategyId = "optionStrategyId_example" // String | Option strategy id obtained from response when creating option strategy object
 let optionsPlaceOptionStrategyRequest = OptionsPlaceOptionStrategyRequest(orderType: OrderType(), timeInForce: TimeInForceStrict(), price: 123) // OptionsPlaceOptionStrategyRequest | 
 
 // Place an option strategy order on the brokerage
@@ -257,8 +257,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
  **userSecret** | **String** |  | 
- **accountId** | **UUID** | The ID of the account to execute the strategy in. | 
- **optionStrategyId** | **UUID** | Option strategy id obtained from response when creating option strategy object | 
+ **accountId** | **String** | The ID of the account to execute the strategy in. | 
+ **optionStrategyId** | **String** | Option strategy id obtained from response when creating option strategy object | 
  **optionsPlaceOptionStrategyRequest** | [**OptionsPlaceOptionStrategyRequest**](OptionsPlaceOptionStrategyRequest.md) |  | 
 
 ### Return type

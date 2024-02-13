@@ -29,7 +29,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOptionStrategySync(userId: String, userSecret: String, accountId: UUID, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: StrategyQuotes?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOptionStrategySync(userId: String, userSecret: String, accountId: String, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: StrategyQuotes?, _ error: Error?) -> Void)) -> RequestTask {
         return getOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -51,7 +51,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getOptionStrategyAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest) async throws -> StrategyQuotes {
+    private class func getOptionStrategyAsyncMappedParams(userId: String, userSecret: String, accountId: String, optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest) async throws -> StrategyQuotes {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest).execute { result in
                 switch result {
@@ -76,12 +76,12 @@ open class OptionsAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open class func getOptionStrategy(
-        underlyingSymbolId: UUID,
+        underlyingSymbolId: String,
         legs: [OptionLeg],
         strategyType: OptionsGetOptionStrategyRequest.StrategyType,
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> StrategyQuotes {
         let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(
             underlyingSymbolId: underlyingSymbolId,
@@ -113,12 +113,12 @@ open class OptionsAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open func getOptionStrategy(
-        underlyingSymbolId: UUID,
+        underlyingSymbolId: String,
         legs: [OptionLeg],
         strategyType: OptionsGetOptionStrategyRequest.StrategyType,
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> StrategyQuotes {
         let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(
             underlyingSymbolId: underlyingSymbolId,
@@ -160,7 +160,7 @@ open class OptionsAPI {
     open class func getOptionStrategyWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest
     ) -> RequestBuilder<StrategyQuotes> {
         let basePath = SnapTradeAPI.basePath;
@@ -217,7 +217,7 @@ open class OptionsAPI {
     open func getOptionStrategyWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest
     ) -> RequestBuilder<StrategyQuotes> {
         let basePath = self.client.basePath;
@@ -265,7 +265,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOptionsChainSync(userId: String, userSecret: String, accountId: UUID, symbol: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [OptionChainInner]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOptionsChainSync(userId: String, userSecret: String, accountId: String, symbol: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [OptionChainInner]?, _ error: Error?) -> Void)) -> RequestTask {
         return getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -287,7 +287,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getOptionsChainAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, symbol: UUID) async throws -> [OptionChainInner] {
+    private class func getOptionsChainAsyncMappedParams(userId: String, userSecret: String, accountId: String, symbol: String) async throws -> [OptionChainInner] {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute { result in
                 switch result {
@@ -314,8 +314,8 @@ open class OptionsAPI {
     open class func getOptionsChain(
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        symbol: UUID
+        accountId: String,
+        symbol: String
     ) async throws -> [OptionChainInner] {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute { result in
@@ -344,8 +344,8 @@ open class OptionsAPI {
     open func getOptionsChain(
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        symbol: UUID
+        accountId: String,
+        symbol: String
     ) async throws -> [OptionChainInner] {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsChainWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol).execute { result in
@@ -382,8 +382,8 @@ open class OptionsAPI {
     open class func getOptionsChainWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
-            symbol: UUID
+            accountId: String,
+            symbol: String
     ) -> RequestBuilder<[OptionChainInner]> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}/optionsChain"
@@ -440,8 +440,8 @@ open class OptionsAPI {
     open func getOptionsChainWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
-            symbol: UUID
+            accountId: String,
+            symbol: String
     ) -> RequestBuilder<[OptionChainInner]> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}/optionsChain"
@@ -489,7 +489,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getOptionsStrategyQuoteSync(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: StrategyQuotes?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getOptionsStrategyQuoteSync(userId: String, userSecret: String, accountId: String, optionStrategyId: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: StrategyQuotes?, _ error: Error?) -> Void)) -> RequestTask {
         return getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -511,7 +511,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getOptionsStrategyQuoteAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID) async throws -> StrategyQuotes {
+    private class func getOptionsStrategyQuoteAsyncMappedParams(userId: String, userSecret: String, accountId: String, optionStrategyId: String) async throws -> StrategyQuotes {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute { result in
                 switch result {
@@ -538,8 +538,8 @@ open class OptionsAPI {
     open class func getOptionsStrategyQuote(
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        optionStrategyId: UUID
+        accountId: String,
+        optionStrategyId: String
     ) async throws -> StrategyQuotes {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute { result in
@@ -568,8 +568,8 @@ open class OptionsAPI {
     open func getOptionsStrategyQuote(
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        optionStrategyId: UUID
+        accountId: String,
+        optionStrategyId: String
     ) async throws -> StrategyQuotes {
         return try await withCheckedThrowingContinuation { continuation in
             getOptionsStrategyQuoteWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId).execute { result in
@@ -606,8 +606,8 @@ open class OptionsAPI {
     open class func getOptionsStrategyQuoteWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
-            optionStrategyId: UUID
+            accountId: String,
+            optionStrategyId: String
     ) -> RequestBuilder<StrategyQuotes> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}/optionStrategy/{optionStrategyId}"
@@ -666,8 +666,8 @@ open class OptionsAPI {
     open func getOptionsStrategyQuoteWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
-            optionStrategyId: UUID
+            accountId: String,
+            optionStrategyId: String
     ) -> RequestBuilder<StrategyQuotes> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}/optionStrategy/{optionStrategyId}"
@@ -716,7 +716,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func listOptionHoldingsSync(userId: String, userSecret: String, accountId: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [OptionsPosition]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func listOptionHoldingsSync(userId: String, userSecret: String, accountId: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [OptionsPosition]?, _ error: Error?) -> Void)) -> RequestTask {
         return listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -737,7 +737,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func listOptionHoldingsAsyncMappedParams(userId: String, userSecret: String, accountId: UUID) async throws -> [OptionsPosition] {
+    private class func listOptionHoldingsAsyncMappedParams(userId: String, userSecret: String, accountId: String) async throws -> [OptionsPosition] {
         return try await withCheckedThrowingContinuation { continuation in
             listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
                 switch result {
@@ -763,7 +763,7 @@ open class OptionsAPI {
     open class func listOptionHoldings(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [OptionsPosition] {
         return try await withCheckedThrowingContinuation { continuation in
             listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -791,7 +791,7 @@ open class OptionsAPI {
     open func listOptionHoldings(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [OptionsPosition] {
         return try await withCheckedThrowingContinuation { continuation in
             listOptionHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -827,7 +827,7 @@ open class OptionsAPI {
     open class func listOptionHoldingsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[OptionsPosition]> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}/options"
@@ -882,7 +882,7 @@ open class OptionsAPI {
     open func listOptionHoldingsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[OptionsPosition]> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}/options"
@@ -930,7 +930,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func placeOptionStrategySync(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: StrategyOrderRecord?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func placeOptionStrategySync(userId: String, userSecret: String, accountId: String, optionStrategyId: String, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: StrategyOrderRecord?, _ error: Error?) -> Void)) -> RequestTask {
         return placeOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId, optionsPlaceOptionStrategyRequest: optionsPlaceOptionStrategyRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -953,7 +953,7 @@ open class OptionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func placeOptionStrategyAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, optionStrategyId: UUID, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest) async throws -> StrategyOrderRecord {
+    private class func placeOptionStrategyAsyncMappedParams(userId: String, userSecret: String, accountId: String, optionStrategyId: String, optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest) async throws -> StrategyOrderRecord {
         return try await withCheckedThrowingContinuation { continuation in
             placeOptionStrategyWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId, optionsPlaceOptionStrategyRequest: optionsPlaceOptionStrategyRequest).execute { result in
                 switch result {
@@ -983,8 +983,8 @@ open class OptionsAPI {
         timeInForce: TimeInForceStrict,
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        optionStrategyId: UUID,
+        accountId: String,
+        optionStrategyId: String,
         price: Double? = nil
     ) async throws -> StrategyOrderRecord {
         let optionsPlaceOptionStrategyRequest = OptionsPlaceOptionStrategyRequest(
@@ -1022,8 +1022,8 @@ open class OptionsAPI {
         timeInForce: TimeInForceStrict,
         userId: String,
         userSecret: String,
-        accountId: UUID,
-        optionStrategyId: UUID,
+        accountId: String,
+        optionStrategyId: String,
         price: Double? = nil
     ) async throws -> StrategyOrderRecord {
         let optionsPlaceOptionStrategyRequest = OptionsPlaceOptionStrategyRequest(
@@ -1067,8 +1067,8 @@ open class OptionsAPI {
     open class func placeOptionStrategyWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
-            optionStrategyId: UUID,
+            accountId: String,
+            optionStrategyId: String,
             optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest
     ) -> RequestBuilder<StrategyOrderRecord> {
         let basePath = SnapTradeAPI.basePath;
@@ -1129,8 +1129,8 @@ open class OptionsAPI {
     open func placeOptionStrategyWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
-            optionStrategyId: UUID,
+            accountId: String,
+            optionStrategyId: String,
             optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest
     ) -> RequestBuilder<StrategyOrderRecord> {
         let basePath = self.client.basePath;

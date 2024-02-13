@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **number** | **String** |  | [optional] 
 **syncStatus** | [**AccountSyncStatus**](AccountSyncStatus.md) |  | [optional] 

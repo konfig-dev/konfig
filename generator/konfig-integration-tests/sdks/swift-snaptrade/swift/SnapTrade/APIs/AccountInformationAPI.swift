@@ -29,7 +29,7 @@ open class AccountInformationAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
-    open class func getAllUserHoldingsSync(userId: String, userSecret: String, brokerageAuthorizations: UUID? = nil, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [AccountHoldings]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getAllUserHoldingsSync(userId: String, userSecret: String, brokerageAuthorizations: String? = nil, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [AccountHoldings]?, _ error: Error?) -> Void)) -> RequestTask {
         return getAllUserHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, brokerageAuthorizations: brokerageAuthorizations).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -51,7 +51,7 @@ open class AccountInformationAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getAllUserHoldingsAsyncMappedParams(userId: String, userSecret: String, brokerageAuthorizations: UUID? = nil) async throws -> [AccountHoldings] {
+    private class func getAllUserHoldingsAsyncMappedParams(userId: String, userSecret: String, brokerageAuthorizations: String? = nil) async throws -> [AccountHoldings] {
         return try await withCheckedThrowingContinuation { continuation in
             getAllUserHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, brokerageAuthorizations: brokerageAuthorizations).execute { result in
                 switch result {
@@ -78,7 +78,7 @@ open class AccountInformationAPI {
     open class func getAllUserHoldings(
         userId: String,
         userSecret: String,
-        brokerageAuthorizations: UUID? = nil
+        brokerageAuthorizations: String? = nil
     ) async throws -> [AccountHoldings] {
         return try await withCheckedThrowingContinuation { continuation in
             getAllUserHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, brokerageAuthorizations: brokerageAuthorizations).execute { result in
@@ -107,7 +107,7 @@ open class AccountInformationAPI {
     open func getAllUserHoldings(
         userId: String,
         userSecret: String,
-        brokerageAuthorizations: UUID? = nil
+        brokerageAuthorizations: String? = nil
     ) async throws -> [AccountHoldings] {
         return try await withCheckedThrowingContinuation { continuation in
             getAllUserHoldingsWithRequestBuilder(userId: userId, userSecret: userSecret, brokerageAuthorizations: brokerageAuthorizations).execute { result in
@@ -144,7 +144,7 @@ open class AccountInformationAPI {
     open class func getAllUserHoldingsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            brokerageAuthorizations: UUID? = nil
+            brokerageAuthorizations: String? = nil
     ) -> RequestBuilder<[AccountHoldings]> {
         let basePath = SnapTradeAPI.basePath;
         let localVariablePath = "/holdings"
@@ -198,7 +198,7 @@ open class AccountInformationAPI {
     open func getAllUserHoldingsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            brokerageAuthorizations: UUID? = nil
+            brokerageAuthorizations: String? = nil
     ) -> RequestBuilder<[AccountHoldings]> {
         let basePath = self.client.basePath;
         let localVariablePath = "/holdings"
@@ -242,7 +242,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserAccountBalanceSync(userId: String, userSecret: String, accountId: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [Balance]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserAccountBalanceSync(userId: String, userSecret: String, accountId: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [Balance]?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserAccountBalanceWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -263,7 +263,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getUserAccountBalanceAsyncMappedParams(userId: String, userSecret: String, accountId: UUID) async throws -> [Balance] {
+    private class func getUserAccountBalanceAsyncMappedParams(userId: String, userSecret: String, accountId: String) async throws -> [Balance] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountBalanceWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
                 switch result {
@@ -289,7 +289,7 @@ open class AccountInformationAPI {
     open class func getUserAccountBalance(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [Balance] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountBalanceWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -317,7 +317,7 @@ open class AccountInformationAPI {
     open func getUserAccountBalance(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [Balance] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountBalanceWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -354,7 +354,7 @@ open class AccountInformationAPI {
     open class func getUserAccountBalanceWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[Balance]> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}/balances"
@@ -410,7 +410,7 @@ open class AccountInformationAPI {
     open func getUserAccountBalanceWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[Balance]> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}/balances"
@@ -456,7 +456,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserAccountDetailsSync(userId: String, userSecret: String, accountId: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: Account?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserAccountDetailsSync(userId: String, userSecret: String, accountId: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: Account?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserAccountDetailsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -477,7 +477,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getUserAccountDetailsAsyncMappedParams(userId: String, userSecret: String, accountId: UUID) async throws -> Account {
+    private class func getUserAccountDetailsAsyncMappedParams(userId: String, userSecret: String, accountId: String) async throws -> Account {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountDetailsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
                 switch result {
@@ -503,7 +503,7 @@ open class AccountInformationAPI {
     open class func getUserAccountDetails(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> Account {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountDetailsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -531,7 +531,7 @@ open class AccountInformationAPI {
     open func getUserAccountDetails(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> Account {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountDetailsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -567,7 +567,7 @@ open class AccountInformationAPI {
     open class func getUserAccountDetailsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<Account> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}"
@@ -622,7 +622,7 @@ open class AccountInformationAPI {
     open func getUserAccountDetailsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<Account> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}"
@@ -679,7 +679,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserAccountOrdersSync(userId: String, userSecret: String, accountId: UUID, state: State_getUserAccountOrders? = nil, days: Int? = nil, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [AccountOrderRecord]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserAccountOrdersSync(userId: String, userSecret: String, accountId: String, state: State_getUserAccountOrders? = nil, days: Int? = nil, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [AccountOrderRecord]?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserAccountOrdersWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, state: state, days: days).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -702,7 +702,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getUserAccountOrdersAsyncMappedParams(userId: String, userSecret: String, accountId: UUID, state: State_getUserAccountOrders? = nil, days: Int? = nil) async throws -> [AccountOrderRecord] {
+    private class func getUserAccountOrdersAsyncMappedParams(userId: String, userSecret: String, accountId: String, state: State_getUserAccountOrders? = nil, days: Int? = nil) async throws -> [AccountOrderRecord] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountOrdersWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId, state: state, days: days).execute { result in
                 switch result {
@@ -730,7 +730,7 @@ open class AccountInformationAPI {
     open class func getUserAccountOrders(
         userId: String,
         userSecret: String,
-        accountId: UUID,
+        accountId: String,
         state: State_getUserAccountOrders? = nil, 
         days: Int? = nil
     ) async throws -> [AccountOrderRecord] {
@@ -762,7 +762,7 @@ open class AccountInformationAPI {
     open func getUserAccountOrders(
         userId: String,
         userSecret: String,
-        accountId: UUID,
+        accountId: String,
         state: State_getUserAccountOrders? = nil, 
         days: Int? = nil
     ) async throws -> [AccountOrderRecord] {
@@ -803,7 +803,7 @@ open class AccountInformationAPI {
     open class func getUserAccountOrdersWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             state: State_getUserAccountOrders? = nil,
             days: Int? = nil
     ) -> RequestBuilder<[AccountOrderRecord]> {
@@ -865,7 +865,7 @@ open class AccountInformationAPI {
     open func getUserAccountOrdersWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID,
+            accountId: String,
             state: State_getUserAccountOrders? = nil,
             days: Int? = nil
     ) -> RequestBuilder<[AccountOrderRecord]> {
@@ -915,7 +915,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserAccountPositionsSync(userId: String, userSecret: String, accountId: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [Position]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserAccountPositionsSync(userId: String, userSecret: String, accountId: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [Position]?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserAccountPositionsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -936,7 +936,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getUserAccountPositionsAsyncMappedParams(userId: String, userSecret: String, accountId: UUID) async throws -> [Position] {
+    private class func getUserAccountPositionsAsyncMappedParams(userId: String, userSecret: String, accountId: String) async throws -> [Position] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountPositionsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
                 switch result {
@@ -962,7 +962,7 @@ open class AccountInformationAPI {
     open class func getUserAccountPositions(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [Position] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountPositionsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -990,7 +990,7 @@ open class AccountInformationAPI {
     open func getUserAccountPositions(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [Position] {
         return try await withCheckedThrowingContinuation { continuation in
             getUserAccountPositionsWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -1026,7 +1026,7 @@ open class AccountInformationAPI {
     open class func getUserAccountPositionsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[Position]> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}/positions"
@@ -1081,7 +1081,7 @@ open class AccountInformationAPI {
     open func getUserAccountPositionsWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[Position]> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}/positions"
@@ -1127,7 +1127,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getUserHoldingsSync(accountId: UUID, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: AccountHoldingsAccount?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getUserHoldingsSync(accountId: String, userId: String, userSecret: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: AccountHoldingsAccount?, _ error: Error?) -> Void)) -> RequestTask {
         return getUserHoldingsWithRequestBuilder(accountId: accountId, userId: userId, userSecret: userSecret).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1148,7 +1148,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func getUserHoldingsAsyncMappedParams(accountId: UUID, userId: String, userSecret: String) async throws -> AccountHoldingsAccount {
+    private class func getUserHoldingsAsyncMappedParams(accountId: String, userId: String, userSecret: String) async throws -> AccountHoldingsAccount {
         return try await withCheckedThrowingContinuation { continuation in
             getUserHoldingsWithRequestBuilder(accountId: accountId, userId: userId, userSecret: userSecret).execute { result in
                 switch result {
@@ -1172,7 +1172,7 @@ open class AccountInformationAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open class func getUserHoldings(
-        accountId: UUID,
+        accountId: String,
         userId: String,
         userSecret: String
     ) async throws -> AccountHoldingsAccount {
@@ -1200,7 +1200,7 @@ open class AccountInformationAPI {
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     open func getUserHoldings(
-        accountId: UUID,
+        accountId: String,
         userId: String,
         userSecret: String
     ) async throws -> AccountHoldingsAccount {
@@ -1236,7 +1236,7 @@ open class AccountInformationAPI {
      - returns: RequestBuilder<AccountHoldingsAccount> 
      */
     open class func getUserHoldingsWithRequestBuilder(
-            accountId: UUID,
+            accountId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<AccountHoldingsAccount> {
@@ -1291,7 +1291,7 @@ open class AccountInformationAPI {
      - returns: RequestBuilder<AccountHoldingsAccount> 
      */
     open func getUserHoldingsWithRequestBuilder(
-            accountId: UUID,
+            accountId: String,
             userId: String,
             userSecret: String
     ) -> RequestBuilder<AccountHoldingsAccount> {
@@ -1535,7 +1535,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func updateUserAccountSync(userId: String, userSecret: String, accountId: UUID, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [Account]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func updateUserAccountSync(userId: String, userSecret: String, accountId: String, apiResponseQueue: DispatchQueue = SnapTradeAPI.apiResponseQueue, completion: @escaping ((_ data: [Account]?, _ error: Error?) -> Void)) -> RequestTask {
         return updateUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -1556,7 +1556,7 @@ open class AccountInformationAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-    private class func updateUserAccountAsyncMappedParams(userId: String, userSecret: String, accountId: UUID) async throws -> [Account] {
+    private class func updateUserAccountAsyncMappedParams(userId: String, userSecret: String, accountId: String) async throws -> [Account] {
         return try await withCheckedThrowingContinuation { continuation in
             updateUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
                 switch result {
@@ -1582,7 +1582,7 @@ open class AccountInformationAPI {
     open class func updateUserAccount(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [Account] {
         return try await withCheckedThrowingContinuation { continuation in
             updateUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -1610,7 +1610,7 @@ open class AccountInformationAPI {
     open func updateUserAccount(
         userId: String,
         userSecret: String,
-        accountId: UUID
+        accountId: String
     ) async throws -> [Account] {
         return try await withCheckedThrowingContinuation { continuation in
             updateUserAccountWithRequestBuilder(userId: userId, userSecret: userSecret, accountId: accountId).execute { result in
@@ -1646,7 +1646,7 @@ open class AccountInformationAPI {
     open class func updateUserAccountWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[Account]> {
         let basePath = SnapTradeAPI.basePath;
         var localVariablePath = "/accounts/{accountId}"
@@ -1701,7 +1701,7 @@ open class AccountInformationAPI {
     open func updateUserAccountWithRequestBuilder(
             userId: String,
             userSecret: String,
-            accountId: UUID
+            accountId: String
     ) -> RequestBuilder<[Account]> {
         let basePath = self.client.basePath;
         var localVariablePath = "/accounts/{accountId}"
