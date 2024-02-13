@@ -1,7 +1,7 @@
 {{#allParamsWithRequestBodyProperties}}
 let {{paramName}} = {{{vendorExtensions.x-swift-example}}}
 {{/allParamsWithRequestBodyProperties}}
-let {{operationId}}Response = {{clientNameLowercase}}.{{{operationId}}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}(
+let {{operationId}}Response = try await {{clientNameLowercase}}.{{classNameCamelCase}}.{{{operationId}}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}(
     {{#allParamsWithRequestBodyProperties}}
     {{paramName}}: {{paramName}}{{^-last}},{{/-last}}
     {{/allParamsWithRequestBodyProperties}}
