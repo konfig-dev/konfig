@@ -86,6 +86,7 @@ export class Configuration {
 
     constructor(param: ConfigurationParameters = {}) {
 
+        
         if (this.apiKey === undefined) {
             this.apiKey = {}
             if (param.accessToken !== undefined)

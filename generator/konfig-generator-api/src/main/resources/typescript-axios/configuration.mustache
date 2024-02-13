@@ -23,11 +23,23 @@ export interface ConfigurationParameters {
 {{#apiKeyMethods}}
     {{> securityKeyName}}?: string;
 {{/apiKeyMethods}}
-{{/hasMultipleApiKeys}}{{^removeDefaultConfigurationParameters}}
+{{/hasMultipleApiKeys}}
+{{#removeDefaultConfigurationParameters}}
+{{^hasMultipleApiKeys}}
+{{#apiKeyMethods}}
+    {{> configuration_api_key}}
+{{/apiKeyMethods}}
+{{/hasMultipleApiKeys}}
+{{#httpBearerMethods}}
+{{#-first}}
+    {{> configuration_access_token}}
+{{/-first}}
+{{/httpBearerMethods}}
+{{/removeDefaultConfigurationParameters}}{{^removeDefaultConfigurationParameters}}
     {{> configuration_api_key}}
     username?: string;
     password?: string;
-    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);{{/removeDefaultConfigurationParameters}}
+    {{> configuration_access_token}}{{/removeDefaultConfigurationParameters}}
     basePath?: string;
     baseOptions?: any;
 {{#includeFetchAdapter}}
@@ -123,7 +135,13 @@ export class Configuration {
         this.{{{.}}} = param.{{{.}}}
 {{/clientState}}
 {{#clientStateWithExamples}}
-        this.{{{name}}} = param.{{{name}}}{{/clientStateWithExamples}}{{^removeDefaultConfigurationParameters}}
+        this.{{{name}}} = param.{{{name}}}{{/clientStateWithExamples}}{{#removeDefaultConfigurationParameters}}
+{{^hasMultipleApiKeys}}
+{{#apiKeyMethods}}
+        this.apiKey = param.apiKey
+{{/apiKeyMethods}}
+{{/hasMultipleApiKeys}}
+        {{/removeDefaultConfigurationParameters}}{{^removeDefaultConfigurationParameters}}
         this.apiKey = param.apiKey{{/removeDefaultConfigurationParameters}}
         if (this.apiKey === undefined) {
             this.apiKey = {}
@@ -133,7 +151,13 @@ export class Configuration {
                 this.apiKey["{{> securityKeyName}}"] = param.{{> securityKeyName}}
 {{/apiKeyMethods}}
 {{/hasMultipleApiKeys}}
-        }{{^removeDefaultConfigurationParameters}}
+        }{{#removeDefaultConfigurationParameters}}
+        {{#httpBearerMethods}}
+        {{#-first}}
+        this.accessToken = param.accessToken;
+        {{/-first}}
+        {{/httpBearerMethods}}
+        {{/removeDefaultConfigurationParameters}}{{^removeDefaultConfigurationParameters}}
         this.username = param.username;
         this.password = param.password;
         this.accessToken = param.accessToken;{{/removeDefaultConfigurationParameters}}

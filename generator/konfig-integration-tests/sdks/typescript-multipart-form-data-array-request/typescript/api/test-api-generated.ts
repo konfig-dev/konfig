@@ -97,7 +97,7 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
             if (!isBrowser()) Object.assign(localVarHeaderParameter, localVarFormParams.getHeaders());
 
             // authentication ApiKey required
-            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "xAPIKEY", configuration })
+            await setApiKeyToObject({ object: localVarHeaderParameter, key: "X-API-KEY", keyParamName: "apiKey", configuration })
 
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
