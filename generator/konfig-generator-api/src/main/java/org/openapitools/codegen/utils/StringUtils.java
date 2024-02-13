@@ -117,6 +117,7 @@ public class StringUtils {
     private static Pattern camelizeHyphenPattern = Pattern.compile("(-)(.)");
     private static Pattern camelizeDollarPattern = Pattern.compile("\\$");
     private static Pattern camelizeSimpleUnderscorePattern = Pattern.compile("_");
+    private static Pattern camelizeSpacePattern = Pattern.compile("( )(.)");
 
     /**
      * Camelize name (parameter, property, method, etc)
@@ -180,6 +181,13 @@ public class StringUtils {
             while (m.find()) {
                 word = m.replaceFirst(m.group(2).toUpperCase(Locale.ROOT));
                 m = camelizeHyphenPattern.matcher(word);
+            }
+
+             // Remove all spaces
+            m = camelizeSpacePattern.matcher(word);
+            while (m.find()) {
+                word = m.replaceFirst(m.group(2).toUpperCase(Locale.ROOT));
+                m = camelizeSpacePattern.matcher(word);
             }
 
             switch (option) {
