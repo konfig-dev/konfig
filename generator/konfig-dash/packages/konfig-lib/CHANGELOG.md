@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.5
+
+### Patch Changes
+
+- [#562](https://github.com/konfig-dev/konfig/pull/562) [`80f3d086`](https://github.com/konfig-dev/konfig/commit/80f3d0868bca9d9f0c217c3347b576c5cee1cb87) Thanks [@dphuang2](https://github.com/dphuang2)! - remove uuid format for Swift SDK by default
+
 ## 1.36.4
 
 ### Patch Changes

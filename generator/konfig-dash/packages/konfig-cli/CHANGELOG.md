@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.38.13
+
+### Patch Changes
+
+- [#562](https://github.com/konfig-dev/konfig/pull/562) [`80f3d086`](https://github.com/konfig-dev/konfig/commit/80f3d0868bca9d9f0c217c3347b576c5cee1cb87) Thanks [@dphuang2](https://github.com/dphuang2)! - remove uuid format for Swift SDK by default
+
+- Updated dependencies [[`80f3d086`](https://github.com/konfig-dev/konfig/commit/80f3d0868bca9d9f0c217c3347b576c5cee1cb87)]:
+  - konfig-lib@1.36.5
+  - konfig-openapi-spec@1.8.10
+  - konfig-postman-to-openapi@3.1.10
+
 ## 1.38.12
 
 ### Patch Changes
