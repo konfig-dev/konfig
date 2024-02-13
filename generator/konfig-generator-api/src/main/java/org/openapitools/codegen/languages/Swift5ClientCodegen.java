@@ -1269,6 +1269,8 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
             if ("String".equals(codegenParameter.dataType) || "Character".equals(codegenParameter.dataType)) {
                 if (StringUtils.isEmpty(codegenParameter.example)) {
                     return "\"" + codegenParameter.example + "\"";
+                } else if (codegenParameter.vendorExtensions != null && codegenParameter.getSchema() != null && codegenParameter.getSchema().vendorExtensions.get("x-uuid") != null) {
+                    return "UUID().uuidString";
                 } else {
                     return "\"" + codegenParameter.paramName + "_example\"";
                 }
