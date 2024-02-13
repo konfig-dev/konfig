@@ -34,6 +34,7 @@ import { fixOas31Usage } from './fix-oas-3-1-usage'
 import { fixAnyOfTypeNullUsage } from './fix-any-of-type-null-usage'
 import { fixExamplesUsage } from './fix-examples-usage'
 import { overrideSecuritySchemes } from './override-security-schemes'
+import { fixAdditionalPropertiesFalse } from './fix-additional-properties-false'
 
 export async function fixOas({
   spec,
@@ -119,6 +120,11 @@ export async function fixOas({
     alwaysYes,
     useAIForOperationId,
     useAIForTags,
+  })
+
+  // Fix additional properties false
+  const numberOfAdditionalPropertiesFixed = fixAdditionalPropertiesFalse({
+    spec,
   })
 
   // Run this again in case ai generated new tags for operations in `fixOerationIds`
@@ -297,6 +303,7 @@ export async function fixOas({
     numberOfOas31UsagesFixed,
     numberOfAnyOfTypeNullUsagesReverted,
     numberOfExamplesUsageRemoved,
+    numberOfAdditionalPropertiesFixed,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {

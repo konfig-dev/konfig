@@ -142,6 +142,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     numberOfAnyOfTypeNullUsagesReverted,
     numberOfOas31UsagesFixed,
     numberOfExamplesUsageRemoved,
+    numberOfAdditionalPropertiesFixed,
   } = await fixOas({
     spec,
     progress,
@@ -184,6 +185,7 @@ Fixed ${numberOfExampleAndExamplesFixed} redundant "example" & "examples" fields
 Fixed ${numberOfExamplesFixed} examples with invalid schemas
 Fixed ${numberOfParametersConvertedToSecurityRequirements} parameters that should be security requirements
 Fixed ${numberOfListUsagesOfSecurityFixed} list usages of security
+Fixed ${numberOfAdditionalPropertiesFixed} additional properties = false
 Removed ${numberOfTrailingSlashesFixed} trailing slashes
 Removed ${numberOfRedundantSecurityAndParametersFixed} redundant security requirement and parameters
 Removed ${numberOfRedundantSecuritySchemesRemoved} redundant security schemes
