@@ -36,6 +36,7 @@ import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 import { orderOpenApiSpecification } from './util/order-openapi-specification'
 import { convertAnyOfSchemasToAny } from './convert-any-of-schemas-to-any'
 import { generateEncapsulatingName } from './generate-encapsulating-name'
+import { removeUuidFormatsFromSpec } from './remove-uuid-formats-from-spec'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -640,29 +641,7 @@ export const transformSpec = async ({
   }
 
   if (generator === 'csharp') {
-    // remove uuid format from any "string" type schemas
-    // Why? Well SnapTrade has the following schema:
-    /*
-        - in: query
-          required: false
-          name: brokerage_authorizations
-          description:
-            Optional. Comma seperated list of authorization IDs (only use if
-            filtering is needed on one or more authorizations).
-          schema:
-            type: string
-            format: uuid
-            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
-    */
-    // But then I realized the whole use of the "Guid" class in C# is actually a bit annoying when all other languages
-    // will accept a string type for a UUID. So I decided to remove the format from all string types in C#.
-    recurseObject(spec.spec, ({ value: schema }) => {
-      if (schema === null) return
-      if (typeof schema !== 'object') return
-      if (schema['type'] !== 'string') return
-      if (schema['format'] !== 'uuid') return
-      delete schema['format']
-    })
+    removeUuidFormatsFromSpec({ spec })
 
     handleAllOfWithNullable({ spec: spec })
   }
@@ -931,6 +910,8 @@ export const transformSpec = async ({
         delete schema['format']
       }
     })
+
+    removeUuidFormatsFromSpec({ spec })
 
     // get rid of all "enum" properties that only contains a number type
     // since Swift SDK doesn't ergonomically support enums with only numbers
