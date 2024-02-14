@@ -124,8 +124,8 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
         embeddedTemplateDir = templateDir = "swift5";
         apiPackage = File.separator + "APIs";
         modelPackage = File.separator + "Models";
-        modelDocTemplateFiles.put("model_doc.mustache", ".md");
-        apiDocTemplateFiles.put("api_doc.mustache", ".md");
+//        modelDocTemplateFiles.put("model_doc.mustache", ".md");
+//        apiDocTemplateFiles.put("api_doc.mustache", ".md");
 
         languageSpecificPrimitives = new HashSet<>(
                 Arrays.asList(

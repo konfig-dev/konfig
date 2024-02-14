@@ -1632,13 +1632,13 @@ Stop Price. If stop loss or stop limit order, the price to trigger the stop
 ##### time_in_force: `TimeInForceStrict`<a id="time_in_force-timeinforcestrict"></a>
 
 
-##### units: `Double`<a id="units-double"></a>
+##### units: [`Double`](./SnapTrade/Models/ModelDouble.swift)<a id="units-doublesnaptrademodelsmodeldoubleswift"></a>
 
 
 ##### universal_symbol_id: `String`<a id="universal_symbol_id-string"></a>
 
 
-##### notional_value: `Double`<a id="notional_value-double"></a>
+##### notional_value: [`Double`](./SnapTrade/Models/ModelDouble.swift)<a id="notional_value-doublesnaptrademodelsmodeldoubleswift"></a>
 
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1780,13 +1780,13 @@ Stop Price. If stop loss or stop limit order, the price to trigger the stop
 ##### time_in_force: `TimeInForceStrict`<a id="time_in_force-timeinforcestrict"></a>
 
 
-##### units: `Double`<a id="units-double"></a>
+##### units: [`Double`](./SnapTrade/Models/ModelDouble.swift)<a id="units-doublesnaptrademodelsmodeldoubleswift"></a>
 
 
 ##### universal_symbol_id: `String`<a id="universal_symbol_id-string"></a>
 
 
-##### notional_value: `Double`<a id="notional_value-double"></a>
+##### notional_value: [`Double`](./SnapTrade/Models/ModelDouble.swift)<a id="notional_value-doublesnaptrademodelsmodeldoubleswift"></a>
 
 
 #### 🔄 Return<a id="🔄-return"></a>
