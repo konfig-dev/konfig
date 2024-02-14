@@ -340,7 +340,19 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
          */
         {{#useSingleRequestParameter}}
         async {{nickname}}({{> apiInner_requestParameters}}options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.{{nickname}}({{#allParams}}requestParameters{{#isBodyParam}}{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}.requestBody{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}{{/isBodyParam}}{{^isBodyParam}}.{{> requestPropertyName}}{{/isBodyParam}}, {{/allParams}}options);
+            {{#bodyParam}}
+            {{#isStrictlyObject}}
+            const {{paramName}}: {{dataType}} = {
+            {{#vars}}
+                {{baseName}}: {{> requestBodyName}}.{{baseName}}{{^-last}},{{/-last}}
+            {{/vars}}
+            };
+            {{/isStrictlyObject}}
+            {{^isStrictlyObject}}
+            const {{paramName}}: {{dataType}} = {{> requestBodyName}};
+            {{/isStrictlyObject}}
+            {{/bodyParam}}
+            const localVarAxiosArgs = await localVarAxiosParamCreator.{{nickname}}({{#allParams}}{{#isBodyParam}}{{../bodyParam.paramName}}{{/isBodyParam}}{{^isBodyParam}}requestParameters.{{> requestPropertyName}}{{/isBodyParam}}, {{/allParams}}options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         {{/useSingleRequestParameter}}
