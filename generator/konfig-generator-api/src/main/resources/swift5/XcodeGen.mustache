@@ -3,7 +3,7 @@ targets:
   {{projectName}}:
     type: framework
     platform: iOS
-    deploymentTarget: "9.0"
+    deploymentTarget: "13.0"
     sources: [{{swiftPackagePath}}{{^swiftPackagePath}}{{#useSPMFileStructure}}Sources{{/useSPMFileStructure}}{{^useSPMFileStructure}}{{projectName}}{{/useSPMFileStructure}}{{/swiftPackagePath}}]
     info:
       path: ./Info.plist
@@ -16,14 +16,3 @@ targets:
       - carthage: Alamofire{{/useAlamofire}}{{#usePromiseKit}}
       - carthage: PromiseKit{{/usePromiseKit}}{{#useRxSwift}}
       - carthage: RxSwift{{/useRxSwift}}
-  Test:
-    type: Test
-    platform: iOS
-    deploymentTarget: "9.0"
-    sources: [Tests]
-    info:
-      path: ./Info.plist
-      version: 1.0.0
-    scheme: {}
-    dependencies:
-      - carthage: Nuitee
