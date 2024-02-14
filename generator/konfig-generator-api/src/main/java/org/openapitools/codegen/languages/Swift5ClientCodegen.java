@@ -41,6 +41,8 @@ import java.time.OffsetDateTime;
 import java.time.temporal.ChronoField;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 import static org.openapitools.codegen.utils.CamelizeOption.LOWERCASE_FIRST_LETTER;
 import static org.openapitools.codegen.utils.StringUtils.camelize;
@@ -1251,124 +1253,183 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
         List<CodegenOperation> operations = objectMap.getOperation();
         for (CodegenOperation operation : operations) {
             for (CodegenParameter cp : operation.allParams) {
-                cp.vendorExtensions.put("x-swift-example", constructExampleCode(cp, modelMaps, new HashSet<>()));
+                cp.vendorExtensions.put("x-swift-example", constructExampleCode(cp, modelMaps));
             }
             for (CodegenParameter cp : operation.allParamsWithRequestBodyProperties) {
-                cp.vendorExtensions.put("x-swift-example", constructExampleCode(cp, modelMaps, new HashSet<>()));
+                cp.vendorExtensions.put("x-swift-example", constructExampleCode(cp, modelMaps));
             }
         }
         return objs;
     }
 
-    public String constructExampleCode(CodegenParameter codegenParameter, HashMap<String, CodegenModel> modelMaps, Set<String> visitedModels) {
-        if (codegenParameter.isArray) { // array
-            return "[" + constructExampleCode(codegenParameter.items, modelMaps, visitedModels) + "]";
-        } else if (codegenParameter.isMap) { // TODO: map, file type
-            return "\"TODO\"";
-        } else if (languageSpecificPrimitives.contains(codegenParameter.dataType)) { // primitive type
-            if ("String".equals(codegenParameter.dataType) || "Character".equals(codegenParameter.dataType)) {
-                if (StringUtils.isEmpty(codegenParameter.example)) {
-                    return "\"" + codegenParameter.example + "\"";
-                } else if (codegenParameter.vendorExtensions != null && codegenParameter.getSchema() != null && codegenParameter.getSchema().vendorExtensions.get("x-uuid") != null) {
-                    return "UUID().uuidString";
-                } else {
-                    return "\"" + codegenParameter.paramName + "_example\"";
-                }
-            } else if ("Bool".equals(codegenParameter.dataType)) { // boolean
-                if (Boolean.parseBoolean(codegenParameter.example)) {
-                    return "true";
-                } else {
-                    return "false";
-                }
-            } else if ("URL".equals(codegenParameter.dataType)) { // URL
-                return "URL(string: \"https://example.com\")!";
-            } else if ("Data".equals(codegenParameter.dataType)) { // URL
-                return "Data([9, 8, 7])";
-            } else if ("Date".equals(codegenParameter.dataType)) { // date
-                return "Date()";
-            } else { // numeric
-                if (StringUtils.isEmpty(codegenParameter.example)) {
-                    return codegenParameter.example;
-                } else {
-                    return "987";
-                }
+    public String constructExampleCode(CodegenParameter cp, HashMap<String, CodegenModel> modelMaps) {
+        String code = constructExampleCode(cp, modelMaps, new HashSet<>());
+        return indentCode(code);
+    }
+
+    public static String indentCode(String input) {
+        StringBuilder output = new StringBuilder();
+        int indentLevel = 0;
+        String[] lines = input.split("\n", -1); // Split while keeping trailing empty strings
+
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i].trim();
+            boolean isOpeningParenthesis = line.endsWith("(");
+            boolean isClosingParenthesis = line.startsWith(")");
+
+            // Decrease indent level if the line starts with a closing parenthesis
+            if (isClosingParenthesis) {
+                indentLevel = Math.max(indentLevel - 1, 0); // Ensure indentLevel never goes below 0
             }
-        } else { // model
-            // look up the model
-            if (modelMaps.containsKey(codegenParameter.dataType)) {
-                if (visitedModels.contains(codegenParameter.dataType)) {
-                    // recursive/self-referencing model, simply return nil to avoid stackoverflow
-                    return "nil";
-                } else {
-                    visitedModels.add(codegenParameter.dataType);
-                    return constructExampleCode(modelMaps.get(codegenParameter.dataType), modelMaps, visitedModels);
-                }
+
+            // Apply current indentation
+            for (int j = 0; j < indentLevel; j++) {
+                output.append("    "); // 4 spaces for each indentation level
+            }
+
+            // Append the current line
+            if (i < lines.length - 1) { // Omit the trailing newline for the last line
+                output.append(line).append("\n");
             } else {
-                //LOGGER.error("Error in constructing examples. Failed to look up the model " + codegenParameter.dataType);
-                return "TODO";
+                output.append(line);
+            }
+
+            // Increase indent level if the line ends with an opening parenthesis
+            if (isOpeningParenthesis) {
+                indentLevel++;
             }
         }
+
+        return output.toString();
+    }
+
+    public String constructExampleCode(CodegenParameter codegenParameter, HashMap<String, CodegenModel> modelMaps, Set<String> visitedModels) {
+        Supplier<String> constructCode = () -> {
+            if (codegenParameter.isArray) { // array
+                return "[\n" + constructExampleCode(codegenParameter.items, modelMaps, visitedModels) + "\n]";
+            } else if (codegenParameter.isMap) { // TODO: map, file type
+                return "\"TODO\"";
+            } else if (languageSpecificPrimitives.contains(codegenParameter.dataType)) { // primitive type
+                if ("String".equals(codegenParameter.dataType) || "Character".equals(codegenParameter.dataType)) {
+                    if (StringUtils.isEmpty(codegenParameter.example)) {
+                        return "\"" + codegenParameter.example + "\"";
+                    } else if (codegenParameter.vendorExtensions != null && codegenParameter.getSchema() != null && codegenParameter.getSchema().vendorExtensions.get("x-uuid") != null) {
+                        return "UUID().uuidString";
+                    } else {
+                        return "\"" + codegenParameter.paramName + "_example\"";
+                    }
+                } else if ("Bool".equals(codegenParameter.dataType)) { // boolean
+                    if (Boolean.parseBoolean(codegenParameter.example)) {
+                        return "true";
+                    } else {
+                        return "false";
+                    }
+                } else if ("URL".equals(codegenParameter.dataType)) { // URL
+                    return "URL(string: \"https://example.com\")!";
+                } else if ("Data".equals(codegenParameter.dataType)) { // URL
+                    return "Data([9, 8, 7])";
+                } else if ("Date".equals(codegenParameter.dataType)) { // date
+                    return "Date()";
+                } else { // numeric
+                    if (StringUtils.isEmpty(codegenParameter.example)) {
+                        return codegenParameter.example;
+                    } else {
+                        return "987";
+                    }
+                }
+            } else { // model
+                // look up the model
+                if (modelMaps.containsKey(codegenParameter.dataType)) {
+                    if (visitedModels.contains(codegenParameter.dataType)) {
+                        // recursive/self-referencing model, simply return nil to avoid stackoverflow
+                        return "nil";
+                    } else {
+                        visitedModels.add(codegenParameter.dataType);
+                        return constructExampleCode(modelMaps.get(codegenParameter.dataType), modelMaps, visitedModels);
+                    }
+                } else {
+                    //LOGGER.error("Error in constructing examples. Failed to look up the model " + codegenParameter.dataType);
+                    return "TODO";
+                }
+            }
+        };
+        return constructCode.get();
     }
 
     public String constructExampleCode(CodegenProperty codegenProperty, HashMap<String, CodegenModel> modelMaps, Set<String> visitedModels) {
-        if (codegenProperty.isArray) { // array
-            return "[" + constructExampleCode(codegenProperty.items, modelMaps, visitedModels) + "]";
-        } else if (codegenProperty.isMap) { // TODO: map, file type
-            return "\"TODO\"";
-        } else if (languageSpecificPrimitives.contains(codegenProperty.dataType)) { // primitive type
-            if ("String".equals(codegenProperty.dataType) || "Character".equals(codegenProperty.dataType)) {
-                if (StringUtils.isEmpty(codegenProperty.example)) {
-                    return "\"" + codegenProperty.example + "\"";
-                } else {
-                    return "\"" + codegenProperty.name + "_example\"";
-                }
-            } else if ("Bool".equals(codegenProperty.dataType)) { // boolean
-                if (Boolean.parseBoolean(codegenProperty.example)) {
-                    return "true";
-                } else {
-                    return "false";
-                }
-            } else if ("URL".equals(codegenProperty.dataType)) { // URL
-                return "URL(string: \"https://example.com\")!";
-            } else if ("Date".equals(codegenProperty.dataType)) { // date
-                return "Date()";
-            } else { // numeric
-                if (StringUtils.isEmpty(codegenProperty.example)) {
-                    return codegenProperty.example;
-                } else {
-                    return "123";
-                }
-            }
-        } else {
-            // look up the model
-            if (modelMaps.containsKey(codegenProperty.dataType)) {
-                if (visitedModels.contains(codegenProperty.dataType)) {
-                    // recursive/self-referencing model, simply return nil to avoid stackoverflow
-                    return "nil";
-                } else {
-                    visitedModels.add(codegenProperty.dataType);
-                    return constructExampleCode(modelMaps.get(codegenProperty.dataType), modelMaps, visitedModels);
+        Supplier<String> constructCode = () -> {
+            if (codegenProperty.isArray) { // array
+                return "[\n" + constructExampleCode(codegenProperty.items, modelMaps, visitedModels) + "\n]";
+            } else if (codegenProperty.isMap) { // TODO: map, file type
+                return "\"TODO\"";
+            } else if (languageSpecificPrimitives.contains(codegenProperty.dataType)) { // primitive type
+                if ("String".equals(codegenProperty.dataType) || "Character".equals(codegenProperty.dataType)) {
+                    if (StringUtils.isEmpty(codegenProperty.example)) {
+                        return "\"" + codegenProperty.example + "\"";
+                    } else {
+                        return "\"" + codegenProperty.name + "_example\"";
+                    }
+                } else if ("Bool".equals(codegenProperty.dataType)) { // boolean
+                    if (Boolean.parseBoolean(codegenProperty.example)) {
+                        return "true";
+                    } else {
+                        return "false";
+                    }
+                } else if ("URL".equals(codegenProperty.dataType)) { // URL
+                    return "URL(string: \"https://example.com\")!";
+                } else if ("Date".equals(codegenProperty.dataType)) { // date
+                    return "Date()";
+                } else { // numeric
+                    if (StringUtils.isEmpty(codegenProperty.example)) {
+                        return codegenProperty.example;
+                    } else {
+                        return "123";
+                    }
                 }
             } else {
-                //LOGGER.error("Error in constructing examples. Failed to look up the model " + codegenProperty.dataType);
-                return "\"TODO\"";
+                // look up the model
+                if (modelMaps.containsKey(codegenProperty.dataType)) {
+                    if (visitedModels.contains(codegenProperty.dataType)) {
+                        // recursive/self-referencing model, simply return nil to avoid stackoverflow
+                        return "nil";
+                    } else {
+                        CodegenModel codegenModel = modelMaps.get(codegenProperty.dataType);
+                        visitedModels.add(codegenProperty.dataType);
+                        if (codegenModel.isEnum) {
+                            // get first enumVar name
+                            String name =
+                                    (String) ((ArrayList<HashMap>) codegenModel.allowableValues.get("enumVars")).get(0).get("name");
+
+                            return codegenModel.classname + "." + name;
+                        } else {
+                            return constructExampleCode(modelMaps.get(codegenProperty.dataType), modelMaps, visitedModels);
+                        }
+                    }
+                } else {
+                    //LOGGER.error("Error in constructing examples. Failed to look up the model " + codegenProperty.dataType);
+                    return "\"TODO\"";
+                }
             }
-        }
+        };
+        return constructCode.get();
     }
 
     public String constructExampleCode(CodegenModel codegenModel, HashMap<String, CodegenModel> modelMaps, Set<String> visitedModels) {
-        String example;
-        // name = BookRequest_guestInfo
-        // dataType = BookRequestGuestInfo
-        // thus dataType is more correct than name
-        example = codegenModel.classname + "(";
-        List<String> propertyExamples = new ArrayList<>();
-        for (CodegenProperty codegenProperty : codegenModel.vars) {
-            propertyExamples.add(codegenProperty.name + ": " + constructExampleCode(codegenProperty, modelMaps, visitedModels));
-        }
-        example += StringUtils.join(propertyExamples, ", ");
-        example += ")";
-        return example;
+        Supplier<String> constructCode = () -> {
+            String example;
+            // name = BookRequest_guestInfo
+            // dataType = BookRequestGuestInfo
+            // thus dataType is more correct than name
+            example = codegenModel.classname + "(\n";
+            List<String> propertyExamples = new ArrayList<>();
+            for (CodegenProperty codegenProperty : codegenModel.vars) {
+                propertyExamples.add(codegenProperty.name + ": " + constructExampleCode(codegenProperty, modelMaps, visitedModels));
+            }
+            example += StringUtils.join(propertyExamples, ",\n");
+            example += "\n)";
+            return example;
+        };
+        return constructCode.get();
     }
 
     @Override
