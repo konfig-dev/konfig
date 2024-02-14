@@ -170,7 +170,14 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let snapTradeLoginUserRequestBody = SnapTradeLoginUserRequestBody(broker: "broker_example", immediateRedirect: true, customRedirect: "customRedirect_example", reconnect: "reconnect_example", connectionType: "connectionType_example", connectionPortalVersion: "connectionPortalVersion_example") // SnapTradeLoginUserRequestBody |  (optional)
+let snapTradeLoginUserRequestBody = SnapTradeLoginUserRequestBody(
+    broker: "broker_example",
+    immediateRedirect: true,
+    customRedirect: "customRedirect_example",
+    reconnect: "reconnect_example",
+    connectionType: "connectionType_example",
+    connectionPortalVersion: "connectionPortalVersion_example"
+) // SnapTradeLoginUserRequestBody |  (optional)
 
 // Login user & generate connection link
 AuthenticationAPI.loginSnapTradeUser(userId: userId, userSecret: userSecret, snapTradeLoginUserRequestBody: snapTradeLoginUserRequestBody) { (response, error) in
@@ -219,7 +226,9 @@ Create SnapTrade user
 ```swift
 import SnapTrade
 
-let snapTradeRegisterUserRequestBody = SnapTradeRegisterUserRequestBody(userId: "userId_example") // SnapTradeRegisterUserRequestBody | 
+let snapTradeRegisterUserRequestBody = SnapTradeRegisterUserRequestBody(
+    userId: "userId_example"
+) // SnapTradeRegisterUserRequestBody | 
 
 // Create SnapTrade user
 AuthenticationAPI.registerSnapTradeUser(snapTradeRegisterUserRequestBody: snapTradeRegisterUserRequestBody) { (response, error) in
@@ -266,7 +275,10 @@ Obtain a new user secret for a user
 ```swift
 import SnapTrade
 
-let userIDandSecret = UserIDandSecret(userId: "userId_example", userSecret: "userSecret_example") // UserIDandSecret | 
+let userIDandSecret = UserIDandSecret(
+    userId: "userId_example",
+    userSecret: "userSecret_example"
+) // UserIDandSecret | 
 
 // Obtain a new user secret for a user
 AuthenticationAPI.resetSnapTradeUserSecret(userIDandSecret: userIDandSecret) { (response, error) in

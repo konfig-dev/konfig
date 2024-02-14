@@ -1270,6 +1270,9 @@ public class Swift5ClientCodegen extends DefaultCodegen implements CodegenConfig
     public static String indentCode(String input) {
         StringBuilder output = new StringBuilder();
         int indentLevel = 0;
+        if (input == null) {
+            return null;
+        }
         String[] lines = input.split("\n", -1); // Split while keeping trailing empty strings
 
         for (int i = 0; i < lines.length; i++) {

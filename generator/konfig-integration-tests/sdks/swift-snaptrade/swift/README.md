@@ -104,7 +104,7 @@ let snaptrade = SnapTradeClient(
     // basePath: "https://api.snaptrade.com/api/v1"
 )
 
-let checkResponse = snaptrade.check()
+let checkResponse = try await snaptrade.apiStatus.check()
 
 ```
 
@@ -118,7 +118,7 @@ Check whether the API is operational and verify timestamps.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let checkResponse = snaptrade.check()
+let checkResponse = try await snaptrade.apiStatus.check()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -143,8 +143,8 @@ List all accounts for the user, plus balances, positions, and orders for each ac
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let brokerageAuthorizations = "brokerageAuthorizations_example"
-let getAllUserHoldingsResponse = snaptrade.getAllUserHoldings(
+let brokerageAuthorizations = UUID().uuidString
+let getAllUserHoldingsResponse = try await snaptrade.accountInformation.getAllUserHoldings(
     userId: userId,
     userSecret: userSecret,
     brokerageAuthorizations: brokerageAuthorizations
@@ -186,8 +186,8 @@ A list of account balances for the specified account (one per currency that the 
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let getUserAccountBalanceResponse = snaptrade.getUserAccountBalance(
+let accountId = UUID().uuidString
+let getUserAccountBalanceResponse = try await snaptrade.accountInformation.getUserAccountBalance(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId
@@ -229,8 +229,8 @@ Return details of a specific investment account
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let getUserAccountDetailsResponse = snaptrade.getUserAccountDetails(
+let accountId = UUID().uuidString
+let getUserAccountDetailsResponse = try await snaptrade.accountInformation.getUserAccountDetails(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId
@@ -272,10 +272,10 @@ Fetch all recent orders from a user's account.
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
+let accountId = UUID().uuidString
 let state = "state_example"
 let days = 987
-let getUserAccountOrdersResponse = snaptrade.getUserAccountOrders(
+let getUserAccountOrdersResponse = try await snaptrade.accountInformation.getUserAccountOrders(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -329,8 +329,8 @@ List account positions
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let getUserAccountPositionsResponse = snaptrade.getUserAccountPositions(
+let accountId = UUID().uuidString
+let getUserAccountPositionsResponse = try await snaptrade.accountInformation.getUserAccountPositions(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId
@@ -370,10 +370,10 @@ List balances, positions and orders for the specified account
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let accountId = "accountId_example"
+let accountId = UUID().uuidString
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let getUserHoldingsResponse = snaptrade.getUserHoldings(
+let getUserHoldingsResponse = try await snaptrade.accountInformation.getUserHoldings(
     accountId: accountId,
     userId: userId,
     userSecret: userSecret
@@ -415,7 +415,7 @@ List accounts
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let listUserAccountsResponse = snaptrade.listUserAccounts(
+let listUserAccountsResponse = try await snaptrade.accountInformation.listUserAccounts(
     userId: userId,
     userSecret: userSecret
 )
@@ -451,8 +451,8 @@ Update details of an investment account
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let updateUserAccountResponse = snaptrade.updateUserAccount(
+let accountId = UUID().uuidString
+let updateUserAccountResponse = try await snaptrade.accountInformation.updateUserAccount(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId
@@ -493,7 +493,7 @@ Deletes a user you've registered over the SnapTrade API, and any data associated
 
 ```swift
 let userId = "userId_example"
-let deleteSnapTradeUserResponse = snaptrade.deleteSnapTradeUser(
+let deleteSnapTradeUserResponse = try await snaptrade.authentication.deleteSnapTradeUser(
     userId: userId
 )
 ```
@@ -525,7 +525,7 @@ Generate encrypted JWT token
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let getUserJWTResponse = snaptrade.getUserJWT(
+let getUserJWTResponse = try await snaptrade.authentication.getUserJWT(
     userId: userId,
     userSecret: userSecret
 )
@@ -559,7 +559,7 @@ Returns a list of users you've registered over the SnapTrade API.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let listSnapTradeUsersResponse = snaptrade.listSnapTradeUsers()
+let listSnapTradeUsersResponse = try await snaptrade.authentication.listSnapTradeUsers()
 ```
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
@@ -586,7 +586,7 @@ let customRedirect = "customRedirect_example"
 let reconnect = "reconnect_example"
 let connectionType = "connectionType_example"
 let connectionPortalVersion = "connectionPortalVersion_example"
-let loginSnapTradeUserResponse = snaptrade.loginSnapTradeUser(
+let loginSnapTradeUserResponse = try await snaptrade.authentication.loginSnapTradeUser(
     userId: userId,
     userSecret: userSecret,
     broker: broker,
@@ -657,7 +657,7 @@ Create SnapTrade user
 
 ```swift
 let userId = "userId_example"
-let registerSnapTradeUserResponse = snaptrade.registerSnapTradeUser(
+let registerSnapTradeUserResponse = try await snaptrade.authentication.registerSnapTradeUser(
     userId: userId
 )
 ```
@@ -691,7 +691,7 @@ Obtain a new user secret for a user
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let resetSnapTradeUserSecretResponse = snaptrade.resetSnapTradeUserSecret(
+let resetSnapTradeUserSecretResponse = try await snaptrade.authentication.resetSnapTradeUserSecret(
     userId: userId,
     userSecret: userSecret
 )
@@ -729,10 +729,10 @@ Get brokerage authorization details
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let authorizationId = "authorizationId_example"
+let authorizationId = UUID().uuidString
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let detailBrokerageAuthorizationResponse = snaptrade.detailBrokerageAuthorization(
+let detailBrokerageAuthorizationResponse = try await snaptrade.connections.detailBrokerageAuthorization(
     authorizationId: authorizationId,
     userId: userId,
     userSecret: userSecret
@@ -774,7 +774,7 @@ List all brokerage authorizations for the user
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let listBrokerageAuthorizationsResponse = snaptrade.listBrokerageAuthorizations(
+let listBrokerageAuthorizationsResponse = try await snaptrade.connections.listBrokerageAuthorizations(
     userId: userId,
     userSecret: userSecret
 )
@@ -808,10 +808,10 @@ Delete brokerage authorization
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let authorizationId = "authorizationId_example"
+let authorizationId = UUID().uuidString
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let removeBrokerageAuthorizationResponse = snaptrade.removeBrokerageAuthorization(
+let removeBrokerageAuthorizationResponse = try await snaptrade.connections.removeBrokerageAuthorization(
     authorizationId: authorizationId,
     userId: userId,
     userSecret: userSecret
@@ -850,7 +850,7 @@ List all session events for the partner
 let partnerClientId = "partnerClientId_example"
 let userId = "userId_example"
 let sessionId = "sessionId_example"
-let sessionEventsResponse = snaptrade.sessionEvents(
+let sessionEventsResponse = try await snaptrade.connections.sessionEvents(
     partnerClientId: partnerClientId,
     userId: userId,
     sessionId: sessionId
@@ -894,7 +894,7 @@ Retrieve error logs on behalf of your SnapTrade users
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let listUserErrorsResponse = snaptrade.listUserErrors(
+let listUserErrorsResponse = try await snaptrade.errorLogs.listUserErrors(
     userId: userId,
     userSecret: userSecret
 )
@@ -929,12 +929,18 @@ Creates an option strategy object that will be used to place an option strategy 
 
 ```swift
 let underlyingSymbolId = "underlyingSymbolId_example"
-let legs = [OptionLeg(action: "action_example", optionSymbolId: "optionSymbolId_example", quantity: 123)]
+let legs = [
+OptionLeg(
+    action: "action_example",
+    optionSymbolId: "optionSymbolId_example",
+    quantity: 123
+)
+]
 let strategyType = "strategyType_example"
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let getOptionStrategyResponse = snaptrade.getOptionStrategy(
+let accountId = UUID().uuidString
+let getOptionStrategyResponse = try await snaptrade.options.getOptionStrategy(
     underlyingSymbolId: underlyingSymbolId,
     legs: legs,
     strategyType: strategyType,
@@ -988,9 +994,9 @@ Get the options chain
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let symbol = "symbol_example"
-let getOptionsChainResponse = snaptrade.getOptionsChain(
+let accountId = UUID().uuidString
+let symbol = UUID().uuidString
+let getOptionsChainResponse = try await snaptrade.options.getOptionsChain(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -1038,9 +1044,9 @@ Get latest market data of option strategy
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let optionStrategyId = "optionStrategyId_example"
-let getOptionsStrategyQuoteResponse = snaptrade.getOptionsStrategyQuote(
+let accountId = UUID().uuidString
+let optionStrategyId = UUID().uuidString
+let getOptionsStrategyQuoteResponse = try await snaptrade.options.getOptionsStrategyQuote(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -1088,8 +1094,8 @@ Get the options holdings in the account
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let listOptionHoldingsResponse = snaptrade.listOptionHoldings(
+let accountId = UUID().uuidString
+let listOptionHoldingsResponse = try await snaptrade.options.listOptionHoldings(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId
@@ -1129,14 +1135,18 @@ Place an option strategy order on the brokerage
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let orderType = OrderType()
-let timeInForce = TimeInForceStrict()
+let orderType = OrderType(
+    
+)
+let timeInForce = TimeInForceStrict(
+    
+)
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
-let optionStrategyId = "optionStrategyId_example"
+let accountId = UUID().uuidString
+let optionStrategyId = UUID().uuidString
 let price = 987
-let placeOptionStrategyResponse = snaptrade.placeOptionStrategy(
+let placeOptionStrategyResponse = try await snaptrade.options.placeOptionStrategy(
     orderType: orderType,
     timeInForce: timeInForce,
     userId: userId,
@@ -1197,7 +1207,7 @@ Return the exchange rate of a currency pair
 
 ```swift
 let currencyPair = "currencyPair_example"
-let getCurrencyExchangeRatePairResponse = snaptrade.getCurrencyExchangeRatePair(
+let getCurrencyExchangeRatePairResponse = try await snaptrade.referenceData.getCurrencyExchangeRatePair(
     currencyPair: currencyPair
 )
 ```
@@ -1229,7 +1239,7 @@ Get metadata related to Snaptrade partner
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let getPartnerInfoResponse = snaptrade.getPartnerInfo()
+let getPartnerInfoResponse = try await snaptrade.referenceData.getPartnerInfo()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1252,7 +1262,7 @@ List security types available on SnapTrade.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let getSecurityTypesResponse = snaptrade.getSecurityTypes()
+let getSecurityTypesResponse = try await snaptrade.referenceData.getSecurityTypes()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1275,7 +1285,7 @@ List exchanges
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let getStockExchangesResponse = snaptrade.getStockExchanges()
+let getStockExchangesResponse = try await snaptrade.referenceData.getStockExchanges()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1299,7 +1309,7 @@ Search for symbols
 
 ```swift
 let substring = "substring_example"
-let getSymbolsResponse = snaptrade.getSymbols(
+let getSymbolsResponse = try await snaptrade.referenceData.getSymbols(
     substring: substring
 )
 ```
@@ -1330,7 +1340,7 @@ Get details of a symbol by the ticker or the universal_symbol_id
 
 ```swift
 let query = "query_example"
-let getSymbolsByTickerResponse = snaptrade.getSymbolsByTicker(
+let getSymbolsByTickerResponse = try await snaptrade.referenceData.getSymbolsByTicker(
     query: query
 )
 ```
@@ -1363,7 +1373,7 @@ List of all brokerage authorization types
 
 ```swift
 let brokerage = "brokerage_example"
-let listAllBrokerageAuthorizationTypeResponse = snaptrade.listAllBrokerageAuthorizationType(
+let listAllBrokerageAuthorizationTypeResponse = try await snaptrade.referenceData.listAllBrokerageAuthorizationType(
     brokerage: brokerage
 )
 ```
@@ -1395,7 +1405,7 @@ List brokerages
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let listAllBrokeragesResponse = snaptrade.listAllBrokerages()
+let listAllBrokeragesResponse = try await snaptrade.referenceData.listAllBrokerages()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1418,7 +1428,7 @@ List currencies
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let listAllCurrenciesResponse = snaptrade.listAllCurrencies()
+let listAllCurrenciesResponse = try await snaptrade.referenceData.listAllCurrencies()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1441,7 +1451,7 @@ List currency exchange rates
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let listAllCurrenciesRatesResponse = snaptrade.listAllCurrenciesRates()
+let listAllCurrenciesRatesResponse = try await snaptrade.referenceData.listAllCurrenciesRates()
 ```
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -1466,9 +1476,9 @@ Search for symbols available in an account
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
+let accountId = UUID().uuidString
 let substring = "substring_example"
-let symbolSearchUserAccountResponse = snaptrade.symbolSearchUserAccount(
+let symbolSearchUserAccountResponse = try await snaptrade.referenceData.symbolSearchUserAccount(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -1514,9 +1524,9 @@ Cancel open order in account
 ```swift
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let accountId = "accountId_example"
+let accountId = UUID().uuidString
 let brokerageOrderId = "brokerageOrderId_example"
-let cancelUserAccountOrderResponse = snaptrade.cancelUserAccountOrder(
+let cancelUserAccountOrderResponse = try await snaptrade.trading.cancelUserAccountOrder(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -1563,15 +1573,21 @@ Check impact of trades on account.
 let userId = "userId_example"
 let userSecret = "userSecret_example"
 let accountId = "accountId_example"
-let action = Action()
-let orderType = OrderType()
+let action = Action(
+    
+)
+let orderType = OrderType(
+    
+)
 let price = 987
 let stop = 987
-let timeInForce = TimeInForceStrict()
+let timeInForce = TimeInForceStrict(
+    
+)
 let units = 
 let universalSymbolId = "universalSymbolId_example"
 let notionalValue = 
-let getOrderImpactResponse = snaptrade.getOrderImpact(
+let getOrderImpactResponse = try await snaptrade.trading.getOrderImpact(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -1650,7 +1666,7 @@ let userSecret = "userSecret_example"
 let symbols = "symbols_example"
 let accountId = "accountId_example"
 let useTicker = true
-let getUserAccountQuotesResponse = snaptrade.getUserAccountQuotes(
+let getUserAccountQuotesResponse = try await snaptrade.trading.getUserAccountQuotes(
     userId: userId,
     userSecret: userSecret,
     symbols: symbols,
@@ -1705,15 +1721,21 @@ Place a trade with NO validation.
 let userId = "userId_example"
 let userSecret = "userSecret_example"
 let accountId = "accountId_example"
-let action = Action()
-let orderType = OrderType()
+let action = Action(
+    
+)
+let orderType = OrderType(
+    
+)
 let price = 987
 let stop = 987
-let timeInForce = TimeInForceStrict()
+let timeInForce = TimeInForceStrict(
+    
+)
 let units = 
 let universalSymbolId = "universalSymbolId_example"
 let notionalValue = 
-let placeForceOrderResponse = snaptrade.placeForceOrder(
+let placeForceOrderResponse = try await snaptrade.trading.placeForceOrder(
     userId: userId,
     userSecret: userSecret,
     accountId: accountId,
@@ -1791,7 +1813,7 @@ let userId = "userId_example"
 let userSecret = "userSecret_example"
 let firstTradeId = TODO
 let secondTradeId = TODO
-let placeOCOOrderResponse = snaptrade.placeOCOOrder(
+let placeOCOOrderResponse = try await snaptrade.trading.placeOCOOrder(
     userId: userId,
     userSecret: userSecret,
     firstTradeId: firstTradeId,
@@ -1837,10 +1859,10 @@ Place order
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```swift
-let tradeId = "tradeId_example"
+let tradeId = UUID().uuidString
 let userId = "userId_example"
 let userSecret = "userSecret_example"
-let placeOrderResponse = snaptrade.placeOrder(
+let placeOrderResponse = try await snaptrade.trading.placeOrder(
     tradeId: tradeId,
     userId: userId,
     userSecret: userSecret
@@ -1887,7 +1909,7 @@ let endDate = "endDate_example"
 let accounts = "accounts_example"
 let brokerageAuthorizations = "brokerageAuthorizations_example"
 let type = "type_example"
-let getActivitiesResponse = snaptrade.getActivities(
+let getActivitiesResponse = try await snaptrade.transactionsAndReporting.getActivities(
     userId: userId,
     userSecret: userSecret,
     startDate: startDate,
@@ -1954,7 +1976,7 @@ let userSecret = "userSecret_example"
 let accounts = "accounts_example"
 let detailed = true
 let frequency = "frequency_example"
-let getReportingCustomRangeResponse = snaptrade.getReportingCustomRange(
+let getReportingCustomRangeResponse = try await snaptrade.transactionsAndReporting.getReportingCustomRange(
     startDate: startDate,
     endDate: endDate,
     userId: userId,

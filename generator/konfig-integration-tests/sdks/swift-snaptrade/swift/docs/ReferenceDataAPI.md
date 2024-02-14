@@ -206,7 +206,9 @@ Search for symbols
 ```swift
 import SnapTrade
 
-let symbolQuery = SymbolQuery(substring: "substring_example") // SymbolQuery |  (optional)
+let symbolQuery = SymbolQuery(
+    substring: "substring_example"
+) // SymbolQuery |  (optional)
 
 // Search for symbols
 ReferenceDataAPI.getSymbols(symbolQuery: symbolQuery) { (response, error) in
@@ -478,8 +480,10 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to search for symbols within.
-let symbolQuery = SymbolQuery(substring: "substring_example") // SymbolQuery |  (optional)
+let accountId = UUID().uuidString // String | The ID of the account to search for symbols within.
+let symbolQuery = SymbolQuery(
+    substring: "substring_example"
+) // SymbolQuery |  (optional)
 
 // Search for symbols available in an account
 ReferenceDataAPI.symbolSearchUserAccount(userId: userId, userSecret: userSecret, accountId: accountId, symbolQuery: symbolQuery) { (response, error) in

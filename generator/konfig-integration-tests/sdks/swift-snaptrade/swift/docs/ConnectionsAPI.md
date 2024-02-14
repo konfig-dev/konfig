@@ -21,7 +21,7 @@ Get brokerage authorization details
 ```swift
 import SnapTrade
 
-let authorizationId = "authorizationId_example" // String | The ID of a brokerage authorization object.
+let authorizationId = UUID().uuidString // String | The ID of a brokerage authorization object.
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 
@@ -121,7 +121,7 @@ Delete brokerage authorization
 ```swift
 import SnapTrade
 
-let authorizationId = "authorizationId_example" // String | The ID of the Authorization to delete.
+let authorizationId = UUID().uuidString // String | The ID of the Authorization to delete.
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 

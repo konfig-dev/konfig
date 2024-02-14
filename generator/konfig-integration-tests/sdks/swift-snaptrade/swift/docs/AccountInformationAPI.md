@@ -27,7 +27,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let brokerageAuthorizations = "brokerageAuthorizations_example" // String | Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations). (optional)
+let brokerageAuthorizations = UUID().uuidString // String | Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations). (optional)
 
 // List all accounts for the user, plus balances, positions, and orders for each account.
 AccountInformationAPI.getAllUserHoldings(userId: userId, userSecret: userSecret, brokerageAuthorizations: brokerageAuthorizations) { (response, error) in
@@ -80,7 +80,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to get balances.
+let accountId = UUID().uuidString // String | The ID of the account to get balances.
 
 // List account balances
 AccountInformationAPI.getUserAccountBalance(userId: userId, userSecret: userSecret, accountId: accountId) { (response, error) in
@@ -131,7 +131,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to get detail of.
+let accountId = UUID().uuidString // String | The ID of the account to get detail of.
 
 // Return details of a specific investment account
 AccountInformationAPI.getUserAccountDetails(userId: userId, userSecret: userSecret, accountId: accountId) { (response, error) in
@@ -184,7 +184,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to get orders.
+let accountId = UUID().uuidString // String | The ID of the account to get orders.
 let state = "state_example" // String | defaults value is set to \"all\" (optional)
 let days = 987 // Int | Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
 
@@ -239,7 +239,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to get positions.
+let accountId = UUID().uuidString // String | The ID of the account to get positions.
 
 // List account positions
 AccountInformationAPI.getUserAccountPositions(userId: userId, userSecret: userSecret, accountId: accountId) { (response, error) in
@@ -288,7 +288,7 @@ List balances, positions and orders for the specified account
 ```swift
 import SnapTrade
 
-let accountId = "accountId_example" // String | The ID of the account to fetch holdings for.
+let accountId = UUID().uuidString // String | The ID of the account to fetch holdings for.
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 
@@ -390,7 +390,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to update.
+let accountId = UUID().uuidString // String | The ID of the account to update.
 
 // Update details of an investment account
 AccountInformationAPI.updateUserAccount(userId: userId, userSecret: userSecret, accountId: accountId) { (response, error) in

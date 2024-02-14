@@ -24,8 +24,18 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to create the option strategy object in.
-let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(underlyingSymbolId: "underlyingSymbolId_example", legs: [OptionLeg(action: "action_example", optionSymbolId: "optionSymbolId_example", quantity: 123)], strategyType: "strategyType_example") // OptionsGetOptionStrategyRequest | 
+let accountId = UUID().uuidString // String | The ID of the account to create the option strategy object in.
+let optionsGetOptionStrategyRequest = OptionsGetOptionStrategyRequest(
+    underlyingSymbolId: "underlyingSymbolId_example",
+    legs: [
+    OptionLeg(
+        action: "action_example",
+        optionSymbolId: "optionSymbolId_example",
+        quantity: 123
+    )
+    ],
+    strategyType: "strategyType_example"
+) // OptionsGetOptionStrategyRequest | 
 
 // Creates an option strategy object that will be used to place an option strategy order
 OptionsAPI.getOptionStrategy(userId: userId, userSecret: userSecret, accountId: accountId, optionsGetOptionStrategyRequest: optionsGetOptionStrategyRequest) { (response, error) in
@@ -77,8 +87,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to get the options chain from.
-let symbol = "symbol_example" // String | Universal symbol ID if symbol
+let accountId = UUID().uuidString // String | The ID of the account to get the options chain from.
+let symbol = UUID().uuidString // String | Universal symbol ID if symbol
 
 // Get the options chain
 OptionsAPI.getOptionsChain(userId: userId, userSecret: userSecret, accountId: accountId, symbol: symbol) { (response, error) in
@@ -130,8 +140,8 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account the strategy will be placed in.
-let optionStrategyId = "optionStrategyId_example" // String | Option strategy id obtained from response when creating option strategy object
+let accountId = UUID().uuidString // String | The ID of the account the strategy will be placed in.
+let optionStrategyId = UUID().uuidString // String | Option strategy id obtained from response when creating option strategy object
 
 // Get latest market data of option strategy
 OptionsAPI.getOptionsStrategyQuote(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId) { (response, error) in
@@ -183,7 +193,7 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to fetch options holdings for.
+let accountId = UUID().uuidString // String | The ID of the account to fetch options holdings for.
 
 // Get the options holdings in the account
 OptionsAPI.listOptionHoldings(userId: userId, userSecret: userSecret, accountId: accountId) { (response, error) in
@@ -234,9 +244,13 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to execute the strategy in.
-let optionStrategyId = "optionStrategyId_example" // String | Option strategy id obtained from response when creating option strategy object
-let optionsPlaceOptionStrategyRequest = OptionsPlaceOptionStrategyRequest(orderType: OrderType(), timeInForce: TimeInForceStrict(), price: 123) // OptionsPlaceOptionStrategyRequest | 
+let accountId = UUID().uuidString // String | The ID of the account to execute the strategy in.
+let optionStrategyId = UUID().uuidString // String | Option strategy id obtained from response when creating option strategy object
+let optionsPlaceOptionStrategyRequest = OptionsPlaceOptionStrategyRequest(
+    orderType: OrderType.limit,
+    timeInForce: TimeInForceStrict.fok,
+    price: 123
+) // OptionsPlaceOptionStrategyRequest | 
 
 // Place an option strategy order on the brokerage
 OptionsAPI.placeOptionStrategy(userId: userId, userSecret: userSecret, accountId: accountId, optionStrategyId: optionStrategyId, optionsPlaceOptionStrategyRequest: optionsPlaceOptionStrategyRequest) { (response, error) in

@@ -25,8 +25,10 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let accountId = "accountId_example" // String | The ID of the account to cancel the order in.
-let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(brokerageOrderId: "brokerageOrderId_example") // TradingCancelUserAccountOrderRequest | The Order ID to be canceled
+let accountId = UUID().uuidString // String | The ID of the account to cancel the order in.
+let tradingCancelUserAccountOrderRequest = TradingCancelUserAccountOrderRequest(
+    brokerageOrderId: "brokerageOrderId_example"
+) // TradingCancelUserAccountOrderRequest | The Order ID to be canceled
 
 // Cancel open order in account
 TradingAPI.cancelUserAccountOrder(userId: userId, userSecret: userSecret, accountId: accountId, tradingCancelUserAccountOrderRequest: tradingCancelUserAccountOrderRequest) { (response, error) in
@@ -78,7 +80,17 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let manualTradeForm = ManualTradeForm(accountId: "accountId_example", action: Action(), orderType: OrderType(), price: 123, stop: 123, timeInForce: TimeInForceStrict(), units: 123, universalSymbolId: "universalSymbolId_example", notionalValue: 123) // ManualTradeForm | 
+let manualTradeForm = ManualTradeForm(
+    accountId: "accountId_example",
+    action: Action.buy,
+    orderType: OrderType.limit,
+    price: 123,
+    stop: 123,
+    timeInForce: TimeInForceStrict.fok,
+    units: 123,
+    universalSymbolId: "universalSymbolId_example",
+    notionalValue: 123
+) // ManualTradeForm | 
 
 // Check impact of trades on account.
 TradingAPI.getOrderImpact(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm) { (response, error) in
@@ -184,7 +196,17 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let manualTradeForm = ManualTradeForm(accountId: "accountId_example", action: Action(), orderType: OrderType(), price: 123, stop: 123, timeInForce: TimeInForceStrict(), units: 123, universalSymbolId: "universalSymbolId_example", notionalValue: 123) // ManualTradeForm | 
+let manualTradeForm = ManualTradeForm(
+    accountId: "accountId_example",
+    action: Action.buy,
+    orderType: OrderType.limit,
+    price: 123,
+    stop: 123,
+    timeInForce: TimeInForceStrict.fok,
+    units: 123,
+    universalSymbolId: "universalSymbolId_example",
+    notionalValue: 123
+) // ManualTradeForm | 
 
 // Place a trade with NO validation.
 TradingAPI.placeForceOrder(userId: userId, userSecret: userSecret, manualTradeForm: manualTradeForm) { (response, error) in
@@ -235,7 +257,10 @@ import SnapTrade
 
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
-let tradingPlaceOCOOrderRequest = TradingPlaceOCOOrderRequest(firstTradeId: "TODO", secondTradeId: "TODO") // TradingPlaceOCOOrderRequest | 
+let tradingPlaceOCOOrderRequest = TradingPlaceOCOOrderRequest(
+    firstTradeId: "TODO",
+    secondTradeId: "TODO"
+) // TradingPlaceOCOOrderRequest | 
 
 // Place a OCO (One Cancels Other) order
 TradingAPI.placeOCOOrder(userId: userId, userSecret: userSecret, tradingPlaceOCOOrderRequest: tradingPlaceOCOOrderRequest) { (response, error) in
@@ -284,7 +309,7 @@ Place order
 ```swift
 import SnapTrade
 
-let tradeId = "tradeId_example" // String | The ID of trade object obtained from trade/impact endpoint
+let tradeId = UUID().uuidString // String | The ID of trade object obtained from trade/impact endpoint
 let userId = "userId_example" // String | 
 let userSecret = "userSecret_example" // String | 
 
