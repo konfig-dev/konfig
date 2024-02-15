@@ -342,14 +342,14 @@ export const {{classname}}Fp = function(configuration?: Configuration) {
         async {{nickname}}({{> apiInner_requestParameters}}options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{{{returnType}}}{{^returnType}}void{{/returnType}}>> {
             {{#bodyParam}}
             {{#isStrictlyObject}}
-            const {{paramName}}: {{dataType}} = {
+            const {{paramName}}: {{{dataType}}} = {
             {{#vars}}
                 {{baseName}}: {{> requestBodyName}}.{{baseName}}{{^-last}},{{/-last}}
             {{/vars}}
             };
             {{/isStrictlyObject}}
             {{^isStrictlyObject}}
-            const {{paramName}}: {{dataType}} = {{> requestBodyName}};
+            const {{paramName}}: {{{dataType}}} = {{> requestBodyName}};
             {{/isStrictlyObject}}
             {{/bodyParam}}
             const localVarAxiosArgs = await localVarAxiosParamCreator.{{nickname}}({{#allParams}}{{#isBodyParam}}{{../bodyParam.paramName}}{{/isBodyParam}}{{^isBodyParam}}requestParameters.{{> requestPropertyName}}{{/isBodyParam}}, {{/allParams}}options);
