@@ -19,7 +19,7 @@ import { ServiceType } from './service-type';
  */
 export interface ServiceWorkers {
     /**
-     * Service Type
+     * ServiceType
      * @type {ServiceType}
      * @memberof ServiceWorkers
      */

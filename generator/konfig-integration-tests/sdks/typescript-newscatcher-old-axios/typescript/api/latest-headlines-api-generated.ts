@@ -313,7 +313,42 @@ export const LatestHeadlinesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post(requestParameters: LatestHeadlinesApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LatestHeadlinesPostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters, options);
+            const latestHeadlinesRequest: LatestHeadlinesRequest = {
+                when: requestParameters.when,
+                by_parse_date: requestParameters.by_parse_date,
+                lang: requestParameters.lang,
+                not_lang: requestParameters.not_lang,
+                countries: requestParameters.countries,
+                not_countries: requestParameters.not_countries,
+                sources: requestParameters.sources,
+                predefined_sources: requestParameters.predefined_sources,
+                not_sources: requestParameters.not_sources,
+                ranked_only: requestParameters.ranked_only,
+                is_headline: requestParameters.is_headline,
+                is_paid_content: requestParameters.is_paid_content,
+                parent_url: requestParameters.parent_url,
+                theme: requestParameters.theme,
+                all_links: requestParameters.all_links,
+                all_domain_links: requestParameters.all_domain_links,
+                word_count_min: requestParameters.word_count_min,
+                word_count_max: requestParameters.word_count_max,
+                page: requestParameters.page,
+                page_size: requestParameters.page_size,
+                clustering_enabled: requestParameters.clustering_enabled,
+                clustering_threshold: requestParameters.clustering_threshold,
+                clustering_variable: requestParameters.clustering_variable,
+                include_nlp_data: requestParameters.include_nlp_data,
+                has_nlp: requestParameters.has_nlp,
+                ORG_entity_name: requestParameters.ORG_entity_name,
+                PER_entity_name: requestParameters.PER_entity_name,
+                LOC_entity_name: requestParameters.LOC_entity_name,
+                MISC_entity_name: requestParameters.MISC_entity_name,
+                title_sentiment_min: requestParameters.title_sentiment_min,
+                title_sentiment_max: requestParameters.title_sentiment_max,
+                content_sentiment_min: requestParameters.content_sentiment_min,
+                content_sentiment_max: requestParameters.content_sentiment_max
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(latestHeadlinesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

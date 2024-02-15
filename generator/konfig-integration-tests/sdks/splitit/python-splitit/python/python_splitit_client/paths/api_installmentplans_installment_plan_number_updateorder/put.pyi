@@ -102,28 +102,28 @@ request_path_installment_plan_number = api_client.PathParameter(
     required=True,
 )
 # body param
-SchemaForRequestBodyApplicationJsonPatchjson = UpdateOrderRequestSchema
 SchemaForRequestBodyApplicationJson = UpdateOrderRequestSchema
 SchemaForRequestBodyTextJson = UpdateOrderRequestSchema
+SchemaForRequestBodyApplicationJsonPatchjson = UpdateOrderRequestSchema
 SchemaForRequestBodyApplicationJson = UpdateOrderRequestSchema
 
 
 request_body_update_order_request = api_client.RequestBody(
     content={
-        'application/json-patch+json': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationJsonPatchjson),
         'application/json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaForRequestBodyTextJson),
+        'application/json-patch+json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJsonPatchjson),
         'application/*+json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
     },
     required=True,
 )
-SchemaFor200ResponseBodyTextPlain = InstallmentPlanUpdateResponseSchema
 SchemaFor200ResponseBodyApplicationJson = InstallmentPlanUpdateResponseSchema
 SchemaFor200ResponseBodyTextJson = InstallmentPlanUpdateResponseSchema
+SchemaFor200ResponseBodyTextPlain = InstallmentPlanUpdateResponseSchema
 
 
 @dataclass
@@ -140,17 +140,17 @@ _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     response_cls_async=ApiResponseFor200Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyTextPlain),
     },
 )
-SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor401ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor401ResponseBodyTextJson = FailedResponseSchema
+SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -167,17 +167,17 @@ _response_for_401 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor401,
     response_cls_async=ApiResponseFor401Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor401ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor401ResponseBodyTextPlain),
     },
 )
-SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor403ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor403ResponseBodyTextJson = FailedResponseSchema
+SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -194,17 +194,17 @@ _response_for_403 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor403,
     response_cls_async=ApiResponseFor403Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor403ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor403ResponseBodyTextPlain),
     },
 )
-SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor404ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor404ResponseBodyTextJson = FailedResponseSchema
+SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -221,17 +221,17 @@ _response_for_404 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor404,
     response_cls_async=ApiResponseFor404Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor404ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyTextPlain),
     },
 )
-SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor500ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor500ResponseBodyTextJson = FailedResponseSchema
+SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -248,18 +248,18 @@ _response_for_500 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor500,
     response_cls_async=ApiResponseFor500Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor500ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor500ResponseBodyTextPlain),
     },
 )
 _all_accept_content_types = (
-    'text/plain',
     'application/json',
     'text/json',
+    'text/plain',
 )
 
 
@@ -306,7 +306,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json-patch+json',
+        content_type: str = 'application/json',
         stream: bool = False,
         **kwargs,
     ) -> typing.Union[
@@ -446,7 +446,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json-patch+json',
+        content_type: str = 'application/json',
         stream: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,

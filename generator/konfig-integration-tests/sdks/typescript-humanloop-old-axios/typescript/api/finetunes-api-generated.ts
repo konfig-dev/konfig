@@ -37,17 +37,17 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { FinetuneConfig } from '../models';
+// @ts-ignore
 import { FinetuneDataSummary } from '../models';
 // @ts-ignore
 import { FinetuneRequest } from '../models';
 // @ts-ignore
 import { FinetuneResponse } from '../models';
 // @ts-ignore
-import { FinetuningConfigProperty } from '../models';
-// @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { ProviderAPIKeysProperty } from '../models';
+import { ProviderApiKeys } from '../models';
 // @ts-ignore
 import { UpdateFinetuneRequest } from '../models';
 import { paginate } from "../pagination/paginate";
@@ -276,7 +276,14 @@ export const FinetunesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: FinetunesApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FinetuneResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, requestParameters, options);
+            const finetuneRequest: FinetuneRequest = {
+                name: requestParameters.name,
+                dataset_id: requestParameters.dataset_id,
+                config: requestParameters.config,
+                metadata: requestParameters.metadata,
+                provider_api_keys: requestParameters.provider_api_keys
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, finetuneRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -298,7 +305,14 @@ export const FinetunesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async summary(requestParameters: FinetunesApiSummaryRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FinetuneDataSummary>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.summary(requestParameters.projectId, requestParameters, options);
+            const finetuneRequest: FinetuneRequest = {
+                name: requestParameters.name,
+                dataset_id: requestParameters.dataset_id,
+                config: requestParameters.config,
+                metadata: requestParameters.metadata,
+                provider_api_keys: requestParameters.provider_api_keys
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.summary(requestParameters.projectId, finetuneRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -309,7 +323,10 @@ export const FinetunesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: FinetunesApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FinetuneResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, requestParameters.projectId, requestParameters, options);
+            const updateFinetuneRequest: UpdateFinetuneRequest = {
+                name: requestParameters.name
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, requestParameters.projectId, updateFinetuneRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

@@ -211,7 +211,8 @@ export const DatapointsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async delete(requestParameters: DatapointsApiDeleteRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(requestParameters, options);
+            const requestBody: Array<string> = requestParameters;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.delete(requestBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -233,7 +234,12 @@ export const DatapointsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: DatapointsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DatapointResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, requestParameters, options);
+            const updateDatapointRequest: UpdateDatapointRequest = {
+                inputs: requestParameters.inputs,
+                messages: requestParameters.messages,
+                target: requestParameters.target
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, updateDatapointRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

@@ -51,7 +51,7 @@ import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { PaginatedDataEvaluationDatapointSnapshotResponse } from '../models';
 // @ts-ignore
-import { ProviderAPIKeysProperty1 } from '../models';
+import { ProviderApiKeys } from '../models';
 // @ts-ignore
 import { UpdateEvaluationStatusRequest } from '../models';
 // @ts-ignore
@@ -379,7 +379,13 @@ export const EvaluationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: EvaluationsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EvaluationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, requestParameters, options);
+            const createEvaluationRequest: CreateEvaluationRequest = {
+                config_id: requestParameters.config_id,
+                evaluator_ids: requestParameters.evaluator_ids,
+                dataset_id: requestParameters.dataset_id,
+                provider_api_keys: requestParameters.provider_api_keys
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, createEvaluationRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -423,7 +429,13 @@ export const EvaluationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async logResult(requestParameters: EvaluationsApiLogResultRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EvaluationResultResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.logResult(requestParameters.evaluationRunExternalId, requestParameters, options);
+            const createEvaluationResultLogRequest: CreateEvaluationResultLogRequest = {
+                log_id: requestParameters.log_id,
+                evaluator_id: requestParameters.evaluator_id,
+                result: requestParameters.result,
+                error: requestParameters.error
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.logResult(requestParameters.evaluationRunExternalId, createEvaluationResultLogRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -434,7 +446,10 @@ export const EvaluationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async updateStatus(requestParameters: EvaluationsApiUpdateStatusRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EvaluationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateStatus(requestParameters.id, requestParameters, options);
+            const updateEvaluationStatusRequest: UpdateEvaluationStatusRequest = {
+                status: requestParameters.status
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateStatus(requestParameters.id, updateEvaluationStatusRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

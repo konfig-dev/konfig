@@ -100,7 +100,12 @@ export const AuthorizationApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getAuthToken(requestParameters: AuthorizationApiGetAuthTokenRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Auth0TokenResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAuthToken(requestParameters, requestParameters.useCache, options);
+            const auth0TokenRequest: Auth0TokenRequest = {
+                client_id: requestParameters.client_id,
+                client_secret: requestParameters.client_secret,
+                audience: requestParameters.audience
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAuthToken(auth0TokenRequest, requestParameters.useCache, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

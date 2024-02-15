@@ -30,7 +30,7 @@ import type * as buffer from "buffer"
 
 import { ChatDataResponse } from './chat-data-response';
 import { ToolChoiceProperty } from './tool-choice-property';
-import { UsageProperty } from './usage-property';
+import { Usage } from './usage';
 
 /**
  * Overwrite GenerateResponse for chat.
@@ -76,10 +76,10 @@ export interface ChatResponse {
     'data': Array<ChatDataResponse>;
     /**
      * 
-     * @type {UsageProperty}
+     * @type {Usage}
      * @memberof ChatResponse
      */
-    'usage'?: UsageProperty;
+    'usage'?: Usage;
     /**
      * Any additional metadata to record.
      * @type {object}

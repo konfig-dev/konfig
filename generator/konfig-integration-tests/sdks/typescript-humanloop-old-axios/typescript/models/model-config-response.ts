@@ -31,7 +31,7 @@ import type * as buffer from "buffer"
 import { ChatMessage } from './chat-message';
 import { ModelEndpoints } from './model-endpoints';
 import { ModelProviders } from './model-providers';
-import { ResponseFormatProperty } from './response-format-property';
+import { ResponseFormat } from './response-format';
 import { StopSequenceSProperty } from './stop-sequence-sproperty';
 import { ToolConfigResponse } from './tool-config-response';
 import { ToolResponse } from './tool-response';
@@ -73,7 +73,7 @@ export interface ModelConfigResponse {
      */
     'name'?: string;
     /**
-     * The company providing the underlying model service.
+     * Supported model providers.
      * @type {ModelProviders}
      * @memberof ModelConfigResponse
      */
@@ -128,10 +128,10 @@ export interface ModelConfigResponse {
     'seed'?: number;
     /**
      * 
-     * @type {ResponseFormatProperty}
+     * @type {ResponseFormat}
      * @memberof ModelConfigResponse
      */
-    'response_format'?: ResponseFormatProperty;
+    'response_format'?: ResponseFormat;
     /**
      * Prompt template that will take your specified inputs to form your final request to the model. NB: Input variables within the prompt template should be specified with syntax: {{INPUT_NAME}}.
      * @type {string}
@@ -158,7 +158,7 @@ export interface ModelConfigResponse {
      */
     'tools'?: Array<ToolResponse>;
     /**
-     * The provider model endpoint used.
+     * Supported model provider endpoints.
      * @type {ModelEndpoints}
      * @memberof ModelConfigResponse
      */

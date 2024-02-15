@@ -31,7 +31,7 @@ import type * as buffer from "buffer"
 import { ChatMessage } from './chat-message';
 import { ModelEndpoints } from './model-endpoints';
 import { ModelProviders } from './model-providers';
-import { ResponseFormatProperty } from './response-format-property';
+import { ResponseFormat } from './response-format';
 import { StopSequenceSProperty } from './stop-sequence-sproperty';
 import { ToolsEquivalentToOpenAIFunctionsPropertyInner } from './tools-equivalent-to-open-aifunctions-property-inner';
 
@@ -54,7 +54,7 @@ export interface ProjectModelConfigRequest {
      */
     'name'?: string;
     /**
-     * The company providing the underlying model service.
+     * Supported model providers.
      * @type {ModelProviders}
      * @memberof ProjectModelConfigRequest
      */
@@ -115,10 +115,10 @@ export interface ProjectModelConfigRequest {
     'seed'?: number;
     /**
      * 
-     * @type {ResponseFormatProperty}
+     * @type {ResponseFormat}
      * @memberof ProjectModelConfigRequest
      */
-    'response_format'?: ResponseFormatProperty;
+    'response_format'?: ResponseFormat;
     /**
      * Unique project name. If it does not exist, a new project will be created.
      * @type {string}
@@ -150,7 +150,7 @@ export interface ProjectModelConfigRequest {
      */
     'chat_template'?: Array<ChatMessage>;
     /**
-     * Which of the providers model endpoints to use. For example Complete or Edit.
+     * Supported model provider endpoints.
      * @type {ModelEndpoints}
      * @memberof ProjectModelConfigRequest
      */

@@ -102,9 +102,9 @@ request_path_installment_plan_number = api_client.PathParameter(
 _auth = [
     'oauth',
 ]
-SchemaFor200ResponseBodyTextPlain = VerifyAuthorizationResponseSchema
 SchemaFor200ResponseBodyApplicationJson = VerifyAuthorizationResponseSchema
 SchemaFor200ResponseBodyTextJson = VerifyAuthorizationResponseSchema
+SchemaFor200ResponseBodyTextPlain = VerifyAuthorizationResponseSchema
 
 
 @dataclass
@@ -121,17 +121,17 @@ _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     response_cls_async=ApiResponseFor200Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyTextPlain),
     },
 )
-SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor401ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor401ResponseBodyTextJson = FailedResponseSchema
+SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -148,17 +148,17 @@ _response_for_401 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor401,
     response_cls_async=ApiResponseFor401Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor401ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor401ResponseBodyTextPlain),
     },
 )
-SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor403ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor403ResponseBodyTextJson = FailedResponseSchema
+SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -175,17 +175,17 @@ _response_for_403 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor403,
     response_cls_async=ApiResponseFor403Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor403ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor403ResponseBodyTextPlain),
     },
 )
-SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor404ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor404ResponseBodyTextJson = FailedResponseSchema
+SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -202,17 +202,17 @@ _response_for_404 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor404,
     response_cls_async=ApiResponseFor404Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor404ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyTextPlain),
     },
 )
-SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor500ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor500ResponseBodyTextJson = FailedResponseSchema
+SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -229,12 +229,12 @@ _response_for_500 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor500,
     response_cls_async=ApiResponseFor500Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor500ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor500ResponseBodyTextPlain),
     },
 )
 _status_code_to_response = {
@@ -245,9 +245,9 @@ _status_code_to_response = {
     '500': _response_for_500,
 }
 _all_accept_content_types = (
-    'text/plain',
     'application/json',
     'text/json',
+    'text/plain',
 )
 
 

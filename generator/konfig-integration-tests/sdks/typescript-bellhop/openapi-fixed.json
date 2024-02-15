@@ -457,7 +457,9 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuoteServiceGroupsCreateRequest"
+                "title": "Body",
+                "description": "Request body for creating a service group",
+                "$ref": "#/components/schemas/CreateQuoteServiceGroupRequest"
               },
               "examples": {
                 "default": {
@@ -1563,11 +1565,7 @@
         "properties": {
           "customer": {
             "description": "Customer information",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CreateCustomerAccountRequest"
-              }
-            ],
+            "$ref": "#/components/schemas/CreateCustomerAccountRequest",
             "example": {
               "email": "heythereitsjon@gooogle.com",
               "first_name": "John",
@@ -3014,11 +3012,7 @@
           },
           "property_type": {
             "description": "Type of the property.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PropertyType"
-              }
-            ],
+            "$ref": "#/components/schemas/PropertyType",
             "example": "APARTMENT",
             "x-examples": [
               "APARTMENT"
@@ -3436,11 +3430,7 @@
         "properties": {
           "service_code": {
             "description": "Service Type",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ServiceType"
-              }
-            ],
+            "$ref": "#/components/schemas/ServiceType",
             "example": "TRANSIT",
             "x-examples": [
               "TRANSIT"
@@ -3522,12 +3512,8 @@
             "title": "Service Workers",
             "description": "Mapping of service code and number of workers. Only the included service codes will be retained on the service group. Any excluded services will be removed.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ServiceWorkers"
-                }
-              ],
-              "name": "Service Workers Object"
+              "name": "Service Workers Object",
+              "$ref": "#/components/schemas/ServiceWorkers"
             },
             "type": "array",
             "minItems": 1,
@@ -4160,15 +4146,6 @@
             "property_type": "SINGLE_FAMILY_HOME",
             "state": "NY",
             "timezone": "America/New_York"
-          }
-        ]
-      },
-      "QuoteServiceGroupsCreateRequest": {
-        "title": "Body",
-        "description": "Request body for creating a service group",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CreateQuoteServiceGroupRequest"
           }
         ]
       },

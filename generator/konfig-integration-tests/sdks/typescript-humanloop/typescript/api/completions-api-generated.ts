@@ -49,9 +49,9 @@ import { CompletionResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { ModelConfigurationProperty1 } from '../models';
+import { ModelConfigCompletionRequest } from '../models';
 // @ts-ignore
-import { ProviderAPIKeysProperty } from '../models';
+import { ProviderApiKeys } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
@@ -263,7 +263,27 @@ export const CompletionsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: CompletionsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompletionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters, options);
+            const completionRequest: CompletionRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                logprobs: requestParameters.logprobs,
+                stream: requestParameters.stream,
+                suffix: requestParameters.suffix,
+                seed: requestParameters.seed,
+                user: requestParameters.user,
+                model_config: requestParameters.model_config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(completionRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -274,7 +294,27 @@ export const CompletionsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createDeployed(requestParameters: CompletionsApiCreateDeployedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompletionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createDeployed(requestParameters, options);
+            const completionDeployedRequest: CompletionDeployedRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                logprobs: requestParameters.logprobs,
+                stream: requestParameters.stream,
+                suffix: requestParameters.suffix,
+                seed: requestParameters.seed,
+                user: requestParameters.user,
+                environment: requestParameters.environment
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createDeployed(completionDeployedRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -285,7 +325,27 @@ export const CompletionsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createExperiment(requestParameters: CompletionsApiCreateExperimentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompletionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createExperiment(requestParameters, options);
+            const completionExperimentRequest: CompletionExperimentRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                logprobs: requestParameters.logprobs,
+                stream: requestParameters.stream,
+                suffix: requestParameters.suffix,
+                seed: requestParameters.seed,
+                user: requestParameters.user,
+                experiment_id: requestParameters.experiment_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createExperiment(completionExperimentRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -296,7 +356,27 @@ export const CompletionsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createModelConfig(requestParameters: CompletionsApiCreateModelConfigRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CompletionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createModelConfig(requestParameters, options);
+            const completionModelConfigRequest: CompletionModelConfigRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                logprobs: requestParameters.logprobs,
+                stream: requestParameters.stream,
+                suffix: requestParameters.suffix,
+                seed: requestParameters.seed,
+                user: requestParameters.user,
+                model_config_id: requestParameters.model_config_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createModelConfig(completionModelConfigRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

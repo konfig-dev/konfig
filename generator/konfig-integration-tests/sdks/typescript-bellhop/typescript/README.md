@@ -371,8 +371,6 @@ const createQuotingResponse = await bellhop.locations.createQuoting({
 
 ##### property_type: [`PropertyType`](./models/property-type.ts)<a id="property_type-propertytypemodelsproperty-typets"></a>
 
-Type of the property.
-
 ##### line_2: `string`<a id="line_2-string"></a>
 
 ##### country: `string`<a id="country-string"></a>
@@ -549,10 +547,6 @@ const createResponse = await bellhop.quoteServiceGroups.create({
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### quoteId: `string`<a id="quoteid-string"></a>
-
-UUID of the quote
-
 ##### service_codes: [`ServiceType`](./models/service-type.ts)[]<a id="service_codes-servicetypemodelsservice-typets"></a>
 
 List of service codes
@@ -564,6 +558,10 @@ List of location ids
 ##### start_datetime: `string`<a id="start_datetime-string"></a>
 
 Start datetime of service group
+
+##### quoteId: `string`<a id="quoteid-string"></a>
+
+UUID of the quote
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -770,7 +768,7 @@ const updateResponse = await bellhop.quoteServiceGroups.update({
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### service_workers: [`ServiceWorkersPropertyInner`](./models/service-workers-property-inner.ts)[]<a id="service_workers-serviceworkerspropertyinnermodelsservice-workers-property-innerts"></a>
+##### service_workers: [`ServiceWorkers`](./models/service-workers.ts)[]<a id="service_workers-serviceworkersmodelsservice-workersts"></a>
 
 Mapping of service code and number of workers. Only the included service codes will be retained on the service group. Any excluded services will be removed.
 
@@ -834,7 +832,7 @@ const createResponse = await bellhop.quotes.create({
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### customer: [`CreateQuoteRequestCustomer`](./models/create-quote-request-customer.ts)<a id="customer-createquoterequestcustomermodelscreate-quote-request-customerts"></a>
+##### customer: [`CreateCustomerAccountRequest`](./models/create-customer-account-request.ts)<a id="customer-createcustomeraccountrequestmodelscreate-customer-account-requestts"></a>
 
 ##### start_datetime: `string`<a id="start_datetime-string"></a>
 

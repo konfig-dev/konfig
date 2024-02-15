@@ -21,21 +21,21 @@ const FormData = require("form-data")
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { EmbeddingsAndChunksQueryInputPagination } from '../models';
-// @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
 // @ts-ignore
+import { OrganizationUserDataSourceFilters } from '../models';
+// @ts-ignore
 import { OrganizationUserDataSourceOrderByColumns } from '../models';
 // @ts-ignore
 import { OrganizationUserDataSourceQueryInput } from '../models';
 // @ts-ignore
-import { OrganizationUserDataSourceQueryInputFilters } from '../models';
-// @ts-ignore
 import { OrganizationUserDataSourceResponse } from '../models';
+// @ts-ignore
+import { Pagination } from '../models';
 // @ts-ignore
 import { RevokeAccessTokenInput } from '../models';
 import { paginate } from "../pagination/paginate";
@@ -165,7 +165,13 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async queryUserDataSources(requestParameters: DataSourcesApiQueryUserDataSourcesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserDataSources(requestParameters, options);
+            const organizationUserDataSourceQueryInput: OrganizationUserDataSourceQueryInput = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserDataSources(organizationUserDataSourceQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -176,7 +182,10 @@ export const DataSourcesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async revokeAccessToken(requestParameters: DataSourcesApiRevokeAccessTokenRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.revokeAccessToken(requestParameters, options);
+            const revokeAccessTokenInput: RevokeAccessTokenInput = {
+                data_source_id: requestParameters.data_source_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.revokeAccessToken(revokeAccessTokenInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

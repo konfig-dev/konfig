@@ -296,7 +296,35 @@ export const LeadsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: LeadsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LeadResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters, options);
+            const createLeadRequest: CreateLeadRequest = {
+                description: requestParameters.description,
+                first_name: requestParameters.first_name,
+                last_name: requestParameters.last_name,
+                lead_type: requestParameters.lead_type,
+                lead_record_type: requestParameters.lead_record_type,
+                external_id: requestParameters.external_id,
+                lead_source: requestParameters.lead_source,
+                email: requestParameters.email,
+                phone: requestParameters.phone,
+                origin_postal_code: requestParameters.origin_postal_code,
+                origin_street: requestParameters.origin_street,
+                origin_city: requestParameters.origin_city,
+                origin_state: requestParameters.origin_state,
+                origin_square_feet: requestParameters.origin_square_feet,
+                destination_postal_code: requestParameters.destination_postal_code,
+                destination_street: requestParameters.destination_street,
+                destination_city: requestParameters.destination_city,
+                destination_state: requestParameters.destination_state,
+                clickid: requestParameters.clickid,
+                gclid: requestParameters.gclid,
+                utm_medium: requestParameters.utm_medium,
+                utm_source: requestParameters.utm_source,
+                utm_campaign: requestParameters.utm_campaign,
+                msclkid: requestParameters.msclkid,
+                load_date: requestParameters.load_date,
+                close_date: requestParameters.close_date
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(createLeadRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -329,7 +357,12 @@ export const LeadsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: LeadsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LeadResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.code, requestParameters, options);
+            const leadUpdateRequest: LeadUpdateRequest = {
+                description: requestParameters.description,
+                close_date: requestParameters.close_date,
+                load_date: requestParameters.load_date
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.code, leadUpdateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

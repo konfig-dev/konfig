@@ -94,6 +94,7 @@ export class Configuration {
         if (this.apiKey === undefined) {
             this.apiKey = {}
         }
+        
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
         this.userAgent = param.userAgent === undefined ? "Konfig/1.0.0/typescript" : param.userAgent;

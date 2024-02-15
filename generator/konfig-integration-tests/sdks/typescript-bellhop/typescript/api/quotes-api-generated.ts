@@ -19,9 +19,9 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { CreateQuoteRequest } from '../models';
+import { CreateCustomerAccountRequest } from '../models';
 // @ts-ignore
-import { CreateQuoteRequestCustomer } from '../models';
+import { CreateQuoteRequest } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
@@ -102,7 +102,13 @@ export const QuotesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: QuotesApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuoteResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters, options);
+            const createQuoteRequest: CreateQuoteRequest = {
+                customer: requestParameters.customer,
+                start_datetime: requestParameters.start_datetime,
+                service_code: requestParameters.service_code,
+                locations: requestParameters.locations
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(createQuoteRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

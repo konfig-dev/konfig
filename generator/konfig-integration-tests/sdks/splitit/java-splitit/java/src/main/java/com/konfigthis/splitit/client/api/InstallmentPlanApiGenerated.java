@@ -137,9 +137,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -324,9 +324,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -334,9 +334,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -555,9 +555,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -746,9 +746,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -756,9 +756,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1055,9 +1055,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1065,9 +1065,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1365,9 +1365,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1375,9 +1375,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1598,9 +1598,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1808,9 +1808,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1818,9 +1818,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -2061,9 +2061,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2071,9 +2071,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -2311,9 +2311,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {

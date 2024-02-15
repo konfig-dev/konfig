@@ -49,7 +49,7 @@ import { EvaluatorType } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { ModelConfigurationProperty1 } from '../models';
+import { ModelConfigCompletionRequest } from '../models';
 // @ts-ignore
 import { UpdateEvaluatorRequest } from '../models';
 import { paginate } from "../pagination/paginate";
@@ -297,7 +297,16 @@ export const EvaluatorsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: EvaluatorsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EvaluatorResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters, options);
+            const createEvaluatorRequest: CreateEvaluatorRequest = {
+                description: requestParameters.description,
+                name: requestParameters.name,
+                arguments_type: requestParameters.arguments_type,
+                return_type: requestParameters.return_type,
+                code: requestParameters.code,
+                model_config: requestParameters.model_config,
+                type: requestParameters.type
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(createEvaluatorRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -340,7 +349,15 @@ export const EvaluatorsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: EvaluatorsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EvaluatorResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, requestParameters, options);
+            const updateEvaluatorRequest: UpdateEvaluatorRequest = {
+                description: requestParameters.description,
+                name: requestParameters.name,
+                arguments_type: requestParameters.arguments_type,
+                return_type: requestParameters.return_type,
+                code: requestParameters.code,
+                model_config: requestParameters.model_config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, updateEvaluatorRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

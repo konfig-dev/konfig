@@ -462,7 +462,10 @@ export const TradingApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async cancelUserAccountOrder(requestParameters: TradingApiCancelUserAccountOrderRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccountOrderRecord>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelUserAccountOrder(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, requestParameters, options);
+            const tradingCancelUserAccountOrderRequest: TradingCancelUserAccountOrderRequest = {
+                brokerage_order_id: requestParameters.brokerage_order_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cancelUserAccountOrder(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, tradingCancelUserAccountOrderRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -473,7 +476,18 @@ export const TradingApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getOrderImpact(requestParameters: TradingApiGetOrderImpactRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManualTradeAndImpact>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getOrderImpact(requestParameters.userId, requestParameters.userSecret, requestParameters, options);
+            const manualTradeForm: ManualTradeForm = {
+                account_id: requestParameters.account_id,
+                action: requestParameters.action,
+                order_type: requestParameters.order_type,
+                price: requestParameters.price,
+                stop: requestParameters.stop,
+                time_in_force: requestParameters.time_in_force,
+                units: requestParameters.units,
+                universal_symbol_id: requestParameters.universal_symbol_id,
+                notional_value: requestParameters.notional_value
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOrderImpact(requestParameters.userId, requestParameters.userSecret, manualTradeForm, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -495,7 +509,18 @@ export const TradingApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async placeForceOrder(requestParameters: TradingApiPlaceForceOrderRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccountOrderRecord>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.placeForceOrder(requestParameters.userId, requestParameters.userSecret, requestParameters, options);
+            const manualTradeForm: ManualTradeForm = {
+                account_id: requestParameters.account_id,
+                action: requestParameters.action,
+                order_type: requestParameters.order_type,
+                price: requestParameters.price,
+                stop: requestParameters.stop,
+                time_in_force: requestParameters.time_in_force,
+                units: requestParameters.units,
+                universal_symbol_id: requestParameters.universal_symbol_id,
+                notional_value: requestParameters.notional_value
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.placeForceOrder(requestParameters.userId, requestParameters.userSecret, manualTradeForm, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -507,7 +532,11 @@ export const TradingApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async placeOCOOrder(requestParameters: TradingApiPlaceOCOOrderRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccountOrderRecord>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.placeOCOOrder(requestParameters.userId, requestParameters.userSecret, requestParameters, options);
+            const tradingPlaceOCOOrderRequest: TradingPlaceOCOOrderRequest = {
+                first_trade_id: requestParameters.first_trade_id,
+                second_trade_id: requestParameters.second_trade_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.placeOCOOrder(requestParameters.userId, requestParameters.userSecret, tradingPlaceOCOOrderRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**

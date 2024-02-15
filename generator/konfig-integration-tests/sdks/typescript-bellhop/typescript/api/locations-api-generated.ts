@@ -100,7 +100,23 @@ export const LocationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createQuoting(requestParameters: LocationsApiCreateQuotingRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LocationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createQuoting(requestParameters, options);
+            const quotingLocationRequest: QuotingLocationRequest = {
+                line_1: requestParameters.line_1,
+                line_2: requestParameters.line_2,
+                city: requestParameters.city,
+                state: requestParameters.state,
+                postal_code: requestParameters.postal_code,
+                country: requestParameters.country,
+                property_type: requestParameters.property_type,
+                rooms: requestParameters.rooms,
+                area: requestParameters.area,
+                garage: requestParameters.garage,
+                stories: requestParameters.stories,
+                floor: requestParameters.floor,
+                attic: requestParameters.attic,
+                basement: requestParameters.basement
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createQuoting(quotingLocationRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

@@ -354,7 +354,49 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post(requestParameters: SearchApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SearchPostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters, options);
+            const searchRequest: SearchRequest = {
+                q: requestParameters.q,
+                search_in: requestParameters.search_in,
+                predefined_sources: requestParameters.predefined_sources,
+                sources: requestParameters.sources,
+                not_sources: requestParameters.not_sources,
+                lang: requestParameters.lang,
+                not_lang: requestParameters.not_lang,
+                countries: requestParameters.countries,
+                not_countries: requestParameters.not_countries,
+                from_: requestParameters.from_,
+                to_: requestParameters.to_,
+                published_date_precision: requestParameters.published_date_precision,
+                by_parse_date: requestParameters.by_parse_date,
+                sort_by: requestParameters.sort_by,
+                ranked_only: requestParameters.ranked_only,
+                from_rank: requestParameters.from_rank,
+                to_rank: requestParameters.to_rank,
+                is_headline: requestParameters.is_headline,
+                is_paid_content: requestParameters.is_paid_content,
+                parent_url: requestParameters.parent_url,
+                all_links: requestParameters.all_links,
+                all_domain_links: requestParameters.all_domain_links,
+                word_count_min: requestParameters.word_count_min,
+                word_count_max: requestParameters.word_count_max,
+                page: requestParameters.page,
+                page_size: requestParameters.page_size,
+                clustering_enabled: requestParameters.clustering_enabled,
+                clustering_threshold: requestParameters.clustering_threshold,
+                clustering_variable: requestParameters.clustering_variable,
+                include_nlp_data: requestParameters.include_nlp_data,
+                has_nlp: requestParameters.has_nlp,
+                theme: requestParameters.theme,
+                ORG_entity_name: requestParameters.ORG_entity_name,
+                PER_entity_name: requestParameters.PER_entity_name,
+                LOC_entity_name: requestParameters.LOC_entity_name,
+                MISC_entity_name: requestParameters.MISC_entity_name,
+                title_sentiment_min: requestParameters.title_sentiment_min,
+                title_sentiment_max: requestParameters.title_sentiment_max,
+                content_sentiment_min: requestParameters.content_sentiment_min,
+                content_sentiment_max: requestParameters.content_sentiment_max
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(searchRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

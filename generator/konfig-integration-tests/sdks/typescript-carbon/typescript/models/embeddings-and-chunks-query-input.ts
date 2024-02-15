@@ -12,8 +12,8 @@ import type * as buffer from "buffer"
 
 import { EmbeddingsAndChunksFilters } from './embeddings-and-chunks-filters';
 import { EmbeddingsAndChunksOrderByColumns } from './embeddings-and-chunks-order-by-columns';
-import { EmbeddingsAndChunksQueryInputPagination } from './embeddings-and-chunks-query-input-pagination';
 import { OrderDir } from './order-dir';
+import { Pagination } from './pagination';
 
 /**
  * 
@@ -23,10 +23,10 @@ import { OrderDir } from './order-dir';
 export interface EmbeddingsAndChunksQueryInput {
     /**
      * 
-     * @type {EmbeddingsAndChunksQueryInputPagination}
+     * @type {Pagination}
      * @memberof EmbeddingsAndChunksQueryInput
      */
-    'pagination'?: EmbeddingsAndChunksQueryInputPagination;
+    'pagination'?: Pagination;
     /**
      * 
      * @type {EmbeddingsAndChunksOrderByColumns}

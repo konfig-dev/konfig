@@ -144,7 +144,10 @@ export const TestApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async fetch(requestParameters: TestApiFetchRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetch(requestParameters.file, requestParameters, options);
+            const testFetchRequest: TestFetchRequest = {
+                file: requestParameters.file
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetch(requestParameters.file, testFetchRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

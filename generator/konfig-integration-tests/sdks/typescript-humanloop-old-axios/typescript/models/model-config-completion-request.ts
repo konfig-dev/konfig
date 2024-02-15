@@ -30,7 +30,7 @@ import type * as buffer from "buffer"
 
 import { ModelEndpoints } from './model-endpoints';
 import { ModelProviders } from './model-providers';
-import { ResponseFormatProperty } from './response-format-property';
+import { ResponseFormat } from './response-format';
 import { StopSequenceSProperty } from './stop-sequence-sproperty';
 
 /**
@@ -52,7 +52,7 @@ export interface ModelConfigCompletionRequest {
      */
     'name'?: string;
     /**
-     * The company providing the underlying model service.
+     * Supported model providers.
      * @type {ModelProviders}
      * @memberof ModelConfigCompletionRequest
      */
@@ -113,12 +113,12 @@ export interface ModelConfigCompletionRequest {
     'seed'?: number;
     /**
      * 
-     * @type {ResponseFormatProperty}
+     * @type {ResponseFormat}
      * @memberof ModelConfigCompletionRequest
      */
-    'response_format'?: ResponseFormatProperty;
+    'response_format'?: ResponseFormat;
     /**
-     * The provider model endpoint used.
+     * Supported model provider endpoints.
      * @type {ModelEndpoints}
      * @memberof ModelConfigCompletionRequest
      */

@@ -144,7 +144,8 @@ export const TestApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async uploadFiles(requestParameters: TestApiUploadFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFiles(requestParameters, options);
+            const uploadFileRequestInner: Array<UploadFileRequestInner> = requestParameters;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFiles(uploadFileRequestInner, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

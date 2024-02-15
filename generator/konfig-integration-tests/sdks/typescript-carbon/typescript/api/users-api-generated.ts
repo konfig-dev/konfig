@@ -153,7 +153,10 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async get(requestParameters: UsersApiGetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.get(requestParameters, options);
+            const userRequestContent: UserRequestContent = {
+                customer_id: requestParameters.customer_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.get(userRequestContent, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -164,7 +167,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async toggleUserFeatures(requestParameters: UsersApiToggleUserFeaturesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.toggleUserFeatures(requestParameters, options);
+            const modifyUserConfigurationInput: ModifyUserConfigurationInput = {
+                configuration_key_name: requestParameters.configuration_key_name,
+                value: requestParameters.value
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.toggleUserFeatures(modifyUserConfigurationInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

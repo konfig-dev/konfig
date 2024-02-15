@@ -409,7 +409,11 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: DatasetsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DatasetResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, requestParameters, options);
+            const createDatasetRequest: CreateDatasetRequest = {
+                description: requestParameters.description,
+                name: requestParameters.name
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, createDatasetRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -420,7 +424,8 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createDatapoint(requestParameters: DatasetsApiCreateDatapointRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DatapointResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createDatapoint(requestParameters.datasetId, requestParameters.requestBody, options);
+            const datasetsCreateDatapointRequest: DatasetsCreateDatapointRequest = requestParameters.requestBody;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createDatapoint(requestParameters.datasetId, datasetsCreateDatapointRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -475,7 +480,11 @@ export const DatasetsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: DatasetsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DatasetResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, requestParameters, options);
+            const updateDatasetRequest: UpdateDatasetRequest = {
+                description: requestParameters.description,
+                name: requestParameters.name
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, updateDatasetRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

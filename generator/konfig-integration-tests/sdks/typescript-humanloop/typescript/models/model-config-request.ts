@@ -31,7 +31,7 @@ import type * as buffer from "buffer"
 import { ChatMessage } from './chat-message';
 import { ModelEndpoints } from './model-endpoints';
 import { ModelProviders } from './model-providers';
-import { ResponseFormatProperty } from './response-format-property';
+import { ResponseFormat } from './response-format';
 import { StopSequenceSProperty } from './stop-sequence-sproperty';
 import { ToolsEquivalentToOpenAIFunctionsPropertyInner } from './tools-equivalent-to-open-aifunctions-property-inner';
 
@@ -54,7 +54,7 @@ export interface ModelConfigRequest {
      */
     'name'?: string;
     /**
-     * The company providing the underlying model service.
+     * Supported model providers.
      * @type {ModelProviders}
      * @memberof ModelConfigRequest
      */
@@ -115,12 +115,12 @@ export interface ModelConfigRequest {
     'seed'?: number;
     /**
      * 
-     * @type {ResponseFormatProperty}
+     * @type {ResponseFormat}
      * @memberof ModelConfigRequest
      */
-    'response_format'?: ResponseFormatProperty;
+    'response_format'?: ResponseFormat;
     /**
-     * The provider model endpoint used.
+     * Supported model provider endpoints.
      * @type {ModelEndpoints}
      * @memberof ModelConfigRequest
      */

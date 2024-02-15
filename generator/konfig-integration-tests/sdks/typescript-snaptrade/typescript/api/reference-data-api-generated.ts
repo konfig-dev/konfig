@@ -615,7 +615,10 @@ export const ReferenceDataApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getSymbols(requestParameters: ReferenceDataApiGetSymbolsRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UniversalSymbol>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getSymbols(requestParameters, options);
+            const symbolQuery: SymbolQuery = {
+                substring: requestParameters.substring
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSymbols(symbolQuery, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -678,7 +681,10 @@ export const ReferenceDataApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async symbolSearchUserAccount(requestParameters: ReferenceDataApiSymbolSearchUserAccountRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UniversalSymbol>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.symbolSearchUserAccount(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, requestParameters, options);
+            const symbolQuery: SymbolQuery = {
+                substring: requestParameters.substring
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.symbolSearchUserAccount(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, symbolQuery, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

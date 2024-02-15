@@ -761,9 +761,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -870,9 +870,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -973,17 +973,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1086,17 +1086,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1201,9 +1201,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1310,9 +1310,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1415,17 +1415,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1534,17 +1534,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1651,17 +1651,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1770,17 +1770,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1893,17 +1893,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2015,17 +2015,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2129,9 +2129,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2247,9 +2247,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2369,17 +2369,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2491,17 +2491,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2603,17 +2603,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2716,17 +2716,17 @@ namespace CsharpSplitit.Net.Api
             CsharpSplitit.Net.Client.RequestOptions localVarRequestOptions = new CsharpSplitit.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2831,9 +2831,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2940,9 +2940,9 @@ namespace CsharpSplitit.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = CsharpSplitit.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);

@@ -35,8 +35,6 @@ import { EmbeddingsAndChunksOrderByColumns } from '../models';
 // @ts-ignore
 import { EmbeddingsAndChunksQueryInput } from '../models';
 // @ts-ignore
-import { EmbeddingsAndChunksQueryInputPagination } from '../models';
-// @ts-ignore
 import { EmbeddingsAndChunksResponse } from '../models';
 // @ts-ignore
 import { FileContentTypesNullable } from '../models';
@@ -50,6 +48,8 @@ import { HTTPValidationError } from '../models';
 import { HybridSearchTuningParamsNullable } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
+// @ts-ignore
+import { Pagination } from '../models';
 // @ts-ignore
 import { SingleChunksAndEmbeddingsUploadInput } from '../models';
 // @ts-ignore
@@ -231,7 +231,23 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getDocuments(requestParameters: EmbeddingsApiGetDocumentsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DocumentResponseList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDocuments(requestParameters, options);
+            const getEmbeddingDocumentsBody: GetEmbeddingDocumentsBody = {
+                tags: requestParameters.tags,
+                query: requestParameters.query,
+                query_vector: requestParameters.query_vector,
+                k: requestParameters.k,
+                file_ids: requestParameters.file_ids,
+                parent_file_ids: requestParameters.parent_file_ids,
+                tags_v2: requestParameters.tags_v2,
+                include_tags: requestParameters.include_tags,
+                include_vectors: requestParameters.include_vectors,
+                include_raw_file: requestParameters.include_raw_file,
+                hybrid_search: requestParameters.hybrid_search,
+                hybrid_search_tuning_parameters: requestParameters.hybrid_search_tuning_parameters,
+                media_type: requestParameters.media_type,
+                embedding_model: requestParameters.embedding_model
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDocuments(getEmbeddingDocumentsBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -242,7 +258,14 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getEmbeddingsAndChunks(requestParameters: EmbeddingsApiGetEmbeddingsAndChunksRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EmbeddingsAndChunksResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getEmbeddingsAndChunks(requestParameters, options);
+            const embeddingsAndChunksQueryInput: EmbeddingsAndChunksQueryInput = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters,
+                include_vectors: requestParameters.include_vectors
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEmbeddingsAndChunks(embeddingsAndChunksQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -253,7 +276,12 @@ export const EmbeddingsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async uploadChunksAndEmbeddings(requestParameters: EmbeddingsApiUploadChunksAndEmbeddingsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadChunksAndEmbeddings(requestParameters, options);
+            const chunksAndEmbeddingsUploadInput: ChunksAndEmbeddingsUploadInput = {
+                embedding_model: requestParameters.embedding_model,
+                chunks_and_embeddings: requestParameters.chunks_and_embeddings,
+                overwrite_existing: requestParameters.overwrite_existing
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadChunksAndEmbeddings(chunksAndEmbeddingsUploadInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

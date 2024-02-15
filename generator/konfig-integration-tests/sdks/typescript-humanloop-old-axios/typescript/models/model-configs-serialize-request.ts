@@ -33,7 +33,7 @@ import { ModelConfigChatRequest } from './model-config-chat-request';
 import { ModelConfigCompletionRequest } from './model-config-completion-request';
 import { ModelEndpoints } from './model-endpoints';
 import { ModelProviders } from './model-providers';
-import { ResponseFormatProperty } from './response-format-property';
+import { ResponseFormat } from './response-format';
 import { StopSequenceSProperty } from './stop-sequence-sproperty';
 import { ToolsEquivalentToOpenAIFunctionsPropertyInner } from './tools-equivalent-to-open-aifunctions-property-inner';
 

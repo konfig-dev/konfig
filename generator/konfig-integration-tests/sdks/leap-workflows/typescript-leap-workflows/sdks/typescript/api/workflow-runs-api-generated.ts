@@ -148,7 +148,12 @@ export const WorkflowRunsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async workflow(requestParameters: WorkflowRunsApiWorkflowRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WorkflowRunEntity>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.workflow(requestParameters, options);
+            const workflowRunPostRequest: WorkflowRunPostRequest = {
+                workflow_id: requestParameters.workflow_id,
+                webhook_url: requestParameters.webhook_url,
+                input: requestParameters.input
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.workflow(workflowRunPostRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

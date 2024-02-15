@@ -19,13 +19,13 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { CreateQuoteServiceGroupRequest } from '../models';
+// @ts-ignore
 import { FlexibleQuoteResponse } from '../models';
 // @ts-ignore
 import { FlexibleServiceRequest } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
-// @ts-ignore
-import { QuoteServiceGroupsCreateRequest } from '../models';
 // @ts-ignore
 import { ReplaceServiceGroupRequest } from '../models';
 // @ts-ignore
@@ -33,7 +33,7 @@ import { ServiceGroupResponse } from '../models';
 // @ts-ignore
 import { ServiceType } from '../models';
 // @ts-ignore
-import { ServiceWorkersPropertyInner } from '../models';
+import { ServiceWorkers } from '../models';
 // @ts-ignore
 import { UpdateServiceGroupRequestV2 } from '../models';
 import { paginate } from "../pagination/paginate";
@@ -100,15 +100,15 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
          * Creates a new service group  A service group is a collection of services that are performed at the same time and location. The created service group will be created with the provided services, locations, and start date time. The workers, duration, and end date time will be estimated based on the locations and inventory attached to the quote.
          * @summary Create Service Group
          * @param {string} quoteId UUID of the quote
-         * @param {QuoteServiceGroupsCreateRequest} quoteServiceGroupsCreateRequest 
+         * @param {CreateQuoteServiceGroupRequest} createQuoteServiceGroupRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create: async (quoteId: string, quoteServiceGroupsCreateRequest: QuoteServiceGroupsCreateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        create: async (quoteId: string, createQuoteServiceGroupRequest: CreateQuoteServiceGroupRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'quoteId' is not null or undefined
             assertParamExists('create', 'quoteId', quoteId)
-            // verify required parameter 'quoteServiceGroupsCreateRequest' is not null or undefined
-            assertParamExists('create', 'quoteServiceGroupsCreateRequest', quoteServiceGroupsCreateRequest)
+            // verify required parameter 'createQuoteServiceGroupRequest' is not null or undefined
+            assertParamExists('create', 'createQuoteServiceGroupRequest', createQuoteServiceGroupRequest)
             const localVarPath = `/quotes/{quote_id}/service-groups`
                 .replace(`{${"quote_id"}}`, encodeURIComponent(String(quoteId !== undefined ? quoteId : `-quote_id-`)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -133,13 +133,13 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             requestBeforeHook({
-                requestBody: quoteServiceGroupsCreateRequest,
+                requestBody: createQuoteServiceGroupRequest,
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
                 configuration
             });
-            localVarRequestOptions.data = serializeDataIfNeeded(quoteServiceGroupsCreateRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createQuoteServiceGroupRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -424,7 +424,8 @@ export const QuoteServiceGroupsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async changeLocations(requestParameters: QuoteServiceGroupsApiChangeLocationsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.changeLocations(requestParameters.serviceGroupId, requestParameters.requestBody, options);
+            const requestBody: Array<string> = requestParameters.requestBody;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.changeLocations(requestParameters.serviceGroupId, requestBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -435,7 +436,12 @@ export const QuoteServiceGroupsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: QuoteServiceGroupsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.quoteId, requestParameters, options);
+            const createQuoteServiceGroupRequest: CreateQuoteServiceGroupRequest = {
+                service_codes: requestParameters.service_codes,
+                locations: requestParameters.locations,
+                start_datetime: requestParameters.start_datetime
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.quoteId, createQuoteServiceGroupRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -446,7 +452,12 @@ export const QuoteServiceGroupsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createFlexible(requestParameters: QuoteServiceGroupsApiCreateFlexibleRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FlexibleQuoteResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createFlexible(requestParameters.quoteId, requestParameters.serviceGroupId, requestParameters, options);
+            const flexibleServiceRequest: FlexibleServiceRequest = {
+                start_date: requestParameters.start_date,
+                end_date: requestParameters.end_date,
+                local_hours: requestParameters.local_hours
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createFlexible(requestParameters.quoteId, requestParameters.serviceGroupId, flexibleServiceRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -479,7 +490,10 @@ export const QuoteServiceGroupsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async replace(requestParameters: QuoteServiceGroupsApiReplaceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.replace(requestParameters.quoteId, requestParameters.serviceGroupId, requestParameters, options);
+            const replaceServiceGroupRequest: ReplaceServiceGroupRequest = {
+                flexible_quote_id: requestParameters.flexible_quote_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.replace(requestParameters.quoteId, requestParameters.serviceGroupId, replaceServiceGroupRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -490,7 +504,11 @@ export const QuoteServiceGroupsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: QuoteServiceGroupsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceGroupResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.quoteId, requestParameters.serviceGroupId, requestParameters, options);
+            const updateServiceGroupRequestV2: UpdateServiceGroupRequestV2 = {
+                duration: requestParameters.duration,
+                service_workers: requestParameters.service_workers
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.quoteId, requestParameters.serviceGroupId, updateServiceGroupRequestV2, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -610,7 +628,7 @@ export type QuoteServiceGroupsApiCreateRequest = {
     */
     readonly quoteId: string
     
-} & QuoteServiceGroupsCreateRequest
+} & CreateQuoteServiceGroupRequest
 
 /**
  * Request parameters for createFlexible operation in QuoteServiceGroupsApi.

@@ -27,8 +27,6 @@ import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
-import { EmbeddingsAndChunksQueryInputPagination } from '../models';
-// @ts-ignore
 import { FreshDeskConnectRequest } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
@@ -50,6 +48,8 @@ import { OAuthURLRequest } from '../models';
 import { OrganizationUserDataSourceAPI } from '../models';
 // @ts-ignore
 import { OutlookSyncInput } from '../models';
+// @ts-ignore
+import { Pagination } from '../models';
 // @ts-ignore
 import { RSSFeedInput } from '../models';
 // @ts-ignore
@@ -689,7 +689,18 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async connectFreshdesk(requestParameters: IntegrationsApiConnectFreshdeskRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(requestParameters, options);
+            const freshDeskConnectRequest: FreshDeskConnectRequest = {
+                tags: requestParameters.tags,
+                domain: requestParameters.domain,
+                api_key: requestParameters.api_key,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.connectFreshdesk(freshDeskConnectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -700,7 +711,11 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createAwsIamUser(requestParameters: IntegrationsApiCreateAwsIamUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createAwsIamUser(requestParameters, options);
+            const s3AuthRequest: S3AuthRequest = {
+                access_key: requestParameters.access_key,
+                access_key_secret: requestParameters.access_key_secret
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createAwsIamUser(s3AuthRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -711,7 +726,23 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getOauthUrl(requestParameters: IntegrationsApiGetOauthUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(requestParameters, options);
+            const oAuthURLRequest: OAuthURLRequest = {
+                tags: requestParameters.tags,
+                scope: requestParameters.scope,
+                service: requestParameters.service,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                zendesk_subdomain: requestParameters.zendesk_subdomain,
+                microsoft_tenant: requestParameters.microsoft_tenant,
+                sharepoint_site_name: requestParameters.sharepoint_site_name,
+                confluence_subdomain: requestParameters.confluence_subdomain,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                max_items_per_chunk: requestParameters.max_items_per_chunk
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOauthUrl(oAuthURLRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -722,7 +753,11 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async listConfluencePages(requestParameters: IntegrationsApiListConfluencePagesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listConfluencePages(requestParameters, options);
+            const listRequest: ListRequest = {
+                data_source_id: requestParameters.data_source_id,
+                parent_id: requestParameters.parent_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listConfluencePages(listRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -733,7 +768,12 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async listDataSourceItems(requestParameters: IntegrationsApiListDataSourceItemsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListDataSourceItemsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(requestParameters, options);
+            const listDataSourceItemsRequest: ListDataSourceItemsRequest = {
+                data_source_id: requestParameters.data_source_id,
+                parent_id: requestParameters.parent_id,
+                pagination: requestParameters.pagination
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listDataSourceItems(listDataSourceItemsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -744,7 +784,19 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncConfluence(requestParameters: IntegrationsApiSyncConfluenceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(requestParameters, options);
+            const syncFilesRequest: SyncFilesRequest = {
+                tags: requestParameters.tags,
+                data_source_id: requestParameters.data_source_id,
+                ids: requestParameters.ids,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                max_items_per_chunk: requestParameters.max_items_per_chunk
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncConfluence(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -755,7 +807,10 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncDataSourceItems(requestParameters: IntegrationsApiSyncDataSourceItemsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OrganizationUserDataSourceAPI>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncDataSourceItems(requestParameters, options);
+            const syncDirectoryRequest: SyncDirectoryRequest = {
+                data_source_id: requestParameters.data_source_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncDataSourceItems(syncDirectoryRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -766,7 +821,19 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncFiles(requestParameters: IntegrationsApiSyncFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(requestParameters, options);
+            const syncFilesRequest: SyncFilesRequest = {
+                tags: requestParameters.tags,
+                data_source_id: requestParameters.data_source_id,
+                ids: requestParameters.ids,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                max_items_per_chunk: requestParameters.max_items_per_chunk
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncFiles(syncFilesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -777,7 +844,17 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncGmail(requestParameters: IntegrationsApiSyncGmailRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(requestParameters, options);
+            const gmailSyncInput: GmailSyncInput = {
+                tags: requestParameters.tags,
+                filters: requestParameters.filters,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncGmail(gmailSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -788,7 +865,18 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncOutlook(requestParameters: IntegrationsApiSyncOutlookRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(requestParameters, options);
+            const outlookSyncInput: OutlookSyncInput = {
+                tags: requestParameters.tags,
+                folder: requestParameters.folder,
+                filters: requestParameters.filters,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncOutlook(outlookSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -799,7 +887,17 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncRssFeed(requestParameters: IntegrationsApiSyncRssFeedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncRssFeed(requestParameters, options);
+            const rSSFeedInput: RSSFeedInput = {
+                tags: requestParameters.tags,
+                url: requestParameters.url,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncRssFeed(rSSFeedInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -810,7 +908,18 @@ export const IntegrationsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async syncS3Files(requestParameters: IntegrationsApiSyncS3FilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(requestParameters, options);
+            const s3FileSyncInput: S3FileSyncInput = {
+                tags: requestParameters.tags,
+                ids: requestParameters.ids,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                max_items_per_chunk: requestParameters.max_items_per_chunk
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.syncS3Files(s3FileSyncInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

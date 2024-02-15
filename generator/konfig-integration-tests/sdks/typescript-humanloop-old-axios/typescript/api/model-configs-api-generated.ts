@@ -55,7 +55,7 @@ import { ProjectConfigResponse } from '../models';
 // @ts-ignore
 import { ProjectModelConfigRequest } from '../models';
 // @ts-ignore
-import { ResponseFormatProperty } from '../models';
+import { ResponseFormat } from '../models';
 // @ts-ignore
 import { StopSequenceSProperty } from '../models';
 // @ts-ignore
@@ -309,7 +309,10 @@ export const ModelConfigsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async deserialize(requestParameters: ModelConfigsApiDeserializeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ModelConfigResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deserialize(requestParameters, options);
+            const bodyModelConfigsDeserialize: BodyModelConfigsDeserialize = {
+                config: requestParameters.config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deserialize(bodyModelConfigsDeserialize, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -342,7 +345,29 @@ export const ModelConfigsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async register(requestParameters: ModelConfigsApiRegisterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectConfigResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.register(requestParameters, options);
+            const projectModelConfigRequest: ProjectModelConfigRequest = {
+                description: requestParameters.description,
+                name: requestParameters.name,
+                provider: requestParameters.provider,
+                model: requestParameters.model,
+                max_tokens: requestParameters.max_tokens,
+                temperature: requestParameters.temperature,
+                top_p: requestParameters.top_p,
+                stop: requestParameters.stop,
+                presence_penalty: requestParameters.presence_penalty,
+                frequency_penalty: requestParameters.frequency_penalty,
+                other: requestParameters.other,
+                seed: requestParameters.seed,
+                response_format: requestParameters.response_format,
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                experiment: requestParameters.experiment,
+                prompt_template: requestParameters.prompt_template,
+                chat_template: requestParameters.chat_template,
+                endpoint: requestParameters.endpoint,
+                tools: requestParameters.tools
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.register(projectModelConfigRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -353,7 +378,8 @@ export const ModelConfigsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async serialize(requestParameters: ModelConfigsApiSerializeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.serialize(requestParameters, options);
+            const modelConfigsSerializeRequest: ModelConfigsSerializeRequest = requestParameters;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.serialize(modelConfigsSerializeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

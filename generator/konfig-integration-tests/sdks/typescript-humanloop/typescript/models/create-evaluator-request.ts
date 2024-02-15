@@ -31,7 +31,7 @@ import type * as buffer from "buffer"
 import { EvaluatorArgumentsType } from './evaluator-arguments-type';
 import { EvaluatorReturnTypeEnum } from './evaluator-return-type-enum';
 import { EvaluatorType } from './evaluator-type';
-import { ModelConfigurationProperty1 } from './model-configuration-property1';
+import { ModelConfigCompletionRequest } from './model-config-completion-request';
 
 /**
  * 
@@ -52,13 +52,13 @@ export interface CreateEvaluatorRequest {
      */
     'name': string;
     /**
-     * Whether this evaluator is target-free or target-required.
+     * Enum representing the possible argument types of an evaluator.
      * @type {EvaluatorArgumentsType}
      * @memberof CreateEvaluatorRequest
      */
     'arguments_type': EvaluatorArgumentsType;
     /**
-     * The type of the return value of the evaluator.
+     * Enum representing the possible return types of an evaluator.
      * @type {EvaluatorReturnTypeEnum}
      * @memberof CreateEvaluatorRequest
      */
@@ -71,12 +71,12 @@ export interface CreateEvaluatorRequest {
     'code'?: string;
     /**
      * 
-     * @type {ModelConfigurationProperty1}
+     * @type {ModelConfigCompletionRequest}
      * @memberof CreateEvaluatorRequest
      */
-    'model_config'?: ModelConfigurationProperty1;
+    'model_config'?: ModelConfigCompletionRequest;
     /**
-     * The type of the evaluator.
+     * An enumeration.
      * @type {EvaluatorType}
      * @memberof CreateEvaluatorRequest
      */

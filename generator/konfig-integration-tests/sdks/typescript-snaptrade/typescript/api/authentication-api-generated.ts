@@ -408,7 +408,15 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async loginSnapTradeUser(requestParameters: AuthenticationApiLoginSnapTradeUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthenticationLoginSnapTradeUser200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.loginSnapTradeUser(requestParameters.userId, requestParameters.userSecret, requestParameters, options);
+            const snapTradeLoginUserRequestBody: SnapTradeLoginUserRequestBody = {
+                broker: requestParameters.broker,
+                immediateRedirect: requestParameters.immediateRedirect,
+                customRedirect: requestParameters.customRedirect,
+                reconnect: requestParameters.reconnect,
+                connectionType: requestParameters.connectionType,
+                connectionPortalVersion: requestParameters.connectionPortalVersion
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.loginSnapTradeUser(requestParameters.userId, requestParameters.userSecret, snapTradeLoginUserRequestBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -419,7 +427,10 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async registerSnapTradeUser(requestParameters: AuthenticationApiRegisterSnapTradeUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserIDandSecret>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.registerSnapTradeUser(requestParameters, options);
+            const snapTradeRegisterUserRequestBody: SnapTradeRegisterUserRequestBody = {
+                userId: requestParameters.userId
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.registerSnapTradeUser(snapTradeRegisterUserRequestBody, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -430,7 +441,11 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async resetSnapTradeUserSecret(requestParameters: AuthenticationApiResetSnapTradeUserSecretRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserIDandSecret>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.resetSnapTradeUserSecret(requestParameters, options);
+            const userIDandSecret: UserIDandSecret = {
+                userId: requestParameters.userId,
+                userSecret: requestParameters.userSecret
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.resetSnapTradeUserSecret(userIDandSecret, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

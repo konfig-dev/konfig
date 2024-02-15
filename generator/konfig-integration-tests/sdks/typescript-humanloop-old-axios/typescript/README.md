@@ -248,7 +248,7 @@ const createResponse = await humanloop.chat({
 
 The messages passed to the to provider chat endpoint.
 
-##### model_config: [`ModelConfigurationProperty`](./models/model-configuration-property.ts)<a id="model_config-modelconfigurationpropertymodelsmodel-configuration-propertyts"></a>
+##### model_config: [`ModelConfigChatRequest`](./models/model-config-chat-request.ts)<a id="model_config-modelconfigchatrequestmodelsmodel-config-chat-requestts"></a>
 
 ##### project: `string`<a id="project-string"></a>
 
@@ -290,7 +290,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -306,13 +306,13 @@ End-user ID passed through to provider call.
 
 ##### tool_choice: [`ToolChoiceProperty`](./models/tool-choice-property.ts)<a id="tool_choice-toolchoicepropertymodelstool-choice-propertyts"></a>
 
-##### tool_call: [`ToolCallProperty1`](./models/tool-call-property1.ts)<a id="tool_call-toolcallproperty1modelstool-call-property1ts"></a>
+##### tool_call: [`ToolCallProperty`](./models/tool-call-property.ts)<a id="tool_call-toolcallpropertymodelstool-call-propertyts"></a>
 
 ##### seed: `number`<a id="seed-number"></a>
 
 If specified, model will make a best effort to sample deterministically, but it is not guaranteed.
 
-##### response_format: [`ResponseFormatProperty`](./models/response-format-property.ts)<a id="response_format-responseformatpropertymodelsresponse-format-propertyts"></a>
+##### response_format: [`ResponseFormat`](./models/response-format.ts)<a id="response_format-responseformatmodelsresponse-formatts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -393,7 +393,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -409,13 +409,13 @@ End-user ID passed through to provider call.
 
 ##### tool_choice: [`ToolChoiceProperty`](./models/tool-choice-property.ts)<a id="tool_choice-toolchoicepropertymodelstool-choice-propertyts"></a>
 
-##### tool_call: [`ToolCallProperty1`](./models/tool-call-property1.ts)<a id="tool_call-toolcallproperty1modelstool-call-property1ts"></a>
+##### tool_call: [`ToolCallProperty`](./models/tool-call-property.ts)<a id="tool_call-toolcallpropertymodelstool-call-propertyts"></a>
 
 ##### seed: `number`<a id="seed-number"></a>
 
 If specified, model will make a best effort to sample deterministically, but it is not guaranteed.
 
-##### response_format: [`ResponseFormatProperty`](./models/response-format-property.ts)<a id="response_format-responseformatpropertymodelsresponse-format-propertyts"></a>
+##### response_format: [`ResponseFormat`](./models/response-format.ts)<a id="response_format-responseformatmodelsresponse-formatts"></a>
 
 ##### environment: `string`<a id="environment-string"></a>
 
@@ -503,7 +503,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -519,13 +519,13 @@ End-user ID passed through to provider call.
 
 ##### tool_choice: [`ToolChoiceProperty`](./models/tool-choice-property.ts)<a id="tool_choice-toolchoicepropertymodelstool-choice-propertyts"></a>
 
-##### tool_call: [`ToolCallProperty1`](./models/tool-call-property1.ts)<a id="tool_call-toolcallproperty1modelstool-call-property1ts"></a>
+##### tool_call: [`ToolCallProperty`](./models/tool-call-property.ts)<a id="tool_call-toolcallpropertymodelstool-call-propertyts"></a>
 
 ##### seed: `number`<a id="seed-number"></a>
 
 If specified, model will make a best effort to sample deterministically, but it is not guaranteed.
 
-##### response_format: [`ResponseFormatProperty`](./models/response-format-property.ts)<a id="response_format-responseformatpropertymodelsresponse-format-propertyts"></a>
+##### response_format: [`ResponseFormat`](./models/response-format.ts)<a id="response_format-responseformatmodelsresponse-formatts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -609,7 +609,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -625,13 +625,13 @@ End-user ID passed through to provider call.
 
 ##### tool_choice: [`ToolChoiceProperty`](./models/tool-choice-property.ts)<a id="tool_choice-toolchoicepropertymodelstool-choice-propertyts"></a>
 
-##### tool_call: [`ToolCallProperty1`](./models/tool-call-property1.ts)<a id="tool_call-toolcallproperty1modelstool-call-property1ts"></a>
+##### tool_call: [`ToolCallProperty`](./models/tool-call-property.ts)<a id="tool_call-toolcallpropertymodelstool-call-propertyts"></a>
 
 ##### seed: `number`<a id="seed-number"></a>
 
 If specified, model will make a best effort to sample deterministically, but it is not guaranteed.
 
-##### response_format: [`ResponseFormatProperty`](./models/response-format-property.ts)<a id="response_format-responseformatpropertymodelsresponse-format-propertyts"></a>
+##### response_format: [`ResponseFormat`](./models/response-format.ts)<a id="response_format-responseformatmodelsresponse-formatts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -670,7 +670,7 @@ const createResponse = await humanloop.complete({
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### model_config: [`ModelConfigurationProperty1`](./models/model-configuration-property1.ts)<a id="model_config-modelconfigurationproperty1modelsmodel-configuration-property1ts"></a>
+##### model_config: [`ModelConfigCompletionRequest`](./models/model-config-completion-request.ts)<a id="model_config-modelconfigcompletionrequestmodelsmodel-config-completion-requestts"></a>
 
 ##### project: `string`<a id="project-string"></a>
 
@@ -712,7 +712,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -808,7 +808,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -911,7 +911,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -1010,7 +1010,7 @@ Any additional metadata to record.
 
 ID of the source datapoint if this is a log derived from a datapoint in a dataset.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 ##### num_samples: `number`<a id="num_samples-number"></a>
 
@@ -1427,7 +1427,7 @@ ID of the dataset to use in this evaluation. Starts with `evts_`.
 
 String ID of project. Starts with `pr_`.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty1`](./models/provider-apikeys-property1.ts)<a id="provider_api_keys-providerapikeysproperty1modelsprovider-apikeys-property1ts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1625,7 +1625,7 @@ const updateStatusResponse = await humanloop.evaluations.updateStatus({
 
 ##### status: [`EvaluationStatus`](./models/evaluation-status.ts)<a id="status-evaluationstatusmodelsevaluation-statusts"></a>
 
-The new status of the evaluation.
+Status of an evaluation.
 
 ##### id: `string`<a id="id-string"></a>
 
@@ -1672,21 +1672,21 @@ The name of the evaluator.
 
 ##### arguments_type: [`EvaluatorArgumentsType`](./models/evaluator-arguments-type.ts)<a id="arguments_type-evaluatorargumentstypemodelsevaluator-arguments-typets"></a>
 
-Whether this evaluator is target-free or target-required.
+Enum representing the possible argument types of an evaluator.
 
 ##### return_type: [`EvaluatorReturnTypeEnum`](./models/evaluator-return-type-enum.ts)<a id="return_type-evaluatorreturntypeenummodelsevaluator-return-type-enumts"></a>
 
-The type of the return value of the evaluator.
+Enum representing the possible return types of an evaluator.
 
 ##### type: [`EvaluatorType`](./models/evaluator-type.ts)<a id="type-evaluatortypemodelsevaluator-typets"></a>
 
-The type of the evaluator.
+An enumeration.
 
 ##### code: `string`<a id="code-string"></a>
 
 The code for the evaluator. This code will be executed in a sandboxed environment.
 
-##### model_config: [`ModelConfigurationProperty1`](./models/model-configuration-property1.ts)<a id="model_config-modelconfigurationproperty1modelsmodel-configuration-property1ts"></a>
+##### model_config: [`ModelConfigCompletionRequest`](./models/model-config-completion-request.ts)<a id="model_config-modelconfigcompletionrequestmodelsmodel-config-completion-requestts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -1804,17 +1804,17 @@ The name of the evaluator.
 
 ##### arguments_type: [`EvaluatorArgumentsType`](./models/evaluator-arguments-type.ts)<a id="arguments_type-evaluatorargumentstypemodelsevaluator-arguments-typets"></a>
 
-Whether this evaluator is target-free or target-required.
+Enum representing the possible argument types of an evaluator.
 
 ##### return_type: [`EvaluatorReturnTypeEnum`](./models/evaluator-return-type-enum.ts)<a id="return_type-evaluatorreturntypeenummodelsevaluator-return-type-enumts"></a>
 
-The type of the return value of the evaluator.
+Enum representing the possible return types of an evaluator.
 
 ##### code: `string`<a id="code-string"></a>
 
 The code for the evaluator. This code will be executed in a sandboxed environment.
 
-##### model_config: [`ModelConfigurationProperty1`](./models/model-configuration-property1.ts)<a id="model_config-modelconfigurationproperty1modelsmodel-configuration-property1ts"></a>
+##### model_config: [`ModelConfigCompletionRequest`](./models/model-config-completion-request.ts)<a id="model_config-modelconfigcompletionrequestmodelsmodel-config-completion-requestts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2101,7 +2101,7 @@ User defined friendly name for a finetuning run
 
 ID of dataset used for finetuning
 
-##### config: [`FinetuningConfigProperty`](./models/finetuning-config-property.ts)<a id="config-finetuningconfigpropertymodelsfinetuning-config-propertyts"></a>
+##### config: [`FinetuneConfig`](./models/finetune-config.ts)<a id="config-finetuneconfigmodelsfinetune-configts"></a>
 
 ##### projectId: `string`<a id="projectid-string"></a>
 
@@ -2109,7 +2109,7 @@ ID of dataset used for finetuning
 
 Any additional metadata that you would like to log for reference.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2182,7 +2182,7 @@ User defined friendly name for a finetuning run
 
 ID of dataset used for finetuning
 
-##### config: [`FinetuningConfigProperty`](./models/finetuning-config-property.ts)<a id="config-finetuningconfigpropertymodelsfinetuning-config-propertyts"></a>
+##### config: [`FinetuneConfig`](./models/finetune-config.ts)<a id="config-finetuneconfigmodelsfinetune-configts"></a>
 
 ##### projectId: `string`<a id="projectid-string"></a>
 
@@ -2190,7 +2190,7 @@ ID of dataset used for finetuning
 
 Any additional metadata that you would like to log for reference.
 
-##### provider_api_keys: [`ProviderAPIKeysProperty`](./models/provider-apikeys-property.ts)<a id="provider_api_keys-providerapikeyspropertymodelsprovider-apikeys-propertyts"></a>
+##### provider_api_keys: [`ProviderApiKeys`](./models/provider-api-keys.ts)<a id="provider_api_keys-providerapikeysmodelsprovider-api-keysts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2380,7 +2380,7 @@ Generated output from your model for the provided inputs. Can be `None` if loggi
 
 Unique ID of a config to associate to the log.
 
-##### config: [`ConfigProperty1`](./models/config-property1.ts)<a id="config-configproperty1modelsconfig-property1ts"></a>
+##### config: [`ConfigProperty`](./models/config-property.ts)<a id="config-configpropertymodelsconfig-propertyts"></a>
 
 ##### environment: `string`<a id="environment-string"></a>
 
@@ -2400,7 +2400,7 @@ Error message if the log is an error.
 
 Duration of the logged event in seconds.
 
-##### output_message: [`OutputMessageProperty`](./models/output-message-property.ts)<a id="output_message-outputmessagepropertymodelsoutput-message-propertyts"></a>
+##### output_message: [`ChatMessage`](./models/chat-message.ts)<a id="output_message-chatmessagemodelschat-messagets"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -2634,7 +2634,7 @@ A friendly display name for the model config. If not provided, a name will be ge
 
 ##### provider: [`ModelProviders`](./models/model-providers.ts)<a id="provider-modelprovidersmodelsmodel-providersts"></a>
 
-The company providing the underlying model service.
+Supported model providers.
 
 ##### max_tokens: `number`<a id="max_tokens-number"></a>
 
@@ -2666,7 +2666,7 @@ Other parameter values to be passed to the provider call.
 
 If specified, model will make a best effort to sample deterministically, but it is not guaranteed.
 
-##### response_format: [`ResponseFormatProperty`](./models/response-format-property.ts)<a id="response_format-responseformatpropertymodelsresponse-format-propertyts"></a>
+##### response_format: [`ResponseFormat`](./models/response-format.ts)<a id="response_format-responseformatmodelsresponse-formatts"></a>
 
 ##### project: `string`<a id="project-string"></a>
 
@@ -2690,7 +2690,7 @@ Messages prepended to the list of messages sent to the provider. These messages 
 
 ##### endpoint: [`ModelEndpoints`](./models/model-endpoints.ts)<a id="endpoint-modelendpointsmodelsmodel-endpointsts"></a>
 
-Which of the providers model endpoints to use. For example Complete or Edit.
+Supported model provider endpoints.
 
 ##### tools: [`ToolsEquivalentToOpenAIFunctionsPropertyInner`](./models/tools-equivalent-to-open-aifunctions-property-inner.ts)[]<a id="tools-toolsequivalenttoopenaifunctionspropertyinnermodelstools-equivalent-to-open-aifunctions-property-innerts"></a>
 
@@ -2738,7 +2738,7 @@ A friendly display name for the model config. If not provided, a name will be ge
 
 ##### provider: [`ModelProviders`](./models/model-providers.ts)<a id="provider-modelprovidersmodelsmodel-providersts"></a>
 
-The company providing the underlying model service.
+Supported model providers.
 
 ##### model: `string`<a id="model-string"></a>
 
@@ -2774,11 +2774,11 @@ Other parameter values to be passed to the provider call.
 
 If specified, model will make a best effort to sample deterministically, but it is not guaranteed.
 
-##### response_format: [`ResponseFormatProperty`](./models/response-format-property.ts)<a id="response_format-responseformatpropertymodelsresponse-format-propertyts"></a>
+##### response_format: [`ResponseFormat`](./models/response-format.ts)<a id="response_format-responseformatmodelsresponse-formatts"></a>
 
 ##### endpoint: [`ModelEndpoints`](./models/model-endpoints.ts)<a id="endpoint-modelendpointsmodelsmodel-endpointsts"></a>
 
-The provider model endpoint used.
+Supported model provider endpoints.
 
 ##### chat_template: [`ChatMessage`](./models/chat-message.ts)[]<a id="chat_template-chatmessagemodelschat-messagets"></a>
 
@@ -2869,7 +2869,7 @@ The feedback values to be available. This field should only be populated when up
 
 ##### class: [`FeedbackClass`](./models/feedback-class.ts)<a id="class-feedbackclassmodelsfeedback-classts"></a>
 
-The data type associated to this feedback type; whether it is a \\\'text\\\'/\\\'select\\\'/\\\'multi_select\\\'. This is optional when updating the default feedback types (i.e. when `type` is \\\'rating\\\', \\\'action\\\' or \\\'issue\\\').
+An enumeration.
 
 #### 🔄 Return<a id="🔄-return"></a>
 

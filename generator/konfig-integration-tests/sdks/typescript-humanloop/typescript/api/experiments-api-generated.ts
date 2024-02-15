@@ -301,7 +301,13 @@ export const ExperimentsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: ExperimentsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperimentResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, requestParameters, options);
+            const createExperimentRequest: CreateExperimentRequest = {
+                name: requestParameters.name,
+                config_ids: requestParameters.config_ids,
+                positive_labels: requestParameters.positive_labels,
+                set_active: requestParameters.set_active
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters.projectId, createExperimentRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -345,7 +351,13 @@ export const ExperimentsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: ExperimentsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ExperimentResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.experimentId, requestParameters, options);
+            const updateExperimentRequest: UpdateExperimentRequest = {
+                name: requestParameters.name,
+                positive_labels: requestParameters.positive_labels,
+                config_ids_to_register: requestParameters.config_ids_to_register,
+                config_ids_to_deregister: requestParameters.config_ids_to_deregister
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.experimentId, updateExperimentRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

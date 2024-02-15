@@ -29,8 +29,6 @@ import { EmbeddingGenerators } from '../models';
 // @ts-ignore
 import { EmbeddingGeneratorsNullable } from '../models';
 // @ts-ignore
-import { EmbeddingsAndChunksQueryInputPagination } from '../models';
-// @ts-ignore
 import { ExternalFileSyncStatuses } from '../models';
 // @ts-ignore
 import { GenericSuccessResponse } from '../models';
@@ -43,11 +41,13 @@ import { OrganizationUserFileTagCreate } from '../models';
 // @ts-ignore
 import { OrganizationUserFileTagsRemove } from '../models';
 // @ts-ignore
+import { OrganizationUserFilesToSyncFilters } from '../models';
+// @ts-ignore
 import { OrganizationUserFilesToSyncOrderByTypes } from '../models';
 // @ts-ignore
 import { OrganizationUserFilesToSyncQueryInput } from '../models';
 // @ts-ignore
-import { OrganizationUserFilesToSyncQueryInputFilters } from '../models';
+import { Pagination } from '../models';
 // @ts-ignore
 import { PresignedURLResponse } from '../models';
 // @ts-ignore
@@ -780,7 +780,11 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createUserFileTags(requestParameters: FilesApiCreateUserFileTagsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createUserFileTags(requestParameters, options);
+            const organizationUserFileTagCreate: OrganizationUserFileTagCreate = {
+                tags: requestParameters.tags,
+                organization_user_file_id: requestParameters.organization_user_file_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createUserFileTags(organizationUserFileTagCreate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -802,7 +806,11 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async deleteFileTags(requestParameters: FilesApiDeleteFileTagsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFileTags(requestParameters, options);
+            const organizationUserFileTagsRemove: OrganizationUserFileTagsRemove = {
+                tags: requestParameters.tags,
+                organization_user_file_id: requestParameters.organization_user_file_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFileTags(organizationUserFileTagsRemove, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -813,7 +821,12 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async deleteMany(requestParameters: FilesApiDeleteManyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GenericSuccessResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMany(requestParameters, options);
+            const deleteFilesQueryInput: DeleteFilesQueryInput = {
+                file_ids: requestParameters.file_ids,
+                sync_statuses: requestParameters.sync_statuses,
+                delete_non_synced_only: requestParameters.delete_non_synced_only
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteMany(deleteFilesQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -848,7 +861,16 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async queryUserFiles(requestParameters: FilesApiQueryUserFilesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFilesV2>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFiles(requestParameters, options);
+            const organizationUserFilesToSyncQueryInput: OrganizationUserFilesToSyncQueryInput = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters,
+                include_raw_file: requestParameters.include_raw_file,
+                include_parsed_text_file: requestParameters.include_parsed_text_file,
+                include_additional_files: requestParameters.include_additional_files
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFiles(organizationUserFilesToSyncQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -860,7 +882,16 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async queryUserFilesDeprecated(requestParameters: FilesApiQueryUserFilesDeprecatedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserFile>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFilesDeprecated(requestParameters, options);
+            const organizationUserFilesToSyncQueryInput: OrganizationUserFilesToSyncQueryInput = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters,
+                include_raw_file: requestParameters.include_raw_file,
+                include_parsed_text_file: requestParameters.include_parsed_text_file,
+                include_additional_files: requestParameters.include_additional_files
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.queryUserFilesDeprecated(organizationUserFilesToSyncQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -871,7 +902,12 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async resync(requestParameters: FilesApiResyncRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.resync(requestParameters, options);
+            const resyncFileQueryInput: ResyncFileQueryInput = {
+                file_id: requestParameters.file_id,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.resync(resyncFileQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -882,7 +918,10 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async upload(requestParameters: FilesApiUploadRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, requestParameters, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, options);
+            const bodyCreateUploadFileUploadfilePost: BodyCreateUploadFileUploadfilePost = {
+                file: requestParameters.file
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.upload(requestParameters.file, bodyCreateUploadFileUploadfilePost, requestParameters.chunkSize, requestParameters.chunkOverlap, requestParameters.skipEmbeddingGeneration, requestParameters.setPageAsBoundary, requestParameters.embeddingModel, requestParameters.useOcr, requestParameters.generateSparseVectors, requestParameters.prependFilenameToChunks, requestParameters.maxItemsPerChunk, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -893,7 +932,20 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async uploadFromUrl(requestParameters: FilesApiUploadFromUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(requestParameters, options);
+            const uploadFileFromUrlInput: UploadFileFromUrlInput = {
+                url: requestParameters.url,
+                file_name: requestParameters.file_name,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                set_page_as_boundary: requestParameters.set_page_as_boundary,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                use_textract: requestParameters.use_textract,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                max_items_per_chunk: requestParameters.max_items_per_chunk
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFromUrl(uploadFileFromUrlInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -904,7 +956,17 @@ export const FilesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async uploadText(requestParameters: FilesApiUploadTextRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserFile>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadText(requestParameters, options);
+            const rawTextInput: RawTextInput = {
+                contents: requestParameters.contents,
+                name: requestParameters.name,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                overwrite_file_id: requestParameters.overwrite_file_id,
+                embedding_model: requestParameters.embedding_model,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadText(rawTextInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

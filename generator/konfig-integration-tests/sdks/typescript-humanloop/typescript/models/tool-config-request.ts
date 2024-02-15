@@ -55,7 +55,7 @@ export interface ToolConfigRequest {
      */
     'name': string;
     /**
-     * Source of the tool. If defined at an organization level will be \'organization\' else \'inline\'.
+     * Source of tool, either defined at the organization level or inline.
      * @type {ToolSource}
      * @memberof ToolConfigRequest
      */

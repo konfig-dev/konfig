@@ -43,7 +43,7 @@ export interface FinetuneConfig {
      */
     'parameters'?: object;
     /**
-     * The company who is hosting the target model.This is used only if an existing experiment_id or model_config_id are not provided.
+     * Supported model providers.
      * @type {ModelProviders}
      * @memberof FinetuneConfig
      */

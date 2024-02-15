@@ -117,7 +117,8 @@ export const FeedbackApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async feedback(requestParameters: FeedbackApiFeedbackRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FeedbackSubmitResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.feedback(requestParameters, options);
+            const feedbackSubmitRequest: FeedbackSubmitRequest = requestParameters;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.feedback(feedbackSubmitRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

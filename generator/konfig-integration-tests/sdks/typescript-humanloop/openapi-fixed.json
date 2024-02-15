@@ -874,12 +874,8 @@
             "schema": {
               "title": "Sort by",
               "description": "Field to sort projects by",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/ProjectSortBy"
-                }
-              ],
-              "default": "created_at"
+              "default": "created_at",
+              "$ref": "#/components/schemas/ProjectSortBy"
             },
             "name": "sort_by",
             "in": "query"
@@ -890,12 +886,8 @@
             "schema": {
               "title": "Sort order",
               "description": "Direction to sort by.",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SortOrder"
-                }
-              ],
-              "default": "desc"
+              "default": "desc",
+              "$ref": "#/components/schemas/SortOrder"
             },
             "name": "order",
             "in": "query"
@@ -3836,11 +3828,7 @@
           "model_config": {
             "title": "Model config",
             "description": "Model config to associate with the agent.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigRequest"
           },
           "other": {
             "title": "Other parameters",
@@ -3848,7 +3836,6 @@
             "type": "object"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "type",
@@ -3904,11 +3891,7 @@
           "model_config": {
             "title": "Model config",
             "description": "Model config associated with the agent.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigRequest"
           }
         },
         "type": "object",
@@ -3999,11 +3982,7 @@
           "sentiment": {
             "title": "Feedback label sentiment",
             "description": "Whether the feedback sentiment is positive or negative.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LabelSentiment"
-              }
-            ]
+            "$ref": "#/components/schemas/LabelSentiment"
           }
         },
         "type": "object",
@@ -4070,12 +4049,8 @@
           "tool_call": {
             "title": "Tool call",
             "description": "JSON definition of the tool to call and the corresponding argument values. Will be populated when finish_reason='tool_call'.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FunctionTool"
-              }
-            ],
-            "deprecated": true
+            "deprecated": true,
+            "$ref": "#/components/schemas/FunctionTool"
           },
           "tool_calls": {
             "title": "Tool call",
@@ -4088,11 +4063,7 @@
           "output_message": {
             "title": "Output message",
             "description": "The message returned by the provider.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChatMessage"
-              }
-            ]
+            "$ref": "#/components/schemas/ChatMessage"
           }
         },
         "type": "object",
@@ -4172,11 +4143,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -4240,11 +4207,7 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "environment": {
             "title": "Environment name",
@@ -4252,7 +4215,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "messages"
@@ -4325,11 +4287,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -4393,11 +4351,7 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "experiment_id": {
             "title": "Experiment ID",
@@ -4405,7 +4359,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "messages",
@@ -4453,22 +4406,14 @@
           "role": {
             "title": "Role",
             "description": "Role of the message author.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChatRole"
-              }
-            ]
+            "$ref": "#/components/schemas/ChatRole"
           },
           "tool_call": {
             "title": "Tool call",
             "description": "NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FunctionTool"
-              }
-            ],
             "deprecated": true,
-            "nullable": true
+            "nullable": true,
+            "$ref": "#/components/schemas/FunctionTool"
           },
           "tool_calls": {
             "title": "Tool calls",
@@ -4552,11 +4497,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -4620,11 +4561,7 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "model_config_id": {
             "title": "Model config ID",
@@ -4632,7 +4569,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "messages",
@@ -4706,11 +4642,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -4774,23 +4706,14 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "model_config": {
             "title": "Model configuration",
             "description": "The model configuration used to create a chat response.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigChatRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigChatRequest"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "messages",
@@ -4838,11 +4761,7 @@
           "usage": {
             "title": "Usage",
             "description": "Counts of the number of tokens used and related stats.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Usage"
-              }
-            ]
+            "$ref": "#/components/schemas/Usage"
           },
           "metadata": {
             "title": "Metadata",
@@ -4954,11 +4873,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -4998,7 +4913,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "type": "object"
       },
       "CompletionExperimentRequest": {
@@ -5060,11 +4974,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -5104,7 +5014,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "experiment_id"
@@ -5169,11 +5078,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -5213,7 +5118,6 @@
             "type": "string"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "model_config_id"
@@ -5278,11 +5182,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
             "title": "Number of samples",
@@ -5319,14 +5219,9 @@
           "model_config": {
             "title": "Model configuration",
             "description": "The model configuration used to generate.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigCompletionRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigCompletionRequest"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "model_config"
@@ -5372,11 +5267,7 @@
           "usage": {
             "title": "Usage",
             "description": "Counts of the number of tokens used and related stats.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Usage"
-              }
-            ]
+            "$ref": "#/components/schemas/Usage"
           },
           "metadata": {
             "title": "Metadata",
@@ -5548,11 +5439,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization. Ensure you provide an API key for the provider for the model config you are evaluating, or have one saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           }
         },
         "type": "object",
@@ -5622,20 +5509,12 @@
           "arguments_type": {
             "title": "Arguments type",
             "description": "Whether this evaluator is target-free or target-required.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorArgumentsType"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorArgumentsType"
           },
           "return_type": {
             "title": "Return type",
             "description": "The type of the return value of the evaluator.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorReturnTypeEnum"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorReturnTypeEnum"
           },
           "code": {
             "title": "Code",
@@ -5645,20 +5524,12 @@
           "model_config": {
             "title": "Model configuration",
             "description": "The model configuration used to generate.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigCompletionRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigCompletionRequest"
           },
           "type": {
             "title": "Evaluator type",
             "description": "The type of the evaluator.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorType"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorType"
           }
         },
         "type": "object",
@@ -6245,20 +6116,12 @@
           "arguments_type": {
             "title": "Arguments type",
             "description": "Whether this evaluator is target-free or target-required.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorArgumentsType"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorArgumentsType"
           },
           "return_type": {
             "title": "Return type",
             "description": "The type of the return value of the evaluator.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorReturnTypeEnum"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorReturnTypeEnum"
           },
           "code": {
             "title": "Code",
@@ -6268,20 +6131,12 @@
           "model_config": {
             "title": "Model config",
             "description": "The model config defining the LLM evaluator.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigResponse"
           },
           "type": {
             "title": "Evaluator type",
             "description": "The type of the evaluator.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorType"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorType"
           },
           "id": {
             "title": "Evaluator ID",
@@ -6301,11 +6156,7 @@
           "logging_project": {
             "title": "Logging project",
             "description": "The project where the evaluator logs are stored.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProjectResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/ProjectResponse"
           }
         },
         "type": "object",
@@ -6376,11 +6227,7 @@
           "config": {
             "title": "Config",
             "description": "Definition of the config used in the experiment.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/ConfigResponse"
           },
           "created_at": {
             "title": "Created At",
@@ -6425,11 +6272,7 @@
           "status": {
             "title": "Experiment status",
             "description": "Status of experiment.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExperimentStatus"
-              }
-            ]
+            "$ref": "#/components/schemas/ExperimentStatus"
           },
           "configs": {
             "title": "Experiment configs",
@@ -6442,11 +6285,7 @@
           "metric": {
             "title": "Experiment metric",
             "description": "Metric used as the experiment's objective.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/BaseMetricResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/BaseMetricResponse"
           },
           "positive_labels": {
             "title": "Positive labels",
@@ -6832,11 +6671,7 @@
           "class": {
             "title": "Feedback class",
             "description": "The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when `type` is 'rating', 'action' or 'issue').",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FeedbackClass"
-              }
-            ]
+            "$ref": "#/components/schemas/FeedbackClass"
           }
         },
         "type": "object",
@@ -6862,12 +6697,8 @@
           "provider": {
             "title": "Model provider",
             "description": "The company who is hosting the target model.This is used only if an existing experiment_id or model_config_id are not provided.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelProviders"
-              }
-            ],
-            "default": "openai"
+            "default": "openai",
+            "$ref": "#/components/schemas/ModelProviders"
           },
           "base_model": {
             "title": "Base model",
@@ -6953,11 +6784,7 @@
           "config": {
             "title": "Finetuning config",
             "description": "Configuration and hyper-parameters for the fine-tuning process",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FinetuneConfig"
-              }
-            ]
+            "$ref": "#/components/schemas/FinetuneConfig"
           },
           "metadata": {
             "title": "Metadata",
@@ -6967,11 +6794,7 @@
           "provider_api_keys": {
             "title": "Provider API Keys",
             "description": "API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProviderApiKeys"
-              }
-            ]
+            "$ref": "#/components/schemas/ProviderApiKeys"
           }
         },
         "type": "object",
@@ -7027,19 +6850,11 @@
           "config": {
             "title": "Fine-tuning config.",
             "description": "Configuration details for the fine-tuned model.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FinetuneConfig"
-              }
-            ]
+            "$ref": "#/components/schemas/FinetuneConfig"
           },
           "dataset": {
             "title": "Dataset",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DatasetResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/DatasetResponse"
           },
           "created_at": {
             "title": "Created At",
@@ -7122,7 +6937,6 @@
             "type": "object"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "type"
@@ -7271,11 +7085,7 @@
           "image_url": {
             "title": "Image URL",
             "description": "The message's image content.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ImageUrl"
-              }
-            ]
+            "$ref": "#/components/schemas/ImageUrl"
           }
         },
         "type": "object",
@@ -7340,11 +7150,7 @@
           "source": {
             "title": "Tool source",
             "description": "The source of the linked tool. For a linked tool it should be `organization`",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ToolSource"
-              }
-            ]
+            "$ref": "#/components/schemas/ToolSource"
           },
           "name": {
             "title": "Tool name",
@@ -7508,11 +7314,7 @@
           "output_message": {
             "title": "Output message",
             "description": "The message returned by the provider.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChatMessage"
-              }
-            ]
+            "$ref": "#/components/schemas/ChatMessage"
           }
         },
         "type": "object"
@@ -7640,20 +7442,12 @@
           "output_message": {
             "title": "Output message",
             "description": "The message returned by the provider.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChatMessage"
-              }
-            ]
+            "$ref": "#/components/schemas/ChatMessage"
           },
           "model_config": {
             "title": "Config",
             "description": "The config used for this datapoint.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProjectConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/ProjectConfigResponse"
           },
           "user": {
             "title": "User",
@@ -7787,12 +7581,8 @@
           "provider": {
             "title": "Model provider",
             "description": "The company providing the underlying model service.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelProviders"
-              }
-            ],
-            "default": "openai"
+            "default": "openai",
+            "$ref": "#/components/schemas/ModelProviders"
           },
           "model": {
             "title": "Model instance used",
@@ -7859,21 +7649,13 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "endpoint": {
             "title": "Provider endpoint",
             "description": "The provider model endpoint used.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelEndpoints"
-              }
-            ],
-            "default": "chat"
+            "default": "chat",
+            "$ref": "#/components/schemas/ModelEndpoints"
           },
           "chat_template": {
             "title": "Chat template",
@@ -7899,7 +7681,6 @@
             "type": "array"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "model"
@@ -7922,12 +7703,8 @@
           "provider": {
             "title": "Model provider",
             "description": "The company providing the underlying model service.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelProviders"
-              }
-            ],
-            "default": "openai"
+            "default": "openai",
+            "$ref": "#/components/schemas/ModelProviders"
           },
           "model": {
             "title": "Model instance used",
@@ -7994,21 +7771,13 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "endpoint": {
             "title": "Provider endpoint",
             "description": "The provider model endpoint used.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelEndpoints"
-              }
-            ],
-            "default": "complete"
+            "default": "complete",
+            "$ref": "#/components/schemas/ModelEndpoints"
           },
           "prompt_template": {
             "title": "Prompt template",
@@ -8017,7 +7786,6 @@
             "example": "{{question}}"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "model",
@@ -8062,12 +7830,8 @@
           "provider": {
             "title": "Model provider",
             "description": "The company providing the underlying model service.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelProviders"
-              }
-            ],
-            "default": "openai"
+            "default": "openai",
+            "$ref": "#/components/schemas/ModelProviders"
           },
           "model": {
             "title": "Model instance used",
@@ -8134,21 +7898,13 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "endpoint": {
             "title": "Provider endpoint",
             "description": "The provider model endpoint used.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelEndpoints"
-              }
-            ],
-            "default": "complete"
+            "default": "complete",
+            "$ref": "#/components/schemas/ModelEndpoints"
           },
           "prompt_template": {
             "title": "Prompt template",
@@ -8186,7 +7942,6 @@
             ]
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "model"
@@ -8228,12 +7983,8 @@
           "provider": {
             "title": "Model provider",
             "description": "The company providing the underlying model service.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelProviders"
-              }
-            ],
-            "default": "openai"
+            "default": "openai",
+            "$ref": "#/components/schemas/ModelProviders"
           },
           "model": {
             "title": "Model instance used",
@@ -8293,11 +8044,7 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "prompt_template": {
             "title": "Prompt template",
@@ -8332,14 +8079,9 @@
           "endpoint": {
             "title": "Provider endpoint",
             "description": "The provider model endpoint used.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelEndpoints"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelEndpoints"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "id",
@@ -8369,11 +8111,7 @@
           "source": {
             "title": "Source",
             "description": "Source of the tool. If defined at an organization level will be 'organization' else 'inline'.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ToolSource"
-              }
-            ]
+            "$ref": "#/components/schemas/ToolSource"
           },
           "source_code": {
             "title": "Code source",
@@ -8732,12 +8470,8 @@
           "provider": {
             "title": "Model provider",
             "description": "The company providing the underlying model service.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelProviders"
-              }
-            ],
-            "default": "openai"
+            "default": "openai",
+            "$ref": "#/components/schemas/ModelProviders"
           },
           "model": {
             "title": "Model instance used",
@@ -8804,11 +8538,7 @@
           "response_format": {
             "title": "Response format",
             "description": "The format of the response. Only type json_object is currently supported for chat.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ResponseFormat"
-              }
-            ]
+            "$ref": "#/components/schemas/ResponseFormat"
           },
           "project": {
             "title": "Project name",
@@ -8841,12 +8571,8 @@
           "endpoint": {
             "title": "Provider endpoint",
             "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelEndpoints"
-              }
-            ],
-            "default": "complete"
+            "default": "complete",
+            "$ref": "#/components/schemas/ModelEndpoints"
           },
           "tools": {
             "title": "Tools - equivalent to OpenAI functions.",
@@ -8864,7 +8590,6 @@
             "type": "array"
           }
         },
-        "additionalProperties": false,
         "type": "object",
         "required": [
           "model"
@@ -8886,20 +8611,12 @@
           "active_experiment": {
             "title": "Active experiment",
             "description": "Experiment that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExperimentResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/ExperimentResponse"
           },
           "active_config": {
             "title": "Active config",
             "description": "Config that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ProjectConfigResponse"
-              }
-            ]
+            "$ref": "#/components/schemas/ProjectConfigResponse"
           },
           "users": {
             "title": "Project users",
@@ -8917,11 +8634,7 @@
           "feedback_types": {
             "title": "Feedback types",
             "description": "The feedback types that have been defined in the project.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FeedbackTypes"
-              }
-            ]
+            "$ref": "#/components/schemas/FeedbackTypes"
           },
           "team_id": {
             "title": "Team ID",
@@ -9230,11 +8943,7 @@
           "source": {
             "title": "Source",
             "description": "Source of the tool. If defined at an organization level will be 'organization' else 'inline'.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ToolSource"
-              }
-            ]
+            "$ref": "#/components/schemas/ToolSource"
           },
           "source_code": {
             "title": "Code source",
@@ -9303,11 +9012,7 @@
           "source": {
             "title": "Source",
             "description": "Source of the tool. If defined at an organization level will be 'organiztion' else 'inline'.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ToolSource"
-              }
-            ]
+            "$ref": "#/components/schemas/ToolSource"
           },
           "source_code": {
             "title": "Source Code",
@@ -9498,11 +9203,7 @@
           "status": {
             "title": "Evaluation status",
             "description": "The new status of the evaluation.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluationStatus"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluationStatus"
           }
         },
         "type": "object",
@@ -9527,20 +9228,12 @@
           "arguments_type": {
             "title": "Arguments type",
             "description": "Whether this evaluator is target-free or target-required.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorArgumentsType"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorArgumentsType"
           },
           "return_type": {
             "title": "Return type",
             "description": "The type of the return value of the evaluator.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EvaluatorReturnTypeEnum"
-              }
-            ]
+            "$ref": "#/components/schemas/EvaluatorReturnTypeEnum"
           },
           "code": {
             "title": "Code",
@@ -9550,11 +9243,7 @@
           "model_config": {
             "title": "Model configuration",
             "description": "The model configuration used to generate.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ModelConfigCompletionRequest"
-              }
-            ]
+            "$ref": "#/components/schemas/ModelConfigCompletionRequest"
           }
         },
         "type": "object"

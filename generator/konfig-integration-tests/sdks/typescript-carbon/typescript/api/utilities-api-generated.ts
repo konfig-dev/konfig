@@ -393,7 +393,21 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async scrapeSitemap(requestParameters: UtilitiesApiScrapeSitemapRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(requestParameters, options);
+            const sitemapScrapeRequest: SitemapScrapeRequest = {
+                tags: requestParameters.tags,
+                url: requestParameters.url,
+                max_pages_to_scrape: requestParameters.max_pages_to_scrape,
+                chunk_size: requestParameters.chunk_size,
+                chunk_overlap: requestParameters.chunk_overlap,
+                skip_embedding_generation: requestParameters.skip_embedding_generation,
+                enable_auto_sync: requestParameters.enable_auto_sync,
+                generate_sparse_vectors: requestParameters.generate_sparse_vectors,
+                prepend_filename_to_chunks: requestParameters.prepend_filename_to_chunks,
+                html_tags_to_skip: requestParameters.html_tags_to_skip,
+                css_classes_to_skip: requestParameters.css_classes_to_skip,
+                css_selectors_to_skip: requestParameters.css_selectors_to_skip
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeSitemap(sitemapScrapeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -404,7 +418,8 @@ export const UtilitiesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async scrapeWeb(requestParameters: UtilitiesApiScrapeWebRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeWeb(requestParameters, options);
+            const webscrapeRequest: Array<WebscrapeRequest> = requestParameters;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.scrapeWeb(webscrapeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**

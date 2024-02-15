@@ -319,7 +319,42 @@ export const AuthorsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post(requestParameters: AuthorsApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthorsPostResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters, options);
+            const authorSearchRequest: AuthorSearchRequest = {
+                author_name: requestParameters.author_name,
+                sources: requestParameters.sources,
+                predefined_sources: requestParameters.predefined_sources,
+                not_sources: requestParameters.not_sources,
+                lang: requestParameters.lang,
+                not_lang: requestParameters.not_lang,
+                countries: requestParameters.countries,
+                not_countries: requestParameters.not_countries,
+                from_: requestParameters.from_,
+                to_: requestParameters.to_,
+                published_date_precision: requestParameters.published_date_precision,
+                by_parse_date: requestParameters.by_parse_date,
+                sort_by: requestParameters.sort_by,
+                ranked_only: requestParameters.ranked_only,
+                from_rank: requestParameters.from_rank,
+                to_rank: requestParameters.to_rank,
+                is_headline: requestParameters.is_headline,
+                is_paid_content: requestParameters.is_paid_content,
+                parent_url: requestParameters.parent_url,
+                all_links: requestParameters.all_links,
+                all_domain_links: requestParameters.all_domain_links,
+                word_count_min: requestParameters.word_count_min,
+                word_count_max: requestParameters.word_count_max,
+                page: requestParameters.page,
+                page_size: requestParameters.page_size,
+                include_nlp_data: requestParameters.include_nlp_data,
+                has_nlp: requestParameters.has_nlp,
+                theme: requestParameters.theme,
+                ner_name: requestParameters.ner_name,
+                title_sentiment_min: requestParameters.title_sentiment_min,
+                title_sentiment_max: requestParameters.title_sentiment_max,
+                content_sentiment_min: requestParameters.content_sentiment_min,
+                content_sentiment_max: requestParameters.content_sentiment_max
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(authorSearchRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

@@ -190,7 +190,7 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -311,7 +311,7 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -376,7 +376,7 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -440,7 +440,7 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -571,7 +571,7 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -631,7 +631,7 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -734,7 +734,12 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async checkEligibility(requestParameters: InstallmentPlanApiCheckEligibilityRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentsEligibilityResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.checkEligibility(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
+            const checkInstallmentsEligibilityRequest: CheckInstallmentsEligibilityRequest = {
+                PlanData: requestParameters.PlanData,
+                CardDetails: requestParameters.CardDetails,
+                BillingAddress: requestParameters.BillingAddress
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.checkEligibility(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, checkInstallmentsEligibilityRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -754,7 +759,18 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post(requestParameters: InstallmentPlanApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InitiatePlanResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, options);
+            const installmentPlanInitiateRequest: InstallmentPlanInitiateRequest = {
+                AutoCapture: requestParameters.AutoCapture,
+                Attempt3dSecure: requestParameters.Attempt3dSecure,
+                Shopper: requestParameters.Shopper,
+                PlanData: requestParameters.PlanData,
+                BillingAddress: requestParameters.BillingAddress,
+                RedirectUrls: requestParameters.RedirectUrls,
+                UxSettings: requestParameters.UxSettings,
+                EventsEndpoints: requestParameters.EventsEndpoints,
+                ProcessingData: requestParameters.ProcessingData
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanInitiateRequest, requestParameters.xSplititTestMode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -764,7 +780,19 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post2(requestParameters: InstallmentPlanApiPost2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCreateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, options);
+            const installmentPlanCreateRequest: InstallmentPlanCreateRequest = {
+                AutoCapture: requestParameters.AutoCapture,
+                Attempt3dSecure: requestParameters.Attempt3dSecure,
+                TermsAndConditionsAccepted: requestParameters.TermsAndConditionsAccepted,
+                Shopper: requestParameters.Shopper,
+                PlanData: requestParameters.PlanData,
+                BillingAddress: requestParameters.BillingAddress,
+                PaymentMethod: requestParameters.PaymentMethod,
+                RedirectUrls: requestParameters.RedirectUrls,
+                ProcessingData: requestParameters.ProcessingData,
+                EventsEndpoints: requestParameters.EventsEndpoints
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanCreateRequest, requestParameters.xSplititTestMode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -774,7 +802,11 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async refund(requestParameters: InstallmentPlanApiRefundRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanRefundResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.refund(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
+            const installmentPlanRefundRequest: InstallmentPlanRefundRequest = {
+                Amount: requestParameters.Amount,
+                RefundStrategy: requestParameters.RefundStrategy
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.refund(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanRefundRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -794,7 +826,13 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async updateOrder(requestParameters: InstallmentPlanApiUpdateOrderRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanUpdateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOrder(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
+            const updateOrderRequest: UpdateOrderRequest = {
+                TrackingNumber: requestParameters.TrackingNumber,
+                RefOrderNumber: requestParameters.RefOrderNumber,
+                ShippingStatus: requestParameters.ShippingStatus,
+                Capture: requestParameters.Capture
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOrder(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, updateOrderRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -804,7 +842,9 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async updateOrder2(requestParameters: InstallmentPlanApiUpdateOrder2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanUpdateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOrder2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, options);
+            const installmentPlanUpdateRequestByIdentifier: InstallmentPlanUpdateRequestByIdentifier = {
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOrder2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanUpdateRequestByIdentifier, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**

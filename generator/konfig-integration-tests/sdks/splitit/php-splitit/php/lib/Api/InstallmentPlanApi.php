@@ -65,45 +65,45 @@ class InstallmentPlanApi extends \Splitit\CustomApi
             'application/json',
         ],
         'checkEligibility' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
+            'application/json-patch+json',
             'application/*+json',
         ],
         'get' => [
             'application/json',
         ],
         'post' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
+            'application/json-patch+json',
             'application/*+json',
         ],
         'post2' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
+            'application/json-patch+json',
             'application/*+json',
         ],
         'refund' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
+            'application/json-patch+json',
             'application/*+json',
         ],
         'search' => [
             'application/json',
         ],
         'updateOrder' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
+            'application/json-patch+json',
             'application/*+json',
         ],
         'updateOrder2' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
+            'application/json-patch+json',
             'application/*+json',
         ],
         'verifyAuthorization' => [
@@ -574,7 +574,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -1042,7 +1042,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -1507,7 +1507,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -2038,7 +2038,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -2580,7 +2580,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -3077,7 +3077,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -3581,7 +3581,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -4079,7 +4079,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -4562,7 +4562,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );
@@ -5027,7 +5027,7 @@ class InstallmentPlanApi extends \Splitit\CustomApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', 'text/json', 'text/plain', ],
             $contentType,
             $multipart
         );

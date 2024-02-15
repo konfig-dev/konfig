@@ -156,7 +156,11 @@ export const SourcesApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post(requestParameters: SourcesApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SourceResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters, options);
+            const sourcesRequest: SourcesRequest = {
+                lang: requestParameters.lang,
+                countries: requestParameters.countries
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(sourcesRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

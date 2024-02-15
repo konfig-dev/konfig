@@ -396,7 +396,12 @@ export const OptionsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async getOptionStrategy(requestParameters: OptionsApiGetOptionStrategyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StrategyQuotes>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionStrategy(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, requestParameters, options);
+            const optionsGetOptionStrategyRequest: OptionsGetOptionStrategyRequest = {
+                underlying_symbol_id: requestParameters.underlying_symbol_id,
+                legs: requestParameters.legs,
+                strategy_type: requestParameters.strategy_type
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOptionStrategy(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, optionsGetOptionStrategyRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -440,7 +445,12 @@ export const OptionsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async placeOptionStrategy(requestParameters: OptionsApiPlaceOptionStrategyRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<StrategyOrderRecord>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.placeOptionStrategy(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, requestParameters.optionStrategyId, requestParameters, options);
+            const optionsPlaceOptionStrategyRequest: OptionsPlaceOptionStrategyRequest = {
+                order_type: requestParameters.order_type,
+                time_in_force: requestParameters.time_in_force,
+                price: requestParameters.price
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.placeOptionStrategy(requestParameters.userId, requestParameters.userSecret, requestParameters.accountId, requestParameters.optionStrategyId, optionsPlaceOptionStrategyRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

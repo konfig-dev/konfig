@@ -825,7 +825,12 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: ProjectsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters, options);
+            const createProjectRequest: CreateProjectRequest = {
+                name: requestParameters.name,
+                feedback_types: requestParameters.feedback_types,
+                directory_id: requestParameters.directory_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(createProjectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -836,7 +841,12 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createFeedbackType(requestParameters: ProjectsApiCreateFeedbackTypeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FeedbackTypeModel>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createFeedbackType(requestParameters.id, requestParameters, options);
+            const feedbackTypeRequest: FeedbackTypeRequest = {
+                type: requestParameters.type,
+                values: requestParameters.values,
+                class: requestParameters.class
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createFeedbackType(requestParameters.id, feedbackTypeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -891,7 +901,12 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async deployConfig(requestParameters: ProjectsApiDeployConfigRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<EnvironmentProjectConfigResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deployConfig(requestParameters.projectId, requestParameters, options);
+            const environmentProjectConfigRequest: EnvironmentProjectConfigRequest = {
+                config_id: requestParameters.config_id,
+                experiment_id: requestParameters.experiment_id,
+                environments: requestParameters.environments
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deployConfig(requestParameters.projectId, environmentProjectConfigRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -968,7 +983,14 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async update(requestParameters: ProjectsApiUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, requestParameters, options);
+            const updateProjectRequest: UpdateProjectRequest = {
+                name: requestParameters.name,
+                active_experiment_id: requestParameters.active_experiment_id,
+                active_config_id: requestParameters.active_config_id,
+                positive_labels: requestParameters.positive_labels,
+                directory_id: requestParameters.directory_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(requestParameters.id, updateProjectRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -979,7 +1001,8 @@ export const ProjectsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async updateFeedbackTypes(requestParameters: ProjectsApiUpdateFeedbackTypesRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FeedbackTypeModel>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateFeedbackTypes(requestParameters.id, requestParameters.requestBody, options);
+            const feedbackTypeRequest: Array<FeedbackTypeRequest> = requestParameters.requestBody;
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateFeedbackTypes(requestParameters.id, feedbackTypeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

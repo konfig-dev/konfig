@@ -23,21 +23,21 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 // @ts-ignore
 import { AddWebhookProps } from '../models';
 // @ts-ignore
-import { EmbeddingsAndChunksQueryInputPagination } from '../models';
-// @ts-ignore
 import { GenericSuccessResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
 import { OrderDir } from '../models';
 // @ts-ignore
+import { Pagination } from '../models';
+// @ts-ignore
 import { Webhook } from '../models';
+// @ts-ignore
+import { WebhookFilters } from '../models';
 // @ts-ignore
 import { WebhookOrderByColumns } from '../models';
 // @ts-ignore
 import { WebhookQueryInput } from '../models';
-// @ts-ignore
-import { WebhookQueryInputFilters } from '../models';
 // @ts-ignore
 import { WebhookQueryResponse } from '../models';
 import { paginate } from "../pagination/paginate";
@@ -201,7 +201,10 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async addUrl(requestParameters: WebhooksApiAddUrlRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Webhook>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addUrl(requestParameters, options);
+            const addWebhookProps: AddWebhookProps = {
+                url: requestParameters.url
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addUrl(addWebhookProps, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -223,7 +226,13 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async urls(requestParameters: WebhooksApiUrlsRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WebhookQueryResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.urls(requestParameters, options);
+            const webhookQueryInput: WebhookQueryInput = {
+                pagination: requestParameters.pagination,
+                order_by: requestParameters.order_by,
+                order_dir: requestParameters.order_dir,
+                filters: requestParameters.filters
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.urls(webhookQueryInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

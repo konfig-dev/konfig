@@ -51,13 +51,13 @@ import { ChatResponse } from '../models';
 // @ts-ignore
 import { HTTPValidationError } from '../models';
 // @ts-ignore
-import { ModelConfigurationProperty } from '../models';
+import { ModelConfigChatRequest } from '../models';
 // @ts-ignore
-import { ProviderAPIKeysProperty } from '../models';
+import { ProviderApiKeys } from '../models';
 // @ts-ignore
-import { ResponseFormatProperty } from '../models';
+import { ResponseFormat } from '../models';
 // @ts-ignore
-import { ToolCallProperty1 } from '../models';
+import { ToolCallProperty } from '../models';
 // @ts-ignore
 import { ToolChoiceProperty } from '../models';
 import { paginate } from "../pagination/paginate";
@@ -271,7 +271,29 @@ export const ChatsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async create(requestParameters: ChatsApiCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ChatResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(requestParameters, options);
+            const chatRequest: ChatRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                messages: requestParameters.messages,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                stream: requestParameters.stream,
+                user: requestParameters.user,
+                tool_choice: requestParameters.tool_choice,
+                tool_call: requestParameters.tool_call,
+                seed: requestParameters.seed,
+                response_format: requestParameters.response_format,
+                model_config: requestParameters.model_config
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(chatRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -282,7 +304,29 @@ export const ChatsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createDeployed(requestParameters: ChatsApiCreateDeployedRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ChatResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createDeployed(requestParameters, options);
+            const chatDeployedRequest: ChatDeployedRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                messages: requestParameters.messages,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                stream: requestParameters.stream,
+                user: requestParameters.user,
+                tool_choice: requestParameters.tool_choice,
+                tool_call: requestParameters.tool_call,
+                seed: requestParameters.seed,
+                response_format: requestParameters.response_format,
+                environment: requestParameters.environment
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createDeployed(chatDeployedRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -293,7 +337,29 @@ export const ChatsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createExperiment(requestParameters: ChatsApiCreateExperimentRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ChatResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createExperiment(requestParameters, options);
+            const chatExperimentRequest: ChatExperimentRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                messages: requestParameters.messages,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                stream: requestParameters.stream,
+                user: requestParameters.user,
+                tool_choice: requestParameters.tool_choice,
+                tool_call: requestParameters.tool_call,
+                seed: requestParameters.seed,
+                response_format: requestParameters.response_format,
+                experiment_id: requestParameters.experiment_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createExperiment(chatExperimentRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -304,7 +370,29 @@ export const ChatsApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async createModelConfig(requestParameters: ChatsApiCreateModelConfigRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ChatResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createModelConfig(requestParameters, options);
+            const chatModelConfigRequest: ChatModelConfigRequest = {
+                project: requestParameters.project,
+                project_id: requestParameters.project_id,
+                session_id: requestParameters.session_id,
+                session_reference_id: requestParameters.session_reference_id,
+                parent_id: requestParameters.parent_id,
+                parent_reference_id: requestParameters.parent_reference_id,
+                inputs: requestParameters.inputs,
+                source: requestParameters.source,
+                metadata: requestParameters.metadata,
+                source_datapoint_id: requestParameters.source_datapoint_id,
+                messages: requestParameters.messages,
+                provider_api_keys: requestParameters.provider_api_keys,
+                num_samples: requestParameters.num_samples,
+                stream: requestParameters.stream,
+                user: requestParameters.user,
+                tool_choice: requestParameters.tool_choice,
+                tool_call: requestParameters.tool_call,
+                seed: requestParameters.seed,
+                response_format: requestParameters.response_format,
+                model_config_id: requestParameters.model_config_id
+            };
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createModelConfig(chatModelConfigRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }

@@ -31,8 +31,8 @@ import type * as buffer from "buffer"
 import { EvaluatorArgumentsType } from './evaluator-arguments-type';
 import { EvaluatorReturnTypeEnum } from './evaluator-return-type-enum';
 import { EvaluatorType } from './evaluator-type';
-import { LoggingProjectProperty } from './logging-project-property';
-import { ModelConfigProperty2 } from './model-config-property2';
+import { ModelConfigResponse } from './model-config-response';
+import { ProjectResponse } from './project-response';
 
 /**
  * 
@@ -53,13 +53,13 @@ export interface EvaluatorResponse {
      */
     'name': string;
     /**
-     * Whether this evaluator is target-free or target-required.
+     * Enum representing the possible argument types of an evaluator.
      * @type {EvaluatorArgumentsType}
      * @memberof EvaluatorResponse
      */
     'arguments_type': EvaluatorArgumentsType;
     /**
-     * The type of the return value of the evaluator.
+     * Enum representing the possible return types of an evaluator.
      * @type {EvaluatorReturnTypeEnum}
      * @memberof EvaluatorResponse
      */
@@ -72,12 +72,12 @@ export interface EvaluatorResponse {
     'code'?: string;
     /**
      * 
-     * @type {ModelConfigProperty2}
+     * @type {ModelConfigResponse}
      * @memberof EvaluatorResponse
      */
-    'model_config'?: ModelConfigProperty2;
+    'model_config'?: ModelConfigResponse;
     /**
-     * The type of the evaluator.
+     * An enumeration.
      * @type {EvaluatorType}
      * @memberof EvaluatorResponse
      */
@@ -102,9 +102,9 @@ export interface EvaluatorResponse {
     'updated_at': string;
     /**
      * 
-     * @type {LoggingProjectProperty}
+     * @type {ProjectResponse}
      * @memberof EvaluatorResponse
      */
-    'logging_project'?: LoggingProjectProperty;
+    'logging_project'?: ProjectResponse;
 }
 
