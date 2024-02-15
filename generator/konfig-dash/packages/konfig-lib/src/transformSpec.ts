@@ -969,28 +969,6 @@ export const transformSpec = async ({
     })
   }
 
-  // flatten allOf of size 1 with $ref to $ref type schema object
-  recurseObject(spec.spec, ({ value: schema }) => {
-    if (
-      schema === null ||
-      schema === undefined ||
-      !Array.isArray(schema['allOf']) ||
-      schema['allOf'].length !== 1 ||
-      schema['allOf'][0]['$ref'] === undefined ||
-      resolveRef({ refOrObject: schema['allOf'][0], $ref: spec.$ref }).type !==
-        'array'
-    )
-      return
-    schema['$ref'] = schema['allOf'][0]['$ref']
-    // delete all properties besides $ref
-    for (const property in schema) {
-      if (property === '$ref') continue
-      if (Object.prototype.hasOwnProperty.call(schema, property)) {
-        delete schema[property]
-      }
-    }
-  })
-
   // Make sure each path only has one tag
   if (takeFirstTag) {
     for (const path in spec.spec.paths) {

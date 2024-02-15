@@ -35,6 +35,7 @@ import { fixAnyOfTypeNullUsage } from './fix-any-of-type-null-usage'
 import { fixExamplesUsage } from './fix-examples-usage'
 import { overrideSecuritySchemes } from './override-security-schemes'
 import { fixAdditionalPropertiesFalse } from './fix-additional-properties-false'
+import { flattenSingletonAllOf } from './flatten-singleton-all-of'
 
 export async function fixOas({
   spec,
@@ -69,6 +70,10 @@ export async function fixOas({
 
   let numberOfParametersConvertedToSecurityRequirements =
     await overrideSecuritySchemes(spec, konfigYaml?.securitySchemeOverride)
+
+  const numberOfSingletonAllOfUsagesFlattened = await flattenSingletonAllOf({
+    spec,
+  })
 
   const numberOfOas31UsagesFixed = await fixOas31Usage({ spec })
 
@@ -305,6 +310,7 @@ export async function fixOas({
     numberOfAnyOfTypeNullUsagesReverted,
     numberOfExamplesUsageRemoved,
     numberOfAdditionalPropertiesFixed,
+    numberOfSingletonAllOfUsagesFlattened,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {
