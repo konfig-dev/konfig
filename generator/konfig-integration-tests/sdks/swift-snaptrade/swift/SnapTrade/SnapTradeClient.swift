@@ -1,4 +1,4 @@
-public class  SnapTradeClient {
+public class SnapTradeClient {
     public var partnerClientId: String?;
     public var partnerSignature: String?;
     public var partnerTimestamp: String?;
