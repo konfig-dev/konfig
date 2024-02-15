@@ -34,6 +34,22 @@ Add the following entry in your Package.swift:
 
 {{/useVapor}}
 {{^useVapor}}
+
+### Swift Package Manager
+
+1. In Xcode, select *File > Add Packages…* and enter `https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}` as the repository URL.
+1. Select the latest version number from our [tags page](https://{{gitHost}}/{{gitUserId}}/{{gitRepoId}}/tags).
+1. Add the *{{{projectName}}}* product to the [target of your app](https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app).
+
+### Carthage
+
+1. Add this line to your `Cartfile`:
+```shell
+github "{{gitUserId}}/{{gitRepoId}}"
+```
+1. Follow the [Carthage installation instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
+1. In the future, to update to the latest version of the SDK, run the following command: `carthage update {{repoId}}`
+
 ### CocoaPods
 
 1. Add `source 'https://github.com/CocoaPods/Specs.git'` to your `Podfile`
@@ -59,6 +75,8 @@ Generating Pods project
 Integrating client project
 Pod installation complete! There is 1 dependency from the Podfile and 2 total pods installed.
 ```
+
+4. In the future, to update to the latest version of the SDK, run: `pod update {{{projectName}}}`
 
 {{/useVapor}}
 ## Getting Started

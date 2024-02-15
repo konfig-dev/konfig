@@ -19,22 +19,27 @@ import { executeTestCommand } from '../util/execute-test-command'
 import axios, { AxiosError } from 'axios'
 import { isSubmodule } from '../util/is-submodule'
 
-function generateGitTagCommands({
+async function generateGitTagCommands({
   version,
   generator,
   skipTag,
   outputDirectory,
-  isSubmodule,
+  isSubmodule: isSubmoduleComputed,
 }: {
   version: string
   generator: KonfigYamlGeneratorNames
   skipTag?: boolean
   isSubmodule?: boolean
   outputDirectory?: string
-}): [string, string] | [] {
+}): Promise<string[]> {
   if (skipTag) return []
 
-  const tag = computeTag({ version, generator, outputDirectory, isSubmodule })
+  const tag = computeTag({
+    version,
+    generator,
+    outputDirectory,
+    isSubmodule: isSubmoduleComputed,
+  })
 
   return [`git tag ${tag}`, `git push origin ${tag}`]
 }
@@ -53,7 +58,7 @@ function computeTag({
   // PHP does not allow for suffix with any random string in versioning also PHP
   // is in a submodule so the suffix is unnecessary since it's already in a
   // separate repo
-  if (generator === 'php' || isSubmodule) {
+  if (generator === 'php' || isSubmodule || generator === 'swift') {
     return `v${version}`
   }
   // https://go.dev/ref/mod#vcs-version
@@ -72,7 +77,7 @@ function computeTag({
 }
 
 const publishScripts = {
-  ruby: ({
+  ruby: async ({
     version,
     gemName,
     skipTag,
@@ -81,7 +86,7 @@ const publishScripts = {
     gemName: string
     skipTag: boolean
   }) => {
-    const gitTagCommands = generateGitTagCommands({
+    const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'ruby',
       skipTag,
@@ -98,7 +103,7 @@ const publishScripts = {
       ...gitTagCommands,
     ]
   },
-  swift: ({
+  swift: async ({
     version,
     projectName,
     skipTag,
@@ -107,7 +112,7 @@ const publishScripts = {
     projectName: string
     skipTag: boolean
   }) => {
-    const gitTagCommands = generateGitTagCommands({
+    const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'swift',
       skipTag,
@@ -115,7 +120,7 @@ const publishScripts = {
     // git tag has to be present for pod trunk to work
     return [...gitTagCommands, `pod trunk push ${projectName}.podspec`]
   },
-  go: ({
+  go: async ({
     version,
     outputDirectory,
     isSubmodule,
@@ -133,17 +138,17 @@ const publishScripts = {
     skipTag?: boolean
   }) => {
     return [
-      ...generateGitTagCommands({
+      ...(await generateGitTagCommands({
         version,
         generator: 'go',
         outputDirectory,
         isSubmodule,
         skipTag,
-      }),
+      })),
       `GOPROXY=proxy.golang.org go list -m ${gitHost}/${owner}/${repo}@v${version}`,
     ]
   },
-  npm: ({
+  npm: async ({
     version,
     gitlab,
     skipTag,
@@ -152,7 +157,7 @@ const publishScripts = {
     gitlab: TypeScriptConfigType['gitlab']
     skipTag?: boolean
   }) => {
-    const gitTagCommands = generateGitTagCommands({
+    const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'typescript',
       skipTag,
@@ -168,14 +173,14 @@ const publishScripts = {
       ...gitTagCommands,
     ]
   },
-  mavenCentral: ({
+  mavenCentral: async ({
     version,
     skipTag,
   }: {
     version: string
     skipTag?: boolean
   }) => {
-    const gitTagCommands = generateGitTagCommands({
+    const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'java',
       skipTag,
@@ -201,11 +206,11 @@ const publishScripts = {
       CliUx.ux.error('Git remote is out of sync for PHP SDK')
     return [
       ...(vendorDirectoryExists ? [] : ['composer install']),
-      ...generateGitTagCommands({
+      ...(await generateGitTagCommands({
         version,
         generator: 'php',
         skipTag,
-      }),
+      })),
       async () => {
         // POST https://packagist.org/api/create-package?username=[username]&apiToken=[apiToken] -d '{"repository":{"url":"[url]"}}'
         const axiosConfig = {
@@ -262,7 +267,7 @@ const publishScripts = {
       },
     ]
   },
-  pypi: ({
+  pypi: async ({
     test,
     token,
     version,
@@ -280,7 +285,7 @@ const publishScripts = {
     const repository = test ? '-r testpypi ' : ''
     const credentials =
       token !== undefined && !useTwine ? `-u __token__ -p ${token} ` : ''
-    const gitTagCommands = generateGitTagCommands({
+    const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'python',
       skipTag,
@@ -301,14 +306,14 @@ const publishScripts = {
       ...gitTagCommands,
     ]
   },
-  nuget: ({
+  nuget: async ({
     config,
     version,
   }: {
     config: CSharpConfigType
     version: string
   }) => {
-    const gitTagCommands = generateGitTagCommands({
+    const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'csharp',
     })
@@ -424,10 +429,11 @@ export default class Publish extends Command {
         script,
         cwd,
       }: {
-        script: (string | (() => Promise<unknown>))[]
+        script: Promise<string[]> | Promise<(string | (() => Promise<void>))[]>
         cwd?: string
       }) => {
-        for (const command of script) {
+        const publishScripts = await script
+        for (const command of publishScripts) {
           if (flags.debug) {
             if (typeof command === 'string') CliUx.ux.info(`DEBUG: ${command}`)
             else await command()
@@ -571,7 +577,7 @@ export default class Publish extends Command {
         if (generatorConfig.packageName === undefined)
           throw Error('packageName is required for PHP generator')
         await executePublishScript({
-          script: await publishScripts['php']({
+          script: publishScripts['php']({
             gitConfig: generatorConfig.git,
             version: generatorConfig.version,
             skipTag: flags.skipTag,

@@ -2,6 +2,7 @@ import { GeneratorGitConfig } from 'konfig-lib'
 import simpleGit from 'simple-git'
 import execa from 'execa'
 import * as path from 'path'
+import * as fs from 'fs'
 
 /**
  * Determine if the SDK is pointing to what should be a submodule by comparing
@@ -21,6 +22,11 @@ export async function isSubmodule({
   directory?: string
 }): Promise<boolean> {
   if (directory !== undefined) {
+    // if directory does not exist then return false
+    if (!fs.existsSync(directory)) {
+      return false
+    }
+
     /**
      * This should be a more robust implementation that doesn't rely on origin
      * "get-url" which could be wrong if the name of a GitHub repo was changed
