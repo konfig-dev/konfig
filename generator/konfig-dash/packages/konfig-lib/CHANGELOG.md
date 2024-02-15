@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.6
+
+### Patch Changes
+
+- [#566](https://github.com/konfig-dev/konfig/pull/566) [`c27c524a`](https://github.com/konfig-dev/konfig/commit/c27c524a2a721c8a0f81d12e829e595c0864b2de) Thanks [@eddiechayes](https://github.com/eddiechayes)! - move flattening singleton allOf from transformSpec to konfig fix
+
 ## 1.36.5
 
 ### Patch Changes

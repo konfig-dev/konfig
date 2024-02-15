@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.38.14
+
+### Patch Changes
+
+- [#566](https://github.com/konfig-dev/konfig/pull/566) [`c27c524a`](https://github.com/konfig-dev/konfig/commit/c27c524a2a721c8a0f81d12e829e595c0864b2de) Thanks [@eddiechayes](https://github.com/eddiechayes)! - move flattening singleton allOf from transformSpec to konfig fix
+
+- Updated dependencies [[`c27c524a`](https://github.com/konfig-dev/konfig/commit/c27c524a2a721c8a0f81d12e829e595c0864b2de)]:
+  - konfig-lib@1.36.6
+  - konfig-openapi-spec@1.8.11
+  - konfig-postman-to-openapi@3.1.11
+
 ## 1.38.13
 
 ### Patch Changes
