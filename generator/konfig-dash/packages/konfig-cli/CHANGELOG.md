@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.15
+
+### Patch Changes
+
+- [#565](https://github.com/konfig-dev/konfig/pull/565) [`f11328f8`](https://github.com/konfig-dev/konfig/commit/f11328f820cca580d845474cbf98cc03022c8f6b) Thanks [@dphuang2](https://github.com/dphuang2)! - remove log message regarding directory not existing when checking if directory is submodule
+
 ## 1.38.14
 
 ### Patch Changes
