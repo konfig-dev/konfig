@@ -33,7 +33,20 @@ const startServer = (port, routes) => {
       });
     } else {
       app[route.method](route.path, (req, res) => {
-        res.status(200).json(route.response);
+        if (route.response === "echo") {
+          const response = {
+            files: req.files,
+            params: req.params,
+            query: req.query,
+            headers: req.headers,
+            body: req.body,
+            url: req.url,
+            hostname: req.hostname,
+          };
+          res.status(200).json(response);
+        } else {
+          res.status(200).json(route.response);
+        }
       });
     }
   });

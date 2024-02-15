@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: API
+  description: A simple API.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://test.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /test:
+    post:
+      tags:
+        - Test
+      summary: Test that query params are not included in body
+      operationId: Test_test
+      description: Test that query params are not included in body
+      parameters:
+        - in: query
+          required: true
+          name: queryParam1
+          schema:
+            $ref: "#/components/schemas/QueryParam1"
+        - in: query
+          required: true
+          name: queryParam1
+          schema:
+            $ref: "#/components/schemas/QueryParam2"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TestRequestBody"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    QueryParam1:
+      type: string
+      description: Query param 1
+    QueryParam2:
+      type: string
+      description: Query param 2
+    TestRequestBody:
+      type: object
+      properties:
+        bodyParam1:
+          type: string
+          description: Body param 1
+        bodyParam2:
+          type: string
+          description: Body param 2
+      required:
+        - bodyParam1
+        - bodyParam2
+    SuccessResponse:
+      type: object
+security:
+  - ApiKey: []
