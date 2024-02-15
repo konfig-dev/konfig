@@ -184,6 +184,13 @@ export function HeaderSimple() {
               <a
                 className="text-gray-600 hover:text-black"
                 target="_blank"
+                href="/sdk"
+              >
+                SDKs
+              </a>
+              <a
+                className="text-gray-600 hover:text-black"
+                target="_blank"
                 href="/blog"
               >
                 Blog
