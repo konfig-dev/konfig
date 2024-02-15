@@ -1,0 +1,36 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /device:
+    delete: UserDevice_delete
+    post: UserDevice_create
+  /users/{userId}/devices:
+    get: Device_list
+    post: Device_store
+  /users/{userId}/devices/{deviceId}:
+    delete: Device_delete
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /users/{userId}/devices:
+    get:
+      '400':
+        application/json: DeviceList400Response
+        text/json: DeviceList400Response
+        text/plain: DeviceList400Response
+    post:
+      '400':
+        application/json: DeviceStoreResponse
+        text/json: DeviceStoreResponse
+        text/plain: DeviceStoreResponse
+securityParameters:
+  Limit:
+    query: false
+  Page:
+    query: false
+  deviceToken:
+    query: false
+validServerUrls: {}

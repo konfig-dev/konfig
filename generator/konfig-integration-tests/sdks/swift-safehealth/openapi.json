@@ -1,0 +1,826 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Safe Push API",
+    "description": "Send push notifications to a user's device\n\n[Health Check UI](http://localhost:8012/healthchecks-ui)",
+    "version": "0.3.1-9ffa049"
+  },
+  "servers": [
+    { "url": "https://api.dev-1.sf.safecdx.io/v1beta/notification-push" }
+  ],
+  "paths": {
+    "/users/{userId}/devices": {
+      "post": {
+        "tags": ["Device"],
+        "summary": "Stores a new device associated with the specified user. If a device with any matching token(s) already exists for that user, it will be removed.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Identifies the user to whom this device will be associated.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Carries all device tokens and information required to deliver notifications to the device.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceCreateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceCreateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeviceCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceCreateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceCreateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationFailure"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationFailure"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationFailure"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Device"],
+        "summary": "Retrieves a pageable list of devices associated with the specified user.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Identifies the user for whom to retrieve devices.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceListResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceListResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeviceListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}/devices/{deviceId}": {
+      "delete": {
+        "tags": ["Device"],
+        "summary": "Deletes the identified device from the specified user's devices.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Identifies the user to whom the device is associated.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "Identifies the device to be deleted.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device": {
+      "post": {
+        "tags": ["UserDevice"],
+        "summary": "Creates a UserDevice entity.",
+        "requestBody": {
+          "description": "Represents a device used by the legacy push notification system.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDevice"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDevice"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDevice"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDevice"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDevice"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDevice"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["UserDevice"],
+        "summary": "Deletes UserDevice entity by device token.",
+        "parameters": [
+          {
+            "name": "deviceToken",
+            "in": "query",
+            "description": "Identifying token passed when creating UserDevice.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDevice"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDevice"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDevice"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Android": {
+        "type": "object",
+        "properties": {
+          "channels": {
+            "$ref": "#/components/schemas/AndroidChannels"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AndroidChannels": {
+        "type": "object",
+        "properties": {
+          "firebaseCloudMessaging": {
+            "$ref": "#/components/schemas/AndroidFirebaseCloudMessaging"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AndroidFirebaseCloudMessaging": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "applicationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true,
+            "writeOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppleFirebaseCloudMessaging": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "applicationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true,
+            "writeOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppleIos": {
+        "type": "object",
+        "properties": {
+          "bundleId": {
+            "type": "string",
+            "nullable": true
+          },
+          "teamId": {
+            "type": "string",
+            "nullable": true
+          },
+          "signingCertificateType": {
+            "$ref": "#/components/schemas/SigningCertificate"
+          },
+          "channels": {
+            "$ref": "#/components/schemas/AppleIosChannels"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppleIosChannels": {
+        "type": "object",
+        "properties": {
+          "simpleNotificationService": {
+            "$ref": "#/components/schemas/AppleSimpleNotificationService"
+          },
+          "firebaseCloudMessaging": {
+            "$ref": "#/components/schemas/AppleFirebaseCloudMessaging"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePushNotificationServiceVoIp": {
+        "type": "object",
+        "properties": {
+          "applicationArn": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true,
+            "writeOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppleSimpleNotificationService": {
+        "type": "object",
+        "properties": {
+          "apnsVoip": {
+            "$ref": "#/components/schemas/ApplePushNotificationServiceVoIp"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BrowserName": {
+        "enum": [
+          "Unknown",
+          "Chrome",
+          "Firefox",
+          "Safari",
+          "Edge",
+          "Opera",
+          "Brave",
+          "Vivaldi",
+          "Chromium"
+        ],
+        "type": "string"
+      },
+      "Device": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "platform": {
+            "$ref": "#/components/schemas/Platform"
+          },
+          "web": {
+            "$ref": "#/components/schemas/Web"
+          },
+          "mobile": {
+            "$ref": "#/components/schemas/Mobile"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceCreateRequest": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "$ref": "#/components/schemas/Device"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceCreateResponse": {
+        "type": "object",
+        "properties": {
+          "device": {
+            "$ref": "#/components/schemas/Device"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceListResponse": {
+        "type": "object",
+        "properties": {
+          "devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Device"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Mobile": {
+        "type": "object",
+        "properties": {
+          "os": {
+            "$ref": "#/components/schemas/MobileOperatingSystem"
+          },
+          "ios": {
+            "$ref": "#/components/schemas/AppleIos"
+          },
+          "android": {
+            "$ref": "#/components/schemas/Android"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MobileOperatingSystem": {
+        "enum": ["AppleIos", "Android"],
+        "type": "string"
+      },
+      "OperatingSystem": {
+        "enum": [
+          "Unknown",
+          "Windows",
+          "MacOs",
+          "Linux",
+          "Android",
+          "IOs",
+          "ChromeOs",
+          "FreeBsd",
+          "Unix"
+        ],
+        "type": "string"
+      },
+      "Platform": {
+        "enum": ["Unknown", "Mobile", "Web"],
+        "type": "string"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": {}
+      },
+      "Severity": {
+        "enum": ["Error", "Warning", "Info"],
+        "type": "string"
+      },
+      "SigningCertificate": {
+        "enum": ["Development", "Production"],
+        "type": "string"
+      },
+      "UserDevice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
+          "deviceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "appVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "deviceModel": {
+            "type": "string",
+            "nullable": true
+          },
+          "deviceToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "deviceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "idfaId": {
+            "type": "string",
+            "nullable": true
+          },
+          "isLoggedIn": {
+            "type": "boolean"
+          },
+          "osVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "voipToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "userUUID": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationalHealthId": {
+            "type": "string",
+            "nullable": true
+          },
+          "language": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unfortunately we can't derive this class from the BaseDto since legacy Id is a string."
+      },
+      "ValidationFailure": {
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "attemptedValue": {
+            "nullable": true
+          },
+          "customState": {
+            "nullable": true
+          },
+          "severity": {
+            "$ref": "#/components/schemas/Severity"
+          },
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "formattedMessagePlaceholderValues": {
+            "type": "object",
+            "additionalProperties": {
+              "nullable": true
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Web": {
+        "type": "object",
+        "properties": {
+          "operatingSystem": {
+            "$ref": "#/components/schemas/OperatingSystem"
+          },
+          "browserName": {
+            "$ref": "#/components/schemas/BrowserName"
+          },
+          "hostname": {
+            "type": "string",
+            "nullable": true
+          },
+          "defaults": {
+            "$ref": "#/components/schemas/WebPushDefaults"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebChannels": {
+        "type": "object",
+        "properties": {
+          "firebaseCloudMessaging": {
+            "$ref": "#/components/schemas/WebFirebaseCloudMessaging"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebFirebaseCloudMessaging": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "nullable": true
+          },
+          "appId": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true,
+            "writeOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebPushDefaults": {
+        "type": "object",
+        "properties": {
+          "channels": {
+            "$ref": "#/components/schemas/WebChannels"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Identity Access Token": {
+        "type": "apiKey",
+        "description": "Identity-based authorization header using the Bearer scheme.",
+        "name": "Authorization",
+        "in": "header"
+      },
+      "Safe Account": {
+        "type": "apiKey",
+        "name": "x-sf-account",
+        "in": "header"
+      },
+      "Safe Tenant": {
+        "type": "apiKey",
+        "name": "x-sf-tenant",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Identity Access Token": []
+    },
+    {
+      "Safe Account": []
+    },
+    {
+      "Safe Tenant": []
+    }
+  ]
+}
