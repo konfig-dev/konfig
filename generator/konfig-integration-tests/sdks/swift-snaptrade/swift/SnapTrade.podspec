@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/passiv/snaptrade-sdks/tree/main/swift'
   s.summary = 'SnapTrade Swift SDK'
   s.source_files = 'SnapTrade/**/*.swift'
-  s.dependency 'AnyCodable-Konfig', '~> 0.6.8'
+  s.dependency 'AnyCodable-Konfig', '~> 0.6.9'
 end
