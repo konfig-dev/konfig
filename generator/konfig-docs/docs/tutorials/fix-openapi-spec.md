@@ -1,7 +1,7 @@
 # Quickly Fix Lint Errors for your OpenAPI Specification
 
 To generate your first set of high quality SDKs you need to pass [Konfig's
-Linter](setup-linting). But manually updating your OAS is tedious. Use [konfig
+Linter](/docs/tutorials/setup-linting/). But manually updating your OAS is tedious. Use [konfig
 fix](https://github.com/konfig-dev/konfig-cli#konfig-fix) to expedite the process. Today `konfig fix` will:
 
 - Add [missing global tags](https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules#operation-tag-defined)
@@ -21,7 +21,7 @@ fix](https://github.com/konfig-dev/konfig-cli#konfig-fix) to expedite the proces
 - Fix [paths that end with a slash](https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules#path-keys-no-trailing-slash)
 - Fix [redundant security requirements and request parameters](docs/lint-rules#redundant-security-and-parameter)
 - Fix invalid examples in [media objects](https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules#oas3-valid-media-example) and [schemas](https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules#oas3-valid-schema-example)
-- Help you quickly create or update operation IDs following [best convention](naming-operation-ids)
+- Help you quickly create or update operation IDs following [best convention](/docs/tutorials/naming-operation-ids/)
 - Ignores [potentially incorrect data types if confirmed](docs/lint-rules#potential-incorrect-type)
 
 ## How to use

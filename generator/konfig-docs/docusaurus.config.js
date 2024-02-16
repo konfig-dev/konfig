@@ -106,6 +106,7 @@ async function createConfig() {
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.png",
+    trailingSlash: true,
     scripts: [
       {
         src: "https://tag.clearbitscripts.com/v1/pk_99799d8e5d4460e6c6e7b3c89b407b12/tags.js",
