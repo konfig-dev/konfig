@@ -39,10 +39,7 @@ export function generateTypescriptSdkUsageCode({
       }
     }
     if (securityScheme.type === "apiKey") {
-      addKey(
-        camelcase(securityScheme.name),
-        snakeCase(securityScheme.name).toUpperCase()
-      );
+      addKey(camelcase(key), snakeCase(securityScheme.name).toUpperCase());
     } else if (securityScheme.type === "http") {
       if (securityScheme.scheme.toLocaleLowerCase() === "basic") {
         addKey("username", "USERNAME");
