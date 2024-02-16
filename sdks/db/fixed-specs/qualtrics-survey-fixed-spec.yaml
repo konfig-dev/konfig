@@ -375,6 +375,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateBlockRequest'
+            example:
+              Type: Standard
+              Description: My Block Name
+              ID: BL_fakeblockid1234
+              BlockElements:
+                - Type: Question
+                  QuestionID: QID1
+              Options:
+                BlockLocking: 'false'
+                RandomizeQuestions: 'false'
+                BlockVisibility: Collapsed
       responses:
         '200':
           description: Successful create block response
@@ -3070,6 +3081,7 @@ components:
       x-tags:
         - Schemas
     ConjointBlock:
+      title: Conjoint Block
       description: Experience blocks limit the editable fields on the block.
       type: object
       additionalProperties: true
@@ -3099,6 +3111,7 @@ components:
       x-tags:
         - Schemas
     ReferenceBlock:
+      title: Reference Block
       description: Saved survey in the library that can be referenced by other surveys
       type: object
       additionalProperties: true
@@ -3146,6 +3159,7 @@ components:
       x-tags:
         - Schemas
     StandardBlock:
+      title: Standard Block
       description: >-
         A logical grouping of questions, split by pages, with configuration on
         how to control the flow and visibility of each question. The original
@@ -3183,6 +3197,7 @@ components:
       x-tags:
         - Schemas
     TrashBlock:
+      title: Trash Block
       description: >-
         Exactly one Trash block per survey. Questions deleted from the UI are
         stored here for resuscitation
@@ -4253,7 +4268,7 @@ components:
         CreatorID:
           $ref: '#/components/schemas/UserID'
         LastModified:
-          description: The date and time of the last survey modificat
+          description: The date and time of the last survey modification.
           type: string
           format: date-time
         LastAccessed:
@@ -5531,7 +5546,8 @@ components:
       type: array
       items:
         oneOf:
-          - description: Question block element
+          - title: Question block element
+            description: Question block element
             type: object
             additionalProperties: true
             required:
@@ -5546,7 +5562,8 @@ components:
                 $ref: '#/components/schemas/QuestionID'
               SkipLogic:
                 $ref: '#/components/schemas/SkipLogic'
-          - description: Page break element
+          - title: Page break element
+            description: Page break element
             type: object
             additionalProperties: true
             required:
