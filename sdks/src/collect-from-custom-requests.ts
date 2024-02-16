@@ -164,6 +164,10 @@ const customRequests: Record<string, CustomRequest> = {
       return JSON.stringify(mergedSpec);
     },
   },
+  "zapier.com_actions": {
+    type: "GET",
+    url: "https://actions.zapier.com/api/v1/openapi.json",
+  },
   "paylocity.com_weblink": {
     lambda: async () => {
       const rawSpecString = await fetch(

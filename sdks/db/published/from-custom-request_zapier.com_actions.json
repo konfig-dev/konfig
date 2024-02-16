@@ -1,0 +1,166 @@
+{
+  "securitySchemes": {
+    "SessionAuth": {
+      "type": "apiKey",
+      "in": "cookie",
+      "name": "nlasession"
+    },
+    "AccessPointApiKeyHeader": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key"
+    },
+    "AccessPointApiKeyQuery": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "api_key"
+    },
+    "AccessPointOAuth": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/oauth/authorize/",
+          "tokenUrl": "/oauth/token/",
+          "scopes": {
+            "nla:exposed_actions:execute": "Run AI Actions"
+          }
+        }
+      }
+    }
+  },
+  "apiBaseUrl": "https://actions.zapier.com",
+  "apiVersion": "1.0.0",
+  "apiDescription": "",
+  "apiTitle": "Zapier AI Actions API",
+  "endpoints": 5,
+  "sdkMethods": 5,
+  "schemas": 5,
+  "parameters": 4,
+  "originalCustomRequest": {
+    "type": "GET",
+    "url": "https://actions.zapier.com/api/v1/openapi.json"
+  },
+  "customRequestSpecFilename": "zapier.com_actions.yaml",
+  "difficultyScore": 8.5,
+  "difficulty": "Easy",
+  "company": "Zapier",
+  "serviceName": "AI Actions",
+  "sdkName": "zapier-actions-{language}-sdk",
+  "clientName": "ZapierActions",
+  "metaDescription": "AI Actions is a tool for builders to equip AI platforms (or custom integrations) with the ability to run any Zapier action! The 20,000+ searches and actions you know and love from the Zapier automation platform can be used with your favorite AI tool.",
+  "homepage": "zapier.com",
+  "categories": [
+    "automation",
+    "ai",
+    "developer_tools"
+  ],
+  "methods": [
+    {
+      "url": "/api/v1/check",
+      "method": "authTestGet",
+      "httpMethod": "get",
+      "tag": "Check",
+      "typeScriptTag": "check",
+      "description": "Check",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/configuration-link",
+      "method": "getConfigurationLink",
+      "httpMethod": "get",
+      "tag": "Configuration",
+      "typeScriptTag": "configuration",
+      "description": "Get Configuration Link",
+      "parameters": [],
+      "responses": []
+    },
+    {
+      "url": "/api/v1/exposed",
+      "method": "listExposedActions",
+      "httpMethod": "get",
+      "tag": "Action",
+      "typeScriptTag": "action",
+      "description": "List Exposed Actions",
+      "parameters": [],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/exposed/{exposed_app_action_id}/execute",
+      "method": "executeAppAction",
+      "httpMethod": "post",
+      "tag": "Action",
+      "typeScriptTag": "action",
+      "description": "Execute App Action Endpoint",
+      "parameters": [
+        {
+          "name": "exposedAppActionId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "instructions",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "preview_only",
+          "schema": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This is a summary of the results given the action that was executed."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/api/v1/execution-log/{execution_log_id}",
+      "method": "getExecutionLog",
+      "httpMethod": "get",
+      "tag": "Log",
+      "typeScriptTag": "log",
+      "description": "Get Execution Log Endpoint",
+      "parameters": [
+        {
+          "name": "executionLogId",
+          "schema": "string",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "This is a summary of the results given the action that was executed."
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "logo": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/logo.png",
+  "openApiRaw": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/openapi.yaml",
+  "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/imagePreview.png",
+  "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/favicon.png",
+  "clientNameCamelCase": "zapierActions",
+  "lastUpdated": "2024-02-16T00:40:31.110Z",
+  "typescriptSdkUsageCode": "import { ZapierActions } from 'zapier-actions-typescript-sdk';\n\nconst zapierActions = new ZapierActions({\n    nlasession: \"NLASESSION\",\n    xApiKey: \"X_API_KEY\",\n    apiKey: \"API_KEY\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n})",
+  "fixedSpecFileName": "zapier-actions-fixed-spec.yaml"
+}

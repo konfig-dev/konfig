@@ -1,0 +1,46 @@
+{
+  "securitySchemes": {
+    "SessionAuth": {
+      "type": "apiKey",
+      "in": "cookie",
+      "name": "nlasession"
+    },
+    "AccessPointApiKeyHeader": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key"
+    },
+    "AccessPointApiKeyQuery": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "api_key"
+    },
+    "AccessPointOAuth": {
+      "type": "oauth2",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/oauth/authorize/",
+          "tokenUrl": "/oauth/token/",
+          "scopes": {
+            "nla:exposed_actions:execute": "Run AI Actions"
+          }
+        }
+      }
+    }
+  },
+  "apiBaseUrl": "https://actions.zapier.com",
+  "apiVersion": "1.0.0",
+  "apiDescription": "",
+  "apiTitle": "Zapier AI Actions API",
+  "endpoints": 5,
+  "sdkMethods": 5,
+  "schemas": 5,
+  "parameters": 4,
+  "originalCustomRequest": {
+    "type": "GET",
+    "url": "https://actions.zapier.com/api/v1/openapi.json"
+  },
+  "customRequestSpecFilename": "zapier.com_actions.yaml",
+  "difficultyScore": 8.5,
+  "difficulty": "Easy"
+}

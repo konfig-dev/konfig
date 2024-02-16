@@ -2531,7 +2531,6 @@ components:
             type: array
             items:
               type: object
-              additionalProperties: false
     addClientSecret:
       description: The Add Client Secret Request Model
       required:
@@ -2608,7 +2607,6 @@ components:
             Not required. If populated, must match one of the system coded
             values available in the Additional Rates Shift drop down.<br />
           type: object
-      additionalProperties: false
     addUpdateDeduction:
       type: object
       properties:
@@ -2755,7 +2753,6 @@ components:
         stateAbbrev:
           description: 'State for child support.<br  /> Max length: 2'
           type: string
-      additionalProperties: false
     benefitSetup:
       description: The benefit setup model
       type: object
@@ -2790,7 +2787,6 @@ components:
             Only valid for HR Enhanced clients and Benefit Classes that are ACA
             Employment Type of Full Time.
           type: object
-      additionalProperties: false
     clientCredentialsResponse:
       description: The Client Credentials Response Model
       type: object
@@ -2802,7 +2798,6 @@ components:
           description: The client's secret expiration date
           type: object
           format: paylocity-date
-      additionalProperties: false
     companyCodes:
       description: The Company Codes model
       type: object
@@ -2813,7 +2808,6 @@ components:
         code:
           description: 'Code.<br  /> Max length: 40'
           type: object
-      additionalProperties: false
     customFieldDefinition:
       description: ''
       type: object
@@ -2979,7 +2973,6 @@ components:
         stateAbbrev:
           description: 'State for child support.<br  /> Max length: 2'
           type: string
-      additionalProperties: false
     departmentPosition:
       type: object
       properties:
@@ -3082,7 +3075,6 @@ components:
             Employee worker compensation code. Must match Company setup.<br  />
             Max length: 10
           type: string
-      additionalProperties: false
     directDeposit:
       description: The Direct Deposit model
       type: object
@@ -3093,12 +3085,9 @@ components:
           items:
             description: The additional direct deposit model
             type: object
-            additionalProperties: false
         mainDirectDeposit:
           description: The main Direct Deposit account.
           type: object
-          additionalProperties: false
-      additionalProperties: false
     earning:
       description: The employee earning model
       required:
@@ -3214,7 +3203,6 @@ components:
             are MM-DD-CCYY, CCYY-MM-DD.
           type: object
           format: paylocity-date
-      additionalProperties: false
     emergencyContact:
       description: The emergency contact model
       required:
@@ -3304,7 +3292,6 @@ components:
         zip:
           description: Postal code.  If U.S. address, must be a valid zip code.
           type: object
-      additionalProperties: false
     employeeV1:
       description: Employee
       type: object
@@ -3566,18 +3553,15 @@ components:
           items:
             description: The additional direct deposit model
             type: object
-            additionalProperties: false
         additionalRate:
           description: Add Additional Rates.
           type: array
           items:
             description: The additional pay rate model
             type: object
-            additionalProperties: false
         benefitSetup:
           description: ' Add or update setup values used for employee benefits integration, insurance plan settings, and ACA reporting.'
           type: object
-          additionalProperties: false
         birthDate:
           description: >-
             Employee birthdate. Common formats include *MM-DD-CCYY*,
@@ -3604,7 +3588,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customDateFields:
           description: Up to 8 custom fields of the date type value.
           maxItems: 8
@@ -3612,7 +3595,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customDropDownFields:
           description: Up to 8 custom fields of the dropdown type value.
           maxItems: 8
@@ -3620,7 +3602,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customNumberFields:
           description: Up to 8 custom fields of numeric type value.
           maxItems: 8
@@ -3628,7 +3609,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customTextFields:
           description: Up to 8 custom fields of text type value.
           maxItems: 8
@@ -3636,14 +3616,12 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         departmentPosition:
           description: >-
             Add or update home department cost center, position, supervisor,
             reviewer, employment type, EEO class, pay settings, and union
             information.
           type: object
-          additionalProperties: false
         disabilityDescription:
           description: Indicates if employee has disability status.
           type: object
@@ -3653,7 +3631,6 @@ components:
           items:
             description: The emergency contact model
             type: object
-            additionalProperties: false
         employeeId:
           description: >-
             Leave blank to have Paylocity Payroll/HR solution automatically
@@ -3667,7 +3644,6 @@ components:
             Add or update federal tax amount type (taxCalculationCode), amount
             or percentage, filing status, and exemptions.
           type: object
-          additionalProperties: false
         firstName:
           description: 'Employee first name. <br  />Max length: 40'
           type: object
@@ -3681,7 +3657,6 @@ components:
             Add or update employee's home address, personal phone numbers, and
             personal email.
           type: object
-          additionalProperties: false
         isHighlyCompensated:
           description: >-
             Indicates if employee meets the highly compensated employee
@@ -3702,7 +3677,6 @@ components:
           items:
             description: The Local Tax model
             type: object
-            additionalProperties: false
         mainDirectDeposit:
           description: >-
             Add the main direct deposit account. After deposits are made to any
@@ -3712,7 +3686,6 @@ components:
             deposit information in WebPay and replace with what is provided on
             the request. GET API will not return direct deposit data.
           type: object
-          additionalProperties: false
         maritalStatus:
           description: >-
             Employee marital status. Common values *D (Divorced), M (Married), S
@@ -3728,7 +3701,6 @@ components:
             exemptions, supplemental check (specialCheckCalc), and reciprocity
             code information.
           type: object
-          additionalProperties: false
         ownerPercent:
           description: >-
             Percentage of employee's ownership in the company, entered as a
@@ -3742,7 +3714,6 @@ components:
             Add or update hourly or salary pay rate, effective date, and pay
             frequency.
           type: object
-          additionalProperties: false
         primaryStateTax:
           description: >-
             Add or update primary state tax code, amount type
@@ -3751,7 +3722,6 @@ components:
             Only one primary state is allowed. Sending an updated primary state
             will replace the current primary state.
           type: object
-          additionalProperties: false
         priorLastName:
           description: 'Prior last name if applicable.<br  />Max length: 40'
           type: object
@@ -3769,7 +3739,6 @@ components:
             adjusted seniority date. Note that companies that are still in
             Implementation cannot hire future employees.
           type: object
-          additionalProperties: false
         suffix:
           description: >-
             Employee name suffix. Common values are *Jr, Sr, II*.<br  />Max
@@ -3782,7 +3751,6 @@ components:
             information cannot be updated. Add or update SUI tax state,
             retirement plan, and statutory information.
           type: object
-          additionalProperties: false
         veteranDescription:
           description: Indicates if employee is a veteran.
           type: object
@@ -3791,18 +3759,14 @@ components:
             Add or update Web Time badge number and charge rate and synchronize
             Paylocity Payroll/HR solution and Web Time employee data.
           type: object
-          additionalProperties: false
         workAddress:
           description: >-
             Add or update employee's work address, phone numbers, and email.
             Work Location drop down field is not included.
           type: object
-          additionalProperties: false
         workEligibility:
           description: Add or update I-9 work authorization information.
           type: object
-          additionalProperties: false
-      additionalProperties: false
     employeeIdResponse:
       description: The EmployeeId Response Model
       type: object
@@ -3825,7 +3789,6 @@ components:
         statusTypeCode:
           description: 'Employee current work status type. <br  />Max length: 10'
           type: object
-      additionalProperties: false
     localTax:
       description: The Local Tax model
       type: object
@@ -3852,7 +3815,6 @@ components:
         workPSD:
           description: 'Work location PSD. Must match Company setup. <br  /> Max length: 9'
           type: object
-      additionalProperties: false
     newAdditionalDirectDeposit:
       type: object
       properties:
@@ -3906,7 +3868,6 @@ components:
             release</small>
           type: string
           format: date
-      additionalProperties: false
     newBenefitClassSetup:
       required:
         - benefitClassSetupEffectiveDate
@@ -3942,7 +3903,6 @@ components:
             Applicable only for ACA Enhanced clients and Benefit Classes with
             ACA Employment Type of Full Time.
           type: boolean
-      additionalProperties: false
     newEmployee:
       required:
         - companyNumber
@@ -4400,7 +4360,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/newWorkEligibility'
-      additionalProperties: false
     newFedTax:
       type: object
       properties:
@@ -4427,7 +4386,6 @@ components:
         tCode:
           description: 'Tax code. <br  /> Max length: 50'
           type: string
-      additionalProperties: false
     newLocalTax:
       type: object
       properties:
@@ -4453,7 +4411,6 @@ components:
         workPSD:
           description: 'Work location PSD. Must match Company setup. <br  /> Max length: 9'
           type: string
-      additionalProperties: false
     newMainDirectDeposit:
       type: object
       properties:
@@ -4496,7 +4453,6 @@ components:
             release</small>
           type: string
           format: date
-      additionalProperties: false
     newStateTax:
       type: object
       properties:
@@ -4541,7 +4497,6 @@ components:
         tCode:
           description: 'State tax code.<br  /> Max length: 50'
           type: string
-      additionalProperties: false
     newWorkEligibility:
       type: object
       properties:
@@ -4608,7 +4563,6 @@ components:
             If Foreign Passport number is provided, provide its country of
             issuance. Must match Paylocity setup.<br  /> Max length: 30
           type: string
-      additionalProperties: false
     nonPrimaryStateTax:
       description: The Non-Primary State Tax model
       type: object
@@ -4671,7 +4625,6 @@ components:
         w4FormYear:
           description: The state W4 form year <br  />Integer
           type: integer
-      additionalProperties: false
     onboarding:
       required:
         - firstName
@@ -4826,7 +4779,6 @@ components:
         zip:
           description: 'Employee home zip code. <br  />Max length: 10'
           type: string
-      additionalProperties: false
     payStatementDetails:
       description: The pay statement details model
       type: object
@@ -4865,7 +4817,6 @@ components:
         year:
           description: .<br />
           type: integer
-      additionalProperties: false
     payStatementSummary:
       description: The pay statement summary model
       type: object
@@ -4930,7 +4881,6 @@ components:
         year:
           description: .<br />
           type: integer
-      additionalProperties: false
     primaryPayRate:
       type: object
       properties:
@@ -4983,7 +4933,6 @@ components:
             Employee gross salary per pay period used with payType Salary.<br 
             />Decimal (12,2)
           type: number
-      additionalProperties: false
     stateTax:
       description: The State Tax model
       type: object
@@ -5043,7 +4992,6 @@ components:
         w4FormYear:
           description: The state W4 form year <br  />Integer
           type: integer
-      additionalProperties: false
     sensitiveData:
       description: The sensitive data model
       type: object
@@ -5051,20 +4999,15 @@ components:
         disability:
           description: Add or update disability data.
           type: object
-          additionalProperties: false
         ethnicity:
           description: Add or update ethnicity data.
           type: object
-          additionalProperties: false
         gender:
           description: Add or update gender data.
           type: object
-          additionalProperties: false
         veteran:
           description: Add or update veteran data.
           type: object
-          additionalProperties: false
-      additionalProperties: false
     stagedEmployee:
       description: The staged employee model
       type: object
@@ -5081,7 +5024,6 @@ components:
           items:
             description: The additional direct deposit model
             type: object
-            additionalProperties: false
         benefitSetup:
           description: >-
             Add setup values used for employee benefits integration, insurance
@@ -5091,7 +5033,6 @@ components:
           items:
             description: The benefit setup model
             type: object
-            additionalProperties: false
         birthDate:
           description: >-
             Employee birthdate. Common formats include *MM-DD-CCYY*,
@@ -5105,7 +5046,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customDateFields:
           description: Up to 8 custom fields of the date type value.
           maxItems: 8
@@ -5113,7 +5053,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customDropDownFields:
           description: Up to 8 custom fields of the dropdown type value.
           maxItems: 8
@@ -5121,7 +5060,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customNumberFields:
           description: Up to 8 custom fields of numeric type value.
           maxItems: 8
@@ -5129,7 +5067,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         customTextFields:
           description: Up to 8 custom fields of text type value.
           maxItems: 8
@@ -5137,7 +5074,6 @@ components:
           items:
             description: ''
             type: object
-            additionalProperties: false
         departmentPosition:
           description: >-
             Add home department cost center, position, supervisor, reviewer,
@@ -5147,7 +5083,6 @@ components:
           items:
             description: The Department Position model
             type: object
-            additionalProperties: false
         disabilityDescription:
           description: Indicates if employee has disability status.
           type: object
@@ -5168,7 +5103,6 @@ components:
           items:
             description: The Federal Tax model
             type: object
-            additionalProperties: false
         firstName:
           description: 'Employee first name. <br  />Max length: 40'
           type: object
@@ -5196,7 +5130,6 @@ components:
           items:
             description: The address model
             type: object
-            additionalProperties: false
         isEmployee943:
           description: Indicates if employee in agriculture or farming.
           type: object
@@ -5215,7 +5148,6 @@ components:
           items:
             description: The Local Tax model
             type: object
-            additionalProperties: false
         mainDirectDeposit:
           description: >-
             Add the main direct deposit account. After deposits are made to any
@@ -5229,7 +5161,6 @@ components:
           items:
             description: The Main Direct Deposit model
             type: object
-            additionalProperties: false
         maritalStatus:
           description: >-
             Employee marital status. Common values *D (Divorced), M (Married), S
@@ -5254,7 +5185,6 @@ components:
           items:
             description: The Non-Primary State Tax model
             type: object
-            additionalProperties: false
         preferredName:
           description: 'Employee preferred display name.<br  /> Max length: 20'
           type: object
@@ -5265,7 +5195,6 @@ components:
           items:
             description: The Primary Pay Rate model
             type: object
-            additionalProperties: false
         primaryStateTax:
           description: >-
             Add primary state tax code, amount type (taxCalculationCode), amount
@@ -5276,7 +5205,6 @@ components:
           items:
             description: The State Tax model
             type: object
-            additionalProperties: false
         priorLastName:
           description: 'Prior last name if applicable.<br  />Max length: 40'
           type: object
@@ -5309,7 +5237,6 @@ components:
           items:
             description: The employee status model
             type: object
-            additionalProperties: false
         suffix:
           description: >-
             Employee name suffix. Common values are *Jr, Sr, II*.<br  />Max
@@ -5343,7 +5270,6 @@ components:
             Add Web Time badge number and charge rate and synchronize Paylocity
             Payroll/HR solution and Web Time employee data.
           type: object
-          additionalProperties: false
         workAddress:
           description: >-
             Add employee's work address, phone numbers, and email. Work Location
@@ -5353,7 +5279,6 @@ components:
           items:
             description: The address model
             type: object
-            additionalProperties: false
         workEligibility:
           description: Add I-9 work authorization information.
           maxItems: 1
@@ -5361,8 +5286,6 @@ components:
           items:
             description: The Work Eligibility model
             type: object
-            additionalProperties: false
-      additionalProperties: false
     trackingNumberResponse:
       description: The Tracking Number Response model
       type: object
@@ -5556,14 +5479,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/webTime'
-      additionalProperties: false
     webTime:
       type: object
       properties:
         syncWebTimeRecord:
           description: UpdateEmployeePreferences.SyncWebTimeRecord
           type: boolean
-      additionalProperties: false
     EmployeeV1CreateNewEmployeeRecordRequest:
       type: object
       properties:
