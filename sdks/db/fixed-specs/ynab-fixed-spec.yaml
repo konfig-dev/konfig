@@ -1,0 +1,3037 @@
+openapi: 3.0.0
+info:
+  title: YNAB API Endpoints
+  description: >-
+    Our API uses a REST based design, leverages the JSON data format, and relies
+    upon HTTPS for transport. We respond with meaningful HTTP response codes and
+    if an error occurs, we include error details in the response body.  API
+    Documentation is at https://api.ynab.com
+  version: 1.0.0
+servers:
+  - url: https://api.ynab.com/v1
+tags:
+  - description: The transactions for a budget
+    name: Transactions
+  - description: The categories for a budget
+    name: Categories
+  - name: Budgets
+  - description: The accounts for a budget
+    name: Accounts
+  - description: >-
+      When you enter a transaction and specify a payee on the YNAB mobile apps,
+      the GPS coordinates for that location are stored, with your permission, so
+      that the next time you are in the same place (like the Grocery store) we
+      can pre-populate nearby payees for you!  It’s handy and saves you time.
+      This resource makes these locations available.  Locations will not be
+      available for all payees.
+    name: Payee Locations
+  - description: The payees for a budget
+    name: Payees
+  - description: >-
+      Each budget contains one or more months, which is where Ready to Assign,
+      Age of Money and category (budgeted / activity / balances) amounts are
+      available.
+    name: Months
+  - description: The scheduled transactions for a budget
+    name: Scheduled Transactions
+  - name: User
+paths:
+  /user:
+    get:
+      tags:
+        - User
+      summary: User info
+      operationId: User_infoGet
+      description: Returns authenticated user information
+      responses:
+        '200':
+          description: The user info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets:
+    get:
+      tags:
+        - Budgets
+      summary: List budgets
+      operationId: Budgets_listSummary
+      description: Returns budgets list with summary information
+      parameters:
+        - description: Whether to include the list of budget accounts
+          name: include_accounts
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: The list of budgets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetSummaryResponse'
+        '404':
+          description: No budgets were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}:
+    get:
+      tags:
+        - Budgets
+      summary: Single budget
+      operationId: Budgets_getBudget
+      description: >-
+        Returns a single budget with all related entities.  This resource is
+        effectively a full budget export.
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The requested budget
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetDetailResponse'
+        '404':
+          description: The specified budget was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/settings:
+    get:
+      tags:
+        - Budgets
+      summary: Budget Settings
+      operationId: Budgets_getSettings
+      description: Returns settings for a budget
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested budget settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetSettingsResponse'
+        '404':
+          description: The specified Budget was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/accounts:
+    get:
+      tags:
+        - Accounts
+      summary: Account list
+      operationId: Accounts_listAll
+      description: Returns all accounts
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested accounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountsResponse'
+        '404':
+          description: No accounts were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - Accounts
+      summary: Create a new account
+      operationId: Accounts_createNewAccount
+      description: Creates a new account
+      parameters:
+        - description: >-
+            The id of the budget ("last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget)
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The account to create.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostAccountWrapper'
+        required: true
+      responses:
+        '201':
+          description: The account was successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
+  /budgets/{budget_id}/accounts/{account_id}:
+    get:
+      tags:
+        - Accounts
+      summary: Single account
+      operationId: Accounts_getSingleAccount
+      description: Returns a single account
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the account
+          name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The requested account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountResponse'
+        '404':
+          description: The requested account was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/categories:
+    get:
+      tags:
+        - Categories
+      summary: List categories
+      operationId: Categories_listByBudgetId
+      description: >-
+        Returns all categories grouped by category group.  Amounts (budgeted,
+        activity, balance, etc.) are specific to the current budget month (UTC).
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The categories grouped by category group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+        '404':
+          description: No categories were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/categories/{category_id}:
+    get:
+      tags:
+        - Categories
+      summary: Single category
+      operationId: Categories_getSingleCategory
+      description: >-
+        Returns a single category.  Amounts (budgeted, activity, balance, etc.)
+        are specific to the current budget month (UTC).
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the category
+          name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '404':
+          description: The category not was found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+        - Categories
+      summary: Update a category
+      operationId: Categories_updateCategoryById
+      description: Update a category
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the category
+          name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The category to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchCategoryWrapper'
+        required: true
+      responses:
+        '200':
+          description: The category was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveCategoryResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
+  /budgets/{budget_id}/months/{month}/categories/{category_id}:
+    get:
+      tags:
+        - Categories
+      summary: Single category for a specific budget month
+      operationId: Categories_getMonthCategoryById
+      description: >-
+        Returns a single category for a specific budget month.  Amounts
+        (budgeted, activity, balance, etc.) are specific to the current budget
+        month (UTC).
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The budget month in ISO format (e.g. 2016-12-01) ("current" can also
+            be used to specify the current calendar month (UTC))
+          name: month
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date
+        - description: The id of the category
+          name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested month category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '404':
+          description: The month category was not was found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+        - Categories
+      summary: Update a category for a specific month
+      operationId: Categories_updateMonthCategory
+      description: >-
+        Update a category for a specific month.  Only `budgeted` amount can be
+        updated.
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The budget month in ISO format (e.g. 2016-12-01) ("current" can also
+            be used to specify the current calendar month (UTC))
+          name: month
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date
+        - description: The id of the category
+          name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: >-
+          The category to update.  Only `budgeted` amount can be updated and any
+          other fields specified will be ignored.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMonthCategoryWrapper'
+        required: true
+      responses:
+        '200':
+          description: The month category was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveCategoryResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
+  /budgets/{budget_id}/payees:
+    get:
+      tags:
+        - Payees
+      summary: List payees
+      operationId: Payees_listAll
+      description: Returns all payees
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The requested list of payees
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayeesResponse'
+        '404':
+          description: No payees were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/payees/{payee_id}:
+    get:
+      tags:
+        - Payees
+      summary: Single payee
+      operationId: Payees_getSinglePayee
+      description: Returns a single payee
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the payee
+          name: payee_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested payee
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayeeResponse'
+        '404':
+          description: The payee was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/payee_locations:
+    get:
+      tags:
+        - Payee Locations
+      summary: List payee locations
+      operationId: PayeeLocations_listAll
+      description: Returns all payee locations
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of payee locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayeeLocationsResponse'
+        '404':
+          description: No payees locations were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/payee_locations/{payee_location_id}:
+    get:
+      tags:
+        - Payee Locations
+      summary: Single payee location
+      operationId: PayeeLocations_getSingle
+      description: Returns a single payee location
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: id of payee location
+          name: payee_location_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The payee location
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayeeLocationResponse'
+        '404':
+          description: The payee location was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/payees/{payee_id}/payee_locations:
+    get:
+      tags:
+        - Payee Locations
+      summary: List locations for a payee
+      operationId: PayeeLocations_listByPayee
+      description: Returns all payee locations for a specified payee
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: id of payee
+          name: payee_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The list of requested payee locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayeeLocationsResponse'
+        '404':
+          description: No payees locations were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/months:
+    get:
+      tags:
+        - Months
+      summary: List budget months
+      operationId: Months_list
+      description: Returns all budget months
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of budget months
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthSummariesResponse'
+        '404':
+          description: No budget months were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/months/{month}:
+    get:
+      tags:
+        - Months
+      summary: Single budget month
+      operationId: Months_getSingle
+      description: Returns a single budget month
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The budget month in ISO format (e.g. 2016-12-01) ("current" can also
+            be used to specify the current calendar month (UTC))
+          name: month
+          in: path
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: The budget month detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthDetailResponse'
+        '404':
+          description: The budget month was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List transactions
+      operationId: Transactions_listTransactions
+      description: Returns budget transactions
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            If specified, only transactions on or after this date will be
+            included.  The date should be ISO formatted (e.g. 2016-12-30).
+          name: since_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - description: >-
+            If specified, only transactions of the specified type will be
+            included. "uncategorized" and "unapproved" are currently supported.
+          name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - uncategorized
+              - unapproved
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponse'
+        '400':
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: No transactions were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - Transactions
+      summary: Create a single transaction or multiple transactions
+      operationId: Transactions_createSingleOrMultiple
+      description: >-
+        Creates a single transaction or multiple transactions.  If you provide a
+        body containing a `transaction` object, a single transaction will be
+        created and if you provide a body containing a `transactions` array,
+        multiple transactions will be created.  Scheduled transactions cannot be
+        created on this endpoint.
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: >-
+          The transaction or transactions to create.  To create a single
+          transaction you can specify a value for the `transaction` object and
+          to create multiple transactions you can specify an array of
+          `transactions`.  It is expected that you will only provide a value for
+          one of these objects.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostTransactionsWrapper'
+        required: true
+      responses:
+        '201':
+          description: The transaction or transactions were successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveTransactionsResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: >-
+            A transaction on the same account with the same `import_id` already
+            exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
+    patch:
+      tags:
+        - Transactions
+      summary: Update multiple transactions
+      operationId: Transactions_updateMultiple
+      description: Updates multiple transactions, by `id` or `import_id`.
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: >-
+          The transactions to update. Each transaction must have either an `id`
+          or `import_id` specified. If `id` is specified as null an `import_id`
+          value can be provided which will allow transaction(s) to be updated by
+          its `import_id`. If an `id` is specified, it will always be used for
+          lookup.  You should not specify both `id` and `import_id`.  Updating
+          an `import_id` on an existing transaction is not allowed; if an
+          `import_id` is specified, it will only be used to lookup the
+          transaction.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchTransactionsWrapper'
+        required: true
+      responses:
+        '209':
+          description: The transactions were successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaveTransactionsResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
+  /budgets/{budget_id}/transactions/import:
+    post:
+      tags:
+        - Transactions
+      summary: Import transactions
+      operationId: Transactions_importLinkedAccounts
+      description: >-
+        Imports available transactions on all linked accounts for the given
+        budget.  Linked accounts allow transactions to be imported directly from
+        a specified financial institution and this endpoint initiates that
+        import.  Sending a request to this endpoint is the equivalent of
+        clicking "Import" on each account in the web application or tapping the
+        "New Transactions" banner in the mobile applications.  The response for
+        this endpoint contains the transaction ids that have been imported.
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The request was successful but there were no transactions to import
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsImportResponse'
+        '201':
+          description: One or more transactions were imported successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsImportResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/transactions/{transaction_id}:
+    get:
+      tags:
+        - Transactions
+      summary: Single transaction
+      operationId: Transactions_getSingleTransaction
+      description: Returns a single transaction
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the transaction
+          name: transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '404':
+          description: The transaction was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Transactions
+      summary: Updates an existing transaction
+      operationId: Transactions_updateExistingTransaction
+      description: Updates a single transaction
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the transaction
+          name: transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The transaction to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutTransactionWrapper'
+        required: true
+      responses:
+        '200':
+          description: The transaction was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
+    delete:
+      tags:
+        - Transactions
+      summary: Deletes an existing transaction
+      operationId: Transactions_deleteExistingTransaction
+      description: Deletes a transaction
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the transaction
+          name: transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The transaction was successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '404':
+          description: The transaction was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/accounts/{account_id}/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List account transactions
+      operationId: Transactions_listByAccount
+      description: Returns all transactions for a specified account
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the account
+          name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            If specified, only transactions on or after this date will be
+            included.  The date should be ISO formatted (e.g. 2016-12-30).
+          name: since_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - description: >-
+            If specified, only transactions of the specified type will be
+            included. "uncategorized" and "unapproved" are currently supported.
+          name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - uncategorized
+              - unapproved
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponse'
+        '404':
+          description: No transactions were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/categories/{category_id}/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List category transactions
+      operationId: Transactions_listByCategory
+      description: Returns all transactions for a specified category
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the category
+          name: category_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            If specified, only transactions on or after this date will be
+            included.  The date should be ISO formatted (e.g. 2016-12-30).
+          name: since_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - description: >-
+            If specified, only transactions of the specified type will be
+            included. "uncategorized" and "unapproved" are currently supported.
+          name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - uncategorized
+              - unapproved
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HybridTransactionsResponse'
+        '404':
+          description: No transactions were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/payees/{payee_id}/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List payee transactions
+      operationId: Transactions_listByPayee
+      description: Returns all transactions for a specified payee
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the payee
+          name: payee_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            If specified, only transactions on or after this date will be
+            included.  The date should be ISO formatted (e.g. 2016-12-30).
+          name: since_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - description: >-
+            If specified, only transactions of the specified type will be
+            included. "uncategorized" and "unapproved" are currently supported.
+          name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - uncategorized
+              - unapproved
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HybridTransactionsResponse'
+        '404':
+          description: No transactions were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/scheduled_transactions:
+    get:
+      tags:
+        - Scheduled Transactions
+      summary: List scheduled transactions
+      operationId: ScheduledTransactions_listAll
+      description: Returns all scheduled transactions
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          name: last_knowledge_of_server
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested scheduled transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledTransactionsResponse'
+        '404':
+          description: No scheduled transactions were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/scheduled_transactions/{scheduled_transaction_id}:
+    get:
+      tags:
+        - Scheduled Transactions
+      summary: Single scheduled transaction
+      operationId: ScheduledTransactions_getSingleScheduledTransaction
+      description: Returns a single scheduled transaction
+      parameters:
+        - description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          name: budget_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The id of the scheduled transaction
+          name: scheduled_transaction_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested Scheduled Transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledTransactionResponse'
+        '404':
+          description: The scheduled transaction was not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      required:
+        - error
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorDetail'
+    ErrorDetail:
+      required:
+        - detail
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        detail:
+          type: string
+    UserResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - user
+          type: object
+          properties:
+            user:
+              $ref: '#/components/schemas/User'
+    User:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    DateFormat:
+      description: >-
+        The date format setting for the budget.  In some cases the format will
+        not be available and will be specified as null.
+      required:
+        - format
+      type: object
+      properties:
+        format:
+          type: string
+      nullable: true
+    CurrencyFormat:
+      description: >-
+        The currency format setting for the budget.  In some cases the format
+        will not be available and will be specified as null.
+      required:
+        - currency_symbol
+        - decimal_digits
+        - decimal_separator
+        - display_symbol
+        - example_format
+        - group_separator
+        - iso_code
+        - symbol_first
+      type: object
+      properties:
+        iso_code:
+          type: string
+        example_format:
+          type: string
+        decimal_digits:
+          type: integer
+          format: int32
+        decimal_separator:
+          type: string
+        symbol_first:
+          type: boolean
+        group_separator:
+          type: string
+        currency_symbol:
+          type: string
+        display_symbol:
+          type: boolean
+      nullable: true
+    BudgetSummaryResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - budgets
+          type: object
+          properties:
+            budgets:
+              type: array
+              items:
+                $ref: '#/components/schemas/BudgetSummary'
+            default_budget:
+              $ref: '#/components/schemas/BudgetSummary'
+    BudgetSummary:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        last_modified_on:
+          description: >-
+            The last time any changes were made to the budget from either a web
+            or mobile client
+          type: string
+          format: date-time
+        first_month:
+          description: The earliest budget month
+          type: string
+          format: date
+        last_month:
+          description: The latest budget month
+          type: string
+          format: date
+        date_format:
+          $ref: '#/components/schemas/DateFormat'
+        currency_format:
+          $ref: '#/components/schemas/CurrencyFormat'
+        accounts:
+          description: >-
+            The budget accounts (only included if `include_accounts=true`
+            specified as query parameter)
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    BudgetDetailResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - budget
+            - server_knowledge
+          type: object
+          properties:
+            budget:
+              $ref: '#/components/schemas/BudgetDetail'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    BudgetDetail:
+      allOf:
+        - $ref: '#/components/schemas/BudgetSummary'
+        - type: object
+          properties:
+            accounts:
+              type: array
+              items:
+                $ref: '#/components/schemas/Account'
+            payees:
+              type: array
+              items:
+                $ref: '#/components/schemas/Payee'
+            payee_locations:
+              type: array
+              items:
+                $ref: '#/components/schemas/PayeeLocation'
+            category_groups:
+              type: array
+              items:
+                $ref: '#/components/schemas/CategoryGroup'
+            categories:
+              type: array
+              items:
+                $ref: '#/components/schemas/Category'
+            months:
+              type: array
+              items:
+                $ref: '#/components/schemas/MonthDetail'
+            transactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/TransactionSummary'
+            subtransactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/SubTransaction'
+            scheduled_transactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/ScheduledTransactionSummary'
+            scheduled_subtransactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/ScheduledSubTransaction'
+    BudgetSettingsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - settings
+          type: object
+          properties:
+            settings:
+              $ref: '#/components/schemas/BudgetSettings'
+    BudgetSettings:
+      required:
+        - currency_format
+        - date_format
+      type: object
+      properties:
+        date_format:
+          $ref: '#/components/schemas/DateFormat'
+        currency_format:
+          $ref: '#/components/schemas/CurrencyFormat'
+    AccountsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - accounts
+            - server_knowledge
+          type: object
+          properties:
+            accounts:
+              type: array
+              items:
+                $ref: '#/components/schemas/Account'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    AccountResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - account
+          type: object
+          properties:
+            account:
+              $ref: '#/components/schemas/Account'
+    Account:
+      required:
+        - balance
+        - cleared_balance
+        - closed
+        - deleted
+        - id
+        - name
+        - on_budget
+        - transfer_payee_id
+        - type
+        - uncleared_balance
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/AccountType'
+        on_budget:
+          description: Whether this account is on budget or not
+          type: boolean
+        closed:
+          description: Whether this account is closed or not
+          type: boolean
+        note:
+          type: string
+          nullable: true
+        balance:
+          description: The current balance of the account in milliunits format
+          type: integer
+          format: int64
+        cleared_balance:
+          description: The current cleared balance of the account in milliunits format
+          type: integer
+          format: int64
+        uncleared_balance:
+          description: The current uncleared balance of the account in milliunits format
+          type: integer
+          format: int64
+        transfer_payee_id:
+          description: The payee id which should be used when transferring to this account
+          type: string
+          nullable: true
+          format: uuid
+        direct_import_linked:
+          description: >-
+            Whether or not the account is linked to a financial institution for
+            automatic transaction import.
+          type: boolean
+        direct_import_in_error:
+          description: >-
+            If an account linked to a financial institution
+            (direct_import_linked=true) and the linked connection is not in a
+            healthy state, this will be true.
+          type: boolean
+        last_reconciled_at:
+          description: A date/time specifying when the account was last reconciled.
+          type: string
+          nullable: true
+          format: date-time
+        debt_original_balance:
+          description: >-
+            The original debt/loan account balance, specified in milliunits
+            format.
+          type: integer
+          nullable: true
+          format: int64
+        debt_interest_rates:
+          $ref: '#/components/schemas/LoanAccountPeriodicValue'
+        debt_minimum_payments:
+          $ref: '#/components/schemas/LoanAccountPeriodicValue'
+        debt_escrow_amounts:
+          $ref: '#/components/schemas/LoanAccountPeriodicValue'
+        deleted:
+          description: >-
+            Whether or not the account has been deleted.  Deleted accounts will
+            only be included in delta requests.
+          type: boolean
+    PostAccountWrapper:
+      required:
+        - account
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/SaveAccount'
+    SaveAccount:
+      required:
+        - balance
+        - name
+        - type
+      type: object
+      properties:
+        name:
+          description: The name of the account
+          type: string
+        type:
+          $ref: '#/components/schemas/AccountType'
+        balance:
+          description: The current balance of the account in milliunits format
+          type: integer
+          format: int64
+    LoanAccountPeriodicValue:
+      type: object
+      nullable: true
+      additionalProperties:
+        type: integer
+        format: int64
+    AccountType:
+      description: The type of account
+      type: string
+      enum:
+        - checking
+        - savings
+        - cash
+        - creditCard
+        - lineOfCredit
+        - otherAsset
+        - otherLiability
+        - mortgage
+        - autoLoan
+        - studentLoan
+        - personalLoan
+        - medicalDebt
+        - otherDebt
+    CategoriesResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - category_groups
+            - server_knowledge
+          type: object
+          properties:
+            category_groups:
+              type: array
+              items:
+                $ref: '#/components/schemas/CategoryGroupWithCategories'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    CategoryResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - category
+          type: object
+          properties:
+            category:
+              $ref: '#/components/schemas/Category'
+    CategoryGroupWithCategories:
+      allOf:
+        - $ref: '#/components/schemas/CategoryGroup'
+        - required:
+            - categories
+          type: object
+          properties:
+            categories:
+              description: >-
+                Category group categories.  Amounts (budgeted, activity,
+                balance, etc.) are specific to the current budget month (UTC).
+              type: array
+              items:
+                $ref: '#/components/schemas/Category'
+    CategoryGroup:
+      required:
+        - deleted
+        - hidden
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        hidden:
+          description: Whether or not the category group is hidden
+          type: boolean
+        deleted:
+          description: >-
+            Whether or not the category group has been deleted.  Deleted
+            category groups will only be included in delta requests.
+          type: boolean
+    Category:
+      required:
+        - activity
+        - balance
+        - budgeted
+        - category_group_id
+        - deleted
+        - hidden
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        category_group_id:
+          type: string
+          format: uuid
+        category_group_name:
+          type: string
+        name:
+          type: string
+        hidden:
+          description: Whether or not the category is hidden
+          type: boolean
+        original_category_group_id:
+          description: 'DEPRECATED: No longer used.  Value will always be null.'
+          type: string
+          format: uuid
+          nullable: true
+        note:
+          type: string
+          nullable: true
+        budgeted:
+          description: Budgeted amount in milliunits format
+          type: integer
+          format: int64
+        activity:
+          description: Activity amount in milliunits format
+          type: integer
+          format: int64
+        balance:
+          description: Balance in milliunits format
+          type: integer
+          format: int64
+        goal_type:
+          description: >-
+            The type of goal, if the category has a goal (TB='Target Category
+            Balance', TBD='Target Category Balance by Date', MF='Monthly
+            Funding', NEED='Plan Your Spending')
+          type: string
+          enum:
+            - TB
+            - TBD
+            - MF
+            - NEED
+            - DEBT
+            - null
+          nullable: true
+        goal_day:
+          description: >-
+            A day offset modifier for the goal's due date. When goal_cadence is
+            2 (Weekly), this value specifies which day of the week the goal is
+            due (0 = Sunday, 6 = Saturday). Otherwise, this value specifies
+            which day of the month the goal is due (1 = 1st, 31 = 31st, null =
+            Last day of Month).
+          type: integer
+          format: int32
+          nullable: true
+        goal_cadence:
+          description: >-
+            The goal cadence. Value in range 0-14. There are two subsets of
+            these values which behave differently. For values 0, 1, 2, and 13,
+            the goal's due date repeats every goal_cadence *
+            goal_cadence_frequency, where 0 = None, 1 = Monthly, 2 = Weekly, and
+            13 = Yearly. For example, goal_cadence 1 with goal_cadence_frequency
+            2 means the goal is due every other month. For values 3-12 and 14,
+            goal_cadence_frequency is ignored and the goal's due date repeats
+            every goal_cadence, where 3 = Every 2 Months, 4 = Every 3 Months,
+            ..., 12 = Every 11 Months, and 14 = Every 2 Years.
+          type: integer
+          format: int32
+          nullable: true
+        goal_cadence_frequency:
+          description: >-
+            The goal cadence frequency. When goal_cadence is 0, 1, 2, or 13, a
+            goal's due date repeats every goal_cadence * goal_cadence_frequency.
+            For example, goal_cadence 1 with goal_cadence_frequency 2 means the
+            goal is due every other month.  When goal_cadence is 3-12 or 14,
+            goal_cadence_frequency is ignored.
+          type: integer
+          format: int32
+          nullable: true
+        goal_creation_month:
+          description: The month a goal was created
+          type: string
+          format: date
+          nullable: true
+        goal_target:
+          description: The goal target amount in milliunits
+          type: integer
+          format: int64
+          nullable: true
+        goal_target_month:
+          description: >-
+            The original target month for the goal to be completed.  Only some
+            goal types specify this date.
+          type: string
+          format: date
+          nullable: true
+        goal_percentage_complete:
+          description: The percentage completion of the goal
+          type: integer
+          format: int32
+          nullable: true
+        goal_months_to_budget:
+          description: >-
+            The number of months, including the current month, left in the
+            current goal period.
+          type: integer
+          format: int32
+          nullable: true
+        goal_under_funded:
+          description: >-
+            The amount of funding still needed in the current month to stay on
+            track towards completing the goal within the current goal period.
+            This amount will generally correspond to the 'Underfunded' amount in
+            the web and mobile clients except when viewing a category with a
+            Needed for Spending Goal in a future month.  The web and mobile
+            clients will ignore any funding from a prior goal period when
+            viewing category with a Needed for Spending Goal in a future month.
+          type: integer
+          format: int64
+          nullable: true
+        goal_overall_funded:
+          description: >-
+            The total amount funded towards the goal within the current goal
+            period.
+          type: integer
+          format: int64
+          nullable: true
+        goal_overall_left:
+          description: >-
+            The amount of funding still needed to complete the goal within the
+            current goal period.
+          type: integer
+          format: int64
+          nullable: true
+        deleted:
+          description: >-
+            Whether or not the category has been deleted.  Deleted categories
+            will only be included in delta requests.
+          type: boolean
+    SaveCategoryResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - category
+            - server_knowledge
+          type: object
+          properties:
+            category:
+              $ref: '#/components/schemas/Category'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    PayeesResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - payees
+            - server_knowledge
+          type: object
+          properties:
+            payees:
+              type: array
+              items:
+                $ref: '#/components/schemas/Payee'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    PayeeResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - payee
+          type: object
+          properties:
+            payee:
+              $ref: '#/components/schemas/Payee'
+    Payee:
+      required:
+        - deleted
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        transfer_account_id:
+          description: >-
+            If a transfer payee, the `account_id` to which this payee transfers
+            to
+          type: string
+          nullable: true
+        deleted:
+          description: >-
+            Whether or not the payee has been deleted.  Deleted payees will only
+            be included in delta requests.
+          type: boolean
+    PayeeLocationsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - payee_locations
+          type: object
+          properties:
+            payee_locations:
+              type: array
+              items:
+                $ref: '#/components/schemas/PayeeLocation'
+    PayeeLocationResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - payee_location
+          type: object
+          properties:
+            payee_location:
+              $ref: '#/components/schemas/PayeeLocation'
+    PayeeLocation:
+      required:
+        - deleted
+        - id
+        - latitude
+        - longitude
+        - payee_id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        payee_id:
+          type: string
+          format: uuid
+        latitude:
+          type: string
+        longitude:
+          type: string
+        deleted:
+          description: >-
+            Whether or not the payee location has been deleted.  Deleted payee
+            locations will only be included in delta requests.
+          type: boolean
+    TransactionsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - server_knowledge
+            - transactions
+          type: object
+          properties:
+            transactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/TransactionDetail'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    HybridTransactionsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - transactions
+          type: object
+          properties:
+            transactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/HybridTransaction'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    PutTransactionWrapper:
+      required:
+        - transaction
+      type: object
+      properties:
+        transaction:
+          $ref: '#/components/schemas/ExistingTransaction'
+    PostTransactionsWrapper:
+      type: object
+      properties:
+        transaction:
+          $ref: '#/components/schemas/NewTransaction'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/NewTransaction'
+    PatchTransactionsWrapper:
+      required:
+        - transactions
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaveTransactionWithIdOrImportId'
+    ExistingTransaction:
+      allOf:
+        - type: object
+        - $ref: '#/components/schemas/SaveTransactionWithOptionalFields'
+    NewTransaction:
+      allOf:
+        - $ref: '#/components/schemas/SaveTransactionWithOptionalFields'
+        - type: object
+          properties:
+            import_id:
+              description: >-
+                If specified, a new transaction will be assigned this
+                `import_id` and considered "imported".  We will also attempt to
+                match this imported transaction to an existing "user-entered"
+                transaction on the same account, with the same amount, and with
+                a date +/-10 days from the imported transaction
+                date.<br><br>Transactions imported through File Based Import or
+                Direct Import (not through the API) are assigned an import_id in
+                the format: 'YNAB:[milliunit_amount]:[iso_date]:[occurrence]'.
+                For example, a transaction dated 2015-12-30 in the amount of
+                -$294.23 USD would have an import_id of
+                'YNAB:-294230:2015-12-30:1'.  If a second transaction on the
+                same account was imported and had the same date and same amount,
+                its import_id would be 'YNAB:-294230:2015-12-30:2'.  Using a
+                consistent format will prevent duplicates through Direct Import
+                and File Based Import.<br><br>If import_id is omitted or
+                specified as null, the transaction will be treated as a
+                "user-entered" transaction. As such, it will be eligible to be
+                matched against transactions later being imported (via DI, FBI,
+                or API).
+              maxLength: 36
+              type: string
+              nullable: true
+    SaveTransactionWithIdOrImportId:
+      allOf:
+        - type: object
+          properties:
+            id:
+              description: >-
+                If specified, this id will be used to lookup a transaction by
+                its `id` for the purpose of updating the transaction itself. If
+                not specified, an `import_id` should be supplied.
+              type: string
+              nullable: true
+            import_id:
+              description: >-
+                If specified, this id will be used to lookup a transaction by
+                its `import_id` for the purpose of updating the transaction
+                itself. If not specified, an `id` should be supplied.  You may
+                not provide both an `id` and an `import_id` and updating an
+                `import_id` on an existing transaction is not allowed.
+              maxLength: 36
+              type: string
+              nullable: true
+        - $ref: '#/components/schemas/SaveTransactionWithOptionalFields'
+    SaveTransactionWithOptionalFields:
+      type: object
+      properties:
+        account_id:
+          type: string
+          format: uuid
+        date:
+          description: >-
+            The transaction date in ISO format (e.g. 2016-12-01).  Future dates
+            (scheduled transactions) are not permitted.  Split transaction dates
+            cannot be changed and if a different date is supplied it will be
+            ignored.
+          type: string
+          format: date
+        amount:
+          description: >-
+            The transaction amount in milliunits format.  Split transaction
+            amounts cannot be changed and if a different amount is supplied it
+            will be ignored.
+          type: integer
+          format: int64
+        payee_id:
+          description: >-
+            The payee for the transaction.  To create a transfer between two
+            accounts, use the account transfer payee pointing to the target
+            account.  Account transfer payees are specified as
+            `tranfer_payee_id` on the account resource.
+          type: string
+          nullable: true
+          format: uuid
+        payee_name:
+          description: >-
+            The payee name.  If a `payee_name` value is provided and `payee_id`
+            has a null value, the `payee_name` value will be used to resolve the
+            payee by either (1) a matching payee rename rule (only if
+            `import_id` is also specified) or (2) a payee with the same name or
+            (3) creation of a new payee.
+          maxLength: 50
+          type: string
+          nullable: true
+        category_id:
+          description: >-
+            The category for the transaction.  To configure a split transaction,
+            you can specify null for `category_id` and provide a
+            `subtransactions` array as part of the transaction object.  If an
+            existing transaction is a split, the `category_id` cannot be
+            changed.  Credit Card Payment categories are not permitted and will
+            be ignored if supplied.
+          type: string
+          nullable: true
+          format: uuid
+        memo:
+          maxLength: 200
+          type: string
+          nullable: true
+        cleared:
+          $ref: '#/components/schemas/TransactionClearedStatus'
+        approved:
+          description: >-
+            Whether or not the transaction is approved.  If not supplied,
+            transaction will be unapproved by default.
+          type: boolean
+        flag_color:
+          $ref: '#/components/schemas/TransactionFlagColor'
+        subtransactions:
+          description: >-
+            An array of subtransactions to configure a transaction as a split.
+            Updating `subtransactions` on an existing split transaction is not
+            supported.
+          type: array
+          items:
+            $ref: '#/components/schemas/SaveSubTransaction'
+    SaveSubTransaction:
+      required:
+        - amount
+      type: object
+      properties:
+        amount:
+          description: The subtransaction amount in milliunits format.
+          type: integer
+          format: int64
+        payee_id:
+          description: The payee for the subtransaction.
+          type: string
+          nullable: true
+          format: uuid
+        payee_name:
+          description: >-
+            The payee name.  If a `payee_name` value is provided and `payee_id`
+            has a null value, the `payee_name` value will be used to resolve the
+            payee by either (1) a matching payee rename rule (only if import_id
+            is also specified on parent transaction) or (2) a payee with the
+            same name or (3) creation of a new payee.
+          maxLength: 50
+          type: string
+          nullable: true
+        category_id:
+          description: >-
+            The category for the subtransaction.  Credit Card Payment categories
+            are not permitted and will be ignored if supplied.
+          type: string
+          nullable: true
+          format: uuid
+        memo:
+          maxLength: 200
+          type: string
+          nullable: true
+    SaveTransactionsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - server_knowledge
+            - transaction_ids
+          type: object
+          properties:
+            transaction_ids:
+              description: The transaction ids that were saved
+              type: array
+              items:
+                type: string
+            transaction:
+              $ref: '#/components/schemas/TransactionDetail'
+            transactions:
+              description: >-
+                If multiple transactions were specified, the transactions that
+                were saved
+              type: array
+              items:
+                $ref: '#/components/schemas/TransactionDetail'
+            duplicate_import_ids:
+              description: >-
+                If multiple transactions were specified, a list of import_ids
+                that were not created because of an existing `import_id` found
+                on the same account
+              type: array
+              items:
+                type: string
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    TransactionResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - transaction
+          type: object
+          properties:
+            transaction:
+              $ref: '#/components/schemas/TransactionDetail'
+    TransactionSummary:
+      required:
+        - account_id
+        - amount
+        - approved
+        - cleared
+        - date
+        - deleted
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+        date:
+          description: The transaction date in ISO format (e.g. 2016-12-01)
+          type: string
+          format: date
+        amount:
+          description: The transaction amount in milliunits format
+          type: integer
+          format: int64
+        memo:
+          type: string
+          nullable: true
+        cleared:
+          $ref: '#/components/schemas/TransactionClearedStatus'
+        approved:
+          description: Whether or not the transaction is approved
+          type: boolean
+        flag_color:
+          $ref: '#/components/schemas/TransactionFlagColor'
+        account_id:
+          type: string
+          format: uuid
+        payee_id:
+          type: string
+          nullable: true
+          format: uuid
+        category_id:
+          type: string
+          nullable: true
+          format: uuid
+        transfer_account_id:
+          description: If a transfer transaction, the account to which it transfers
+          type: string
+          nullable: true
+          format: uuid
+        transfer_transaction_id:
+          description: >-
+            If a transfer transaction, the id of transaction on the other side
+            of the transfer
+          type: string
+          nullable: true
+        matched_transaction_id:
+          description: If transaction is matched, the id of the matched transaction
+          type: string
+          nullable: true
+        import_id:
+          description: >-
+            If the transaction was imported, this field is a unique (by account)
+            import identifier.  If this transaction was imported through File
+            Based Import or Direct Import and not through the API, the import_id
+            will have the format:
+            'YNAB:[milliunit_amount]:[iso_date]:[occurrence]'.  For example, a
+            transaction dated 2015-12-30 in the amount of -$294.23 USD would
+            have an import_id of 'YNAB:-294230:2015-12-30:1'.  If a second
+            transaction on the same account was imported and had the same date
+            and same amount, its import_id would be 'YNAB:-294230:2015-12-30:2'.
+          type: string
+          nullable: true
+        import_payee_name:
+          description: >-
+            If the transaction was imported, the payee name that was used when
+            importing and before applying any payee rename rules
+          type: string
+          nullable: true
+        import_payee_name_original:
+          description: >-
+            If the transaction was imported, the original payee name as it
+            appeared on the statement
+          type: string
+          nullable: true
+        debt_transaction_type:
+          description: >-
+            If the transaction is a debt/loan account transaction, the type of
+            transaction
+          type: string
+          enum:
+            - payment
+            - refund
+            - fee
+            - interest
+            - escrow
+            - balanceAdjustment
+            - credit
+            - charge
+            - null
+          nullable: true
+        deleted:
+          description: >-
+            Whether or not the transaction has been deleted.  Deleted
+            transactions will only be included in delta requests.
+          type: boolean
+    TransactionDetail:
+      allOf:
+        - $ref: '#/components/schemas/TransactionSummary'
+        - required:
+            - account_name
+            - subtransactions
+          type: object
+          properties:
+            account_name:
+              type: string
+            payee_name:
+              type: string
+              nullable: true
+            category_name:
+              description: >-
+                The name of the category.  If a split transaction, this will be
+                'Split'.
+              type: string
+              nullable: true
+            subtransactions:
+              description: If a split transaction, the subtransactions.
+              type: array
+              items:
+                $ref: '#/components/schemas/SubTransaction'
+    HybridTransaction:
+      allOf:
+        - $ref: '#/components/schemas/TransactionSummary'
+        - required:
+            - account_name
+            - type
+          type: object
+          properties:
+            type:
+              description: >-
+                Whether the hybrid transaction represents a regular transaction
+                or a subtransaction
+              type: string
+              enum:
+                - transaction
+                - subtransaction
+            parent_transaction_id:
+              description: >-
+                For subtransaction types, this is the id of the parent
+                transaction.  For transaction types, this id will be always be
+                null.
+              type: string
+              nullable: true
+            account_name:
+              type: string
+            payee_name:
+              type: string
+              nullable: true
+            category_name:
+              description: >-
+                The name of the category.  If a split transaction, this will be
+                'Split'.
+              type: string
+    PatchCategoryWrapper:
+      required:
+        - category
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/SaveCategory'
+    SaveCategory:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        note:
+          type: string
+          nullable: true
+        category_group_id:
+          type: string
+          format: uuid
+    PatchMonthCategoryWrapper:
+      required:
+        - category
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/SaveMonthCategory'
+    SaveMonthCategory:
+      required:
+        - budgeted
+      type: object
+      properties:
+        budgeted:
+          description: Budgeted amount in milliunits format
+          type: integer
+          format: int64
+    TransactionsImportResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - transaction_ids
+          type: object
+          properties:
+            transaction_ids:
+              description: The list of transaction ids that were imported.
+              type: array
+              items:
+                type: string
+    BulkResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - bulk
+          type: object
+          properties:
+            bulk:
+              required:
+                - duplicate_import_ids
+                - transaction_ids
+              type: object
+              properties:
+                transaction_ids:
+                  description: The list of Transaction ids that were created.
+                  type: array
+                  items:
+                    type: string
+                duplicate_import_ids:
+                  description: >-
+                    If any Transactions were not created because they had an
+                    `import_id` matching a transaction already on the same
+                    account, the specified import_id(s) will be included in this
+                    list.
+                  type: array
+                  items:
+                    type: string
+    BulkTransactions:
+      required:
+        - transactions
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaveTransactionWithOptionalFields'
+    SubTransaction:
+      required:
+        - amount
+        - deleted
+        - id
+        - transaction_id
+      type: object
+      properties:
+        id:
+          type: string
+        transaction_id:
+          type: string
+        amount:
+          description: The subtransaction amount in milliunits format
+          type: integer
+          format: int64
+        memo:
+          type: string
+          nullable: true
+        payee_id:
+          type: string
+          format: uuid
+          nullable: true
+        payee_name:
+          type: string
+          nullable: true
+        category_id:
+          type: string
+          nullable: true
+          format: uuid
+        category_name:
+          type: string
+          nullable: true
+        transfer_account_id:
+          description: If a transfer, the account_id which the subtransaction transfers to
+          type: string
+          nullable: true
+          format: uuid
+        transfer_transaction_id:
+          description: >-
+            If a transfer, the id of transaction on the other side of the
+            transfer
+          type: string
+          nullable: true
+        deleted:
+          description: >-
+            Whether or not the subtransaction has been deleted.  Deleted
+            subtransactions will only be included in delta requests.
+          type: boolean
+    ScheduledTransactionsResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - scheduled_transactions
+            - server_knowledge
+          type: object
+          properties:
+            scheduled_transactions:
+              type: array
+              items:
+                $ref: '#/components/schemas/ScheduledTransactionDetail'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    ScheduledTransactionResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - scheduled_transaction
+          type: object
+          properties:
+            scheduled_transaction:
+              $ref: '#/components/schemas/ScheduledTransactionDetail'
+    ScheduledTransactionSummary:
+      required:
+        - account_id
+        - amount
+        - date_first
+        - date_next
+        - deleted
+        - frequency
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        date_first:
+          description: The first date for which the Scheduled Transaction was scheduled.
+          type: string
+          format: date
+        date_next:
+          description: The next date for which the Scheduled Transaction is scheduled.
+          type: string
+          format: date
+        frequency:
+          type: string
+          enum:
+            - never
+            - daily
+            - weekly
+            - everyOtherWeek
+            - twiceAMonth
+            - every4Weeks
+            - monthly
+            - everyOtherMonth
+            - every3Months
+            - every4Months
+            - twiceAYear
+            - yearly
+            - everyOtherYear
+        amount:
+          description: The scheduled transaction amount in milliunits format
+          type: integer
+          format: int64
+        memo:
+          type: string
+          nullable: true
+        flag_color:
+          $ref: '#/components/schemas/TransactionFlagColor'
+        account_id:
+          type: string
+          format: uuid
+        payee_id:
+          type: string
+          nullable: true
+          format: uuid
+        category_id:
+          type: string
+          nullable: true
+          format: uuid
+        transfer_account_id:
+          description: >-
+            If a transfer, the account_id which the scheduled transaction
+            transfers to
+          type: string
+          nullable: true
+          format: uuid
+        deleted:
+          description: >-
+            Whether or not the scheduled transaction has been deleted.  Deleted
+            scheduled transactions will only be included in delta requests.
+          type: boolean
+    ScheduledTransactionDetail:
+      allOf:
+        - $ref: '#/components/schemas/ScheduledTransactionSummary'
+        - required:
+            - account_name
+            - subtransactions
+          type: object
+          properties:
+            account_name:
+              type: string
+            payee_name:
+              type: string
+              nullable: true
+            category_name:
+              description: >-
+                The name of the category.  If a split scheduled transaction,
+                this will be 'Split'.
+              type: string
+              nullable: true
+            subtransactions:
+              description: If a split scheduled transaction, the subtransactions.
+              type: array
+              items:
+                $ref: '#/components/schemas/ScheduledSubTransaction'
+    ScheduledSubTransaction:
+      required:
+        - amount
+        - deleted
+        - id
+        - scheduled_transaction_id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        scheduled_transaction_id:
+          type: string
+          format: uuid
+        amount:
+          description: The scheduled subtransaction amount in milliunits format
+          type: integer
+          format: int64
+        memo:
+          type: string
+          nullable: true
+        payee_id:
+          type: string
+          nullable: true
+          format: uuid
+        category_id:
+          type: string
+          nullable: true
+          format: uuid
+        transfer_account_id:
+          description: >-
+            If a transfer, the account_id which the scheduled subtransaction
+            transfers to
+          type: string
+          nullable: true
+          format: uuid
+        deleted:
+          description: >-
+            Whether or not the scheduled subtransaction has been deleted.
+            Deleted scheduled subtransactions will only be included in delta
+            requests.
+          type: boolean
+    MonthSummariesResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - months
+            - server_knowledge
+          type: object
+          properties:
+            months:
+              type: array
+              items:
+                $ref: '#/components/schemas/MonthSummary'
+            server_knowledge:
+              description: The knowledge of the server
+              type: integer
+              format: int64
+    MonthDetailResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - month
+          type: object
+          properties:
+            month:
+              $ref: '#/components/schemas/MonthDetail'
+    MonthSummary:
+      required:
+        - activity
+        - budgeted
+        - deleted
+        - income
+        - month
+        - to_be_budgeted
+      type: object
+      properties:
+        month:
+          type: string
+          format: date
+        note:
+          type: string
+          nullable: true
+        income:
+          description: >-
+            The total amount of transactions categorized to 'Inflow: Ready to
+            Assign' in the month
+          type: integer
+          format: int64
+        budgeted:
+          description: The total amount budgeted in the month
+          type: integer
+          format: int64
+        activity:
+          description: >-
+            The total amount of transactions in the month, excluding those
+            categorized to 'Inflow: Ready to Assign'
+          type: integer
+          format: int64
+        to_be_budgeted:
+          description: The available amount for 'Ready to Assign'
+          type: integer
+          format: int64
+        age_of_money:
+          description: The Age of Money as of the month
+          type: integer
+          format: int32
+          nullable: true
+        deleted:
+          description: >-
+            Whether or not the month has been deleted.  Deleted months will only
+            be included in delta requests.
+          type: boolean
+    MonthDetail:
+      allOf:
+        - $ref: '#/components/schemas/MonthSummary'
+        - required:
+            - categories
+          type: object
+          properties:
+            categories:
+              description: >-
+                The budget month categories.  Amounts (budgeted, activity,
+                balance, etc.) are specific to the {month} parameter specified.
+              type: array
+              items:
+                $ref: '#/components/schemas/Category'
+    TransactionFlagColor:
+      description: The transaction flag
+      type: string
+      enum:
+        - red
+        - orange
+        - yellow
+        - green
+        - blue
+        - purple
+        - null
+      nullable: true
+    TransactionClearedStatus:
+      description: The cleared status of the transaction
+      type: string
+      enum:
+        - cleared
+        - uncleared
+        - reconciled
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security:
+  - bearer: []

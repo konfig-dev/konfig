@@ -1,0 +1,74 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /budgets:
+    get: Budgets_listSummary
+  /budgets/{budget_id}:
+    get: Budgets_getBudget
+  /budgets/{budget_id}/accounts:
+    get: Accounts_listAll
+    post: Accounts_createNewAccount
+  /budgets/{budget_id}/accounts/{account_id}:
+    get: Accounts_getSingleAccount
+  /budgets/{budget_id}/accounts/{account_id}/transactions:
+    get: Transactions_listByAccount
+  /budgets/{budget_id}/categories:
+    get: Categories_listByBudgetId
+  /budgets/{budget_id}/categories/{category_id}:
+    get: Categories_getSingleCategory
+    patch: Categories_updateCategoryById
+  /budgets/{budget_id}/categories/{category_id}/transactions:
+    get: Transactions_listByCategory
+  /budgets/{budget_id}/months:
+    get: Months_list
+  /budgets/{budget_id}/months/{month}:
+    get: Months_getSingle
+  /budgets/{budget_id}/months/{month}/categories/{category_id}:
+    get: Categories_getMonthCategoryById
+    patch: Categories_updateMonthCategory
+  /budgets/{budget_id}/payee_locations:
+    get: PayeeLocations_listAll
+  /budgets/{budget_id}/payee_locations/{payee_location_id}:
+    get: PayeeLocations_getSingle
+  /budgets/{budget_id}/payees:
+    get: Payees_listAll
+  /budgets/{budget_id}/payees/{payee_id}:
+    get: Payees_getSinglePayee
+  /budgets/{budget_id}/payees/{payee_id}/payee_locations:
+    get: PayeeLocations_listByPayee
+  /budgets/{budget_id}/payees/{payee_id}/transactions:
+    get: Transactions_listByPayee
+  /budgets/{budget_id}/scheduled_transactions:
+    get: ScheduledTransactions_listAll
+  /budgets/{budget_id}/scheduled_transactions/{scheduled_transaction_id}:
+    get: ScheduledTransactions_getSingleScheduledTransaction
+  /budgets/{budget_id}/settings:
+    get: Budgets_getSettings
+  /budgets/{budget_id}/transactions:
+    get: Transactions_listTransactions
+    patch: Transactions_updateMultiple
+    post: Transactions_createSingleOrMultiple
+  /budgets/{budget_id}/transactions/import:
+    post: Transactions_importLinkedAccounts
+  /budgets/{budget_id}/transactions/{transaction_id}:
+    delete: Transactions_deleteExistingTransaction
+    get: Transactions_getSingleTransaction
+    put: Transactions_updateExistingTransaction
+  /user:
+    get: User_infoGet
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  include_accounts:
+    query: false
+  last_knowledge_of_server:
+    query: false
+  since_date:
+    query: false
+  type:
+    query: false
+validServerUrls: {}

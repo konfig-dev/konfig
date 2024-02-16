@@ -6,17 +6,17 @@ import Description from "./_description.mdx";
 import GettingStarted from "./_getting-started.mdx";
 import { Sdk } from "@site/src/components/Sdk";
 
-export default function PostmarkServerTypeScriptSdk() {
+export default function PostmarkTypeScriptSdk() {
   return (
     <Sdk
       sdkName="postmark-typescript-sdk"
       metaDescription="Send transactional and marketing emails and get them to the inbox on time, every time. Postmark is a fast and reliable email delivery service for developers."
       company="Postmark"
-      serviceName="server"
+      // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/logo.svg"
       clientNameCamelCase="postmark"
       homepage="postmarkapp.com"
-      lastUpdated={new Date("2024-02-16T00:45:04.983Z")}
+      lastUpdated={new Date("2024-02-16T17:42:11.445Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

@@ -6,17 +6,17 @@ import Description from "./_description.mdx";
 import GettingStarted from "./_getting-started.mdx";
 import { Sdk } from "@site/src/components/Sdk";
 
-export default function XCurrentTypeScriptSdk() {
+export default function XTypeScriptSdk() {
   return (
     <Sdk
       sdkName="x-typescript-sdk"
       metaDescription="Publish & analyze posts, optimize ads, & create unique customer experiences with the X API, X Ads API, & X Embeds."
       company="X"
-      serviceName="current"
+      // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.jpg"
       clientNameCamelCase="x"
       homepage="developer.x.com"
-      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
+      lastUpdated={new Date("2024-02-16T17:42:11.445Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/favicon.ico"
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail

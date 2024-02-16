@@ -40,6 +40,19 @@ export type CustomRequest = (
   openapi?: string;
 };
 
+function parseOAS(oas: string, regex: string | undefined): any {
+  if (regex !== undefined) {
+    return extractJsonFromString(oas, regex);
+  }
+  try {
+    return JSON.parse(oas);
+  } catch (e) {
+    if (e instanceof SyntaxError) {
+      return yaml.load(oas);
+    }
+  }
+}
+
 async function executeCustomRequest(key: string, customRequest: CustomRequest) {
   if ("type" in customRequest && customRequest.type === "GET") {
     const getRequest = customRequest;
@@ -53,9 +66,7 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
       },
     }).then((res) => res.text());
 
-    const rawSpec = regex
-      ? extractJsonFromString(rawString, regex)
-      : JSON.parse(rawString);
+    const rawSpec = parseOAS(rawString, regex);
 
     if (getRequest.openapi !== undefined) {
       rawSpec.openapi = getRequest.openapi;
@@ -86,6 +97,10 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "ynab.com": {
+    type: "GET",
+    url: "https://api.ynab.com/papi/open_api_spec.yaml",
+  },
   "nytimes.com_books": {
     lambda: async () => {
       const rawSpecString = await (
