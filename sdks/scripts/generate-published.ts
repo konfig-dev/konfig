@@ -46,7 +46,7 @@ const publishJsonSchema = z.object({
     z
       .object({
         company: z.string(),
-        serviceName: z.string().optional(),
+        serviceName: z.string().or(z.literal(false)).optional(),
         sdkName: z.string(),
         clientName: z.string(),
         metaDescription: z.string().optional(),
@@ -108,14 +108,15 @@ function collectAllPublishData() {
       }
 
       const companyKebabCase = kebabcase(publishData.company.toLowerCase());
+      const serviceName = getServiceName({ publishData, specData });
       const serviceKebabCase =
-        publishData.serviceName !== undefined
-          ? kebabcase(publishData.serviceName.toLowerCase())
-          : null;
+        serviceName !== undefined
+          ? kebabcase(serviceName.toLowerCase())
+          : undefined;
 
       const dynamicPath = generateSdkDynamicPath(
         publishData.company,
-        publishData.serviceName
+        serviceKebabCase
       );
 
       // find existence of files in openapi-examples
@@ -185,6 +186,25 @@ function collectAllPublishData() {
       ];
     })
   );
+}
+
+/**
+ * Handle the overwrite/cancel logic of the serviceName property
+ */
+function getServiceName({
+  publishData,
+  specData,
+}: {
+  publishData: { serviceName?: string | false };
+  specData: { serviceName?: string };
+}): string | undefined {
+  if (publishData.serviceName === false) {
+    return undefined;
+  }
+  if (publishData.serviceName !== undefined) {
+    return publishData.serviceName;
+  }
+  return specData.serviceName;
 }
 
 async function main() {
@@ -284,6 +304,8 @@ async function main() {
       yaml.dump(oas.spec)
     );
 
+    const serviceName = getServiceName({ publishData, specData });
+
     const merged: Published = {
       ...specData,
       ...publishData,
@@ -299,6 +321,7 @@ async function main() {
       lastUpdated: now,
       typescriptSdkUsageCode,
       fixedSpecFileName: fixedSpecFileNames[spec],
+      serviceName,
     };
 
     if (
