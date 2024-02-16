@@ -17,7 +17,7 @@ export default function NotionTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notion/logo.png"
       clientNameCamelCase="notion"
       homepage="developers.notion.com"
-      lastUpdated={new Date("2024-02-03T02:02:06.161Z")}
+      lastUpdated={new Date("2024-02-09T23:50:03.376Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notion/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -27,10 +27,10 @@ export default function NotionTypeScriptSdk() {
       methods={[
   {
     "url": "/v1/oauth/token",
-    "method": "createToken",
+    "method": "generateAccess",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Token",
+    "typeScriptTag": "token",
     "description": "Create a token",
     "parameters": [
       {
@@ -71,10 +71,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/blocks/{block_id}/children",
-    "method": "getBlockChildren",
+    "method": "getChildren",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Block",
+    "typeScriptTag": "block",
     "description": "Retrieve block children",
     "parameters": [
       {
@@ -113,10 +113,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/blocks/{block_id}/children",
-    "method": "appendBlockChildren",
+    "method": "appendChildren",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Block",
+    "typeScriptTag": "block",
     "description": "Append block children",
     "parameters": [
       {
@@ -157,10 +157,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/blocks/{block_id}",
-    "method": "removeBlock",
+    "method": "removeBlockById",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Block",
+    "typeScriptTag": "block",
     "description": "Delete a block",
     "parameters": [
       {
@@ -188,10 +188,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/blocks/{block_id}",
-    "method": "getBlock",
+    "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Block",
+    "typeScriptTag": "block",
     "description": "Retrieve a block",
     "parameters": [
       {
@@ -219,10 +219,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/blocks/{block_id}",
-    "method": "updateBlock",
+    "method": "updateBlockById",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Block",
+    "typeScriptTag": "block",
     "description": "Update a block",
     "parameters": [
       {
@@ -260,10 +260,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/pages",
-    "method": "createPage",
+    "method": "createNewPage",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Page",
+    "typeScriptTag": "page",
     "description": "Create a page",
     "parameters": [
       {
@@ -326,8 +326,8 @@ export default function NotionTypeScriptSdk() {
     "url": "/v1/pages/{page_id}",
     "method": "getPage",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Page",
+    "typeScriptTag": "page",
     "description": "Retrieve a page",
     "parameters": [
       {
@@ -361,10 +361,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/pages/{page_id}",
-    "method": "updatePageProperties",
+    "method": "updateProperties",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Page",
+    "typeScriptTag": "page",
     "description": "Update page properties",
     "parameters": [
       {
@@ -420,10 +420,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/pages/{page_id}/properties/{property_id}",
-    "method": "getPagePropertyItem",
+    "method": "getPropertyItem",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Page",
+    "typeScriptTag": "page",
     "description": "Retrieve a page property item",
     "parameters": [
       {
@@ -463,10 +463,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/databases",
-    "method": "createDatabase",
+    "method": "createNewDatabase",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Database",
+    "typeScriptTag": "database",
     "description": "Create a database",
     "parameters": [
       {
@@ -507,10 +507,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/databases/{database_id}/query",
-    "method": "queryDatabase",
+    "method": "executeQuery",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Database",
+    "typeScriptTag": "database",
     "description": "Query a database",
     "parameters": [
       {
@@ -566,8 +566,8 @@ export default function NotionTypeScriptSdk() {
     "url": "/v1/databases/{database_id}",
     "method": "getDatabase",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Database",
+    "typeScriptTag": "database",
     "description": "Retrieve a database",
     "parameters": [
       {
@@ -606,8 +606,8 @@ export default function NotionTypeScriptSdk() {
     "url": "/v1/databases/{database_id}",
     "method": "updateDatabase",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Database",
+    "typeScriptTag": "database",
     "description": "Update a database",
     "parameters": [
       {
@@ -658,10 +658,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/users",
-    "method": "listUsers",
+    "method": "listAllUsers",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "User",
+    "typeScriptTag": "user",
     "description": "List all users",
     "parameters": [
       {
@@ -694,10 +694,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/users/{user_id}",
-    "method": "getUser",
+    "method": "getUserById",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "User",
+    "typeScriptTag": "user",
     "description": "Retrieve a user",
     "parameters": [
       {
@@ -728,8 +728,8 @@ export default function NotionTypeScriptSdk() {
     "url": "/v1/users/me",
     "method": "getTokenBotUser",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "User",
+    "typeScriptTag": "user",
     "description": "Retrieve your token's bot user",
     "parameters": [
       {
@@ -752,10 +752,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/comments",
-    "method": "getComments",
+    "method": "getList",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Comment",
+    "typeScriptTag": "comment",
     "description": "Retrieve comments",
     "parameters": [
       {
@@ -794,10 +794,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/comments",
-    "method": "createComment",
+    "method": "createNew",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Comment",
+    "typeScriptTag": "comment",
     "description": "Create comment",
     "parameters": [
       {
@@ -838,10 +838,10 @@ export default function NotionTypeScriptSdk() {
   },
   {
     "url": "/v1/search",
-    "method": "searchByTitle",
+    "method": "byTitle",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Search",
+    "typeScriptTag": "search",
     "description": "Search by title",
     "parameters": [
       {

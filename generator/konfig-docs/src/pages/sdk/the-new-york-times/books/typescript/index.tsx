@@ -16,7 +16,7 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/logo.png"
       clientNameCamelCase="nyt"
       homepage="developer.nytimes.com"
-      lastUpdated={new Date("2024-02-03T01:14:23.536Z")}
+      lastUpdated={new Date("2024-02-09T23:50:03.376Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -26,10 +26,10 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
       methods={[
   {
     "url": "/lists.json",
-    "method": "getBestSellersList",
+    "method": "getBestSellers",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "List",
+    "typeScriptTag": "list",
     "description": "Best Sellers List",
     "parameters": [
       {
@@ -63,10 +63,10 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
   },
   {
     "url": "/lists/{date}/{list}.json",
-    "method": "getBestSellersByDate",
+    "method": "getByDate",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "List",
+    "typeScriptTag": "list",
     "description": "Best Sellers List by Date",
     "parameters": [
       {
@@ -96,10 +96,10 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
   },
   {
     "url": "/lists/full-overview.json",
-    "method": "getBestSellersByDate",
+    "method": "getAllBestSellers",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "List",
+    "typeScriptTag": "list",
     "description": "Best Sellers List Full Overview",
     "parameters": [
       {
@@ -119,8 +119,8 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
     "url": "/lists/overview.json",
     "method": "getBestSellersOverview",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "List",
+    "typeScriptTag": "list",
     "description": "Best Sellers List Overview",
     "parameters": [
       {
@@ -138,10 +138,10 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
   },
   {
     "url": "/lists/names.json",
-    "method": "getBestSellersListNames",
+    "method": "getNames",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "List",
+    "typeScriptTag": "list",
     "description": "Best Sellers List Names",
     "parameters": [],
     "responses": [
@@ -153,10 +153,10 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
   },
   {
     "url": "/lists/best-sellers/history.json",
-    "method": "getBestSellersHistory",
+    "method": "getHistory",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "List",
+    "typeScriptTag": "list",
     "description": "Best Sellers List History",
     "parameters": [
       {
@@ -211,8 +211,8 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
     "url": "/reviews.json",
     "method": "getBookReviews",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "core",
-    "typeScriptTag": "core",
+    "tag": "Review",
+    "typeScriptTag": "review",
     "description": "Reviews",
     "parameters": [
       {
