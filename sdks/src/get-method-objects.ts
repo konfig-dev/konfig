@@ -130,7 +130,9 @@ export function getMethodObjects(spec: Spec): Method[] {
 function getTypescriptTag(tag: string) {
   // remove parentheses characters ("(" & ")") from tag
   const withoutParentheses = tag.replace(/[()]/g, "");
-  return camelcase(withoutParentheses);
+  // remove backslashes ("\"") from tag
+  const withoutBackslashes = withoutParentheses.replace(/\\/g, "");
+  return camelcase(withoutBackslashes);
 }
 
 function getMethodName({

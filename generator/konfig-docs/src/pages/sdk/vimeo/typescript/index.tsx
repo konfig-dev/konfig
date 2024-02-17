@@ -16,7 +16,7 @@ export default function VimeoTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/logo.avif"
       clientNameCamelCase="vimeo"
       homepage="developer.vimeo.com"
-      lastUpdated={new Date("2024-02-17T00:28:34.951Z")}
+      lastUpdated={new Date("2024-02-17T00:35:06.614Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg"
       contactUrl="https://developer.vimeo.com/help"
       // Missing contactEmail
@@ -29,7 +29,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "endpoints",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "API Information\\Essentials",
-    "typeScriptTag": "apiInformation\\essentials",
+    "typeScriptTag": "apiInformationEssentials",
     "description": "Get the API specification",
     "parameters": [
       {
@@ -57,7 +57,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listInShowcase",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Get all the user's videos that can be added to or removed from a showcase",
     "parameters": [
       {
@@ -111,7 +111,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "categories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Essentials",
-    "typeScriptTag": "categories\\essentials",
+    "typeScriptTag": "categoriesEssentials",
     "description": "Get all categories",
     "parameters": [
       {
@@ -151,7 +151,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "category",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Essentials",
-    "typeScriptTag": "categories\\essentials",
+    "typeScriptTag": "categoriesEssentials",
     "description": "Get a specific category",
     "parameters": [
       {
@@ -177,7 +177,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listInCategory",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Channels",
-    "typeScriptTag": "categories\\channels",
+    "typeScriptTag": "categoriesChannels",
     "description": "Get all the channels in a category",
     "parameters": [
       {
@@ -233,7 +233,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllGroups",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Groups",
-    "typeScriptTag": "categories\\groups",
+    "typeScriptTag": "categoriesGroups",
     "description": "Get all the groups in a category",
     "parameters": [
       {
@@ -289,7 +289,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listVideosInCategory",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Videos",
-    "typeScriptTag": "categories\\videos",
+    "typeScriptTag": "categoriesVideos",
     "description": "Get all the videos in a category",
     "parameters": [
       {
@@ -357,7 +357,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getVideoInCategory",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Videos",
-    "typeScriptTag": "categories\\videos",
+    "typeScriptTag": "categoriesVideos",
     "description": "Get a specific video in a category",
     "parameters": [
       {
@@ -389,7 +389,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "channels",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Get all channels",
     "parameters": [
       {
@@ -445,7 +445,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "channel",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Create a channel",
     "parameters": [
       {
@@ -493,7 +493,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "channel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Delete a channel",
     "parameters": [
       {
@@ -515,7 +515,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "channel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Get a specific channel",
     "parameters": [
       {
@@ -537,7 +537,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "channel",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Edit a channel",
     "parameters": [
       {
@@ -583,7 +583,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getBelongingCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Categories",
-    "typeScriptTag": "channels\\categories",
+    "typeScriptTag": "channelsCategories",
     "description": "Get all the categories to which a channel belongs",
     "parameters": [
       {
@@ -609,7 +609,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addChannelToMultipleCategories",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Categories",
-    "typeScriptTag": "channels\\categories",
+    "typeScriptTag": "channelsCategories",
     "description": "Add a channel to a list of categories",
     "parameters": [
       {
@@ -649,7 +649,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeChannelFromCategory",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Categories",
-    "typeScriptTag": "channels\\categories",
+    "typeScriptTag": "channelsCategories",
     "description": "Remove a channel from a category",
     "parameters": [
       {
@@ -685,7 +685,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "channel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Categories",
-    "typeScriptTag": "channels\\categories",
+    "typeScriptTag": "channelsCategories",
     "description": "Add a channel to a specific category",
     "parameters": [
       {
@@ -725,7 +725,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultipleFromChannel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Remove a list of moderators from a channel",
     "parameters": [
       {
@@ -757,7 +757,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listByChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Get all the moderators of a channel",
     "parameters": [
       {
@@ -809,7 +809,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "replaceModerators",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Replace the moderators of a channel",
     "parameters": [
       {
@@ -849,7 +849,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "bulkAddModerators",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Add a list of moderators to a channel",
     "parameters": [
       {
@@ -879,7 +879,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeModerator",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Remove a specific moderator from a channel",
     "parameters": [
       {
@@ -911,7 +911,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificModerator",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Get a specific moderator of a channel",
     "parameters": [
       {
@@ -939,7 +939,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addModeratorToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Moderators",
-    "typeScriptTag": "channels\\moderators",
+    "typeScriptTag": "channelsModerators",
     "description": "Add a specific moderator to a channel",
     "parameters": [
       {
@@ -971,7 +971,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAccessibleUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Private channel members",
-    "typeScriptTag": "channels\\privateChannelMembers",
+    "typeScriptTag": "channelsPrivateChannelMembers",
     "description": "Get all the users who can access a private channel",
     "parameters": [
       {
@@ -1019,7 +1019,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "permitUserAccess",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Private channel members",
-    "typeScriptTag": "channels\\privateChannelMembers",
+    "typeScriptTag": "channelsPrivateChannelMembers",
     "description": "Permit a list of users to access a private channel",
     "parameters": [
       {
@@ -1063,7 +1063,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "restrictUserAccess",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Private channel members",
-    "typeScriptTag": "channels\\privateChannelMembers",
+    "typeScriptTag": "channelsPrivateChannelMembers",
     "description": "Restrict a user from accessing a private channel",
     "parameters": [
       {
@@ -1095,7 +1095,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "permitUserAccess",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Private channel members",
-    "typeScriptTag": "channels\\privateChannelMembers",
+    "typeScriptTag": "channelsPrivateChannelMembers",
     "description": "Permit a specific user to access a private channel",
     "parameters": [
       {
@@ -1127,7 +1127,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllChannelTags",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Tags",
-    "typeScriptTag": "channels\\tags",
+    "typeScriptTag": "channelsTags",
     "description": "Get all the tags that have been added to a channel",
     "parameters": [
       {
@@ -1153,7 +1153,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultipleTagsToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Tags",
-    "typeScriptTag": "channels\\tags",
+    "typeScriptTag": "channelsTags",
     "description": "Add a list of tags to a channel",
     "parameters": [
       {
@@ -1193,7 +1193,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeTagFromChannel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Tags",
-    "typeScriptTag": "channels\\tags",
+    "typeScriptTag": "channelsTags",
     "description": "Remove a tag from a channel",
     "parameters": [
       {
@@ -1229,7 +1229,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkIfTagAddedToChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Tags",
-    "typeScriptTag": "channels\\tags",
+    "typeScriptTag": "channelsTags",
     "description": "Check if a tag has been added to a channel",
     "parameters": [
       {
@@ -1261,7 +1261,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addTagToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Tags",
-    "typeScriptTag": "channels\\tags",
+    "typeScriptTag": "channelsTags",
     "description": "Add a specific tag to a channel",
     "parameters": [
       {
@@ -1297,7 +1297,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listChannelFollowers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Get all the followers of a channel",
     "parameters": [
       {
@@ -1359,7 +1359,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultipleFromChannel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Remove a list of videos from a channel",
     "parameters": [
       {
@@ -1391,7 +1391,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listInChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Get all the videos in a channel",
     "parameters": [
       {
@@ -1469,7 +1469,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultipleToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Add a list of videos to a channel",
     "parameters": [
       {
@@ -1501,7 +1501,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeSpecificVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Remove a specific video from a channel",
     "parameters": [
       {
@@ -1533,7 +1533,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVideoInChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Get a specific video in a channel",
     "parameters": [
       {
@@ -1565,7 +1565,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addVideoToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Add a specific video to a channel",
     "parameters": [
       {
@@ -1597,7 +1597,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllReplies",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Get all the video comments on a video",
     "parameters": [
       {
@@ -1643,7 +1643,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addNewComment",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Add a video comment to a video",
     "parameters": [
       {
@@ -1689,7 +1689,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllCreditedUsersInVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Get all the credited users in a video",
     "parameters": [
       {
@@ -1747,7 +1747,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addUserCreditInVideo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Credit a user in a video",
     "parameters": [
       {
@@ -1807,7 +1807,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUsersWhoLikedVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Get all the users who have liked a video",
     "parameters": [
       {
@@ -1859,7 +1859,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllByVideoId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Get all the thumbnails of a video",
     "parameters": [
       {
@@ -1899,7 +1899,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addThumbnailToVideo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Add a video thumbnail",
     "parameters": [
       {
@@ -1937,7 +1937,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAccessibleUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Unlisted videos",
-    "typeScriptTag": "videos\\unlistedVideos",
+    "typeScriptTag": "videosUnlistedVideos",
     "description": "Get the users who can access an unlisted video",
     "parameters": [
       {
@@ -1981,7 +1981,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "grantAccessToUsers",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Unlisted videos",
-    "typeScriptTag": "videos\\unlistedVideos",
+    "typeScriptTag": "videosUnlistedVideos",
     "description": "Permit a list of users to access an unlisted video",
     "parameters": [
       {
@@ -2009,7 +2009,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Get all the text tracks of a video",
     "parameters": [
       {
@@ -2053,7 +2053,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addTextTrackToVideo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Add a text track to a video",
     "parameters": [
       {
@@ -2121,7 +2121,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllVideoVersions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Versions",
-    "typeScriptTag": "videos\\versions",
+    "typeScriptTag": "videosVersions",
     "description": "Get all the versions of a video",
     "parameters": [
       {
@@ -2169,7 +2169,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllContentRatings",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Content ratings",
-    "typeScriptTag": "videos\\contentRatings",
+    "typeScriptTag": "videosContentRatings",
     "description": "Get all content ratings",
     "parameters": [],
     "responses": [
@@ -2184,7 +2184,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllCcLicenses",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Creative Commons",
-    "typeScriptTag": "videos\\creativeCommons",
+    "typeScriptTag": "videosCreativeCommons",
     "description": "Get all Creative Commons licenses",
     "parameters": [
       {
@@ -2212,7 +2212,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteDestination",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Delete a live event destination",
     "parameters": [
       {
@@ -2242,7 +2242,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getDestination",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get a live event destination",
     "parameters": [
       {
@@ -2276,7 +2276,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateDestination",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Update a live event destination",
     "parameters": [
       {
@@ -2354,7 +2354,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "groups",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Essentials",
-    "typeScriptTag": "groups\\essentials",
+    "typeScriptTag": "groupsEssentials",
     "description": "Get all groups",
     "parameters": [
       {
@@ -2406,7 +2406,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "group",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Groups\\Essentials",
-    "typeScriptTag": "groups\\essentials",
+    "typeScriptTag": "groupsEssentials",
     "description": "Create a group",
     "parameters": [
       {
@@ -2442,7 +2442,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "group",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups\\Essentials",
-    "typeScriptTag": "groups\\essentials",
+    "typeScriptTag": "groupsEssentials",
     "description": "Delete a group",
     "parameters": [
       {
@@ -2464,7 +2464,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "group",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Essentials",
-    "typeScriptTag": "groups\\essentials",
+    "typeScriptTag": "groupsEssentials",
     "description": "Get a specific group",
     "parameters": [
       {
@@ -2486,7 +2486,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getGroupUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Users",
-    "typeScriptTag": "groups\\users",
+    "typeScriptTag": "groupsUsers",
     "description": "Get all the members of a group",
     "parameters": [
       {
@@ -2548,7 +2548,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllGroupVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Videos",
-    "typeScriptTag": "groups\\videos",
+    "typeScriptTag": "groupsVideos",
     "description": "Get all the videos in a group",
     "parameters": [
       {
@@ -2616,7 +2616,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromGroup",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups\\Videos",
-    "typeScriptTag": "groups\\videos",
+    "typeScriptTag": "groupsVideos",
     "description": "Remove a video from a group",
     "parameters": [
       {
@@ -2644,7 +2644,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSingleVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Videos",
-    "typeScriptTag": "groups\\videos",
+    "typeScriptTag": "groupsVideos",
     "description": "Get a specific video in a group",
     "parameters": [
       {
@@ -2676,7 +2676,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addToGroup",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Groups\\Videos",
-    "typeScriptTag": "groups\\videos",
+    "typeScriptTag": "groupsVideos",
     "description": "Add a video to a group",
     "parameters": [
       {
@@ -2708,7 +2708,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "languages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Languages",
-    "typeScriptTag": "videos\\languages",
+    "typeScriptTag": "videosLanguages",
     "description": "Get all languages",
     "parameters": [
       {
@@ -2742,7 +2742,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteMultipleEvents",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Delete a list of live events",
     "parameters": [
       {
@@ -2759,7 +2759,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserLiveEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Get all the live events that belong to the user",
     "parameters": [
       {
@@ -2817,7 +2817,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createEvent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Create a live event",
     "parameters": [
       {
@@ -2983,7 +2983,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteSpecificLiveEvent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Delete a specific live event",
     "parameters": [
       {
@@ -3009,7 +3009,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getEventById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Get a specific live event",
     "parameters": [
       {
@@ -3049,7 +3049,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateEventBelongingToAuthenticatedUser",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Update a live event",
     "parameters": [
       {
@@ -3183,7 +3183,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createRtmpLinks",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event activation",
-    "typeScriptTag": "live\\eventActivation",
+    "typeScriptTag": "liveEventActivation",
     "description": "Activate a live event",
     "parameters": [
       {
@@ -3239,7 +3239,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editPreference",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event automated closed captions",
-    "typeScriptTag": "live\\eventAutomatedClosedCaptions",
+    "typeScriptTag": "liveEventAutomatedClosedCaptions",
     "description": "Edit the automated closed captions preference of a live event",
     "parameters": [
       {
@@ -3291,7 +3291,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "eventTermination",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event end",
-    "typeScriptTag": "live\\eventEnd",
+    "typeScriptTag": "liveEventEnd",
     "description": "End a live event",
     "parameters": [
       {
@@ -3335,7 +3335,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "toggleOption",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event low latency",
-    "typeScriptTag": "live\\eventLowLatency",
+    "typeScriptTag": "liveEventLowLatency",
     "description": "Toggle the low-latency option of a live event",
     "parameters": [
       {
@@ -3370,7 +3370,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllThumbnails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Get all the thumbnails of a live event",
     "parameters": [
       {
@@ -3396,7 +3396,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createThumbnailForEvent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Create a live event thumbnail",
     "parameters": [
       {
@@ -3431,7 +3431,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteThumbnailForEvent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Delete a live event thumbnail",
     "parameters": [
       {
@@ -3463,7 +3463,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Get a specific live event thumbnail",
     "parameters": [
       {
@@ -3499,7 +3499,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editLiveEventThumbnail",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Edit a live event thumbnail",
     "parameters": [
       {
@@ -3540,7 +3540,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getWhitelistDomains",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Embed privacy",
-    "typeScriptTag": "live\\embedPrivacy",
+    "typeScriptTag": "liveEmbedPrivacy",
     "description": "Get all the domains on which a live event can be embedded",
     "parameters": [
       {
@@ -3578,7 +3578,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "embedEventOnDomains",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Live\\Embed privacy",
-    "typeScriptTag": "live\\embedPrivacy",
+    "typeScriptTag": "liveEmbedPrivacy",
     "description": "Embed a live event on one or more domains",
     "parameters": [
       {
@@ -3617,7 +3617,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultipleVideos",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Remove a list of videos from a live event",
     "parameters": [
       {
@@ -3652,7 +3652,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listLiveEventVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Get all the videos in a live event",
     "parameters": [
       {
@@ -3734,7 +3734,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultiple",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Add a list of videos to a live event",
     "parameters": [
       {
@@ -3769,7 +3769,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificEventVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Get a specific video in a live event",
     "parameters": [
       {
@@ -3809,7 +3809,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Essentials",
-    "typeScriptTag": "users\\essentials",
+    "typeScriptTag": "usersEssentials",
     "description": "Get the user",
     "parameters": [],
     "responses": [
@@ -3824,7 +3824,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editVimeoAccount",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Users\\Essentials",
-    "typeScriptTag": "users\\essentials",
+    "typeScriptTag": "usersEssentials",
     "description": "Edit the user",
     "parameters": [
       {
@@ -3884,7 +3884,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserShowcases",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Get all the showcases that belong to the user",
     "parameters": [
       {
@@ -3934,7 +3934,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createUserShowcase",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Create a showcase",
     "parameters": [
       {
@@ -4030,7 +4030,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteShowcase",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Delete a showcase",
     "parameters": [
       {
@@ -4056,7 +4056,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificShowcase",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Get a specific showcase",
     "parameters": [
       {
@@ -4082,7 +4082,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editShowcase",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Edit a showcase",
     "parameters": [
       {
@@ -4186,7 +4186,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listInShowcase",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Get all the videos in a showcase",
     "parameters": [
       {
@@ -4272,7 +4272,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "replaceVideos",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Replace all the videos in a showcase",
     "parameters": [
       {
@@ -4304,7 +4304,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromShowcase",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Remove a video from a showcase",
     "parameters": [
       {
@@ -4336,7 +4336,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVideoInShowcase",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Get a specific video in a showcase",
     "parameters": [
       {
@@ -4374,7 +4374,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addToShowcase",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Add a specific video to a showcase",
     "parameters": [
       {
@@ -4406,7 +4406,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createShowcaseThumbnail",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Create a thumbnail for a showcase from a showcase video",
     "parameters": [
       {
@@ -4451,7 +4451,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "setFeaturedVideo",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Set the featured video of a showcase",
     "parameters": [
       {
@@ -4487,7 +4487,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserMetrics",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Analytics",
-    "typeScriptTag": "users\\analytics",
+    "typeScriptTag": "usersAnalytics",
     "description": "Get analytics for the user",
     "parameters": [
       {
@@ -4581,7 +4581,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserAppearances",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Get all the videos in which the user appears",
     "parameters": [
       {
@@ -4639,7 +4639,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listFollowedCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Get all the categories that the user follows",
     "parameters": [
       {
@@ -4683,7 +4683,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "stopFollowingCategory",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Cause the user to stop following a category",
     "parameters": [
       {
@@ -4700,7 +4700,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkFollowedCategory",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Check if the user follows a category",
     "parameters": [
       {
@@ -4717,7 +4717,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "followCategory",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Cause the user to follow a specific category",
     "parameters": [
       {
@@ -4734,7 +4734,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserSubscriptions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Get all the channels to which a user subscribes",
     "parameters": [
       {
@@ -4786,7 +4786,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "unsubscribeUserFromChannel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Unsubscribe the user from a specific channel",
     "parameters": [
       {
@@ -4808,7 +4808,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkIfUserFollowsChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Check if a user follows a channel",
     "parameters": [
       {
@@ -4830,7 +4830,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "subscribeUserToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Subscribe the user to a specific channel",
     "parameters": [
       {
@@ -4852,7 +4852,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Get all the custom logos that belong to the user",
     "parameters": [],
     "responses": [
@@ -4871,7 +4871,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addUserLogo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Add a custom user logo",
     "parameters": [],
     "responses": [
@@ -4890,7 +4890,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteUserLogo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Delete a custom user logo",
     "parameters": [
       {
@@ -4912,7 +4912,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificUserLogo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Get a specific custom user logo",
     "parameters": [
       {
@@ -4938,7 +4938,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllAvailableDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all available live event destinations for the user to stream to",
     "parameters": [],
     "responses": [
@@ -4957,7 +4957,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserFeedVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Feeds",
-    "typeScriptTag": "users\\feeds",
+    "typeScriptTag": "usersFeeds",
     "description": "Get all the videos in the user's feed",
     "parameters": [
       {
@@ -4997,7 +4997,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Get all the followers of the user",
     "parameters": [
       {
@@ -5043,7 +5043,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listOfFollowingUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Get all the users that the user is following",
     "parameters": [
       {
@@ -5095,7 +5095,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "followMultipleUsers",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Follow a list of users",
     "parameters": [
       {
@@ -5133,7 +5133,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "stopFollowingUser",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Unfollow a user",
     "parameters": [
       {
@@ -5150,7 +5150,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkFollowingUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Check if the user is following another user",
     "parameters": [
       {
@@ -5172,7 +5172,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "followSpecificUser",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Follow a specific user",
     "parameters": [
       {
@@ -5194,7 +5194,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserGroups",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Users",
-    "typeScriptTag": "groups\\users",
+    "typeScriptTag": "groupsUsers",
     "description": "Get all the groups that the user has joined",
     "parameters": [
       {
@@ -5246,7 +5246,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeUserFromGroup",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups\\Subscriptions",
-    "typeScriptTag": "groups\\subscriptions",
+    "typeScriptTag": "groupsSubscriptions",
     "description": "Remove the user from a group",
     "parameters": [
       {
@@ -5268,7 +5268,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkUserJoinedGroup",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Users",
-    "typeScriptTag": "groups\\users",
+    "typeScriptTag": "groupsUsers",
     "description": "Check if a user has joined a group",
     "parameters": [
       {
@@ -5290,7 +5290,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addUserToGroup",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Groups\\Subscriptions",
-    "typeScriptTag": "groups\\subscriptions",
+    "typeScriptTag": "groupsSubscriptions",
     "description": "Add the user to a group",
     "parameters": [
       {
@@ -5312,7 +5312,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserLikedVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Get all the videos that a user has liked",
     "parameters": [
       {
@@ -5364,7 +5364,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "unlikeVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Cause a user to unlike a video",
     "parameters": [
       {
@@ -5386,7 +5386,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkUserLikedVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Check if the user has liked a video",
     "parameters": [
       {
@@ -5408,7 +5408,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "likeVideo",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Cause the user to like a video",
     "parameters": [
       {
@@ -5434,7 +5434,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteMultipleEvents",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Delete a list of live events",
     "parameters": [
       {
@@ -5451,7 +5451,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserLiveEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Get all the live events that belong to the user",
     "parameters": [
       {
@@ -5509,7 +5509,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createLiveEvent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Create a live event",
     "parameters": [
       {
@@ -5675,7 +5675,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteSingleEvent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Delete a specific live event",
     "parameters": [
       {
@@ -5701,7 +5701,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificLiveEvent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Get a specific live event",
     "parameters": [
       {
@@ -5741,7 +5741,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateEventBelongingToAuthenticatedUser",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Update a live event",
     "parameters": [
       {
@@ -5875,7 +5875,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createRtmpLinks",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event activation",
-    "typeScriptTag": "live\\eventActivation",
+    "typeScriptTag": "liveEventActivation",
     "description": "Activate a live event",
     "parameters": [
       {
@@ -5931,7 +5931,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editPreferenceForEvent",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event automated closed captions",
-    "typeScriptTag": "live\\eventAutomatedClosedCaptions",
+    "typeScriptTag": "liveEventAutomatedClosedCaptions",
     "description": "Edit the automated closed captions preference of a live event",
     "parameters": [
       {
@@ -5983,7 +5983,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAllAvailableDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all the destinations of a recurring live event",
     "parameters": [
       {
@@ -6021,7 +6021,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createDestination",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Create a live event destination",
     "parameters": [
       {
@@ -6119,7 +6119,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "eventTerminationAlt1",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event end",
-    "typeScriptTag": "live\\eventEnd",
+    "typeScriptTag": "liveEventEnd",
     "description": "End a live event",
     "parameters": [
       {
@@ -6163,7 +6163,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "toggleOption",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event low latency",
-    "typeScriptTag": "live\\eventLowLatency",
+    "typeScriptTag": "liveEventLowLatency",
     "description": "Toggle the low-latency option of a live event",
     "parameters": [
       {
@@ -6198,7 +6198,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUrl",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event M3U8 playback",
-    "typeScriptTag": "live\\eventM3U8Playback",
+    "typeScriptTag": "liveEventM3U8Playback",
     "description": "Get an M3U8 playback URL for a live event",
     "parameters": [
       {
@@ -6246,7 +6246,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Get all the thumbnails of a live event",
     "parameters": [
       {
@@ -6272,7 +6272,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addThumbnail",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Create a live event thumbnail",
     "parameters": [
       {
@@ -6307,7 +6307,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteForEvent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Delete a live event thumbnail",
     "parameters": [
       {
@@ -6339,7 +6339,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Get a specific live event thumbnail",
     "parameters": [
       {
@@ -6375,7 +6375,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateEventThumbnail",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Edit a live event thumbnail",
     "parameters": [
       {
@@ -6416,7 +6416,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getWhitelistDomains",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Embed privacy",
-    "typeScriptTag": "live\\embedPrivacy",
+    "typeScriptTag": "liveEmbedPrivacy",
     "description": "Get all the domains on which a live event can be embedded",
     "parameters": [
       {
@@ -6454,7 +6454,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "embedEventOnDomains",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Live\\Embed privacy",
-    "typeScriptTag": "live\\embedPrivacy",
+    "typeScriptTag": "liveEmbedPrivacy",
     "description": "Embed a live event on one or more domains",
     "parameters": [
       {
@@ -6493,7 +6493,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultiple",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Remove a list of videos from a live event",
     "parameters": [
       {
@@ -6528,7 +6528,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Get all the videos in a live event",
     "parameters": [
       {
@@ -6610,7 +6610,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "uploadMultiple",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Add a list of videos to a live event",
     "parameters": [
       {
@@ -6645,7 +6645,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Get a specific video in a live event",
     "parameters": [
       {
@@ -6685,7 +6685,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserPages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Get all the On Demand pages of the user",
     "parameters": [
       {
@@ -6735,7 +6735,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createPage",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Create an On Demand page",
     "parameters": [
       {
@@ -6817,7 +6817,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserPurchasesAndRentals",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Purchases and rentals",
-    "typeScriptTag": "onDemand\\purchasesAndRentals",
+    "typeScriptTag": "onDemandPurchasesAndRentals",
     "description": "Get all of the user's On Demand purchases and rentals",
     "parameters": [
       {
@@ -6867,7 +6867,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkUserPurchasesAndRentals",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Purchases and rentals",
-    "typeScriptTag": "onDemand\\purchasesAndRentals",
+    "typeScriptTag": "onDemandPurchasesAndRentals",
     "description": "Check if a user has made a purchase or rental from an On Demand page",
     "parameters": [
       {
@@ -6897,7 +6897,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listPaymentMethods",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Payments\\Essentials",
-    "typeScriptTag": "payments\\essentials",
+    "typeScriptTag": "paymentsEssentials",
     "description": "Get a list of all payments service payment methods",
     "parameters": [
       {
@@ -6956,7 +6956,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getPaymentMethodInfo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Payments\\Essentials",
-    "typeScriptTag": "payments\\essentials",
+    "typeScriptTag": "paymentsEssentials",
     "description": "Get information about a payments service payment method",
     "parameters": [
       {
@@ -6982,7 +6982,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Get all the pictures that belong to the user",
     "parameters": [
       {
@@ -7010,7 +7010,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addPortraitImage",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Add a picture to the user's account",
     "parameters": [],
     "responses": [
@@ -7025,7 +7025,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removePortraitImage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Delete a picture from the user's account",
     "parameters": [
       {
@@ -7042,7 +7042,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificPictureBelongingToUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Get a specific picture that belongs to the user",
     "parameters": [
       {
@@ -7064,7 +7064,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editPortraitImage",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Edit a picture in the user's account",
     "parameters": [
       {
@@ -7091,7 +7091,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserPortfolios",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Essentials",
-    "typeScriptTag": "portfolios\\essentials",
+    "typeScriptTag": "portfoliosEssentials",
     "description": "Get all the portfolios that belong to the user",
     "parameters": [
       {
@@ -7137,7 +7137,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserPortfolio",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Essentials",
-    "typeScriptTag": "portfolios\\essentials",
+    "typeScriptTag": "portfoliosEssentials",
     "description": "Get a specific portfolio",
     "parameters": [
       {
@@ -7159,7 +7159,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllPortfolioVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Get all the videos in a portfolio",
     "parameters": [
       {
@@ -7217,7 +7217,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromPortfolio",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Remove a video from a portfolio",
     "parameters": [
       {
@@ -7245,7 +7245,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Get a specific video in a portfolio",
     "parameters": [
       {
@@ -7273,7 +7273,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "putVideoToPortfolio",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Add a video to a portfolio",
     "parameters": [
       {
@@ -7301,7 +7301,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserCreatedEmbedPresets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Get all the embed presets that a user has created",
     "parameters": [
       {
@@ -7329,7 +7329,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createPreset",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Create an embed preset",
     "parameters": [
       {
@@ -7355,7 +7355,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificPreset",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Get a specific embed preset",
     "parameters": [
       {
@@ -7377,7 +7377,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editPreset",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Edit an embed preset",
     "parameters": [
       {
@@ -7412,7 +7412,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificPresetVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Videos",
-    "typeScriptTag": "embedPresets\\videos",
+    "typeScriptTag": "embedPresetsVideos",
     "description": "Get all the videos that have a specific embed preset",
     "parameters": [
       {
@@ -7446,7 +7446,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserFolders",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Get all the folders that belong to the user",
     "parameters": [
       {
@@ -7496,7 +7496,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createFolder",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Create a folder",
     "parameters": [
       {
@@ -7536,7 +7536,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteFolder",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Delete a folder",
     "parameters": [
       {
@@ -7572,7 +7572,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificFolder",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Get a specific folder",
     "parameters": [
       {
@@ -7602,7 +7602,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editFolder",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Edit a folder",
     "parameters": [
       {
@@ -7646,7 +7646,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromFolder",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Items",
-    "typeScriptTag": "folders\\items",
+    "typeScriptTag": "foldersItems",
     "description": "Remove items from a folder",
     "parameters": [
       {
@@ -7688,7 +7688,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getFolderItems",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Items",
-    "typeScriptTag": "folders\\items",
+    "typeScriptTag": "foldersItems",
     "description": "Get all the items in a folder",
     "parameters": [
       {
@@ -7735,7 +7735,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultipleFromFolder",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Remove a list of videos from a folder",
     "parameters": [
       {
@@ -7777,7 +7777,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getVideosInFolder",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Get all the videos in a folder",
     "parameters": [
       {
@@ -7867,7 +7867,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultipleToFolder",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Add a list of videos to a folder",
     "parameters": [
       {
@@ -7903,7 +7903,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeSingleVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Remove a video from a folder",
     "parameters": [
       {
@@ -7939,7 +7939,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addToFolder",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Add a video to a folder",
     "parameters": [
       {
@@ -7967,7 +7967,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteUserVideos",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Delete a user's videos",
     "parameters": [
       {
@@ -7997,7 +7997,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Get all the videos that the user has uploaded",
     "parameters": [
       {
@@ -8103,7 +8103,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "beginVideoUploadProcess",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Uploads",
-    "typeScriptTag": "videos\\uploads",
+    "typeScriptTag": "videosUploads",
     "description": "Upload a video",
     "parameters": [
       {
@@ -8219,7 +8219,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkUserOwnsVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Check if the user owns a video",
     "parameters": [
       {
@@ -8245,7 +8245,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all the destinations of a one-time live event",
     "parameters": [
       {
@@ -8279,7 +8279,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createOneTimeLiveEventDestination",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Create a one-time live event destination",
     "parameters": [
       {
@@ -8373,7 +8373,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getPlaybackUrl",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Live M3U8 playback",
-    "typeScriptTag": "videos\\liveM3U8Playback",
+    "typeScriptTag": "videosLiveM3U8Playback",
     "description": "Get an M3U8 playback URL for a one-time live event",
     "parameters": [
       {
@@ -8403,7 +8403,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteEntireWatchHistory",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users\\Watch history",
-    "typeScriptTag": "users\\watchHistory",
+    "typeScriptTag": "usersWatchHistory",
     "description": "Delete the user's watch history",
     "parameters": [],
     "responses": []
@@ -8413,7 +8413,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getWatchedVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Watch history",
-    "typeScriptTag": "users\\watchHistory",
+    "typeScriptTag": "usersWatchHistory",
     "description": "Get all the videos that a user has watched",
     "parameters": [
       {
@@ -8445,7 +8445,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteSpecificVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users\\Watch history",
-    "typeScriptTag": "users\\watchHistory",
+    "typeScriptTag": "usersWatchHistory",
     "description": "Delete a specific video from the user's watch history",
     "parameters": [
       {
@@ -8462,7 +8462,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getVideosInQueue",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Get all the videos in the user's Watch Later queue",
     "parameters": [
       {
@@ -8520,7 +8520,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeVideoFromQueue",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Remove a video from the user's Watch Later queue",
     "parameters": [
       {
@@ -8537,7 +8537,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkVideoInQueue",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Check if the user has added a video to their Watch Later queue",
     "parameters": [
       {
@@ -8563,7 +8563,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addVideoToQueue",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Add a video to the user's Watch Later queue",
     "parameters": [
       {
@@ -8580,7 +8580,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createWebinar",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Create a webinar",
     "parameters": [
       {
@@ -8656,7 +8656,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificWebinar",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Get a specific webinar",
     "parameters": [
       {
@@ -8682,7 +8682,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateWebinarBelongingToAuthenticatedUser",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Update a webinar",
     "parameters": [
       {
@@ -8756,7 +8756,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getCustomizationData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Emails",
-    "typeScriptTag": "webinar\\emails",
+    "typeScriptTag": "webinarEmails",
     "description": "Get customization email data for a webinar",
     "parameters": [
       {
@@ -8786,7 +8786,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "customizePreferences",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Webinar\\Emails",
-    "typeScriptTag": "webinar\\emails",
+    "typeScriptTag": "webinarEmails",
     "description": "Customize the email preferences of a webinar",
     "parameters": [
       {
@@ -8891,7 +8891,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserRegistrationsByWebinarId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Get user registration data associated with a webinar",
     "parameters": [
       {
@@ -8949,7 +8949,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "captureUserRegistrationList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Capture the user registration list associated with a webinar",
     "parameters": [
       {
@@ -8980,7 +8980,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteRegistrantRecord",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Delete a registrant record associated with a webinar",
     "parameters": [
       {
@@ -9020,7 +9020,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateUserRegistrationData",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Update user registration data associated with a webinar",
     "parameters": [
       {
@@ -9065,7 +9065,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "oAuthCodeExchange",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Authentication Extras\\Exchange",
-    "typeScriptTag": "authenticationExtras\\exchange",
+    "typeScriptTag": "authenticationExtrasExchange",
     "description": "Exchange an authorization code for an access token",
     "parameters": [
       {
@@ -9103,7 +9103,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "auth",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Authentication Extras\\Authenticate",
-    "typeScriptTag": "authenticationExtras\\authenticate",
+    "typeScriptTag": "authenticationExtrasAuthenticate",
     "description": "Authorize a client with OAuth",
     "parameters": [
       {
@@ -9135,7 +9135,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "oAuth1ToOAuth2",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Authentication Extras\\Convert",
-    "typeScriptTag": "authenticationExtras\\convert",
+    "typeScriptTag": "authenticationExtrasConvert",
     "description": "Convert an OAuth 1 access token to an OAuth 2 access token",
     "parameters": [
       {
@@ -9173,7 +9173,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "token",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Authentication Extras\\Essentials",
-    "typeScriptTag": "authenticationExtras\\essentials",
+    "typeScriptTag": "authenticationExtrasEssentials",
     "description": "Verify an OAuth 2 access token",
     "parameters": [],
     "responses": [
@@ -9192,7 +9192,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllGenres",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Get all On Demand genres",
     "parameters": [],
     "responses": [
@@ -9207,7 +9207,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificGenreGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Get a specific On Demand genre",
     "parameters": [
       {
@@ -9233,7 +9233,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllPagesInGenre",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Get all the On Demand pages in a genre",
     "parameters": [
       {
@@ -9291,7 +9291,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificPageInGenre",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Get a specific On Demand page in a genre",
     "parameters": [
       {
@@ -9323,7 +9323,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteOnDemandPage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Delete an On Demand page",
     "parameters": [
       {
@@ -9349,7 +9349,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "vod",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Get a specific On Demand page",
     "parameters": [
       {
@@ -9375,7 +9375,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "vod",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Edit an On Demand page",
     "parameters": [
       {
@@ -9425,7 +9425,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllBackgroundsOnPage",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Backgrounds",
-    "typeScriptTag": "onDemand\\backgrounds",
+    "typeScriptTag": "onDemandBackgrounds",
     "description": "Get all the backgrounds on an On Demand page",
     "parameters": [
       {
@@ -9463,7 +9463,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addBackgroundToPage",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "On Demand\\Backgrounds",
-    "typeScriptTag": "onDemand\\backgrounds",
+    "typeScriptTag": "onDemandBackgrounds",
     "description": "Add a background to an On Demand page",
     "parameters": [
       {
@@ -9493,7 +9493,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteBackgroundFromPage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Backgrounds",
-    "typeScriptTag": "onDemand\\backgrounds",
+    "typeScriptTag": "onDemandBackgrounds",
     "description": "Delete a background on an On Demand page",
     "parameters": [
       {
@@ -9525,7 +9525,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificBackground",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Backgrounds",
-    "typeScriptTag": "onDemand\\backgrounds",
+    "typeScriptTag": "onDemandBackgrounds",
     "description": "Get a specific background on an On Demand page",
     "parameters": [
       {
@@ -9561,7 +9561,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editBackgroundOnPage",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "On Demand\\Backgrounds",
-    "typeScriptTag": "onDemand\\backgrounds",
+    "typeScriptTag": "onDemandBackgrounds",
     "description": "Edit a background on an On Demand page",
     "parameters": [
       {
@@ -9602,7 +9602,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getGenres",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Get all the genres of an On Demand page",
     "parameters": [
       {
@@ -9628,7 +9628,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeGenreFromPage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Remove a genre from an On Demand page",
     "parameters": [
       {
@@ -9664,7 +9664,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkGenreAssociation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Check whether an On Demand page belongs to a specific genre",
     "parameters": [
       {
@@ -9696,7 +9696,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addGenreToPage",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "On Demand\\Genres",
-    "typeScriptTag": "onDemand\\genres",
+    "typeScriptTag": "onDemandGenres",
     "description": "Add a genre to an On Demand page",
     "parameters": [
       {
@@ -9736,7 +9736,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserLikes",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Get all the users who have liked a video on an On Demand page",
     "parameters": [
       {
@@ -9788,7 +9788,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getOnDemandPagePosters",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Posters",
-    "typeScriptTag": "onDemand\\posters",
+    "typeScriptTag": "onDemandPosters",
     "description": "Get all the posters on an On Demand page",
     "parameters": [
       {
@@ -9826,7 +9826,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addPosterToPage",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "On Demand\\Posters",
-    "typeScriptTag": "onDemand\\posters",
+    "typeScriptTag": "onDemandPosters",
     "description": "Add a poster to an On Demand page",
     "parameters": [
       {
@@ -9852,7 +9852,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificPoster",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Posters",
-    "typeScriptTag": "onDemand\\posters",
+    "typeScriptTag": "onDemandPosters",
     "description": "Get a specific poster on an On Demand page",
     "parameters": [
       {
@@ -9880,7 +9880,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updatePoster",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "On Demand\\Posters",
-    "typeScriptTag": "onDemand\\posters",
+    "typeScriptTag": "onDemandPosters",
     "description": "Edit a poster on an On Demand page",
     "parameters": [
       {
@@ -9913,7 +9913,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllPagePromotions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Promotions",
-    "typeScriptTag": "onDemand\\promotions",
+    "typeScriptTag": "onDemandPromotions",
     "description": "Get all the promotions on an On Demand page",
     "parameters": [
       {
@@ -9965,7 +9965,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addPromotionToPage",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "On Demand\\Promotions",
-    "typeScriptTag": "onDemand\\promotions",
+    "typeScriptTag": "onDemandPromotions",
     "description": "Add a promotion to an On Demand page",
     "parameters": [
       {
@@ -10071,7 +10071,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deletePromotionOnPage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Promotions",
-    "typeScriptTag": "onDemand\\promotions",
+    "typeScriptTag": "onDemandPromotions",
     "description": "Delete a promotion on an On Demand page",
     "parameters": [
       {
@@ -10103,7 +10103,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificPromotionGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Promotions",
-    "typeScriptTag": "onDemand\\promotions",
+    "typeScriptTag": "onDemandPromotions",
     "description": "Get a specific promotion on an On Demand page",
     "parameters": [
       {
@@ -10139,7 +10139,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllPromotionCodes",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Promotions",
-    "typeScriptTag": "onDemand\\promotions",
+    "typeScriptTag": "onDemandPromotions",
     "description": "Get all the codes of a promotion on an On Demand page",
     "parameters": [
       {
@@ -10187,7 +10187,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultiple",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Remove a list of regions from an On Demand page",
     "parameters": [
       {
@@ -10222,7 +10222,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Get all the regions on an On Demand page",
     "parameters": [
       {
@@ -10248,7 +10248,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultiple",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Add a list of regions to an On Demand page",
     "parameters": [
       {
@@ -10284,7 +10284,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeSpecificRegion",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Remove a specific region from an On Demand page",
     "parameters": [
       {
@@ -10316,7 +10316,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificRegion",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Get a specific region on an On Demand page",
     "parameters": [
       {
@@ -10348,7 +10348,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addRegionToPage",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Add a specific region to an On Demand page",
     "parameters": [
       {
@@ -10384,7 +10384,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAll",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Seasons",
-    "typeScriptTag": "onDemand\\seasons",
+    "typeScriptTag": "onDemandSeasons",
     "description": "Get all the seasons on an On Demand page",
     "parameters": [
       {
@@ -10440,7 +10440,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Seasons",
-    "typeScriptTag": "onDemand\\seasons",
+    "typeScriptTag": "onDemandSeasons",
     "description": "Get a specific season on an On Demand page",
     "parameters": [
       {
@@ -10472,7 +10472,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllVideosInSeason",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Seasons",
-    "typeScriptTag": "onDemand\\seasons",
+    "typeScriptTag": "onDemandSeasons",
     "description": "Get all the videos in a season on an On Demand page",
     "parameters": [
       {
@@ -10524,7 +10524,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Videos",
-    "typeScriptTag": "onDemand\\videos",
+    "typeScriptTag": "onDemandVideos",
     "description": "Get all the videos on an On Demand page",
     "parameters": [
       {
@@ -10576,7 +10576,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromPage",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "On Demand\\Videos",
-    "typeScriptTag": "onDemand\\videos",
+    "typeScriptTag": "onDemandVideos",
     "description": "Remove a video from an On Demand page",
     "parameters": [
       {
@@ -10604,7 +10604,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificVideoGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Videos",
-    "typeScriptTag": "onDemand\\videos",
+    "typeScriptTag": "onDemandVideos",
     "description": "Get a specific video on an On Demand page",
     "parameters": [
       {
@@ -10632,7 +10632,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addVideoToPage",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "On Demand\\Videos",
-    "typeScriptTag": "onDemand\\videos",
+    "typeScriptTag": "onDemandVideos",
     "description": "Add a video to an On Demand page",
     "parameters": [
       {
@@ -10698,7 +10698,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "regions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Get all the On Demand regions",
     "parameters": [],
     "responses": [
@@ -10713,7 +10713,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "region",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Regions",
-    "typeScriptTag": "onDemand\\regions",
+    "typeScriptTag": "onDemandRegions",
     "description": "Get a specific On Demand region",
     "parameters": [
       {
@@ -10739,7 +10739,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "plan",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Subscription Plans\\Essentials",
-    "typeScriptTag": "subscriptionPlans\\essentials",
+    "typeScriptTag": "subscriptionPlansEssentials",
     "description": "Get a single subscription plan",
     "parameters": [
       {
@@ -10756,7 +10756,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "tag",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tags\\Essentials",
-    "typeScriptTag": "tags\\essentials",
+    "typeScriptTag": "tagsEssentials",
     "description": "Get a tag",
     "parameters": [
       {
@@ -10778,7 +10778,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllByTag",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Tags",
-    "typeScriptTag": "videos\\tags",
+    "typeScriptTag": "videosTags",
     "description": "Get all the videos with a specific tag",
     "parameters": [
       {
@@ -10828,7 +10828,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getMembershipInformation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Teams\\Members",
-    "typeScriptTag": "teams\\members",
+    "typeScriptTag": "teamsMembers",
     "description": "Get membership information about a team",
     "parameters": [
       {
@@ -10845,7 +10845,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "token",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Authentication Extras\\Essentials",
-    "typeScriptTag": "authenticationExtras\\essentials",
+    "typeScriptTag": "authenticationExtrasEssentials",
     "description": "Revoke the current access token",
     "parameters": [],
     "responses": [
@@ -10860,7 +10860,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "tutorial",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Tutorial\\Essentials",
-    "typeScriptTag": "tutorial\\essentials",
+    "typeScriptTag": "tutorialEssentials",
     "description": "Get started with the Vimeo API",
     "parameters": [],
     "responses": []
@@ -10870,7 +10870,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "users",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Search",
-    "typeScriptTag": "users\\search",
+    "typeScriptTag": "usersSearch",
     "description": "Search for users",
     "parameters": [
       {
@@ -10924,7 +10924,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserPrivateToMeFolder",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Get a user's private-to-me folder",
     "parameters": [
       {
@@ -10954,7 +10954,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "user",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Essentials",
-    "typeScriptTag": "users\\essentials",
+    "typeScriptTag": "usersEssentials",
     "description": "Get the user",
     "parameters": [
       {
@@ -10976,7 +10976,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "user",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Users\\Essentials",
-    "typeScriptTag": "users\\essentials",
+    "typeScriptTag": "usersEssentials",
     "description": "Edit the user",
     "parameters": [
       {
@@ -11042,7 +11042,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "showcases",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Get all the showcases that belong to the user",
     "parameters": [
       {
@@ -11098,7 +11098,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "showcases",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Add videos and live events to showcases",
     "parameters": [
       {
@@ -11127,7 +11127,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "showcase",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Create a showcase",
     "parameters": [
       {
@@ -11229,7 +11229,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "showcase",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Delete a showcase",
     "parameters": [
       {
@@ -11261,7 +11261,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "showcase",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Get a specific showcase",
     "parameters": [
       {
@@ -11293,7 +11293,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "showcase",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Essentials",
-    "typeScriptTag": "showcases\\essentials",
+    "typeScriptTag": "showcasesEssentials",
     "description": "Edit a showcase",
     "parameters": [
       {
@@ -11403,7 +11403,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "list",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Custom showcase thumbnails",
-    "typeScriptTag": "showcases\\customShowcaseThumbnails",
+    "typeScriptTag": "showcasesCustomShowcaseThumbnails",
     "description": "Get all the custom thumbnails of a showcase",
     "parameters": [
       {
@@ -11451,7 +11451,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addCustomThumbnail",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Showcases\\Custom showcase thumbnails",
-    "typeScriptTag": "showcases\\customShowcaseThumbnails",
+    "typeScriptTag": "showcasesCustomShowcaseThumbnails",
     "description": "Add a custom thumbnail to a showcase",
     "parameters": [
       {
@@ -11487,7 +11487,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteCustomThumbnail",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Showcases\\Custom showcase thumbnails",
-    "typeScriptTag": "showcases\\customShowcaseThumbnails",
+    "typeScriptTag": "showcasesCustomShowcaseThumbnails",
     "description": "Delete a custom showcase thumbnail",
     "parameters": [
       {
@@ -11525,7 +11525,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Custom showcase thumbnails",
-    "typeScriptTag": "showcases\\customShowcaseThumbnails",
+    "typeScriptTag": "showcasesCustomShowcaseThumbnails",
     "description": "Get a specific custom showcase thumbnail",
     "parameters": [
       {
@@ -11567,7 +11567,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "replaceCustomThumbnail",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Custom showcase thumbnails",
-    "typeScriptTag": "showcases\\customShowcaseThumbnails",
+    "typeScriptTag": "showcasesCustomShowcaseThumbnails",
     "description": "Replace a custom showcase thumbnail",
     "parameters": [
       {
@@ -11614,7 +11614,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAllCustomLogos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Custom showcase logos",
-    "typeScriptTag": "showcases\\customShowcaseLogos",
+    "typeScriptTag": "showcasesCustomShowcaseLogos",
     "description": "Get all the custom logos of a showcase",
     "parameters": [
       {
@@ -11658,7 +11658,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addCustomLogo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Showcases\\Custom showcase logos",
-    "typeScriptTag": "showcases\\customShowcaseLogos",
+    "typeScriptTag": "showcasesCustomShowcaseLogos",
     "description": "Add a custom logo to a showcase",
     "parameters": [
       {
@@ -11694,7 +11694,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteCustomLogo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Showcases\\Custom showcase logos",
-    "typeScriptTag": "showcases\\customShowcaseLogos",
+    "typeScriptTag": "showcasesCustomShowcaseLogos",
     "description": "Delete a custom showcase logo",
     "parameters": [
       {
@@ -11732,7 +11732,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificLogo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Custom showcase logos",
-    "typeScriptTag": "showcases\\customShowcaseLogos",
+    "typeScriptTag": "showcasesCustomShowcaseLogos",
     "description": "Get a specific custom showcase logo",
     "parameters": [
       {
@@ -11774,7 +11774,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "replaceLogo",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Custom showcase logos",
-    "typeScriptTag": "showcases\\customShowcaseLogos",
+    "typeScriptTag": "showcasesCustomShowcaseLogos",
     "description": "Replace a custom showcase logo",
     "parameters": [
       {
@@ -11821,7 +11821,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getShowcaseVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Get all the videos in a showcase",
     "parameters": [
       {
@@ -11913,7 +11913,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "replaceShowcaseVideos",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Replace all the videos in a showcase",
     "parameters": [
       {
@@ -11951,7 +11951,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeVideoFromShowcase",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Remove a video from a showcase",
     "parameters": [
       {
@@ -11989,7 +11989,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVideoInShowcase",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Get a specific video in a showcase",
     "parameters": [
       {
@@ -12033,7 +12033,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addToShowcase",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Add a specific video to a showcase",
     "parameters": [
       {
@@ -12071,7 +12071,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createShowcaseThumbnail",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Create a thumbnail for a showcase from a showcase video",
     "parameters": [
       {
@@ -12122,7 +12122,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "setFeaturedVideo",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Set the featured video of a showcase",
     "parameters": [
       {
@@ -12164,7 +12164,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getMetrics",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Analytics",
-    "typeScriptTag": "users\\analytics",
+    "typeScriptTag": "usersAnalytics",
     "description": "Get analytics for the user",
     "parameters": [
       {
@@ -12264,7 +12264,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "appearances",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Get all the videos in which the user appears",
     "parameters": [
       {
@@ -12328,7 +12328,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listFollowedCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Get all the categories that the user follows",
     "parameters": [
       {
@@ -12378,7 +12378,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "stopFollowingCategory",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Cause the user to stop following a category",
     "parameters": [
       {
@@ -12401,7 +12401,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkFollowedCategory",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Check if the user follows a category",
     "parameters": [
       {
@@ -12424,7 +12424,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "followSpecificCategory",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Categories\\Users",
-    "typeScriptTag": "categories\\users",
+    "typeScriptTag": "categoriesUsers",
     "description": "Cause the user to follow a specific category",
     "parameters": [
       {
@@ -12447,7 +12447,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserSubscriptions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Essentials",
-    "typeScriptTag": "channels\\essentials",
+    "typeScriptTag": "channelsEssentials",
     "description": "Get all the channels to which a user subscribes",
     "parameters": [
       {
@@ -12505,7 +12505,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "unsubscribeUserFromChannel",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Unsubscribe the user from a specific channel",
     "parameters": [
       {
@@ -12533,7 +12533,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkUserFollowsChannel",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Check if a user follows a channel",
     "parameters": [
       {
@@ -12561,7 +12561,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "subscribeToChannel",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Channels\\Subscriptions and subscribers",
-    "typeScriptTag": "channels\\subscriptionsAndSubscribers",
+    "typeScriptTag": "channelsSubscriptionsAndSubscribers",
     "description": "Subscribe the user to a specific channel",
     "parameters": [
       {
@@ -12589,7 +12589,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listUserLogos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Get all the custom logos that belong to the user",
     "parameters": [
       {
@@ -12615,7 +12615,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addUserLogo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Add a custom user logo",
     "parameters": [
       {
@@ -12641,7 +12641,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteUserLogo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Delete a custom user logo",
     "parameters": [
       {
@@ -12669,7 +12669,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificUserLogo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Custom logos",
-    "typeScriptTag": "embedPresets\\customLogos",
+    "typeScriptTag": "embedPresetsCustomLogos",
     "description": "Get a specific custom user logo",
     "parameters": [
       {
@@ -12701,7 +12701,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAvailableDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all available live event destinations for the user to stream to",
     "parameters": [
       {
@@ -12727,7 +12727,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "feed",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Feeds",
-    "typeScriptTag": "users\\feeds",
+    "typeScriptTag": "usersFeeds",
     "description": "Get all the videos in the user's feed",
     "parameters": [
       {
@@ -12773,7 +12773,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "followers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Get all the followers of the user",
     "parameters": [
       {
@@ -12825,7 +12825,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listOfFollowedUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Get all the users that the user is following",
     "parameters": [
       {
@@ -12883,7 +12883,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "users",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Follow a list of users",
     "parameters": [
       {
@@ -12927,7 +12927,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "user",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Unfollow a user",
     "parameters": [
       {
@@ -12950,7 +12950,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkFollowingStatus",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Check if the user is following another user",
     "parameters": [
       {
@@ -12978,7 +12978,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "user",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Users\\Followers",
-    "typeScriptTag": "users\\followers",
+    "typeScriptTag": "usersFollowers",
     "description": "Follow a specific user",
     "parameters": [
       {
@@ -13006,7 +13006,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserGroupsList",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Users",
-    "typeScriptTag": "groups\\users",
+    "typeScriptTag": "groupsUsers",
     "description": "Get all the groups that the user has joined",
     "parameters": [
       {
@@ -13064,7 +13064,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "group",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Groups\\Subscriptions",
-    "typeScriptTag": "groups\\subscriptions",
+    "typeScriptTag": "groupsSubscriptions",
     "description": "Remove the user from a group",
     "parameters": [
       {
@@ -13092,7 +13092,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkBelongGroup",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Groups\\Users",
-    "typeScriptTag": "groups\\users",
+    "typeScriptTag": "groupsUsers",
     "description": "Check if a user has joined a group",
     "parameters": [
       {
@@ -13120,7 +13120,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "group",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Groups\\Subscriptions",
-    "typeScriptTag": "groups\\subscriptions",
+    "typeScriptTag": "groupsSubscriptions",
     "description": "Add the user to a group",
     "parameters": [
       {
@@ -13148,7 +13148,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "likes",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Get all the videos that a user has liked",
     "parameters": [
       {
@@ -13206,7 +13206,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "video",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Cause a user to unlike a video",
     "parameters": [
       {
@@ -13234,7 +13234,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkVideoLikedByUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Check if the user has liked a video",
     "parameters": [
       {
@@ -13262,7 +13262,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "video",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Cause the user to like a video",
     "parameters": [
       {
@@ -13294,7 +13294,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteMultipleEvents",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Delete a list of live events",
     "parameters": [
       {
@@ -13317,7 +13317,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserLiveEvents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Get all the live events that belong to the user",
     "parameters": [
       {
@@ -13381,7 +13381,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createEventForUser",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Create a live event",
     "parameters": [
       {
@@ -13553,7 +13553,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteSpecificEvent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Delete a specific live event",
     "parameters": [
       {
@@ -13585,7 +13585,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getEventById",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Get a specific live event",
     "parameters": [
       {
@@ -13631,7 +13631,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateEventBelongingToAuthenticatedUser",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Essentials",
-    "typeScriptTag": "live\\essentials",
+    "typeScriptTag": "liveEssentials",
     "description": "Update a live event",
     "parameters": [
       {
@@ -13771,7 +13771,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createRtmpLinks",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event activation",
-    "typeScriptTag": "live\\eventActivation",
+    "typeScriptTag": "liveEventActivation",
     "description": "Activate a live event",
     "parameters": [
       {
@@ -13833,7 +13833,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editPreferenceForEvent",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event automated closed captions",
-    "typeScriptTag": "live\\eventAutomatedClosedCaptions",
+    "typeScriptTag": "liveEventAutomatedClosedCaptions",
     "description": "Edit the automated closed captions preference of a live event",
     "parameters": [
       {
@@ -13891,7 +13891,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllAvailableDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all the destinations of a recurring live event",
     "parameters": [
       {
@@ -13935,7 +13935,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createEventDestination",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Create a live event destination",
     "parameters": [
       {
@@ -14039,7 +14039,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "eventTerminationAlt2",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event end",
-    "typeScriptTag": "live\\eventEnd",
+    "typeScriptTag": "liveEventEnd",
     "description": "End a live event",
     "parameters": [
       {
@@ -14083,7 +14083,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "toggleOption",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event low latency",
-    "typeScriptTag": "live\\eventLowLatency",
+    "typeScriptTag": "liveEventLowLatency",
     "description": "Toggle the low-latency option of a live event",
     "parameters": [
       {
@@ -14124,7 +14124,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUrlForEventStream",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event M3U8 playback",
-    "typeScriptTag": "live\\eventM3U8Playback",
+    "typeScriptTag": "liveEventM3U8Playback",
     "description": "Get an M3U8 playback URL for a live event",
     "parameters": [
       {
@@ -14178,7 +14178,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteOttDestination",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Delete a live event OTT destination",
     "parameters": [
       {
@@ -14218,7 +14218,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllOttDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all the OTT destinations of a recurring live event",
     "parameters": [
       {
@@ -14258,7 +14258,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createOttDestination",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Create a live event OTT destination",
     "parameters": [
       {
@@ -14302,7 +14302,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllThumbs",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Get all the thumbnails of a live event",
     "parameters": [
       {
@@ -14334,7 +14334,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createThumbnailForEvent",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Create a live event thumbnail",
     "parameters": [
       {
@@ -14375,7 +14375,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteThumbnailForEvent",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Delete a live event thumbnail",
     "parameters": [
       {
@@ -14413,7 +14413,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Get a specific live event thumbnail",
     "parameters": [
       {
@@ -14455,7 +14455,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editEventThumbnail",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Live\\Event thumbnails",
-    "typeScriptTag": "live\\eventThumbnails",
+    "typeScriptTag": "liveEventThumbnails",
     "description": "Edit a live event thumbnail",
     "parameters": [
       {
@@ -14502,7 +14502,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getWhitelistDomains",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Embed privacy",
-    "typeScriptTag": "live\\embedPrivacy",
+    "typeScriptTag": "liveEmbedPrivacy",
     "description": "Get all the domains on which a live event can be embedded",
     "parameters": [
       {
@@ -14546,7 +14546,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "embedEventOnDomains",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Live\\Embed privacy",
-    "typeScriptTag": "live\\embedPrivacy",
+    "typeScriptTag": "liveEmbedPrivacy",
     "description": "Embed a live event on one or more domains",
     "parameters": [
       {
@@ -14591,7 +14591,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultiple",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Remove a list of videos from a live event",
     "parameters": [
       {
@@ -14632,7 +14632,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAllVideosInEvent",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Get all the videos in a live event",
     "parameters": [
       {
@@ -14720,7 +14720,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultipleVideos",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Add a list of videos to a live event",
     "parameters": [
       {
@@ -14761,7 +14761,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event videos",
-    "typeScriptTag": "live\\eventVideos",
+    "typeScriptTag": "liveEventVideos",
     "description": "Get a specific video in a live event",
     "parameters": [
       {
@@ -14807,7 +14807,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllUserPages",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Get all the On Demand pages of the user",
     "parameters": [
       {
@@ -14863,7 +14863,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "vod",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "On Demand\\Essentials",
-    "typeScriptTag": "onDemand\\essentials",
+    "typeScriptTag": "onDemandEssentials",
     "description": "Create an On Demand page",
     "parameters": [
       {
@@ -14951,7 +14951,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listUserPurchasesAndRentals",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "On Demand\\Purchases and rentals",
-    "typeScriptTag": "onDemand\\purchasesAndRentals",
+    "typeScriptTag": "onDemandPurchasesAndRentals",
     "description": "Get all of the user's On Demand purchases and rentals",
     "parameters": [
       {
@@ -15007,7 +15007,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "pictures",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Get all the pictures that belong to the user",
     "parameters": [
       {
@@ -15041,7 +15041,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "picture",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Add a picture to the user's account",
     "parameters": [
       {
@@ -15063,7 +15063,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "picture",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Delete a picture from the user's account",
     "parameters": [
       {
@@ -15086,7 +15086,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "picture",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Get a specific picture that belongs to the user",
     "parameters": [
       {
@@ -15114,7 +15114,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "picture",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Users\\Pictures",
-    "typeScriptTag": "users\\pictures",
+    "typeScriptTag": "usersPictures",
     "description": "Edit a picture in the user's account",
     "parameters": [
       {
@@ -15147,7 +15147,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "portfolios",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Essentials",
-    "typeScriptTag": "portfolios\\essentials",
+    "typeScriptTag": "portfoliosEssentials",
     "description": "Get all the portfolios that belong to the user",
     "parameters": [
       {
@@ -15199,7 +15199,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "portfolio",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Essentials",
-    "typeScriptTag": "portfolios\\essentials",
+    "typeScriptTag": "portfoliosEssentials",
     "description": "Get a specific portfolio",
     "parameters": [
       {
@@ -15227,7 +15227,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllPortfolioVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Get all the videos in a portfolio",
     "parameters": [
       {
@@ -15291,7 +15291,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromPortfolioVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Remove a video from a portfolio",
     "parameters": [
       {
@@ -15325,7 +15325,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Get a specific video in a portfolio",
     "parameters": [
       {
@@ -15359,7 +15359,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addVideoToPortfolio",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Portfolios\\Videos",
-    "typeScriptTag": "portfolios\\videos",
+    "typeScriptTag": "portfoliosVideos",
     "description": "Add a video to a portfolio",
     "parameters": [
       {
@@ -15393,7 +15393,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserEmbedPresets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Get all the embed presets that a user has created",
     "parameters": [
       {
@@ -15427,7 +15427,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createEmbedPreset",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Create an embed preset",
     "parameters": [
       {
@@ -15459,7 +15459,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificEmbedPreset",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Get a specific embed preset",
     "parameters": [
       {
@@ -15487,7 +15487,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editPreset",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Embed Presets\\Essentials",
-    "typeScriptTag": "embedPresets\\essentials",
+    "typeScriptTag": "embedPresetsEssentials",
     "description": "Edit an embed preset",
     "parameters": [
       {
@@ -15528,7 +15528,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getPresetVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Videos",
-    "typeScriptTag": "embedPresets\\videos",
+    "typeScriptTag": "embedPresetsVideos",
     "description": "Get all the videos that have a specific embed preset",
     "parameters": [
       {
@@ -15568,7 +15568,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "projects",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Get all the folders that belong to the user",
     "parameters": [
       {
@@ -15624,7 +15624,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "project",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Create a folder",
     "parameters": [
       {
@@ -15670,7 +15670,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "project",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Delete a folder",
     "parameters": [
       {
@@ -15712,7 +15712,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "project",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Get a specific folder",
     "parameters": [
       {
@@ -15748,7 +15748,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "project",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Folders\\Essentials",
-    "typeScriptTag": "folders\\essentials",
+    "typeScriptTag": "foldersEssentials",
     "description": "Edit a folder",
     "parameters": [
       {
@@ -15798,7 +15798,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getFolderContents",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Items",
-    "typeScriptTag": "folders\\items",
+    "typeScriptTag": "foldersItems",
     "description": "Get all the items in a folder",
     "parameters": [
       {
@@ -15851,7 +15851,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeMultipleVideosFromFolder",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Remove a list of videos from a folder",
     "parameters": [
       {
@@ -15899,7 +15899,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllFolderVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Get all the videos in a folder",
     "parameters": [
       {
@@ -15995,7 +15995,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addToFolderVideos",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Add a list of videos to a folder",
     "parameters": [
       {
@@ -16037,7 +16037,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeFromFolderVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Remove a video from a folder",
     "parameters": [
       {
@@ -16079,7 +16079,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addSingleFolderVideo",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Folders\\Videos",
-    "typeScriptTag": "folders\\videos",
+    "typeScriptTag": "foldersVideos",
     "description": "Add a video to a folder",
     "parameters": [
       {
@@ -16113,7 +16113,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserTeamRole",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Teams\\Members",
-    "typeScriptTag": "teams\\members",
+    "typeScriptTag": "teamsMembers",
     "description": "Get information about the user's role on a team",
     "parameters": [
       {
@@ -16130,7 +16130,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getTeamMembershipInformation",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Teams\\Members",
-    "typeScriptTag": "teams\\members",
+    "typeScriptTag": "teamsMembers",
     "description": "Get membership information about a team",
     "parameters": [
       {
@@ -16153,7 +16153,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "completeStreamingUpload",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Uploads",
-    "typeScriptTag": "videos\\uploads",
+    "typeScriptTag": "videosUploads",
     "description": "Complete a streaming upload",
     "parameters": [
       {
@@ -16201,7 +16201,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUploadAttempt",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Uploads",
-    "typeScriptTag": "videos\\uploads",
+    "typeScriptTag": "videosUploads",
     "description": "Get an upload attempt",
     "parameters": [
       {
@@ -16229,7 +16229,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "videos",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Delete a user's videos",
     "parameters": [
       {
@@ -16265,7 +16265,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "videos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Get all the videos that the user has uploaded",
     "parameters": [
       {
@@ -16377,7 +16377,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "video",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Uploads",
-    "typeScriptTag": "videos\\uploads",
+    "typeScriptTag": "videosUploads",
     "description": "Upload a video",
     "parameters": [
       {
@@ -16499,7 +16499,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkUserOwnership",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Check if the user owns a video",
     "parameters": [
       {
@@ -16531,7 +16531,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllAvailableDestinations",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Get all the destinations of a one-time live event",
     "parameters": [
       {
@@ -16571,7 +16571,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createOneTimeLiveEventDestination",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Live\\Event destinations",
-    "typeScriptTag": "live\\eventDestinations",
+    "typeScriptTag": "liveEventDestinations",
     "description": "Create a one-time live event destination",
     "parameters": [
       {
@@ -16671,7 +16671,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getPlaybackUrlForEventStream",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Live M3U8 playback",
-    "typeScriptTag": "videos\\liveM3U8Playback",
+    "typeScriptTag": "videosLiveM3U8Playback",
     "description": "Get an M3U8 playback URL for a one-time live event",
     "parameters": [
       {
@@ -16707,7 +16707,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listUserQueueVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Get all the videos in the user's Watch Later queue",
     "parameters": [
       {
@@ -16771,7 +16771,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeVideoFromQueue",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Remove a video from the user's Watch Later queue",
     "parameters": [
       {
@@ -16794,7 +16794,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkVideoInQueue",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Check if the user has added a video to their Watch Later queue",
     "parameters": [
       {
@@ -16826,7 +16826,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addVideoToQueue",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Watch Later Queue\\Essentials",
-    "typeScriptTag": "watchLaterQueue\\essentials",
+    "typeScriptTag": "watchLaterQueueEssentials",
     "description": "Add a video to the user's Watch Later queue",
     "parameters": [
       {
@@ -16849,7 +16849,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "webinar",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Create a webinar",
     "parameters": [
       {
@@ -16931,7 +16931,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "webinar",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Get a specific webinar",
     "parameters": [
       {
@@ -16963,7 +16963,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "webinar",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Update a webinar",
     "parameters": [
       {
@@ -17043,7 +17043,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getCustomizationData",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Emails",
-    "typeScriptTag": "webinar\\emails",
+    "typeScriptTag": "webinarEmails",
     "description": "Get customization email data for a webinar",
     "parameters": [
       {
@@ -17079,7 +17079,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "customizePreferences",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Webinar\\Emails",
-    "typeScriptTag": "webinar\\emails",
+    "typeScriptTag": "webinarEmails",
     "description": "Customize the email preferences of a webinar",
     "parameters": [
       {
@@ -17190,7 +17190,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserRegistrationsByWebinarId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Get user registration data associated with a webinar",
     "parameters": [
       {
@@ -17254,7 +17254,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "captureUserRegistrationList",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Capture the user registration list associated with a webinar",
     "parameters": [
       {
@@ -17291,7 +17291,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteRegistrantRecord",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Delete a registrant record associated with a webinar",
     "parameters": [
       {
@@ -17337,7 +17337,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "updateUserRegistrationData",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Webinar\\Registrations",
-    "typeScriptTag": "webinar\\registrations",
+    "typeScriptTag": "webinarRegistrations",
     "description": "Update user registration data associated with a webinar",
     "parameters": [
       {
@@ -17388,7 +17388,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "videos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Search for videos",
     "parameters": [
       {
@@ -17460,7 +17460,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "video",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Delete a video",
     "parameters": [
       {
@@ -17482,7 +17482,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "video",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Get a specific video",
     "parameters": [
       {
@@ -17508,7 +17508,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "video",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Essentials",
-    "typeScriptTag": "videos\\essentials",
+    "typeScriptTag": "videosEssentials",
     "description": "Edit a video",
     "parameters": [
       {
@@ -17613,7 +17613,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllContShowcases",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Showcases",
-    "typeScriptTag": "videos\\showcases",
+    "typeScriptTag": "videosShowcases",
     "description": "Get all the showcases that contain a video",
     "parameters": [
       {
@@ -17651,7 +17651,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addToMultipleShowcases",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Showcases",
-    "typeScriptTag": "videos\\showcases",
+    "typeScriptTag": "videosShowcases",
     "description": "Add or remove a video from a list of showcases",
     "parameters": [
       {
@@ -17687,7 +17687,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllSets",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Animated thumbnails",
-    "typeScriptTag": "videos\\animatedThumbnails",
+    "typeScriptTag": "videosAnimatedThumbnails",
     "description": "Get all the animated thumbnails of a video",
     "parameters": [
       {
@@ -17725,7 +17725,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createSet",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Animated thumbnails",
-    "typeScriptTag": "videos\\animatedThumbnails",
+    "typeScriptTag": "videosAnimatedThumbnails",
     "description": "Create a set of animated thumbnails for a video",
     "parameters": [
       {
@@ -17771,7 +17771,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteSet",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Animated thumbnails",
-    "typeScriptTag": "videos\\animatedThumbnails",
+    "typeScriptTag": "videosAnimatedThumbnails",
     "description": "Delete a set of animated thumbnails for a video",
     "parameters": [
       {
@@ -17799,7 +17799,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "specificSetGet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Animated thumbnails",
-    "typeScriptTag": "videos\\animatedThumbnails",
+    "typeScriptTag": "videosAnimatedThumbnails",
     "description": "Get a specific set of animated thumbnails",
     "parameters": [
       {
@@ -17831,7 +17831,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getStatusOfSet",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Animated thumbnails",
-    "typeScriptTag": "videos\\animatedThumbnails",
+    "typeScriptTag": "videosAnimatedThumbnails",
     "description": "Get the status of a set of animated thumbnails",
     "parameters": [
       {
@@ -17863,7 +17863,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAvailableShowcases",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Showcases\\Showcase videos",
-    "typeScriptTag": "showcases\\showcaseVideos",
+    "typeScriptTag": "showcasesShowcaseVideos",
     "description": "Get all the showcases to which the user can add or remove a specific video",
     "parameters": [
       {
@@ -17901,7 +17901,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAccessibleChannels",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Channels\\Videos",
-    "typeScriptTag": "channels\\videos",
+    "typeScriptTag": "channelsVideos",
     "description": "Get all the channels to which the user can add or remove a specific video",
     "parameters": [
       {
@@ -17931,7 +17931,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllVideoCategories",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Categories\\Videos",
-    "typeScriptTag": "categories\\videos",
+    "typeScriptTag": "categoriesVideos",
     "description": "Get all the categories to which a video belongs",
     "parameters": [
       {
@@ -17969,7 +17969,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "setVideoCategories",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Categories\\Videos",
-    "typeScriptTag": "categories\\videos",
+    "typeScriptTag": "categoriesVideos",
     "description": "Suggest categories for a video",
     "parameters": [
       {
@@ -18005,7 +18005,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "chapters",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Get all the chapters of a video",
     "parameters": [
       {
@@ -18043,7 +18043,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "chapter",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Add a chapter to a video",
     "parameters": [
       {
@@ -18089,7 +18089,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "generateChapterThumbnail",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Generate an upload link or timecode-based thumbnail for an unsaved video chapter",
     "parameters": [
       {
@@ -18120,7 +18120,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSingleChapterThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Get a single chapter thumbnail associated with an unsaved video chapter",
     "parameters": [
       {
@@ -18146,7 +18146,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "chapter",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Delete a chapter",
     "parameters": [
       {
@@ -18174,7 +18174,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "chapter",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Get a specific chapter",
     "parameters": [
       {
@@ -18206,7 +18206,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "chapter",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Edit a chapter",
     "parameters": [
       {
@@ -18257,7 +18257,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getChapterThumbnails",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Get all the thumbnails associated with a saved video chapter",
     "parameters": [
       {
@@ -18289,7 +18289,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "generateChapterThumbnailOrUploadLink",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Generate an upload link or timecode-based thumbnail for a saved video chapter",
     "parameters": [
       {
@@ -18326,7 +18326,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteChapterThumbnail",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Delete a chapter thumbnail",
     "parameters": [
       {
@@ -18360,7 +18360,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSingleChapterThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Get a single chapter thumbnail associated with a saved video chapter",
     "parameters": [
       {
@@ -18392,7 +18392,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "setChapterThumbnailActive",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Chapters",
-    "typeScriptTag": "videos\\chapters",
+    "typeScriptTag": "videosChapters",
     "description": "Set a chapter thumbnail as active",
     "parameters": [
       {
@@ -18429,7 +18429,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "comments",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Get all the video comments on a video",
     "parameters": [
       {
@@ -18469,7 +18469,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "comment",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Add a video comment to a video",
     "parameters": [
       {
@@ -18509,7 +18509,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "comment",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Delete a video comment",
     "parameters": [
       {
@@ -18541,7 +18541,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "comment",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Get a specific video comment",
     "parameters": [
       {
@@ -18573,7 +18573,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "comment",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Edit a video comment",
     "parameters": [
       {
@@ -18615,7 +18615,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllReplies",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Get all the replies to a video comment",
     "parameters": [
       {
@@ -18659,7 +18659,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "createReply",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Video comments",
-    "typeScriptTag": "videos\\videoComments",
+    "typeScriptTag": "videosVideoComments",
     "description": "Add a reply to a video comment",
     "parameters": [
       {
@@ -18701,7 +18701,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllCreditedUsersInVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Get all the credited users in a video",
     "parameters": [
       {
@@ -18753,7 +18753,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addUserCredit",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Credit a user in a video",
     "parameters": [
       {
@@ -18807,7 +18807,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "users",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Get users who can be credited on a video",
     "parameters": [
       {
@@ -18859,7 +18859,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteUserCredit",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Delete the credit for a user in a video",
     "parameters": [
       {
@@ -18887,7 +18887,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificCreditedUser",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Get a specific credited user in a video",
     "parameters": [
       {
@@ -18919,7 +18919,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editUserCreditInVideo",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Credits",
-    "typeScriptTag": "videos\\credits",
+    "typeScriptTag": "videosCredits",
     "description": "Edit the credit for a user in a video",
     "parameters": [
       {
@@ -18965,7 +18965,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "fragments",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Fragments",
-    "typeScriptTag": "videos\\fragments",
+    "typeScriptTag": "videosFragments",
     "description": "Delete a video's fragments",
     "parameters": [
       {
@@ -18982,7 +18982,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "fragments",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Fragments",
-    "typeScriptTag": "videos\\fragments",
+    "typeScriptTag": "videosFragments",
     "description": "Get all the fragments for a video",
     "parameters": [
       {
@@ -19004,7 +19004,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "fragments",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Fragments",
-    "typeScriptTag": "videos\\fragments",
+    "typeScriptTag": "videosFragments",
     "description": "Update a video's fragments",
     "parameters": [
       {
@@ -19021,7 +19021,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getUserLikes",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Likes\\Essentials",
-    "typeScriptTag": "likes\\essentials",
+    "typeScriptTag": "likesEssentials",
     "description": "Get all the users who have liked a video",
     "parameters": [
       {
@@ -19067,7 +19067,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllByVideoId",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Get all the thumbnails of a video",
     "parameters": [
       {
@@ -19101,7 +19101,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addThumbnailToVideo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Add a video thumbnail",
     "parameters": [
       {
@@ -19133,7 +19133,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteThumbnailFromVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Delete a video thumbnail",
     "parameters": [
       {
@@ -19156,7 +19156,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getThumbnailFromVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Get a specific video thumbnail",
     "parameters": [
       {
@@ -19184,7 +19184,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editThumbnailImage",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Thumbnails",
-    "typeScriptTag": "videos\\thumbnails",
+    "typeScriptTag": "videosThumbnails",
     "description": "Edit a video thumbnail",
     "parameters": [
       {
@@ -19217,7 +19217,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removePresetFromVideo",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Embed Presets\\Videos",
-    "typeScriptTag": "embedPresets\\videos",
+    "typeScriptTag": "embedPresetsVideos",
     "description": "Remove an embed preset from a video",
     "parameters": [
       {
@@ -19245,7 +19245,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkIfPresetAddedToVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Videos",
-    "typeScriptTag": "embedPresets\\videos",
+    "typeScriptTag": "embedPresetsVideos",
     "description": "Check if an embed preset has been added to a video",
     "parameters": [
       {
@@ -19273,7 +19273,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addPresetToVideo",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Embed Presets\\Videos",
-    "typeScriptTag": "embedPresets\\videos",
+    "typeScriptTag": "embedPresetsVideos",
     "description": "Add an embed preset to a video",
     "parameters": [
       {
@@ -19296,7 +19296,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listWhitelistDomains",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Embed privacy",
-    "typeScriptTag": "videos\\embedPrivacy",
+    "typeScriptTag": "videosEmbedPrivacy",
     "description": "Get all the domains on a video's whitelist",
     "parameters": [
       {
@@ -19334,7 +19334,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeDomainFromWhitelist",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Embed privacy",
-    "typeScriptTag": "videos\\embedPrivacy",
+    "typeScriptTag": "videosEmbedPrivacy",
     "description": "Remove a domain from a video's whitelist",
     "parameters": [
       {
@@ -19366,7 +19366,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addDomainToWhitelist",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Embed privacy",
-    "typeScriptTag": "videos\\embedPrivacy",
+    "typeScriptTag": "videosEmbedPrivacy",
     "description": "Add a domain to a video's whitelist",
     "parameters": [
       {
@@ -19394,7 +19394,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "listAccessibleUsers",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Unlisted videos",
-    "typeScriptTag": "videos\\unlistedVideos",
+    "typeScriptTag": "videosUnlistedVideos",
     "description": "Get the users who can access an unlisted video",
     "parameters": [
       {
@@ -19432,7 +19432,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "grantAccessToUsers",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Unlisted videos",
-    "typeScriptTag": "videos\\unlistedVideos",
+    "typeScriptTag": "videosUnlistedVideos",
     "description": "Permit a list of users to access an unlisted video",
     "parameters": [
       {
@@ -19454,7 +19454,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "restrictUserAccess",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Unlisted videos",
-    "typeScriptTag": "videos\\unlistedVideos",
+    "typeScriptTag": "videosUnlistedVideos",
     "description": "Restrict a user from viewing an unlisted video",
     "parameters": [
       {
@@ -19486,7 +19486,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "grantUserAccess",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Unlisted videos",
-    "typeScriptTag": "videos\\unlistedVideos",
+    "typeScriptTag": "videosUnlistedVideos",
     "description": "Permit a single user to access an unlisted video",
     "parameters": [
       {
@@ -19518,7 +19518,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getIngestStatus",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Live\\Event sessions",
-    "typeScriptTag": "live\\eventSessions",
+    "typeScriptTag": "liveEventSessions",
     "description": "Get the ingest status of a one-time live event",
     "parameters": [
       {
@@ -19540,7 +19540,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getVideoTags",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Tags",
-    "typeScriptTag": "videos\\tags",
+    "typeScriptTag": "videosTags",
     "description": "Get all the tags of a video",
     "parameters": [
       {
@@ -19574,7 +19574,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addMultiple",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Tags",
-    "typeScriptTag": "videos\\tags",
+    "typeScriptTag": "videosTags",
     "description": "Add a list of tags to a video",
     "parameters": [
       {
@@ -19616,7 +19616,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "removeTag",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Tags",
-    "typeScriptTag": "videos\\tags",
+    "typeScriptTag": "videosTags",
     "description": "Remove a tag from a video",
     "parameters": [
       {
@@ -19644,7 +19644,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "checkTagVideo",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Tags",
-    "typeScriptTag": "videos\\tags",
+    "typeScriptTag": "videosTags",
     "description": "Check if a tag has been added to a video",
     "parameters": [
       {
@@ -19680,7 +19680,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addTagToVideo",
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Videos\\Tags",
-    "typeScriptTag": "videos\\tags",
+    "typeScriptTag": "videosTags",
     "description": "Add a specific tag to a video",
     "parameters": [
       {
@@ -19716,7 +19716,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllVideoTracks",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Get all the text tracks of a video",
     "parameters": [
       {
@@ -19754,7 +19754,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addTextTrack",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Add a text track to a video",
     "parameters": [
       {
@@ -19816,7 +19816,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteTextTrack",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Delete a text track",
     "parameters": [
       {
@@ -19848,7 +19848,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificTextTrack",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Get a specific text track",
     "parameters": [
       {
@@ -19884,7 +19884,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editTextTrack",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Text tracks",
-    "typeScriptTag": "videos\\textTracks",
+    "typeScriptTag": "videosTextTracks",
     "description": "Edit a text track",
     "parameters": [
       {
@@ -19940,7 +19940,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addThumbnailToVideo",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Embed Presets\\Timeline events",
-    "typeScriptTag": "embedPresets\\timelineEvents",
+    "typeScriptTag": "embedPresetsTimelineEvents",
     "description": "Add a timeline event thumbnail to a video",
     "parameters": [
       {
@@ -19970,7 +19970,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSingleThumbnail",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Embed Presets\\Timeline events",
-    "typeScriptTag": "embedPresets\\timelineEvents",
+    "typeScriptTag": "embedPresetsTimelineEvents",
     "description": "Get a timeline event thumbnail",
     "parameters": [
       {
@@ -20002,7 +20002,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "transcript",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Transcripts",
-    "typeScriptTag": "videos\\transcripts",
+    "typeScriptTag": "videosTranscripts",
     "description": "Get transcript segments",
     "parameters": [
       {
@@ -20034,7 +20034,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "trim",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Nondestructive trimming",
-    "typeScriptTag": "videos\\nondestructiveTrimming",
+    "typeScriptTag": "videosNondestructiveTrimming",
     "description": "Get the status of a video's trim operation",
     "parameters": [
       {
@@ -20064,7 +20064,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "trim",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Nondestructive trimming",
-    "typeScriptTag": "videos\\nondestructiveTrimming",
+    "typeScriptTag": "videosNondestructiveTrimming",
     "description": "Start a trim operation for a video",
     "parameters": [
       {
@@ -20104,7 +20104,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getAllVideoVersions",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Versions",
-    "typeScriptTag": "videos\\versions",
+    "typeScriptTag": "videosVersions",
     "description": "Get all the versions of a video",
     "parameters": [
       {
@@ -20146,7 +20146,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "addVideoVersion",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Videos\\Versions",
-    "typeScriptTag": "videos\\versions",
+    "typeScriptTag": "videosVersions",
     "description": "Add a version to a video",
     "parameters": [
       {
@@ -20192,7 +20192,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "deleteVideoVersion",
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "Videos\\Versions",
-    "typeScriptTag": "videos\\versions",
+    "typeScriptTag": "videosVersions",
     "description": "Delete a video version",
     "parameters": [
       {
@@ -20220,7 +20220,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificVersion",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Versions",
-    "typeScriptTag": "videos\\versions",
+    "typeScriptTag": "videosVersions",
     "description": "Get a specific video version",
     "parameters": [
       {
@@ -20252,7 +20252,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "editVideoVersion",
     "httpMethod": HttpMethodsEnum.PATCH,
     "tag": "Videos\\Versions",
-    "typeScriptTag": "videos\\versions",
+    "typeScriptTag": "videosVersions",
     "description": "Edit a video version",
     "parameters": [
       {
@@ -20298,7 +20298,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getRelatedVideos",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Videos\\Recommendations",
-    "typeScriptTag": "videos\\recommendations",
+    "typeScriptTag": "videosRecommendations",
     "description": "Get all the related videos of a video",
     "parameters": [
       {
@@ -20342,7 +20342,7 @@ export default function VimeoTypeScriptSdk() {
     "method": "getSpecificWebinar",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Webinar\\Essentials",
-    "typeScriptTag": "webinar\\essentials",
+    "typeScriptTag": "webinarEssentials",
     "description": "Get a specific webinar",
     "parameters": [
       {
