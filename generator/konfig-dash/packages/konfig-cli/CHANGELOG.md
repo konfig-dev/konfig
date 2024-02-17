@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.16
+
+### Patch Changes
+
+- [#575](https://github.com/konfig-dev/konfig/pull/575) [`cbb13fcd`](https://github.com/konfig-dev/konfig/commit/cbb13fcd7063a50e9b1c20d0d20f69e46ecd2bfc) Thanks [@dphuang2](https://github.com/dphuang2)! - Fix bug in defined component schemas + missing 2xx response
+
 ## 1.38.15
 
 ### Patch Changes
