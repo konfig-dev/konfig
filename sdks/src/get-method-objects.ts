@@ -81,6 +81,7 @@ export function getMethodObjects(spec: Spec): Method[] {
     const responses: Response[] = [];
     for (const statusCode in operation.responses) {
       const mediaObjectOrRef = operation.responses[statusCode];
+      if (mediaObjectOrRef === null) console.log(operation);
       const mediaObject = resolveRef({
         refOrObject: mediaObjectOrRef,
         $ref: spec.$ref,

@@ -12,6 +12,13 @@ export async function fixMissing2xxResponse({
   for (const { operation } of operations) {
     const responseCodes = Object.keys(operation.responses)
     if (!isMissing2xxResponse({ responseCodes })) continue
+
+    /**
+     * For some reason, operation.responses in some cases
+     * Specifically when adding vimeo API during pSEO project, this was the case so we need to handle it
+     */
+    if (Array.isArray(operation.responses)) operation.responses = {}
+
     if (responseCodes.length !== 1) {
       operation.responses['200'] = { description: 'OK' }
     } else {

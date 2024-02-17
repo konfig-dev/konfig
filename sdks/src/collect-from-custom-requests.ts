@@ -97,6 +97,16 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "vimeo.com": {
+    lambda: async () => {
+      const response = await fetch("https://api.vimeo.com/?openapi=1", {
+        headers: {
+          Authorization: "bearer 428c282ac3d7bf40265e8700904bb85b",
+        },
+      });
+      return response.text();
+    },
+  },
   "ynab.com": {
     type: "GET",
     url: "https://api.ynab.com/papi/open_api_spec.yaml",

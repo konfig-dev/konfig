@@ -1,0 +1,1607 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /albums/{album_id}/available_videos:
+    get: ShowcasesShowcaseVideos_listInShowcase
+  /categories/{category}/channels:
+    get: CategoriesChannels_listInCategory
+  /categories/{category}/groups:
+    get: CategoriesGroups_getAllGroups
+  /categories/{category}/videos:
+    get: CategoriesVideos_listVideosInCategory
+  /categories/{category}/videos/{video_id}:
+    get: CategoriesVideos_getVideoInCategory
+  /channels/{channel_id}/categories:
+    get: ChannelsCategories_getBelongingCategories
+    put: ChannelsCategories_addChannelToMultipleCategories
+  /channels/{channel_id}/categories/{category}:
+    delete: ChannelsCategories_removeChannelFromCategory
+  /channels/{channel_id}/moderators:
+    delete: ChannelsModerators_removeMultipleFromChannel
+    get: ChannelsModerators_listByChannel
+    patch: ChannelsModerators_replaceModerators
+    put: ChannelsModerators_bulkAddModerators
+  /channels/{channel_id}/moderators/{user_id}:
+    delete: ChannelsModerators_removeModerator
+    get: ChannelsModerators_getSpecificModerator
+    put: ChannelsModerators_addModeratorToChannel
+  /channels/{channel_id}/privacy/users:
+    get: ChannelsPrivateChannelMembers_getAccessibleUsers
+    put: ChannelsPrivateChannelMembers_permitUserAccess
+  /channels/{channel_id}/privacy/users/{user_id}:
+    delete: ChannelsPrivateChannelMembers_restrictUserAccess
+    put: ChannelsPrivateChannelMembers_permitUserAccess
+  /channels/{channel_id}/tags:
+    get: ChannelsTags_getAllChannelTags
+    put: ChannelsTags_addMultipleTagsToChannel
+  /channels/{channel_id}/tags/{word}:
+    delete: ChannelsTags_removeTagFromChannel
+    get: ChannelsTags_checkIfTagAddedToChannel
+    put: ChannelsTags_addTagToChannel
+  /channels/{channel_id}/users:
+    get: ChannelsSubscriptionsAndSubscribers_listChannelFollowers
+  /channels/{channel_id}/videos:
+    delete: ChannelsVideos_removeMultipleFromChannel
+    get: ChannelsVideos_listInChannel
+    put: ChannelsVideos_addMultipleToChannel
+  /channels/{channel_id}/videos/{video_id}:
+    delete: ChannelsVideos_removeSpecificVideo
+    get: ChannelsVideos_getSpecificVideoInChannel
+    put: ChannelsVideos_addVideoToChannel
+  /channels/{channel_id}/videos/{video_id}/comments:
+    get: VideosVideoComments_getAllReplies
+    post: VideosVideoComments_addNewComment
+  /channels/{channel_id}/videos/{video_id}/credits:
+    get: VideosCredits_getAllCreditedUsersInVideo
+    post: VideosCredits_addUserCreditInVideo
+  /channels/{channel_id}/videos/{video_id}/likes:
+    get: LikesEssentials_getUsersWhoLikedVideo
+  /channels/{channel_id}/videos/{video_id}/pictures:
+    get: VideosThumbnails_getAllByVideoId
+    post: VideosThumbnails_addThumbnailToVideo
+  /channels/{channel_id}/videos/{video_id}/privacy/users:
+    get: VideosUnlistedVideos_listAccessibleUsers
+    put: VideosUnlistedVideos_grantAccessToUsers
+  /channels/{channel_id}/videos/{video_id}/texttracks:
+    get: VideosTextTracks_getAllTracks
+    post: VideosTextTracks_addTextTrackToVideo
+  /channels/{channel_id}/videos/{video_id}/versions:
+    get: VideosVersions_getAllVideoVersions
+  /contentratings:
+    get: VideosContentRatings_getAllContentRatings
+  /creativecommons:
+    get: VideosCreativeCommons_getAllCCLicenses
+  /destination/{destination_id}:
+    delete: LiveEventDestinations_deleteDestination
+    get: LiveEventDestinations_getDestination
+    patch: LiveEventDestinations_updateDestination
+  /groups/{group_id}/users:
+    get: GroupsUsers_getGroupUsers
+  /groups/{group_id}/videos:
+    get: GroupsVideos_getAllGroupVideos
+  /groups/{group_id}/videos/{video_id}:
+    delete: GroupsVideos_removeFromGroup
+    get: GroupsVideos_getSingleVideo
+    put: GroupsVideos_addToGroup
+  /live_events:
+    delete: LiveEssentials_deleteMultipleEvents
+    get: LiveEssentials_getUserLiveEvents
+    post: LiveEssentials_createEvent
+  /live_events/{live_event_id}:
+    delete: LiveEssentials_deleteSpecificLiveEvent
+    get: LiveEssentials_getEventById
+    patch: LiveEssentials_updateEventBelongingToAuthenticatedUser
+  /live_events/{live_event_id}/activate:
+    post: LiveEventActivation_createRtmpLinks
+  /live_events/{live_event_id}/auto_cc:
+    patch: LiveEventAutomatedClosedCaptions_editPreference
+  /live_events/{live_event_id}/end:
+    post: LiveEventEnd_eventTermination
+  /live_events/{live_event_id}/low_latency:
+    patch: LiveEventLowLatency_toggleOption
+  /live_events/{live_event_id}/pictures:
+    get: LiveEventThumbnails_getAllThumbnails
+    post: LiveEventThumbnails_createThumbnailForEvent
+  /live_events/{live_event_id}/pictures/{thumbnail_id}:
+    delete: LiveEventThumbnails_deleteThumbnailForEvent
+    get: LiveEventThumbnails_getSpecificThumbnail
+    patch: LiveEventThumbnails_editLiveEventThumbnail
+  /live_events/{live_event_id}/privacy/domains:
+    get: LiveEmbedPrivacy_getWhitelistDomains
+    put: LiveEmbedPrivacy_embedEventOnDomains
+  /live_events/{live_event_id}/videos:
+    delete: LiveEventVideos_removeMultipleVideos
+    get: LiveEventVideos_listLiveEventVideos
+    post: LiveEventVideos_addMultiple
+  /live_events/{live_event_id}/videos/{video_id}:
+    get: LiveEventVideos_specificEventVideo
+  /me:
+    get: UsersEssentials_getUser
+    patch: UsersEssentials_editVimeoAccount
+  /me/albums:
+    get: ShowcasesEssentials_getAllUserShowcases
+    post: ShowcasesEssentials_createUserShowcase
+  /me/albums/{album_id}:
+    delete: ShowcasesEssentials_deleteShowcase
+    get: ShowcasesEssentials_getSpecificShowcase
+    patch: ShowcasesEssentials_editShowcase
+  /me/albums/{album_id}/videos:
+    get: ShowcasesShowcaseVideos_listInShowcase
+    put: ShowcasesShowcaseVideos_replaceVideos
+  /me/albums/{album_id}/videos/{video_id}:
+    delete: ShowcasesShowcaseVideos_removeFromShowcase
+    get: ShowcasesShowcaseVideos_getSpecificVideoInShowcase
+    put: ShowcasesShowcaseVideos_addToShowcase
+  /me/albums/{album_id}/videos/{video_id}/set_album_thumbnail:
+    post: ShowcasesShowcaseVideos_createShowcaseThumbnail
+  /me/albums/{album_id}/videos/{video_id}/set_featured_video:
+    patch: ShowcasesShowcaseVideos_setFeaturedVideo
+  /me/analytics:
+    get: UsersAnalytics_getUserMetrics
+  /me/appearances:
+    get: VideosEssentials_getUserAppearances
+  /me/categories:
+    get: CategoriesUsers_listFollowedCategories
+  /me/categories/{category}:
+    delete: CategoriesUsers_stopFollowingCategory
+    get: CategoriesUsers_checkFollowedCategory
+    put: CategoriesUsers_followCategory
+  /me/channels:
+    get: ChannelsEssentials_getUserSubscriptions
+  /me/channels/{channel_id}:
+    delete: ChannelsSubscriptionsAndSubscribers_unsubscribeUserFromChannel
+    get: ChannelsSubscriptionsAndSubscribers_checkIfUserFollowsChannel
+    put: ChannelsSubscriptionsAndSubscribers_subscribeUserToChannel
+  /me/customlogos:
+    get: EmbedPresetsCustomLogos_list
+    post: EmbedPresetsCustomLogos_addUserLogo
+  /me/customlogos/{logo_id}:
+    delete: EmbedPresetsCustomLogos_deleteUserLogo
+    get: EmbedPresetsCustomLogos_getSpecificUserLogo
+  /me/destinations:
+    get: LiveEventDestinations_getAllAvailableDestinations
+  /me/feed:
+    get: UsersFeeds_getUserFeedVideos
+  /me/followers:
+    get: UsersFollowers_listAll
+  /me/following:
+    get: UsersFollowers_listOfFollowingUsers
+    post: UsersFollowers_followMultipleUsers
+  /me/following/{follow_user_id}:
+    delete: UsersFollowers_stopFollowingUser
+    get: UsersFollowers_checkFollowingUser
+    put: UsersFollowers_followSpecificUser
+  /me/groups:
+    get: GroupsUsers_getUserGroups
+  /me/groups/{group_id}:
+    delete: GroupsSubscriptions_removeUserFromGroup
+    get: GroupsUsers_checkUserJoinedGroup
+    put: GroupsSubscriptions_addUserToGroup
+  /me/likes:
+    get: LikesEssentials_getUserLikedVideos
+  /me/likes/{video_id}:
+    delete: LikesEssentials_unlikeVideo
+    get: LikesEssentials_checkUserLikedVideo
+    put: LikesEssentials_likeVideo
+  /me/live_events:
+    delete: LiveEssentials_deleteMultipleEvents
+    get: LiveEssentials_getAllUserLiveEvents
+    post: LiveEssentials_createLiveEvent
+  /me/live_events/{live_event_id}:
+    delete: LiveEssentials_deleteSingleEvent
+    get: LiveEssentials_getSpecificLiveEvent
+    patch: LiveEssentials_updateEventBelongingToAuthenticatedUser
+  /me/live_events/{live_event_id}/activate:
+    post: LiveEventActivation_createRtmpLinks
+  /me/live_events/{live_event_id}/auto_cc:
+    patch: LiveEventAutomatedClosedCaptions_editPreferenceForEvent
+  /me/live_events/{live_event_id}/destinations:
+    get: LiveEventDestinations_listAllAvailableDestinations
+    post: LiveEventDestinations_createDestination
+  /me/live_events/{live_event_id}/end:
+    post: LiveEventEnd_eventTerminationAlt1
+  /me/live_events/{live_event_id}/low_latency:
+    patch: LiveEventLowLatency_toggleOption
+  /me/live_events/{live_event_id}/m3u8_playback:
+    get: LiveEventM3U8Playback_getUrl
+  /me/live_events/{live_event_id}/pictures:
+    get: LiveEventThumbnails_getAll
+    post: LiveEventThumbnails_addThumbnail
+  /me/live_events/{live_event_id}/pictures/{thumbnail_id}:
+    delete: LiveEventThumbnails_deleteForEvent
+    get: LiveEventThumbnails_getSpecificThumbnail
+    patch: LiveEventThumbnails_updateEventThumbnail
+  /me/live_events/{live_event_id}/privacy/domains:
+    get: LiveEmbedPrivacy_getWhitelistDomains
+    put: LiveEmbedPrivacy_embedEventOnDomains
+  /me/live_events/{live_event_id}/videos:
+    delete: LiveEventVideos_removeMultiple
+    get: LiveEventVideos_getAll
+    post: LiveEventVideos_uploadMultiple
+  /me/live_events/{live_event_id}/videos/{video_id}:
+    get: LiveEventVideos_specificVideo
+  /me/ondemand/pages:
+    get: OnDemandEssentials_getAllUserPages
+    post: OnDemandEssentials_createPage
+  /me/ondemand/purchases:
+    get: OnDemandPurchasesAndRentals_getAllUserPurchasesAndRentals
+  /me/ondemand/purchases/{ondemand_id}:
+    get: OnDemandPurchasesAndRentals_checkUserPurchasesAndRentals
+  /me/payment_methods:
+    get: PaymentsEssentials_listPaymentMethods
+  /me/payment_methods/{payment_method_id}:
+    get: PaymentsEssentials_getPaymentMethodInfo
+  /me/pictures:
+    get: UsersPictures_list
+    post: UsersPictures_addPortraitImage
+  /me/pictures/{portraitset_id}:
+    delete: UsersPictures_removePortraitImage
+    get: UsersPictures_getSpecificPictureBelongingToUser
+    patch: UsersPictures_editPortraitImage
+  /me/portfolios:
+    get: PortfoliosEssentials_getAllUserPortfolios
+  /me/portfolios/{portfolio_id}:
+    get: PortfoliosEssentials_getUserPortfolio
+  /me/portfolios/{portfolio_id}/videos:
+    get: PortfoliosVideos_getAllPortfolioVideos
+  /me/portfolios/{portfolio_id}/videos/{video_id}:
+    delete: PortfoliosVideos_removeFromPortfolio
+    get: PortfoliosVideos_getSpecificVideo
+    put: PortfoliosVideos_putVideoToPortfolio
+  /me/presets:
+    get: EmbedPresetsEssentials_getAllUserCreatedEmbedPresets
+    post: EmbedPresetsEssentials_createPreset
+  /me/presets/{preset_id}:
+    get: EmbedPresetsEssentials_getSpecificPreset
+    patch: EmbedPresetsEssentials_editPreset
+  /me/presets/{preset_id}/videos:
+    get: EmbedPresetsVideos_getSpecificPresetVideos
+  /me/projects:
+    get: FoldersEssentials_getAllUserFolders
+    post: FoldersEssentials_createFolder
+  /me/projects/{project_id}:
+    delete: FoldersEssentials_deleteFolder
+    get: FoldersEssentials_getSpecificFolder
+    patch: FoldersEssentials_editFolder
+  /me/projects/{project_id}/items:
+    delete: FoldersItems_removeFromFolder
+    get: FoldersItems_getFolderItems
+  /me/projects/{project_id}/videos:
+    delete: FoldersVideos_removeMultipleFromFolder
+    get: FoldersVideos_getVideosInFolder
+    put: FoldersVideos_addMultipleToFolder
+  /me/projects/{project_id}/videos/{video_id}:
+    delete: FoldersVideos_removeSingleVideo
+    put: FoldersVideos_addToFolder
+  /me/videos:
+    delete: VideosEssentials_deleteUserVideos
+    get: VideosEssentials_getAllUserVideos
+    post: VideosUploads_beginVideoUploadProcess
+  /me/videos/{video_id}:
+    get: VideosEssentials_checkUserOwnsVideo
+  /me/videos/{video_id}/destinations:
+    get: LiveEventDestinations_getAllDestinations
+    post: LiveEventDestinations_createOneTimeLiveEventDestination
+  /me/videos/{video_id}/m3u8_playback:
+    get: VideosLiveM3U8Playback_getPlaybackUrl
+  /me/watched/videos:
+    delete: UsersWatchHistory_deleteEntireWatchHistory
+    get: UsersWatchHistory_getWatchedVideos
+  /me/watched/videos/{video_id}:
+    delete: UsersWatchHistory_deleteSpecificVideo
+  /me/watchlater:
+    get: WatchLaterQueueEssentials_getVideosInQueue
+  /me/watchlater/{video_id}:
+    delete: WatchLaterQueueEssentials_removeVideoFromQueue
+    get: WatchLaterQueueEssentials_checkVideoInQueue
+    put: WatchLaterQueueEssentials_addVideoToQueue
+  /me/webinars:
+    post: WebinarEssentials_createWebinar
+  /me/webinars/{webinar_id}:
+    get: WebinarEssentials_getSpecificWebinar
+    patch: WebinarEssentials_updateWebinarBelongingToAuthenticatedUser
+  /me/webinars/{webinar_id}/email_settings:
+    get: WebinarEmails_getCustomizationData
+    patch: WebinarEmails_customizePreferences
+  /me/webinars/{webinar_id}/registrants:
+    get: WebinarRegistrations_getUserRegistrationsByWebinarId
+    put: WebinarRegistrations_captureUserRegistrationList
+  /me/webinars/{webinar_id}/registrants/{registrant_id}:
+    delete: WebinarRegistrations_deleteRegistrantRecord
+    patch: WebinarRegistrations_updateUserRegistrationData
+  /oauth/access_token:
+    post: AuthenticationExtrasExchange_oAuthCodeExchange
+  /oauth/authorize/vimeo_oauth1:
+    post: AuthenticationExtrasConvert_oAuth1ToOAuth2
+  /ondemand/genres:
+    get: OnDemandGenres_getAllGenres
+  /ondemand/genres/{genre_id}:
+    get: OnDemandGenres_specificGenreGet
+  /ondemand/genres/{genre_id}/pages:
+    get: OnDemandGenres_getAllPagesInGenre
+  /ondemand/genres/{genre_id}/pages/{ondemand_id}:
+    get: OnDemandGenres_getSpecificPageInGenre
+  /ondemand/pages/{ondemand_id}:
+    delete: OnDemandEssentials_deleteOnDemandPage
+  /ondemand/pages/{ondemand_id}/backgrounds:
+    get: OnDemandBackgrounds_getAllBackgroundsOnPage
+    post: OnDemandBackgrounds_addBackgroundToPage
+  /ondemand/pages/{ondemand_id}/backgrounds/{background_id}:
+    delete: OnDemandBackgrounds_deleteBackgroundFromPage
+    get: OnDemandBackgrounds_getSpecificBackground
+    patch: OnDemandBackgrounds_editBackgroundOnPage
+  /ondemand/pages/{ondemand_id}/genres:
+    get: OnDemandGenres_getGenres
+  /ondemand/pages/{ondemand_id}/genres/{genre_id}:
+    delete: OnDemandGenres_removeGenreFromPage
+    get: OnDemandGenres_checkGenreAssociation
+    put: OnDemandGenres_addGenreToPage
+  /ondemand/pages/{ondemand_id}/likes:
+    get: LikesEssentials_getAllUserLikes
+  /ondemand/pages/{ondemand_id}/pictures:
+    get: OnDemandPosters_getOnDemandPagePosters
+    post: OnDemandPosters_addPosterToPage
+  /ondemand/pages/{ondemand_id}/pictures/{poster_id}:
+    get: OnDemandPosters_getSpecificPoster
+    patch: OnDemandPosters_updatePoster
+  /ondemand/pages/{ondemand_id}/promotions:
+    get: OnDemandPromotions_getAllPagePromotions
+    post: OnDemandPromotions_addPromotionToPage
+  /ondemand/pages/{ondemand_id}/promotions/{promotion_id}:
+    delete: OnDemandPromotions_deletePromotionOnPage
+    get: OnDemandPromotions_specificPromotionGet
+  /ondemand/pages/{ondemand_id}/promotions/{promotion_id}/codes:
+    get: OnDemandPromotions_getAllPromotionCodes
+  /ondemand/pages/{ondemand_id}/regions:
+    delete: OnDemandRegions_removeMultiple
+    get: OnDemandRegions_getAll
+    put: OnDemandRegions_addMultiple
+  /ondemand/pages/{ondemand_id}/regions/{country}:
+    delete: OnDemandRegions_removeSpecificRegion
+    get: OnDemandRegions_getSpecificRegion
+    put: OnDemandRegions_addRegionToPage
+  /ondemand/pages/{ondemand_id}/seasons:
+    get: OnDemandSeasons_listAll
+  /ondemand/pages/{ondemand_id}/seasons/{season_id}:
+    get: OnDemandSeasons_specificGet
+  /ondemand/pages/{ondemand_id}/seasons/{season_id}/videos:
+    get: OnDemandSeasons_getAllVideosInSeason
+  /ondemand/pages/{ondemand_id}/videos:
+    get: OnDemandVideos_getAllVideos
+  /ondemand/pages/{ondemand_id}/videos/{video_id}:
+    delete: OnDemandVideos_removeFromPage
+    get: OnDemandVideos_specificVideoGet
+    put: OnDemandVideos_addVideoToPage
+  /tags/{word}/videos:
+    get: VideosTags_getAllByTag
+  /teammembers/{code}:
+    get: TeamsMembers_getMembershipInformation
+  /users/{owner_id}/folders/private_to_me:
+    get: FoldersEssentials_getUserPrivateToMeFolder
+  /users/{user_id}/albums/{album_id}/custom_thumbnails:
+    get: ShowcasesCustomShowcaseThumbnails_list
+    post: ShowcasesCustomShowcaseThumbnails_addCustomThumbnail
+  /users/{user_id}/albums/{album_id}/custom_thumbnails/{thumbnail_id}:
+    delete: ShowcasesCustomShowcaseThumbnails_deleteCustomThumbnail
+    get: ShowcasesCustomShowcaseThumbnails_getSpecificThumbnail
+    patch: ShowcasesCustomShowcaseThumbnails_replaceCustomThumbnail
+  /users/{user_id}/albums/{album_id}/logos:
+    get: ShowcasesCustomShowcaseLogos_listAllCustomLogos
+    post: ShowcasesCustomShowcaseLogos_addCustomLogo
+  /users/{user_id}/albums/{album_id}/logos/{logo_id}:
+    delete: ShowcasesCustomShowcaseLogos_deleteCustomLogo
+    get: ShowcasesCustomShowcaseLogos_getSpecificLogo
+    patch: ShowcasesCustomShowcaseLogos_replaceLogo
+  /users/{user_id}/albums/{album_id}/videos:
+    get: ShowcasesShowcaseVideos_getShowcaseVideos
+    put: ShowcasesShowcaseVideos_replaceShowcaseVideos
+  /users/{user_id}/albums/{album_id}/videos/{video_id}:
+    delete: ShowcasesShowcaseVideos_removeVideoFromShowcase
+    get: ShowcasesShowcaseVideos_getSpecificVideoInShowcase
+    put: ShowcasesShowcaseVideos_addToShowcase
+  /users/{user_id}/albums/{album_id}/videos/{video_id}/set_album_thumbnail:
+    post: ShowcasesShowcaseVideos_createShowcaseThumbnail
+  /users/{user_id}/albums/{album_id}/videos/{video_id}/set_featured_video:
+    patch: ShowcasesShowcaseVideos_setFeaturedVideo
+  /users/{user_id}/analytics:
+    get: UsersAnalytics_getMetrics
+  /users/{user_id}/categories:
+    get: CategoriesUsers_listFollowedCategories
+  /users/{user_id}/categories/{category}:
+    delete: CategoriesUsers_stopFollowingCategory
+    get: CategoriesUsers_checkFollowedCategory
+    put: CategoriesUsers_followSpecificCategory
+  /users/{user_id}/channels:
+    get: ChannelsEssentials_getUserSubscriptions
+  /users/{user_id}/channels/{channel_id}:
+    delete: ChannelsSubscriptionsAndSubscribers_unsubscribeUserFromChannel
+    get: ChannelsSubscriptionsAndSubscribers_checkUserFollowsChannel
+    put: ChannelsSubscriptionsAndSubscribers_subscribeToChannel
+  /users/{user_id}/customlogos:
+    get: EmbedPresetsCustomLogos_listUserLogos
+    post: EmbedPresetsCustomLogos_addUserLogo
+  /users/{user_id}/customlogos/{logo_id}:
+    delete: EmbedPresetsCustomLogos_deleteUserLogo
+    get: EmbedPresetsCustomLogos_getSpecificUserLogo
+  /users/{user_id}/destinations:
+    get: LiveEventDestinations_listAvailableDestinations
+  /users/{user_id}/following:
+    get: UsersFollowers_listOfFollowedUsers
+  /users/{user_id}/following/{follow_user_id}:
+    get: UsersFollowers_checkFollowingStatus
+  /users/{user_id}/groups:
+    get: GroupsUsers_getUserGroupsList
+  /users/{user_id}/groups/{group_id}:
+    get: GroupsUsers_checkBelongGroup
+  /users/{user_id}/likes/{video_id}:
+    get: LikesEssentials_checkVideoLikedByUser
+  /users/{user_id}/live_events:
+    delete: LiveEssentials_deleteMultipleEvents
+    get: LiveEssentials_getUserLiveEvents
+    post: LiveEssentials_createEventForUser
+  /users/{user_id}/live_events/{live_event_id}:
+    delete: LiveEssentials_deleteSpecificEvent
+    get: LiveEssentials_getEventById
+    patch: LiveEssentials_updateEventBelongingToAuthenticatedUser
+  /users/{user_id}/live_events/{live_event_id}/activate:
+    post: LiveEventActivation_createRtmpLinks
+  /users/{user_id}/live_events/{live_event_id}/auto_cc:
+    patch: LiveEventAutomatedClosedCaptions_editPreferenceForEvent
+  /users/{user_id}/live_events/{live_event_id}/destinations:
+    get: LiveEventDestinations_getAllAvailableDestinations
+    post: LiveEventDestinations_createEventDestination
+  /users/{user_id}/live_events/{live_event_id}/end:
+    post: LiveEventEnd_eventTerminationAlt2
+  /users/{user_id}/live_events/{live_event_id}/low_latency:
+    patch: LiveEventLowLatency_toggleOption
+  /users/{user_id}/live_events/{live_event_id}/m3u8_playback:
+    get: LiveEventM3U8Playback_getUrlForEventStream
+  /users/{user_id}/live_events/{live_event_id}/ott_destination/{destination_id}:
+    delete: LiveEventDestinations_deleteOttDestination
+  /users/{user_id}/live_events/{live_event_id}/ott_destinations:
+    get: LiveEventDestinations_getAllOttDestinations
+    post: LiveEventDestinations_createOttDestination
+  /users/{user_id}/live_events/{live_event_id}/pictures:
+    get: LiveEventThumbnails_getAllThumbs
+    post: LiveEventThumbnails_createThumbnailForEvent
+  /users/{user_id}/live_events/{live_event_id}/pictures/{thumbnail_id}:
+    delete: LiveEventThumbnails_deleteThumbnailForEvent
+    get: LiveEventThumbnails_getSpecificThumbnail
+    patch: LiveEventThumbnails_editEventThumbnail
+  /users/{user_id}/live_events/{live_event_id}/privacy/domains:
+    get: LiveEmbedPrivacy_getWhitelistDomains
+    put: LiveEmbedPrivacy_embedEventOnDomains
+  /users/{user_id}/live_events/{live_event_id}/videos:
+    delete: LiveEventVideos_removeMultiple
+    get: LiveEventVideos_listAllVideosInEvent
+    post: LiveEventVideos_addMultipleVideos
+  /users/{user_id}/live_events/{live_event_id}/videos/{video_id}:
+    get: LiveEventVideos_getSpecificVideo
+  /users/{user_id}/ondemand/pages:
+    get: OnDemandEssentials_getAllUserPages
+  /users/{user_id}/ondemand/purchases:
+    get: OnDemandPurchasesAndRentals_listUserPurchasesAndRentals
+  /users/{user_id}/portfolios/{portfolio_id}/videos:
+    get: PortfoliosVideos_getAllPortfolioVideos
+  /users/{user_id}/portfolios/{portfolio_id}/videos/{video_id}:
+    delete: PortfoliosVideos_removeFromPortfolioVideo
+    get: PortfoliosVideos_getSpecificVideo
+    put: PortfoliosVideos_addVideoToPortfolio
+  /users/{user_id}/presets:
+    get: EmbedPresetsEssentials_getUserEmbedPresets
+    post: EmbedPresetsEssentials_createEmbedPreset
+  /users/{user_id}/presets/{preset_id}:
+    get: EmbedPresetsEssentials_getSpecificEmbedPreset
+    patch: EmbedPresetsEssentials_editPreset
+  /users/{user_id}/presets/{preset_id}/videos:
+    get: EmbedPresetsVideos_getPresetVideos
+  /users/{user_id}/projects/{project_id}/items:
+    get: FoldersItems_getFolderContents
+  /users/{user_id}/projects/{project_id}/videos:
+    delete: FoldersVideos_removeMultipleVideosFromFolder
+    get: FoldersVideos_getAllFolderVideos
+    put: FoldersVideos_addToFolderVideos
+  /users/{user_id}/projects/{project_id}/videos/{video_id}:
+    delete: FoldersVideos_removeFromFolderVideo
+    put: FoldersVideos_addSingleFolderVideo
+  /users/{user_id}/team/role:
+    get: TeamsMembers_getUserTeamRole
+  /users/{user_id}/team_users/{team_user_id}:
+    get: TeamsMembers_getTeamMembershipInformation
+  /users/{user_id}/uploads/{upload_id}:
+    delete: VideosUploads_completeStreamingUpload
+    get: VideosUploads_getUploadAttempt
+  /users/{user_id}/videos/{video_id}:
+    get: VideosEssentials_checkUserOwnership
+  /users/{user_id}/videos/{video_id}/destinations:
+    get: LiveEventDestinations_getAllAvailableDestinations
+    post: LiveEventDestinations_createOneTimeLiveEventDestination
+  /users/{user_id}/videos/{video_id}/m3u8_playback:
+    get: VideosLiveM3U8Playback_getPlaybackUrlForEventStream
+  /users/{user_id}/watchlater:
+    get: WatchLaterQueueEssentials_listUserQueueVideos
+  /users/{user_id}/watchlater/{video_id}:
+    delete: WatchLaterQueueEssentials_removeVideoFromQueue
+    get: WatchLaterQueueEssentials_checkVideoInQueue
+    put: WatchLaterQueueEssentials_addVideoToQueue
+  /users/{user_id}/webinars/{webinar_id}/email_settings:
+    get: WebinarEmails_getCustomizationData
+    patch: WebinarEmails_customizePreferences
+  /users/{user_id}/webinars/{webinar_id}/registrants:
+    get: WebinarRegistrations_getUserRegistrationsByWebinarId
+    put: WebinarRegistrations_captureUserRegistrationList
+  /users/{user_id}/webinars/{webinar_id}/registrants/{registrant_id}:
+    delete: WebinarRegistrations_deleteRegistrantRecord
+    patch: WebinarRegistrations_updateUserRegistrationData
+  /videos/{video_id}/albums:
+    get: VideosShowcases_getAllContShowcases
+    patch: VideosShowcases_addToMultipleShowcases
+  /videos/{video_id}/animated_thumbsets:
+    get: VideosAnimatedThumbnails_getAllSets
+    post: VideosAnimatedThumbnails_createSet
+  /videos/{video_id}/animated_thumbsets/{picture_id}:
+    delete: VideosAnimatedThumbnails_deleteSet
+    get: VideosAnimatedThumbnails_specificSetGet
+  /videos/{video_id}/animated_thumbsets/{picture_id}/status:
+    get: VideosAnimatedThumbnails_getStatusOfSet
+  /videos/{video_id}/available_albums:
+    get: ShowcasesShowcaseVideos_listAvailableShowcases
+  /videos/{video_id}/available_channels:
+    get: ChannelsVideos_getAccessibleChannels
+  /videos/{video_id}/categories:
+    get: CategoriesVideos_getAllVideoCategories
+    put: CategoriesVideos_setVideoCategories
+  /videos/{video_id}/chapters/temporary/pictures:
+    post: VideosChapters_generateChapterThumbnail
+  /videos/{video_id}/chapters/temporary/pictures/{uid}:
+    get: VideosChapters_getSingleChapterThumbnail
+  /videos/{video_id}/chapters/{chapter_id}/pictures:
+    get: VideosChapters_getChapterThumbnails
+    post: VideosChapters_generateChapterThumbnailOrUploadLink
+  /videos/{video_id}/chapters/{chapter_id}/pictures/{uid}:
+    delete: VideosChapters_deleteChapterThumbnail
+    get: VideosChapters_getSingleChapterThumbnail
+    patch: VideosChapters_setChapterThumbnailActive
+  /videos/{video_id}/comments/{comment_id}/replies:
+    get: VideosVideoComments_getAllReplies
+    post: VideosVideoComments_createReply
+  /videos/{video_id}/credits:
+    get: VideosCredits_getAllCreditedUsersInVideo
+    post: VideosCredits_addUserCredit
+  /videos/{video_id}/credits/{credit_id}:
+    delete: VideosCredits_deleteUserCredit
+    get: VideosCredits_getSpecificCreditedUser
+    patch: VideosCredits_editUserCreditInVideo
+  /videos/{video_id}/likes:
+    get: LikesEssentials_getUserLikes
+  /videos/{video_id}/pictures:
+    get: VideosThumbnails_getAllByVideoId
+    post: VideosThumbnails_addThumbnailToVideo
+  /videos/{video_id}/pictures/{picture_id}:
+    delete: VideosThumbnails_deleteThumbnailFromVideo
+    get: VideosThumbnails_getThumbnailFromVideo
+    patch: VideosThumbnails_editThumbnailImage
+  /videos/{video_id}/presets/{preset_id}:
+    delete: EmbedPresetsVideos_removePresetFromVideo
+    get: EmbedPresetsVideos_checkIfPresetAddedToVideo
+    put: EmbedPresetsVideos_addPresetToVideo
+  /videos/{video_id}/privacy/domains:
+    get: VideosEmbedPrivacy_listWhitelistDomains
+  /videos/{video_id}/privacy/domains/{domain}:
+    delete: VideosEmbedPrivacy_removeDomainFromWhitelist
+    put: VideosEmbedPrivacy_addDomainToWhitelist
+  /videos/{video_id}/privacy/users:
+    get: VideosUnlistedVideos_listAccessibleUsers
+    put: VideosUnlistedVideos_grantAccessToUsers
+  /videos/{video_id}/privacy/users/{user_id}:
+    delete: VideosUnlistedVideos_restrictUserAccess
+    put: VideosUnlistedVideos_grantUserAccess
+  /videos/{video_id}/sessions/status:
+    get: LiveEventSessions_getIngestStatus
+  /videos/{video_id}/tags:
+    get: VideosTags_getVideoTags
+    put: VideosTags_addMultiple
+  /videos/{video_id}/tags/{word}:
+    delete: VideosTags_removeTag
+    get: VideosTags_checkTagVideo
+    put: VideosTags_addTagToVideo
+  /videos/{video_id}/texttracks:
+    get: VideosTextTracks_getAllVideoTracks
+    post: VideosTextTracks_addTextTrack
+  /videos/{video_id}/texttracks/{texttrack_id}:
+    delete: VideosTextTracks_deleteTextTrack
+    get: VideosTextTracks_getSpecificTextTrack
+    patch: VideosTextTracks_editTextTrack
+  /videos/{video_id}/timelinethumbnails:
+    post: EmbedPresetsTimelineEvents_addThumbnailToVideo
+  /videos/{video_id}/timelinethumbnails/{thumbnail_id}:
+    get: EmbedPresetsTimelineEvents_getSingleThumbnail
+  /videos/{video_id}/versions:
+    get: VideosVersions_getAllVideoVersions
+    post: VideosVersions_addVideoVersion
+  /videos/{video_id}/versions/{version_id}:
+    delete: VideosVersions_deleteVideoVersion
+    get: VideosVersions_getSpecificVersion
+    patch: VideosVersions_editVideoVersion
+  /videos/{video_id}/videos:
+    get: VideosRecommendations_getRelatedVideos
+  /webinars/{webinar_id}:
+    get: WebinarEssentials_getSpecificWebinar
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /channels:
+    post:
+      application/vnd.vimeo.channel+json: CreateChannelRequest
+  /channels/{channel_id}:
+    patch:
+      application/vnd.vimeo.channel+json: EditChannelRequest
+  /channels/{channel_id}/categories:
+    put:
+      application/json: ChannelsCategoriesAddChannelToMultipleCategoriesRequest
+  /channels/{channel_id}/moderators:
+    delete:
+      application/vnd.vimeo.user+json: ChannelsModeratorsRemoveMultipleFromChannelRequest
+    patch:
+      application/json: ChannelsModeratorsReplaceModeratorsRequest
+  /channels/{channel_id}/privacy/users:
+    put:
+      application/vnd.vimeo.user+json: ChannelsPrivateChannelMembersPermitUserAccessRequest
+  /channels/{channel_id}/tags:
+    put:
+      application/vnd.vimeo.tag+json: ChannelsTagsAddMultipleTagsToChannelRequest
+  /channels/{channel_id}/videos:
+    delete:
+      application/json: ChannelsVideosRemoveMultipleFromChannelRequest
+    put:
+      application/json: ChannelsVideosAddMultipleToChannelRequest
+  /channels/{channel_id}/videos/{video_id}/comments:
+    post:
+      application/vnd.vimeo.comment+json: VideosVideoCommentsAddNewCommentRequest
+  /channels/{channel_id}/videos/{video_id}/credits:
+    post:
+      application/vnd.vimeo.credit+json: VideosCreditsAddUserCreditInVideoRequest
+  /channels/{channel_id}/videos/{video_id}/pictures:
+    post:
+      application/vnd.vimeo.picture+json: VideosThumbnailsAddThumbnailToVideoRequest
+  /channels/{channel_id}/videos/{video_id}/texttracks:
+    post:
+      application/vnd.vimeo.video.texttrack+json: VideosTextTracksAddTextTrackToVideoRequest
+  /destination/{destination_id}:
+    patch:
+      application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsUpdateDestinationRequest
+  /groups:
+    post:
+      application/vnd.vimeo.group+json: CreateGroupRequest
+  /live_events:
+    delete:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsDeleteMultipleEventsRequest
+    post:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsCreateEventRequest
+  /live_events/{live_event_id}:
+    patch:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsUpdateEventBelongingToAuthenticatedUserRequest
+  /live_events/{live_event_id}/activate:
+    post:
+      application/vnd.vimeo.video+json: LiveEventActivationCreateRtmpLinksRequest
+  /live_events/{live_event_id}/auto_cc:
+    patch:
+      application/application/vnd.vimeo.live.auto_cc+json: LiveEventAutomatedClosedCaptionsEditPreferenceRequest
+  /live_events/{live_event_id}/low_latency:
+    patch:
+      application/application/vnd.vimeo.live.low_latency+json: LiveEventLowLatencyToggleOptionRequest
+  /live_events/{live_event_id}/pictures:
+    post:
+      application/vnd.vimeo.picture+json: LiveEventThumbnailsCreateThumbnailForEventRequest
+  /live_events/{live_event_id}/pictures/{thumbnail_id}:
+    patch:
+      application/vnd.vimeo.picture+json: LiveEventThumbnailsEditLiveEventThumbnailRequest
+  /live_events/{live_event_id}/privacy/domains:
+    put:
+      application/json: LiveEmbedPrivacyEmbedEventOnDomainsRequest
+  /live_events/{live_event_id}/videos:
+    delete:
+      application/json: LiveEventVideosRemoveMultipleVideosRequest
+    post:
+      application/json: LiveEventVideosAddMultipleRequest
+  /me:
+    patch:
+      application/vnd.vimeo.user+json: UsersEssentialsEditVimeoAccountRequest
+  /me/albums:
+    post:
+      application/vnd.vimeo.album+json: ShowcasesEssentialsCreateUserShowcaseRequest
+  /me/albums/{album_id}:
+    patch:
+      application/vnd.vimeo.album+json: ShowcasesEssentialsEditShowcaseRequest
+  /me/albums/{album_id}/videos:
+    put:
+      application/json: ShowcasesShowcaseVideosReplaceVideosRequest
+  /me/albums/{album_id}/videos/{video_id}/set_album_thumbnail:
+    post:
+      application/json: ShowcasesShowcaseVideosCreateShowcaseThumbnailRequest
+  /me/following:
+    post:
+      application/json: UsersFollowersFollowMultipleUsersRequest
+  /me/live_events:
+    delete:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsDeleteMultipleEventsRequest1
+    post:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsCreateLiveEventRequest
+  /me/live_events/{live_event_id}:
+    patch:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsUpdateEventBelongingToAuthenticatedUserRequest1
+  /me/live_events/{live_event_id}/activate:
+    post:
+      application/vnd.vimeo.video+json: LiveEventActivationCreateRtmpLinksRequest1
+  /me/live_events/{live_event_id}/auto_cc:
+    patch:
+      application/application/vnd.vimeo.live.auto_cc+json: LiveEventAutomatedClosedCaptionsEditPreferenceForEventRequest
+  /me/live_events/{live_event_id}/destinations:
+    post:
+      application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsCreateDestinationRequest
+  /me/live_events/{live_event_id}/low_latency:
+    patch:
+      application/application/vnd.vimeo.live.low_latency+json: LiveEventLowLatencyToggleOptionRequest1
+  /me/live_events/{live_event_id}/pictures:
+    post:
+      application/vnd.vimeo.picture+json: LiveEventThumbnailsAddThumbnailRequest
+  /me/live_events/{live_event_id}/pictures/{thumbnail_id}:
+    patch:
+      application/vnd.vimeo.picture+json: LiveEventThumbnailsUpdateEventThumbnailRequest
+  /me/live_events/{live_event_id}/privacy/domains:
+    put:
+      application/json: LiveEmbedPrivacyEmbedEventOnDomainsRequest1
+  /me/live_events/{live_event_id}/videos:
+    delete:
+      application/json: LiveEventVideosRemoveMultipleRequest
+    post:
+      application/json: LiveEventVideosUploadMultipleRequest
+  /me/ondemand/pages:
+    post:
+      application/json: OnDemandEssentialsCreatePageRequest
+  /me/payment_methods:
+    get:
+      application/json: PaymentsEssentialsListPaymentMethodsRequest
+  /me/pictures/{portraitset_id}:
+    patch:
+      application/vnd.vimeo.picture+json: UsersPicturesEditPortraitImageRequest
+  /me/presets:
+    post:
+      application/vnd.vimeo.preset+json: EmbedPresetsEssentialsCreatePresetRequest
+  /me/presets/{preset_id}:
+    patch:
+      application/vnd.vimeo.preset+json: EmbedPresetsEssentialsEditPresetRequest
+  /me/projects:
+    post:
+      application/json: FoldersEssentialsCreateFolderRequest
+  /me/projects/{project_id}:
+    patch:
+      application/json: FoldersEssentialsEditFolderRequest
+  /me/videos:
+    post:
+      application/vnd.vimeo.video+json: VideosUploadsBeginVideoUploadProcessRequest
+  /me/videos/{video_id}/destinations:
+    post:
+      application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsCreateOneTimeLiveEventDestinationRequest
+  /me/webinars:
+    post:
+      application/vnd.vimeo.webinars+json: WebinarEssentialsCreateWebinarRequest
+  /me/webinars/{webinar_id}:
+    patch:
+      application/vnd.vimeo.webinars+json: WebinarEssentialsUpdateWebinarBelongingToAuthenticatedUserRequest
+  /me/webinars/{webinar_id}/email_settings:
+    patch:
+      application/vnd.vimeo.webinar.email.settings+json: WebinarEmailsCustomizePreferencesRequest
+  /me/webinars/{webinar_id}/registrants:
+    put:
+      application/json: WebinarRegistrationsCaptureUserRegistrationListRequest
+  /me/webinars/{webinar_id}/registrants/{registrant_id}:
+    patch:
+      application/json: WebinarRegistrationsUpdateUserRegistrationDataRequest
+  /oauth/access_token:
+    post:
+      application/vnd.vimeo.auth+json: AuthenticationExtrasExchangeOAuthCodeExchangeRequest
+  /oauth/authorize/client:
+    post:
+      application/vnd.vimeo.auth+json: ClientAuthRequest
+  /oauth/authorize/vimeo_oauth1:
+    post:
+      application/vnd.vimeo.auth+json: AuthenticationExtrasConvertOAuth1ToOAuth2Request
+  /ondemand/pages/{ondemand_id}:
+    patch:
+      application/vnd.vimeo.ondemand.page+json: EditVodRequest
+  /ondemand/pages/{ondemand_id}/backgrounds/{background_id}:
+    patch:
+      application/vnd.vimeo.picture+json: OnDemandBackgroundsEditBackgroundOnPageRequest
+  /ondemand/pages/{ondemand_id}/pictures/{poster_id}:
+    patch:
+      application/vnd.vimeo.picture+json: OnDemandPostersUpdatePosterRequest
+  /ondemand/pages/{ondemand_id}/promotions:
+    post:
+      application/vnd.vimeo.ondemand.promotion+json: OnDemandPromotionsAddPromotionToPageRequest
+  /ondemand/pages/{ondemand_id}/regions:
+    delete:
+      application/vnd.vimeo.ondemand.region+json: OnDemandRegionsRemoveMultipleRequest
+    put:
+      application/vnd.vimeo.ondemand.region+json: OnDemandRegionsAddMultipleRequest
+  /ondemand/pages/{ondemand_id}/videos/{video_id}:
+    put:
+      application/vnd.vimeo.ondemand.video+json: OnDemandVideosAddVideoToPageRequest
+  /users/{user_id}:
+    patch:
+      application/vnd.vimeo.user+json: EditUserRequest
+  /users/{user_id}/albums:
+    post:
+      application/vnd.vimeo.album+json: CreateShowcaseRequest
+  /users/{user_id}/albums/{album_id}:
+    patch:
+      application/vnd.vimeo.album+json: EditShowcaseRequest
+  /users/{user_id}/albums/{album_id}/custom_thumbnails/{thumbnail_id}:
+    patch:
+      application/vnd.vimeo.picture+json: ShowcasesCustomShowcaseThumbnailsReplaceCustomThumbnailRequest
+  /users/{user_id}/albums/{album_id}/logos/{logo_id}:
+    patch:
+      application/vnd.vimeo.picture+json: ShowcasesCustomShowcaseLogosReplaceLogoRequest
+  /users/{user_id}/albums/{album_id}/videos:
+    put:
+      application/json: ShowcasesShowcaseVideosReplaceShowcaseVideosRequest
+  /users/{user_id}/albums/{album_id}/videos/{video_id}/set_album_thumbnail:
+    post:
+      application/json: ShowcasesShowcaseVideosCreateShowcaseThumbnailRequest1
+  /users/{user_id}/following:
+    post:
+      application/json: FollowUsersRequest
+  /users/{user_id}/live_events:
+    delete:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsDeleteMultipleEventsRequest2
+    post:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsCreateEventForUserRequest
+  /users/{user_id}/live_events/{live_event_id}:
+    patch:
+      application/vnd.vimeo.live.event.recurring+json: LiveEssentialsUpdateEventBelongingToAuthenticatedUserRequest2
+  /users/{user_id}/live_events/{live_event_id}/activate:
+    post:
+      application/vnd.vimeo.video+json: LiveEventActivationCreateRtmpLinksRequest2
+  /users/{user_id}/live_events/{live_event_id}/auto_cc:
+    patch:
+      application/application/vnd.vimeo.live.auto_cc+json: LiveEventAutomatedClosedCaptionsEditPreferenceForEventRequest1
+  /users/{user_id}/live_events/{live_event_id}/destinations:
+    post:
+      application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsCreateEventDestinationRequest
+  /users/{user_id}/live_events/{live_event_id}/low_latency:
+    patch:
+      application/application/vnd.vimeo.live.low_latency+json: LiveEventLowLatencyToggleOptionRequest2
+  /users/{user_id}/live_events/{live_event_id}/pictures:
+    post:
+      application/vnd.vimeo.picture+json: LiveEventThumbnailsCreateThumbnailForEventRequest1
+  /users/{user_id}/live_events/{live_event_id}/pictures/{thumbnail_id}:
+    patch:
+      application/vnd.vimeo.picture+json: LiveEventThumbnailsEditEventThumbnailRequest
+  /users/{user_id}/live_events/{live_event_id}/privacy/domains:
+    put:
+      application/json: LiveEmbedPrivacyEmbedEventOnDomainsRequest2
+  /users/{user_id}/live_events/{live_event_id}/videos:
+    delete:
+      application/json: LiveEventVideosRemoveMultipleRequest1
+    post:
+      application/json: LiveEventVideosAddMultipleVideosRequest
+  /users/{user_id}/ondemand/pages:
+    post:
+      application/json: CreateVodRequest
+  /users/{user_id}/pictures/{portraitset_id}:
+    patch:
+      application/vnd.vimeo.picture+json: EditPictureRequest
+  /users/{user_id}/presets:
+    post:
+      application/vnd.vimeo.preset+json: EmbedPresetsEssentialsCreateEmbedPresetRequest
+  /users/{user_id}/presets/{preset_id}:
+    patch:
+      application/vnd.vimeo.preset+json: EmbedPresetsEssentialsEditPresetRequest1
+  /users/{user_id}/projects:
+    post:
+      application/json: CreateProjectRequest
+  /users/{user_id}/projects/{project_id}:
+    patch:
+      application/json: EditProjectRequest
+  /users/{user_id}/videos:
+    post:
+      application/vnd.vimeo.video+json: UploadVideoRequest
+  /users/{user_id}/videos/{video_id}/destinations:
+    post:
+      application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsCreateOneTimeLiveEventDestinationRequest1
+  /users/{user_id}/webinars:
+    post:
+      application/vnd.vimeo.webinars+json: CreateWebinarRequest
+  /users/{user_id}/webinars/{webinar_id}:
+    patch:
+      application/vnd.vimeo.webinars+json: UpdateWebinarRequest
+  /users/{user_id}/webinars/{webinar_id}/email_settings:
+    patch:
+      application/vnd.vimeo.webinar.email.settings+json: WebinarEmailsCustomizePreferencesRequest1
+  /users/{user_id}/webinars/{webinar_id}/registrants:
+    put:
+      application/json: WebinarRegistrationsCaptureUserRegistrationListRequest1
+  /users/{user_id}/webinars/{webinar_id}/registrants/{registrant_id}:
+    patch:
+      application/json: WebinarRegistrationsUpdateUserRegistrationDataRequest1
+  /videos/{video_id}:
+    patch:
+      application/vnd.vimeo.video+json: EditVideoRequest
+  /videos/{video_id}/albums:
+    patch:
+      application/vnd.vimeo.album+json: VideosShowcasesAddToMultipleShowcasesRequest
+  /videos/{video_id}/animated_thumbsets:
+    post:
+      application/vnd.vimeo.animatedthumbnails+json: VideosAnimatedThumbnailsCreateSetRequest
+  /videos/{video_id}/categories:
+    put:
+      application/vnd.vimeo.category+json: CategoriesVideosSetVideoCategoriesRequest
+  /videos/{video_id}/chapters:
+    post:
+      application/vnd.vimeo.video.chapter+json: CreateChapterRequest
+  /videos/{video_id}/chapters/temporary/pictures:
+    post:
+      application/json: VideosChaptersGenerateChapterThumbnailRequest
+  /videos/{video_id}/chapters/{chapter_id}:
+    patch:
+      application/vnd.vimeo.video.chapter+json: EditChapterRequest
+  /videos/{video_id}/chapters/{chapter_id}/pictures:
+    post:
+      application/json: VideosChaptersGenerateChapterThumbnailOrUploadLinkRequest
+  /videos/{video_id}/chapters/{chapter_id}/pictures/{uid}:
+    patch:
+      application/json: VideosChaptersSetChapterThumbnailActiveRequest
+  /videos/{video_id}/comments:
+    post:
+      application/vnd.vimeo.comment+json: CreateCommentRequest
+  /videos/{video_id}/comments/{comment_id}:
+    patch:
+      application/vnd.vimeo.comment+json: EditCommentRequest
+  /videos/{video_id}/comments/{comment_id}/replies:
+    post:
+      application/vnd.vimeo.comment+json: VideosVideoCommentsCreateReplyRequest
+  /videos/{video_id}/credits:
+    post:
+      application/vnd.vimeo.credit+json: VideosCreditsAddUserCreditRequest
+  /videos/{video_id}/credits/{credit_id}:
+    patch:
+      application/vnd.vimeo.credit+json: VideosCreditsEditUserCreditInVideoRequest
+  /videos/{video_id}/pictures:
+    post:
+      application/vnd.vimeo.picture+json: VideosThumbnailsAddThumbnailToVideoRequest1
+  /videos/{video_id}/pictures/{picture_id}:
+    patch:
+      application/vnd.vimeo.picture+json: VideosThumbnailsEditThumbnailImageRequest
+  /videos/{video_id}/texttracks:
+    post:
+      application/vnd.vimeo.video.texttrack+json: VideosTextTracksAddTextTrackRequest
+  /videos/{video_id}/texttracks/{texttrack_id}:
+    patch:
+      application/vnd.vimeo.video.texttrack+json: VideosTextTracksEditTextTrackRequest
+  /videos/{video_id}/trim:
+    post:
+      application/json: ClipTrimRequest
+  /videos/{video_id}/versions:
+    post:
+      application/vnd.vimeo.video.version+json: VideosVersionsAddVideoVersionRequest
+  /videos/{video_id}/versions/{version_id}:
+    patch:
+      application/vnd.vimeo.video.version+json: VideosVersionsEditVideoVersionRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /albums/{album_id}/available_videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: ShowcasesShowcaseVideosListInShowcaseResponse
+  /categories:
+    get:
+      '200':
+        application/vnd.vimeo.category+json: GetCategoriesResponse
+  /categories/{category}/channels:
+    get:
+      '200':
+        application/vnd.vimeo.channel+json: CategoriesChannelsListInCategoryResponse
+  /categories/{category}/groups:
+    get:
+      '200':
+        application/vnd.vimeo.group+json: CategoriesGroupsGetAllGroupsResponse
+  /categories/{category}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: CategoriesVideosListVideosInCategoryResponse
+  /channels:
+    get:
+      '200':
+        application/vnd.vimeo.channel+json: GetChannelsResponse
+  /channels/{channel_id}/categories:
+    get:
+      '200':
+        application/vnd.vimeo.category+json: ChannelsCategoriesGetBelongingCategoriesResponse
+  /channels/{channel_id}/moderators:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: ChannelsModeratorsListByChannelResponse
+    patch:
+      '200':
+        application/json: ChannelsModeratorsReplaceModeratorsResponse
+  /channels/{channel_id}/privacy/users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: ChannelsPrivateChannelMembersGetAccessibleUsersResponse
+    put:
+      '200':
+        application/vnd.vimeo.user+json: ChannelsPrivateChannelMembersPermitUserAccessResponse
+  /channels/{channel_id}/tags:
+    get:
+      '200':
+        application/vnd.vimeo.tag+json: ChannelsTagsGetAllChannelTagsResponse
+    put:
+      '200':
+        application/vnd.vimeo.tag+json: ChannelsTagsAddMultipleTagsToChannelResponse
+  /channels/{channel_id}/users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: ChannelsSubscriptionsAndSubscribersListChannelFollowersResponse
+  /channels/{channel_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: ChannelsVideosListInChannelResponse
+  /channels/{channel_id}/videos/{video_id}/comments:
+    get:
+      '200':
+        application/vnd.vimeo.comment+json: VideosVideoCommentsGetAllRepliesResponse
+  /channels/{channel_id}/videos/{video_id}/credits:
+    get:
+      '200':
+        application/vnd.vimeo.credit+json: VideosCreditsGetAllCreditedUsersInVideoResponse
+  /channels/{channel_id}/videos/{video_id}/likes:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: LikesEssentialsGetUsersWhoLikedVideoResponse
+  /channels/{channel_id}/videos/{video_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: VideosThumbnailsGetAllByVideoIdResponse
+  /channels/{channel_id}/videos/{video_id}/privacy/users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: VideosUnlistedVideosListAccessibleUsersResponse
+    put:
+      '200':
+        application/vnd.vimeo.user+json: VideosUnlistedVideosGrantAccessToUsersResponse
+  /channels/{channel_id}/videos/{video_id}/texttracks:
+    get:
+      '200':
+        application/vnd.vimeo.video.texttrack+json: VideosTextTracksGetAllTracksResponse
+  /channels/{channel_id}/videos/{video_id}/versions:
+    get:
+      '200':
+        application/vnd.vimeo.video.version+json: VideosVersionsGetAllVideoVersionsResponse
+  /contentratings:
+    get:
+      '200':
+        application/vnd.vimeo.contentrating+json: VideosContentRatingsGetAllContentRatingsResponse
+  /creativecommons:
+    get:
+      '200':
+        application/vnd.vimeo.creativecommons+json: VideosCreativeCommonsGetAllCcLicensesResponse
+  /groups:
+    get:
+      '200':
+        application/vnd.vimeo.group+json: GetGroupsResponse
+  /groups/{group_id}/users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: GroupsUsersGetGroupUsersResponse
+  /groups/{group_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: GroupsVideosGetAllGroupVideosResponse
+  /languages:
+    get:
+      '200':
+        application/vnd.vimeo.language+json: GetLanguagesResponse
+  /live_events:
+    get:
+      '200':
+        application/vnd.vimeo.live.event+json: LiveEssentialsGetUserLiveEventsResponse
+  /live_events/{live_event_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: LiveEventThumbnailsGetAllThumbnailsResponse
+  /live_events/{live_event_id}/privacy/domains:
+    get:
+      '200':
+        application/vnd.vimeo.domain+json: LiveEmbedPrivacyGetWhitelistDomainsResponse
+  /live_events/{live_event_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: LiveEventVideosListLiveEventVideosResponse
+  /me/albums:
+    get:
+      '200':
+        application/json: ShowcasesEssentialsGetAllUserShowcasesResponse
+  /me/albums/{album_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: ShowcasesShowcaseVideosListInShowcase200Response
+  /me/analytics:
+    get:
+      '200':
+        application/vnd.vimeo.analytics+json: UsersAnalyticsGetUserMetricsResponse
+  /me/appearances:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: VideosEssentialsGetUserAppearancesResponse
+  /me/categories:
+    get:
+      '200':
+        application/vnd.vimeo.category+json: CategoriesUsersListFollowedCategoriesResponse
+  /me/channels:
+    get:
+      '200':
+        application/vnd.vimeo.channel+json: ChannelsEssentialsGetUserSubscriptionsResponse
+  /me/customlogos:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: EmbedPresetsCustomLogosListResponse
+  /me/feed:
+    get:
+      '200':
+        application/vnd.vimeo.activity+json: UsersFeedsGetUserFeedVideosResponse
+  /me/followers:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: UsersFollowersListAllResponse
+  /me/following:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: UsersFollowersListOfFollowingUsersResponse
+  /me/groups:
+    get:
+      '200':
+        application/vnd.vimeo.group+json: GroupsUsersGetUserGroupsResponse
+  /me/likes:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: LikesEssentialsGetUserLikedVideosResponse
+  /me/live_events:
+    get:
+      '200':
+        application/vnd.vimeo.live.event+json: LiveEssentialsGetAllUserLiveEventsResponse
+  /me/live_events/{live_event_id}/destinations:
+    get:
+      '200':
+        application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsListAllAvailableDestinationsResponse
+  /me/live_events/{live_event_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: LiveEventThumbnailsGetAllResponse
+  /me/live_events/{live_event_id}/privacy/domains:
+    get:
+      '200':
+        application/vnd.vimeo.domain+json: LiveEmbedPrivacyGetWhitelistDomains200Response
+  /me/live_events/{live_event_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: LiveEventVideosGetAllResponse
+  /me/ondemand/pages:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.page+json: OnDemandEssentialsGetAllUserPagesResponse
+  /me/ondemand/purchases:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.page+json: OnDemandPurchasesAndRentalsGetAllUserPurchasesAndRentalsResponse
+  /me/payment_methods:
+    get:
+      '200':
+        application/json: PaymentsEssentialsListPaymentMethodsResponse
+  /me/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: UsersPicturesListResponse
+  /me/portfolios:
+    get:
+      '200':
+        application/vnd.vimeo.portfolio+json: PortfoliosEssentialsGetAllUserPortfoliosResponse
+  /me/portfolios/{portfolio_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: PortfoliosVideosGetAllPortfolioVideosResponse
+  /me/presets:
+    get:
+      '200':
+        application/vnd.vimeo.preset+json: EmbedPresetsEssentialsGetAllUserCreatedEmbedPresetsResponse
+  /me/presets/{preset_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: EmbedPresetsVideosGetSpecificPresetVideosResponse
+  /me/projects:
+    get:
+      '200':
+        application/json: FoldersEssentialsGetAllUserFoldersResponse
+  /me/projects/{project_id}/videos:
+    get:
+      '200':
+        application/json: FoldersVideosGetVideosInFolderResponse
+  /me/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: VideosEssentialsGetAllUserVideosResponse
+  /me/videos/{video_id}/destinations:
+    get:
+      '200':
+        application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsGetAllDestinationsResponse
+  /me/watched/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: UsersWatchHistoryGetWatchedVideosResponse
+  /me/watchlater:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: WatchLaterQueueEssentialsGetVideosInQueueResponse
+  /ondemand/genres:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.genre+json: OnDemandGenresGetAllGenresResponse
+  /ondemand/genres/{genre_id}/pages:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.page+json: OnDemandGenresGetAllPagesInGenreResponse
+  /ondemand/pages/{ondemand_id}/backgrounds:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: OnDemandBackgroundsGetAllBackgroundsOnPageResponse
+  /ondemand/pages/{ondemand_id}/genres:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.genre+json: OnDemandGenresGetGenresResponse
+  /ondemand/pages/{ondemand_id}/likes:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: LikesEssentialsGetAllUserLikesResponse
+  /ondemand/pages/{ondemand_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: OnDemandPostersGetOnDemandPagePostersResponse
+  /ondemand/pages/{ondemand_id}/regions:
+    delete:
+      '200':
+        application/vnd.vimeo.ondemand.region+json: OnDemandRegionsRemoveMultipleResponse
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.region+json: OnDemandRegionsGetAllResponse
+  /ondemand/pages/{ondemand_id}/seasons:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.season+json: OnDemandSeasonsListAllResponse
+  /ondemand/pages/{ondemand_id}/seasons/{season_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: OnDemandSeasonsGetAllVideosInSeasonResponse
+  /ondemand/pages/{ondemand_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.video+json: OnDemandVideosGetAllVideosResponse
+  /ondemand/regions:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.region+json: GetRegionsResponse
+  /tags/{word}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: VideosTagsGetAllByTagResponse
+  /users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: SearchUsersResponse
+  /users/{user_id}/albums:
+    get:
+      '200':
+        application/json: GetShowcasesResponse
+  /users/{user_id}/albums/{album_id}/custom_thumbnails:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: ShowcasesCustomShowcaseThumbnailsListResponse
+  /users/{user_id}/albums/{album_id}/logos:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: ShowcasesCustomShowcaseLogosListAllCustomLogosResponse
+  /users/{user_id}/albums/{album_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: ShowcasesShowcaseVideosGetShowcaseVideosResponse
+  /users/{user_id}/analytics:
+    get:
+      '200':
+        application/vnd.vimeo.analytics+json: UsersAnalyticsGetMetricsResponse
+  /users/{user_id}/appearances:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: GetAppearancesResponse
+  /users/{user_id}/categories:
+    get:
+      '200':
+        application/vnd.vimeo.category+json: CategoriesUsersListFollowedCategories200Response
+  /users/{user_id}/channels:
+    get:
+      '200':
+        application/vnd.vimeo.channel+json: ChannelsEssentialsGetUserSubscriptions200Response
+  /users/{user_id}/customlogos:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: EmbedPresetsCustomLogosListUserLogosResponse
+  /users/{user_id}/feed:
+    get:
+      '200':
+        application/vnd.vimeo.activity+json: GetFeedResponse
+  /users/{user_id}/followers:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: GetFollowersResponse
+  /users/{user_id}/following:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: UsersFollowersListOfFollowedUsersResponse
+  /users/{user_id}/groups:
+    get:
+      '200':
+        application/vnd.vimeo.group+json: GroupsUsersGetUserGroupsListResponse
+  /users/{user_id}/likes:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: GetLikesResponse
+  /users/{user_id}/live_events:
+    get:
+      '200':
+        application/vnd.vimeo.live.event+json: LiveEssentialsGetUserLiveEvents200Response
+  /users/{user_id}/live_events/{live_event_id}/destinations:
+    get:
+      '200':
+        application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsGetAllAvailableDestinationsResponse
+  /users/{user_id}/live_events/{live_event_id}/ott_destinations:
+    get:
+      '200':
+        application/vnd.vimeo.live.ott.destination+json: LiveEventDestinationsGetAllOttDestinationsResponse
+  /users/{user_id}/live_events/{live_event_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: LiveEventThumbnailsGetAllThumbsResponse
+  /users/{user_id}/live_events/{live_event_id}/privacy/domains:
+    get:
+      '200':
+        application/vnd.vimeo.domain+json: LiveEmbedPrivacyGetWhitelistDomains200Response
+  /users/{user_id}/live_events/{live_event_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: LiveEventVideosListAllVideosInEventResponse
+  /users/{user_id}/ondemand/pages:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.page+json: OnDemandEssentialsGetAllUserPages200Response
+  /users/{user_id}/ondemand/purchases:
+    get:
+      '200':
+        application/vnd.vimeo.ondemand.page+json: OnDemandPurchasesAndRentalsListUserPurchasesAndRentalsResponse
+  /users/{user_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: GetPicturesResponse
+  /users/{user_id}/portfolios:
+    get:
+      '200':
+        application/vnd.vimeo.portfolio+json: GetPortfoliosResponse
+  /users/{user_id}/portfolios/{portfolio_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: PortfoliosVideosGetAllPortfolioVideos200Response
+  /users/{user_id}/presets:
+    get:
+      '200':
+        application/vnd.vimeo.preset+json: EmbedPresetsEssentialsGetUserEmbedPresetsResponse
+  /users/{user_id}/presets/{preset_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: EmbedPresetsVideosGetPresetVideosResponse
+  /users/{user_id}/projects:
+    get:
+      '200':
+        application/json: GetProjectsResponse
+  /users/{user_id}/projects/{project_id}/videos:
+    get:
+      '200':
+        application/json: FoldersVideosGetAllFolderVideosResponse
+  /users/{user_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: GetVideosResponse
+  /users/{user_id}/videos/{video_id}/destinations:
+    get:
+      '200':
+        application/vnd.vimeo.live.simulcast.destination+json: LiveEventDestinationsGetAllAvailableDestinations200Response
+  /users/{user_id}/watchlater:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: WatchLaterQueueEssentialsListUserQueueVideosResponse
+  /videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: SearchVideosResponse
+  /videos/{video_id}/albums:
+    get:
+      '200':
+        application/vnd.vimeo.album+json: VideosShowcasesGetAllContShowcasesResponse
+    patch:
+      '200':
+        application/vnd.vimeo.album+json: VideosShowcasesAddToMultipleShowcasesResponse
+  /videos/{video_id}/animated_thumbsets:
+    get:
+      '200':
+        application/vnd.vimeo.animatedthumbnails+json: VideosAnimatedThumbnailsGetAllSetsResponse
+  /videos/{video_id}/available_albums:
+    get:
+      '200':
+        application/vnd.vimeo.album+json: ShowcasesShowcaseVideosListAvailableShowcasesResponse
+  /videos/{video_id}/available_channels:
+    get:
+      '200':
+        application/vnd.vimeo.channel+json: ChannelsVideosGetAccessibleChannelsResponse
+  /videos/{video_id}/categories:
+    get:
+      '200':
+        application/vnd.vimeo.category+json: CategoriesVideosGetAllVideoCategoriesResponse
+  /videos/{video_id}/chapters:
+    get:
+      '200':
+        application/vnd.vimeo.video.chapter+json: GetChaptersResponse
+  /videos/{video_id}/comments:
+    get:
+      '200':
+        application/vnd.vimeo.comment+json: GetCommentsResponse
+  /videos/{video_id}/comments/{comment_id}/replies:
+    get:
+      '200':
+        application/vnd.vimeo.comment+json: VideosVideoCommentsGetAllReplies200Response
+  /videos/{video_id}/credits:
+    get:
+      '200':
+        application/vnd.vimeo.credit+json: VideosCreditsGetAllCreditedUsersInVideo200Response
+  /videos/{video_id}/credits/available_users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: AvailableUsersResponse
+  /videos/{video_id}/likes:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: LikesEssentialsGetUserLikesResponse
+  /videos/{video_id}/pictures:
+    get:
+      '200':
+        application/vnd.vimeo.picture+json: VideosThumbnailsGetAllByVideoId200Response
+  /videos/{video_id}/privacy/domains:
+    get:
+      '200':
+        application/vnd.vimeo.domain+json: VideosEmbedPrivacyListWhitelistDomainsResponse
+  /videos/{video_id}/privacy/users:
+    get:
+      '200':
+        application/vnd.vimeo.user+json: VideosUnlistedVideosListAccessibleUsers200Response
+    put:
+      '200':
+        application/vnd.vimeo.user+json: VideosUnlistedVideosGrantAccessToUsers200Response
+  /videos/{video_id}/tags:
+    get:
+      '200':
+        application/vnd.vimeo.tag+json: VideosTagsGetVideoTagsResponse
+    put:
+      '200':
+        application/vnd.vimeo.tag+json: VideosTagsAddMultipleResponse
+  /videos/{video_id}/texttracks:
+    get:
+      '200':
+        application/vnd.vimeo.video.texttrack+json: VideosTextTracksGetAllVideoTracksResponse
+  /videos/{video_id}/transcripts/{texttrack_id}:
+    get:
+      '200':
+        application/vnd.vimeo.video.segment: GetTranscriptResponse
+  /videos/{video_id}/versions:
+    get:
+      '200':
+        application/vnd.vimeo.video.version+json: VideosVersionsGetAllVideoVersions200Response
+  /videos/{video_id}/videos:
+    get:
+      '200':
+        application/vnd.vimeo.video+json: VideosRecommendationsGetRelatedVideosResponse
+securityParameters:
+  account_id:
+    query: false
+  album_item_uris:
+    query: false
+  album_uris:
+    query: false
+  cardmember_name:
+    query: false
+  clip_id:
+    query: false
+  containing_uri:
+    query: false
+  dimension:
+    query: false
+  direction:
+    query: false
+  filter:
+    query: false
+  filter_content:
+    query: false
+  filter_countries:
+    query: false
+  filter_device_types:
+    query: false
+  filter_embed_domains:
+    query: false
+  filter_embeddable:
+    query: false
+  filter_playable:
+    query: false
+  filter_screen_recorded:
+    query: false
+  filter_streaming_types:
+    query: false
+  filter_tag:
+    query: false
+  filter_tag_all_of:
+    query: false
+  filter_tag_exclude:
+    query: false
+  from:
+    query: false
+  include_subfolders:
+    query: false
+  include_team_content:
+    query: false
+  links:
+    query: false
+  max_fps_fhd:
+    query: false
+  offset:
+    query: false
+  openapi:
+    query: false
+  page:
+    query: false
+  password:
+    query: false
+  per_page:
+    query: false
+  query:
+    query: false
+  query_fields:
+    query: false
+  should_delete_clips:
+    query: false
+  should_delete_items:
+    query: false
+  show_disabled:
+    query: false
+  signature:
+    query: false
+  sort:
+    query: false
+  time_interval:
+    query: false
+  to:
+    query: false
+  type:
+    query: false
+  uris:
+    query: false
+  version:
+    query: false
+  video_file_id:
+    query: false
+  weak_search:
+    query: false
+validServerUrls: {}

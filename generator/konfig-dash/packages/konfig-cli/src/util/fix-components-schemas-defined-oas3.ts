@@ -197,7 +197,7 @@ async function inquireName({
   )
   if (auto && operation.operationId !== undefined) {
     const parts = operation.operationId.split('_')
-    const part1 = parts[0]
+    const part1 = camelcase(parts[0], { pascalCase: true })
     const part2 = camelcase(parts[1], { pascalCase: true })
     const part3 = camelcase(type, { pascalCase: true })
     const name = `${part1}${part2}${part3}`

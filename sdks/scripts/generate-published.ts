@@ -385,18 +385,30 @@ async function fixSpec(
     path.basename(specOutputPath.replace("-fixed-spec", "-progress"))
   );
   // const cliName = "konfig";
-  const cliName = "../generator/konfig-dash/packages/konfig-cli/bin/run"; // for development
+  const cliName = path.join(
+    path.dirname(path.dirname(__dirname)),
+    "generator",
+    "konfig-dash",
+    "packages",
+    "konfig-cli",
+    "bin",
+    "run"
+  ); // for development
+  const args = [
+    "fix",
+    "--noInput",
+    "-i",
+    specInputPath,
+    "-s",
+    specOutputPath,
+    "-p",
+    progressYamlPath,
+  ];
+  if (process.env.DEBUG !== undefined) {
+    console.debug(`🟢 Running "${cliName} ${args.join(" ")}"`);
+  }
   try {
-    await execa(cliName, [
-      "fix",
-      "--noInput",
-      "-i",
-      specInputPath,
-      "-s",
-      specOutputPath,
-      "-p",
-      progressYamlPath,
-    ]);
+    await execa(cliName, args);
   } catch (err) {
     console.log(`❌ ERROR: ${err}`);
   }
