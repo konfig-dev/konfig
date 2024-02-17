@@ -1,0 +1,446 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /attorney/{attorneyId}:
+    get: CaseDocketApi_getAttorneyDetails
+  /attorney/{attorneyId}/associatedParties:
+    get: CaseDocketApi_getAssociatedParties
+  /billingCycleUsage/{billingCycle}:
+    get: UsageApi_getApiUsageByBillingCycle
+  /billingCycles:
+    get: UsageApi_listPreviousBillingCycles
+  /callbacks:
+    get: CallbackApi_listCallbacksWithCount
+  /case/{caseId}:
+    get: CaseDocketApi_getCaseInfo
+  /case/{caseId}/attorneys:
+    get: CaseDocketApi_getAttorneysByCaseId
+  /case/{caseId}/docketEntries:
+    get: CaseDocketApi_getDocketEntries
+  /case/{caseId}/docketEntries/primaryDocuments:
+    get: CaseDocketApi_getPrimaryDocuments
+  /case/{caseId}/docketEntries/secondaryDocuments:
+    get: CaseDocketApi_getSecondaryDocumentsForDocketEntries
+  /case/{caseId}/documents:
+    get: CaseDocumentsApi_getDocumentsForCase
+  /case/{caseId}/hearings:
+    get: CaseDocketApi_getHearingsForCase
+  /case/{caseId}/judges:
+    get: CaseDocketApi_getJudgesForCase
+  /case/{caseId}/parties:
+    get: CaseDocketApi_getCaseParties
+  /case/{caseId}/relatedCases:
+    get: CaseDocketApi_getRelatedCases
+  /caseCountAnalyticsByAreaOfLaw:
+    get: CaseAnalyticsApi_getCaseCountByAreaOfLaw
+  /caseCountAnalyticsByCaseClass:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCaseClass
+  /caseCountAnalyticsByCaseFiledDate:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCaseFiledDate
+  /caseCountAnalyticsByCaseType:
+    get: CaseAnalyticsApi_getCaseCountByCaseType
+  /caseCountAnalyticsByCaseTypeGroup:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCaseTypeGroup
+  /caseCountAnalyticsByCourt:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCourt
+  /caseCountAnalyticsByCourtLocation:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCourtLocation
+  /caseCountAnalyticsByCourtSystem:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCourtSystem
+  /caseCountAnalyticsByCourtType:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByCourtType
+  /caseCountAnalyticsByJurisdictionGeo:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByJurisdictionGeo
+  /caseCountAnalyticsByNormAttorney:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByNormAttorney
+  /caseCountAnalyticsByNormJudge:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByNormJudge
+  /caseCountAnalyticsByNormLawFirm:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByNormLawFirm
+  /caseCountAnalyticsByNormParty:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByNormParty
+  /caseCountAnalyticsByPartyRole:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByPartyRole
+  /caseCountAnalyticsByPartyRoleGroup:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByPartyRoleGroup
+  /caseDocument/{caseDocumentId}:
+    get: CaseDocumentsApi_getDocumentDetailsByDocumentId
+  /caseDocumentDownload/{caseDocumentId}:
+    get: CaseDocumentsApi_getDownloadableUrlForDocument
+  /caseDocumentOrder:
+    put: CaseDocumentsApi_addDocumentOrder
+  /caseDocumentOrder/callbacks:
+    get: CaseDocumentsApi_listDocumentOrderCallbacks
+  /caseDocumentOrder/callbacks/{caseDocumentOrderCallbackId}:
+    get: CaseDocumentsApi_getCallbackById
+  /caseExport/callbacks:
+    get: CaseExportApi_getCallbackListForRequestedDate
+  /caseExport/callbacks/{caseExportCallbackId}:
+    get: CaseExportApi_getCallbackById
+  /caseExport/{caseId}:
+    get: CaseExportApi_getCaseExportByCaseId
+  /caseSearch:
+    get: CaseSearchApi_searchByKeywordExpressions
+  /caseSearch/{caseSearchId}:
+    get: CaseSearchApi_getSearchResultsByCaseSearchId
+  /caseTrack:
+    put: CaseTrackingApi_addCaseTrack
+  /caseTrack/{caseId}:
+    delete: CaseTrackingApi_removeCaseTrackById
+    get: CaseTrackingApi_getCaseTrack
+  /caseTracks:
+    get: CaseTrackingApi_getCaseTrackList
+  /caseUpdate:
+    put: CaseUpdateApi_addCaseUpdateForCaseId
+  /caseUpdate/{caseId}:
+    get: CaseUpdateApi_getCaseUpdatesByCaseId
+  /caseUpdates:
+    get: CaseUpdateApi_getCaseUpdates
+  /courtCoverage/{courtId}:
+    get: CourtAvailabilityApi_getCourtCoverageByCourtId
+  /dailyUsage/{date}:
+    get: UsageApi_getApiUsageByDate
+  /generateNewToken:
+    post: AuthenticationApi_generateNewToken
+  /invalidateAllTokens:
+    put: AuthenticationApi_invalidateAllTokens
+  /invalidateToken:
+    put: AuthenticationApi_invalidateAccessToken
+  /judge/{judgeId}:
+    get: CaseDocketApi_getJudgeDetails
+  /listAllTokenIds:
+    put: AuthenticationApi_getAllTokenIds
+  /masterData/areaOfLaw:
+    get: CourtStandardsApi_listAreaOfLaw
+  /masterData/areaOfLaw/{areaOfLawId}:
+    get: CourtStandardsApi_getAreaOfLaw
+  /masterData/attorneyRepresentationType:
+    get: CourtStandardsApi_getAttorneyRepType
+  /masterData/attorneyRepresentationType/{attorneyRepresentationTypeId}:
+    get: CourtStandardsApi_getAttorneyRepType
+  /masterData/attorneyType:
+    get: CourtStandardsApi_getAttorneyTypeUsingKeywordExpression
+  /masterData/attorneyType/{attorneyTypeId}:
+    get: CourtStandardsApi_getAttorneyTypeObject
+  /masterData/caseClass:
+    get: CourtStandardsApi_getCaseClassByKeyword
+  /masterData/caseClass/{caseClassId}:
+    get: CourtStandardsApi_getCaseClassById
+  /masterData/caseRelationshipType:
+    get: CourtStandardsApi_getCaseRelationshipTypes
+  /masterData/caseRelationshipType/{caseRelationshipTypeId}:
+    get: CourtStandardsApi_getCaseRelationshipTypeById
+  /masterData/caseStatus:
+    get: CourtStandardsApi_getCaseStatusByKeyword
+  /masterData/caseStatus/{caseStatusId}:
+    get: CourtStandardsApi_getCaseStatusById
+  /masterData/caseStatusGroup:
+    get: CourtStandardsApi_getCaseStatusGroupUsingKeywordExpression
+  /masterData/caseStatusGroup/{caseStatusGroupId}:
+    get: CourtStandardsApi_getCaseStatusGroup
+  /masterData/caseType:
+    get: CourtStandardsApi_getCaseTypesByKeyword
+  /masterData/caseType/{caseTypeId}:
+    get: CourtStandardsApi_getCaseType
+  /masterData/caseTypeGroup:
+    get: CourtStandardsApi_listCaseTypeGroups
+  /masterData/caseTypeGroup/{caseTypeGroupId}:
+    get: CourtStandardsApi_getCaseTypeGroup
+  /masterData/causeOfAction:
+    get: CourtStandardsApi_getCauseOfActionByKeyword
+  /masterData/causeOfAction/{causeOfActionId}:
+    get: CourtStandardsApi_getCauseOfAction
+  /masterData/causeOfActionAdditionalData:
+    get: CourtStandardsApi_getCauseOfActionAdditionalData
+  /masterData/causeOfActionAdditionalData/{causeOfActionAdditionalDataId}:
+    get: CourtStandardsApi_getCauseOfActionAdditionalData
+  /masterData/causeOfActionGroup:
+    get: CourtStandardsApi_getCauseOfActionGroup
+  /masterData/causeOfActionGroup/{causeOfActionGroupId}:
+    get: CourtStandardsApi_getCauseOfActionGroup
+  /masterData/charge:
+    get: CourtStandardsApi_getChargesUsingKeyword
+  /masterData/charge/{chargeId}:
+    get: CourtStandardsApi_getChargeById
+  /masterData/chargeAdditionalData:
+    get: CourtStandardsApi_getAdditionalChargeInfo
+  /masterData/chargeAdditionalData/{chargeAdditionalDataId}:
+    get: CourtStandardsApi_getChargeAdditionalData
+  /masterData/chargeDegree:
+    get: CourtStandardsApi_getChargeDegreeUsingKeywordExpression
+  /masterData/chargeDegree/{chargeDegreeId}:
+    get: CourtStandardsApi_getChargeDegreeById
+  /masterData/chargeGroup:
+    get: CourtStandardsApi_getChargeGroupsByKeyword
+  /masterData/chargeGroup/{chargeGroupId}:
+    get: CourtStandardsApi_getChargeGroup
+  /masterData/chargeSeverity:
+    get: CourtStandardsApi_getChargeSeverityByKeyword
+  /masterData/chargeSeverity/{chargeSeverityId}:
+    get: CourtStandardsApi_getChargeSeverity
+  /masterData/court:
+    get: CourtStandardsApi_getCourts
+  /masterData/court/{courtId}:
+    get: CourtStandardsApi_getCourtObject
+  /masterData/court/{courtId}/appealCourts:
+    get: CourtStandardsApi_getAppealCourtsForCourt
+  /masterData/court/{courtId}/courtLocations:
+    get: CourtStandardsApi_getCourtLocations
+  /masterData/court/{courtId}/jurisdictionGeo:
+    get: CourtStandardsApi_getJurisdictionGeoObjectsForCourt
+  /masterData/courtLocation:
+    get: CourtStandardsApi_getCourtLocation
+  /masterData/courtLocation/{courtLocationId}:
+    get: CourtStandardsApi_getCourtLocationObject
+  /masterData/courtLocation/{courtLocationId}/courts:
+    get: CourtStandardsApi_getCourtsByLocation
+  /masterData/courtServiceStatus:
+    get: CourtStandardsApi_getCourtServiceStatus
+  /masterData/courtServiceStatus/{courtServiceStatusId}:
+    get: CourtStandardsApi_getCourtServiceStatusById
+  /masterData/courtSystem:
+    get: CourtStandardsApi_listCourtSystems
+  /masterData/courtSystem/{courtSystemId}:
+    get: CourtStandardsApi_getCourtSystem
+  /masterData/courtType:
+    get: CourtStandardsApi_getCourtTypes
+  /masterData/courtType/{courtTypeId}:
+    get: CourtStandardsApi_getCourtTypeObject
+  /masterData/judgeType:
+    get: CourtStandardsApi_getJudgeTypeObject
+  /masterData/judgeType/{judgeTypeId}:
+    get: CourtStandardsApi_getJudgeTypeObjectById
+  /masterData/jurisdictionGeo:
+    get: CourtStandardsApi_getJurisdictionGeoForCourt
+  /masterData/jurisdictionGeo/{jurisdictionGeoId}:
+    get: CourtStandardsApi_getJurisdictionGeo
+  /masterData/jurisdictionGeo/{jurisdictionGeoId}/courts:
+    get: CourtStandardsApi_associatedCourtForJurisdictionGeo
+  /masterData/partyRole:
+    get: CourtStandardsApi_getPartyRolesByKeyword
+  /masterData/partyRole/{partyRoleId}:
+    get: CourtStandardsApi_getPartyRole
+  /masterData/partyRoleGroup:
+    get: CourtStandardsApi_getPartyRoleGroups
+  /masterData/partyRoleGroup/{partyRoleGroupId}:
+    get: CourtStandardsApi_getPartyRoleGroup
+  /normAttorney/{normAttorneyId}:
+    get: AttorneyAnalyticsApi_getNormAttorneyById
+  /normAttorney/{normAttorneyId}/associatedNormJudges:
+    get: AttorneyAnalyticsApi_getJudgesAssociatedWithAttorney
+  /normAttorney/{normAttorneyId}/associatedNormLawFirms:
+    get: AttorneyAnalyticsApi_getAssociatedLawFirms
+  /normAttorney/{normAttorneyId}/associatedNormParties:
+    get: AttorneyAnalyticsApi_listAssociatedNormParties
+  /normAttorney/{normAttorneyId}/caseCountAnalyticsByOpposingNormAttorney:
+    get: >-
+      CaseAnalyticsApi_getCaseCountAnalyticsByOpposingNormAttorneyForNormAttorney
+  /normAttorneySearch:
+    get: AttorneyAnalyticsApi_searchAttorneyInfo
+  /normAttorneySearch/{normAttorneySearchId}:
+    get: AttorneyAnalyticsApi_getNormAttorneySearchResults
+  /normJudge/{normJudgeId}:
+    get: JudgeAnalyticsApi_getNormJudgeDetails
+  /normJudge/{normJudgeId}/associatedNormAttorneys:
+    get: JudgeAnalyticsApi_listAssociatedNormAttorneys
+  /normJudge/{normJudgeId}/associatedNormLawFirms:
+    get: JudgeAnalyticsApi_listLawFirmsAssociatedWithJudge
+  /normJudge/{normJudgeId}/associatedNormParties:
+    get: JudgeAnalyticsApi_getAssociatedNormParties
+  /normJudgeSearch:
+    get: JudgeAnalyticsApi_searchNormJudges
+  /normJudgeSearch/{normJudgeSearchId}:
+    get: JudgeAnalyticsApi_getNormJudgeSearchResultsById
+  /normLawFirm/{normLawFirmId}:
+    get: LawFirmAnalyticsApi_getNormLawFirmById
+  /normLawFirm/{normLawFirmId}/associatedNormAttorneys:
+    get: LawFirmAnalyticsApi_listAssociatedNormAttorneys
+  /normLawFirm/{normLawFirmId}/associatedNormJudges:
+    get: LawFirmAnalyticsApi_getAssociatedNormJudges
+  /normLawFirm/{normLawFirmId}/associatedNormParties:
+    get: LawFirmAnalyticsApi_listAssociatedNormParties
+  /normLawFirm/{normLawFirmId}/caseCountAnalyticsByOpposingNormLawFirm:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByOpposingNormLawFirmForANormLawFirm
+  /normLawFirmSearch:
+    get: LawFirmAnalyticsApi_searchLawFirms
+  /normLawFirmSearch/{normLawFirmSearchId}:
+    get: LawFirmAnalyticsApi_getNormLawFirmSearchResultById
+  /normParty/{normPartyId}:
+    get: PartyAnalyticsApi_getNormPartyDetails
+  /normParty/{normPartyId}/associatedNormAttorneys:
+    get: PartyAnalyticsApi_getAssociatedNormAttorneys
+  /normParty/{normPartyId}/associatedNormJudges:
+    get: PartyAnalyticsApi_listJudgesAssociatedWithNormParty
+  /normParty/{normPartyId}/associatedNormLawFirms:
+    get: PartyAnalyticsApi_listAssociatedNormLawFirms
+  /normParty/{normPartyId}/caseCountAnalyticsByOpposingNormParty:
+    get: CaseAnalyticsApi_getCaseCountAnalyticsByOpposingNormPartyForANormParty
+  /normPartySearch:
+    get: PartyAnalyticsApi_searchNormParties
+  /normPartySearch/{normPartySearchId}:
+    get: PartyAnalyticsApi_getNormPartySearchResultsById
+  /pacer/importCaseByCourtUsingCaseNumber:
+    get: PacerApi_importPacerCaseByCourtUsingCaseNumberGet
+  /pacerCaseLocator/caseSearch/allCourts:
+    get: PacerApi_searchAllCourtsCases
+  /pacerCaseLocator/caseSearch/appealCourts:
+    get: PacerApi_searchAppealCourtsCases
+  /pacerCaseLocator/caseSearch/bankruptcyCourts:
+    get: PacerApi_searchBankruptcyCases
+  /pacerCaseLocator/caseSearch/civilCourts:
+    get: PacerApi_searchCivilCases
+  /pacerCaseLocator/caseSearch/criminalCourts:
+    get: PacerApi_searchCriminalCases
+  /pacerCaseLocator/caseSearch/multiDistrictCourts:
+    get: PacerApi_searchMultiDistrictCourtCases
+  /pacerCaseLocator/partySearch/allCourts:
+    get: PacerApi_searchAllCourtsCases
+  /pacerCaseLocator/partySearch/appealCourts:
+    get: PacerApi_searchAppealCourtsCases
+  /pacerCaseLocator/partySearch/bankruptcyCourts:
+    get: PacerApi_searchBankruptcyCourts
+  /pacerCaseLocator/partySearch/civilCourts:
+    get: PacerApi_searchCivilCasesInCourts
+  /pacerCaseLocator/partySearch/criminalCourts:
+    get: PacerApi_searchCriminalCases
+  /pacerCaseLocator/partySearch/multiDistrictCourts:
+    get: PacerApi_searchMultiDistrictCourtCases
+  /pacerCredential:
+    get: PacerCredentialApi_listPacerCredentials
+    put: PacerCredentialApi_registerPacerCredential
+  /pacerCredential/{pacerUserId}:
+    delete: PacerCredentialApi_removeForUserId
+    get: PacerCredentialApi_getPacerCredential
+  /party/{partyId}:
+    get: CaseDocketApi_getPartyDetails
+  /party/{partyId}/associatedAttorneys:
+    get: CaseDocketApi_getAssociatedAttorneyDetails
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /caseDocumentDownload/{caseDocumentId}:
+    get:
+      '200':
+        application/json: CaseDocumentsApiGetDownloadableUrlForDocumentResponse
+securityParameters:
+  afterFirstFetchDate:
+    query: false
+  attorneyRepresentationTypeId:
+    query: false
+  caseDischargedEndDate:
+    query: false
+  caseDischargedStartDate:
+    query: false
+  caseDismissedEndDate:
+    query: false
+  caseDismissedStartDate:
+    query: false
+  caseFiledEndDate:
+    query: false
+  caseFiledStartDate:
+    query: false
+  caseId:
+    query: false
+  caseNumber:
+    query: false
+  caseOffice:
+    query: false
+  caseSequenceNumber:
+    query: false
+  caseStatus:
+    query: false
+  caseTerminatedEndDate:
+    query: false
+  caseTerminatedStartDate:
+    query: false
+  caseTitle:
+    query: false
+  caseTypeArray:
+    query: false
+  caseYear:
+    query: false
+  caseYearFrom:
+    query: false
+  caseYearTo:
+    query: false
+  courtId:
+    query: false
+  courtRegionIdArray:
+    query: false
+  date:
+    query: false
+  docketNumber:
+    query: false
+  federalBankruptcyChapterArray:
+    query: false
+  firstFetchDate:
+    query: false
+  firstName:
+    query: false
+  fourDigitSsn:
+    query: false
+  generation:
+    query: false
+  groupBy:
+    query: false
+  inLibrary:
+    query: false
+  isPreviewDocument:
+    query: false
+  isVisible:
+    query: false
+  jpmlNumber:
+    query: false
+  lastFetchDate:
+    query: false
+  lastFetchDateWithUpdates:
+    query: false
+  lastName:
+    query: false
+  libraryDate:
+    query: false
+  middleName:
+    query: false
+  natureOfSuitsArray:
+    query: false
+  order:
+    query: false
+  pacerCaseId:
+    query: false
+  pacerClientCode:
+    query: false
+  pacerUserId:
+    query: false
+  pageNumber:
+    query: false
+  partyClassificationType:
+    query: false
+  partyExactNameMatch:
+    query: false
+  partyRoleArray:
+    query: false
+  partyRoleGroupId:
+    query: false
+  partyRoleId:
+    query: false
+  partyType:
+    query: false
+  q:
+    query: false
+  requestedDate:
+    query: false
+  sort:
+    query: false
+  sortBy:
+    query: false
+  sortParameterQuery:
+    query: false
+  ssnOrEin:
+    query: false
+  status:
+    query: false
+validServerUrls: {}
