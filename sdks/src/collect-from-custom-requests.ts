@@ -97,6 +97,10 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "lob.com": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/lob/lob-openapi/main/dist/lob-api-bundled.yml",
+  },
   "vimeo.com": {
     lambda: async () => {
       const response = await fetch("https://api.vimeo.com/?openapi=1", {

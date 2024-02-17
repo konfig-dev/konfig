@@ -50,6 +50,7 @@ const publishJsonSchema = z.object({
         sdkName: z.string(),
         clientName: z.string(),
         metaDescription: z.string().optional(),
+        apiDescription: z.string().optional(),
         securitySchemes: z
           .record(
             z.union([
@@ -181,6 +182,7 @@ function collectAllPublishData() {
           logoPath,
           specData,
           nonEmptyCategories,
+          apiDescription: publishData.apiDescription,
           metaDescription: publishData.metaDescription,
         },
       ];

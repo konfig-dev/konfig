@@ -1,0 +1,204 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /accounts:
+    get: Accounts_getCreditsBalance
+  /bank_accounts:
+    get: BankAccounts_getList
+    post: BankAccounts_createNewBankAccount
+  /bank_accounts/{bank_id}:
+    delete: BankAccounts_deleteBankAccount
+    get: BankAccounts_getDetails
+  /bank_accounts/{bank_id}/verify:
+    post: BankAccounts_verifyBankAccount
+  /billing_groups:
+    get: BillingGroups_list
+    post: BillingGroups_createNewGroup
+  /billing_groups/{bg_id}:
+    get: BillingGroups_getDetails
+    post: BillingGroups_updateAttributes
+  /buckslips/{buckslip_id}/orders:
+    get: BuckslipOrders_getByBuckslipId
+    post: BuckslipOrders_createNewOrder
+  /bulk/intl_verifications:
+    post: IntlVerifications_verifyBulkAddresses
+  /bulk/us_verifications:
+    post: UsVerifications_bulkVerifyAddresses
+  /cards/{card_id}/orders:
+    get: CardOrders_get
+    post: CardOrders_createNewOrder
+  /domains/{domain_id}/links:
+    delete: UrlShortener_deleteAllLinksForDomain
+  /links/shorten/bulk:
+    post: UrlShortener_bulkShortenLinks
+  /qr_code_analytics:
+    get: QrCodes_getSortedQrCodes
+  /self_mailers:
+    get: SelfMailers_getList
+    post: SelfMailers_createNewSelfMailer
+  /self_mailers/{sfm_id}:
+    delete: SelfMailers_removeSelfMailer
+    get: SelfMailers_getDetails
+  /templates/{tmpl_id}/versions:
+    get: TemplateVersions_getList
+    post: TemplateVersions_createNewVersion
+  /templates/{tmpl_id}/versions/{vrsn_id}:
+    delete: TemplateVersions_deleteVersion
+    get: TemplateVersions_get
+    post: TemplateVersions_updateTemplateVersion
+  /uploads/{upl_id}/exports:
+    post: Uploads_createExportFile
+  /us_autocompletions:
+    post: UsAutocompletions_getSuggestions
+  /us_reverse_geocode_lookups:
+    post: ReverseGeocodeLookups_usLocationWithLiveApiKey
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /uploads/{upl_id}/exports:
+    post:
+      application/json: UploadsCreateExportFileRequest
+  /uploads/{upl_id}/file:
+    post:
+      multipart/form-data: UploadFileRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /addresses:
+    get:
+      '200':
+        application/json: AddressesListResponse
+  /bank_accounts:
+    get:
+      '200':
+        application/json: BankAccountsGetListResponse
+  /billing_groups:
+    get:
+      '200':
+        application/json: BillingGroupsListResponse
+  /buckslips:
+    get:
+      '200':
+        application/json: BuckslipsListResponse
+  /buckslips/{buckslip_id}/orders:
+    get:
+      '200':
+        application/json: BuckslipOrdersGetByBuckslipIdResponse
+  /campaigns:
+    get:
+      '200':
+        application/json: CampaignsListResponse
+  /campaigns/{cmp_id}:
+    delete:
+      '200':
+        application/json: CampaignDeleteResponse
+  /cards:
+    get:
+      '200':
+        application/json: CardsListResponse
+  /cards/{card_id}/orders:
+    get:
+      '200':
+        application/json: CardOrdersGetResponse
+  /checks:
+    get:
+      '200':
+        application/json: ChecksListResponse
+  /letters:
+    get:
+      '200':
+        application/json: LettersListResponse
+  /postcards:
+    get:
+      '200':
+        application/json: PostcardsListResponse
+  /qr_code_analytics:
+    get:
+      '200':
+        application/json: QrCodesGetSortedQrCodesResponse
+  /self_mailers:
+    get:
+      '200':
+        application/json: SelfMailersGetListResponse
+  /templates:
+    get:
+      '200':
+        application/json: TemplatesListResponse
+  /templates/{tmpl_id}/versions:
+    get:
+      '200':
+        application/json: TemplateVersionsGetListResponse
+  /uploads:
+    get:
+      '200':
+        application/json: UploadsListResponse
+    post:
+      '422':
+        application/json: UploadCreateResponse
+  /uploads/{upl_id}/exports:
+    post:
+      4XX:
+        application/json: UploadsCreateExportFileResponse
+  /uploads/{upl_id}/exports/{ex_id}:
+    get:
+      '200':
+        application/json: ExportRetrieveResponse
+  /uploads/{upl_id}/report:
+    get:
+      '200':
+        application/json: ReportRetrieveResponse
+      '403':
+        application/json: ReportRetrieve403Response
+securityParameters:
+  Idempotency-Key:
+    header: false
+  before/after:
+    query: false
+  billing_group_id:
+    query: false
+  campaignId:
+    query: false
+  campaign_id:
+    query: false
+  case:
+    query: false
+  clicked:
+    query: false
+  color:
+    query: false
+  date_created:
+    query: false
+  date_modified:
+    query: false
+  idempotency_key:
+    query: false
+  include:
+    query: false
+  limit:
+    query: false
+  mail_type:
+    query: false
+  metadata:
+    query: false
+  offset:
+    query: false
+  resource_ids:
+    query: false
+  scanned:
+    query: false
+  scheduled:
+    query: false
+  send_date:
+    query: false
+  size:
+    query: false
+  sort_by:
+    query: false
+  status:
+    query: false
+  valid_addresses:
+    query: false
+  x-lang-output:
+    header: false
+validServerUrls: {}
