@@ -264,6 +264,10 @@ const customRequests: Record<string, CustomRequest> = {
     },
     apiBaseUrl: "https://marketplace.walmartapis.com/v3/feeds",
   },
+  "zuora.com": {
+    type: "GET",
+    url: "https://developer.zuora.com/yaml/zuora_openapi.yaml",
+  },
   "snyk.com": {
     lambda: async () => {
       // GET request to: https://api.snyk.io/rest/openapi
