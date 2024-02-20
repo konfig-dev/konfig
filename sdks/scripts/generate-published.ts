@@ -1,6 +1,5 @@
 import * as path from "path";
 import * as fs from "fs";
-import { z } from "zod";
 import { SdkPagePropsWithPropertiesOmitted } from "./collect";
 import { parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
@@ -11,6 +10,7 @@ import { getMethodObjects } from "../src/get-method-objects";
 import { generateTypescriptSdkUsageCode } from "../src/generate-typescript-sdk-usage-code";
 import execa from "execa";
 import kebabcase from "lodash.kebabcase";
+import { PublishJson, publishJsonSchema } from "../src/publish-json-schema";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
@@ -40,53 +40,6 @@ const fixedSpecsOutputPath = path.join(
  * This is the name of the OAS file inside openapi-examples
  */
 const openapiFilename = "openapi.yaml";
-
-const publishJsonSchema = z.object({
-  publish: z.record(
-    z
-      .object({
-        company: z.string(),
-        serviceName: z.string().or(z.literal(false)).optional(),
-        sdkName: z.string(),
-        clientName: z.string(),
-        metaDescription: z.string().optional(),
-        apiDescription: z.string().optional(),
-        securitySchemes: z
-          .record(
-            z.union([
-              z.object({
-                type: z.literal("apiKey"),
-                description: z.string().optional(),
-                in: z.union([z.literal("query"), z.literal("header")]),
-                name: z.string(),
-              }),
-              z.object({
-                type: z.literal("http"),
-                description: z.string().optional(),
-                scheme: z.union([
-                  z.literal("basic"),
-                  z.literal("bearer"),
-                  z.literal("digest"),
-                ]),
-              }),
-            ])
-          )
-          .optional(),
-        homepage: z
-          .string()
-          // ensure it does not start with https:// or http://
-          .refine(
-            (url) => !url.startsWith("https://") && !url.startsWith("http://"),
-            "URL cannot start with https:// or http://"
-          )
-          .optional(),
-        categories: z.string().array().optional(),
-      })
-      .passthrough()
-  ),
-});
-
-type PublishJson = z.infer<typeof publishJsonSchema>;
 
 function collectAllPublishData() {
   const publishJson: PublishJson = publishJsonSchema.parse(
