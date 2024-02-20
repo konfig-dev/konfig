@@ -44,6 +44,10 @@ public class AdditionalProperties {
   @JsonProperty("removeDefaultConfigurationParameters")
   private Boolean removeDefaultConfigurationParameters;
 
+  @JsonProperty("omitSecurityRequirementsFromTopLeveClient")
+  @Valid
+  private List<String> omitSecurityRequirementsFromTopLeveClient = null;
+
   @JsonProperty("isGitSubmodule")
   private Boolean isGitSubmodule;
 
@@ -350,6 +354,33 @@ public class AdditionalProperties {
 
   public void setRemoveDefaultConfigurationParameters(Boolean removeDefaultConfigurationParameters) {
     this.removeDefaultConfigurationParameters = removeDefaultConfigurationParameters;
+  }
+
+  public AdditionalProperties omitSecurityRequirementsFromTopLeveClient(List<String> omitSecurityRequirementsFromTopLeveClient) {
+    this.omitSecurityRequirementsFromTopLeveClient = omitSecurityRequirementsFromTopLeveClient;
+    return this;
+  }
+
+  public AdditionalProperties addOmitSecurityRequirementsFromTopLeveClientItem(String omitSecurityRequirementsFromTopLeveClientItem) {
+    if (this.omitSecurityRequirementsFromTopLeveClient == null) {
+      this.omitSecurityRequirementsFromTopLeveClient = new ArrayList<>();
+    }
+    this.omitSecurityRequirementsFromTopLeveClient.add(omitSecurityRequirementsFromTopLeveClientItem);
+    return this;
+  }
+
+  /**
+   * Get omitSecurityRequirementsFromTopLeveClient
+   * @return omitSecurityRequirementsFromTopLeveClient
+  */
+  
+  @Schema(name = "omitSecurityRequirementsFromTopLeveClient", required = false)
+  public List<String> getOmitSecurityRequirementsFromTopLeveClient() {
+    return omitSecurityRequirementsFromTopLeveClient;
+  }
+
+  public void setOmitSecurityRequirementsFromTopLeveClient(List<String> omitSecurityRequirementsFromTopLeveClient) {
+    this.omitSecurityRequirementsFromTopLeveClient = omitSecurityRequirementsFromTopLeveClient;
   }
 
   public AdditionalProperties isGitSubmodule(Boolean isGitSubmodule) {
@@ -1792,6 +1823,7 @@ public class AdditionalProperties {
         Objects.equals(this.dependencies, additionalProperties.dependencies) &&
         Objects.equals(this.readmeHeader, additionalProperties.readmeHeader) &&
         Objects.equals(this.removeDefaultConfigurationParameters, additionalProperties.removeDefaultConfigurationParameters) &&
+        Objects.equals(this.omitSecurityRequirementsFromTopLeveClient, additionalProperties.omitSecurityRequirementsFromTopLeveClient) &&
         Objects.equals(this.isGitSubmodule, additionalProperties.isGitSubmodule) &&
         Objects.equals(this.gitDefaultBranch, additionalProperties.gitDefaultBranch) &&
         Objects.equals(this.gitRepoName, additionalProperties.gitRepoName) &&
@@ -1869,7 +1901,7 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, removeDefaultConfigurationParameters, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, removeDefaultConfigurationParameters, omitSecurityRequirementsFromTopLeveClient, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
@@ -1880,6 +1912,7 @@ public class AdditionalProperties {
     sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
     sb.append("    readmeHeader: ").append(toIndentedString(readmeHeader)).append("\n");
     sb.append("    removeDefaultConfigurationParameters: ").append(toIndentedString(removeDefaultConfigurationParameters)).append("\n");
+    sb.append("    omitSecurityRequirementsFromTopLeveClient: ").append(toIndentedString(omitSecurityRequirementsFromTopLeveClient)).append("\n");
     sb.append("    isGitSubmodule: ").append(toIndentedString(isGitSubmodule)).append("\n");
     sb.append("    gitDefaultBranch: ").append(toIndentedString(gitDefaultBranch)).append("\n");
     sb.append("    gitRepoName: ").append(toIndentedString(gitRepoName)).append("\n");

@@ -283,6 +283,7 @@ public interface GenerateApi {
         if (generator.equals("typescript-axios"))
             putIfPresent(map, "removeDefaultConfigurationParameters", additionalProperties.getRemoveDefaultConfigurationParameters());
         putIfPresent(map, "apiPackage", additionalProperties.getApiPackage());
+        putIfPresent(map, "omitSecurityRequirementsFromTopLeveClient", additionalProperties.getOmitSecurityRequirementsFromTopLeveClient());
         if (additionalProperties.getReadmeOperation() != null)
             putIfPresent(map, "readmeOperationId", additionalProperties.getReadmeOperation().getOperationId());
         putIfPresent(map, "useDescriptionInOperationTableDocumentation", additionalProperties.getUseDescriptionInOperationTableDocumentation());

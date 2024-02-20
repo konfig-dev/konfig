@@ -928,6 +928,8 @@ public class DefaultGenerator implements Generator {
         bundle.put("hasMultipleApiKeys", apiKeyMethods.size() > 1);
         bundle.put("isApiKeyRequired", apiKeyMethods.size() == 1
                 && (boolean) apiKeyMethods.get(0).vendorExtensions.getOrDefault("x-konfig-globally-required-security", false));
+        List<String> securityRequirementsToFilter = (List<String>) bundle.getOrDefault("omitSecurityRequirementsFromTopLeveClient", new ArrayList());
+        bundle.put("filteredApiKeyMethods", apiKeyMethods.stream().filter(m -> !securityRequirementsToFilter.contains(m.name)).collect(Collectors.toList()));
 
         // for convenience instead of openAPI.info.extensions.XXXXX
         if (openAPI.getInfo() != null)

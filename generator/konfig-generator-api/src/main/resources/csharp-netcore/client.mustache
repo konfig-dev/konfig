@@ -62,26 +62,6 @@ namespace {{packageName}}.Client
         }
 
         /// <summary>
-        /// Setter for Username
-        /// </summary>
-        public {{clientName}} SetUsername(string username)
-        {
-            Configuration.Username = username;
-            init();
-            return this;
-        }
-
-        /// <summary>
-        /// Setter for Password
-        /// </summary>
-        public {{clientName}} SetPassword(string password)
-        {
-            Configuration.Password = password;
-            init();
-            return this;
-        }
-
-        /// <summary>
         /// Setter for Access Token
         /// </summary>
         public {{clientName}} SetAccessToken(string accessToken)
@@ -112,7 +92,7 @@ namespace {{packageName}}.Client
             return this;
         }
         {{/hasOAuthMethods}}
-{{#apiKeyMethods}}
+{{#filteredApiKeyMethods}}
 
         /// <summary>
         /// Setter for API Key
@@ -123,7 +103,7 @@ namespace {{packageName}}.Client
             init();
             return this;
         }
-{{/apiKeyMethods}}
+{{/filteredApiKeyMethods}}
 {{#clientStateSetterGetterPascalCase}}
 
         /// <summary>

@@ -296,6 +296,7 @@ export const KonfigYamlCommon = z
     readmeHeader,
     securitySchemeOverride,
     useSecurityKeyName,
+    omitSecurityRequirementsFromTopLeveClient: z.array(z.string()).optional(),
     readmeOperation: z
       .object({
         operationId: z.string(),
