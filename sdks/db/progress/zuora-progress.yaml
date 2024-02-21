@@ -1,0 +1,535 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /deployment-manager/deployments/template/product_catalog:
+    post: Metadata_deployTenantTemplate
+  /deployment-manager/deployments/templates:
+    post: Metadata_compareDeployTenantTemplate
+  /deployment-manager/deployments/tenant/product_catalog:
+    post: Metadata_compareDeployProductCatalog
+  /deployment-manager/deployments/tenants:
+    post: Metadata_compareDeployTenantToTarget
+  /deployment-manager/deployments/{migrationId}:
+    get: Metadata_getDeploymentLog
+  /deployment-manager/deployments/{migrationId}/revert:
+    post: Metadata_revertDeployment
+  /notifications/email-templates:
+    get: Notifications_listEmailTemplates
+    post: Notifications_createEmailTemplate
+  /notifications/email-templates/{id}:
+    delete: Notifications_deleteEmailTemplate
+    get: Notifications_getEmailTemplate
+    put: Notifications_updateEmailTemplate
+  /notifications/history:
+    delete: Notifications_deleteNotificationHistoryForAccount
+  /notifications/history/tasks/{id}:
+    get: Notifications_getNotificationHistoryDeletionTaskById
+  /notifications/notification-definitions:
+    get: Notifications_queryNotificationDefinitions
+    post: Notifications_createNotificationDefinition
+  /notifications/notification-definitions/{id}:
+    delete: Notifications_deleteNotificationDefinition
+    get: Notifications_getNotificationDefinition
+    put: Notifications_updateNotificationDefinition
+  /oauth/token:
+    post: OAuth_createToken
+  /v1/adjustments:
+    get: DeliveryAdjustments_listSubscriptionDeliveryAdjustments
+  /v1/creditmemos/{creditMemoKey}/taxationitems:
+    post: CreditMemos_createTaxationItems
+  /v1/debitmemos/{debitMemoKey}/taxationitems:
+    post: DebitMemos_createTaxationItems
+  /v1/invoices/invoice-item/{invoice-item-id}/usage-rate-detail:
+    get: Usage_getRateDetail
+  /v1/invoices/pdf-status:
+    get: Invoices_getPdfStatus
+  /v1/invoices/{invoiceKey}/taxationitems:
+    post: Invoices_createTaxationItems
+  /v1/prepaid-balance-funds/deplete:
+    post: PrepaidWithDrawdown_depleteFunds
+  /workflows/workflow_runs/{workflow_run_id}:
+    get: Workflows_getWorkflowRun
+  /workflows/{workflow_id}/run:
+    post: Workflows_runWorkflow
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /deployment-manager/deployment_artifacts/compare:
+    post:
+      multipart/form-data: PostCompareTemplateRequest
+  /deployment-manager/deployments/template/product_catalog:
+    post:
+      multipart/form-data: MetadataDeployTenantTemplateRequest
+  /deployment-manager/deployments/templates:
+    post:
+      multipart/form-data: MetadataCompareDeployTenantTemplateRequest
+  /deployment-manager/deployments/tenant/product_catalog:
+    post:
+      multipart/form-data: MetadataCompareDeployProductCatalogRequest
+  /deployment-manager/deployments/tenants:
+    post:
+      multipart/form-data: MetadataCompareDeployTenantToTargetRequest
+  /oauth/token:
+    post:
+      application/x-www-form-urlencoded: OAuthCreateTokenRequest
+  /objects/jobs/{id}/files:
+    post:
+      text/csv: PostUploadFileForCustomObjectBulkJobRequest
+  /v1/attachments:
+    post:
+      multipart/form-data: PostAttachmentsRequest
+  /v1/bill-runs/{billRunId}/cancel:
+    put:
+      application/json: PutCancelBillRunRequest
+  /v1/bill-runs/{billRunId}/post:
+    put:
+      application/json: PutPostBillRunRequest
+  /v1/bulk:
+    post:
+      multipart/form-data: PostMassUpdaterRequest
+  /v1/creditmemos/{creditMemoKey}/files:
+    post:
+      multipart/form-data: PostUploadFileForCreditMemoRequest
+  /v1/debitmemos/{debitMemoKey}/files:
+    post:
+      multipart/form-data: PostUploadFileForDebitMemoRequest
+  /v1/invoices/{invoiceKey}/files:
+    post:
+      multipart/form-data: PostUploadFileForInvoiceRequest
+  /v1/object/import:
+    post:
+      multipart/form-data: ObjectPostImportRequest
+  /v1/orders/{orderNumber}/cancel:
+    put:
+      application/json: PutOrderCancelRequest
+  /v1/uno/data-backfill/bookingdate/jobs/{jobId}:
+    put:
+      application/json: PutStopBookingDateBackfillJobByIdRequest
+  /v1/uno/data-backfill/jobs:
+    post:
+      multipart/form-data: PostCreateDataBackfillJobRequest
+  /v1/uno/data-backfill/jobs/{jobId}:
+    put:
+      application/json: PutStopDataBackfillJobByIdRequest
+  /v1/usage:
+    post:
+      multipart/form-data: PostUsageRequest
+  /workflows/{workflow_id}:
+    patch:
+      application/json: PatchUpdateWorkflowRequest
+  /workflows/{workflow_id}/run:
+    post:
+      application/json: WorkflowsRunWorkflowRequest
+  /workflows/{workflow_id}/versions/import:
+    post:
+      application/json: PostWorkflowVersionsImportRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /deployment-manager/deployments/tenant/product_catalog:
+    post:
+      '400':
+        application/json: MetadataCompareDeployProductCatalogResponse
+  /deployment-manager/deployments/tenants:
+    post:
+      '400':
+        application/json: MetadataCompareDeployTenantToTargetResponse
+  /deployment-manager/deployments/{migrationId}:
+    get:
+      '200':
+        application/json: MetadataGetDeploymentLogResponse
+  /deployment-manager/deployments/{migrationId}/revert:
+    post:
+      '200':
+        application/json: MetadataRevertDeploymentResponse
+  /events/event-triggers:
+    get:
+      '200':
+        application/json: GetEventTriggersResponse
+  /events/scheduled-events:
+    get:
+      '200':
+        application/json: GetScheduledEventsResponse
+  /notifications/email-templates:
+    get:
+      '200':
+        application/json: NotificationsListEmailTemplatesResponse
+  /notifications/history:
+    delete:
+      '400':
+        application/json: NotificationsDeleteNotificationHistoryForAccountResponse
+  /notifications/notification-definitions:
+    get:
+      '200':
+        application/json: NotificationsQueryNotificationDefinitionsResponse
+  /objects/definitions/default/{object}:
+    delete:
+      '200':
+        application/json: DeleteCustomObjectDefinitionByTypeResponse
+  /objects/records/default/{object}/{id}:
+    delete:
+      '200':
+        application/json: DeleteCustomObjectRecordByIdResponse
+  /open-payment-method-types:
+    post:
+      '200':
+        application/json: PostCreateDraftOpenPaymentMethodTypeResponse
+  /open-payment-method-types/publish/{paymentMethodTypeName}:
+    put:
+      '200':
+        application/json: PutPublishOpenPaymentMethodTypeResponse
+  /open-payment-method-types/{paymentMethodTypeName}:
+    put:
+      '200':
+        application/json: PutUpdateOpenPaymentMethodTypeResponse
+  /open-payment-method-types/{paymentMethodTypeName}/draft/{revisionNumber}:
+    get:
+      '200':
+        application/json: GetOpenPaymentMethodTypeRevisionResponse
+  /open-payment-method-types/{paymentMethodTypeName}/published:
+    get:
+      '200':
+        application/json: GetOpenPaymentMethodTypePublishResponse
+  /v1/action/create:
+    post:
+      '200':
+        application/json: ActionPosTcreateResponse
+  /v1/action/delete:
+    post:
+      '200':
+        application/json: ActionPosTdeleteResponse
+  /v1/action/update:
+    post:
+      '200':
+        application/json: ActionPosTupdateResponse
+  /v1/async-jobs/{jobId}:
+    get:
+      '200':
+        application/json: GetJobStatusAndResponseResponse
+  /v1/async/orders:
+    post:
+      '202':
+        application/json: PostCreateOrderAsynchronouslyResponse
+  /v1/async/orders/preview:
+    post:
+      '202':
+        application/json: PostPreviewOrderAsynchronouslyResponse
+  /v1/billing-preview-runs:
+    post:
+      '200':
+        application/json: PostBillingPreviewRunResponse
+  /v1/describe/{object}:
+    get:
+      '200':
+        text/xml; charset=utf-8: GetDescribeResponse
+      '404':
+        text/xml; charset=utf-8: GetDescribe404Response
+  /v1/uno/back-fill/jobs/{type}/template:
+    get:
+      '200':
+        text/csv: GetDataBackfillTemplateResponse
+  /v1/uno/data-backfill/bookingdate/jobs:
+    get:
+      '200':
+        application/json: GetListBookingDateBackfillJobsResponse
+    post:
+      '200':
+        application/json: PostCreateBookingDateBackfillJobResponse
+  /v1/uno/data-backfill/bookingdate/jobs/{jobId}:
+    get:
+      '200':
+        application/json: GetBookingDateBackfillJobByIdResponse
+  /v1/uno/data-backfill/jobs:
+    post:
+      '200':
+        application/json: PostCreateDataBackfillJobResponse
+  /v1/uno/data-backfill/jobs/{jobId}:
+    get:
+      '200':
+        application/json: GetDataBackfillJobByIdResponse
+  /v1/uno/data-backfill/listjobs:
+    get:
+      '200':
+        application/json: GetListDataBackfillJobsResponse
+  /workflows/{workflow_id}/export:
+    get:
+      '400':
+        application/json: GetWorkflowExportResponse
+      '404':
+        application/json: GetWorkflowExport404Response
+  /workflows/{workflow_id}/run:
+    post:
+      '400':
+        application/json: WorkflowsRunWorkflowResponse
+      '406':
+        application/json: WorkflowsRunWorkflow406Response
+      '409':
+        application/json: WorkflowsRunWorkflow409Response
+securityParameters:
+  Accept-Encoding:
+    header: false
+  Authorization:
+    header: false
+  Content-Encoding:
+    header: false
+  Idempotency-Key:
+    header: false
+  If-Match:
+    header: false
+  X-Zuora-WSDL-Version:
+    header: false
+  Zuora-Entity-Ids:
+    header: false
+  Zuora-Org-Ids:
+    header: false
+  Zuora-Track-Id:
+    header: false
+  Zuora-Version:
+    header: false
+  accountId:
+    query: false
+  accountNumber:
+    query: false
+  action_type:
+    query: false
+  activate:
+    query: false
+  active:
+    query: false
+  amount:
+    query: false
+  apiField:
+    query: false
+  apiObject:
+    query: false
+  appliedAmount:
+    query: false
+  associatedObjectKey:
+    query: false
+  associatedObjectType:
+    query: false
+  autoApplyUponPosting:
+    query: false
+  balance:
+    query: false
+  baseObject:
+    query: false
+  beAppliedAmount:
+    query: false
+  call_type:
+    query: false
+  callout_trigger:
+    query: false
+  charge:
+    query: false
+  charge-detail:
+    query: false
+  country:
+    query: false
+  createdById:
+    query: false
+  createdDate:
+    query: false
+  creditBalanceAmount:
+    query: false
+  creditMemoDate:
+    query: false
+  creditMemoKeys:
+    query: false
+  currency:
+    query: false
+  cursor:
+    query: false
+  dateFilterOption:
+    query: false
+  debitMemoDate:
+    query: false
+  debitMemoKeys:
+    query: false
+  deployment_template_id:
+    query: false
+  description:
+    query: false
+  documentDate:
+    query: false
+  documentType:
+    query: false
+  domainName:
+    query: false
+  dueDate:
+    query: false
+  effectiveDate:
+    query: false
+  emailTemplateId:
+    query: false
+  endDate:
+    query: false
+  endTime:
+    query: false
+  eventCategory:
+    query: false
+  eventTypeName:
+    query: false
+  exclude-rate-plans-with-no-charges:
+    query: false
+  excludeFromAutoApplyRules:
+    query: false
+  excludeUsage:
+    query: false
+  failedOnly:
+    query: false
+  fields:
+    query: false
+  fulfillment:
+    query: false
+  fulfillment-items:
+    query: false
+  hide-inherited-values:
+    query: false
+  httpMethod:
+    query: false
+  id:
+    query: false
+  ids:
+    query: false
+  includeAll:
+    query: false
+  includeResponseContent:
+    query: false
+  instance:
+    query: false
+  interval:
+    query: false
+  invoiceKeys:
+    query: false
+  isActiveOnly:
+    query: false
+  isDefaultOnly:
+    query: false
+  lastProcessedItems:
+    query: false
+  limit:
+    query: false
+  methodType:
+    query: false
+  metrics:
+    query: false
+  mode:
+    query: false
+  name:
+    query: false
+  nextPendingItems:
+    query: false
+  number:
+    query: false
+  object:
+    query: false
+  objectId:
+    query: false
+  object_id:
+    query: false
+  ondemand_trigger:
+    query: false
+  page:
+    query: false
+  pageSize:
+    query: false
+  page_length:
+    query: false
+  path:
+    query: false
+  paymentGatewayType:
+    query: false
+  paymentId:
+    query: false
+  paymentMethodType:
+    query: false
+  profileId:
+    query: false
+  provider:
+    query: false
+  q:
+    query: false
+  queryStatus:
+    query: false
+  rateplan:
+    query: false
+  reMigrate:
+    query: false
+  referredInvoiceId:
+    query: false
+  refundAmount:
+    query: false
+  refundDate:
+    query: false
+  rejectUnknownFields:
+    query: false
+  returnIds:
+    query: false
+  scheduled_trigger:
+    query: false
+  select:
+    query: false
+  serviceEndDate:
+    query: false
+  serviceStartDate:
+    query: false
+  show-charge-definitions:
+    query: false
+  showCurrencyConversionInformation:
+    query: false
+  sku:
+    query: false
+  skuName:
+    query: false
+  sort:
+    query: false
+  sourceItemId:
+    query: false
+  start:
+    query: false
+  startDate:
+    query: false
+  startTime:
+    query: false
+  status:
+    query: false
+  subscription-number:
+    query: false
+  subscriptionId:
+    query: false
+  subscriptionNumber:
+    query: false
+  tags:
+    query: false
+  targetDate:
+    query: false
+  taxAmount:
+    query: false
+  tenant:
+    query: false
+  totalTaxExemptAmount:
+    query: false
+  transferredToAccounting:
+    query: false
+  type:
+    query: false
+  unappliedAmount:
+    query: false
+  updatedById:
+    query: false
+  updatedDate:
+    query: false
+  version:
+    query: false
+  versionNumber:
+    query: false
+  workflow_definition_id:
+    query: false
+  workflow_id:
+    query: false
+  zuora-version:
+    header: false
+validServerUrls: {}
