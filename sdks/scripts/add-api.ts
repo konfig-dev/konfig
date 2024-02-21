@@ -4,6 +4,10 @@ import * as fs from "fs";
 import autocomplete from "inquirer-autocomplete-standalone";
 import boxen from "boxen";
 import { PublishJson as PublishJsonType } from "../src/publish-json-schema";
+import Instructor from "@instructor-ai/instructor";
+import { z } from "zod";
+import OpenAI from "openai";
+import snakeCase from "lodash.snakecase";
 
 const ROOT_FOLDER_PATH = path.dirname(__dirname);
 const DB_FOLDER_PATH = path.join(ROOT_FOLDER_PATH, "db");
@@ -19,7 +23,7 @@ async function main() {
  * 1. Ask to add one of the JSONs under db/spec-data
  * 2. Ask for a company, homepage.
  * 3. If spec-data JSON does not include categories, ask for categories (use AI to suggest category)
- * 4. If serviceName is not available, ask if you would like to add one
+ * 4. If serviceName is not available from spec-data, ask if you would like to add one
  * 4 a. If yes, ask for serviceName
  * 4 b. If no, ask for a serviceName
  * 5. If serviceName is available, ask if you would like to remove it
@@ -46,36 +50,29 @@ async function addApiToPublish() {
   const api = await chooseApiFromSpecData();
 
   // (2)
-  if (PublishJson.getCompany(api) === undefined) {
-    const company = await getCompany();
-    PublishJson.saveCompany({ company }, api);
-  } else {
-    console.log(`Company: ${PublishJson.getCompany(api)}`);
-  }
-  if (PublishJson.getHomepage(api) === undefined) {
-    const homepage = await getHomepage();
-    PublishJson.saveHomepage({ homepage }, api);
-  } else {
-    console.log(`Homepage: ${PublishJson.getHomepage(api)}`);
-  }
+  const company = PublishJson.getCompany(api) || (await getCompany());
+  PublishJson.saveCompany({ company }, api);
+  console.log(`Company: ${company}`);
+  const homepage = PublishJson.getHomepage(api) || (await getHomepage());
+  PublishJson.saveHomepage({ homepage }, api);
+  console.log(`Homepage: ${PublishJson.getHomepage(api)}`);
 
   // (3)
-  if (
-    PublishJson.getCategories(api) === undefined ||
-    PublishJson.getCategories(api)?.length === 0
-  ) {
-    const categories = await getCategories(api);
-    PublishJson.saveCategories({ categories }, api);
-  } else {
-    console.log(`Categories: ${PublishJson.getCategories(api)}`);
-  }
+  const categories =
+    PublishJson.getCategories(api) || (await getCategories(api, company));
+  PublishJson.saveCategories({ categories }, api);
+  console.log(`Categories: ${PublishJson.getCategories(api)}`);
 }
 
-async function getCategories(api: string): Promise<string[]> {
+async function getCategories(
+  api: string,
+  companyName: string
+): Promise<string[]> {
   const specData = JSON.parse(
     fs.readFileSync(path.join(SPEC_DATA_FOLDER_PATH, `${api}.json`), "utf-8")
   );
   if (specData.categories) {
+    console.log("Found categories in spec data");
     return specData.categories;
   }
   const publishJson: PublishJsonType = JSON.parse(
@@ -100,12 +97,45 @@ async function getCategories(api: string): Promise<string[]> {
     })
   );
 
+  const categoriesSchema = z.object({
+    matchingCategories: z.string().array(),
+    newCategories: z.string().array(),
+  });
+
+  const oai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  const client = Instructor({ client: oai, mode: "FUNCTIONS" });
+
+  const { matchingCategories, newCategories } =
+    await client.chat.completions.create({
+      messages: [
+        {
+          role: "user",
+          content: `What are the categories for the company "${companyName}"?
+
+        Here are existing categories: ${allCategories.join(
+          ", "
+        )}. Try to match "${companyName}" to existing categories or if there are new categories then please list them.`,
+        },
+      ],
+      model: "gpt-3.5-turbo",
+      response_model: { schema: categoriesSchema, name: "Categories" },
+    });
+
+  if (newCategories.length > 0) {
+    console.log(
+      boxen(matchingCategories.join("\n"), { title: "Matching (✨ AI)" })
+    );
+  }
+  if (newCategories.length > 0) {
+    console.log(boxen(newCategories.join("\n"), { title: "New (✨ AI)" }));
+  }
+
   const categories = await inquirer.prompt({
     type: "input",
     name: "categories",
     message: "What are the categories?",
   });
-  return categories.categories.split(",");
+  return categories.categories.split(",").map(snakeCase);
 }
 
 async function getClientName(): Promise<string> {
@@ -152,7 +182,7 @@ async function chooseApiFromSpecData(): Promise<string> {
     };
   });
   const apiSpec = await autocomplete({
-    message: "Which spec for what API would you liek to add?",
+    message: "Which spec for what API would you like to add?",
     source: async (input) => {
       if (!input) {
         return specDataChoices;
