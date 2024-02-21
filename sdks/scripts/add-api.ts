@@ -107,7 +107,12 @@ async function addApiToPublish() {
     company,
     serviceName === false ? undefined : serviceName
   );
-  const clientName = getClientName(company, "typescript");
+  const clientName = getClientName(
+    company,
+    serviceName === false ? undefined : serviceName
+  );
+  PublishJson.saveSdkName({ sdkName }, api);
+  PublishJson.saveClientName({ clientName }, api);
 }
 
 function getSpecData(api: string): any {
