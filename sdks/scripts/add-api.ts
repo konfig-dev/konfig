@@ -52,27 +52,60 @@ async function addApiToPublish() {
   // (2)
   const company = PublishJson.getCompany(api) || (await getCompany());
   PublishJson.saveCompany({ company }, api);
-  console.log(`Company: ${company}`);
+  console.log(`✅ Company: ${company}`);
   const homepage = PublishJson.getHomepage(api) || (await getHomepage());
   PublishJson.saveHomepage({ homepage }, api);
-  console.log(`Homepage: ${PublishJson.getHomepage(api)}`);
+  console.log(`✅ Homepage: ${PublishJson.getHomepage(api)}`);
 
   // (3)
   const categories =
     PublishJson.getCategories(api) || (await getCategories(api, company));
   PublishJson.saveCategories({ categories }, api);
-  console.log(`Categories: ${PublishJson.getCategories(api)}`);
+  console.log(`✅ Categories: ${PublishJson.getCategories(api)}`);
+
+  // (4) & (5)
+  const serviceName = await getServiceName(api);
+  if (serviceName !== null) {
+    PublishJson.saveServiceName({ serviceName }, api);
+    console.log(`✅ Service Name: ${PublishJson.getServiceName(api)}`);
+  } else {
+    console.log("✅ Service Name: (skipped)");
+  }
+}
+
+function getSpecData(api: string): any {
+  return JSON.parse(
+    fs.readFileSync(path.join(SPEC_DATA_FOLDER_PATH, `${api}.json`), "utf-8")
+  );
+}
+
+async function getServiceName(api: string): Promise<string | false | null> {
+  const specData = getSpecData(api);
+  if (specData.serviceName) {
+    console.log("Found serviceName in spec data");
+    const removeServiceName = await inquirer.prompt({
+      type: "confirm",
+      name: "removeServiceName",
+      message: "Would you like to remove the service name?",
+    });
+    return removeServiceName.removeServiceName ? false : specData.serviceName;
+  }
+  console.log("⚪️ Service name not found in spec data");
+  const serviceName = await inquirer.prompt({
+    type: "input",
+    name: "serviceName",
+    message: "What is the service name? (e.g. enter nothing to skip)",
+  });
+  return serviceName.serviceName.length > 0 ? serviceName.serviceName : null;
 }
 
 async function getCategories(
   api: string,
   companyName: string
 ): Promise<string[]> {
-  const specData = JSON.parse(
-    fs.readFileSync(path.join(SPEC_DATA_FOLDER_PATH, `${api}.json`), "utf-8")
-  );
+  const specData = getSpecData(api);
   if (specData.categories) {
-    console.log("Found categories in spec data");
+    console.log("🟢 Found categories in spec data");
     return specData.categories;
   }
   const publishJson: PublishJsonType = JSON.parse(
@@ -89,6 +122,8 @@ async function getCategories(
     },
     [] as string[]
   );
+
+  console.log("⚪️ Did not find categories in spec data");
 
   console.log(
     boxen(allCategories.join("\n"), {
@@ -213,6 +248,16 @@ class PublishJson {
   static getClientName(api: string): string | undefined {
     return PublishJson._currentPublishJson().publish[api]?.clientName;
   }
+
+  static getServiceName(api: string): string | false | undefined {
+    return PublishJson._currentPublishJson().publish[api]?.serviceName;
+  }
+
+  static saveServiceName = this._writeToDiskAfter(
+    ({ serviceName }: { serviceName: string | false }, progress) => {
+      progress.serviceName = serviceName;
+    }
+  );
 
   static saveCompany = this._writeToDiskAfter(
     ({ company }: { company: string }, progress) => {
