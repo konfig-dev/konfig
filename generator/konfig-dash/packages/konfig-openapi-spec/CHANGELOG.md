@@ -1,5 +1,14 @@
 # konfig-openapi-spec
 
+## 1.8.12
+
+### Patch Changes
+
+- [`4423db3a`](https://github.com/konfig-dev/konfig/commit/4423db3a1ce45cd30b3baf0ba39895ad79ea6ea9) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add omitSecurityRequirementsFromTopLeveClient to konfig.yaml
+
+- Updated dependencies [[`4423db3a`](https://github.com/konfig-dev/konfig/commit/4423db3a1ce45cd30b3baf0ba39895ad79ea6ea9)]:
+  - konfig-lib@1.36.7
+
 ## 1.8.11
 
 ### Patch Changes
