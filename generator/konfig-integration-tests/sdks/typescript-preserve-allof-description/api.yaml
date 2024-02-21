@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: typescript-preserve-allof-description API
+  description: A simple API based for testing typescript-preserve-allof-description.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://typescript-preserve-allof-description.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: "Description of RequestBody in Operation"
+              $ref: '#/components/schemas/RequestBody'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                description: "Description of Response in Operation"
+                $ref: '#/components/schemas/Response'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    RequestBody:
+      type: object
+      properties:
+        input:
+          $ref: '#/components/schemas/Parent'
+          description: 'Description of input Property in RequestBody schema'
+      required:
+        - input
+    Response:
+      type: object
+      properties:
+        input:
+          $ref: '#/components/schemas/Parent'
+          description: 'Description of input Property in Response schema'
+    Parent:
+      allOf:
+        - $ref: '#/components/schemas/Child'
+      description: 'Description of Parent'
+    Child:
+      description: 'Description of Child'
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+security:
+  - ApiKey: []
