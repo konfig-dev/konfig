@@ -47,21 +47,23 @@ components:
       type: object
       properties:
         input:
-          description: Description of input Property in RequestBody schema
           $ref: '#/components/schemas/Parent'
       required:
         - input
+      x-konfig-properties:
+        input:
+          description: Description of input Property in RequestBody schema
     ResponseParent:
-      description: Description of ResponseParent
       $ref: '#/components/schemas/ResponseChild'
     ResponseChild:
       type: object
       properties:
         input:
-          description: Description of input Property in ResponseChild schema
           $ref: '#/components/schemas/Parent'
+      x-konfig-properties:
+        input:
+          description: Description of input Property in ResponseChild schema
     Parent:
-      description: Description of Parent
       $ref: '#/components/schemas/Child'
     Child:
       description: Description of Child
@@ -75,7 +77,9 @@ components:
       type: object
       properties:
         input:
-          description: Description of input property in RequestBody in Operation
           $ref: '#/components/schemas/RequestBody'
+      x-konfig-properties:
+        input:
+          description: Description of input property in RequestBody in Operation
 security:
   - ApiKey: []
