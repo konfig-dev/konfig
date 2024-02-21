@@ -31,7 +31,7 @@ async function main() {
  * 5 b. If no, do nothing
  * 6. If a meta description is available from data-from-html.json, ask if you would like to add it
  * 6 a. If yes, add metaDescription from data-from-html.json
- * 6 b. If no, do nothing
+ * 6 b. If no, move to (7)
  * 7. If a meta description is not available from data-from-html.json,
  * 7 a. Generate description using AI and ask if you would like to add it
  * 7 a i. If yes, add description
@@ -64,12 +64,20 @@ async function addApiToPublish() {
   console.log(`✅ Categories: ${PublishJson.getCategories(api)}`);
 
   // (4) & (5)
-  const serviceName = await getServiceName(api);
-  if (serviceName !== null) {
-    PublishJson.saveServiceName({ serviceName }, api);
-    console.log(`✅ Service Name: ${PublishJson.getServiceName(api)}`);
+  const serviceName =
+    PublishJson.getServiceName(api) || (await getServiceName(api));
+  PublishJson.saveServiceName({ serviceName }, api);
+  console.log(`✅ Service Name: ${PublishJson.getServiceName(api)}`);
+
+  // (6) & (7)
+  const metaDescription =
+    PublishJson.getMetaDescription(api) ||
+    (await getMetaDescription(api, company));
+  if (metaDescription !== null) {
+    PublishJson.saveMetaDescription({ metaDescription }, api);
+    console.log(`✅ Meta Description: ${metaDescription}`);
   } else {
-    console.log("✅ Service Name: (skipped)");
+    console.log("✅ Meta Description: (skipped)");
   }
 }
 
@@ -79,7 +87,87 @@ function getSpecData(api: string): any {
   );
 }
 
-async function getServiceName(api: string): Promise<string | false | null> {
+async function getMetaDescription(
+  api: string,
+  companyName: string
+): Promise<string | null> {
+  const dataFromHtmlJson = JSON.parse(
+    fs.readFileSync(path.join(DB_FOLDER_PATH, "data-from-html.json"), "utf-8")
+  );
+  const metaDescription = dataFromHtmlJson[api]?.description;
+  if (metaDescription) {
+    console.log(`🟢 Found meta description in data-from-html.json`);
+    const addMetaDescription = await inquirer.prompt({
+      type: "confirm",
+      name: "addMetaDescription",
+      message: "Would you like to add the meta description?",
+    });
+    return addMetaDescription.addMetaDescription ? metaDescription : null;
+  }
+  console.log("⚪️ Meta description not found in data-from-html.json");
+  const oai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  const client = Instructor({ client: oai, mode: "FUNCTIONS" });
+  console.log("🧠 Generating meta description using AI...");
+  const { description } = await client.chat.completions.create({
+    messages: [
+      {
+        role: "user",
+        content: `
+        Can you give me a description of ${companyName}. Just give me the description and don't prefix it with anything. The response should only include the description. Add some more detail in the description. DO NOT add quotes (") in the response as it is USELESS. Do not repeat yourself in the beginning of the response (e.g. "${companyName}, ${companyName}"). Here are some existing examples of descriptions for other companies:
+
+        "Lob", "Lob provides a suite of APIs to deliver mail, including address verification, mail tracking, and more. Our print & mail API is used by companies large and small to send postcards, letters, and checks."
+        "UniCourt", "UniCourt is a leader in making court data more accessible and useful. We provide real-time access to court data from state, federal, and local courts, as well as analytics, case management, and automation tools for legal professionals.
+        "Vimeo", "Join the world's leading professional video platform and grow your business with easy-to-use, high-quality video creation, hosting, and marketing tools.
+        "Zapier", "AI Actions is a tool for builders to equip AI platforms (or custom integrations) with the ability to run any Zapier action! The 20,000+ searches and actions you know and love from the Zapier automation platform can be used with your favorite AI tool."
+        "Open Banking", "The trusted technology that connects banks, fintechs & technical providers - technology that's helping 6m users take control of their money.
+        "Notion", "Notion is a new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team.
+        "Ably", "Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale.
+        "WhatsApp", "Use WhatsApp Messenger to stay in touch with friends and family. WhatsApp is free and offers simple, secure, reliable messaging and calling, available on phones all over the world.
+        "Wikimedia", "Wikimedia is a global movement whose mission is to bring free educational content to the world.
+        "Trello", "Trello is a collaboration tool that organizes your projects into boards. In one glance, Trello tells you what's being worked on, who's working on what, and where something is in a process.
+        "The New York Times", "Live news, investigations, opinion, photos and video by the journalists of The New York Times from more than 150 countries around the world. Subscribe for coverage of U.S. and international news, politics, business, technology, science, health, arts, sports and more.
+        "GoDaddy", "All the help and tools you need to grow online: Websites, Domains, Digital and Social Marketing - plus GoDaddy Guides with you every step of the way.
+        "Ticketmaster", "Tap into the Ticketmaster open developer network which gives you the flexibility and scale to bring unforgettable live events to fans. It’s our technology – your way."
+        "Stack Exchange", "We make Stack Overflow and 170+ other community-powered Q&A sites.
+        "Spotify", "Spotify is a digital music service that gives you access to millions of songs.
+        "Shutterstock", "Download the best royalty free images from Shutterstock, including photos, vectors, and illustrations. Enjoy straightforward pricing and simple licensing.
+        "Rotten Tomatoes", "Rotten Tomatoes, home of the Tomatometer, is the most trusted measurement of quality for Movies & TV. The definitive site for Reviews, Trailers, Showtimes, and Tickets.
+        "Postmark", "Send transactional and marketing emails and get them to the inbox on time, every time. Postmark is a fast and reliable email delivery service for developers.
+        "Paylocity", "Paylocity is the HR & Payroll provider that frees you from the tasks of today, so together, we can spend more time focused on the promise of tomorrow.
+        "Qualtrics", "Know what your customers and employees need, when they need it, and deliver it every time with powerful, AI driven Experience Management (XM) software.
+        "SoundCloud", "Discover and play over 320 million music tracks. Join the world’s largest online community of artists, bands, DJs, and audio creators.
+        "Snyk", "Snyk helps software-driven businesses develop fast and stay secure. Continuously find and fix vulnerabilities for npm, Maven, NuGet, RubyGems, PyPI and more.
+        "Walmart", "Walmart is the world's largest retailer, and the Walmart Open API provides access to our extensive product catalog, thus enabling digital businesses to create new and innovative shopping experiences.`,
+      },
+    ],
+    model: "gpt-3.5-turbo",
+    response_model: {
+      schema: z.object({ description: z.string() }),
+      name: "Description",
+    },
+  });
+
+  console.log(boxen(description, { title: "Description (✨ AI)" }));
+
+  const useGeneratedDescription = await inquirer.prompt({
+    type: "confirm",
+    name: "useGeneratedDescription",
+    message: "Would you like to use the generated description?",
+  });
+
+  if (useGeneratedDescription.useGeneratedDescription) {
+    return description;
+  }
+
+  const manualDescription = await inquirer.prompt({
+    type: "input",
+    name: "manualDescription",
+    message: "What is the description?",
+  });
+  return manualDescription.manualDescription;
+}
+
+async function getServiceName(api: string): Promise<string | false> {
   const specData = getSpecData(api);
   if (specData.serviceName) {
     console.log("Found serviceName in spec data");
@@ -94,9 +182,9 @@ async function getServiceName(api: string): Promise<string | false | null> {
   const serviceName = await inquirer.prompt({
     type: "input",
     name: "serviceName",
-    message: "What is the service name? (e.g. enter nothing to skip)",
+    message: "What is the service name? (e.g. enter nothing to set as false)",
   });
-  return serviceName.serviceName.length > 0 ? serviceName.serviceName : null;
+  return serviceName.serviceName.length > 0 ? serviceName.serviceName : false;
 }
 
 async function getCategories(
@@ -252,6 +340,16 @@ class PublishJson {
   static getServiceName(api: string): string | false | undefined {
     return PublishJson._currentPublishJson().publish[api]?.serviceName;
   }
+
+  static getMetaDescription(api: string): string | undefined {
+    return PublishJson._currentPublishJson().publish[api]?.metaDescription;
+  }
+
+  static saveMetaDescription = this._writeToDiskAfter(
+    ({ metaDescription }: { metaDescription: string }, progress) => {
+      progress.metaDescription = metaDescription;
+    }
+  );
 
   static saveServiceName = this._writeToDiskAfter(
     ({ serviceName }: { serviceName: string | false }, progress) => {
