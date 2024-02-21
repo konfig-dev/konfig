@@ -51,6 +51,7 @@ async function main() {
  * 11 b. If no, wait for imagePreview.png to exist in openapi-examples
  * 12. Generate sdkName based on company name and service name
  * 13. Generate clientName based on company name and service name.
+ * 14. Ask if you want to overwrite the apiDescription
  */
 async function addApiToPublish() {
   // (1)
@@ -116,6 +117,15 @@ async function addApiToPublish() {
   );
   PublishJson.saveSdkName({ sdkName }, api);
   PublishJson.saveClientName({ clientName }, api);
+  console.log(`✅ SDK Name: ${sdkName}`);
+  console.log(`✅ Client Name: ${clientName}`);
+
+  // (14)
+  const apiDescription = await getApiDescription(api);
+  if (apiDescription.length > 0) {
+    PublishJson.saveApiDescription({ apiDescription }, api);
+    console.log(`✅ Overwrote API Description: ${apiDescription}`);
+  }
 }
 
 function getSpecData(api: string): any {
@@ -135,6 +145,24 @@ function createDirectoryUnderOpenApiExamples(
     fs.mkdirSync(companyServicePath, { recursive: true });
   }
   return companyServicePath;
+}
+
+async function getApiDescription(api: string): Promise<string> {
+  // confirm if you want to overwrite the apiDescription
+  const confirmOverwrite = await inquirer.prompt({
+    type: "confirm",
+    name: "confirmOverwrite",
+    message: "Would you like to overwrite the API description?",
+  });
+
+  // ask if you want to overwrite the apiDescription and open an editor to edit the description
+  if (!confirmOverwrite.confirmOverwrite) return "";
+  const apiDescription = await inquirer.prompt({
+    type: "editor",
+    name: "apiDescription",
+    message: "Provide the updated API description",
+  });
+  return apiDescription.apiDescription;
 }
 
 function getSdkName(company: string, serviceName?: string) {
@@ -472,6 +500,12 @@ class PublishJson {
   static getSdkName(api: string): string | undefined {
     return PublishJson._currentPublishJson().publish[api]?.sdkName;
   }
+
+  static saveApiDescription = this._writeToDiskAfter(
+    ({ apiDescription }: { apiDescription: string }, progress) => {
+      progress.apiDescription = apiDescription;
+    }
+  );
 
   static saveSdkName = this._writeToDiskAfter(
     ({ sdkName }: { sdkName: string }, progress) => {
