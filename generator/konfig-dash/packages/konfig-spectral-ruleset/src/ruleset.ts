@@ -51,6 +51,7 @@ export default {
     'info-contact': 'off',
     'oas2-schema': 'off',
     'oas3-unused-component': 'off',
+    'no-$ref-siblings': 'off',
     'konfig-oas2-schema': {
       description: 'Validate structure of OpenAPI v2 specification.',
       message: '{{error}}.',
