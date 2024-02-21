@@ -28,16 +28,14 @@ paths:
         content:
           application/json:
             schema:
-              description: Description of RequestBody in Operation
-              $ref: '#/components/schemas/RequestBody'
+              $ref: '#/components/schemas/TestFetchRequest'
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                description: Description of Response in Operation
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ResponseParent'
 components:
   securitySchemes:
     ApiKey:
@@ -53,11 +51,14 @@ components:
           $ref: '#/components/schemas/Parent'
       required:
         - input
-    Response:
+    ResponseParent:
+      description: Description of ResponseParent
+      $ref: '#/components/schemas/ResponseChild'
+    ResponseChild:
       type: object
       properties:
         input:
-          description: Description of input Property in Response schema
+          description: Description of input Property in ResponseChild schema
           $ref: '#/components/schemas/Parent'
     Parent:
       description: Description of Parent
@@ -70,5 +71,11 @@ components:
           type: string
       required:
         - name
+    TestFetchRequest:
+      type: object
+      properties:
+        input:
+          description: Description of input property in RequestBody in Operation
+          $ref: '#/components/schemas/RequestBody'
 security:
   - ApiKey: []

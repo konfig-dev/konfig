@@ -28,16 +28,19 @@ paths:
         content:
           application/json:
             schema:
-              description: "Description of RequestBody in Operation"
-              $ref: '#/components/schemas/RequestBody'
+              type: object
+              properties:
+                input:
+                  description: "Description of input property in RequestBody in Operation"
+                  allOf:
+                    - $ref: '#/components/schemas/RequestBody'
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                description: "Description of Response in Operation"
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/ResponseParent'
 components:
   securitySchemes:
     ApiKey:
@@ -53,12 +56,17 @@ components:
           description: 'Description of input Property in RequestBody schema'
       required:
         - input
-    Response:
+    ResponseParent:
+      description: "Description of ResponseParent"
+      allOf:
+        - $ref: '#/components/schemas/ResponseChild'
+    ResponseChild:
       type: object
       properties:
         input:
-          $ref: '#/components/schemas/Parent'
-          description: 'Description of input Property in Response schema'
+          allOf:
+            - $ref: '#/components/schemas/Parent'
+          description: 'Description of input Property in ResponseChild schema'
     Parent:
       allOf:
         - $ref: '#/components/schemas/Child'

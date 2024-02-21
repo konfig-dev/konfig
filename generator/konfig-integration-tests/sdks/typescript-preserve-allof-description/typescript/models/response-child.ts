@@ -15,13 +15,13 @@ import { Child } from './child';
 /**
  * 
  * @export
- * @interface Response
+ * @interface ResponseChild
  */
-export interface Response {
+export interface ResponseChild {
     /**
      * 
      * @type {Child}
-     * @memberof Response
+     * @memberof ResponseChild
      */
     'input'?: Child;
 }

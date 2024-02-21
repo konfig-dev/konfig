@@ -62,11 +62,7 @@ const typescriptpreserveallofdescriptionclient =
   });
 
 const fetchResponse = await typescriptpreserveallofdescriptionclient.test.fetch(
-  {
-    input: {
-      name: "name_example",
-    },
-  }
+  {}
 );
 
 console.log(fetchResponse);
@@ -83,21 +79,17 @@ Provide an input parameter to receive a JSON value with properties.
 
 ```typescript
 const fetchResponse = await typescriptpreserveallofdescriptionclient.test.fetch(
-  {
-    input: {
-      name: "name_example",
-    },
-  }
+  {}
 );
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### input: [`Child`](./models/child.ts)<a id="input-childmodelschildts"></a>
+##### input: [`RequestBody`](./models/request-body.ts)<a id="input-requestbodymodelsrequest-bodyts"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
-[Response](./models/response.ts)
+[ResponseChild](./models/response-child.ts)
 
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 

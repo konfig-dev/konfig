@@ -19,11 +19,11 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { Child } from '../models';
-// @ts-ignore
 import { RequestBody } from '../models';
 // @ts-ignore
-import { Response } from '../models';
+import { ResponseChild } from '../models';
+// @ts-ignore
+import { TestFetchRequest } from '../models';
 import { paginate } from "../pagination/paginate";
 import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
@@ -36,11 +36,11 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * Provide an input parameter to receive a JSON value with properties.
          * @summary Fetches a JSON value based on input parameter
-         * @param {RequestBody} [requestBody] 
+         * @param {TestFetchRequest} [testFetchRequest] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetch: async (requestBody?: RequestBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        fetch: async (testFetchRequest?: TestFetchRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/simple-endpoint`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -63,13 +63,13 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             requestBeforeHook({
-                requestBody: requestBody,
+                requestBody: testFetchRequest,
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
                 configuration
             });
-            localVarRequestOptions.data = serializeDataIfNeeded(requestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(testFetchRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -94,11 +94,11 @@ export const TestApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async fetch(requestParameters: TestApiFetchRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Response>> {
-            const requestBody: RequestBody = {
+        async fetch(requestParameters: TestApiFetchRequest = {}, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ResponseChild>> {
+            const testFetchRequest: TestFetchRequest = {
                 input: requestParameters.input
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.fetch(requestBody, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.fetch(testFetchRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -118,7 +118,7 @@ export const TestApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        fetch(requestParameters: TestApiFetchRequest, options?: AxiosRequestConfig): AxiosPromise<Response> {
+        fetch(requestParameters: TestApiFetchRequest = {}, options?: AxiosRequestConfig): AxiosPromise<ResponseChild> {
             return localVarFp.fetch(requestParameters, options).then((request) => request(axios, basePath));
         },
     };
@@ -131,7 +131,7 @@ export const TestApiFactory = function (configuration?: Configuration, basePath?
  */
 export type TestApiFetchRequest = {
     
-} & RequestBody
+} & TestFetchRequest
 
 /**
  * TestApiGenerated - object-oriented interface
@@ -148,7 +148,7 @@ export class TestApiGenerated extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestApiGenerated
      */
-    public fetch(requestParameters: TestApiFetchRequest, options?: AxiosRequestConfig) {
+    public fetch(requestParameters: TestApiFetchRequest = {}, options?: AxiosRequestConfig) {
         return TestApiFp(this.configuration).fetch(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }
