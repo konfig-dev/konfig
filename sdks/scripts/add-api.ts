@@ -12,6 +12,9 @@ import { generateSdkDynamicPath } from "./util";
 import { fetchFaviconAndSaveToFile } from "../src/fetch-favicon-and-save-to-file";
 import axios from "axios";
 import { fileTypeFromBuffer } from "file-type";
+import os from "os";
+import kebabCase from "lodash.kebabcase";
+import camelCase from "camelcase";
 
 const ROOT_FOLDER_PATH = path.dirname(__dirname);
 const DB_FOLDER_PATH = path.join(ROOT_FOLDER_PATH, "db");
@@ -95,6 +98,16 @@ async function addApiToPublish() {
 
   // (10)
   await ensureLogoExists(homepage, companyServicePath);
+
+  // (11)
+  await ensureImagePreviewExists(homepage, companyServicePath);
+
+  // (12) & (13)
+  const sdkName = getSdkName(
+    company,
+    serviceName === false ? undefined : serviceName
+  );
+  const clientName = getClientName(company, "typescript");
 }
 
 function getSpecData(api: string): any {
@@ -114,6 +127,60 @@ function createDirectoryUnderOpenApiExamples(
     fs.mkdirSync(companyServicePath, { recursive: true });
   }
   return companyServicePath;
+}
+
+function getSdkName(company: string, serviceName?: string) {
+  if (!serviceName) {
+    return `${kebabCase(company)}-{language}-sdk`;
+  }
+  return `${kebabCase(company)}-${kebabCase(serviceName)}-{language}-sdk`;
+}
+
+function getClientName(company: string, serviceName?: string) {
+  if (!serviceName) {
+    return camelCase(company, { pascalCase: true });
+  }
+  return camelCase(`${company} ${serviceName}`, { pascalCase: true });
+}
+
+async function ensureImagePreviewExists(
+  homepage: string,
+  companyServicePath: string
+) {
+  // if file with name "imagePreview.png" exists, then return
+  const files = fs.readdirSync(companyServicePath);
+  const imagePreviewFiles = files.filter((file) => file === "imagePreview.png");
+  if (imagePreviewFiles.length > 0) {
+    return;
+  }
+  console.log(`🔗 Take a screen shot from: https://${homepage}`);
+
+  // ask if screen shot has been taken
+  await inquirer.prompt({
+    type: "confirm",
+    name: "screenshotTaken",
+    message: "Has the screenshot been taken?",
+  });
+
+  // Find latest screenshot under user's Downloads folder
+  const downloadPath = path.join(os.homedir(), "Downloads");
+  const downloadFiles = fs.readdirSync(downloadPath);
+  const screenshotFiles = downloadFiles.filter((file) => file.endsWith(".png"));
+  if (screenshotFiles.length === 0) {
+    console.log("❌ No screenshot found in Downloads folder");
+    return;
+  }
+  // sort screenshotFiles by date modified
+  screenshotFiles.sort((a, b) => {
+    const aStats = fs.statSync(path.join(downloadPath, a));
+    const bStats = fs.statSync(path.join(downloadPath, b));
+    return bStats.mtimeMs - aStats.mtimeMs;
+  });
+
+  const latestScreenshot = screenshotFiles[0];
+  const screenshotPath = path.join(downloadPath, latestScreenshot);
+  const destinationPath = path.join(companyServicePath, "imagePreview.png");
+  fs.copyFileSync(screenshotPath, destinationPath);
 }
 
 async function ensureLogoExists(homepage: string, companyServicePath: string) {
@@ -320,16 +387,6 @@ async function getCategories(
   return categories.categories.split(",").map(snakeCase);
 }
 
-async function getClientName(): Promise<string> {
-  return (
-    await inquirer.prompt({
-      type: "input",
-      name: "clientName",
-      message: "What is the client name?",
-    })
-  ).clientName;
-}
-
 async function getHomepage(): Promise<string> {
   const homepage: string = (
     await inquirer.prompt({
@@ -403,6 +460,16 @@ class PublishJson {
   static getMetaDescription(api: string): string | undefined {
     return PublishJson._currentPublishJson().publish[api]?.metaDescription;
   }
+
+  static getSdkName(api: string): string | undefined {
+    return PublishJson._currentPublishJson().publish[api]?.sdkName;
+  }
+
+  static saveSdkName = this._writeToDiskAfter(
+    ({ sdkName }: { sdkName: string }, progress) => {
+      progress.sdkName = sdkName;
+    }
+  );
 
   static saveMetaDescription = this._writeToDiskAfter(
     ({ metaDescription }: { metaDescription: string }, progress) => {
