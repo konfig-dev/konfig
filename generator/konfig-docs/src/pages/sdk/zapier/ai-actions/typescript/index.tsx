@@ -17,7 +17,7 @@ export default function ZapierAiActionsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/logo.png"
       clientNameCamelCase="zapierActions"
       homepage="zapier.com"
-      lastUpdated={new Date("2024-02-16T00:45:04.983Z")}
+      lastUpdated={new Date("2024-02-20T18:53:32.830Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -134,7 +134,7 @@ export default function ZapierAiActionsTypeScriptSdk() {
       sdkMethods={5}
       schemas={5}
       parameters={4}
-      difficulty="Easy"
+      difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/openapi.yaml"
     />
   );

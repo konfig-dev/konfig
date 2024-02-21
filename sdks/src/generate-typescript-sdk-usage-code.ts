@@ -77,9 +77,13 @@ export function generateTypescriptSdkUsageCode({
   const lines: string[] = [
     `import { ${clientName} } from '${sdkName}';`,
     "",
-    `const ${camelcase(clientName)} = new ${clientName}({`,
-    ...setupLines,
-    "})",
+    ...(setupLines.length > 0
+      ? [
+          `const ${camelcase(clientName)} = new ${clientName}({`,
+          ...setupLines,
+          "})",
+        ]
+      : [`const ${camelcase(clientName)} = new ${clientName}()`]),
   ];
   return lines.join("\n");
 }
