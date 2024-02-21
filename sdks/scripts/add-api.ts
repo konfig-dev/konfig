@@ -8,6 +8,10 @@ import Instructor from "@instructor-ai/instructor";
 import { z } from "zod";
 import OpenAI from "openai";
 import snakeCase from "lodash.snakecase";
+import { generateSdkDynamicPath } from "./util";
+import { fetchFaviconAndSaveToFile } from "../src/fetch-favicon-and-save-to-file";
+import axios from "axios";
+import { fileTypeFromBuffer } from "file-type";
 
 const ROOT_FOLDER_PATH = path.dirname(__dirname);
 const DB_FOLDER_PATH = path.join(ROOT_FOLDER_PATH, "db");
@@ -43,35 +47,35 @@ async function main() {
  * 11 a. If yes, move on
  * 11 b. If no, wait for imagePreview.png to exist in openapi-examples
  * 12. Generate sdkName based on company name and service name
- * 13. Ask for clientName, offer suggestion based on company name and service name.
+ * 13. Generate clientName based on company name and service name.
  */
 async function addApiToPublish() {
   // (1)
   const api = await chooseApiFromSpecData();
 
   // (2)
-  const company = PublishJson.getCompany(api) || (await getCompany());
+  const company = PublishJson.getCompany(api) ?? (await getCompany());
   PublishJson.saveCompany({ company }, api);
   console.log(`✅ Company: ${company}`);
-  const homepage = PublishJson.getHomepage(api) || (await getHomepage());
+  const homepage = PublishJson.getHomepage(api) ?? (await getHomepage());
   PublishJson.saveHomepage({ homepage }, api);
   console.log(`✅ Homepage: ${PublishJson.getHomepage(api)}`);
 
   // (3)
   const categories =
-    PublishJson.getCategories(api) || (await getCategories(api, company));
+    PublishJson.getCategories(api) ?? (await getCategories(api, company));
   PublishJson.saveCategories({ categories }, api);
   console.log(`✅ Categories: ${PublishJson.getCategories(api)}`);
 
   // (4) & (5)
   const serviceName =
-    PublishJson.getServiceName(api) || (await getServiceName(api));
+    PublishJson.getServiceName(api) ?? (await getServiceName(api));
   PublishJson.saveServiceName({ serviceName }, api);
   console.log(`✅ Service Name: ${PublishJson.getServiceName(api)}`);
 
   // (6) & (7)
   const metaDescription =
-    PublishJson.getMetaDescription(api) ||
+    PublishJson.getMetaDescription(api) ??
     (await getMetaDescription(api, company));
   if (metaDescription !== null) {
     PublishJson.saveMetaDescription({ metaDescription }, api);
@@ -79,12 +83,67 @@ async function addApiToPublish() {
   } else {
     console.log("✅ Meta Description: (skipped)");
   }
+
+  // (8)
+  const companyServicePath = createDirectoryUnderOpenApiExamples(company, api);
+
+  // (9)
+  await fetchFaviconAndSaveToFile({
+    destination: companyServicePath,
+    domain: homepage,
+  });
+
+  // (10)
+  await ensureLogoExists(homepage, companyServicePath);
 }
 
 function getSpecData(api: string): any {
   return JSON.parse(
     fs.readFileSync(path.join(SPEC_DATA_FOLDER_PATH, `${api}.json`), "utf-8")
   );
+}
+
+function createDirectoryUnderOpenApiExamples(
+  company: string,
+  serviceName: string
+) {
+  const dynamicPath = generateSdkDynamicPath(company, serviceName);
+  const openApiExamplesPath = path.join(ROOT_FOLDER_PATH, "openapi-examples");
+  const companyServicePath = path.join(openApiExamplesPath, dynamicPath);
+  if (!fs.existsSync(companyServicePath)) {
+    fs.mkdirSync(companyServicePath, { recursive: true });
+  }
+  return companyServicePath;
+}
+
+async function ensureLogoExists(homepage: string, companyServicePath: string) {
+  // if file with name that starts with "logo" exists, then return
+  const files = fs.readdirSync(companyServicePath);
+  const logoFiles = files.filter((file) => file.startsWith("logo"));
+  if (logoFiles.length > 0) {
+    return;
+  }
+  console.log(
+    `🔎: https://www.google.com/search?q=${encodeURIComponent(
+      `${homepage} logo`
+    )}&tbm=isch&tbs=ic:trans&prmd=invmbstz&hl=en&sa=X&ved=0CAMQpwVqFwoTCIDdm5bfu4QDFQAAAAAdAAAAABAI&biw=1338&bih=924`
+  );
+  const logoUrl = await inquirer.prompt({
+    type: "input",
+    name: "logoUrl",
+    message: "What is the URL to the logo?",
+  });
+  // get logo image, determine file type, and save to file
+  const response = await axios.get(logoUrl.logoUrl, {
+    responseType: "arraybuffer",
+  });
+  const buffer = Buffer.from(response.data, "binary");
+  const fileType = await fileTypeFromBuffer(buffer);
+  if (!fileType) {
+    throw new Error("Could not determine file type");
+  }
+  const logoPath = path.join(companyServicePath, `logo.${fileType.ext}`);
+  fs.writeFileSync(logoPath, buffer);
 }
 
 async function getMetaDescription(
