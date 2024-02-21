@@ -88,7 +88,10 @@ async function addApiToPublish() {
   }
 
   // (8)
-  const companyServicePath = createDirectoryUnderOpenApiExamples(company, api);
+  const companyServicePath = createDirectoryUnderOpenApiExamples(
+    company,
+    serviceName === false ? undefined : serviceName
+  );
 
   // (9)
   await fetchFaviconAndSaveToFile({
@@ -123,7 +126,7 @@ function getSpecData(api: string): any {
 
 function createDirectoryUnderOpenApiExamples(
   company: string,
-  serviceName: string
+  serviceName?: string
 ) {
   const dynamicPath = generateSdkDynamicPath(company, serviceName);
   const openApiExamplesPath = path.join(ROOT_FOLDER_PATH, "openapi-examples");
