@@ -10,7 +10,7 @@ import { tagPrioritySchema } from './KonfigYamlCommon'
 
 const additionalProperties = z
   .object({
-    omitSecurityRequirementsFromTopLeveClient: z.array(z.string()).optional(),
+    omitSecurityRequirementsFromTopLevelClient: z.array(z.string()).optional(),
     removeDefaultConfigurationParameters: z.boolean().optional(),
     useDescriptionInOperationTableDocumentation: z.boolean().optional(),
     apiPackage: z.string().optional(),

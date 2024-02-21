@@ -19,7 +19,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-
 import java.util.*;
 import javax.annotation.Generated;
 
@@ -44,9 +43,9 @@ public class AdditionalProperties {
   @JsonProperty("removeDefaultConfigurationParameters")
   private Boolean removeDefaultConfigurationParameters;
 
-  @JsonProperty("omitSecurityRequirementsFromTopLeveClient")
+  @JsonProperty("omitSecurityRequirementsFromTopLevelClient")
   @Valid
-  private List<String> omitSecurityRequirementsFromTopLeveClient = null;
+  private List<String> omitSecurityRequirementsFromTopLevelClient = null;
 
   @JsonProperty("isGitSubmodule")
   private Boolean isGitSubmodule;
@@ -279,9 +278,10 @@ public class AdditionalProperties {
 
   /**
    * Get objectPropertyNamingConvention
+   * 
    * @return objectPropertyNamingConvention
-  */
-  
+   */
+
   @Schema(name = "objectPropertyNamingConvention", required = false)
   public String getObjectPropertyNamingConvention() {
     return objectPropertyNamingConvention;
@@ -306,9 +306,10 @@ public class AdditionalProperties {
 
   /**
    * Get dependencies
+   * 
    * @return dependencies
-  */
-  
+   */
+
   @Schema(name = "dependencies", required = false)
   public Map<String, String> getDependencies() {
     return dependencies;
@@ -325,9 +326,10 @@ public class AdditionalProperties {
 
   /**
    * Get readmeHeader
+   * 
    * @return readmeHeader
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "readmeHeader", required = false)
   public AdditionalPropertiesReadmeHeader getReadmeHeader() {
     return readmeHeader;
@@ -344,9 +346,10 @@ public class AdditionalProperties {
 
   /**
    * Get removeDefaultConfigurationParameters
+   * 
    * @return removeDefaultConfigurationParameters
-  */
-  
+   */
+
   @Schema(name = "removeDefaultConfigurationParameters", required = false)
   public Boolean getRemoveDefaultConfigurationParameters() {
     return removeDefaultConfigurationParameters;
@@ -356,31 +359,34 @@ public class AdditionalProperties {
     this.removeDefaultConfigurationParameters = removeDefaultConfigurationParameters;
   }
 
-  public AdditionalProperties omitSecurityRequirementsFromTopLeveClient(List<String> omitSecurityRequirementsFromTopLeveClient) {
-    this.omitSecurityRequirementsFromTopLeveClient = omitSecurityRequirementsFromTopLeveClient;
+  public AdditionalProperties omitSecurityRequirementsFromTopLevelClient(
+      List<String> omitSecurityRequirementsFromTopLevelClient) {
+    this.omitSecurityRequirementsFromTopLevelClient = omitSecurityRequirementsFromTopLevelClient;
     return this;
   }
 
-  public AdditionalProperties addOmitSecurityRequirementsFromTopLeveClientItem(String omitSecurityRequirementsFromTopLeveClientItem) {
-    if (this.omitSecurityRequirementsFromTopLeveClient == null) {
-      this.omitSecurityRequirementsFromTopLeveClient = new ArrayList<>();
+  public AdditionalProperties addomitSecurityRequirementsFromTopLevelClientItem(
+      String omitSecurityRequirementsFromTopLevelClientItem) {
+    if (this.omitSecurityRequirementsFromTopLevelClient == null) {
+      this.omitSecurityRequirementsFromTopLevelClient = new ArrayList<>();
     }
-    this.omitSecurityRequirementsFromTopLeveClient.add(omitSecurityRequirementsFromTopLeveClientItem);
+    this.omitSecurityRequirementsFromTopLevelClient.add(omitSecurityRequirementsFromTopLevelClientItem);
     return this;
   }
 
   /**
-   * Get omitSecurityRequirementsFromTopLeveClient
-   * @return omitSecurityRequirementsFromTopLeveClient
-  */
-  
-  @Schema(name = "omitSecurityRequirementsFromTopLeveClient", required = false)
-  public List<String> getOmitSecurityRequirementsFromTopLeveClient() {
-    return omitSecurityRequirementsFromTopLeveClient;
+   * Get omitSecurityRequirementsFromTopLevelClient
+   * 
+   * @return omitSecurityRequirementsFromTopLevelClient
+   */
+
+  @Schema(name = "omitSecurityRequirementsFromTopLevelClient", required = false)
+  public List<String> getomitSecurityRequirementsFromTopLevelClient() {
+    return omitSecurityRequirementsFromTopLevelClient;
   }
 
-  public void setOmitSecurityRequirementsFromTopLeveClient(List<String> omitSecurityRequirementsFromTopLeveClient) {
-    this.omitSecurityRequirementsFromTopLeveClient = omitSecurityRequirementsFromTopLeveClient;
+  public void setomitSecurityRequirementsFromTopLevelClient(List<String> omitSecurityRequirementsFromTopLevelClient) {
+    this.omitSecurityRequirementsFromTopLevelClient = omitSecurityRequirementsFromTopLevelClient;
   }
 
   public AdditionalProperties isGitSubmodule(Boolean isGitSubmodule) {
@@ -390,9 +396,10 @@ public class AdditionalProperties {
 
   /**
    * Get isGitSubmodule
+   * 
    * @return isGitSubmodule
-  */
-  
+   */
+
   @Schema(name = "isGitSubmodule", required = false)
   public Boolean getIsGitSubmodule() {
     return isGitSubmodule;
@@ -409,9 +416,10 @@ public class AdditionalProperties {
 
   /**
    * Get gitDefaultBranch
+   * 
    * @return gitDefaultBranch
-  */
-  
+   */
+
   @Schema(name = "gitDefaultBranch", required = false)
   public String getGitDefaultBranch() {
     return gitDefaultBranch;
@@ -428,9 +436,10 @@ public class AdditionalProperties {
 
   /**
    * Get gitRepoName
+   * 
    * @return gitRepoName
-  */
-  
+   */
+
   @Schema(name = "gitRepoName", required = false)
   public String getGitRepoName() {
     return gitRepoName;
@@ -447,9 +456,10 @@ public class AdditionalProperties {
 
   /**
    * Get clientName
+   * 
    * @return clientName
-  */
-  
+   */
+
   @Schema(name = "clientName", required = false)
   public String getClientName() {
     return clientName;
@@ -466,9 +476,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubName
+   * 
    * @return pubName
-  */
-  
+   */
+
   @Schema(name = "pubName", required = false)
   public String getPubName() {
     return pubName;
@@ -485,9 +496,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubLibrary
+   * 
    * @return pubLibrary
-  */
-  
+   */
+
   @Schema(name = "pubLibrary", required = false)
   public String getPubLibrary() {
     return pubLibrary;
@@ -504,9 +516,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubDescription
+   * 
    * @return pubDescription
-  */
-  
+   */
+
   @Schema(name = "pubDescription", required = false)
   public String getPubDescription() {
     return pubDescription;
@@ -523,9 +536,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubAuthor
+   * 
    * @return pubAuthor
-  */
-  
+   */
+
   @Schema(name = "pubAuthor", required = false)
   public String getPubAuthor() {
     return pubAuthor;
@@ -542,9 +556,10 @@ public class AdditionalProperties {
 
   /**
    * Get pythonResponseTypeVersion
+   * 
    * @return pythonResponseTypeVersion
-  */
-  
+   */
+
   @Schema(name = "pythonResponseTypeVersion", required = false)
   public String getPythonResponseTypeVersion() {
     return pythonResponseTypeVersion;
@@ -561,9 +576,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubAuthorEmail
+   * 
    * @return pubAuthorEmail
-  */
-  
+   */
+
   @Schema(name = "pubAuthorEmail", required = false)
   public String getPubAuthorEmail() {
     return pubAuthorEmail;
@@ -580,9 +596,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubHomepage
+   * 
    * @return pubHomepage
-  */
-  
+   */
+
   @Schema(name = "pubHomepage", required = false)
   public String getPubHomepage() {
     return pubHomepage;
@@ -599,9 +616,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubPublishTo
+   * 
    * @return pubPublishTo
-  */
-  
+   */
+
   @Schema(name = "pubPublishTo", required = false)
   public String getPubPublishTo() {
     return pubPublishTo;
@@ -618,9 +636,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubRepository
+   * 
    * @return pubRepository
-  */
-  
+   */
+
   @Schema(name = "pubRepository", required = false)
   public String getPubRepository() {
     return pubRepository;
@@ -637,9 +656,10 @@ public class AdditionalProperties {
 
   /**
    * Get pubVersion
+   * 
    * @return pubVersion
-  */
-  
+   */
+
   @Schema(name = "pubVersion", required = false)
   public String getPubVersion() {
     return pubVersion;
@@ -656,9 +676,10 @@ public class AdditionalProperties {
 
   /**
    * Get useAxios0272
+   * 
    * @return useAxios0272
-  */
-  
+   */
+
   @Schema(name = "useAxios0_27_2", required = false)
   public Boolean getUseAxios0272() {
     return useAxios0272;
@@ -675,9 +696,10 @@ public class AdditionalProperties {
 
   /**
    * Get useAiohttp38
+   * 
    * @return useAiohttp38
-  */
-  
+   */
+
   @Schema(name = "useAiohttp3_8", required = false)
   public Boolean getUseAiohttp38() {
     return useAiohttp38;
@@ -694,9 +716,10 @@ public class AdditionalProperties {
 
   /**
    * Get readmeOperation
+   * 
    * @return readmeOperation
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "readmeOperation", required = false)
   public AdditionalPropertiesReadmeOperation getReadmeOperation() {
     return readmeOperation;
@@ -713,9 +736,10 @@ public class AdditionalProperties {
 
   /**
    * Get moduleName
+   * 
    * @return moduleName
-  */
-  
+   */
+
   @Schema(name = "moduleName", required = false)
   public String getModuleName() {
     return moduleName;
@@ -732,9 +756,10 @@ public class AdditionalProperties {
 
   /**
    * Get gitLabProjectId
+   * 
    * @return gitLabProjectId
-  */
-  
+   */
+
   @Schema(name = "gitLabProjectId", required = false)
   public String getGitLabProjectId() {
     return gitLabProjectId;
@@ -751,9 +776,10 @@ public class AdditionalProperties {
 
   /**
    * Get outputDirectory
+   * 
    * @return outputDirectory
-  */
-  
+   */
+
   @Schema(name = "outputDirectory", required = false)
   public String getOutputDirectory() {
     return outputDirectory;
@@ -768,7 +794,8 @@ public class AdditionalProperties {
     return this;
   }
 
-  public AdditionalProperties addTopLevelOperationsItem(AdditionalPropertiesTopLevelOperationsInner topLevelOperationsItem) {
+  public AdditionalProperties addTopLevelOperationsItem(
+      AdditionalPropertiesTopLevelOperationsInner topLevelOperationsItem) {
     if (this.topLevelOperations == null) {
       this.topLevelOperations = new ArrayList<>();
     }
@@ -778,9 +805,10 @@ public class AdditionalProperties {
 
   /**
    * Get topLevelOperations
+   * 
    * @return topLevelOperations
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "topLevelOperations", required = false)
   public List<AdditionalPropertiesTopLevelOperationsInner> getTopLevelOperations() {
     return topLevelOperations;
@@ -797,9 +825,10 @@ public class AdditionalProperties {
 
   /**
    * Get useSecurityKeyName
+   * 
    * @return useSecurityKeyName
-  */
-  
+   */
+
   @Schema(name = "useSecurityKeyName", required = false)
   public Boolean getUseSecurityKeyName() {
     return useSecurityKeyName;
@@ -816,9 +845,10 @@ public class AdditionalProperties {
 
   /**
    * Get omitInfoDescription
+   * 
    * @return omitInfoDescription
-  */
-  
+   */
+
   @Schema(name = "omitInfoDescription", required = false)
   public Boolean getOmitInfoDescription() {
     return omitInfoDescription;
@@ -835,9 +865,10 @@ public class AdditionalProperties {
 
   /**
    * Get omitModelDocumentation
+   * 
    * @return omitModelDocumentation
-  */
-  
+   */
+
   @Schema(name = "omitModelDocumentation", required = false)
   public Boolean getOmitModelDocumentation() {
     return omitModelDocumentation;
@@ -854,9 +885,10 @@ public class AdditionalProperties {
 
   /**
    * Get omitApiDocumentation
+   * 
    * @return omitApiDocumentation
-  */
-  
+   */
+
   @Schema(name = "omitApiDocumentation", required = false)
   public Boolean getOmitApiDocumentation() {
     return omitApiDocumentation;
@@ -873,9 +905,10 @@ public class AdditionalProperties {
 
   /**
    * Get mockServerPort
+   * 
    * @return mockServerPort
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "mockServerPort", required = false)
   public BigDecimal getMockServerPort() {
     return mockServerPort;
@@ -892,9 +925,10 @@ public class AdditionalProperties {
 
   /**
    * Get useSecurityKeyNameAsPropertyName
+   * 
    * @return useSecurityKeyNameAsPropertyName
-  */
-  
+   */
+
   @Schema(name = "useSecurityKeyNameAsPropertyName", required = false)
   public Boolean getUseSecurityKeyNameAsPropertyName() {
     return useSecurityKeyNameAsPropertyName;
@@ -919,9 +953,10 @@ public class AdditionalProperties {
 
   /**
    * Get tagPriority
+   * 
    * @return tagPriority
-  */
-  
+   */
+
   @Schema(name = "tagPriority", required = false)
   public List<String> getTagPriority() {
     return tagPriority;
@@ -931,16 +966,18 @@ public class AdditionalProperties {
     this.tagPriority = tagPriority;
   }
 
-  public AdditionalProperties useDescriptionInOperationTableDocumentation(Boolean useDescriptionInOperationTableDocumentation) {
+  public AdditionalProperties useDescriptionInOperationTableDocumentation(
+      Boolean useDescriptionInOperationTableDocumentation) {
     this.useDescriptionInOperationTableDocumentation = useDescriptionInOperationTableDocumentation;
     return this;
   }
 
   /**
    * Get useDescriptionInOperationTableDocumentation
+   * 
    * @return useDescriptionInOperationTableDocumentation
-  */
-  
+   */
+
   @Schema(name = "useDescriptionInOperationTableDocumentation", required = false)
   public Boolean getUseDescriptionInOperationTableDocumentation() {
     return useDescriptionInOperationTableDocumentation;
@@ -957,9 +994,10 @@ public class AdditionalProperties {
 
   /**
    * Get setSkipSerializationToTrueByDefault
+   * 
    * @return setSkipSerializationToTrueByDefault
-  */
-  
+   */
+
   @Schema(name = "setSkipSerializationToTrueByDefault", required = false)
   public Boolean getSetSkipSerializationToTrueByDefault() {
     return setSkipSerializationToTrueByDefault;
@@ -976,9 +1014,10 @@ public class AdditionalProperties {
 
   /**
    * Get includeFetchAdapter
+   * 
    * @return includeFetchAdapter
-  */
-  
+   */
+
   @Schema(name = "includeFetchAdapter", required = false)
   public Boolean getIncludeFetchAdapter() {
     return includeFetchAdapter;
@@ -995,9 +1034,10 @@ public class AdditionalProperties {
 
   /**
    * Get packagistUsername
+   * 
    * @return packagistUsername
-  */
-  
+   */
+
   @Schema(name = "packagistUsername", required = false)
   public String getPackagistUsername() {
     return packagistUsername;
@@ -1014,9 +1054,10 @@ public class AdditionalProperties {
 
   /**
    * Get toStringReturnsJson
+   * 
    * @return toStringReturnsJson
-  */
-  
+   */
+
   @Schema(name = "toStringReturnsJson", required = false)
   public Boolean getToStringReturnsJson() {
     return toStringReturnsJson;
@@ -1033,9 +1074,10 @@ public class AdditionalProperties {
 
   /**
    * Get includeEventSourceParser
+   * 
    * @return includeEventSourceParser
-  */
-  
+   */
+
   @Schema(name = "includeEventSourceParser", required = false)
   public Boolean getIncludeEventSourceParser() {
     return includeEventSourceParser;
@@ -1052,9 +1094,10 @@ public class AdditionalProperties {
 
   /**
    * Get keepAllParametersOptional
+   * 
    * @return keepAllParametersOptional
-  */
-  
+   */
+
   @Schema(name = "keepAllParametersOptional", required = false)
   public Boolean getKeepAllParametersOptional() {
     return keepAllParametersOptional;
@@ -1071,9 +1114,10 @@ public class AdditionalProperties {
 
   /**
    * Get apiDocumentationAuthenticationPartial
+   * 
    * @return apiDocumentationAuthenticationPartial
-  */
-  
+   */
+
   @Schema(name = "apiDocumentationAuthenticationPartial", required = false)
   public String getApiDocumentationAuthenticationPartial() {
     return apiDocumentationAuthenticationPartial;
@@ -1090,9 +1134,10 @@ public class AdditionalProperties {
 
   /**
    * Get composerPackageName
+   * 
    * @return composerPackageName
-  */
-  
+   */
+
   @Schema(name = "composerPackageName", required = false)
   public String getComposerPackageName() {
     return composerPackageName;
@@ -1109,9 +1154,10 @@ public class AdditionalProperties {
 
   /**
    * Get defaultTimeout
+   * 
    * @return defaultTimeout
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "defaultTimeout", required = false)
   public BigDecimal getDefaultTimeout() {
     return defaultTimeout;
@@ -1128,9 +1174,10 @@ public class AdditionalProperties {
 
   /**
    * Get defaultAsyncTimeout
+   * 
    * @return defaultAsyncTimeout
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "defaultAsyncTimeout", required = false)
   public BigDecimal getDefaultAsyncTimeout() {
     return defaultAsyncTimeout;
@@ -1147,9 +1194,10 @@ public class AdditionalProperties {
 
   /**
    * Get supportPhp7
+   * 
    * @return supportPhp7
-  */
-  
+   */
+
   @Schema(name = "supportPhp7", required = false)
   public Boolean getSupportPhp7() {
     return supportPhp7;
@@ -1166,9 +1214,10 @@ public class AdditionalProperties {
 
   /**
    * Get useSingleRequestParameter
+   * 
    * @return useSingleRequestParameter
-  */
-  
+   */
+
   @Schema(name = "useSingleRequestParameter", required = false)
   public Boolean getUseSingleRequestParameter() {
     return useSingleRequestParameter;
@@ -1185,9 +1234,10 @@ public class AdditionalProperties {
 
   /**
    * Get artifactUrl
+   * 
    * @return artifactUrl
-  */
-  
+   */
+
   @Schema(name = "artifactUrl", required = false)
   public String getArtifactUrl() {
     return artifactUrl;
@@ -1204,9 +1254,10 @@ public class AdditionalProperties {
 
   /**
    * Get artifactId
+   * 
    * @return artifactId
-  */
-  
+   */
+
   @Schema(name = "artifactId", required = false)
   public String getArtifactId() {
     return artifactId;
@@ -1223,9 +1274,10 @@ public class AdditionalProperties {
 
   /**
    * Get groupId
+   * 
    * @return groupId
-  */
-  
+   */
+
   @Schema(name = "groupId", required = false)
   public String getGroupId() {
     return groupId;
@@ -1242,9 +1294,10 @@ public class AdditionalProperties {
 
   /**
    * Get invokerPackage
+   * 
    * @return invokerPackage
-  */
-  
+   */
+
   @Schema(name = "invokerPackage", required = false)
   public String getInvokerPackage() {
     return invokerPackage;
@@ -1261,9 +1314,10 @@ public class AdditionalProperties {
 
   /**
    * Get modelPackage
+   * 
    * @return modelPackage
-  */
-  
+   */
+
   @Schema(name = "modelPackage", required = false)
   public String getModelPackage() {
     return modelPackage;
@@ -1280,9 +1334,10 @@ public class AdditionalProperties {
 
   /**
    * Get apiPackage
+   * 
    * @return apiPackage
-  */
-  
+   */
+
   @Schema(name = "apiPackage", required = false)
   public String getApiPackage() {
     return apiPackage;
@@ -1299,9 +1354,10 @@ public class AdditionalProperties {
 
   /**
    * Get projectName
+   * 
    * @return projectName
-  */
-  
+   */
+
   @Schema(name = "projectName", required = false)
   public String getProjectName() {
     return projectName;
@@ -1318,9 +1374,10 @@ public class AdditionalProperties {
 
   /**
    * Get podVersion
+   * 
    * @return podVersion
-  */
-  
+   */
+
   @Schema(name = "podVersion", required = false)
   public String getPodVersion() {
     return podVersion;
@@ -1337,9 +1394,10 @@ public class AdditionalProperties {
 
   /**
    * Get removeKonfigBranding
+   * 
    * @return removeKonfigBranding
-  */
-  
+   */
+
   @Schema(name = "removeKonfigBranding", required = false)
   public Boolean getRemoveKonfigBranding() {
     return removeKonfigBranding;
@@ -1356,9 +1414,10 @@ public class AdditionalProperties {
 
   /**
    * Get podName
+   * 
    * @return podName
-  */
-  
+   */
+
   @Schema(name = "podName", required = false)
   public String getPodName() {
     return podName;
@@ -1375,9 +1434,10 @@ public class AdditionalProperties {
 
   /**
    * Get classPrefix
+   * 
    * @return classPrefix
-  */
-  
+   */
+
   @Schema(name = "classPrefix", required = false)
   public String getClassPrefix() {
     return classPrefix;
@@ -1394,9 +1454,10 @@ public class AdditionalProperties {
 
   /**
    * Get authorName
+   * 
    * @return authorName
-  */
-  
+   */
+
   @Schema(name = "authorName", required = false)
   public String getAuthorName() {
     return authorName;
@@ -1413,9 +1474,10 @@ public class AdditionalProperties {
 
   /**
    * Get authorEmail
+   * 
    * @return authorEmail
-  */
-  
+   */
+
   @Schema(name = "authorEmail", required = false)
   public String getAuthorEmail() {
     return authorEmail;
@@ -1432,9 +1494,10 @@ public class AdditionalProperties {
 
   /**
    * Get podAuthors
+   * 
    * @return podAuthors
-  */
-  
+   */
+
   @Schema(name = "podAuthors", required = false)
   public String getPodAuthors() {
     return podAuthors;
@@ -1451,9 +1514,10 @@ public class AdditionalProperties {
 
   /**
    * Get swiftPackagePath
+   * 
    * @return swiftPackagePath
-  */
-  
+   */
+
   @Schema(name = "swiftPackagePath", required = false)
   public String getSwiftPackagePath() {
     return swiftPackagePath;
@@ -1463,16 +1527,18 @@ public class AdditionalProperties {
     this.swiftPackagePath = swiftPackagePath;
   }
 
-  public AdditionalProperties disallowAdditionalPropertiesIfNotPresent(Boolean disallowAdditionalPropertiesIfNotPresent) {
+  public AdditionalProperties disallowAdditionalPropertiesIfNotPresent(
+      Boolean disallowAdditionalPropertiesIfNotPresent) {
     this.disallowAdditionalPropertiesIfNotPresent = disallowAdditionalPropertiesIfNotPresent;
     return this;
   }
 
   /**
    * Get disallowAdditionalPropertiesIfNotPresent
+   * 
    * @return disallowAdditionalPropertiesIfNotPresent
-  */
-  
+   */
+
   @Schema(name = "disallowAdditionalPropertiesIfNotPresent", required = false)
   public Boolean getDisallowAdditionalPropertiesIfNotPresent() {
     return disallowAdditionalPropertiesIfNotPresent;
@@ -1489,9 +1555,10 @@ public class AdditionalProperties {
 
   /**
    * Get packageVersion
+   * 
    * @return packageVersion
-  */
-  
+   */
+
   @Schema(name = "packageVersion", required = false)
   public String getPackageVersion() {
     return packageVersion;
@@ -1508,9 +1575,10 @@ public class AdditionalProperties {
 
   /**
    * Get packageUrl
+   * 
    * @return packageUrl
-  */
-  
+   */
+
   @Schema(name = "packageUrl", required = false)
   public String getPackageUrl() {
     return packageUrl;
@@ -1527,9 +1595,10 @@ public class AdditionalProperties {
 
   /**
    * Get npmVersion
+   * 
    * @return npmVersion
-  */
-  
+   */
+
   @Schema(name = "npmVersion", required = false)
   public String getNpmVersion() {
     return npmVersion;
@@ -1546,9 +1615,10 @@ public class AdditionalProperties {
 
   /**
    * Get gemName
+   * 
    * @return gemName
-  */
-  
+   */
+
   @Schema(name = "gemName", required = false)
   public String getGemName() {
     return gemName;
@@ -1565,9 +1635,10 @@ public class AdditionalProperties {
 
   /**
    * Get gemVersion
+   * 
    * @return gemVersion
-  */
-  
+   */
+
   @Schema(name = "gemVersion", required = false)
   public String getGemVersion() {
     return gemVersion;
@@ -1584,9 +1655,10 @@ public class AdditionalProperties {
 
   /**
    * Get userAgent
+   * 
    * @return userAgent
-  */
-  
+   */
+
   @Schema(name = "userAgent", required = false)
   public String getUserAgent() {
     return userAgent;
@@ -1603,9 +1675,10 @@ public class AdditionalProperties {
 
   /**
    * Get npmName
+   * 
    * @return npmName
-  */
-  
+   */
+
   @Schema(name = "npmName", required = false)
   public String getNpmName() {
     return npmName;
@@ -1622,9 +1695,10 @@ public class AdditionalProperties {
 
   /**
    * Get readmeSnippet
+   * 
    * @return readmeSnippet
-  */
-  
+   */
+
   @Schema(name = "readmeSnippet", required = false)
   public String getReadmeSnippet() {
     return readmeSnippet;
@@ -1641,9 +1715,10 @@ public class AdditionalProperties {
 
   /**
    * Get readmeHeaderSnippet
+   * 
    * @return readmeHeaderSnippet
-  */
-  
+   */
+
   @Schema(name = "readmeHeaderSnippet", required = false)
   public String getReadmeHeaderSnippet() {
     return readmeHeaderSnippet;
@@ -1660,9 +1735,10 @@ public class AdditionalProperties {
 
   /**
    * Get asyncReadmeSnippet
+   * 
    * @return asyncReadmeSnippet
-  */
-  
+   */
+
   @Schema(name = "asyncReadmeSnippet", required = false)
   public String getAsyncReadmeSnippet() {
     return asyncReadmeSnippet;
@@ -1679,9 +1755,10 @@ public class AdditionalProperties {
 
   /**
    * Get readmeSupportingDescriptionSnippet
+   * 
    * @return readmeSupportingDescriptionSnippet
-  */
-  
+   */
+
   @Schema(name = "readmeSupportingDescriptionSnippet", required = false)
   public String getReadmeSupportingDescriptionSnippet() {
     return readmeSupportingDescriptionSnippet;
@@ -1698,9 +1775,10 @@ public class AdditionalProperties {
 
   /**
    * Get readmeDescriptionSnippet
+   * 
    * @return readmeDescriptionSnippet
-  */
-  
+   */
+
   @Schema(name = "readmeDescriptionSnippet", required = false)
   public String getReadmeDescriptionSnippet() {
     return readmeDescriptionSnippet;
@@ -1725,9 +1803,10 @@ public class AdditionalProperties {
 
   /**
    * Get apiKeyAlias
+   * 
    * @return apiKeyAlias
-  */
-  
+   */
+
   @Schema(name = "apiKeyAlias", required = false)
   public Map<String, String> getApiKeyAlias() {
     return apiKeyAlias;
@@ -1752,9 +1831,10 @@ public class AdditionalProperties {
 
   /**
    * Get clientState
+   * 
    * @return clientState
-  */
-  
+   */
+
   @Schema(name = "clientState", required = false)
   public List<String> getClientState() {
     return clientState;
@@ -1764,12 +1844,14 @@ public class AdditionalProperties {
     this.clientState = clientState;
   }
 
-  public AdditionalProperties clientStateWithExamples(List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples) {
+  public AdditionalProperties clientStateWithExamples(
+      List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples) {
     this.clientStateWithExamples = clientStateWithExamples;
     return this;
   }
 
-  public AdditionalProperties addClientStateWithExamplesItem(AdditionalPropertiesClientStateWithExamplesInner clientStateWithExamplesItem) {
+  public AdditionalProperties addClientStateWithExamplesItem(
+      AdditionalPropertiesClientStateWithExamplesInner clientStateWithExamplesItem) {
     if (this.clientStateWithExamples == null) {
       this.clientStateWithExamples = new ArrayList<>();
     }
@@ -1779,15 +1861,17 @@ public class AdditionalProperties {
 
   /**
    * Get clientStateWithExamples
+   * 
    * @return clientStateWithExamples
-  */
-  @Valid 
+   */
+  @Valid
   @Schema(name = "clientStateWithExamples", required = false)
   public List<AdditionalPropertiesClientStateWithExamplesInner> getClientStateWithExamples() {
     return clientStateWithExamples;
   }
 
-  public void setClientStateWithExamples(List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples) {
+  public void setClientStateWithExamples(
+      List<AdditionalPropertiesClientStateWithExamplesInner> clientStateWithExamples) {
     this.clientStateWithExamples = clientStateWithExamples;
   }
 
@@ -1798,9 +1882,10 @@ public class AdditionalProperties {
 
   /**
    * Get clientStateIsOptional
+   * 
    * @return clientStateIsOptional
-  */
-  
+   */
+
   @Schema(name = "clientStateIsOptional", required = false)
   public Boolean getClientStateIsOptional() {
     return clientStateIsOptional;
@@ -1822,8 +1907,12 @@ public class AdditionalProperties {
     return Objects.equals(this.objectPropertyNamingConvention, additionalProperties.objectPropertyNamingConvention) &&
         Objects.equals(this.dependencies, additionalProperties.dependencies) &&
         Objects.equals(this.readmeHeader, additionalProperties.readmeHeader) &&
-        Objects.equals(this.removeDefaultConfigurationParameters, additionalProperties.removeDefaultConfigurationParameters) &&
-        Objects.equals(this.omitSecurityRequirementsFromTopLeveClient, additionalProperties.omitSecurityRequirementsFromTopLeveClient) &&
+        Objects.equals(this.removeDefaultConfigurationParameters,
+            additionalProperties.removeDefaultConfigurationParameters)
+        &&
+        Objects.equals(this.omitSecurityRequirementsFromTopLevelClient,
+            additionalProperties.omitSecurityRequirementsFromTopLevelClient)
+        &&
         Objects.equals(this.isGitSubmodule, additionalProperties.isGitSubmodule) &&
         Objects.equals(this.gitDefaultBranch, additionalProperties.gitDefaultBranch) &&
         Objects.equals(this.gitRepoName, additionalProperties.gitRepoName) &&
@@ -1852,14 +1941,20 @@ public class AdditionalProperties {
         Objects.equals(this.mockServerPort, additionalProperties.mockServerPort) &&
         Objects.equals(this.useSecurityKeyNameAsPropertyName, additionalProperties.useSecurityKeyNameAsPropertyName) &&
         Objects.equals(this.tagPriority, additionalProperties.tagPriority) &&
-        Objects.equals(this.useDescriptionInOperationTableDocumentation, additionalProperties.useDescriptionInOperationTableDocumentation) &&
-        Objects.equals(this.setSkipSerializationToTrueByDefault, additionalProperties.setSkipSerializationToTrueByDefault) &&
+        Objects.equals(this.useDescriptionInOperationTableDocumentation,
+            additionalProperties.useDescriptionInOperationTableDocumentation)
+        &&
+        Objects.equals(this.setSkipSerializationToTrueByDefault,
+            additionalProperties.setSkipSerializationToTrueByDefault)
+        &&
         Objects.equals(this.includeFetchAdapter, additionalProperties.includeFetchAdapter) &&
         Objects.equals(this.packagistUsername, additionalProperties.packagistUsername) &&
         Objects.equals(this.toStringReturnsJson, additionalProperties.toStringReturnsJson) &&
         Objects.equals(this.includeEventSourceParser, additionalProperties.includeEventSourceParser) &&
         Objects.equals(this.keepAllParametersOptional, additionalProperties.keepAllParametersOptional) &&
-        Objects.equals(this.apiDocumentationAuthenticationPartial, additionalProperties.apiDocumentationAuthenticationPartial) &&
+        Objects.equals(this.apiDocumentationAuthenticationPartial,
+            additionalProperties.apiDocumentationAuthenticationPartial)
+        &&
         Objects.equals(this.composerPackageName, additionalProperties.composerPackageName) &&
         Objects.equals(this.defaultTimeout, additionalProperties.defaultTimeout) &&
         Objects.equals(this.defaultAsyncTimeout, additionalProperties.defaultAsyncTimeout) &&
@@ -1880,7 +1975,9 @@ public class AdditionalProperties {
         Objects.equals(this.authorEmail, additionalProperties.authorEmail) &&
         Objects.equals(this.podAuthors, additionalProperties.podAuthors) &&
         Objects.equals(this.swiftPackagePath, additionalProperties.swiftPackagePath) &&
-        Objects.equals(this.disallowAdditionalPropertiesIfNotPresent, additionalProperties.disallowAdditionalPropertiesIfNotPresent) &&
+        Objects.equals(this.disallowAdditionalPropertiesIfNotPresent,
+            additionalProperties.disallowAdditionalPropertiesIfNotPresent)
+        &&
         Objects.equals(this.packageVersion, additionalProperties.packageVersion) &&
         Objects.equals(this.packageUrl, additionalProperties.packageUrl) &&
         Objects.equals(this.npmVersion, additionalProperties.npmVersion) &&
@@ -1891,7 +1988,8 @@ public class AdditionalProperties {
         Objects.equals(this.readmeSnippet, additionalProperties.readmeSnippet) &&
         Objects.equals(this.readmeHeaderSnippet, additionalProperties.readmeHeaderSnippet) &&
         Objects.equals(this.asyncReadmeSnippet, additionalProperties.asyncReadmeSnippet) &&
-        Objects.equals(this.readmeSupportingDescriptionSnippet, additionalProperties.readmeSupportingDescriptionSnippet) &&
+        Objects.equals(this.readmeSupportingDescriptionSnippet, additionalProperties.readmeSupportingDescriptionSnippet)
+        &&
         Objects.equals(this.readmeDescriptionSnippet, additionalProperties.readmeDescriptionSnippet) &&
         Objects.equals(this.apiKeyAlias, additionalProperties.apiKeyAlias) &&
         Objects.equals(this.clientState, additionalProperties.clientState) &&
@@ -1901,18 +1999,35 @@ public class AdditionalProperties {
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader, removeDefaultConfigurationParameters, omitSecurityRequirementsFromTopLeveClient, isGitSubmodule, gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor, pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272, useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations, useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort, useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation, setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson, includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName, defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId, invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix, authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion, packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet, asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState, clientStateWithExamples, clientStateIsOptional);
+    return Objects.hash(objectPropertyNamingConvention, dependencies, readmeHeader,
+        removeDefaultConfigurationParameters, omitSecurityRequirementsFromTopLevelClient, isGitSubmodule,
+        gitDefaultBranch, gitRepoName, clientName, pubName, pubLibrary, pubDescription, pubAuthor,
+        pythonResponseTypeVersion, pubAuthorEmail, pubHomepage, pubPublishTo, pubRepository, pubVersion, useAxios0272,
+        useAiohttp38, readmeOperation, moduleName, gitLabProjectId, outputDirectory, topLevelOperations,
+        useSecurityKeyName, omitInfoDescription, omitModelDocumentation, omitApiDocumentation, mockServerPort,
+        useSecurityKeyNameAsPropertyName, tagPriority, useDescriptionInOperationTableDocumentation,
+        setSkipSerializationToTrueByDefault, includeFetchAdapter, packagistUsername, toStringReturnsJson,
+        includeEventSourceParser, keepAllParametersOptional, apiDocumentationAuthenticationPartial, composerPackageName,
+        defaultTimeout, defaultAsyncTimeout, supportPhp7, useSingleRequestParameter, artifactUrl, artifactId, groupId,
+        invokerPackage, modelPackage, apiPackage, projectName, podVersion, removeKonfigBranding, podName, classPrefix,
+        authorName, authorEmail, podAuthors, swiftPackagePath, disallowAdditionalPropertiesIfNotPresent, packageVersion,
+        packageUrl, npmVersion, gemName, gemVersion, userAgent, npmName, readmeSnippet, readmeHeaderSnippet,
+        asyncReadmeSnippet, readmeSupportingDescriptionSnippet, readmeDescriptionSnippet, apiKeyAlias, clientState,
+        clientStateWithExamples, clientStateIsOptional);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdditionalProperties {\n");
-    sb.append("    objectPropertyNamingConvention: ").append(toIndentedString(objectPropertyNamingConvention)).append("\n");
+    sb.append("    objectPropertyNamingConvention: ").append(toIndentedString(objectPropertyNamingConvention))
+        .append("\n");
     sb.append("    dependencies: ").append(toIndentedString(dependencies)).append("\n");
     sb.append("    readmeHeader: ").append(toIndentedString(readmeHeader)).append("\n");
-    sb.append("    removeDefaultConfigurationParameters: ").append(toIndentedString(removeDefaultConfigurationParameters)).append("\n");
-    sb.append("    omitSecurityRequirementsFromTopLeveClient: ").append(toIndentedString(omitSecurityRequirementsFromTopLeveClient)).append("\n");
+    sb.append("    removeDefaultConfigurationParameters: ")
+        .append(toIndentedString(removeDefaultConfigurationParameters)).append("\n");
+    sb.append("    omitSecurityRequirementsFromTopLevelClient: ")
+        .append(toIndentedString(omitSecurityRequirementsFromTopLevelClient)).append("\n");
     sb.append("    isGitSubmodule: ").append(toIndentedString(isGitSubmodule)).append("\n");
     sb.append("    gitDefaultBranch: ").append(toIndentedString(gitDefaultBranch)).append("\n");
     sb.append("    gitRepoName: ").append(toIndentedString(gitRepoName)).append("\n");
@@ -1939,16 +2054,20 @@ public class AdditionalProperties {
     sb.append("    omitModelDocumentation: ").append(toIndentedString(omitModelDocumentation)).append("\n");
     sb.append("    omitApiDocumentation: ").append(toIndentedString(omitApiDocumentation)).append("\n");
     sb.append("    mockServerPort: ").append(toIndentedString(mockServerPort)).append("\n");
-    sb.append("    useSecurityKeyNameAsPropertyName: ").append(toIndentedString(useSecurityKeyNameAsPropertyName)).append("\n");
+    sb.append("    useSecurityKeyNameAsPropertyName: ").append(toIndentedString(useSecurityKeyNameAsPropertyName))
+        .append("\n");
     sb.append("    tagPriority: ").append(toIndentedString(tagPriority)).append("\n");
-    sb.append("    useDescriptionInOperationTableDocumentation: ").append(toIndentedString(useDescriptionInOperationTableDocumentation)).append("\n");
-    sb.append("    setSkipSerializationToTrueByDefault: ").append(toIndentedString(setSkipSerializationToTrueByDefault)).append("\n");
+    sb.append("    useDescriptionInOperationTableDocumentation: ")
+        .append(toIndentedString(useDescriptionInOperationTableDocumentation)).append("\n");
+    sb.append("    setSkipSerializationToTrueByDefault: ").append(toIndentedString(setSkipSerializationToTrueByDefault))
+        .append("\n");
     sb.append("    includeFetchAdapter: ").append(toIndentedString(includeFetchAdapter)).append("\n");
     sb.append("    packagistUsername: ").append(toIndentedString(packagistUsername)).append("\n");
     sb.append("    toStringReturnsJson: ").append(toIndentedString(toStringReturnsJson)).append("\n");
     sb.append("    includeEventSourceParser: ").append(toIndentedString(includeEventSourceParser)).append("\n");
     sb.append("    keepAllParametersOptional: ").append(toIndentedString(keepAllParametersOptional)).append("\n");
-    sb.append("    apiDocumentationAuthenticationPartial: ").append(toIndentedString(apiDocumentationAuthenticationPartial)).append("\n");
+    sb.append("    apiDocumentationAuthenticationPartial: ")
+        .append(toIndentedString(apiDocumentationAuthenticationPartial)).append("\n");
     sb.append("    composerPackageName: ").append(toIndentedString(composerPackageName)).append("\n");
     sb.append("    defaultTimeout: ").append(toIndentedString(defaultTimeout)).append("\n");
     sb.append("    defaultAsyncTimeout: ").append(toIndentedString(defaultAsyncTimeout)).append("\n");
@@ -1969,7 +2088,8 @@ public class AdditionalProperties {
     sb.append("    authorEmail: ").append(toIndentedString(authorEmail)).append("\n");
     sb.append("    podAuthors: ").append(toIndentedString(podAuthors)).append("\n");
     sb.append("    swiftPackagePath: ").append(toIndentedString(swiftPackagePath)).append("\n");
-    sb.append("    disallowAdditionalPropertiesIfNotPresent: ").append(toIndentedString(disallowAdditionalPropertiesIfNotPresent)).append("\n");
+    sb.append("    disallowAdditionalPropertiesIfNotPresent: ")
+        .append(toIndentedString(disallowAdditionalPropertiesIfNotPresent)).append("\n");
     sb.append("    packageVersion: ").append(toIndentedString(packageVersion)).append("\n");
     sb.append("    packageUrl: ").append(toIndentedString(packageUrl)).append("\n");
     sb.append("    npmVersion: ").append(toIndentedString(npmVersion)).append("\n");
@@ -1980,7 +2100,8 @@ public class AdditionalProperties {
     sb.append("    readmeSnippet: ").append(toIndentedString(readmeSnippet)).append("\n");
     sb.append("    readmeHeaderSnippet: ").append(toIndentedString(readmeHeaderSnippet)).append("\n");
     sb.append("    asyncReadmeSnippet: ").append(toIndentedString(asyncReadmeSnippet)).append("\n");
-    sb.append("    readmeSupportingDescriptionSnippet: ").append(toIndentedString(readmeSupportingDescriptionSnippet)).append("\n");
+    sb.append("    readmeSupportingDescriptionSnippet: ").append(toIndentedString(readmeSupportingDescriptionSnippet))
+        .append("\n");
     sb.append("    readmeDescriptionSnippet: ").append(toIndentedString(readmeDescriptionSnippet)).append("\n");
     sb.append("    apiKeyAlias: ").append(toIndentedString(apiKeyAlias)).append("\n");
     sb.append("    clientState: ").append(toIndentedString(clientState)).append("\n");
@@ -2001,4 +2122,3 @@ public class AdditionalProperties {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

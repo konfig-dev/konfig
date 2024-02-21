@@ -78,13 +78,13 @@ public interface GenerateApi {
      * @param generateBody Generation Configuration (optional)
      * @return Successful operation (status code 200)
      */
-    @Operation(operationId = "generatePost", summary = "Generate SDKs", tags = {"Generate"}, responses = {
+    @Operation(operationId = "generatePost", summary = "Generate SDKs", tags = { "Generate" }, responses = {
             @ApiResponse(responseCode = "200", description = "Successful operation", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = AwsPresignedUrl.class))
             })
     })
-    @RequestMapping(method = RequestMethod.POST, value = "/generate", produces = {"application/json"}, consumes = {
-            "application/json"})
+    @RequestMapping(method = RequestMethod.POST, value = "/generate", produces = { "application/json" }, consumes = {
+            "application/json" })
     default ResponseEntity<AwsPresignedUrl> generatePost(
             @Parameter(name = "GenerateBody", description = "Generation Configuration") @Valid @RequestBody(required = false) GenerateBody generateBody
 
@@ -100,8 +100,8 @@ public interface GenerateApi {
         logger.info(String.valueOf(generateBody.getConfig()));
 
         // Execute generation
-        String dirName =
-                Optional.ofNullable(generateBody.getConfig().getOutputDirectoryName()).orElse(generateBody.getConfig().getGeneratorName());
+        String dirName = Optional.ofNullable(generateBody.getConfig().getOutputDirectoryName())
+                .orElse(generateBody.getConfig().getGeneratorName());
         generator.opts(generateClientOptInput(generateBody, tmpDir, dirName));
 
         // Don't generate .openapi-generator-ignore and other metadata files
@@ -250,10 +250,11 @@ public interface GenerateApi {
      * Constructs a map of additional properties to be passed to the generator.
      */
     default Map<String, Object> transformAdditionalPropertiesToMap(AdditionalProperties additionalProperties,
-                                                                   String packageName, String generator, String gitUserId) {
+            String packageName, String generator, String gitUserId) {
         Map<String, Object> map = new HashMap<>();
 
-        // iterate over all properties of AdditionalProperites using reflection and put them in the map
+        // iterate over all properties of AdditionalProperites using reflection and put
+        // them in the map
         // if the value is not null.
         // This is done to avoid having to add each property manually to the map.
 
@@ -281,12 +282,15 @@ public interface GenerateApi {
         if (generator.equals("ruby"))
             putIfPresent(map, "isFaraday", true);
         if (generator.equals("typescript-axios"))
-            putIfPresent(map, "removeDefaultConfigurationParameters", additionalProperties.getRemoveDefaultConfigurationParameters());
+            putIfPresent(map, "removeDefaultConfigurationParameters",
+                    additionalProperties.getRemoveDefaultConfigurationParameters());
         putIfPresent(map, "apiPackage", additionalProperties.getApiPackage());
-        putIfPresent(map, "omitSecurityRequirementsFromTopLeveClient", additionalProperties.getOmitSecurityRequirementsFromTopLeveClient());
+        putIfPresent(map, "omitSecurityRequirementsFromTopLevelClient",
+                additionalProperties.getomitSecurityRequirementsFromTopLevelClient());
         if (additionalProperties.getReadmeOperation() != null)
             putIfPresent(map, "readmeOperationId", additionalProperties.getReadmeOperation().getOperationId());
-        putIfPresent(map, "useDescriptionInOperationTableDocumentation", additionalProperties.getUseDescriptionInOperationTableDocumentation());
+        putIfPresent(map, "useDescriptionInOperationTableDocumentation",
+                additionalProperties.getUseDescriptionInOperationTableDocumentation());
         putIfPresent(map, "invokerPackage", additionalProperties.getInvokerPackage());
         if (additionalProperties.getInvokerPackage() != null)
             putIfPresent(map, "invokerPackageLowerCase", additionalProperties.getInvokerPackage().toLowerCase());
@@ -332,11 +336,13 @@ public interface GenerateApi {
         putIfPresent(map, "includeEventSourceParser", additionalProperties.getIncludeEventSourceParser());
         putIfPresent(map, "swiftPackagePath", additionalProperties.getSwiftPackagePath());
         putIfPresent(map, "useSecurityKeyName", additionalProperties.getUseSecurityKeyNameAsPropertyName());
-        putIfPresent(map, "apiDocumentationAuthenticationPartial", additionalProperties.getApiDocumentationAuthenticationPartial());
+        putIfPresent(map, "apiDocumentationAuthenticationPartial",
+                additionalProperties.getApiDocumentationAuthenticationPartial());
         putIfPresent(map, "readmeSnippet", additionalProperties.getReadmeSnippet());
         putIfPresent(map, "readmeHeaderSnippet", additionalProperties.getReadmeHeaderSnippet());
         putIfPresent(map, "asyncReadmeSnippet", additionalProperties.getAsyncReadmeSnippet());
-        putIfPresent(map, "readmeSupportingDescriptionSnippet", additionalProperties.getReadmeSupportingDescriptionSnippet());
+        putIfPresent(map, "readmeSupportingDescriptionSnippet",
+                additionalProperties.getReadmeSupportingDescriptionSnippet());
         putIfPresent(map, "readmeDescriptionSnippet", additionalProperties.getReadmeDescriptionSnippet());
         putIfPresent(map, "objectPropertyNamingConvention", additionalProperties.getObjectPropertyNamingConvention());
         if (additionalProperties.getMockServerPort() != null) {
@@ -345,23 +351,29 @@ public interface GenerateApi {
             putIfPresent(map, "mockServerPort", 4010);
         }
         putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention());
-        putIfPresent(map, "useSecurityKeyNameAsPropertyName", additionalProperties.getUseSecurityKeyNameAsPropertyName());
+        putIfPresent(map, "useSecurityKeyNameAsPropertyName",
+                additionalProperties.getUseSecurityKeyNameAsPropertyName());
         // Make this option true by default for all SDKs besides existing customers
         if (additionalProperties.getNpmName() != null) {
             String npmName = additionalProperties.getNpmName();
             // Instantiate a Set of Strings for existing customers
-            List<String> existingCustomers = Arrays.asList("snaptrade", "leap", "splitit", "humanloop", "newscatcher", "leap", "groundx");
-            // if none of existing customers are a substring of the npmName, then set the option to true
+            List<String> existingCustomers = Arrays.asList("snaptrade", "leap", "splitit", "humanloop", "newscatcher",
+                    "leap", "groundx");
+            // if none of existing customers are a substring of the npmName, then set the
+            // option to true
             if (existingCustomers.stream().noneMatch(npmName::contains)) {
                 putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
                 putIfPresent(map, "removeDefaultConfigurationParameters", true);
             }
         }
         if (additionalProperties.getObjectPropertyNamingConvention() != null) {
-            putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention().equals("camelCase"));
-            putIfPresent(map, "useSnakeCase", additionalProperties.getObjectPropertyNamingConvention().equals("snake_case"));
+            putIfPresent(map, "useCamelCase",
+                    additionalProperties.getObjectPropertyNamingConvention().equals("camelCase"));
+            putIfPresent(map, "useSnakeCase",
+                    additionalProperties.getObjectPropertyNamingConvention().equals("snake_case"));
         }
-        putIfPresent(map, "setSkipSerializationToTrueByDefault", additionalProperties.getSetSkipSerializationToTrueByDefault());
+        putIfPresent(map, "setSkipSerializationToTrueByDefault",
+                additionalProperties.getSetSkipSerializationToTrueByDefault());
         putIfPresent(map, "defaultTimeout", additionalProperties.getDefaultTimeout());
         putIfPresent(map, "defaultAsyncTimeout", additionalProperties.getDefaultAsyncTimeout());
         putIfPresent(map, "composerPackageName", additionalProperties.getComposerPackageName());
@@ -409,7 +421,6 @@ public interface GenerateApi {
         }
         putIfPresent(map, "clientStateIsOptional", additionalProperties.getClientStateIsOptional());
 
-
         putIfPresent(map, "clientState", additionalProperties.getClientState());
         if (additionalProperties.getClientState() != null) {
             putIfPresent(map, "clientStateWithUpperSnakeCase",
@@ -419,29 +430,37 @@ public interface GenerateApi {
                         object.put("clientState", clientState);
                         return object;
                     }).collect(Collectors.toList()));
-            putIfPresent(map, "clientStateSetterGetterCamelCase", additionalProperties.getClientState().stream().map(state -> {
-                Map<String, String> object = new HashMap<>();
-                object.put("state", state);
-                object.put("setter", "set" + StringUtils.camelize(state));
-                object.put("getter", "get" + StringUtils.camelize(state));
-                return object;
-            }).collect(Collectors.toList())); // added for PHP setter in Configuration.php
-            putIfPresent(map, "clientStateSetterGetterPascalCase", additionalProperties.getClientState().stream().map(state -> {
-                Map<String, String> object = new HashMap<>();
-                object.put("stateCamelCase", StringUtils.camelize(state, CamelizeOption.LOWERCASE_FIRST_LETTER));
-                object.put("upperSnakeCase", StringUtils.underscore(state).toUpperCase());
-                object.put("setter", "Set" + StringUtils.camelize(state));
-                object.put("getter", "Get" + StringUtils.camelize(state));
-                // If for some reason have a client state that is "Version" then we have to ensure the additional
-                // property does not have a naming conflict so we suffix everything with "State"
-                // Dylan: I ran into this case with Sportmonks and their "version" path variable that I made into clientState
-                // Update (Dylan): SnapTrade's SDKs rely on code that does not expect the "State" suffix so I reduced
-                // the scope of this "if" statement to only catch if a state matches the string "Version"
-                if (additionalProperties.getClientState() != null && generator.equals("csharp-netcore") && "Version".equals("State"))
-                    state = state + "State";
-                object.put("state", state);
-                return object;
-            }).collect(Collectors.toList())); // added for CSharp setter in {{clientName}}.cs
+            putIfPresent(map, "clientStateSetterGetterCamelCase",
+                    additionalProperties.getClientState().stream().map(state -> {
+                        Map<String, String> object = new HashMap<>();
+                        object.put("state", state);
+                        object.put("setter", "set" + StringUtils.camelize(state));
+                        object.put("getter", "get" + StringUtils.camelize(state));
+                        return object;
+                    }).collect(Collectors.toList())); // added for PHP setter in Configuration.php
+            putIfPresent(map, "clientStateSetterGetterPascalCase",
+                    additionalProperties.getClientState().stream().map(state -> {
+                        Map<String, String> object = new HashMap<>();
+                        object.put("stateCamelCase",
+                                StringUtils.camelize(state, CamelizeOption.LOWERCASE_FIRST_LETTER));
+                        object.put("upperSnakeCase", StringUtils.underscore(state).toUpperCase());
+                        object.put("setter", "Set" + StringUtils.camelize(state));
+                        object.put("getter", "Get" + StringUtils.camelize(state));
+                        // If for some reason have a client state that is "Version" then we have to
+                        // ensure the additional
+                        // property does not have a naming conflict so we suffix everything with "State"
+                        // Dylan: I ran into this case with Sportmonks and their "version" path variable
+                        // that I made into clientState
+                        // Update (Dylan): SnapTrade's SDKs rely on code that does not expect the
+                        // "State" suffix so I reduced
+                        // the scope of this "if" statement to only catch if a state matches the string
+                        // "Version"
+                        if (additionalProperties.getClientState() != null && generator.equals("csharp-netcore")
+                                && "Version".equals("State"))
+                            state = state + "State";
+                        object.put("state", state);
+                        return object;
+                    }).collect(Collectors.toList())); // added for CSharp setter in {{clientName}}.cs
         }
 
         putIfPresent(map, "clientStateWithExamples", additionalProperties.getClientStateWithExamples());
@@ -454,28 +473,34 @@ public interface GenerateApi {
                         object.put("example", clientState.getExample());
                         return object;
                     }).collect(Collectors.toList()));
-            putIfPresent(map, "clientStateWithExamplesSetterGetterCamelCase", additionalProperties.getClientStateWithExamples().stream().map(state -> {
-                Map<String, String> object = new HashMap<>();
-                object.put("state", state.getName());
-                object.put("setter", "set" + StringUtils.camelize(state.getName()));
-                object.put("getter", "get" + StringUtils.camelize(state.getName()));
-                return object;
-            }).collect(Collectors.toList())); // added for PHP setter in Configuration.php
-            putIfPresent(map, "clientStateWithExamplesSetterGetterPascalCase", additionalProperties.getClientStateWithExamples().stream().map(state -> {
-                Map<String, String> object = new HashMap<>();
-                object.put("stateCamelCase", StringUtils.camelize(state.getName(), CamelizeOption.LOWERCASE_FIRST_LETTER));
-                object.put("upperSnakeCase", StringUtils.underscore(state.getName()).toUpperCase());
-                object.put("setter", "Set" + StringUtils.camelize(state.getName()));
-                object.put("getter", "Get" + StringUtils.camelize(state.getName()));
-                object.put("example", state.getExample());
-                // If for some reason have a client state that is "Version" then we have to ensure the additional
-                // property does not have a naming conflict so we suffix everything with "State"
-                // Dylan: I ran into this case with Sportmonks and their "version" path variable that I made into clientState
-                if (additionalProperties.getClientStateWithExamples() != null && generator.equals("csharp-netcore"))
-                    state.setName(state.getName() + "State");
-                object.put("state", state.getName());
-                return object;
-            }).collect(Collectors.toList())); // added for CSharp setter in {{clientName}}.cs
+            putIfPresent(map, "clientStateWithExamplesSetterGetterCamelCase",
+                    additionalProperties.getClientStateWithExamples().stream().map(state -> {
+                        Map<String, String> object = new HashMap<>();
+                        object.put("state", state.getName());
+                        object.put("setter", "set" + StringUtils.camelize(state.getName()));
+                        object.put("getter", "get" + StringUtils.camelize(state.getName()));
+                        return object;
+                    }).collect(Collectors.toList())); // added for PHP setter in Configuration.php
+            putIfPresent(map, "clientStateWithExamplesSetterGetterPascalCase",
+                    additionalProperties.getClientStateWithExamples().stream().map(state -> {
+                        Map<String, String> object = new HashMap<>();
+                        object.put("stateCamelCase",
+                                StringUtils.camelize(state.getName(), CamelizeOption.LOWERCASE_FIRST_LETTER));
+                        object.put("upperSnakeCase", StringUtils.underscore(state.getName()).toUpperCase());
+                        object.put("setter", "Set" + StringUtils.camelize(state.getName()));
+                        object.put("getter", "Get" + StringUtils.camelize(state.getName()));
+                        object.put("example", state.getExample());
+                        // If for some reason have a client state that is "Version" then we have to
+                        // ensure the additional
+                        // property does not have a naming conflict so we suffix everything with "State"
+                        // Dylan: I ran into this case with Sportmonks and their "version" path variable
+                        // that I made into clientState
+                        if (additionalProperties.getClientStateWithExamples() != null
+                                && generator.equals("csharp-netcore"))
+                            state.setName(state.getName() + "State");
+                        object.put("state", state.getName());
+                        return object;
+                    }).collect(Collectors.toList())); // added for CSharp setter in {{clientName}}.cs
         }
 
         putIfPresent(map, "apiKeyAlias", additionalProperties.getApiKeyAlias());

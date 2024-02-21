@@ -50,9 +50,9 @@ export function prepareJavaRequestProperties({
     }
   }
 
-  if (body.omitSecurityRequirementsFromTopLeveClient !== undefined) {
-    properties['omitSecurityRequirementsFromTopLeveClient'] =
-      body.omitSecurityRequirementsFromTopLeveClient
+  if (body.omitSecurityRequirementsFromTopLevelClient !== undefined) {
+    properties['omitSecurityRequirementsFromTopLevelClient'] =
+      body.omitSecurityRequirementsFromTopLevelClient
   }
 
   if ('removeDefaultConfigurationParameters' in generatorConfig) {
