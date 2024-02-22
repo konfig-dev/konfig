@@ -1065,6 +1065,29 @@ public class DefaultCodegen implements CodegenConfig {
     @Override
     @SuppressWarnings("unused")
     public void processOpenAPI(OpenAPI openAPI) {
+        /**
+         * Re-apply x-konfig-properties values to properties to all ObjectSchema instances
+         */
+        if (openAPI.getComponents() != null && openAPI.getComponents().getSchemas() != null) {
+            openAPI.getComponents().getSchemas().forEach((name, schema) -> {
+                if (schema instanceof ObjectSchema) {
+                    ObjectSchema objectSchema = (ObjectSchema) schema;
+                    Map<String, Object> extensions = objectSchema.getExtensions();
+                    if (extensions != null && extensions.containsKey(CodegenConstants.X_KONFIG_PROPERTIES)) {
+                        Map<String, Map<String, Object>> xKonfigProperties = (Map<String, Map<String, Object>>) extensions.get(CodegenConstants.X_KONFIG_PROPERTIES);
+                        // iterate through all keys in xKonfigProperties and apply values to objectSchema properties
+                        xKonfigProperties.forEach((key, value) -> {
+                            if (objectSchema.getProperties() != null && objectSchema.getProperties().containsKey(key)) {
+                                Schema property = objectSchema.getProperties().get(key);
+                                Optional.ofNullable(value.get("default")).ifPresent(property::setDefault);
+                                Optional.ofNullable(value.get("example")).ifPresent(property::setExample);
+                                Optional.ofNullable(value.get("description")).ifPresent((description) -> property.setDescription(description.toString()));
+                            }
+                        });
+                    }
+                }
+            });
+        }
     }
 
     // override with any special handling of the JMustache compiler
