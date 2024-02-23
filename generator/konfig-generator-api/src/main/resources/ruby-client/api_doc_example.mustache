@@ -4,18 +4,31 @@ require '{{{gemName}}}'
 {{{apiDocumentationAuthenticationPartial}}}
 {{/apiDocumentationAuthenticationPartial}}
 {{^apiDocumentationAuthenticationPartial}}
-{{#authMethods}}{{#isBasic}}{{#isBasicBasic}}
-{{moduleName}}.username = 'YOUR_USERNAME'
-{{moduleName}}.password = 'YOUR_PASSWORD'{{/isBasicBasic}}{{#isBasicBearer}}
-{{moduleName}}.access_token = 'YOUR_BEARER_TOKEN'{{/isBasicBearer}}{{/isBasic}}{{#isApiKey}}
-{{moduleName}}.{{> securityKeyName}} = 'YOUR API KEY'{{/isApiKey}}{{#isOAuth}}
-{{moduleName}}.access_token = 'YOUR ACCESS TOKEN'{{/isOAuth}}{{/authMethods}}
-{{/apiDocumentationAuthenticationPartial}}
+configuration = {{moduleName}}::Configuration.new
+{{#authMethods}}
+{{#isBasic}}
+{{#isBasicBasic}}
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+{{/isBasicBasic}}
+{{#isBasicBearer}}
+configuration.access_token = 'YOUR_BEARER_TOKEN'
+{{/isBasicBearer}}
+{{/isBasic}}
+{{#isApiKey}}
+configuration.{{> securityKeyName}} = 'YOUR API KEY'
+{{/isApiKey}}
+{{#isOAuth}}
+configuration.access_token = 'YOUR ACCESS TOKEN'
+{{/isOAuth}}
+{{/authMethods}}
+{{clientNameLowercase}} = {{moduleName}}::Client.new(configuration)
 
+{{/apiDocumentationAuthenticationPartial}}
 {{> api_doc_arg_setup}}
 begin
 {{#summary}}  # {{{.}}}
-{{/summary}}  {{#returnType}}result = {{/returnType}}{{moduleName}}::{{clientApiName}}.{{{operationId}}}{{> api_doc_execute_pass_args}}{{#returnType}}
+{{/summary}}  {{#returnType}}result = {{/returnType}}{{clientNameLowercase}}.{{> api_doc_example_method}}{{> api_doc_execute_pass_args}}{{#returnType}}
   p result{{/returnType}}
 rescue {{{moduleName}}}::ApiError => e
   puts "Exception when calling {{moduleName}}::{{clientApiName}}.{{{operationId}}}: #{e}"
