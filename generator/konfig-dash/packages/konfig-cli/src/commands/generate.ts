@@ -1034,6 +1034,12 @@ export default class Deploy extends Command {
                 generatorConfig: body.generators.ruby,
               })
               CliUx.ux.action.stop()
+              // insert TOC at beginning of README.md
+              CliUx.ux.action.start(
+                'Inserting table of contents into README.md'
+              )
+              insertTableOfContents({ outputDirectory })
+              CliUx.ux.action.stop()
             }
           }
 
