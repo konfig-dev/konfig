@@ -85,7 +85,7 @@
 {{/if}}
 {{#if isApiKey}}
 
-    {{#if hasMultipleApiKeys}}{{> securityKeyName}}{{else}}api_key{{/if}} = 'YOUR_API_KEY',
+    {{#or hasMultipleApiKeys removeDefaultConfigurationParameters}}{{> securityKeyName}}{{else}}api_key{{/or}} = 'YOUR_API_KEY',
 {{/if}}
 {{#if isOAuth}}
 

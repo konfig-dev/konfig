@@ -172,10 +172,7 @@ conf = {{{packageName}}}.Configuration(
     _default = None
 
     def __init__(self, host=None,
-{{#unless removeDefaultConfigurationParameters}}
-                api_key=None,
-{{/unless}}
-                api_key_prefix=None,
+                 {{#unless removeDefaultConfigurationParameters}}api_key=None, {{/unless}}api_key_prefix=None,
 {{#each authMethods}}
     {{#if isBasicBearer}}
                  access_token=None,
@@ -189,7 +186,7 @@ conf = {{{packageName}}}.Configuration(
 {{/unless}}
                  discard_unknown_keys=False,
 {{#apiKeyMethods}}
-                {{> securityKeyName}}=None,
+         {{> securityKeyName}}=None,
 {{/apiKeyMethods}}
 {{#each clientState}}
                  {{{.}}}=None,
@@ -268,26 +265,21 @@ conf = {{{packageName}}}.Configuration(
 {{/unless}}
 {{#with apiKeyMethods.[0]}}
 {{#unless @root.hasMultipleApiKeys}}{{#if vendorExtensions.x-konfig-globally-required-security}}{{#unless removeDefaultConfigurationParameters}}
-    else:
+        else:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')
 {{/unless}}{{/if}}{{/unless}}
 {{/with}}
 {{#each apiKeyMethods}}
         if {{> securityKeyName}}:
             self.api_key['{{{name}}}'] = {{> securityKeyName}}
-{{#unless @root.clientState}}{{#unless @root.clientState}}{{#if vendorExtensions.x-konfig-globally-required-security}}
-        {{#if @root.hasMultipleApiKeys}}else{{else}}elif api_key is None{{/if}}:
+{{#unless @root.clientState}}{{#if vendorExtensions.x-konfig-globally-required-security}}
+        {{#or @root.hasMultipleApiKeys removeDefaultConfigurationParameters}}else{{else}}elif api_key is None{{/or}}:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')
 {{/if}}{{else}}
-{{#unless @root.hasMultipleApiKeys}}
+{{#unless @root.hasMultipleApiKeys}}{{#unless removeDefaultConfigurationParameters}}
         elif api_key is None:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')
-{{/unless}}
-{{/unless}}{{else}}
-{{#unless @root.hasMultipleApiKeys}}
-        elif api_key is None:
-            raise ClientConfigurationError('API Key "{{{name}}}" is required')
-{{/unless}}
+{{/unless}}{{/unless}}
 {{/unless}}
 {{/each}}
 {{#each apiKeyAlias}}
