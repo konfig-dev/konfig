@@ -24,7 +24,7 @@ class TestAsyncTimeoutWithTopLevelOperation(unittest.TestCase):
         # Ensure that we can provide a timeout to the client
         async def run_async_test():
             client = PythonAsyncTimeoutWithTopLevelOperationClient(
-                api_key="YOUR_API_KEY",
+                api_key_auth="YOUR_API_KEY",
                 host="http://127.0.0.1:4017"
             )
             # expect exception to be thrown with a timeout of pretty much 0

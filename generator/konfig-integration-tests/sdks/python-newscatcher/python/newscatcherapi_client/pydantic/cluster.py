@@ -24,3 +24,5 @@ class Cluster(BaseModel):
     cluster_size: int = Field(alias='cluster_size')
 
     articles: ClusterArticles = Field(alias='articles')
+    class Config:
+        arbitrary_types_allowed = True

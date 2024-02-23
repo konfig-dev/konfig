@@ -32,3 +32,5 @@ class DtoResponsesMoreLikeThisResponseSearchResponse(BaseModel):
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='user_input')
 
     status: typing.Optional[str] = Field(None, alias='status')
+    class Config:
+        arbitrary_types_allowed = True

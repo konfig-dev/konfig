@@ -33,3 +33,5 @@ class GeneratePaymentLinkRequest(BaseModel):
     customized_qr_with_logo: typing.Optional[int] = Field(None, alias='customized_qr_with_logo')
 
     generate_uri: typing.Optional[int] = Field(None, alias='generate_uri')
+    class Config:
+        arbitrary_types_allowed = True

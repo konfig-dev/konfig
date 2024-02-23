@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class TestFetchResponse(BaseModel):
     value: typing.Optional[typing.Union[str, int]] = Field(None, alias='value')
+    class Config:
+        arbitrary_types_allowed = True

@@ -32,3 +32,5 @@ class FailedLatestHeadlinesResponse(BaseModel):
     page_size: typing.Optional[int] = Field(None, alias='page_size')
 
     articles: typing.Optional[typing.List[DtoResponsesLatestHeadlinesResponseArticleResult]] = Field(None, alias='articles')
+    class Config:
+        arbitrary_types_allowed = True

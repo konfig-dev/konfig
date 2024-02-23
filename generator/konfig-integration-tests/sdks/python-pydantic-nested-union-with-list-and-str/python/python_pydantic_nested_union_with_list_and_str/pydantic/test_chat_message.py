@@ -22,3 +22,5 @@ from python_pydantic_nested_union_with_list_and_str.pydantic.generic_text_conten
 class TestChatMessage(BaseModel):
     # The test content of the message.
     test_content: typing.Optional[typing.Union[str, typing.List[typing.Union[typing.List[GenericTextContent], typing.List[GenericImageContent]]]]] = Field(None, alias='testContent')
+    class Config:
+        arbitrary_types_allowed = True

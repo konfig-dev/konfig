@@ -22,3 +22,5 @@ from python_union_string_discriminator.pydantic.generic_schema import GenericSch
 
 class TestFetchResponse(BaseModel):
     value: typing.Optional[typing.Union[A, B, GenericSchema]] = Field(None, alias='value')
+    class Config:
+        arbitrary_types_allowed = True

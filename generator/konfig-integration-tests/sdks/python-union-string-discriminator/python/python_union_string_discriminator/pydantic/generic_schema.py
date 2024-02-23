@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class GenericSchema(BaseModel):
     type: typing.Optional[Literal["generic"]] = Field(None, alias='type')
+    class Config:
+        arbitrary_types_allowed = True

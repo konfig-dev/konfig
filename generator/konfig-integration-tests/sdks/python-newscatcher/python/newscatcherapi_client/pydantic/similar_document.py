@@ -25,3 +25,5 @@ class SimilarDocument(BaseModel):
     score: typing.Union[int, float] = Field(alias='score')
 
     link: str = Field(alias='link')
+    class Config:
+        arbitrary_types_allowed = True

@@ -26,7 +26,7 @@ class TestAsyncDefaultTimeout(unittest.TestCase):
         # this happens because the konfig.yaml sets the default timeout to a really small number
         async def run_async_test():
             client = PythonAsyncDefaultTimeoutClient(
-                api_key="YOUR_API_KEY",
+                api_key_auth="YOUR_API_KEY",
                 host="http://127.0.0.1:4016"
             )
             # expect exception to be thrown with a timeout of pretty much 0

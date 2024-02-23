@@ -21,3 +21,5 @@ class GetTransactionStatusResponseError(BaseModel):
     message: typing.Optional[str] = Field(None, alias='message')
 
     response_code: typing.Optional[str] = Field(None, alias='response_code')
+    class Config:
+        arbitrary_types_allowed = True

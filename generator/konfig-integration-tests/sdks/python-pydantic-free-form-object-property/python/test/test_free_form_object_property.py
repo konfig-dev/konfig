@@ -23,7 +23,7 @@ class TestFreeFormObjectProperty(unittest.TestCase):
     def test_free_form_object_property(self):
         client = PythonPydanticFreeFormObjectPropertyClient(
             host="http://127.0.0.1:4043",
-            api_key='YOUR_API_KEY',
+            api_key_auth='YOUR_API_KEY',
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp.free_form_object)

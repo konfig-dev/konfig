@@ -19,7 +19,7 @@ from python_pydantic_recursively_convert_to_models import PythonPydanticRecursiv
 class TestSimple(unittest.TestCase):
     def setUp(self):
         self.client = PythonPydanticRecursivelyConvertToModels(
-            api_key='YOUR_API_KEY',
+            api_key_auth='YOUR_API_KEY',
             host="http://127.0.0.1:4003"
         )
 

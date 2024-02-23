@@ -23,3 +23,5 @@ class GenericImageContent(BaseModel):
 
     # A brief description of the image.
     image_description: typing.Optional[str] = Field(None, alias='imageDescription')
+    class Config:
+        arbitrary_types_allowed = True

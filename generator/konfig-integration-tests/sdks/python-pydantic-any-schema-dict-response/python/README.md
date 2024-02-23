@@ -41,7 +41,7 @@ from python_pydantic_any_schema_dict_response import (
 )
 
 pythonpydanticanyschemadictresponseclient = PythonPydanticAnySchemaDictResponseClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:
@@ -70,7 +70,7 @@ from python_pydantic_any_schema_dict_response import (
 )
 
 pythonpydanticanyschemadictresponseclient = PythonPydanticAnySchemaDictResponseClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 
@@ -103,7 +103,7 @@ from python_pydantic_any_schema_dict_response import (
 )
 
 pythonpydanticanyschemadictresponseclient = PythonPydanticAnySchemaDictResponseClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:

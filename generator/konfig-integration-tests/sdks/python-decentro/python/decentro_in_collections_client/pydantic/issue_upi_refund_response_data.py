@@ -23,3 +23,5 @@ class IssueUpiRefundResponseData(BaseModel):
     transaction_status: typing.Optional[str] = Field(None, alias='transactionStatus')
 
     transaction_status_description: typing.Optional[str] = Field(None, alias='transactionStatusDescription')
+    class Config:
+        arbitrary_types_allowed = True

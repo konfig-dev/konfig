@@ -21,3 +21,5 @@ class OnlyOnePropertyIsInvalid(BaseModel):
     string: typing.Optional[str] = Field(None, alias='string')
 
     number: typing.Optional[typing.Union[int, float]] = Field(None, alias='number')
+    class Config:
+        arbitrary_types_allowed = True

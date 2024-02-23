@@ -8,7 +8,7 @@ from python_async_timeout_with_top_level_operation.configuration import Configur
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

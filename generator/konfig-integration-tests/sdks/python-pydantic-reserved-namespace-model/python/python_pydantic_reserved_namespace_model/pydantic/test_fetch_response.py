@@ -20,3 +20,5 @@ from python_pydantic_reserved_namespace_model.pydantic.inner import Inner
 
 class TestFetchResponse(BaseModel):
     model_config_: typing.Optional[Inner] = Field(None, alias='model_config')
+    class Config:
+        arbitrary_types_allowed = True

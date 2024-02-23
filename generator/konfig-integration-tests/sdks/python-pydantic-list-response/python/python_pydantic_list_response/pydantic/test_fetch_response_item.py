@@ -20,3 +20,5 @@ from pydantic import BaseModel, Field, RootModel
 class TestFetchResponseItem(BaseModel):
     # A unique identifier
     id: str = Field(alias='id')
+    class Config:
+        arbitrary_types_allowed = True

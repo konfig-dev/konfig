@@ -28,3 +28,5 @@ class IssueUpiRefundResponse(BaseModel):
     message: typing.Optional[str] = Field(None, alias='message')
 
     data: typing.Optional[IssueUpiRefundResponseData] = Field(None, alias='data')
+    class Config:
+        arbitrary_types_allowed = True

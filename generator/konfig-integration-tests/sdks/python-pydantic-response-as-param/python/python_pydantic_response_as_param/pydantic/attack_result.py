@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class AttackResult(BaseModel):
     message: typing.Optional[str] = Field(None, alias='message')
+    class Config:
+        arbitrary_types_allowed = True

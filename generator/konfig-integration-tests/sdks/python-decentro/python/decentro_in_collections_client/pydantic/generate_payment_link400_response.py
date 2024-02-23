@@ -25,3 +25,5 @@ class GeneratePaymentLink400Response(BaseModel):
     response_code: typing.Optional[str] = Field(None, alias='responseCode')
 
     message: typing.Optional[str] = Field(None, alias='message')
+    class Config:
+        arbitrary_types_allowed = True

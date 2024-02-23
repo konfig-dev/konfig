@@ -11,7 +11,7 @@ class TestPythonPydanticNestedUnionWithListAndStr(unittest.TestCase):
     def test_python_pydantic_nested_union_with_list_and_str(self):
         client = PythonPydanticNestedUnionWithListAndStrClient(
             host="http://127.0.0.1:4066",
-            api_key='YOUR_API_KEY',
+            api_key_auth='YOUR_API_KEY',
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp)

@@ -38,7 +38,7 @@ from pprint import pprint
 from python_circular_reference import PythonCircularReferenceClient, ApiException
 
 pythoncircularreferenceclient = PythonCircularReferenceClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:
@@ -64,7 +64,7 @@ from pprint import pprint
 from python_circular_reference import PythonCircularReferenceClient, ApiException
 
 pythoncircularreferenceclient = PythonCircularReferenceClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 
@@ -94,7 +94,7 @@ from pprint import pprint
 from python_circular_reference import PythonCircularReferenceClient, ApiException
 
 pythoncircularreferenceclient = PythonCircularReferenceClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:

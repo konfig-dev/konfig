@@ -8,7 +8,7 @@ from python_pydantic_any_schema_dict_response.configuration import Configuration
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

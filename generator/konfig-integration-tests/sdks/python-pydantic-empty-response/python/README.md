@@ -38,7 +38,7 @@ from pprint import pprint
 from python_pydantic_empty_response import PythonPydanticEmptyResponse, ApiException
 
 pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:
@@ -63,7 +63,7 @@ from pprint import pprint
 from python_pydantic_empty_response import PythonPydanticEmptyResponse, ApiException
 
 pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 
@@ -92,7 +92,7 @@ from pprint import pprint
 from python_pydantic_empty_response import PythonPydanticEmptyResponse, ApiException
 
 pythonpydanticemptyresponse = PythonPydanticEmptyResponse(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:

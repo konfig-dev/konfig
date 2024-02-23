@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class Inner(BaseModel):
     a: typing.Optional[str] = Field(None, alias='a')
+    class Config:
+        arbitrary_types_allowed = True

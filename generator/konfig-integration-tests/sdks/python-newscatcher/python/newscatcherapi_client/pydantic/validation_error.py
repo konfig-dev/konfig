@@ -24,3 +24,5 @@ class ValidationError(BaseModel):
     msg: str = Field(alias='msg')
 
     type: str = Field(alias='type')
+    class Config:
+        arbitrary_types_allowed = True

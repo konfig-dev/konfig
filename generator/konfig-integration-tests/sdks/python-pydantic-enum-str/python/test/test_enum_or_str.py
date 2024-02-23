@@ -23,7 +23,7 @@ class TestEnumOrStr(unittest.TestCase):
     def test_enum_or_str(self):
         client = PythonPydanticEnumStrClient(
             host='http://127.0.0.1:4059',
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.fetch()
 

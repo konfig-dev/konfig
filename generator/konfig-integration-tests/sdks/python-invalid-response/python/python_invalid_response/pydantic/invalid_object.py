@@ -20,3 +20,5 @@ from python_invalid_response.pydantic.invalid_object_object import InvalidObject
 
 class InvalidObject(BaseModel):
     object: typing.Optional[InvalidObjectObject] = Field(None, alias='object')
+    class Config:
+        arbitrary_types_allowed = True

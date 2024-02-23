@@ -11,7 +11,7 @@ class TestPythonPydanticAnySchemaDictResponse(unittest.TestCase):
     def test_python_pydantic_any_schema_dict_response(self):
         client = PythonPydanticAnySchemaDictResponseClient(
             host="http://127.0.0.1:4055",
-            api_key='YOUR_API_KEY',
+            api_key_auth='YOUR_API_KEY',
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp)

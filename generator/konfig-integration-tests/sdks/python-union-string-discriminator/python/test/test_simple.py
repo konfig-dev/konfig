@@ -23,7 +23,7 @@ class TestSimple(unittest.TestCase):
     def test_client(self):
         pythonunionstringdiscriminatorclient = PythonUnionStringDiscriminatorClient(
         
-            api_key = 'YOUR_API_KEY',
+                        api_key = 'YOUR_API_KEY',
         )
         self.assertIsNotNone(pythonunionstringdiscriminatorclient)
 

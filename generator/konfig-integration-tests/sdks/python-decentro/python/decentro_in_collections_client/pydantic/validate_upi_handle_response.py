@@ -28,3 +28,5 @@ class ValidateUpiHandleResponse(BaseModel):
     message: typing.Optional[str] = Field(None, alias='message')
 
     data: typing.Optional[ValidateUpiHandleResponseData] = Field(None, alias='data')
+    class Config:
+        arbitrary_types_allowed = True

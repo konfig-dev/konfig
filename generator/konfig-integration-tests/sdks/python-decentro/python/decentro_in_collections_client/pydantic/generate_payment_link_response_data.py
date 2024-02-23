@@ -30,3 +30,5 @@ class GeneratePaymentLinkResponseData(BaseModel):
     upi_uri: typing.Optional[str] = Field(None, alias='upiUri')
 
     psp_uri: typing.Optional[GeneratePaymentLinkResponseDataPspUri] = Field(None, alias='pspUri')
+    class Config:
+        arbitrary_types_allowed = True

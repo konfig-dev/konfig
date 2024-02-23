@@ -11,7 +11,7 @@ class TestPythonPydanticArrayWithObject(unittest.TestCase):
     def test_python_pydantic_array_with_object(self):
         client = PythonPydanticArrayWithObjectClient(
             host="http://127.0.0.1:4095",
-            api_key='YOUR_API_KEY',
+            api_key_auth='YOUR_API_KEY',
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp)

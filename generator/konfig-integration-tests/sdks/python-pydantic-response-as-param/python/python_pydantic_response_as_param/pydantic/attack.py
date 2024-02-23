@@ -22,3 +22,5 @@ class Attack(BaseModel):
     monster: typing.Optional[str] = Field(None, alias='monster')
 
     sword: typing.Optional[Sword] = Field(None, alias='sword')
+    class Config:
+        arbitrary_types_allowed = True

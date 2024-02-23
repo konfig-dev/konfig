@@ -22,3 +22,5 @@ class Equipment(BaseModel):
     sword: typing.Optional[Sword] = Field(None, alias='sword')
 
     armor: typing.Optional[str] = Field(None, alias='armor')
+    class Config:
+        arbitrary_types_allowed = True

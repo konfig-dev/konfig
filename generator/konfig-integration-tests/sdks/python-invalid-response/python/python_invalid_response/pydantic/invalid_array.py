@@ -20,3 +20,5 @@ from python_invalid_response.pydantic.invalid_array_array import InvalidArrayArr
 
 class InvalidArray(BaseModel):
     array: typing.Optional[InvalidArrayArray] = Field(None, alias='array')
+    class Config:
+        arbitrary_types_allowed = True

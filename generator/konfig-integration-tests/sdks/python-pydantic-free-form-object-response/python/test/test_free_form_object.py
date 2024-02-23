@@ -22,7 +22,7 @@ class TestSimple(unittest.TestCase):
 
     def test_free_form_object(self):
         client = PythonPydanticFreeFormObjectResponse(
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
             host = "http://127.0.0.1:4000"
         )
         response = client.test.fetch("test")

@@ -108,7 +108,7 @@ conf = newscatcherapi_client.Configuration(
                  api_key=None, api_key_prefix=None,
                  username=None, password=None,
                  discard_unknown_keys=False,
-                 x_api_token=None,
+                  x_api_token=None,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,

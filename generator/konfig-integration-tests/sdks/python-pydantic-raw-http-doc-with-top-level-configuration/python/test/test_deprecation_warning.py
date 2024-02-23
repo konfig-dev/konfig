@@ -8,7 +8,7 @@ from python_pydantic_raw_http_doc_with_top_level_configuration.configuration imp
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

@@ -21,3 +21,5 @@ class B(BaseModel):
     type: typing.Optional[Literal["B"]] = Field(None, alias='type')
 
     b: typing.Optional[str] = Field(None, alias='b')
+    class Config:
+        arbitrary_types_allowed = True

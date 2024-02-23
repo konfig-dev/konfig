@@ -91,3 +91,5 @@ class MoreLikeThisRequest(BaseModel):
     content_sentiment_min: typing.Optional[typing.Union[int, float]] = Field(None, alias='content_sentiment_min')
 
     content_sentiment_max: typing.Optional[typing.Union[int, float]] = Field(None, alias='content_sentiment_max')
+    class Config:
+        arbitrary_types_allowed = True

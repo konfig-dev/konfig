@@ -11,7 +11,7 @@ class TestPythonPydanticNullableString(unittest.TestCase):
     def test_python_pydantic_nullable_string(self):
         client = PythonPydanticNullableStringClient(
             host="http://127.0.0.1:4033",
-            api_key='YOUR_API_KEY',
+            api_key_auth='YOUR_API_KEY',
         )
         resp = client.test.fetch()
         self.assertIsNotNone(resp)

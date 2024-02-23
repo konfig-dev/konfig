@@ -105,13 +105,12 @@ conf = decentro_in_collections_client.Configuration(
     _default = None
 
     def __init__(self, host=None,
-                 api_key=None, api_key_prefix=None,
-                 username=None, password=None,
+                 api_key_prefix=None,
                  discard_unknown_keys=False,
-                 client_id=None,
-                 client_secret=None,
-                 module_secret=None,
-                 provider_secret=None,
+                  client_id=None,
+                  client_secret=None,
+                  module_secret=None,
+                  provider_secret=None,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
@@ -134,11 +133,6 @@ conf = decentro_in_collections_client.Configuration(
         """
         # Authentication Settings
         self.api_key = {}
-        if api_key:
-            if (isinstance(api_key, str)):
-                self.api_key = {'client_id': api_key}
-            else:
-                self.api_key = api_key
         if client_id:
             self.api_key['client_id'] = client_id
         else:
@@ -164,12 +158,6 @@ conf = decentro_in_collections_client.Configuration(
         """
         self.refresh_api_key_hook = None
         """function hook to refresh API key if expired
-        """
-        self.username = username
-        """Username for HTTP basic authentication
-        """
-        self.password = password
-        """Password for HTTP basic authentication
         """
         self.discard_unknown_keys = discard_unknown_keys
         self.disabled_client_side_validations = disabled_client_side_validations
@@ -377,21 +365,6 @@ conf = decentro_in_collections_client.Configuration(
                 return "%s %s" % (prefix, key)
             else:
                 return key
-
-    def get_basic_auth_token(self):
-        """Gets HTTP basic authentication header (string).
-
-        :return: The token for basic HTTP authentication.
-        """
-        username = ""
-        if self.username is not None:
-            username = self.username
-        password = ""
-        if self.password is not None:
-            password = self.password
-        return urllib3.util.make_headers(
-            basic_auth=username + ':' + password
-        ).get('authorization')
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.

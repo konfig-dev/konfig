@@ -23,3 +23,5 @@ class TestFetchResponse(BaseModel):
     a: typing.Optional[Inner] = Field(None, alias='a')
 
     b: typing.Optional[ListInner] = Field(None, alias='b')
+    class Config:
+        arbitrary_types_allowed = True

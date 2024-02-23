@@ -22,7 +22,7 @@ class TestSimple(unittest.TestCase):
 
     def test_empty_response(self):
         client = PythonPydanticEmptyResponse(
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
             host="http://127.0.0.1:4006"
         )
         resp = client.test.fetch()

@@ -8,7 +8,7 @@ from python_pydantic_recursively_convert_to_models.configuration import Configur
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

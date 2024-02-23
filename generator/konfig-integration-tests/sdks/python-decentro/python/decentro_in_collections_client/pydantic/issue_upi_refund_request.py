@@ -25,3 +25,5 @@ class IssueUpiRefundRequest(BaseModel):
     bank_reference_number: typing.Optional[str] = Field(None, alias='bank_reference_number')
 
     purpose_message: typing.Optional[str] = Field(None, alias='purpose_message')
+    class Config:
+        arbitrary_types_allowed = True

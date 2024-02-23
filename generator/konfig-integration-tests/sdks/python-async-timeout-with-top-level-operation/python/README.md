@@ -42,7 +42,7 @@ from python_async_timeout_with_top_level_operation import (
 
 pythonasynctimeoutwithtopleveloperationclient = (
     PythonAsyncTimeoutWithTopLevelOperationClient(
-        api_key="YOUR_API_KEY",
+        api_key_auth="YOUR_API_KEY",
     )
 )
 
@@ -75,7 +75,7 @@ from python_async_timeout_with_top_level_operation import (
 
 pythonasynctimeoutwithtopleveloperationclient = (
     PythonAsyncTimeoutWithTopLevelOperationClient(
-        api_key="YOUR_API_KEY",
+        api_key_auth="YOUR_API_KEY",
     )
 )
 
@@ -109,7 +109,7 @@ from python_async_timeout_with_top_level_operation import (
 
 pythonasynctimeoutwithtopleveloperationclient = (
     PythonAsyncTimeoutWithTopLevelOperationClient(
-        api_key="YOUR_API_KEY",
+        api_key_auth="YOUR_API_KEY",
     )
 )
 

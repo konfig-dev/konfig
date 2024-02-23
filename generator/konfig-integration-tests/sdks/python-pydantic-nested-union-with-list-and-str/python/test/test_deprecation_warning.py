@@ -8,7 +8,7 @@ from python_pydantic_nested_union_with_list_and_str.configuration import Configu
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

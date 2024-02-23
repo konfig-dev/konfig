@@ -22,7 +22,7 @@ class TestSimple(unittest.TestCase):
 
     def test_list_in_union(self):
         client = PythonPydanticListInUnion(
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
             host = "http://127.0.0.1:4005"
         )
         response = client.test.fetch()
@@ -30,7 +30,7 @@ class TestSimple(unittest.TestCase):
 
     def test_list_in_union_validate(self):
         client = PythonPydanticListInUnion(
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
             host = "http://127.0.0.1:4005"
         )
         response = client.test.fetch(validate=True)

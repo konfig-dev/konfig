@@ -20,3 +20,5 @@ from pydantic import BaseModel, Field, RootModel
 class TestReservedWord(BaseModel):
     # Reserved word in Python
     class_: typing.Optional[str] = Field(None, alias='class')
+    class Config:
+        arbitrary_types_allowed = True

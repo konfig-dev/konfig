@@ -79,3 +79,5 @@ class DtoResponsesLatestHeadlinesResponseArticleResult(BaseModel):
     all_domain_links: typing.Optional[typing.Union[typing.List[str], str]] = Field(None, alias='all_domain_links')
 
     nlp: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='nlp')
+    class Config:
+        arbitrary_types_allowed = True

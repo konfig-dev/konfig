@@ -25,3 +25,5 @@ class SourceResponse(BaseModel):
     sources: SourceResponseSources = Field(alias='sources')
 
     user_input: UserInput = Field(alias='user_input')
+    class Config:
+        arbitrary_types_allowed = True

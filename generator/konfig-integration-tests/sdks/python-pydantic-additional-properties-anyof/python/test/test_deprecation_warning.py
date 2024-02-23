@@ -8,7 +8,7 @@ from python_pydantic_additional_properties_anyof.configuration import Configurat
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

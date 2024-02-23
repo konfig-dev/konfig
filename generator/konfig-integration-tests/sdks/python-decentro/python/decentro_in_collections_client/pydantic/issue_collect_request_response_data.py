@@ -27,3 +27,5 @@ class IssueCollectRequestResponseData(BaseModel):
     bank_reference_number: typing.Optional[str] = Field(None, alias='bankReferenceNumber')
 
     npci_transaction_id: typing.Optional[str] = Field(None, alias='npciTransactionId')
+    class Config:
+        arbitrary_types_allowed = True

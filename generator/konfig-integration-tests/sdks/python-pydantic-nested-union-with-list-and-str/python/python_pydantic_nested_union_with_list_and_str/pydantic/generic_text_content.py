@@ -20,3 +20,5 @@ from pydantic import BaseModel, Field, RootModel
 class GenericTextContent(BaseModel):
     # Generic text content for testing.
     text: typing.Optional[str] = Field(None, alias='text')
+    class Config:
+        arbitrary_types_allowed = True

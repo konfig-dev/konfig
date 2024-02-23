@@ -23,3 +23,5 @@ class GetTransactionStatusResponseData(BaseModel):
     bank_reference_number: typing.Optional[str] = Field(None, alias='bankReferenceNumber')
 
     npci_txn_id: typing.Optional[str] = Field(None, alias='npciTxnId')
+    class Config:
+        arbitrary_types_allowed = True

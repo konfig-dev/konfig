@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class TestFetch500Response(BaseModel):
     error: typing.Optional[str] = Field(None, alias='error')
+    class Config:
+        arbitrary_types_allowed = True

@@ -8,13 +8,13 @@ from decentro_in_collections_client.configuration import Configuration
 class RandomClass:
     configuration = Configuration(
     
-        client_id = 'YOUR_API_KEY',
+                client_id = 'YOUR_API_KEY',
     
-        client_secret = 'YOUR_API_KEY',
+                client_secret = 'YOUR_API_KEY',
     
-        module_secret = 'YOUR_API_KEY',
+                module_secret = 'YOUR_API_KEY',
     
-        provider_secret = 'YOUR_API_KEY',
+                provider_secret = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

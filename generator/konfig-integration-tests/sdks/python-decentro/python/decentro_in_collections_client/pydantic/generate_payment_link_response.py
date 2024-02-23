@@ -30,3 +30,5 @@ class GeneratePaymentLinkResponse(BaseModel):
     data: typing.Optional[GeneratePaymentLinkResponseData] = Field(None, alias='data')
 
     response_key: typing.Optional[str] = Field(None, alias='responseKey')
+    class Config:
+        arbitrary_types_allowed = True

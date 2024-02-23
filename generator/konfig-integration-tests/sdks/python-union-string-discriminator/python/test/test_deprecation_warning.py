@@ -8,7 +8,7 @@ from python_union_string_discriminator.configuration import Configuration
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 

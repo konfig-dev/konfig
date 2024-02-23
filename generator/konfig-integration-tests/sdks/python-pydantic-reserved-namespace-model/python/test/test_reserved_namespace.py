@@ -22,7 +22,7 @@ class TestSimple(unittest.TestCase):
 
     def test_reserved_namespace(self):
         client = PythonPydanticReservedNamespaceModel(
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
             host = 'http://127.0.0.1:4001'
         )
         response = client.test.fetch()

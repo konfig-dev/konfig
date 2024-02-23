@@ -23,7 +23,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_invalid_scalar(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_scalar()
         self.assertIsNotNone(resp)
@@ -32,7 +32,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_invalid_array(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_array()
         self.assertIsNotNone(resp)
@@ -41,7 +41,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_invalid_object(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.invalid_object()
         self.assertIsNotNone(resp)
@@ -50,7 +50,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_only_one_property_is_invalid(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.only_one_property_is_invalid()
         self.assertIsNotNone(resp)
@@ -60,7 +60,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_object_instead_of_scalar(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.object_instead_of_scalar()
         self.assertIsInstance(resp, dict)
@@ -68,7 +68,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_list_instead_of_scalar(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.list_instead_of_scalar()
         self.assertIsInstance(resp, list)
@@ -76,7 +76,7 @@ class TestInvalidResponse(unittest.TestCase):
     def test_dict_instead_of_list_or_scalar(self):
         client = PythonInvalidResponseClient(
             host="http://127.0.0.1:5555",
-            api_key = 'YOUR_API_KEY',
+            api_key_auth = 'YOUR_API_KEY',
         )
         resp = client.test.dict_instead_of_list_or_scalar()
         self.assertIsInstance(resp, dict)

@@ -26,3 +26,5 @@ class TestFetchResponse(BaseModel):
 
     # Description of property C.
     property_c: typing.Optional[bool] = Field(None, alias='propertyC')
+    class Config:
+        arbitrary_types_allowed = True

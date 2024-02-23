@@ -44,7 +44,7 @@ from pprint import pprint
 from python_invalid_response import PythonInvalidResponseClient, ApiException
 
 pythoninvalidresponseclient = PythonInvalidResponseClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:
@@ -71,7 +71,7 @@ from pprint import pprint
 from python_invalid_response import PythonInvalidResponseClient, ApiException
 
 pythoninvalidresponseclient = PythonInvalidResponseClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 
@@ -102,7 +102,7 @@ from pprint import pprint
 from python_invalid_response import PythonInvalidResponseClient, ApiException
 
 pythoninvalidresponseclient = PythonInvalidResponseClient(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:

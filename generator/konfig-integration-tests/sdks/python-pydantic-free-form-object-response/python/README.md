@@ -41,7 +41,7 @@ from python_pydantic_free_form_object_response import (
 )
 
 pythonpydanticfreeformobjectresponse = PythonPydanticFreeFormObjectResponse(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:
@@ -71,7 +71,7 @@ from python_pydantic_free_form_object_response import (
 )
 
 pythonpydanticfreeformobjectresponse = PythonPydanticFreeFormObjectResponse(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 
@@ -105,7 +105,7 @@ from python_pydantic_free_form_object_response import (
 )
 
 pythonpydanticfreeformobjectresponse = PythonPydanticFreeFormObjectResponse(
-    api_key="YOUR_API_KEY",
+    api_key_auth="YOUR_API_KEY",
 )
 
 try:

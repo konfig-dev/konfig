@@ -19,3 +19,5 @@ from pydantic import BaseModel, Field, RootModel
 
 class InvalidObjectObject(BaseModel):
     str_: typing.Optional[str] = Field(None, alias='str')
+    class Config:
+        arbitrary_types_allowed = True

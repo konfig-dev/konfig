@@ -21,3 +21,5 @@ class Sword(BaseModel):
     name: typing.Optional[str] = Field(None, alias='name')
 
     damage: typing.Optional[int] = Field(None, alias='damage')
+    class Config:
+        arbitrary_types_allowed = True

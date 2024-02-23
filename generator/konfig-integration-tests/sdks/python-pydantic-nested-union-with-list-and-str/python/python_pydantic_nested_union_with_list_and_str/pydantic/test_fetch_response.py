@@ -20,3 +20,5 @@ from python_pydantic_nested_union_with_list_and_str.pydantic.test_chat_message i
 
 class TestFetchResponse(BaseModel):
     test_messages: typing.Optional[typing.List[TestChatMessage]] = Field(None, alias='testMessages')
+    class Config:
+        arbitrary_types_allowed = True

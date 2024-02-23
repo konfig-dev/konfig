@@ -21,3 +21,5 @@ class SourcesRequest(BaseModel):
     lang: typing.Optional[str] = Field(None, alias='lang')
 
     countries: typing.Optional[str] = Field(None, alias='countries')
+    class Config:
+        arbitrary_types_allowed = True

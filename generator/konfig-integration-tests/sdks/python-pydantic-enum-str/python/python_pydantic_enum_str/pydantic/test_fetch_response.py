@@ -20,3 +20,5 @@ from python_pydantic_enum_str.pydantic.enum import Enum
 
 class TestFetchResponse(BaseModel):
     value: typing.Optional[typing.Union[Enum, str]] = Field(None, alias='value')
+    class Config:
+        arbitrary_types_allowed = True

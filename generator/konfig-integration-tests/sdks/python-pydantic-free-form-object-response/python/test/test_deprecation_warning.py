@@ -8,7 +8,7 @@ from python_pydantic_free_form_object_response.configuration import Configuratio
 class RandomClass:
     configuration = Configuration(
     
-        api_key = 'YOUR_API_KEY',
+                api_key_auth = 'YOUR_API_KEY',
     )
     api_client = ApiClient(configuration)
 
