@@ -127,9 +127,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "Field to sort projects by",
             "required": false,
             "schema": {
-              "title": "Sort by",
-              "description": "Field to sort projects by",
-              "default": "created_at",
               "$ref": "#/components/schemas/ProjectSortBy"
             },
             "name": "sort_by",
@@ -139,9 +136,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "Direction to sort by.",
             "required": false,
             "schema": {
-              "title": "Sort order",
-              "description": "Direction to sort by.",
-              "default": "desc",
               "$ref": "#/components/schemas/SortOrder"
             },
             "name": "order",
@@ -2020,8 +2014,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "created_by": {
-            "title": "Created by",
-            "description": "The user that created the API key.",
             "$ref": "#/components/schemas/UserResponse"
           },
           "last_used": {
@@ -2034,6 +2026,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "Created At",
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "x-konfig-properties": {
+          "created_by": {
+            "title": "Created by",
+            "description": "The user that created the API key."
           }
         }
       },
@@ -2106,9 +2104,13 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "sentiment": {
-            "title": "Feedback label sentiment",
-            "description": "Whether the feedback sentiment is positive or negative.",
             "$ref": "#/components/schemas/LabelSentiment"
+          }
+        },
+        "x-konfig-properties": {
+          "sentiment": {
+            "title": "Feedback label sentiment",
+            "description": "Whether the feedback sentiment is positive or negative."
           }
         }
       },
@@ -2223,14 +2225,18 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "object"
           },
           "status": {
-            "title": "Tool status",
-            "description": "Whether the tool has been set up by the org.",
             "$ref": "#/components/schemas/OrganizationToolStatus"
           },
           "spec": {
             "title": "Spec name",
             "description": "Unique name of tool spec. Retrieve from GET on /v3/tools",
             "type": "string"
+          }
+        },
+        "x-konfig-properties": {
+          "status": {
+            "title": "Tool status",
+            "description": "Whether the tool has been set up by the org."
           }
         }
       },
@@ -2339,8 +2345,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "provider_api_keys": {
-            "title": "Provider API Keys",
-            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop.",
             "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
@@ -2379,6 +2383,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "ID of experiment",
             "description": "If an experiment ID is provided a model configuration will be sampled from the experiments active model configurations.",
             "type": "string"
+          }
+        },
+        "x-konfig-properties": {
+          "provider_api_keys": {
+            "title": "Provider API Keys",
+            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop."
           }
         }
       },
@@ -2426,8 +2436,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "model_config": {
-            "title": "Model config",
-            "description": "Full definition of model config used in the experiment.",
             "$ref": "#/components/schemas/ModelConfigResponse"
           },
           "created_at": {
@@ -2439,6 +2447,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "Updated At",
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "x-konfig-properties": {
+          "model_config": {
+            "title": "Model config",
+            "description": "Full definition of model config used in the experiment."
           }
         }
       },
@@ -2472,8 +2486,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "status": {
-            "title": "Experiment status",
-            "description": "Status of experiment.",
             "$ref": "#/components/schemas/ExperimentStatus"
           },
           "model_configs": {
@@ -2485,8 +2497,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             }
           },
           "metric": {
-            "title": "Experiment metric",
-            "description": "Metric used as the experiment's objective.",
             "$ref": "#/components/schemas/BaseMetricResponse"
           },
           "positive_labels": {
@@ -2506,6 +2516,16 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "Updated At",
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "x-konfig-properties": {
+          "status": {
+            "title": "Experiment status",
+            "description": "Status of experiment."
+          },
+          "metric": {
+            "title": "Experiment metric",
+            "description": "Metric used as the experiment's objective."
           }
         }
       },
@@ -2745,9 +2765,13 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             }
           },
           "class": {
-            "title": "Feedback class",
-            "description": "The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when \`type\` is 'rating', 'action' or 'issue').",
             "$ref": "#/components/schemas/FeedbackClass"
+          }
+        },
+        "x-konfig-properties": {
+          "class": {
+            "title": "Feedback class",
+            "description": "The data type associated to this feedback type; whether it is a 'text'/'select'/'multi_select'. This is optional when updating the default feedback types (i.e. when \`type\` is 'rating', 'action' or 'issue')."
           }
         }
       },
@@ -2802,8 +2826,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             }
           },
           "usage": {
-            "title": "Usage",
-            "description": "Counts of the number of tokens used and related stats.",
             "$ref": "#/components/schemas/GenerateUsage"
           },
           "metadata": {
@@ -2817,6 +2839,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "array",
             "items": {
             }
+          }
+        },
+        "x-konfig-properties": {
+          "usage": {
+            "title": "Usage",
+            "description": "Counts of the number of tokens used and related stats."
           }
         }
       },
@@ -2860,15 +2888,9 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
         "type": "object",
         "properties": {
           "provider": {
-            "title": "Model provider",
-            "description": "The company providing the underlying model service.",
-            "default": "openai",
             "$ref": "#/components/schemas/ModelProviders"
           },
           "endpoint": {
-            "title": "Provider endpoint",
-            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
-            "default": "complete",
             "$ref": "#/components/schemas/ModelEndpoints"
           },
           "model": {
@@ -2985,6 +3007,18 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "ID of trial to reference in subsequent log calls.",
             "type": "string"
           }
+        },
+        "x-konfig-properties": {
+          "provider": {
+            "title": "Model provider",
+            "description": "The company providing the underlying model service.",
+            "default": "openai"
+          },
+          "endpoint": {
+            "title": "Provider endpoint",
+            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
+            "default": "complete"
+          }
         }
       },
       "HTTPValidationError": {
@@ -3046,8 +3080,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "model_config": {
-            "title": "Model config",
-            "description": "The model config used for this generation. Required unless \`trial_id\` is provided.",
             "$ref": "#/components/schemas/ModelConfigRequest"
           },
           "metadata": {
@@ -3075,6 +3107,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "Timestamp for when the log was created. If not provided, the time the log call was made will be used as a timestamp.",
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "x-konfig-properties": {
+          "model_config": {
+            "title": "Model config",
+            "description": "The model config used for this generation. Required unless \`trial_id\` is provided."
           }
         }
       },
@@ -3115,8 +3153,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "model_config": {
-            "title": "Model config",
-            "description": "The model config used for this generation",
             "$ref": "#/components/schemas/ProjectModelConfigResponse"
           },
           "metadata": {
@@ -3154,6 +3190,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "Project ID",
             "description": "String ID of project the datapoint belongs to. Starts with \`pr_\`.",
             "type": "string"
+          }
+        },
+        "x-konfig-properties": {
+          "model_config": {
+            "title": "Model config",
+            "description": "The model config used for this generation"
           }
         }
       },
@@ -3274,8 +3316,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "provider_api_keys": {
-            "title": "Provider API Keys",
-            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop.",
             "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
@@ -3315,6 +3355,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "The model configuration specified will be used to create a generation.",
             "type": "string"
           }
+        },
+        "x-konfig-properties": {
+          "provider_api_keys": {
+            "title": "Provider API Keys",
+            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop."
+          }
         }
       },
       "ModelConfigRequest": {
@@ -3327,15 +3373,9 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
         "type": "object",
         "properties": {
           "provider": {
-            "title": "Model provider",
-            "description": "The company providing the underlying model service.",
-            "default": "openai",
             "$ref": "#/components/schemas/ModelProviders"
           },
           "endpoint": {
-            "title": "Provider endpoint",
-            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
-            "default": "complete",
             "$ref": "#/components/schemas/ModelEndpoints"
           },
           "model": {
@@ -3400,6 +3440,18 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "default": {
             }
           }
+        },
+        "x-konfig-properties": {
+          "provider": {
+            "title": "Model provider",
+            "description": "The company providing the underlying model service.",
+            "default": "openai"
+          },
+          "endpoint": {
+            "title": "Provider endpoint",
+            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
+            "default": "complete"
+          }
         }
       },
       "ModelConfigResponse": {
@@ -3413,15 +3465,9 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
         "type": "object",
         "properties": {
           "provider": {
-            "title": "Model provider",
-            "description": "The company providing the underlying model service.",
-            "default": "openai",
             "$ref": "#/components/schemas/ModelProviders"
           },
           "endpoint": {
-            "title": "Provider endpoint",
-            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
-            "default": "complete",
             "$ref": "#/components/schemas/ModelEndpoints"
           },
           "model": {
@@ -3496,6 +3542,18 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "A friendly display name for the model config.",
             "type": "string"
           }
+        },
+        "x-konfig-properties": {
+          "provider": {
+            "title": "Model provider",
+            "description": "The company providing the underlying model service.",
+            "default": "openai"
+          },
+          "endpoint": {
+            "title": "Provider endpoint",
+            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
+            "default": "complete"
+          }
         }
       },
       "ModelEndpoints": {
@@ -3545,8 +3603,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "active_subscription": {
-            "title": "Active subscription",
-            "description": "The active subscription of the organization including product information. If None the org has no active subscription.",
             "$ref": "#/components/schemas/ActiveSubscriptionResponse"
           },
           "customer_id": {
@@ -3579,6 +3635,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "items": {
               "$ref": "#/components/schemas/OrganizationUserResponse"
             }
+          }
+        },
+        "x-konfig-properties": {
+          "active_subscription": {
+            "title": "Active subscription",
+            "description": "The active subscription of the organization including product information. If None the org has no active subscription."
           }
         }
       },
@@ -3615,8 +3677,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "status": {
-            "title": "Tool status",
-            "description": "Whether the tool has been set up by the org.",
             "$ref": "#/components/schemas/OrganizationToolStatus"
           },
           "setup_values": {
@@ -3625,9 +3685,17 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "object"
           },
           "spec": {
-            "title": "Tool spec",
-            "description": "The specification of the tool's requirements for setup and execution.",
             "$ref": "#/components/schemas/ToolSpecResponse"
+          }
+        },
+        "x-konfig-properties": {
+          "status": {
+            "title": "Tool status",
+            "description": "Whether the tool has been set up by the org."
+          },
+          "spec": {
+            "title": "Tool spec",
+            "description": "The specification of the tool's requirements for setup and execution."
           }
         }
       },
@@ -3884,8 +3952,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "provider_api_keys": {
-            "title": "Provider API Keys",
-            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop.",
             "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
@@ -3919,6 +3985,12 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "Metadata",
             "description": "Any additional metadata that you would like to log for reference.",
             "type": "object"
+          }
+        },
+        "x-konfig-properties": {
+          "provider_api_keys": {
+            "title": "Provider API Keys",
+            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop."
           }
         }
       },
@@ -3961,15 +4033,9 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
         "type": "object",
         "properties": {
           "provider": {
-            "title": "Model provider",
-            "description": "The company providing the underlying model service.",
-            "default": "openai",
             "$ref": "#/components/schemas/ModelProviders"
           },
           "endpoint": {
-            "title": "Provider endpoint",
-            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
-            "default": "complete",
             "$ref": "#/components/schemas/ModelEndpoints"
           },
           "model": {
@@ -4049,6 +4115,18 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "If specified, the model config will be added to this experiment. Experiments are used for A/B testing and optimizing hyperparameters.",
             "type": "string"
           }
+        },
+        "x-konfig-properties": {
+          "provider": {
+            "title": "Model provider",
+            "description": "The company providing the underlying model service.",
+            "default": "openai"
+          },
+          "endpoint": {
+            "title": "Provider endpoint",
+            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
+            "default": "complete"
+          }
         }
       },
       "ProjectModelConfigResponse": {
@@ -4065,15 +4143,9 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
         "type": "object",
         "properties": {
           "provider": {
-            "title": "Model provider",
-            "description": "The company providing the underlying model service.",
-            "default": "openai",
             "$ref": "#/components/schemas/ModelProviders"
           },
           "endpoint": {
-            "title": "Provider endpoint",
-            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
-            "default": "complete",
             "$ref": "#/components/schemas/ModelEndpoints"
           },
           "model": {
@@ -4185,6 +4257,18 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "description": "The ID of the experiment the model config has been registered to. Only populated when registering a model config to an experiment.",
             "type": "string"
           }
+        },
+        "x-konfig-properties": {
+          "provider": {
+            "title": "Model provider",
+            "description": "The company providing the underlying model service.",
+            "default": "openai"
+          },
+          "endpoint": {
+            "title": "Provider endpoint",
+            "description": "Which of the providers model endpoints to use. For example Complete or Edit.",
+            "default": "complete"
+          }
         }
       },
       "ProjectResponse": {
@@ -4218,13 +4302,9 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "active_experiment": {
-            "title": "Active experiment",
-            "description": "Experiment that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.",
             "$ref": "#/components/schemas/ExperimentResponse"
           },
           "active_model_config": {
-            "title": "Active model configuration",
-            "description": "Model configuration that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set.",
             "$ref": "#/components/schemas/ProjectModelConfigResponse"
           },
           "users": {
@@ -4241,8 +4321,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "integer"
           },
           "feedback_types": {
-            "title": "Feedback types",
-            "description": "The feedback types that have been defined in the project.",
             "$ref": "#/components/schemas/FeedbackTypes"
           },
           "team_id": {
@@ -4259,6 +4337,20 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "title": "Updated At",
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "x-konfig-properties": {
+          "active_experiment": {
+            "title": "Active experiment",
+            "description": "Experiment that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set."
+          },
+          "active_model_config": {
+            "title": "Active model configuration",
+            "description": "Model configuration that has been set as the project's active deployment. At most one of active_experiment and active_model_config can be set."
+          },
+          "feedback_types": {
+            "title": "Feedback types",
+            "description": "The feedback types that have been defined in the project."
           }
         }
       },
@@ -4345,8 +4437,6 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "string"
           },
           "provider_api_keys": {
-            "title": "Provider API Keys",
-            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop.",
             "$ref": "#/components/schemas/ProviderApiKeys"
           },
           "num_samples": {
@@ -4382,9 +4472,17 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "object"
           },
           "model_config": {
-            "title": "The configuration of your model",
-            "description": "The model configuration provided will be recorded and used to create a generation.",
             "$ref": "#/components/schemas/ModelConfigRequest"
+          }
+        },
+        "x-konfig-properties": {
+          "provider_api_keys": {
+            "title": "Provider API Keys",
+            "description": "API keys required by each provider to make API calls. These API keys are not stored by Humanloop."
+          },
+          "model_config": {
+            "title": "The configuration of your model",
+            "description": "The model configuration provided will be recorded and used to create a generation."
           }
         }
       },
@@ -4770,9 +4868,13 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
             "type": "object"
           },
           "status": {
-            "title": "Tool status",
-            "description": "Whether the tool has been set up by the org.",
             "$ref": "#/components/schemas/OrganizationToolStatus"
+          }
+        },
+        "x-konfig-properties": {
+          "status": {
+            "title": "Tool status",
+            "description": "Whether the tool has been set up by the org."
           }
         }
       },
@@ -4823,9 +4925,13 @@ exports[`fix empty object as example ignores object-with-no-properties test 1`] 
         "type": "object",
         "properties": {
           "role": {
-            "title": "User role",
-            "description": "Role assigned to the user.",
             "$ref": "#/components/schemas/UserOrganizationRole"
+          }
+        },
+        "x-konfig-properties": {
+          "role": {
+            "title": "User role",
+            "description": "Role assigned to the user."
           }
         }
       },
