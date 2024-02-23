@@ -166,7 +166,7 @@ rl.question(
       const testFiles = fs
         .readdirSync("tests")
         .filter((file) => file.endsWith(".test.ts"));
-      let ports = [];
+      let ports = [5000];
 
       // Extract ports
       testFiles.forEach((file) => {
