@@ -59,7 +59,7 @@ module {{moduleName}}
 
     def_delegators :@config, :host, :host=
 {{#apiKeyMethods}}
-    def_delegators :@config, :{{keyParamNameSnakeCase}}, :{{keyParamNameSnakeCase}}= # api key
+    def_delegators :@config, :{{> securityKeyName}}, :{{> securityKeyName}}= # api key
 {{/apiKeyMethods}}
 {{#clientState}}
     def_delegators :@config, :{{.}}, :{{.}}= # client state from konfig.yaml

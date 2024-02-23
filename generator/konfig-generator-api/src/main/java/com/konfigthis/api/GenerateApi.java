@@ -361,6 +361,9 @@ public interface GenerateApi {
             String npmName = additionalProperties.getNpmName();
             // set properties to true for all customers except for the ones in the above list
             if (existingCustomers.stream().noneMatch(npmName::contains)) {
+                // Instantiate a Set of Strings for existing customers
+                // if none of existing customers are a substring of the npmName, then set the
+                // option to true
                 putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
                 putIfPresent(map, "removeDefaultConfigurationParameters", true);
             }
@@ -372,6 +375,14 @@ public interface GenerateApi {
         if (generator.equals("php") && existingCustomers.stream().noneMatch(packageName::contains)) {
             putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
         }
+        if (additionalProperties.getGemName() != null) {
+            String gemName = additionalProperties.getGemName();
+            if (existingCustomers.stream().noneMatch(gemName::contains)) {
+                putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
+                putIfPresent(map, "removeDefaultConfigurationParameters", true);
+            }
+        }
+
         if (additionalProperties.getObjectPropertyNamingConvention() != null) {
             putIfPresent(map, "useCamelCase",
                     additionalProperties.getObjectPropertyNamingConvention().equals("camelCase"));
