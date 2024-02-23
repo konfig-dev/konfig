@@ -57,6 +57,7 @@ module {{moduleName}}
       value == SENTINEL
     end
 
+    def_delegators :@config, :host, :host=
 {{#apiKeyMethods}}
     def_delegators :@config, :{{keyParamNameSnakeCase}}, :{{keyParamNameSnakeCase}}= # api key
 {{/apiKeyMethods}}

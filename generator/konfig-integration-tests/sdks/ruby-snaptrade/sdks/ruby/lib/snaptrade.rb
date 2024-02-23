@@ -168,6 +168,7 @@ module SnapTrade
       value == SENTINEL
     end
 
+    def_delegators :@config, :host, :host=
     def_delegators :@config, :client_id, :client_id= # api key
     def_delegators :@config, :signature, :signature= # api key
     def_delegators :@config, :timestamp, :timestamp= # api key

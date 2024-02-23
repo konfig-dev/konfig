@@ -25,9 +25,9 @@ describe 'GettingStarted' do
   describe 'optional non body parameters should be passed' do
     it 'should pass' do
       configuration = SnapTrade::Configuration.new
-      configuration.client_id = ENV["SNAPTRADE_CLIENT_ID"]
-      configuration.consumer_key = ENV["SNAPTRADE_CONSUMER_KEY"]
-      configuration.host = "http://127.0.0.1:4010"
+      configuration.client_id = "SNAPTRADE_CLIENT_ID"
+      configuration.consumer_key = "SNAPTRADE_CONSUMER_KEY"
+      configuration.host = "http://127.0.0.1:4072"
       snaptrade = SnapTrade::Client.new(configuration)
 
       data, status_code, headers, response = snaptrade.account_information.get_user_account_orders_with_http_info(
@@ -46,8 +46,9 @@ describe 'GettingStarted' do
   describe 'getting started flow static pattern' do
     it 'should work' do
       # 1) Setup
-      SnapTrade.client_id = ENV["SNAPTRADE_CLIENT_ID"]
-      SnapTrade.consumer_key = ENV["SNAPTRADE_CONSUMER_KEY"]
+      SnapTrade.client_id = "SNAPTRADE_CLIENT_ID"
+      SnapTrade.consumer_key = "SNAPTRADE_CONSUMER_KEY"
+      SnapTrade.host = "http://127.0.0.1:4072"
 
       # 2) Check API Status
       response = SnapTrade::APIStatus.check()
@@ -77,8 +78,9 @@ describe 'GettingStarted' do
     it 'should work' do
       # 1) Setup
       configuration = SnapTrade::Configuration.new
-      configuration.client_id = ENV["SNAPTRADE_CLIENT_ID"]
-      configuration.consumer_key = ENV["SNAPTRADE_CONSUMER_KEY"]
+      configuration.client_id = "SNAPTRADE_CLIENT_ID"
+      configuration.consumer_key = "SNAPTRADE_CONSUMER_KEY"
+      configuration.host = "http://127.0.0.1:4072"
       snaptrade = SnapTrade::Client.new(configuration)
 
       # 2) Check that the client is able to make a request to the API server.
@@ -108,7 +110,7 @@ describe 'GettingStarted' do
   describe 'setting consumer key to nil' do
     it 'should fail with ArgumentError' do
       expect { SnapTrade.consumer_key = nil }.to raise_error(ArgumentError)
-      SnapTrade.consumer_key = ENV["SNAPTRADE_CONSUMER_KEY"]
+      SnapTrade.consumer_key = "SNAPTRADE_CONSUMER_KEY"
     end
   end
 end
