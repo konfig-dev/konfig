@@ -176,8 +176,7 @@ module SnapTrade
 
     # Customize default settings for the SDK using block.
     #   SnapTrade.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
+    #     config.host = "http://example.com"
     #   end
     # If no block given, return the default Configuration object.
     def configure

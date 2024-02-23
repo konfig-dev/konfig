@@ -179,7 +179,6 @@ module SnapTrade
 
     def build_connection
       Faraday.new(url: config.base_url, ssl: ssl_options) do |conn|
-        basic_auth(conn)
         config.configure_middleware(conn)
         yield(conn) if block_given?
         conn.adapter(Faraday.default_adapter)
@@ -194,16 +193,6 @@ module SnapTrade
         client_cert: config.ssl_client_cert,
         client_key: config.ssl_client_key
       }
-    end
-
-    def basic_auth(conn)
-      if config.username && config.password
-        if Gem::Version.new(Faraday::VERSION) >= Gem::Version.new('2.0')
-          conn.request(:authorization, :basic, config.username, config.password)
-        else
-          conn.request(:basic_auth, config.username, config.password)
-        end
-      end
     end
 
     # Check if the given MIME is a JSON MIME.

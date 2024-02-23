@@ -69,19 +69,6 @@ module SnapTrade
     #   config.api_key_prefix['api_key'] = 'Token'
     attr_accessor :api_key_prefix
 
-    # Defines the username used with HTTP basic authentication.
-    #
-    # @return [String]
-    attr_accessor :username
-
-    # Defines the password used with HTTP basic authentication.
-    #
-    # @return [String]
-    attr_accessor :password
-
-    # Defines the access token (Bearer) used with OAuth2.
-    attr_accessor :access_token
-
     # Set this to enable/disable debugging. When enabled (set to true), HTTP request/response
     # details will be logged with `logger.debug` (see the `logger` attribute).
     # Default to false.
@@ -240,11 +227,6 @@ module SnapTrade
       else
         key
       end
-    end
-
-    # Gets Basic Auth token string
-    def basic_auth_token
-      'Basic ' + ["#{username}:#{password}"].pack('m').delete("\r\n")
     end
 
     # Returns Auth Settings hash for api client.
