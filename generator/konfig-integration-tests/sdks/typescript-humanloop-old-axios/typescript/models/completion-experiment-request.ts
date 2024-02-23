@@ -97,7 +97,7 @@ export interface CompletionExperimentRequest {
      */
     'source_datapoint_id'?: string;
     /**
-     * 
+     * API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
      * @type {ProviderApiKeys}
      * @memberof CompletionExperimentRequest
      */

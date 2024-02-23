@@ -371,6 +371,8 @@ const createQuotingResponse = await bellhop.locations.createQuoting({
 
 ##### property_type: [`PropertyType`](./models/property-type.ts)<a id="property_type-propertytypemodelsproperty-typets"></a>
 
+Type of the property.
+
 ##### line_2: `string`<a id="line_2-string"></a>
 
 ##### country: `string`<a id="country-string"></a>
@@ -833,6 +835,8 @@ const createResponse = await bellhop.quotes.create({
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### customer: [`CreateCustomerAccountRequest`](./models/create-customer-account-request.ts)<a id="customer-createcustomeraccountrequestmodelscreate-customer-account-requestts"></a>
+
+Customer information
 
 ##### start_datetime: `string`<a id="start_datetime-string"></a>
 

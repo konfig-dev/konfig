@@ -58,7 +58,7 @@ export interface ExperimentResponse {
      */
     'name': string;
     /**
-     * An enumeration.
+     * Status of experiment.
      * @type {ExperimentStatus}
      * @memberof ExperimentResponse
      */
@@ -70,7 +70,7 @@ export interface ExperimentResponse {
      */
     'configs'?: Array<ExperimentConfigResponse>;
     /**
-     * 
+     * Metric used as the experiment\'s objective.
      * @type {BaseMetricResponse}
      * @memberof ExperimentResponse
      */

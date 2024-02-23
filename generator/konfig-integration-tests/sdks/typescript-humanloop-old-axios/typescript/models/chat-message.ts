@@ -58,13 +58,13 @@ export interface ChatMessage {
      */
     'tool_call_id'?: string | null;
     /**
-     * An enumeration.
+     * Role of the message author.
      * @type {ChatRole}
      * @memberof ChatMessage
      */
     'role': ChatRole;
     /**
-     * 
+     * NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.
      * @type {FunctionTool}
      * @memberof ChatMessage
      */

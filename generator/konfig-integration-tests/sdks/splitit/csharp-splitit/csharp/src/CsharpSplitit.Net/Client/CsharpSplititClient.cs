@@ -62,26 +62,6 @@ namespace CsharpSplitit.Net.Client
         }
 
         /// <summary>
-        /// Setter for Username
-        /// </summary>
-        public CsharpSplititClient SetUsername(string username)
-        {
-            Configuration.Username = username;
-            init();
-            return this;
-        }
-
-        /// <summary>
-        /// Setter for Password
-        /// </summary>
-        public CsharpSplititClient SetPassword(string password)
-        {
-            Configuration.Password = password;
-            init();
-            return this;
-        }
-
-        /// <summary>
         /// Setter for Access Token
         /// </summary>
         public CsharpSplititClient SetAccessToken(string accessToken)

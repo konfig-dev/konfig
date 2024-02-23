@@ -37,7 +37,7 @@ import { EvaluationStatus } from './evaluation-status';
  */
 export interface UpdateEvaluationStatusRequest {
     /**
-     * Status of an evaluation.
+     * The new status of the evaluation.
      * @type {EvaluationStatus}
      * @memberof UpdateEvaluationStatusRequest
      */

@@ -80,7 +80,7 @@ export interface AgentConfigResponse {
      */
     'tools'?: Array<ToolConfigRequest>;
     /**
-     * 
+     * Model config associated with the agent.
      * @type {ModelConfigRequest}
      * @memberof AgentConfigResponse
      */

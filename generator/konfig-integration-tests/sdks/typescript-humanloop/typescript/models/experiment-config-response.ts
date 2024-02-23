@@ -73,7 +73,7 @@ export interface ExperimentConfigResponse {
      */
     'display_name': string;
     /**
-     * 
+     * Definition of the config used in the experiment.
      * @type {ConfigResponse}
      * @memberof ExperimentConfigResponse
      */

@@ -73,7 +73,7 @@ export interface ModelConfigResponse {
      */
     'name'?: string;
     /**
-     * Supported model providers.
+     * The company providing the underlying model service.
      * @type {ModelProviders}
      * @memberof ModelConfigResponse
      */
@@ -127,7 +127,7 @@ export interface ModelConfigResponse {
      */
     'seed'?: number;
     /**
-     * 
+     * The format of the response. Only type json_object is currently supported for chat.
      * @type {ResponseFormat}
      * @memberof ModelConfigResponse
      */
@@ -158,7 +158,7 @@ export interface ModelConfigResponse {
      */
     'tools'?: Array<ToolResponse>;
     /**
-     * Supported model provider endpoints.
+     * The provider model endpoint used.
      * @type {ModelEndpoints}
      * @memberof ModelConfigResponse
      */

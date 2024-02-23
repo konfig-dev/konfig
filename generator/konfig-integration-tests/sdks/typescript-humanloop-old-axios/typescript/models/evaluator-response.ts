@@ -53,13 +53,13 @@ export interface EvaluatorResponse {
      */
     'name': string;
     /**
-     * Enum representing the possible argument types of an evaluator.
+     * Whether this evaluator is target-free or target-required.
      * @type {EvaluatorArgumentsType}
      * @memberof EvaluatorResponse
      */
     'arguments_type': EvaluatorArgumentsType;
     /**
-     * Enum representing the possible return types of an evaluator.
+     * The type of the return value of the evaluator.
      * @type {EvaluatorReturnTypeEnum}
      * @memberof EvaluatorResponse
      */
@@ -71,13 +71,13 @@ export interface EvaluatorResponse {
      */
     'code'?: string;
     /**
-     * 
+     * The model config defining the LLM evaluator.
      * @type {ModelConfigResponse}
      * @memberof EvaluatorResponse
      */
     'model_config'?: ModelConfigResponse;
     /**
-     * An enumeration.
+     * The type of the evaluator.
      * @type {EvaluatorType}
      * @memberof EvaluatorResponse
      */
@@ -101,7 +101,7 @@ export interface EvaluatorResponse {
      */
     'updated_at': string;
     /**
-     * 
+     * The project where the evaluator logs are stored.
      * @type {ProjectResponse}
      * @memberof EvaluatorResponse
      */

@@ -111,26 +111,6 @@ namespace SnapTrade.Net.Client
         }
 
         /// <summary>
-        /// Setter for Username
-        /// </summary>
-        public Snaptrade SetUsername(string username)
-        {
-            Configuration.Username = username;
-            init();
-            return this;
-        }
-
-        /// <summary>
-        /// Setter for Password
-        /// </summary>
-        public Snaptrade SetPassword(string password)
-        {
-            Configuration.Password = password;
-            init();
-            return this;
-        }
-
-        /// <summary>
         /// Setter for Access Token
         /// </summary>
         public Snaptrade SetAccessToken(string accessToken)

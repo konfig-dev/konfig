@@ -55,7 +55,7 @@ export interface LinkedToolRequest {
      */
     'id': string;
     /**
-     * Source of tool, either defined at the organization level or inline.
+     * The source of the linked tool. For a linked tool it should be `organization`
      * @type {ToolSource}
      * @memberof LinkedToolRequest
      */

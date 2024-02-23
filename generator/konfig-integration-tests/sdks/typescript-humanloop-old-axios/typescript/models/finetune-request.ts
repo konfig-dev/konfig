@@ -50,7 +50,7 @@ export interface FinetuneRequest {
      */
     'dataset_id': string;
     /**
-     * 
+     * Configuration and hyper-parameters for the fine-tuning process
      * @type {FinetuneConfig}
      * @memberof FinetuneRequest
      */
@@ -62,7 +62,7 @@ export interface FinetuneRequest {
      */
     'metadata'?: object;
     /**
-     * 
+     * API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
      * @type {ProviderApiKeys}
      * @memberof FinetuneRequest
      */

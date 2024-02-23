@@ -52,7 +52,7 @@ export interface ModelConfigCompletionRequest {
      */
     'name'?: string;
     /**
-     * Supported model providers.
+     * The company providing the underlying model service.
      * @type {ModelProviders}
      * @memberof ModelConfigCompletionRequest
      */
@@ -112,13 +112,13 @@ export interface ModelConfigCompletionRequest {
      */
     'seed'?: number;
     /**
-     * 
+     * The format of the response. Only type json_object is currently supported for chat.
      * @type {ResponseFormat}
      * @memberof ModelConfigCompletionRequest
      */
     'response_format'?: ResponseFormat;
     /**
-     * Supported model provider endpoints.
+     * The provider model endpoint used.
      * @type {ModelEndpoints}
      * @memberof ModelConfigCompletionRequest
      */

@@ -86,7 +86,7 @@ export interface FinetuneResponse {
      */
     'data_summary'?: object;
     /**
-     * 
+     * Configuration details for the fine-tuned model.
      * @type {FinetuneConfig}
      * @memberof FinetuneResponse
      */

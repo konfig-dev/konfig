@@ -74,7 +74,7 @@ export interface CompletionResponse {
      */
     'data': Array<DataResponse>;
     /**
-     * 
+     * Counts of the number of tokens used and related stats.
      * @type {Usage}
      * @memberof CompletionResponse
      */

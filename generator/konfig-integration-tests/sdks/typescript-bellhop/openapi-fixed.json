@@ -457,8 +457,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "title": "Body",
-                "description": "Request body for creating a service group",
                 "$ref": "#/components/schemas/CreateQuoteServiceGroupRequest"
               },
               "examples": {
@@ -1564,22 +1562,7 @@
         "description": "Create Quote Request",
         "properties": {
           "customer": {
-            "description": "Customer information",
-            "$ref": "#/components/schemas/CreateCustomerAccountRequest",
-            "example": {
-              "email": "heythereitsjon@gooogle.com",
-              "first_name": "John",
-              "last_name": "Doe",
-              "phone": "5555555555"
-            },
-            "x-examples": [
-              {
-                "email": "heythereitsjon@gooogle.com",
-                "first_name": "John",
-                "last_name": "Doe",
-                "phone": "5555555555"
-              }
-            ]
+            "$ref": "#/components/schemas/CreateCustomerAccountRequest"
           },
           "start_datetime": {
             "title": "Start Datetime",
@@ -1654,7 +1637,26 @@
           "start_datetime",
           "service_code",
           "locations"
-        ]
+        ],
+        "x-konfig-properties": {
+          "customer": {
+            "description": "Customer information",
+            "example": {
+              "email": "heythereitsjon@gooogle.com",
+              "first_name": "John",
+              "last_name": "Doe",
+              "phone": "5555555555"
+            },
+            "x-examples": [
+              {
+                "email": "heythereitsjon@gooogle.com",
+                "first_name": "John",
+                "last_name": "Doe",
+                "phone": "5555555555"
+              }
+            ]
+          }
+        }
       },
       "CreateQuoteServiceGroupRequest": {
         "title": "CreateQuoteServiceGroupRequest",
@@ -3011,12 +3013,7 @@
             "nullable": true
           },
           "property_type": {
-            "description": "Type of the property.",
-            "$ref": "#/components/schemas/PropertyType",
-            "example": "APARTMENT",
-            "x-examples": [
-              "APARTMENT"
-            ]
+            "$ref": "#/components/schemas/PropertyType"
           },
           "rooms": {
             "title": "Rooms",
@@ -3072,7 +3069,16 @@
           "state",
           "postal_code",
           "property_type"
-        ]
+        ],
+        "x-konfig-properties": {
+          "property_type": {
+            "description": "Type of the property.",
+            "example": "APARTMENT",
+            "x-examples": [
+              "APARTMENT"
+            ]
+          }
+        }
       },
       "ReplaceServiceGroupRequest": {
         "title": "ReplaceServiceGroupRequest",
@@ -3429,12 +3435,7 @@
         "description": "ServiceWorkers",
         "properties": {
           "service_code": {
-            "description": "Service Type",
-            "$ref": "#/components/schemas/ServiceType",
-            "example": "TRANSIT",
-            "x-examples": [
-              "TRANSIT"
-            ]
+            "$ref": "#/components/schemas/ServiceType"
           },
           "workers": {
             "title": "Workers",
@@ -3451,7 +3452,16 @@
         "required": [
           "service_code",
           "workers"
-        ]
+        ],
+        "x-konfig-properties": {
+          "service_code": {
+            "description": "Service Type",
+            "example": "TRANSIT",
+            "x-examples": [
+              "TRANSIT"
+            ]
+          }
+        }
       },
       "Totals": {
         "title": "Totals",
@@ -3512,7 +3522,6 @@
             "title": "Service Workers",
             "description": "Mapping of service code and number of workers. Only the included service codes will be retained on the service group. Any excluded services will be removed.",
             "items": {
-              "name": "Service Workers Object",
               "$ref": "#/components/schemas/ServiceWorkers"
             },
             "type": "array",

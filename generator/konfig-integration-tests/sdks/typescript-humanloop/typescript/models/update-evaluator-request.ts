@@ -51,13 +51,13 @@ export interface UpdateEvaluatorRequest {
      */
     'name'?: string;
     /**
-     * Enum representing the possible argument types of an evaluator.
+     * Whether this evaluator is target-free or target-required.
      * @type {EvaluatorArgumentsType}
      * @memberof UpdateEvaluatorRequest
      */
     'arguments_type'?: EvaluatorArgumentsType;
     /**
-     * Enum representing the possible return types of an evaluator.
+     * The type of the return value of the evaluator.
      * @type {EvaluatorReturnTypeEnum}
      * @memberof UpdateEvaluatorRequest
      */
@@ -69,7 +69,7 @@ export interface UpdateEvaluatorRequest {
      */
     'code'?: string;
     /**
-     * 
+     * The model configuration used to generate.
      * @type {ModelConfigCompletionRequest}
      * @memberof UpdateEvaluatorRequest
      */

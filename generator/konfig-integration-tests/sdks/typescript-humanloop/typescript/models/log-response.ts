@@ -178,13 +178,13 @@ export interface LogResponse {
      */
     'duration'?: number;
     /**
-     * 
+     * The message returned by the provider.
      * @type {ChatMessage}
      * @memberof LogResponse
      */
     'output_message'?: ChatMessage;
     /**
-     * 
+     * The config used for this datapoint.
      * @type {ProjectConfigResponse}
      * @memberof LogResponse
      */

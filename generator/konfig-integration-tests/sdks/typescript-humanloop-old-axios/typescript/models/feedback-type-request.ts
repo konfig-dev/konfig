@@ -50,7 +50,7 @@ export interface FeedbackTypeRequest {
      */
     'values'?: Array<FeedbackLabelRequest>;
     /**
-     * An enumeration.
+     * The data type associated to this feedback type; whether it is a \'text\'/\'select\'/\'multi_select\'. This is optional when updating the default feedback types (i.e. when `type` is \'rating\', \'action\' or \'issue\').
      * @type {FeedbackClass}
      * @memberof FeedbackTypeRequest
      */

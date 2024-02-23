@@ -43,7 +43,7 @@ export interface CategoricalFeedbackLabel {
      */
     'value': string;
     /**
-     * How a label should be treated in calculating model config performance.  Used by a project\'s PAPV metric.
+     * Whether the feedback sentiment is positive or negative.
      * @type {LabelSentiment}
      * @memberof CategoricalFeedbackLabel
      */

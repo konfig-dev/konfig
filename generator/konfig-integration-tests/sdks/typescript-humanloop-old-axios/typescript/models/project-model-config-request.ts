@@ -54,7 +54,7 @@ export interface ProjectModelConfigRequest {
      */
     'name'?: string;
     /**
-     * Supported model providers.
+     * The company providing the underlying model service.
      * @type {ModelProviders}
      * @memberof ProjectModelConfigRequest
      */
@@ -114,7 +114,7 @@ export interface ProjectModelConfigRequest {
      */
     'seed'?: number;
     /**
-     * 
+     * The format of the response. Only type json_object is currently supported for chat.
      * @type {ResponseFormat}
      * @memberof ProjectModelConfigRequest
      */
@@ -150,7 +150,7 @@ export interface ProjectModelConfigRequest {
      */
     'chat_template'?: Array<ChatMessage>;
     /**
-     * Supported model provider endpoints.
+     * Which of the providers model endpoints to use. For example Complete or Edit.
      * @type {ModelEndpoints}
      * @memberof ProjectModelConfigRequest
      */

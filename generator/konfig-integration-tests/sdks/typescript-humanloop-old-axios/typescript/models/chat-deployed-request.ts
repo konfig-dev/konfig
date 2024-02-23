@@ -107,7 +107,7 @@ export interface ChatDeployedRequest {
      */
     'messages': Array<ChatMessage>;
     /**
-     * 
+     * API keys required by each provider to make API calls. The API keys provided here are not stored by Humanloop. If not specified here, Humanloop will fall back to the key saved to your organization.
      * @type {ProviderApiKeys}
      * @memberof ChatDeployedRequest
      */
@@ -150,7 +150,7 @@ export interface ChatDeployedRequest {
      */
     'seed'?: number;
     /**
-     * 
+     * The format of the response. Only type json_object is currently supported for chat.
      * @type {ResponseFormat}
      * @memberof ChatDeployedRequest
      */

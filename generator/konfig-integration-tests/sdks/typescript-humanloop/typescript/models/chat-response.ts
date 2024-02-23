@@ -75,7 +75,7 @@ export interface ChatResponse {
      */
     'data': Array<ChatDataResponse>;
     /**
-     * 
+     * Counts of the number of tokens used and related stats.
      * @type {Usage}
      * @memberof ChatResponse
      */

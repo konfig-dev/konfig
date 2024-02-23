@@ -54,13 +54,13 @@ export interface ProjectResponse {
      */
     'name': string;
     /**
-     * 
+     * Experiment that has been set as the project\'s active deployment. At most one of active_experiment and active_model_config can be set.
      * @type {ExperimentResponse}
      * @memberof ProjectResponse
      */
     'active_experiment'?: ExperimentResponse;
     /**
-     * 
+     * Config that has been set as the project\'s active deployment. At most one of active_experiment and active_model_config can be set.
      * @type {ProjectConfigResponse}
      * @memberof ProjectResponse
      */

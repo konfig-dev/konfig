@@ -89,18 +89,6 @@ namespace CsharpNullableRefUsingAllOfSchema.Net.Client
         string UserAgent { get; }
 
         /// <summary>
-        /// Gets the username.
-        /// </summary>
-        /// <value>Username.</value>
-        string Username { get; }
-
-        /// <summary>
-        /// Gets the password.
-        /// </summary>
-        /// <value>Password.</value>
-        string Password { get; }
-
-        /// <summary>
         /// Gets the verifySsl flag.
         /// </summary>
         /// <value>VerifySsl.</value>

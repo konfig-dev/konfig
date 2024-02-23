@@ -20,7 +20,7 @@ import { LocationRequest } from './location-request';
  */
 export interface CreateQuoteRequest {
     /**
-     * 
+     * Customer information
      * @type {CreateCustomerAccountRequest}
      * @memberof CreateQuoteRequest
      */

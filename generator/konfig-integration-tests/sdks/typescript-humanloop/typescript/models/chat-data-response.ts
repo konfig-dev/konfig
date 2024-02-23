@@ -94,7 +94,7 @@ export interface ChatDataResponse {
      */
     'messages'?: Array<ChatMessage>;
     /**
-     * 
+     * JSON definition of the tool to call and the corresponding argument values. Will be populated when finish_reason=\'tool_call\'.
      * @type {FunctionTool}
      * @memberof ChatDataResponse
      */
@@ -106,7 +106,7 @@ export interface ChatDataResponse {
      */
     'tool_calls'?: Array<ToolCall>;
     /**
-     * 
+     * The message returned by the provider.
      * @type {ChatMessage}
      * @memberof ChatDataResponse
      */

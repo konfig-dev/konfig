@@ -109,7 +109,7 @@ export const setOAuthToObject = async function (object: any, name: string, scope
     const authenticate = async () => {
         if (configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
             const token = await wrapAxiosRequest(async () => {
-                const url = configuration.oauthTokenUrl ?? ""
+                const url = configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token"
                 const oauthResponse = await axios.request({
                     url,
                     method: "POST",
@@ -120,8 +120,9 @@ export const setOAuthToObject = async function (object: any, name: string, scope
                 });
                 const json = await oauthResponse.data;
 
-                // return the value of any property with the substring "token" in its name
-                const token = Object.keys(json).reduce((acc, key) => {
+                // we expect the token value to be in the property "access_token". if that property does not exist
+                // on the response, then return the value of any property with the substring "token" in its name
+                const token = json.access_token ?? Object.keys(json).reduce((acc, key) => {
                     if (key.toLowerCase().includes("token")) {
                         return json[key];
                     }

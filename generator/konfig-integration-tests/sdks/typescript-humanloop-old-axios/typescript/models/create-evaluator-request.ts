@@ -52,13 +52,13 @@ export interface CreateEvaluatorRequest {
      */
     'name': string;
     /**
-     * Enum representing the possible argument types of an evaluator.
+     * Whether this evaluator is target-free or target-required.
      * @type {EvaluatorArgumentsType}
      * @memberof CreateEvaluatorRequest
      */
     'arguments_type': EvaluatorArgumentsType;
     /**
-     * Enum representing the possible return types of an evaluator.
+     * The type of the return value of the evaluator.
      * @type {EvaluatorReturnTypeEnum}
      * @memberof CreateEvaluatorRequest
      */
@@ -70,13 +70,13 @@ export interface CreateEvaluatorRequest {
      */
     'code'?: string;
     /**
-     * 
+     * The model configuration used to generate.
      * @type {ModelConfigCompletionRequest}
      * @memberof CreateEvaluatorRequest
      */
     'model_config'?: ModelConfigCompletionRequest;
     /**
-     * An enumeration.
+     * The type of the evaluator.
      * @type {EvaluatorType}
      * @memberof CreateEvaluatorRequest
      */

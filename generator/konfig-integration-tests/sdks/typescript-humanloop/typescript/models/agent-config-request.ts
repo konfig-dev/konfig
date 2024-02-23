@@ -68,7 +68,7 @@ export interface AgentConfigRequest {
      */
     'tools'?: Array<ToolConfigRequest>;
     /**
-     * 
+     * Model config to associate with the agent.
      * @type {ModelConfigRequest}
      * @memberof AgentConfigRequest
      */

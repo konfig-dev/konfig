@@ -1166,9 +1166,6 @@
             "in": "query",
             "required": false,
             "schema": {
-              "title": "Embedding Model",
-              "description": "Embedding model that will be used to embed file chunks.",
-              "default": "OPENAI",
               "$ref": "#/components/schemas/TextEmbeddingGenerators"
             }
           },
@@ -2927,18 +2924,12 @@
         "title": "EmbeddingsAndChunksQueryInput",
         "properties": {
           "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0
-            },
             "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "default": "updated_at",
             "$ref": "#/components/schemas/EmbeddingsAndChunksOrderByColumns"
           },
           "order_dir": {
-            "default": "asc",
             "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
@@ -2953,7 +2944,21 @@
         "type": "object",
         "required": [
           "filters"
-        ]
+        ],
+        "x-konfig-properties": {
+          "pagination": {
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "order_by": {
+            "default": "updated_at"
+          },
+          "order_dir": {
+            "default": "asc"
+          }
+        }
       },
       "EmbeddingsAndChunksResponse": {
         "title": "EmbeddingsAndChunksResponse",
@@ -3494,7 +3499,6 @@
             "nullable": true
           },
           "embedding_model": {
-            "default": "OPENAI",
             "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
@@ -3513,7 +3517,12 @@
         "type": "object",
         "required": [
           "filters"
-        ]
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
       },
       "HTTPValidationError": {
         "title": "HTTPValidationError",
@@ -3559,17 +3568,21 @@
             "nullable": true
           },
           "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0
-            },
             "$ref": "#/components/schemas/Pagination"
           }
         },
         "type": "object",
         "required": [
           "data_source_id"
-        ]
+        ],
+        "x-konfig-properties": {
+          "pagination": {
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          }
+        }
       },
       "ListDataSourceItemsResponse": {
         "title": "ListDataSourceItemsResponse",
@@ -3913,27 +3926,37 @@
         "title": "OrganizationUserDataSourceQueryInput",
         "properties": {
           "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0
-            },
             "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "default": "updated_at",
             "$ref": "#/components/schemas/OrganizationUserDataSourceOrderByColumns"
           },
           "order_dir": {
-            "default": "asc",
             "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
-            "default": {
-            },
             "$ref": "#/components/schemas/OrganizationUserDataSourceFilters"
           }
         },
-        "type": "object"
+        "type": "object",
+        "x-konfig-properties": {
+          "pagination": {
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "order_by": {
+            "default": "updated_at"
+          },
+          "order_dir": {
+            "default": "asc"
+          },
+          "filters": {
+            "default": {
+            }
+          }
+        }
       },
       "OrganizationUserDataSourceResponse": {
         "title": "OrganizationUserDataSourceResponse",
@@ -4156,23 +4179,15 @@
         "title": "OrganizationUserFilesToSyncQueryInput",
         "properties": {
           "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0
-            },
             "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "default": "updated_at",
             "$ref": "#/components/schemas/OrganizationUserFilesToSyncOrderByTypes"
           },
           "order_dir": {
-            "default": "asc",
             "$ref": "#/components/schemas/OrderDir"
           },
           "filters": {
-            "default": {
-            },
             "$ref": "#/components/schemas/OrganizationUserFilesToSyncFilters"
           },
           "include_raw_file": {
@@ -4191,7 +4206,25 @@
             "nullable": true
           }
         },
-        "type": "object"
+        "type": "object",
+        "x-konfig-properties": {
+          "pagination": {
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "order_by": {
+            "default": "updated_at"
+          },
+          "order_dir": {
+            "default": "asc"
+          },
+          "filters": {
+            "default": {
+            }
+          }
+        }
       },
       "OutlookSyncInput": {
         "title": "OutlookSyncInput",
@@ -4230,7 +4263,6 @@
             "nullable": true
           },
           "embedding_model": {
-            "default": "OPENAI",
             "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
@@ -4249,7 +4281,12 @@
         "type": "object",
         "required": [
           "filters"
-        ]
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
       },
       "Pagination": {
         "title": "Pagination",
@@ -4313,7 +4350,6 @@
             "nullable": true
           },
           "embedding_model": {
-            "default": "OPENAI",
             "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
@@ -4332,7 +4368,12 @@
         "type": "object",
         "required": [
           "url"
-        ]
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
       },
       "RawTextInput": {
         "title": "RawTextInput",
@@ -4471,7 +4512,6 @@
             "nullable": true
           },
           "embedding_model": {
-            "default": "OPENAI",
             "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
@@ -4495,7 +4535,12 @@
         "type": "object",
         "required": [
           "ids"
-        ]
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
       },
       "S3GetFileInput": {
         "title": "S3GetFileInput",
@@ -4811,7 +4856,6 @@
             "default": false
           },
           "embedding_model": {
-            "default": "OPENAI",
             "$ref": "#/components/schemas/EmbeddingGenerators"
           },
           "generate_sparse_vectors": {
@@ -4838,7 +4882,12 @@
         "type": "object",
         "required": [
           "url"
-        ]
+        ],
+        "x-konfig-properties": {
+          "embedding_model": {
+            "default": "OPENAI"
+          }
+        }
       },
       "UserFile": {
         "title": "UserFile",
@@ -5249,29 +5298,39 @@
         "title": "WebhookQueryInput",
         "properties": {
           "pagination": {
-            "default": {
-              "limit": 10,
-              "offset": 0
-            },
             "$ref": "#/components/schemas/Pagination"
           },
           "order_by": {
-            "default": "updated_at",
             "$ref": "#/components/schemas/WebhookOrderByColumns"
           },
           "order_dir": {
-            "default": "asc",
             "$ref": "#/components/schemas/OrderDir"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/WebhookFilters"
+          }
+        },
+        "type": "object",
+        "x-konfig-properties": {
+          "pagination": {
+            "default": {
+              "limit": 10,
+              "offset": 0
+            }
+          },
+          "order_by": {
+            "default": "updated_at"
+          },
+          "order_dir": {
+            "default": "asc"
           },
           "filters": {
             "default": {
               "ids": [
               ]
-            },
-            "$ref": "#/components/schemas/WebhookFilters"
+            }
           }
-        },
-        "type": "object"
+        }
       },
       "WebhookQueryResponse": {
         "title": "WebhookQueryResponse",

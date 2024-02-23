@@ -229,18 +229,6 @@ namespace CsharpSplitit.Net.Client
         public virtual string UserAgent { get; set; }
 
         /// <summary>
-        /// Gets or sets the username (HTTP basic authentication).
-        /// </summary>
-        /// <value>The username.</value>
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Gets or sets the password (HTTP basic authentication).
-        /// </summary>
-        /// <value>The password.</value>
-        public virtual string Password { get; set; }
-
-        /// <summary>
         /// Gets or sets the verifySsl flag.
         /// </summary>
         /// <value>verifySsl flag.</value>
@@ -613,8 +601,6 @@ namespace CsharpSplitit.Net.Client
                 Timeout = second.Timeout,
                 Proxy = second.Proxy ?? first.Proxy,
                 UserAgent = second.UserAgent ?? first.UserAgent,
-                Username = second.Username ?? first.Username,
-                Password = second.Password ?? first.Password,
                 VerifySsl = second.VerifySsl && first.VerifySsl,
                 AccessToken = second.AccessToken ?? first.AccessToken,
                 OAuthTokenUrl = second.OAuthTokenUrl ?? first.OAuthTokenUrl,

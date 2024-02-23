@@ -55,7 +55,7 @@ export interface QuotingLocationRequest {
      */
     'country'?: string | null;
     /**
-     * 
+     * Type of the property.
      * @type {PropertyType}
      * @memberof QuotingLocationRequest
      */

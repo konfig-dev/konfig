@@ -43,7 +43,7 @@ export interface ImageChatContent {
      */
     'type': ImageChatContentTypeEnum;
     /**
-     * 
+     * The message\'s image content.
      * @type {ImageUrl}
      * @memberof ImageChatContent
      */

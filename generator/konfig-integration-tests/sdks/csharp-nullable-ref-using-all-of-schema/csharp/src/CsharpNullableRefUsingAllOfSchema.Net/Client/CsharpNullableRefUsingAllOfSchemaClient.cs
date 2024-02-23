@@ -63,26 +63,6 @@ namespace CsharpNullableRefUsingAllOfSchema.Net.Client
         }
 
         /// <summary>
-        /// Setter for Username
-        /// </summary>
-        public CsharpNullableRefUsingAllOfSchemaClient SetUsername(string username)
-        {
-            Configuration.Username = username;
-            init();
-            return this;
-        }
-
-        /// <summary>
-        /// Setter for Password
-        /// </summary>
-        public CsharpNullableRefUsingAllOfSchemaClient SetPassword(string password)
-        {
-            Configuration.Password = password;
-            init();
-            return this;
-        }
-
-        /// <summary>
         /// Setter for Access Token
         /// </summary>
         public CsharpNullableRefUsingAllOfSchemaClient SetAccessToken(string accessToken)

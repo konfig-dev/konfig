@@ -165,7 +165,7 @@ export interface LogRequest {
      */
     'duration'?: number;
     /**
-     * 
+     * The message returned by the provider.
      * @type {ChatMessage}
      * @memberof LogRequest
      */
