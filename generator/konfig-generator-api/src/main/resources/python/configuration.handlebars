@@ -267,10 +267,10 @@ conf = {{{packageName}}}.Configuration(
             {{/if}}
 {{/unless}}
 {{#with apiKeyMethods.[0]}}
-{{#unless @root.hasMultipleApiKeys}}{{#if vendorExtensions.x-konfig-globally-required-security}}
-        else:
+{{#unless @root.hasMultipleApiKeys}}{{#if vendorExtensions.x-konfig-globally-required-security}}{{#unless removeDefaultConfigurationParameters}}
+    else:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')
-{{/if}}{{/unless}}
+{{/unless}}{{/if}}{{/unless}}
 {{/with}}
 {{#each apiKeyMethods}}
         if {{> securityKeyName}}:
