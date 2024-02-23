@@ -19,7 +19,7 @@ import { Child } from './child';
  */
 export interface RequestBody {
     /**
-     * 
+     * Description of input Property in RequestBody schema
      * @type {Child}
      * @memberof RequestBody
      */

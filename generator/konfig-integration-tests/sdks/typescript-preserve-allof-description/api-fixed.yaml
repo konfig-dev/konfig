@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseParent'
+                $ref: '#/components/schemas/ResponseChild'
 components:
   securitySchemes:
     ApiKey:
@@ -47,24 +47,20 @@ components:
       type: object
       properties:
         input:
-          $ref: '#/components/schemas/Parent'
+          $ref: '#/components/schemas/Child'
       required:
         - input
       x-konfig-properties:
         input:
           description: Description of input Property in RequestBody schema
-    ResponseParent:
-      $ref: '#/components/schemas/ResponseChild'
     ResponseChild:
       type: object
       properties:
         input:
-          $ref: '#/components/schemas/Parent'
+          $ref: '#/components/schemas/Child'
       x-konfig-properties:
         input:
           description: Description of input Property in ResponseChild schema
-    Parent:
-      $ref: '#/components/schemas/Child'
     Child:
       description: Description of Child
       type: object

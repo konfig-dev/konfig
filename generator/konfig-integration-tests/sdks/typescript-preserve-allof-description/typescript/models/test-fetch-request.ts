@@ -19,7 +19,7 @@ import { RequestBody } from './request-body';
  */
 export interface TestFetchRequest {
     /**
-     * 
+     * Description of input property in RequestBody in Operation
      * @type {RequestBody}
      * @memberof TestFetchRequest
      */

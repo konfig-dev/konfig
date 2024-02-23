@@ -35,7 +35,8 @@ import { fixAnyOfTypeNullUsage } from './fix-any-of-type-null-usage'
 import { fixExamplesUsage } from './fix-examples-usage'
 import { overrideSecuritySchemes } from './override-security-schemes'
 import { fixAdditionalPropertiesFalse } from './fix-additional-properties-false'
-import { flattenSingletonAllOf } from './flatten-singleton-all-of'
+import { fixFlattenSingletonAllOf } from './fix-flatten-singleton-all-of'
+import { fixPassthroughRefs } from './fix-passthrough-refs'
 
 export async function fixOas({
   spec,
@@ -71,7 +72,7 @@ export async function fixOas({
   let numberOfParametersConvertedToSecurityRequirements =
     await overrideSecuritySchemes(spec, konfigYaml?.securitySchemeOverride)
 
-  const numberOfSingletonAllOfUsagesFlattened = await flattenSingletonAllOf({
+  const numberOfSingletonAllOfUsagesFlattened = await fixFlattenSingletonAllOf({
     spec,
   })
 
@@ -272,6 +273,9 @@ export async function fixOas({
     isCLI: true,
   })
 
+  // Fix passthrough refs
+  const numberOfPassthroughRefsFixed = await fixPassthroughRefs({ spec })
+
   // Monkey patch here!
   fixFalseOas3ValidSchemaExample({ spec: spec.spec })
 
@@ -311,6 +315,7 @@ export async function fixOas({
     numberOfExamplesUsageRemoved,
     numberOfAdditionalPropertiesFixed,
     numberOfSingletonAllOfUsagesFlattened,
+    numberOfPassthroughRefsFixed,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {

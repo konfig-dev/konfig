@@ -19,7 +19,7 @@ import { Child } from './child';
  */
 export interface ResponseChild {
     /**
-     * 
+     * Description of input Property in ResponseChild schema
      * @type {Child}
      * @memberof ResponseChild
      */

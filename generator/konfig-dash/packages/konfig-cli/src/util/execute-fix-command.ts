@@ -144,6 +144,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     numberOfExamplesUsageRemoved,
     numberOfAdditionalPropertiesFixed,
     numberOfSingletonAllOfUsagesFlattened,
+    numberOfPassthroughRefsFixed,
   } = await fixOas({
     spec,
     progress,
@@ -195,7 +196,8 @@ Removed ${numberOfEmptyRequestBodiesRemoved} empty request bodies
 Fixed ${numberOfAnyOfTypeNullUsagesReverted} anyOf type null usages
 Fixed ${numberOfOas31UsagesFixed} OAS 3.1.x usages
 Fixed ${numberOfExamplesUsageRemoved} "examples" usage
-Fixed ${numberOfSingletonAllOfUsagesFlattened} length 1 allOf usages`,
+Fixed ${numberOfSingletonAllOfUsagesFlattened} length 1 allOf usages
+Fixed ${numberOfPassthroughRefsFixed} passthrough refs`,
       {
         title: `Fixed ${issuesFixed} Issues`,
         borderColor: issuesFixed === 0 ? 'gray' : 'green',

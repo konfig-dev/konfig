@@ -1,6 +1,6 @@
 import { Spec, recurseObject } from 'konfig-lib'
 
-export async function flattenSingletonAllOf({
+export async function fixFlattenSingletonAllOf({
   spec,
 }: {
   spec: Spec
