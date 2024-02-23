@@ -1,5 +1,11 @@
 # konfig-spectral-ruleset
 
+## 1.5.8
+
+### Patch Changes
+
+- [#581](https://github.com/konfig-dev/konfig/pull/581) [`9c1bbc93`](https://github.com/konfig-dev/konfig/commit/9c1bbc93d819cb9a590dc47ac4fd95951260c01d) Thanks [@dphuang2](https://github.com/dphuang2)! - remove ignoring of no-$ref-siblings rule
+
 ## 1.5.7
 
 ### Patch Changes
