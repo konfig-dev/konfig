@@ -1028,6 +1028,8 @@ public class DefaultGenerator implements Generator {
             bundle.put("podVersionWithoutDashes", ((String) bundle.get("podVersion")).replaceAll("-", ""));
         if (bundle.get("artifactVersion") != null)
             bundle.put("artifactVersionWithoutDashes", ((String) bundle.get("artifactVersion")).replaceAll("-", ""));
+        if (bundle.get("gemVersion") != null)
+            bundle.put("gemVersionWithoutDashes", ((String) bundle.get("gemVersion")).replaceAll("-", ""));
 
         config.postProcessSupportingFileData(bundle);
 
