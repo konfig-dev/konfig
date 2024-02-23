@@ -1082,6 +1082,7 @@ public class DefaultCodegen implements CodegenConfig {
                                 Optional.ofNullable(value.get("default")).ifPresent(property::setDefault);
                                 Optional.ofNullable(value.get("example")).ifPresent(property::setExample);
                                 Optional.ofNullable(value.get("description")).ifPresent((description) -> property.setDescription(description.toString()));
+                                Optional.ofNullable(value.get("title")).ifPresent((title) -> property.setTitle(title.toString()));
                             }
                         });
                     }
