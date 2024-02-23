@@ -172,7 +172,10 @@ conf = {{{packageName}}}.Configuration(
     _default = None
 
     def __init__(self, host=None,
-                 api_key=None, api_key_prefix=None,
+{{#unless removeDefaultConfigurationParameters}}
+                api_key=None,
+{{/unless}}
+                api_key_prefix=None,
 {{#each authMethods}}
     {{#if isBasicBearer}}
                  access_token=None,
@@ -181,10 +184,12 @@ conf = {{{packageName}}}.Configuration(
 {{#if hasOAuthMethods}}
                  client_id=None, client_secret=None, token_url: typing.Optional[str] = None,
 {{/if}}
+{{#unless removeDefaultConfigurationParameters}}
                  username=None, password=None,
+{{/unless}}
                  discard_unknown_keys=False,
 {{#apiKeyMethods}}
-                 {{{keyParamNameSnakeCase}}}=None,
+                {{> securityKeyName}}=None,
 {{/apiKeyMethods}}
 {{#each clientState}}
                  {{{.}}}=None,
@@ -250,6 +255,7 @@ conf = {{{packageName}}}.Configuration(
         """
         # Authentication Settings
         self.api_key = {}
+{{#unless removeDefaultConfigurationParameters}}
         if api_key:
             {{#if hasApiKeyMethods}}
             if (isinstance(api_key, str)):
@@ -259,6 +265,7 @@ conf = {{{packageName}}}.Configuration(
             {{else}}
             self.api_key = api_key
             {{/if}}
+{{/unless}}
 {{#with apiKeyMethods.[0]}}
 {{#unless @root.hasMultipleApiKeys}}{{#if vendorExtensions.x-konfig-globally-required-security}}
         else:
@@ -266,8 +273,8 @@ conf = {{{packageName}}}.Configuration(
 {{/if}}{{/unless}}
 {{/with}}
 {{#each apiKeyMethods}}
-        if {{{keyParamNameSnakeCase}}}:
-            self.api_key['{{{name}}}'] = {{{keyParamNameSnakeCase}}}
+        if {{> securityKeyName}}:
+            self.api_key['{{{name}}}'] = {{> securityKeyName}}
 {{#unless @root.clientState}}{{#unless @root.clientState}}{{#if vendorExtensions.x-konfig-globally-required-security}}
         {{#if @root.hasMultipleApiKeys}}else{{else}}elif api_key is None{{/if}}:
             raise ClientConfigurationError('API Key "{{{name}}}" is required')
@@ -305,12 +312,14 @@ conf = {{{packageName}}}.Configuration(
         """
     {{/if}}
 {{/each}}
+{{#unless removeDefaultConfigurationParameters}}
         self.username = username
         """Username for HTTP basic authentication
         """
         self.password = password
         """Password for HTTP basic authentication
         """
+{{/unless}}
         self.discard_unknown_keys = discard_unknown_keys
         self.disabled_client_side_validations = disabled_client_side_validations
 {{#if hasHttpSignatureMethods}}
@@ -550,6 +559,7 @@ conf = {{{packageName}}}.Configuration(
                 return "%s %s" % (prefix, key)
             else:
                 return key
+{{#unless removeDefaultConfigurationParameters}}
 
     def get_basic_auth_token(self):
         """Gets HTTP basic authentication header (string).
@@ -565,6 +575,7 @@ conf = {{{packageName}}}.Configuration(
         return urllib3.util.make_headers(
             basic_auth=username + ':' + password
         ).get('authorization')
+{{/unless}}
 
     def auth_settings(self):
         """Gets Auth Settings dict for api client.

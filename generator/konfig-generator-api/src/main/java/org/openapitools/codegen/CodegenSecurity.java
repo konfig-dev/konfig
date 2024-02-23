@@ -23,6 +23,7 @@ public class CodegenSecurity {
     public String name;
     public String nameInCamelCase;
     public String nameInPascalCase;
+    public String nameInSnakeCase;
     public String type;
     public String scheme;
     public Boolean isFirst;

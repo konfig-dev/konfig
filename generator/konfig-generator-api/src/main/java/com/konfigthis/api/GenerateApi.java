@@ -353,18 +353,21 @@ public interface GenerateApi {
         putIfPresent(map, "useCamelCase", additionalProperties.getObjectPropertyNamingConvention());
         putIfPresent(map, "useSecurityKeyNameAsPropertyName",
                 additionalProperties.getUseSecurityKeyNameAsPropertyName());
-        // Make this option true by default for all SDKs besides existing customers
+
+        // Sometimes we want to make an SDK improvement but not affect existing customers
+        // If so, we will conditionally set properties based on if the customer appears in the following list
+        List<String> existingCustomers = Arrays.asList("snaptrade", "leap", "splitit", "humanloop", "newscatcher", "leap", "groundx");
         if (additionalProperties.getNpmName() != null) {
             String npmName = additionalProperties.getNpmName();
-            // Instantiate a Set of Strings for existing customers
-            List<String> existingCustomers = Arrays.asList("snaptrade", "leap", "splitit", "humanloop", "newscatcher",
-                    "leap", "groundx");
-            // if none of existing customers are a substring of the npmName, then set the
-            // option to true
+            // set properties to true for all customers except for the ones in the above list
             if (existingCustomers.stream().noneMatch(npmName::contains)) {
                 putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
                 putIfPresent(map, "removeDefaultConfigurationParameters", true);
             }
+        }
+        if (generator.equals("python") && existingCustomers.stream().noneMatch(packageName::contains)) {
+            putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
+            putIfPresent(map, "removeDefaultConfigurationParameters", true);
         }
         if (additionalProperties.getObjectPropertyNamingConvention() != null) {
             putIfPresent(map, "useCamelCase",
