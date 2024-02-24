@@ -107,7 +107,7 @@ conf = python_union_string_discriminator.Configuration(
     def __init__(self, host=None,
                  api_key_prefix=None,
                  discard_unknown_keys=False,
-                  api_key=None,
+                                  api_key=None,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,

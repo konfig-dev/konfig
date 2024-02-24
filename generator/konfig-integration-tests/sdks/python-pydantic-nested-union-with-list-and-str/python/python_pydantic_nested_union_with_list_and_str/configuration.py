@@ -107,7 +107,7 @@ conf = python_pydantic_nested_union_with_list_and_str.Configuration(
     def __init__(self, host=None,
                  api_key_prefix=None,
                  discard_unknown_keys=False,
-                  api_key_auth=None,
+                                  api_key_auth=None,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
                  server_operation_index=None, server_operation_variables=None,
