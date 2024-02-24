@@ -63,6 +63,42 @@ gem '{{{gemName}}}', '~> {{{gemVersion}}}'
 {{> api_doc_example_execute_call}}
 ```
 
+{{#hasParams}}
+{{#allParamsWithRequestBodyProperties}}
+{{#-first}}
+#### ⚙️ Parameters
+
+{{/-first}}
+{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### {{> README_parameter_name}}: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{^isFromBodyParam}}
+##### {{> README_parameter_name}}: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/isFromBodyParam}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{/allParamsWithRequestBodyProperties}}
+{{#bodyParam}}
+{{^operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+##### requestBody: {{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{#operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{#isArray}}
+#### ⚙️ Request Body
+
+{{> api_doc_param_data_type}}
+
+{{> README_parameter_description}}
+{{/isArray}}
+{{/operationVendorExtensions.x-konfig-operation-can-have-single-parameter}}
+{{/bodyParam}}
+{{/hasParams}}
 ---
 
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
