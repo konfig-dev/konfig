@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ruby-snaptrade 1`] = `
-"<div align=\\"center\\">
+"<div align="center">
 
 [![Visit SnapTrade](./header.png)](https://snaptrade.com)
 
@@ -33,23 +33,1437 @@ require 'snaptrade'
 
 SnapTrade.client_id = "YOUR_CLIENT_ID"
 SnapTrade.consumer_key = "YOUR_CONSUMER_KEY"
-
 user_id = "John.doe@snaptrade.com"
 user_secret = "USERSECRET123"
 brokerage_authorizations = "917c8734-8470-4a3e-a18f-57c3f2ee6631"
 
-begin
-  # List all accounts for the user, plus balances, positions, and orders for each account.
-  result = SnapTrade::AccountInformation.get_all_user_holdings(
-                                                                  user_id: user_id,
-                                                                  user_secret: user_secret,
-                                                                  brokerage_authorizations: brokerage_authorizations,
-                                                                )
-  p result
-rescue SnapTrade::ApiError => e
-  puts "Exception when calling SnapTrade::AccountInformation.get_all_user_holdings: #{e}"
-end
+result = snaptrade.account_information.get_all_user_holdings(
+  user_id: user_id,
+  user_secret: user_secret,
+  brokerage_authorizations: brokerage_authorizations,
+)
+p result
 \`\`\`
+
+## Reference
+
+
+### \`snaptrade.account_information.get_all_user_holdings\`
+
+List all accounts for the user, plus balances, positions, and orders for each account.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+brokerage_authorizations = "917c8734-8470-4a3e-a18f-57c3f2ee6631"
+
+result = snaptrade.account_information.get_all_user_holdings(
+  user_id: user_id,
+  user_secret: user_secret,
+  brokerage_authorizations: brokerage_authorizations,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### brokerage_authorizations: **String**
+
+Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations).
+
+---
+
+
+### \`snaptrade.account_information.get_user_account_balance\`
+
+A list of account balances for the specified account (one per currency that the account holds).
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+
+result = snaptrade.account_information.get_user_account_balance(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to get balances.
+
+---
+
+
+### \`snaptrade.account_information.get_user_account_details\`
+
+Return details of a specific investment account
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+
+result = snaptrade.account_information.get_user_account_details(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to get detail of.
+
+---
+
+
+### \`snaptrade.account_information.get_user_account_orders\`
+
+Fetch all recent orders from a user's account.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+state = "all"
+days = 30
+
+result = snaptrade.account_information.get_user_account_orders(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  state: state,
+  days: days,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to get orders.
+
+##### state: **String**
+
+defaults value is set to \\"all\\"
+
+##### days: **Integer**
+
+Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
+
+---
+
+
+### \`snaptrade.account_information.get_user_account_positions\`
+
+List account positions
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+
+result = snaptrade.account_information.get_user_account_positions(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to get positions.
+
+---
+
+
+### \`snaptrade.account_information.get_user_holdings\`
+
+List balances, positions and orders for the specified account
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+account_id = "917c8734-8470-4a3e-a18f-57c3f2ee6631"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.account_information.get_user_holdings(
+  account_id: account_id,
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### account_id: **String**
+
+The ID of the account to fetch holdings for.
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.account_information.list_user_accounts\`
+
+List accounts
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.account_information.list_user_accounts(
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.account_information.update_user_account\`
+
+Update details of an investment account
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+
+result = snaptrade.account_information.update_user_account(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to update.
+
+---
+
+
+### \`snaptrade.api_status.check\`
+
+Check whether the API is operational and verify timestamps.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.api_status.check
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.authentication.delete_snap_trade_user\`
+
+Deletes a user you've registered over the SnapTrade API, and any data associated with them or their investment accounts.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+
+result = snaptrade.authentication.delete_snap_trade_user(
+  user_id: user_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+---
+
+
+### \`snaptrade.authentication.get_user_jwt\`
+
+Generate encrypted JWT token
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.authentication.get_user_jwt(
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.authentication.list_snap_trade_users\`
+
+Returns a list of users you've registered over the SnapTrade API.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.authentication.list_snap_trade_users
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.authentication.login_snap_trade_user\`
+
+Logs in a SnapTrade user and returns an authenticated connection portal URL for them to use to connect a brokerage account.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+broker = "ALPACA"
+immediate_redirect = True
+custom_redirect = "https://snaptrade.com"
+reconnect = "8b5f262d-4bb9-365d-888a-202bd3b15fa1"
+connection_type = "read"
+connection_portal_version = "v2"
+
+result = snaptrade.authentication.login_snap_trade_user(
+  user_id: user_id,
+  user_secret: user_secret,
+  broker: broker,
+  immediate_redirect: immediate_redirect,
+  custom_redirect: custom_redirect,
+  reconnect: reconnect,
+  connection_type: connection_type,
+  connection_portal_version: connection_portal_version,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### broker: **String**
+
+Slug of the brokerage to connect the user to
+
+##### immediateRedirect: **Boolean**
+
+When set to True, user will be redirected back to the partner's site instead of the connection portal
+
+##### customRedirect: **String**
+
+URL to redirect the user to after the user connects their brokerage account
+
+##### reconnect: **String**
+
+The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information.
+
+##### connectionType: [**ConnectionType**](./lib/snaptrade/models/connection_type.rb)
+
+##### connectionPortalVersion: [**ConnectionPortalVersion**](./lib/snaptrade/models/connection_portal_version.rb)
+
+---
+
+
+### \`snaptrade.authentication.register_snap_trade_user\`
+
+Create SnapTrade user
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "snaptrade-user-123"
+
+result = snaptrade.authentication.register_snap_trade_user(
+  user_id: user_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### userId: **String**
+
+SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
+
+---
+
+
+### \`snaptrade.authentication.reset_snap_trade_user_secret\`
+
+Obtain a new user secret for a user
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "snaptrade-user-123"
+user_secret = "h81@cx1lkalablakwjaltkejraj11="
+
+result = snaptrade.authentication.reset_snap_trade_user_secret(
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### userId: **String**
+
+SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
+
+##### userSecret: **String**
+
+SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user.
+
+---
+
+
+### \`snaptrade.connections.detail_brokerage_authorization\`
+
+Get brokerage authorization details
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+authorization_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.connections.detail_brokerage_authorization(
+  authorization_id: authorization_id,
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### authorization_id: **String**
+
+The ID of a brokerage authorization object.
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.connections.list_brokerage_authorizations\`
+
+List all brokerage authorizations for the user
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.connections.list_brokerage_authorizations(
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.connections.remove_brokerage_authorization\`
+
+Delete brokerage authorization
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+authorization_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+snaptrade.connections.remove_brokerage_authorization(
+  authorization_id: authorization_id,
+  user_id: user_id,
+  user_secret: user_secret,
+)
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### authorization_id: **String**
+
+The ID of the Authorization to delete.
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.connections.session_events\`
+
+List all session events for the partner
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+partner_client_id = "SNAPTRADETEST"
+user_id = "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2"
+session_id = "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2"
+
+result = snaptrade.connections.session_events(
+  partner_client_id: partner_client_id,
+  user_id: user_id,
+  session_id: session_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### partner_client_id: **String**
+
+##### user_id: **String**
+
+Optional comma seperated list of user IDs used to filter the request on specific users
+
+##### session_id: **String**
+
+Optional comma seperated list of session IDs used to filter the request on specific users
+
+---
+
+
+### \`snaptrade.error_logs.list_user_errors\`
+
+Retrieve error logs on behalf of your SnapTrade users
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.error_logs.list_user_errors(
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.options.get_option_strategy\`
+
+Creates an option strategy object that will be used to place an option strategy order
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+underlying_symbol_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+legs = [
+        {
+            "action" => "BUY_TO_OPEN",
+            "option_symbol_id" => "SPY220819P00200000",
+            "quantity" => 1,
+        }
+    ]
+strategy_type = "CUSTOM"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+
+result = snaptrade.options.get_option_strategy(
+  underlying_symbol_id: underlying_symbol_id,
+  legs: legs,
+  strategy_type: strategy_type,
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### underlying_symbol_id: **String**
+
+##### legs: [**Array&lt;OptionLeg&gt;**](./lib/snaptrade/models/array_option_leg.rb)
+
+##### strategy_type: [**StrategyType**](./lib/snaptrade/models/strategy_type.rb)
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to create the option strategy object in.
+
+---
+
+
+### \`snaptrade.options.get_options_chain\`
+
+Get the options chain
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+symbol = "symbol_example"
+
+result = snaptrade.options.get_options_chain(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  symbol: symbol,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to get the options chain from.
+
+##### symbol: **String**
+
+Universal symbol ID if symbol
+
+---
+
+
+### \`snaptrade.options.get_options_strategy_quote\`
+
+Get latest market data of option strategy
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+option_strategy_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+
+result = snaptrade.options.get_options_strategy_quote(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  option_strategy_id: option_strategy_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account the strategy will be placed in.
+
+##### option_strategy_id: **String**
+
+Option strategy id obtained from response when creating option strategy object
+
+---
+
+
+### \`snaptrade.options.list_option_holdings\`
+
+Get the options holdings in the account
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+
+result = snaptrade.options.list_option_holdings(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to fetch options holdings for.
+
+---
+
+
+### \`snaptrade.options.place_option_strategy\`
+
+Place an option strategy order on the brokerage
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+order_type = "Limit"
+time_in_force = "FOK"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+option_strategy_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+price = 31.33
+
+result = snaptrade.options.place_option_strategy(
+  order_type: order_type,
+  time_in_force: time_in_force,
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  option_strategy_id: option_strategy_id,
+  price: price,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### order_type: [**OrderType**](./lib/snaptrade/models/order_type.rb)
+
+##### time_in_force: [**TimeInForceStrict**](./lib/snaptrade/models/time_in_force_strict.rb)
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to execute the strategy in.
+
+##### option_strategy_id: **String**
+
+Option strategy id obtained from response when creating option strategy object
+
+##### price: **Float**
+
+Trade Price if limit or stop limit order
+
+---
+
+
+### \`snaptrade.reference_data.get_currency_exchange_rate_pair\`
+
+Return the exchange rate of a currency pair
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+currency_pair = "currencyPair_example"
+
+result = snaptrade.reference_data.get_currency_exchange_rate_pair(
+  currency_pair: currency_pair,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### currency_pair: **String**
+
+A currency pair based on currency code for example, {CAD-USD}
+
+---
+
+
+### \`snaptrade.reference_data.get_partner_info\`
+
+Get metadata related to Snaptrade partner
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.reference_data.get_partner_info
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.reference_data.get_security_types\`
+
+List security types available on SnapTrade.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.reference_data.get_security_types
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.reference_data.get_stock_exchanges\`
+
+List exchanges
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.reference_data.get_stock_exchanges
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.reference_data.get_symbols\`
+
+Search for symbols
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+substring = "apple"
+
+result = snaptrade.reference_data.get_symbols(
+  substring: substring,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### substring: **String**
+
+---
+
+
+### \`snaptrade.reference_data.get_symbols_by_ticker\`
+
+Get details of a symbol by the ticker or the universal_symbol_id
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+query = "query_example"
+
+result = snaptrade.reference_data.get_symbols_by_ticker(
+  query: query,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### query: **String**
+
+The ticker or universal_symbol_id of the UniversalSymbol to get.
+
+---
+
+
+### \`snaptrade.reference_data.list_all_brokerage_authorization_type\`
+
+List of all brokerage authorization types
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+brokerage = "QUESTRADE,ALPACA"
+
+result = snaptrade.reference_data.list_all_brokerage_authorization_type(
+  brokerage: brokerage,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### brokerage: **String**
+
+Comma separated value of brokerage slugs
+
+---
+
+
+### \`snaptrade.reference_data.list_all_brokerages\`
+
+List brokerages
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.reference_data.list_all_brokerages
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.reference_data.list_all_currencies\`
+
+List currencies
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.reference_data.list_all_currencies
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.reference_data.list_all_currencies_rates\`
+
+List currency exchange rates
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+
+result = snaptrade.reference_data.list_all_currencies_rates
+p result
+\`\`\`
+
+---
+
+
+### \`snaptrade.reference_data.symbol_search_user_account\`
+
+Search for symbols available in an account
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+substring = "apple"
+
+result = snaptrade.reference_data.symbol_search_user_account(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  substring: substring,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to search for symbols within.
+
+##### substring: **String**
+
+---
+
+
+### \`snaptrade.trading.cancel_user_account_order\`
+
+Cancel open order in account
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "accountId_example"
+brokerage_order_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+
+result = snaptrade.trading.cancel_user_account_order(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  brokerage_order_id: brokerage_order_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+The ID of the account to cancel the order in.
+
+##### brokerage_order_id: **String**
+
+---
+
+
+### \`snaptrade.trading.get_order_impact\`
+
+Check impact of trades on account.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+action = "BUY"
+order_type = "Limit"
+price = 31.33
+stop = 31.33
+time_in_force = "FOK"
+units = 3.14
+universal_symbol_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+notional_value = 3.14
+
+result = snaptrade.trading.get_order_impact(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  action: action,
+  order_type: order_type,
+  price: price,
+  stop: stop,
+  time_in_force: time_in_force,
+  units: units,
+  universal_symbol_id: universal_symbol_id,
+  notional_value: notional_value,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+##### action: [**Action**](./lib/snaptrade/models/action.rb)
+
+##### order_type: [**OrderType**](./lib/snaptrade/models/order_type.rb)
+
+##### price: **Float**
+
+Trade Price if limit or stop limit order
+
+##### stop: **Float**
+
+Stop Price. If stop loss or stop limit order, the price to trigger the stop
+
+##### time_in_force: [**TimeInForceStrict**](./lib/snaptrade/models/time_in_force_strict.rb)
+
+##### units: [**Float**](./lib/snaptrade/models/float.rb)
+
+##### universal_symbol_id: **String**
+
+##### notional_value: [**Float**](./lib/snaptrade/models/float.rb)
+
+---
+
+
+### \`snaptrade.trading.get_user_account_quotes\`
+
+Get symbol quotes
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+symbols = "symbols_example"
+account_id = "accountId_example"
+use_ticker = True
+
+result = snaptrade.trading.get_user_account_quotes(
+  user_id: user_id,
+  user_secret: user_secret,
+  symbols: symbols,
+  account_id: account_id,
+  use_ticker: use_ticker,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### symbols: **String**
+
+List of universal_symbol_id or tickers to get quotes for.
+
+##### account_id: **String**
+
+The ID of the account to get quotes.
+
+##### use_ticker: **Boolean**
+
+Should be set to True if providing tickers.
+
+---
+
+
+### \`snaptrade.trading.place_force_order\`
+
+Place a trade with NO validation.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+account_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+action = "BUY"
+order_type = "Limit"
+price = 31.33
+stop = 31.33
+time_in_force = "FOK"
+units = 3.14
+universal_symbol_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"
+notional_value = 3.14
+
+result = snaptrade.trading.place_force_order(
+  user_id: user_id,
+  user_secret: user_secret,
+  account_id: account_id,
+  action: action,
+  order_type: order_type,
+  price: price,
+  stop: stop,
+  time_in_force: time_in_force,
+  units: units,
+  universal_symbol_id: universal_symbol_id,
+  notional_value: notional_value,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### account_id: **String**
+
+##### action: [**Action**](./lib/snaptrade/models/action.rb)
+
+##### order_type: [**OrderType**](./lib/snaptrade/models/order_type.rb)
+
+##### price: **Float**
+
+Trade Price if limit or stop limit order
+
+##### stop: **Float**
+
+Stop Price. If stop loss or stop limit order, the price to trigger the stop
+
+##### time_in_force: [**TimeInForceStrict**](./lib/snaptrade/models/time_in_force_strict.rb)
+
+##### units: [**Float**](./lib/snaptrade/models/float.rb)
+
+##### universal_symbol_id: **String**
+
+##### notional_value: [**Float**](./lib/snaptrade/models/float.rb)
+
+---
+
+
+### \`snaptrade.trading.place_oco_order\`
+
+Place a OCO (One Cancels Other) order
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+first_trade_id = None
+second_trade_id = None
+
+result = snaptrade.trading.place_oco_order(
+  user_id: user_id,
+  user_secret: user_secret,
+  first_trade_id: first_trade_id,
+  second_trade_id: second_trade_id,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### first_trade_id: [**Object**](./lib/snaptrade/models/object.rb)
+
+The ID of first trade object obtained from trade/impact endpoint
+
+##### second_trade_id: [**Object**](./lib/snaptrade/models/object.rb)
+
+The ID of second trade object obtained from trade/impact endpoint
+
+---
+
+
+### \`snaptrade.trading.place_order\`
+
+Place order
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+trade_id = "tradeId_example"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+
+result = snaptrade.trading.place_order(
+  trade_id: trade_id,
+  user_id: user_id,
+  user_secret: user_secret,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### trade_id: **String**
+
+The ID of trade object obtained from trade/impact endpoint
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+---
+
+
+### \`snaptrade.transactions_and_reporting.get_activities\`
+
+Returns activities (transactions) for a user. Specifying start and end date is highly recommended for better performance
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+start_date = "2022-01-24"
+end_date = "2022-01-24"
+accounts = "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2"
+brokerage_authorizations = "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2"
+type = "DIVIDEND"
+
+result = snaptrade.transactions_and_reporting.get_activities(
+  user_id: user_id,
+  user_secret: user_secret,
+  start_date: start_date,
+  end_date: end_date,
+  accounts: accounts,
+  brokerage_authorizations: brokerage_authorizations,
+  type: type,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### start_date: **Date**
+
+##### end_date: **Date**
+
+##### accounts: **String**
+
+Optional comma seperated list of account IDs used to filter the request on specific accounts
+
+##### brokerage_authorizations: **String**
+
+Optional comma seperated list of brokerage authorization IDs used to filter the request on only accounts that belong to those authorizations
+
+##### type: **String**
+
+Optional comma seperated list of types to filter activities by. This is not an exhaustive list, if we fail to match to these types, we will return the raw description from the brokerage. Potential values include - DIVIDEND - BUY - SELL - CONTRIBUTION - WITHDRAWAL - EXTERNAL_ASSET_TRANSFER_IN - EXTERNAL_ASSET_TRANSFER_OUT - INTERNAL_CASH_TRANSFER_IN - INTERNAL_CASH_TRANSFER_OUT - INTERNAL_ASSET_TRANSFER_IN - INTERNAL_ASSET_TRANSFER_OUT - INTEREST - REBATE - GOV_GRANT - TAX - FEE - REI - FXT
+
+---
+
+
+### \`snaptrade.transactions_and_reporting.get_reporting_custom_range\`
+
+Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies.
+
+#### 🛠️ Usage
+
+\`\`\`ruby
+start_date = "2022-01-24"
+end_date = "2022-01-24"
+user_id = "John.doe@snaptrade.com"
+user_secret = "USERSECRET123"
+accounts = "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2"
+detailed = True
+frequency = "monthly"
+
+result = snaptrade.transactions_and_reporting.get_reporting_custom_range(
+  start_date: start_date,
+  end_date: end_date,
+  user_id: user_id,
+  user_secret: user_secret,
+  accounts: accounts,
+  detailed: detailed,
+  frequency: frequency,
+)
+p result
+\`\`\`
+
+#### ⚙️ Parameters
+
+##### start_date: **Date**
+
+##### end_date: **Date**
+
+##### user_id: **String**
+
+##### user_secret: **String**
+
+##### accounts: **String**
+
+Optional comma seperated list of account IDs used to filter the request on specific accounts
+
+##### detailed: **Boolean**
+
+Optional, increases frequency of data points for the total value and contribution charts if set to true
+
+##### frequency: **String**
+
+Optional frequency for the rate of return chart (defaults to monthly). Possible values are daily, weekly, monthly, quarterly, yearly.
+
+---
+
 
 ## Author
 This TypeScript package is automatically generated by [Konfig](https://konfigthis.com)
