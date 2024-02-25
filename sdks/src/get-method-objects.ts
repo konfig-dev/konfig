@@ -46,7 +46,12 @@ export function getMethodObjects(spec: Spec): Method[] {
         let schema = requestBody.content[mediaType].schema;
         if (schema !== undefined) {
           if ("$ref" in schema) {
-            schema = resolveRef({ refOrObject: schema, $ref: spec.$ref });
+            try {
+              schema = resolveRef({ refOrObject: schema, $ref: spec.$ref });
+            } catch (e) {
+              console.log(e);
+              throw e;
+            }
           }
           if ("$ref" in schema) {
             throw Error("Expect schema to be dereferenced");

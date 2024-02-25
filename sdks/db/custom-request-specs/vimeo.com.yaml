@@ -35307,12 +35307,42 @@ components:
                     - total
                     - uri
                   type: object
+                user:
+                  description: Information about the user who posted the reply.
+                  properties:
+                    link:
+                      description: >-
+                        The absolute URL of the authenticated users's profile
+                        page.
+                      type: string
+                    name:
+                      description: The display name of the user who posted the reply.
+                      type: string
+                    pictures:
+                      allOf:
+                        - $ref: '#/components/schemas/picture'
+                      description: Information about the user's portraits.
+                    uri:
+                      description: The unique identifier to access the user resource.
+                      type: string
+                  required:
+                    - link
+                    - name
+                    - pictures
+                    - uri
+                  type: object
               required:
                 - replies
+                - user
               type: object
           required:
             - connections
           type: object
+        replies:
+          description: The list of replies to the comment.
+          items:
+            $ref: '#/components/schemas/reply'
+          type: array
         resource_key:
           description: The comment's resource key string.
           example: bac1033deba2310ebba2caec33c23e4beea67aba
@@ -35338,12 +35368,15 @@ components:
         user:
           allOf:
             - $ref: '#/components/schemas/user'
-          description: The user who posted the comment.
+          description: >-
+            The user who posted the comment. _This field is deprecated. Use the
+            `metadata.connections.user` field instead._
           nullable: true
       required:
         - created_on
         - link
         - metadata
+        - replies
         - resource_key
         - text
         - type
@@ -37544,9 +37577,18 @@ components:
               example: true
               type: boolean
             play_button_position:
-              description: The position for the player's play button.
-              example: 0
-              type: number
+              description: |
+                The position of the player's play button.
+
+                Option descriptions:
+                 * `0` - The play button has the default position.
+                 * `1` - The play button appears at the bottom of the interface.
+                 * `2` - The play button appears in the center of the interface.
+              enum:
+                - 0
+                - 1
+                - 2
+              type: string
             playbar:
               description: Whether the embedded RLE player should include the playbar.
               example: true
@@ -38710,9 +38752,18 @@ components:
               example: true
               type: boolean
             play_button_position:
-              description: The position for the player's play button.
-              example: 0
-              type: number
+              description: |
+                The position of the player's play button.
+
+                Option descriptions:
+                 * `0` - The play button has the default position.
+                 * `1` - The play button appears at the bottom of the interface.
+                 * `2` - The play button appears in the center of the interface.
+              enum:
+                - 0
+                - 1
+                - 2
+              type: string
             playbar:
               description: Whether the embedded RLE player should include the playbar.
               example: true
@@ -42355,6 +42406,82 @@ components:
       required:
         - lowLatency
       type: object
+    reply:
+      title: Reply
+      properties:
+        created_on:
+          description: The time in ISO 8601 format when the reply was posted.
+          example: '2018-03-05T21:04:47+00:00'
+          type: string
+        link:
+          description: The permalink to the reply.
+          example: https://vimeo.com/258684937#comment_12345
+          type: string
+        metadata:
+          properties:
+            connections:
+              properties:
+                user:
+                  description: Information about the user who posted the reply.
+                  properties:
+                    link:
+                      description: >-
+                        The absolute URL of the authenticated users's profile
+                        page.
+                      type: string
+                    name:
+                      description: The display name of the user who posted the reply.
+                      type: string
+                    pictures:
+                      allOf:
+                        - $ref: '#/components/schemas/picture'
+                      description: Information about the user's portraits.
+                    uri:
+                      description: The unique identifier to access the user resource.
+                      type: string
+                  required:
+                    - link
+                    - name
+                    - pictures
+                    - uri
+                  type: object
+              required:
+                - user
+              type: object
+          required:
+            - connections
+          type: object
+        resource_key:
+          description: The comment's resource key string.
+          example: bac1033deba2310ebba2caec33c23e4beea67aba
+          type: string
+        text:
+          description: The content of the reply.
+          example: I love this!
+          type: string
+        type:
+          description: |
+            The Vimeo content to which the reply relates.
+
+            Option descriptions:
+             * `video` - The comment is about a video.
+          enum:
+            - video
+          example: video
+          type: string
+        uri:
+          description: The unique identifier to access the reply resource.
+          example: /videos/258684937/comments/12345/replies/7890
+          type: string
+      required:
+        - created_on
+        - link
+        - metadata
+        - resource_key
+        - text
+        - type
+        - uri
+      type: object
     segment:
       title: Segment
       properties:
@@ -42877,6 +43004,11 @@ components:
             - regional_delivery
             - video
           type: object
+        applicable_roles:
+          description: An array of the team roles this team member can have.
+          items:
+            $ref: '#/components/schemas/team-role'
+          type: array
         created_time:
           description: The time in ISO 8601 format when the invite was sent.
           example: '2017-05-15T17:42:07+00:00'
@@ -43047,6 +43179,7 @@ components:
         - access_grant
         - active
         - applicable_permission_policies
+        - applicable_roles
         - created_time
         - email
         - invite_url
@@ -43063,6 +43196,79 @@ components:
     team-role:
       title: Team Role
       properties:
+        applicable_permission_policies:
+          description: The applicable permission policies for the role.
+          properties:
+            folder:
+              description: The applicable folder-related permission policies for the role.
+              items:
+                type: string
+              type: array
+            regional_delivery:
+              description: >-
+                The applicable permission policies related to regional delivery
+                for the role.
+              items:
+                type: object
+                properties:
+                  display_description:
+                    description: >-
+                      The translated display description of the regional
+                      delivery permission policy.
+                    example: >-
+                      This policy allows the user to restrict the delivery of
+                      videos to specific regions.
+                    type: string
+                  display_name:
+                    description: >-
+                      The translated display name of the regional delivery
+                      permission policy.
+                    example: Regional delivery
+                    type: string
+                  name:
+                    description: The name of the regional delivery permission policy.
+                    example: regional_delivery
+                    type: string
+                required:
+                  - display_description
+                  - display_name
+                  - name
+              type: array
+            video:
+              description: The applicable video-related permission policies for the role.
+              items:
+                type: string
+              type: array
+          type: object
+        count:
+          description: The total number of team members with this role.
+          example: 3
+          type: number
+        display_name:
+          description: The translated display name of the role.
+          example: Admin
+          type: string
+        permission_level:
+          description: |
+            The untranslated role of the user who made the request.
+
+            Option descriptions:
+             * `Admin` - The team member has admin permissions. They can upload and edit videos for the entire team and perform team administration tasks.
+             * `Contributor` - The team member has contributor permissions. They can upload and edit videos for the entire team but can’t perform team administration tasks.
+             * `Contributor Plus` - The team member has contributor-plus permissions. They can upload and edit videos for the entire team and have additional sets of permissions but can't perform team administration tasks.
+             * `Owner` - The team member has owner permissions.
+             * `Uploader` - The team member has uploader permissions. They can upload videos for the entire team but can't edit videos.
+             * `Viewer` - The team member has viewer permissions. They can access team videos and specific team folders but can't upload or edit videos.
+          enum:
+            - Admin
+            - Contributor
+            - Contributor Plus
+            - Owner
+            - Uploader
+            - Viewer
+          example: Admin
+          nullable: true
+          type: string
         role:
           description: |
             The untranslated role of the user who made the request.
@@ -43070,12 +43276,14 @@ components:
             Option descriptions:
              * `Admin` - The team member has admin permissions. They can upload and edit videos for the entire team and perform team administration tasks.
              * `Contributor` - The team member has contributor permissions. They can upload and edit videos for the entire team but can’t perform team administration tasks.
+             * `Contributor Plus` - The team member has contributor-plus permissions. They can upload and edit videos for the entire team and have additional sets of permissions but can't perform team administration tasks.
              * `Owner` - The team member has owner permissions.
              * `Uploader` - The team member has uploader permissions. They can upload videos for the entire team but can’t edit videos.
              * `Viewer` - The team member has viewer permissions. They can access team videos and specific team folders but can’t upload or edit videos.
           enum:
             - Admin
             - Contributor
+            - Contributor Plus
             - Owner
             - Uploader
             - Viewer
@@ -43087,6 +43295,7 @@ components:
           example: /users/152184/team/role
           type: string
       required:
+        - permission_level
         - role
         - uri
       type: object
@@ -45779,7 +45988,32 @@ components:
                         type: string
                       type: array
                     reason:
-                      description: TThe reason why the summary method is disabled.
+                      description: |
+                        The reason why the summary method is disabled.
+
+                        Option descriptions:
+                         * `transcript_ready_but_not_english` - The transcript is ready, but isn't in English.
+                         * `transcript_status_does_not_exist` - The transcript doesn't exist.
+                         * `transcript_status_exceeds_maximum_duration` - The transcript duration is too long.
+                         * `transcript_status_failed` - The transcript job failed.
+                         * `transcript_status_in_progress` - The transcript job is in progress.
+                         * `transcript_status_language_not_supported` - The transcript's language isn't supported.
+                         * `transcript_status_no_speech` - There's no speech detected for the transcript.
+                         * `transcript_status_not_started` - The transcript job hasn't started.
+                         * `transcript_status_unknown` - The transcript job status is unknown.
+                         * `video_not_ready` - The video isn't ready.
+                      enum:
+                        - transcript_ready_but_not_english
+                        - transcript_status_does_not_exist
+                        - transcript_status_exceeds_maximum_duration
+                        - transcript_status_failed
+                        - transcript_status_in_progress
+                        - transcript_status_language_not_supported
+                        - transcript_status_no_speech
+                        - transcript_status_not_started
+                        - transcript_status_unknown
+                        - video_not_ready
+                      example: transcript_ready_but_not_english
                       nullable: true
                       type: string
                     uri:
@@ -47802,9 +48036,18 @@ components:
               example: true
               type: boolean
             play_button_position:
-              description: The position for the player's play button.
-              example: 0
-              type: number
+              description: |
+                The position of the player's play button.
+
+                Option descriptions:
+                 * `0` - The play button has the default position.
+                 * `1` - The play button appears at the bottom of the interface.
+                 * `2` - The play button appears in the center of the interface.
+              enum:
+                - 0
+                - 1
+                - 2
+              type: string
             playbar:
               description: Whether the embedded RLE player should include the playbar.
               example: true
