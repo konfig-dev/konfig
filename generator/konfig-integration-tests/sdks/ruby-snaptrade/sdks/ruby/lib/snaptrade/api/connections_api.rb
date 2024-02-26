@@ -19,6 +19,7 @@ module SnapTrade
     end
 
     # Get brokerage authorization details
+    #
     # @param authorization_id [String] The ID of a brokerage authorization object.
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -29,6 +30,7 @@ module SnapTrade
     end
 
     # Get brokerage authorization details
+    #
     # @param authorization_id [String] The ID of a brokerage authorization object.
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -43,7 +45,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [BrokerageAuthorization]
-    def detail_brokerage_authorization_impl(authorization_id, user_id, user_secret, opts = {})
+    private def detail_brokerage_authorization_impl(authorization_id, user_id, user_secret, opts = {})
       data, _status_code, _headers = detail_brokerage_authorization_with_http_info(authorization_id, user_id, user_secret, opts)
       data
     end
@@ -54,7 +56,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BrokerageAuthorization, Integer, Hash)>] BrokerageAuthorization data, response status code and response headers
-    def detail_brokerage_authorization_with_http_info_impl(authorization_id, user_id, user_secret, opts = {})
+    private def detail_brokerage_authorization_with_http_info_impl(authorization_id, user_id, user_secret, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConnectionsApi.detail_brokerage_authorization ...'
       end
@@ -114,6 +116,7 @@ module SnapTrade
 
 
     # List all brokerage authorizations for the user
+    #
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -123,6 +126,7 @@ module SnapTrade
     end
 
     # List all brokerage authorizations for the user
+    #
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -135,7 +139,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<BrokerageAuthorization>]
-    def list_brokerage_authorizations_impl(user_id, user_secret, opts = {})
+    private def list_brokerage_authorizations_impl(user_id, user_secret, opts = {})
       data, _status_code, _headers = list_brokerage_authorizations_with_http_info(user_id, user_secret, opts)
       data
     end
@@ -145,7 +149,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<BrokerageAuthorization>, Integer, Hash)>] Array<BrokerageAuthorization> data, response status code and response headers
-    def list_brokerage_authorizations_with_http_info_impl(user_id, user_secret, opts = {})
+    private def list_brokerage_authorizations_with_http_info_impl(user_id, user_secret, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConnectionsApi.list_brokerage_authorizations ...'
       end
@@ -201,6 +205,7 @@ module SnapTrade
 
 
     # Delete brokerage authorization
+    #
     # @param authorization_id [String] The ID of the Authorization to delete.
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -211,6 +216,7 @@ module SnapTrade
     end
 
     # Delete brokerage authorization
+    #
     # @param authorization_id [String] The ID of the Authorization to delete.
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -225,7 +231,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def remove_brokerage_authorization_impl(authorization_id, user_id, user_secret, opts = {})
+    private def remove_brokerage_authorization_impl(authorization_id, user_id, user_secret, opts = {})
       remove_brokerage_authorization_with_http_info(authorization_id, user_id, user_secret, opts)
       nil
     end
@@ -236,7 +242,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def remove_brokerage_authorization_with_http_info_impl(authorization_id, user_id, user_secret, opts = {})
+    private def remove_brokerage_authorization_with_http_info_impl(authorization_id, user_id, user_secret, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConnectionsApi.remove_brokerage_authorization ...'
       end
@@ -294,6 +300,7 @@ module SnapTrade
 
 
     # List all session events for the partner
+    #
     # @param partner_client_id [String] 
     # @param user_id [String] Optional comma seperated list of user IDs used to filter the request on specific users
     # @param session_id [String] Optional comma seperated list of session IDs used to filter the request on specific users
@@ -306,6 +313,7 @@ module SnapTrade
     end
 
     # List all session events for the partner
+    #
     # @param partner_client_id [String] 
     # @param user_id [String] Optional comma seperated list of user IDs used to filter the request on specific users
     # @param session_id [String] Optional comma seperated list of session IDs used to filter the request on specific users
@@ -322,7 +330,7 @@ module SnapTrade
     # @option opts [String] :user_id Optional comma seperated list of user IDs used to filter the request on specific users
     # @option opts [String] :session_id Optional comma seperated list of session IDs used to filter the request on specific users
     # @return [Array<ConnectionsSessionEvents200ResponseInner>]
-    def session_events_impl(partner_client_id, opts = {})
+    private def session_events_impl(partner_client_id, opts = {})
       data, _status_code, _headers = session_events_with_http_info(partner_client_id, opts)
       data
     end
@@ -333,7 +341,7 @@ module SnapTrade
     # @option opts [String] :user_id Optional comma seperated list of user IDs used to filter the request on specific users
     # @option opts [String] :session_id Optional comma seperated list of session IDs used to filter the request on specific users
     # @return [Array<(Array<ConnectionsSessionEvents200ResponseInner>, Integer, Hash)>] Array<ConnectionsSessionEvents200ResponseInner> data, response status code and response headers
-    def session_events_with_http_info_impl(partner_client_id, opts = {})
+    private def session_events_with_http_info_impl(partner_client_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConnectionsApi.session_events ...'
       end

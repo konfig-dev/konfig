@@ -19,7 +19,9 @@ module SnapTrade
     end
 
     # Get API Status
+    #
     # Check whether the API is operational and verify timestamps.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def check(extra: {})
       data, _status_code, _headers = check_with_http_info_impl(extra)
@@ -27,7 +29,9 @@ module SnapTrade
     end
 
     # Get API Status
+    #
     # Check whether the API is operational and verify timestamps.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def check_with_http_info(extra: {})
       check_with_http_info_impl(extra)
@@ -37,7 +41,7 @@ module SnapTrade
     # Check whether the API is operational and verify timestamps.
     # @param [Hash] opts the optional parameters
     # @return [Status]
-    def check_impl(opts = {})
+    private def check_impl(opts = {})
       data, _status_code, _headers = check_with_http_info(opts)
       data
     end
@@ -46,7 +50,7 @@ module SnapTrade
     # Check whether the API is operational and verify timestamps.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Status, Integer, Hash)>] Status data, response status code and response headers
-    def check_with_http_info_impl(opts = {})
+    private def check_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: APIStatusApi.check ...'
       end

@@ -648,7 +648,7 @@ p result
 
 ##### underlying_symbol_id: **String**<a id="underlying_symbol_id-string"></a>
 
-##### legs: [**Array&lt;OptionLeg&gt;**](./lib/snaptrade/models/array_option_leg.rb)<a id="legs-arrayltoptionleggtlibsnaptrademodelsarray_option_legrb"></a>
+##### legs: [**Array<OptionLeg>**](./lib/snaptrade/models/array_option_leg.rb)<a id="legs-arraylibsnaptrademodelsarray_option_legrb"></a>
 
 ##### strategy_type: [**StrategyType**](./lib/snaptrade/models/strategy_type.rb)<a id="strategy_type-strategytypelibsnaptrademodelsstrategy_typerb"></a>
 

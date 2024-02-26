@@ -19,6 +19,7 @@ module SnapTrade
     end
 
     # Return the exchange rate of a currency pair
+    #
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_currency_exchange_rate_pair(currency_pair:, extra: {})
@@ -27,6 +28,7 @@ module SnapTrade
     end
 
     # Return the exchange rate of a currency pair
+    #
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_currency_exchange_rate_pair_with_http_info(currency_pair:, extra: {})
@@ -37,7 +39,7 @@ module SnapTrade
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] opts the optional parameters
     # @return [ExchangeRatePairs]
-    def get_currency_exchange_rate_pair_impl(currency_pair, opts = {})
+    private def get_currency_exchange_rate_pair_impl(currency_pair, opts = {})
       data, _status_code, _headers = get_currency_exchange_rate_pair_with_http_info(currency_pair, opts)
       data
     end
@@ -46,7 +48,7 @@ module SnapTrade
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExchangeRatePairs, Integer, Hash)>] ExchangeRatePairs data, response status code and response headers
-    def get_currency_exchange_rate_pair_with_http_info_impl(currency_pair, opts = {})
+    private def get_currency_exchange_rate_pair_with_http_info_impl(currency_pair, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.get_currency_exchange_rate_pair ...'
       end
@@ -96,6 +98,7 @@ module SnapTrade
 
 
     # Get metadata related to Snaptrade partner
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_partner_info(extra: {})
       data, _status_code, _headers = get_partner_info_with_http_info_impl(extra)
@@ -103,6 +106,7 @@ module SnapTrade
     end
 
     # Get metadata related to Snaptrade partner
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_partner_info_with_http_info(extra: {})
       get_partner_info_with_http_info_impl(extra)
@@ -111,7 +115,7 @@ module SnapTrade
     # Get metadata related to Snaptrade partner
     # @param [Hash] opts the optional parameters
     # @return [PartnerData]
-    def get_partner_info_impl(opts = {})
+    private def get_partner_info_impl(opts = {})
       data, _status_code, _headers = get_partner_info_with_http_info(opts)
       data
     end
@@ -119,7 +123,7 @@ module SnapTrade
     # Get metadata related to Snaptrade partner
     # @param [Hash] opts the optional parameters
     # @return [Array<(PartnerData, Integer, Hash)>] PartnerData data, response status code and response headers
-    def get_partner_info_with_http_info_impl(opts = {})
+    private def get_partner_info_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.get_partner_info ...'
       end
@@ -165,7 +169,9 @@ module SnapTrade
 
 
     # List of all security types
+    #
     # List security types available on SnapTrade.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_security_types(extra: {})
       data, _status_code, _headers = get_security_types_with_http_info_impl(extra)
@@ -173,7 +179,9 @@ module SnapTrade
     end
 
     # List of all security types
+    #
     # List security types available on SnapTrade.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_security_types_with_http_info(extra: {})
       get_security_types_with_http_info_impl(extra)
@@ -183,7 +191,7 @@ module SnapTrade
     # List security types available on SnapTrade.
     # @param [Hash] opts the optional parameters
     # @return [Array<SecurityType>]
-    def get_security_types_impl(opts = {})
+    private def get_security_types_impl(opts = {})
       data, _status_code, _headers = get_security_types_with_http_info(opts)
       data
     end
@@ -192,7 +200,7 @@ module SnapTrade
     # List security types available on SnapTrade.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<SecurityType>, Integer, Hash)>] Array<SecurityType> data, response status code and response headers
-    def get_security_types_with_http_info_impl(opts = {})
+    private def get_security_types_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.get_security_types ...'
       end
@@ -238,6 +246,7 @@ module SnapTrade
 
 
     # List exchanges
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_stock_exchanges(extra: {})
       data, _status_code, _headers = get_stock_exchanges_with_http_info_impl(extra)
@@ -245,6 +254,7 @@ module SnapTrade
     end
 
     # List exchanges
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_stock_exchanges_with_http_info(extra: {})
       get_stock_exchanges_with_http_info_impl(extra)
@@ -253,7 +263,7 @@ module SnapTrade
     # List exchanges
     # @param [Hash] opts the optional parameters
     # @return [Array<Exchange>]
-    def get_stock_exchanges_impl(opts = {})
+    private def get_stock_exchanges_impl(opts = {})
       data, _status_code, _headers = get_stock_exchanges_with_http_info(opts)
       data
     end
@@ -261,7 +271,7 @@ module SnapTrade
     # List exchanges
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Exchange>, Integer, Hash)>] Array<Exchange> data, response status code and response headers
-    def get_stock_exchanges_with_http_info_impl(opts = {})
+    private def get_stock_exchanges_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.get_stock_exchanges ...'
       end
@@ -307,6 +317,7 @@ module SnapTrade
 
 
     # Search for symbols
+    #
     # @param substring [String] 
     # @param body [SymbolQuery] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -319,6 +330,7 @@ module SnapTrade
     end
 
     # Search for symbols
+    #
     # @param substring [String] 
     # @param body [SymbolQuery] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -333,7 +345,7 @@ module SnapTrade
     # @param [Hash] opts the optional parameters
     # @option opts [SymbolQuery] :symbol_query 
     # @return [Array<UniversalSymbol>]
-    def get_symbols_impl(opts = {})
+    private def get_symbols_impl(opts = {})
       data, _status_code, _headers = get_symbols_with_http_info(opts)
       data
     end
@@ -342,7 +354,7 @@ module SnapTrade
     # @param [Hash] opts the optional parameters
     # @option opts [SymbolQuery] :symbol_query 
     # @return [Array<(Array<UniversalSymbol>, Integer, Hash)>] Array<UniversalSymbol> data, response status code and response headers
-    def get_symbols_with_http_info_impl(opts = {})
+    private def get_symbols_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.get_symbols ...'
       end
@@ -393,6 +405,7 @@ module SnapTrade
 
 
     # Get details of a symbol by the ticker or the universal_symbol_id
+    #
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_symbols_by_ticker(query:, extra: {})
@@ -401,6 +414,7 @@ module SnapTrade
     end
 
     # Get details of a symbol by the ticker or the universal_symbol_id
+    #
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_symbols_by_ticker_with_http_info(query:, extra: {})
@@ -411,7 +425,7 @@ module SnapTrade
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] opts the optional parameters
     # @return [UniversalSymbol]
-    def get_symbols_by_ticker_impl(query, opts = {})
+    private def get_symbols_by_ticker_impl(query, opts = {})
       data, _status_code, _headers = get_symbols_by_ticker_with_http_info(query, opts)
       data
     end
@@ -420,7 +434,7 @@ module SnapTrade
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UniversalSymbol, Integer, Hash)>] UniversalSymbol data, response status code and response headers
-    def get_symbols_by_ticker_with_http_info_impl(query, opts = {})
+    private def get_symbols_by_ticker_with_http_info_impl(query, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.get_symbols_by_ticker ...'
       end
@@ -470,6 +484,7 @@ module SnapTrade
 
 
     # List of all brokerage authorization types
+    #
     # @param brokerage [String] Comma separated value of brokerage slugs
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_brokerage_authorization_type(brokerage: SENTINEL, extra: {})
@@ -479,6 +494,7 @@ module SnapTrade
     end
 
     # List of all brokerage authorization types
+    #
     # @param brokerage [String] Comma separated value of brokerage slugs
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_brokerage_authorization_type_with_http_info(brokerage: SENTINEL, extra: {})
@@ -490,7 +506,7 @@ module SnapTrade
     # @param [Hash] opts the optional parameters
     # @option opts [String] :brokerage Comma separated value of brokerage slugs
     # @return [Array<BrokerageAuthorizationTypeReadOnly>]
-    def list_all_brokerage_authorization_type_impl(opts = {})
+    private def list_all_brokerage_authorization_type_impl(opts = {})
       data, _status_code, _headers = list_all_brokerage_authorization_type_with_http_info(opts)
       data
     end
@@ -499,7 +515,7 @@ module SnapTrade
     # @param [Hash] opts the optional parameters
     # @option opts [String] :brokerage Comma separated value of brokerage slugs
     # @return [Array<(Array<BrokerageAuthorizationTypeReadOnly>, Integer, Hash)>] Array<BrokerageAuthorizationTypeReadOnly> data, response status code and response headers
-    def list_all_brokerage_authorization_type_with_http_info_impl(opts = {})
+    private def list_all_brokerage_authorization_type_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.list_all_brokerage_authorization_type ...'
       end
@@ -546,6 +562,7 @@ module SnapTrade
 
 
     # List brokerages
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_brokerages(extra: {})
       data, _status_code, _headers = list_all_brokerages_with_http_info_impl(extra)
@@ -553,6 +570,7 @@ module SnapTrade
     end
 
     # List brokerages
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_brokerages_with_http_info(extra: {})
       list_all_brokerages_with_http_info_impl(extra)
@@ -561,7 +579,7 @@ module SnapTrade
     # List brokerages
     # @param [Hash] opts the optional parameters
     # @return [Array<Brokerage>]
-    def list_all_brokerages_impl(opts = {})
+    private def list_all_brokerages_impl(opts = {})
       data, _status_code, _headers = list_all_brokerages_with_http_info(opts)
       data
     end
@@ -569,7 +587,7 @@ module SnapTrade
     # List brokerages
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Brokerage>, Integer, Hash)>] Array<Brokerage> data, response status code and response headers
-    def list_all_brokerages_with_http_info_impl(opts = {})
+    private def list_all_brokerages_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.list_all_brokerages ...'
       end
@@ -615,6 +633,7 @@ module SnapTrade
 
 
     # List currencies
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies(extra: {})
       data, _status_code, _headers = list_all_currencies_with_http_info_impl(extra)
@@ -622,6 +641,7 @@ module SnapTrade
     end
 
     # List currencies
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies_with_http_info(extra: {})
       list_all_currencies_with_http_info_impl(extra)
@@ -630,7 +650,7 @@ module SnapTrade
     # List currencies
     # @param [Hash] opts the optional parameters
     # @return [Array<Currency>]
-    def list_all_currencies_impl(opts = {})
+    private def list_all_currencies_impl(opts = {})
       data, _status_code, _headers = list_all_currencies_with_http_info(opts)
       data
     end
@@ -638,7 +658,7 @@ module SnapTrade
     # List currencies
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Currency>, Integer, Hash)>] Array<Currency> data, response status code and response headers
-    def list_all_currencies_with_http_info_impl(opts = {})
+    private def list_all_currencies_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.list_all_currencies ...'
       end
@@ -684,6 +704,7 @@ module SnapTrade
 
 
     # List currency exchange rates
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies_rates(extra: {})
       data, _status_code, _headers = list_all_currencies_rates_with_http_info_impl(extra)
@@ -691,6 +712,7 @@ module SnapTrade
     end
 
     # List currency exchange rates
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies_rates_with_http_info(extra: {})
       list_all_currencies_rates_with_http_info_impl(extra)
@@ -699,7 +721,7 @@ module SnapTrade
     # List currency exchange rates
     # @param [Hash] opts the optional parameters
     # @return [Array<ExchangeRatePairs>]
-    def list_all_currencies_rates_impl(opts = {})
+    private def list_all_currencies_rates_impl(opts = {})
       data, _status_code, _headers = list_all_currencies_rates_with_http_info(opts)
       data
     end
@@ -707,7 +729,7 @@ module SnapTrade
     # List currency exchange rates
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ExchangeRatePairs>, Integer, Hash)>] Array<ExchangeRatePairs> data, response status code and response headers
-    def list_all_currencies_rates_with_http_info_impl(opts = {})
+    private def list_all_currencies_rates_with_http_info_impl(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.list_all_currencies_rates ...'
       end
@@ -753,6 +775,7 @@ module SnapTrade
 
 
     # Search for symbols available in an account
+    #
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to search for symbols within.
@@ -768,6 +791,7 @@ module SnapTrade
     end
 
     # Search for symbols available in an account
+    #
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to search for symbols within.
@@ -788,7 +812,7 @@ module SnapTrade
     # @param [Hash] opts the optional parameters
     # @option opts [SymbolQuery] :symbol_query 
     # @return [Array<UniversalSymbol>]
-    def symbol_search_user_account_impl(user_id, user_secret, account_id, opts = {})
+    private def symbol_search_user_account_impl(user_id, user_secret, account_id, opts = {})
       data, _status_code, _headers = symbol_search_user_account_with_http_info(user_id, user_secret, account_id, opts)
       data
     end
@@ -800,7 +824,7 @@ module SnapTrade
     # @param [Hash] opts the optional parameters
     # @option opts [SymbolQuery] :symbol_query 
     # @return [Array<(Array<UniversalSymbol>, Integer, Hash)>] Array<UniversalSymbol> data, response status code and response headers
-    def symbol_search_user_account_with_http_info_impl(user_id, user_secret, account_id, opts = {})
+    private def symbol_search_user_account_with_http_info_impl(user_id, user_secret, account_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReferenceDataApi.symbol_search_user_account ...'
       end

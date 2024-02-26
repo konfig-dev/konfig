@@ -222,15 +222,15 @@ module SnapTrade
   end
 
   class Client
-    attr_accessor :account_information
-    attr_accessor :api_status
-    attr_accessor :authentication
-    attr_accessor :connections
-    attr_accessor :error_logs
-    attr_accessor :options
-    attr_accessor :reference_data
-    attr_accessor :trading
-    attr_accessor :transactions_and_reporting
+    attr_reader :account_information
+    attr_reader :api_status
+    attr_reader :authentication
+    attr_reader :connections
+    attr_reader :error_logs
+    attr_reader :options
+    attr_reader :reference_data
+    attr_reader :trading
+    attr_reader :transactions_and_reporting
 
     def initialize(config = Configuration.default)
       @api_client = ApiClient::new(config)
