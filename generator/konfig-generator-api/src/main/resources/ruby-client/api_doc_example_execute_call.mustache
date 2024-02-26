@@ -1,19 +1,10 @@
-{{#allParamsWithRequestBodyProperties}}
-{{{paramName}}} = {{{example}}}
-{{/allParamsWithRequestBodyProperties}}
-{{#bodyParam}}
-{{^isStrictlyObject}}
-body = {{{example}}}
-{{/isStrictlyObject}}
-{{/bodyParam}}
-
 {{#returnType}}result = {{/returnType}}{{clientNameLowercase}}.{{> api_doc_example_method}}{{#hasParams}}(
   {{#allParamsWithRequestBodyProperties}}
-  {{paramName}}: {{paramName}},
+  {{paramName}}: {{{example}}},
   {{/allParamsWithRequestBodyProperties}}
   {{#bodyParam}}
   {{^isStrictlyObject}}
-  body: body,
+  body: {{{example}}},
   {{/isStrictlyObject}}
   {{/bodyParam}}
 ){{/hasParams}}

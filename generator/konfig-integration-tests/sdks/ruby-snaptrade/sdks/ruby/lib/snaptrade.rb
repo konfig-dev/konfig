@@ -162,17 +162,50 @@ module SnapTrade
   @config = Configuration.default
   SENTINEL = Object.new
   class << self
-    extend Forwardable
 
-    def is_sentinel(value)
+    private def is_sentinel(value)
       value == SENTINEL
     end
 
-    def_delegators :@config, :host, :host=
-    def_delegators :@config, :client_id, :client_id= # api key
-    def_delegators :@config, :signature, :signature= # api key
-    def_delegators :@config, :timestamp, :timestamp= # api key
-    def_delegators :@config, :consumer_key, :consumer_key= # client state from konfig.yaml
+    def host
+      @config.host
+    end
+
+    def host=(value)
+      @config.host = value
+    end
+    # api key from OpenAPI spec
+    def client_id
+      @config.client_id
+    end
+
+    def client_id=(value)
+      @config.client_id = value
+    end
+    # api key from OpenAPI spec
+    def signature
+      @config.signature
+    end
+
+    def signature=(value)
+      @config.signature = value
+    end
+    # api key from OpenAPI spec
+    def timestamp
+      @config.timestamp
+    end
+
+    def timestamp=(value)
+      @config.timestamp = value
+    end
+    # client state from konfig.yaml
+    def consumer_key
+      @config.consumer_key
+    end
+
+    def consumer_key=(value)
+      @config.consumer_key = value
+    end
 
     # Customize default settings for the SDK using block.
     #   SnapTrade.configure do |config|
