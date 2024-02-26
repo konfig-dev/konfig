@@ -12,13 +12,15 @@ export async function fixPassthroughRefs({
   )
     return numberOfPassthroughRefsFixed
 
-  const collectPassthroughRefs = (): Record<string, string> => {
+  const collectPassthroughRefs = (): [string, string][] => {
     if (
       spec.spec.components === undefined ||
       spec.spec.components.schemas === undefined
     )
-      return {}
+      return []
     // iterate through all components.schemas and collect list of schemas that are passthrough refs
+    // so the map contains values like "Level1" -> "#/components/schemas/Level2"
+    // where Level1 is a schema that is just a $ref to Level2
     const refs: Record<string, string> = {}
     for (const schemaName in spec.spec.components.schemas) {
       const schema = spec.spec.components.schemas[schemaName]
@@ -32,12 +34,33 @@ export async function fixPassthroughRefs({
         refs[schemaName] = schema['$ref']
       }
     }
-    return refs
+    const passthroughRefs = Object.entries(refs)
+
+    // refs contains a mapping of source to destination
+    // ex: "Leve1": -> "#/components/schemas/Level2"
+    // topologically sort passthrough refs so we can replace them in order
+    // ex: [Level1, "#/components/schemas/Level2"], [Level2, "#/components/schemas/Level3"], ...
+    const sortedPassthroughRefs: [string, string][] = []
+    const visited: Record<string, boolean> = {}
+    const visit = (source: string) => {
+      if (visited[source]) return
+      visited[source] = true
+      if (!(source in refs)) return
+      const destination = refs[source]
+      visit(destination.split('/').pop() || '')
+      // prepend source to the list
+      sortedPassthroughRefs.unshift([source, destination])
+    }
+    for (const [source] of passthroughRefs) {
+      visit(source)
+    }
+    return sortedPassthroughRefs
   }
 
   let passthroughRefs = collectPassthroughRefs()
-  while (Object.keys(passthroughRefs).length > 0) {
-    // iterate through all passthrough refs and replace them with the reffed schema
+  console.log(passthroughRefs)
+  // iterate through all passthrough refs and replace them with the reffed schema
+  for (const [source, destination] of passthroughRefs) {
     recurseObject(spec.spec, ({ value: schema }) => {
       // check if schema has $ref that is a passthrough ref
       if (
@@ -53,19 +76,13 @@ export async function fixPassthroughRefs({
       const ref = schema['$ref']
       const schemaName = ref.split('/').pop()
       if (schemaName === undefined) return
-      // check if schemaName is in refs
-      if (!(schemaName in passthroughRefs)) return
+      // check if schemaName matches name of passthrough ref (e.g. "source")
+      if (schemaName !== source) return
       // replace schema with reffed schema
-      schema['$ref'] = passthroughRefs[schemaName]
+      schema['$ref'] = destination
       numberOfPassthroughRefsFixed++
     })
-
-    // delete all schemas that are passthrough refs
-    for (const schemaName in passthroughRefs) {
-      delete spec.spec.components.schemas[schemaName]
-    }
-
-    passthroughRefs = collectPassthroughRefs()
+    delete spec.spec.components.schemas[source]
   }
 
   return numberOfPassthroughRefsFixed
