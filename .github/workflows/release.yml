@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   check_for_relevant_changes:
-    runs-on: ubuntu-latest
+    runs-on: ubicloud
     outputs:
       shouldRun: ${{ steps.check_changes.outputs.shouldRun }}
     steps:
@@ -33,7 +33,7 @@ jobs:
     needs: check_for_relevant_changes
     if: needs.check_for_relevant_changes.outputs.shouldRun == 'true'
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: ubicloud
     env:
       DIRECTORY: ./generator/konfig-dash
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -7,7 +7,7 @@ on:
 
 jobs:
   check_for_relevant_changes:
-    runs-on: ubuntu-latest
+    runs-on: ubicloud
     outputs:
       shouldRun: ${{ steps.check_changes.outputs.shouldRun }}
     steps:
@@ -30,7 +30,7 @@ jobs:
 
   execute_integration_tests:
     needs: check_for_relevant_changes
-    runs-on: ubuntu-latest
+    runs-on: ubicloud
     if: >
       needs.check_for_relevant_changes.outputs.shouldRun == 'true' ||
       contains(github.event.head_commit.message, 'run-integration-tests') ||
