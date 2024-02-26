@@ -4601,6 +4601,10 @@ public class DefaultCodegen implements CodegenConfig {
         op.operationId = toOperationId(operationId);
         op.summary = escapeText(operation.getSummary());
         op.unescapedNotes = operation.getDescription();
+        if (op.unescapedNotes != null) {
+            op.unescapedNotesWithPounds = Arrays.stream(operation.getDescription().split("\n")).map(s -> "# " + s)
+                    .collect(Collectors.joining("\n"));
+        }
         op.notes = escapeText(operation.getDescription());
         op.hasConsumes = false;
         op.hasProduces = false;

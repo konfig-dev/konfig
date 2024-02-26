@@ -44,6 +44,7 @@ public class CodegenOperation {
     public String returnBaseType;
     public String path, operationId, returnType, returnFormat, httpMethod,
             returnContainer, summary, unescapedNotes, notes, baseName, defaultResponse;
+    public String unescapedNotesWithPounds;
     public CodegenDiscriminator discriminator;
     public List<Map<String, String>> consumes, produces, prioritizedContentTypes;
     public String requestBodyContentType;

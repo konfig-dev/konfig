@@ -1,18 +1,20 @@
-    {{#summary}}
-    # {{{.}}}
-    {{/summary}}
-    {{#notes}}
-    # {{{.}}}
-    {{/notes}}
-    {{#allParamsWithRequestBodyProperties}}
-    {{#required}}
-    # @param {{paramName}} [{{{dataType}}}] {{description}}
-    {{/required}}
-    {{^required}}
-    # @param {{paramName}} [{{{dataType}}}] {{description}}
-    {{/required}}
-    {{/allParamsWithRequestBodyProperties}}
-    {{#bodyParam}}
-    # @param body [{{{dataType}}}] {{description}}
-    {{/bodyParam}}
-    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
+{{#summary}}
+# {{{.}}}
+#
+{{/summary}}
+{{#unescapedNotesWithPounds}}
+{{{unescapedNotesWithPounds}}}
+{{/unescapedNotesWithPounds}}
+#
+{{#allParamsWithRequestBodyProperties}}
+{{#required}}
+# @param {{paramName}} [{{{dataType}}}] {{description}}
+{{/required}}
+{{^required}}
+# @param {{paramName}} [{{{dataType}}}] {{description}}
+{{/required}}
+{{/allParamsWithRequestBodyProperties}}
+{{#bodyParam}}
+# @param body [{{{dataType}}}] {{description}}
+{{/bodyParam}}
+# @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
