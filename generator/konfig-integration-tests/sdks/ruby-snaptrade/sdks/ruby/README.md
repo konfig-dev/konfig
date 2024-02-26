@@ -116,6 +116,16 @@ p result
 
 Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations).
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountHoldings](./lib/snaptrade/models/account_holdings.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/holdings` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -144,6 +154,16 @@ p result
 
 The ID of the account to get balances.
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Balance](./lib/snaptrade/models/balance.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/balances` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -171,6 +191,16 @@ p result
 ##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get detail of.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Account](./lib/snaptrade/models/account.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -210,6 +240,16 @@ defaults value is set to \"all\"
 
 Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/orders` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -237,6 +277,16 @@ p result
 ##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get positions.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Position](./lib/snaptrade/models/position.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/positions` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -266,6 +316,16 @@ The ID of the account to fetch holdings for.
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountHoldingsAccount](./lib/snaptrade/models/account_holdings_account.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/holdings` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -288,6 +348,16 @@ p result
 ##### user_id: `String`<a id="user_id-string"></a>
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Account](./lib/snaptrade/models/account.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -317,6 +387,16 @@ p result
 
 The ID of the account to update.
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Account](./lib/snaptrade/models/account.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}` `PUT`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -330,6 +410,16 @@ Check whether the API is operational and verify timestamps.
 result = snaptrade.api_status.check
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Status](./lib/snaptrade/models/status.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -350,6 +440,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### user_id: `String`<a id="user_id-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[DeleteUserResponse](./lib/snaptrade/models/delete_user_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/deleteUser` `DELETE`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -374,6 +474,16 @@ p result
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[EncryptedResponse](./lib/snaptrade/models/encrypted_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/encryptedJWT` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -387,6 +497,12 @@ Returns a list of users you've registered over the SnapTrade API.
 result = snaptrade.authentication.list_snap_trade_users
 p result
 ```
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/listUsers` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -437,6 +553,16 @@ The UUID of the brokerage connection to be reconnected. This parameter should be
 
 ##### connectionPortalVersion: [`ConnectionPortalVersion`](./lib/snaptrade/models/connection_portal_version.rb)<a id="connectionportalversion-connectionportalversionlibsnaptrademodelsconnection_portal_versionrb"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AuthenticationLoginSnapTradeUser200Response](./lib/snaptrade/models/authentication_login_snap_trade_user200_response.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/login` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -458,6 +584,16 @@ p result
 ##### userId: `String`<a id="userid-string"></a>
 
 SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserIDandSecret](./lib/snaptrade/models/user_i_dand_secret.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/registerUser` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -485,6 +621,16 @@ SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as 
 ##### userSecret: `String`<a id="usersecret-string"></a>
 
 SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserIDandSecret](./lib/snaptrade/models/user_i_dand_secret.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/resetUserSecret` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -514,6 +660,16 @@ The ID of a brokerage authorization object.
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[BrokerageAuthorization](./lib/snaptrade/models/brokerage_authorization.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/authorizations/{authorizationId}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -536,6 +692,16 @@ p result
 ##### user_id: `String`<a id="user_id-string"></a>
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[BrokerageAuthorization](./lib/snaptrade/models/brokerage_authorization.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/authorizations` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -563,6 +729,12 @@ The ID of the Authorization to delete.
 ##### user_id: `String`<a id="user_id-string"></a>
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/authorizations/{authorizationId}` `DELETE`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -594,6 +766,16 @@ Optional comma seperated list of user IDs used to filter the request on specific
 
 Optional comma seperated list of session IDs used to filter the request on specific users
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ConnectionsSessionEvents200ResponseInner](./lib/snaptrade/models/connections_session_events200_response_inner.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/sessionEvents` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -616,6 +798,16 @@ p result
 ##### user_id: `String`<a id="user_id-string"></a>
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UserErrorLog](./lib/snaptrade/models/user_error_log.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/listUserErrors` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -660,6 +852,16 @@ p result
 
 The ID of the account to create the option strategy object in.
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[StrategyQuotes](./lib/snaptrade/models/strategy_quotes.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/optionStrategy` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -692,6 +894,16 @@ The ID of the account to get the options chain from.
 ##### symbol: `String`<a id="symbol-string"></a>
 
 Universal symbol ID if symbol
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OptionChainInner](./lib/snaptrade/models/option_chain_inner.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/optionsChain` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -726,6 +938,16 @@ The ID of the account the strategy will be placed in.
 
 Option strategy id obtained from response when creating option strategy object
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[StrategyQuotes](./lib/snaptrade/models/strategy_quotes.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/optionStrategy/{optionStrategyId}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -753,6 +975,16 @@ p result
 ##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to fetch options holdings for.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[OptionsPosition](./lib/snaptrade/models/options_position.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/options` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -798,6 +1030,16 @@ Option strategy id obtained from response when creating option strategy object
 
 Trade Price if limit or stop limit order
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[StrategyOrderRecord](./lib/snaptrade/models/strategy_order_record.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/optionStrategy/{optionStrategyId}/execute` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -820,6 +1062,16 @@ p result
 
 A currency pair based on currency code for example, {CAD-USD}
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ExchangeRatePairs](./lib/snaptrade/models/exchange_rate_pairs.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/currencies/rates/{currencyPair}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -833,6 +1085,16 @@ Get metadata related to Snaptrade partner
 result = snaptrade.reference_data.get_partner_info
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PartnerData](./lib/snaptrade/models/partner_data.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/snapTrade/partners` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -848,6 +1110,16 @@ result = snaptrade.reference_data.get_security_types
 p result
 ```
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SecurityType](./lib/snaptrade/models/security_type.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/securityTypes` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -861,6 +1133,16 @@ List exchanges
 result = snaptrade.reference_data.get_stock_exchanges
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Exchange](./lib/snaptrade/models/exchange.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/exchanges` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -881,6 +1163,16 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### substring: `String`<a id="substring-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UniversalSymbol](./lib/snaptrade/models/universal_symbol.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/symbols` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -904,6 +1196,16 @@ p result
 
 The ticker or universal_symbol_id of the UniversalSymbol to get.
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UniversalSymbol](./lib/snaptrade/models/universal_symbol.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/symbols/{query}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -926,6 +1228,16 @@ p result
 
 Comma separated value of brokerage slugs
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[BrokerageAuthorizationTypeReadOnly](./lib/snaptrade/models/brokerage_authorization_type_read_only.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/brokerageAuthorizationTypes` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -939,6 +1251,16 @@ List brokerages
 result = snaptrade.reference_data.list_all_brokerages
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Brokerage](./lib/snaptrade/models/brokerage.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/brokerages` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -954,6 +1276,16 @@ result = snaptrade.reference_data.list_all_currencies
 p result
 ```
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[Currency](./lib/snaptrade/models/currency.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/currencies` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -967,6 +1299,16 @@ List currency exchange rates
 result = snaptrade.reference_data.list_all_currencies_rates
 p result
 ```
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ExchangeRatePairs](./lib/snaptrade/models/exchange_rate_pairs.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/currencies/rates` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -999,6 +1341,16 @@ The ID of the account to search for symbols within.
 
 ##### substring: `String`<a id="substring-string"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UniversalSymbol](./lib/snaptrade/models/universal_symbol.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/symbols` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1029,6 +1381,16 @@ p result
 The ID of the account to cancel the order in.
 
 ##### brokerage_order_id: `String`<a id="brokerage_order_id-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/orders/cancel` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1084,6 +1446,16 @@ Stop Price. If stop loss or stop limit order, the price to trigger the stop
 
 ##### notional_value: [`Float`](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[ManualTradeAndImpact](./lib/snaptrade/models/manual_trade_and_impact.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/trade/impact` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1121,6 +1493,16 @@ The ID of the account to get quotes.
 ##### use_ticker: `Boolean`<a id="use_ticker-boolean"></a>
 
 Should be set to True if providing tickers.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[SymbolsQuotesInner](./lib/snaptrade/models/symbols_quotes_inner.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/accounts/{accountId}/quotes` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1176,6 +1558,16 @@ Stop Price. If stop loss or stop limit order, the price to trigger the stop
 
 ##### notional_value: [`Float`](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/trade/place` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1209,6 +1601,16 @@ The ID of first trade object obtained from trade/impact endpoint
 
 The ID of second trade object obtained from trade/impact endpoint
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/trade/oco` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1236,6 +1638,16 @@ The ID of trade object obtained from trade/impact endpoint
 ##### user_id: `String`<a id="user_id-string"></a>
 
 ##### user_secret: `String`<a id="user_secret-string"></a>
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/trade/{tradeId}` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
@@ -1281,6 +1693,16 @@ Optional comma seperated list of brokerage authorization IDs used to filter the 
 
 Optional comma seperated list of types to filter activities by. This is not an exhaustive list, if we fail to match to these types, we will return the raw description from the brokerage. Potential values include - DIVIDEND - BUY - SELL - CONTRIBUTION - WITHDRAWAL - EXTERNAL_ASSET_TRANSFER_IN - EXTERNAL_ASSET_TRANSFER_OUT - INTERNAL_CASH_TRANSFER_IN - INTERNAL_CASH_TRANSFER_OUT - INTERNAL_ASSET_TRANSFER_IN - INTERNAL_ASSET_TRANSFER_OUT - INTEREST - REBATE - GOV_GRANT - TAX - FEE - REI - FXT
 
+#### 🔄 Return<a id="🔄-return"></a>
+
+[UniversalActivity](./lib/snaptrade/models/universal_activity.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/activities` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
 ---
 
 
@@ -1324,6 +1746,16 @@ Optional, increases frequency of data points for the total value and contributio
 ##### frequency: `String`<a id="frequency-string"></a>
 
 Optional frequency for the rate of return chart (defaults to monthly). Possible values are daily, weekly, monthly, quarterly, yearly.
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[PerformanceCustom](./lib/snaptrade/models/performance_custom.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/performance/custom` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
 
 ---
 
