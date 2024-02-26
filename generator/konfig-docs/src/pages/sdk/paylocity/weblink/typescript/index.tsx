@@ -16,7 +16,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/logo.jpg"
       clientNameCamelCase="paylocity"
       homepage="developer.paylocity.com"
-      lastUpdated={new Date("2024-02-02T23:54:52.416Z")}
+      lastUpdated={new Date("2024-02-25T09:49:43.849Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/favicon.jpg"
       // Missing contactUrl
       contactEmail="webservices@paylocity.com"
@@ -3034,7 +3034,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     }
       language="TypeScript"
       apiTitle="WebLink API"
-      apiBaseUrl="https://apisandbox.paylocity.com/IdentityServer/connect/token"
+      apiBaseUrl="https://apisandbox.paylocity.com/api"
       apiVersion="v2"
       endpoints={33}
       sdkMethods={43}

@@ -16,7 +16,7 @@ export default function ZuoraTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/logo.png"
       clientNameCamelCase="zuora"
       homepage="zuora.com"
-      lastUpdated={new Date("2024-02-21T06:35:19.352Z")}
+      lastUpdated={new Date("2024-02-26T03:11:32.903Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png"
       // Missing contactUrl
       contactEmail="docs@zuora.com"
@@ -33763,10 +33763,10 @@ export default function ZuoraTypeScriptSdk() {
       language="TypeScript"
       apiTitle="API Reference"
       apiBaseUrl="https://rest.zuora.com"
-      apiVersion="2024-02-08"
+      apiVersion="2024-02-23"
       endpoints={343}
       sdkMethods={457}
-      schemas={1045}
+      schemas={1050}
       parameters={4294}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/openapi.yaml"
