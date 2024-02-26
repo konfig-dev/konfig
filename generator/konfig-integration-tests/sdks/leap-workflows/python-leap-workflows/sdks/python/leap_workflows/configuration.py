@@ -147,6 +147,8 @@ conf = leap_workflows.Configuration(
         self.api_key_prefix = {}
         if api_key_prefix:
             self.api_key_prefix = api_key_prefix
+        else:
+            pass
         """dict to store API prefix (e.g. Bearer)
         """
         self.refresh_api_key_hook = None
@@ -361,7 +363,7 @@ conf = leap_workflows.Configuration(
         if key:
             prefix = self.api_key_prefix.get(identifier)
             if prefix:
-                return "%s %s" % (prefix, key)
+                return "%s%s" % (prefix, key)
             else:
                 return key
 
