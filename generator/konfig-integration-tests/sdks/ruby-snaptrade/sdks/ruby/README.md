@@ -108,11 +108,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### brokerage_authorizations: **String**<a id="brokerage_authorizations-string"></a>
+##### brokerage_authorizations: `String`<a id="brokerage_authorizations-string"></a>
 
 Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations).
 
@@ -136,11 +136,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get balances.
 
@@ -164,11 +164,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get detail of.
 
@@ -194,19 +194,19 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get orders.
 
-##### state: **String**<a id="state-string"></a>
+##### state: `String`<a id="state-string"></a>
 
 defaults value is set to \"all\"
 
-##### days: **Integer**<a id="days-integer"></a>
+##### days: `Integer`<a id="days-integer"></a>
 
 Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
 
@@ -230,11 +230,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get positions.
 
@@ -258,13 +258,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to fetch holdings for.
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -285,9 +285,9 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -309,11 +309,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to update.
 
@@ -349,7 +349,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
 ---
 
@@ -370,9 +370,9 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -402,7 +402,7 @@ result = snaptrade.authentication.login_snap_trade_user(
   user_id: "John.doe@snaptrade.com",
   user_secret: "USERSECRET123",
   broker: "ALPACA",
-  immediate_redirect: True,
+  immediate_redirect: true,
   custom_redirect: "https://snaptrade.com",
   reconnect: "8b5f262d-4bb9-365d-888a-202bd3b15fa1",
   connection_type: "read",
@@ -413,29 +413,29 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### broker: **String**<a id="broker-string"></a>
+##### broker: `String`<a id="broker-string"></a>
 
 Slug of the brokerage to connect the user to
 
-##### immediateRedirect: **Boolean**<a id="immediateredirect-boolean"></a>
+##### immediateRedirect: `Boolean`<a id="immediateredirect-boolean"></a>
 
 When set to True, user will be redirected back to the partner's site instead of the connection portal
 
-##### customRedirect: **String**<a id="customredirect-string"></a>
+##### customRedirect: `String`<a id="customredirect-string"></a>
 
 URL to redirect the user to after the user connects their brokerage account
 
-##### reconnect: **String**<a id="reconnect-string"></a>
+##### reconnect: `String`<a id="reconnect-string"></a>
 
 The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information.
 
-##### connectionType: [**ConnectionType**](./lib/snaptrade/models/connection_type.rb)<a id="connectiontype-connectiontypelibsnaptrademodelsconnection_typerb"></a>
+##### connectionType: [`ConnectionType`](./lib/snaptrade/models/connection_type.rb)<a id="connectiontype-connectiontypelibsnaptrademodelsconnection_typerb"></a>
 
-##### connectionPortalVersion: [**ConnectionPortalVersion**](./lib/snaptrade/models/connection_portal_version.rb)<a id="connectionportalversion-connectionportalversionlibsnaptrademodelsconnection_portal_versionrb"></a>
+##### connectionPortalVersion: [`ConnectionPortalVersion`](./lib/snaptrade/models/connection_portal_version.rb)<a id="connectionportalversion-connectionportalversionlibsnaptrademodelsconnection_portal_versionrb"></a>
 
 ---
 
@@ -455,7 +455,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### userId: **String**<a id="userid-string"></a>
+##### userId: `String`<a id="userid-string"></a>
 
 SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
 
@@ -478,11 +478,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### userId: **String**<a id="userid-string"></a>
+##### userId: `String`<a id="userid-string"></a>
 
 SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
 
-##### userSecret: **String**<a id="usersecret-string"></a>
+##### userSecret: `String`<a id="usersecret-string"></a>
 
 SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user.
 
@@ -506,13 +506,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authorization_id: **String**<a id="authorization_id-string"></a>
+##### authorization_id: `String`<a id="authorization_id-string"></a>
 
 The ID of a brokerage authorization object.
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -533,9 +533,9 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -556,13 +556,13 @@ snaptrade.connections.remove_brokerage_authorization(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### authorization_id: **String**<a id="authorization_id-string"></a>
+##### authorization_id: `String`<a id="authorization_id-string"></a>
 
 The ID of the Authorization to delete.
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -584,13 +584,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### partner_client_id: **String**<a id="partner_client_id-string"></a>
+##### partner_client_id: `String`<a id="partner_client_id-string"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
 Optional comma seperated list of user IDs used to filter the request on specific users
 
-##### session_id: **String**<a id="session_id-string"></a>
+##### session_id: `String`<a id="session_id-string"></a>
 
 Optional comma seperated list of session IDs used to filter the request on specific users
 
@@ -613,9 +613,9 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -646,17 +646,17 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### underlying_symbol_id: **String**<a id="underlying_symbol_id-string"></a>
+##### underlying_symbol_id: `String`<a id="underlying_symbol_id-string"></a>
 
-##### legs: [**Array<OptionLeg>**](./lib/snaptrade/models/array_option_leg.rb)<a id="legs-arraylibsnaptrademodelsarray_option_legrb"></a>
+##### legs: [`Array<OptionLeg>`](./lib/snaptrade/models/array_option_leg.rb)<a id="legs-arraylibsnaptrademodelsarray_option_legrb"></a>
 
-##### strategy_type: [**StrategyType**](./lib/snaptrade/models/strategy_type.rb)<a id="strategy_type-strategytypelibsnaptrademodelsstrategy_typerb"></a>
+##### strategy_type: [`StrategyType`](./lib/snaptrade/models/strategy_type.rb)<a id="strategy_type-strategytypelibsnaptrademodelsstrategy_typerb"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to create the option strategy object in.
 
@@ -681,15 +681,15 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get the options chain from.
 
-##### symbol: **String**<a id="symbol-string"></a>
+##### symbol: `String`<a id="symbol-string"></a>
 
 Universal symbol ID if symbol
 
@@ -714,15 +714,15 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account the strategy will be placed in.
 
-##### option_strategy_id: **String**<a id="option_strategy_id-string"></a>
+##### option_strategy_id: `String`<a id="option_strategy_id-string"></a>
 
 Option strategy id obtained from response when creating option strategy object
 
@@ -746,11 +746,11 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to fetch options holdings for.
 
@@ -778,23 +778,23 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### order_type: [**OrderType**](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
+##### order_type: [`OrderType`](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
 
-##### time_in_force: [**TimeInForceStrict**](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
+##### time_in_force: [`TimeInForceStrict`](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to execute the strategy in.
 
-##### option_strategy_id: **String**<a id="option_strategy_id-string"></a>
+##### option_strategy_id: `String`<a id="option_strategy_id-string"></a>
 
 Option strategy id obtained from response when creating option strategy object
 
-##### price: **Float**<a id="price-float"></a>
+##### price: `Float`<a id="price-float"></a>
 
 Trade Price if limit or stop limit order
 
@@ -816,7 +816,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### currency_pair: **String**<a id="currency_pair-string"></a>
+##### currency_pair: `String`<a id="currency_pair-string"></a>
 
 A currency pair based on currency code for example, {CAD-USD}
 
@@ -880,7 +880,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### substring: **String**<a id="substring-string"></a>
+##### substring: `String`<a id="substring-string"></a>
 
 ---
 
@@ -900,7 +900,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### query: **String**<a id="query-string"></a>
+##### query: `String`<a id="query-string"></a>
 
 The ticker or universal_symbol_id of the UniversalSymbol to get.
 
@@ -922,7 +922,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### brokerage: **String**<a id="brokerage-string"></a>
+##### brokerage: `String`<a id="brokerage-string"></a>
 
 Comma separated value of brokerage slugs
 
@@ -989,15 +989,15 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to search for symbols within.
 
-##### substring: **String**<a id="substring-string"></a>
+##### substring: `String`<a id="substring-string"></a>
 
 ---
 
@@ -1020,15 +1020,15 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to cancel the order in.
 
-##### brokerage_order_id: **String**<a id="brokerage_order_id-string"></a>
+##### brokerage_order_id: `String`<a id="brokerage_order_id-string"></a>
 
 ---
 
@@ -1058,31 +1058,31 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
-##### action: [**Action**](./lib/snaptrade/models/action.rb)<a id="action-actionlibsnaptrademodelsactionrb"></a>
+##### action: [`Action`](./lib/snaptrade/models/action.rb)<a id="action-actionlibsnaptrademodelsactionrb"></a>
 
-##### order_type: [**OrderType**](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
+##### order_type: [`OrderType`](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
 
-##### price: **Float**<a id="price-float"></a>
+##### price: `Float`<a id="price-float"></a>
 
 Trade Price if limit or stop limit order
 
-##### stop: **Float**<a id="stop-float"></a>
+##### stop: `Float`<a id="stop-float"></a>
 
 Stop Price. If stop loss or stop limit order, the price to trigger the stop
 
-##### time_in_force: [**TimeInForceStrict**](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
+##### time_in_force: [`TimeInForceStrict`](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
 
-##### units: [**Float**](./lib/snaptrade/models/float.rb)<a id="units-floatlibsnaptrademodelsfloatrb"></a>
+##### units: [`Float`](./lib/snaptrade/models/float.rb)<a id="units-floatlibsnaptrademodelsfloatrb"></a>
 
-##### universal_symbol_id: **String**<a id="universal_symbol_id-string"></a>
+##### universal_symbol_id: `String`<a id="universal_symbol_id-string"></a>
 
-##### notional_value: [**Float**](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
+##### notional_value: [`Float`](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
 
 ---
 
@@ -1099,26 +1099,26 @@ result = snaptrade.trading.get_user_account_quotes(
   user_secret: "USERSECRET123",
   symbols: "symbols_example",
   account_id: "accountId_example",
-  use_ticker: True,
+  use_ticker: true,
 )
 p result
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### symbols: **String**<a id="symbols-string"></a>
+##### symbols: `String`<a id="symbols-string"></a>
 
 List of universal_symbol_id or tickers to get quotes for.
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
 The ID of the account to get quotes.
 
-##### use_ticker: **Boolean**<a id="use_ticker-boolean"></a>
+##### use_ticker: `Boolean`<a id="use_ticker-boolean"></a>
 
 Should be set to True if providing tickers.
 
@@ -1150,31 +1150,31 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### account_id: **String**<a id="account_id-string"></a>
+##### account_id: `String`<a id="account_id-string"></a>
 
-##### action: [**Action**](./lib/snaptrade/models/action.rb)<a id="action-actionlibsnaptrademodelsactionrb"></a>
+##### action: [`Action`](./lib/snaptrade/models/action.rb)<a id="action-actionlibsnaptrademodelsactionrb"></a>
 
-##### order_type: [**OrderType**](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
+##### order_type: [`OrderType`](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
 
-##### price: **Float**<a id="price-float"></a>
+##### price: `Float`<a id="price-float"></a>
 
 Trade Price if limit or stop limit order
 
-##### stop: **Float**<a id="stop-float"></a>
+##### stop: `Float`<a id="stop-float"></a>
 
 Stop Price. If stop loss or stop limit order, the price to trigger the stop
 
-##### time_in_force: [**TimeInForceStrict**](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
+##### time_in_force: [`TimeInForceStrict`](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
 
-##### units: [**Float**](./lib/snaptrade/models/float.rb)<a id="units-floatlibsnaptrademodelsfloatrb"></a>
+##### units: [`Float`](./lib/snaptrade/models/float.rb)<a id="units-floatlibsnaptrademodelsfloatrb"></a>
 
-##### universal_symbol_id: **String**<a id="universal_symbol_id-string"></a>
+##### universal_symbol_id: `String`<a id="universal_symbol_id-string"></a>
 
-##### notional_value: [**Float**](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
+##### notional_value: [`Float`](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
 
 ---
 
@@ -1197,15 +1197,15 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### first_trade_id: [**Object**](./lib/snaptrade/models/object.rb)<a id="first_trade_id-objectlibsnaptrademodelsobjectrb"></a>
+##### first_trade_id: [`Object`](./lib/snaptrade/models/object.rb)<a id="first_trade_id-objectlibsnaptrademodelsobjectrb"></a>
 
 The ID of first trade object obtained from trade/impact endpoint
 
-##### second_trade_id: [**Object**](./lib/snaptrade/models/object.rb)<a id="second_trade_id-objectlibsnaptrademodelsobjectrb"></a>
+##### second_trade_id: [`Object`](./lib/snaptrade/models/object.rb)<a id="second_trade_id-objectlibsnaptrademodelsobjectrb"></a>
 
 The ID of second trade object obtained from trade/impact endpoint
 
@@ -1229,13 +1229,13 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### trade_id: **String**<a id="trade_id-string"></a>
+##### trade_id: `String`<a id="trade_id-string"></a>
 
 The ID of trade object obtained from trade/impact endpoint
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
 ---
 
@@ -1261,23 +1261,23 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### start_date: **Date**<a id="start_date-date"></a>
+##### start_date: `Date`<a id="start_date-date"></a>
 
-##### end_date: **Date**<a id="end_date-date"></a>
+##### end_date: `Date`<a id="end_date-date"></a>
 
-##### accounts: **String**<a id="accounts-string"></a>
+##### accounts: `String`<a id="accounts-string"></a>
 
 Optional comma seperated list of account IDs used to filter the request on specific accounts
 
-##### brokerage_authorizations: **String**<a id="brokerage_authorizations-string"></a>
+##### brokerage_authorizations: `String`<a id="brokerage_authorizations-string"></a>
 
 Optional comma seperated list of brokerage authorization IDs used to filter the request on only accounts that belong to those authorizations
 
-##### type: **String**<a id="type-string"></a>
+##### type: `String`<a id="type-string"></a>
 
 Optional comma seperated list of types to filter activities by. This is not an exhaustive list, if we fail to match to these types, we will return the raw description from the brokerage. Potential values include - DIVIDEND - BUY - SELL - CONTRIBUTION - WITHDRAWAL - EXTERNAL_ASSET_TRANSFER_IN - EXTERNAL_ASSET_TRANSFER_OUT - INTERNAL_CASH_TRANSFER_IN - INTERNAL_CASH_TRANSFER_OUT - INTERNAL_ASSET_TRANSFER_IN - INTERNAL_ASSET_TRANSFER_OUT - INTEREST - REBATE - GOV_GRANT - TAX - FEE - REI - FXT
 
@@ -1297,7 +1297,7 @@ result = snaptrade.transactions_and_reporting.get_reporting_custom_range(
   user_id: "John.doe@snaptrade.com",
   user_secret: "USERSECRET123",
   accounts: "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2",
-  detailed: True,
+  detailed: true,
   frequency: "monthly",
 )
 p result
@@ -1305,23 +1305,23 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### start_date: **Date**<a id="start_date-date"></a>
+##### start_date: `Date`<a id="start_date-date"></a>
 
-##### end_date: **Date**<a id="end_date-date"></a>
+##### end_date: `Date`<a id="end_date-date"></a>
 
-##### user_id: **String**<a id="user_id-string"></a>
+##### user_id: `String`<a id="user_id-string"></a>
 
-##### user_secret: **String**<a id="user_secret-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
 
-##### accounts: **String**<a id="accounts-string"></a>
+##### accounts: `String`<a id="accounts-string"></a>
 
 Optional comma seperated list of account IDs used to filter the request on specific accounts
 
-##### detailed: **Boolean**<a id="detailed-boolean"></a>
+##### detailed: `Boolean`<a id="detailed-boolean"></a>
 
 Optional, increases frequency of data points for the total value and contribution charts if set to true
 
-##### frequency: **String**<a id="frequency-string"></a>
+##### frequency: `String`<a id="frequency-string"></a>
 
 Optional frequency for the rate of return chart (defaults to monthly). Possible values are daily, weekly, monthly, quarterly, yearly.
 
