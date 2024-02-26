@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.19
+
+### Patch Changes
+
+- [#592](https://github.com/konfig-dev/konfig/pull/592) [`9d08da9c`](https://github.com/konfig-dev/konfig/commit/9d08da9ca4526c312c54d18004db2191133ad141) Thanks [@dphuang2](https://github.com/dphuang2)! - fix bug in fixing of singleton all-of in "konfig fix"
+
 ## 1.38.18
 
 ### Patch Changes
