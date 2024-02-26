@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { z } from "zod";
+import type { Db } from "./util/schemas";
 
 const OPENAPI_EXAMPLES_API_PATH = path.dirname(import.meta.dir);
 const SDKS_DIR_PATH = path.dirname(OPENAPI_EXAMPLES_API_PATH);
@@ -17,10 +17,6 @@ console.log(`✅ Found ${directories.length} directories`);
 
 // (2) Write to db.json
 console.log("📝 Writing to db.json:", DB_PATH);
-export const dbSchema = z.object({
-  companies: z.array(z.object({ nameInKebabCase: z.string() })),
-});
-export type Db = z.infer<typeof dbSchema>;
 const db: Db = {
   companies: directories.map((name) => ({ nameInKebabCase: name })),
 };
