@@ -4746,12 +4746,8 @@ components:
             $ref: '#/components/schemas/CopyrightObject'
           type: array
         external_ids:
-          description: |
-            Known external IDs for the album.
           $ref: '#/components/schemas/ExternalIdObject'
         external_urls:
-          description: |
-            Known external URLs for this album.
           $ref: '#/components/schemas/ExternalUrlObject'
         genres:
           description: >
@@ -4808,8 +4804,6 @@ components:
           example: year
           type: string
         restrictions:
-          description: |
-            Included in the response when a content restriction is applied.
           $ref: '#/components/schemas/AlbumRestrictionObject'
         total_tracks:
           description: The number of tracks in the album.
@@ -4841,6 +4835,16 @@ components:
         - type
         - uri
       type: object
+      x-konfig-properties:
+        external_ids:
+          description: |
+            Known external IDs for the album.
+        external_urls:
+          description: |
+            Known external URLs for this album.
+        restrictions:
+          description: |
+            Included in the response when a content restriction is applied.
     AlbumObject:
       allOf:
         - $ref: '#/components/schemas/AlbumBase'
@@ -4878,12 +4882,8 @@ components:
     ArtistObject:
       properties:
         external_urls:
-          description: |
-            Known external URLs for this artist.
           $ref: '#/components/schemas/ExternalUrlObject'
         followers:
-          description: |
-            Information about the followers of the artist.
           $ref: '#/components/schemas/FollowersObject'
         genres:
           description: >
@@ -4933,6 +4933,13 @@ components:
           type: string
       type: object
       x-spotify-docs-type: ArtistObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known external URLs for this artist.
+        followers:
+          description: |
+            Information about the followers of the artist.
     AudioAnalysisObject:
       properties:
         bars:
@@ -5322,8 +5329,6 @@ components:
             does; false = no it does not OR unknown).
           type: boolean
         external_urls:
-          description: |
-            External URLs for this audiobook.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: >
@@ -5405,18 +5410,24 @@ components:
         - type
         - uri
       type: object
+      x-konfig-properties:
+        external_urls:
+          description: |
+            External URLs for this audiobook.
     AudiobookObject:
       allOf:
         - $ref: '#/components/schemas/AudiobookBase'
         - properties:
             chapters:
-              description: |
-                The chapters of the audiobook.
-              type: object
               $ref: '#/components/schemas/PagingSimplifiedChapterObject'
           required:
             - chapters
           type: object
+          x-konfig-properties:
+            chapters:
+              description: |
+                The chapters of the audiobook.
+              type: object
       x-spotify-docs-type: AudiobookObject
     AuthorObject:
       properties:
@@ -5503,8 +5514,6 @@ components:
             false = no it does not OR unknown).
           type: boolean
         external_urls:
-          description: |
-            External URLs for this episode.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: >
@@ -5572,14 +5581,8 @@ components:
           example: day
           type: string
         restrictions:
-          description: |
-            Included in the response when a content restriction is applied.
           $ref: '#/components/schemas/ChapterRestrictionObject'
         resume_point:
-          description: >
-            The user's most recent position in the episode. Set if the supplied
-            access token is a user token and has the scope
-            'user-read-playback-position'.
           $ref: '#/components/schemas/ResumePointObject'
         type:
           description: |
@@ -5613,6 +5616,18 @@ components:
         - type
         - uri
       type: object
+      x-konfig-properties:
+        external_urls:
+          description: |
+            External URLs for this episode.
+        restrictions:
+          description: |
+            Included in the response when a content restriction is applied.
+        resume_point:
+          description: >
+            The user's most recent position in the episode. Set if the supplied
+            access token is a user token and has the scope
+            'user-read-playback-position'.
     ChapterObject:
       allOf:
         - $ref: '#/components/schemas/ChapterBase'
@@ -5653,7 +5668,6 @@ components:
     ContextObject:
       properties:
         external_urls:
-          description: External URLs for this context.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: A link to the Web API endpoint providing full details of the track.
@@ -5669,6 +5683,9 @@ components:
           type: string
       type: object
       x-spotify-docs-type: ContextObject
+      x-konfig-properties:
+        external_urls:
+          description: External URLs for this context.
     CopyrightObject:
       properties:
         text:
@@ -5685,12 +5702,8 @@ components:
     CurrentlyPlayingContextObject:
       properties:
         actions:
-          description: >
-            Allows to update the user interface based on which playback actions
-            are available within the current context.
           $ref: '#/components/schemas/DisallowsObject'
         context:
-          description: A Context Object. Can be `null`.
           $ref: '#/components/schemas/ContextObject'
         currently_playing_type:
           description: >
@@ -5698,8 +5711,6 @@ components:
             `track`, `episode`, `ad` or `unknown`.
           type: string
         device:
-          description: |
-            The device that is currently active.
           $ref: '#/components/schemas/DeviceObject'
         is_playing:
           description: If something is currently playing, return `true`.
@@ -5726,10 +5737,19 @@ components:
           type: integer
       type: object
       x-spotify-docs-type: CurrentlyPlayingContextObject
+      x-konfig-properties:
+        actions:
+          description: >
+            Allows to update the user interface based on which playback actions
+            are available within the current context.
+        context:
+          description: A Context Object. Can be `null`.
+        device:
+          description: |
+            The device that is currently active.
     CurrentlyPlayingObject:
       properties:
         context:
-          description: A Context Object. Can be `null`.
           $ref: '#/components/schemas/ContextObject'
         currently_playing_type:
           description: >
@@ -5755,6 +5775,9 @@ components:
           type: integer
       type: object
       x-spotify-docs-type: CurrentlyPlayingObject
+      x-konfig-properties:
+        context:
+          description: A Context Object. Can be `null`.
     CursorObject:
       properties:
         after:
@@ -5768,7 +5791,6 @@ components:
     CursorPagingObject:
       properties:
         cursors:
-          description: The cursors used to find the next set of items.
           $ref: '#/components/schemas/CursorObject'
         href:
           description: >-
@@ -5788,6 +5810,9 @@ components:
           type: integer
       type: object
       x-spotify-docs-type: CursorPagingObject
+      x-konfig-properties:
+        cursors:
+          description: The cursors used to find the next set of items.
     CursorPagingPlayHistoryObject:
       allOf:
         - $ref: '#/components/schemas/CursorPagingObject'
@@ -5923,8 +5948,6 @@ components:
             false = no it does not OR unknown).
           type: boolean
         external_urls:
-          description: |
-            External URLs for this episode.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: >
@@ -6005,14 +6028,8 @@ components:
           example: day
           type: string
         restrictions:
-          description: |
-            Included in the response when a content restriction is applied.
           $ref: '#/components/schemas/EpisodeRestrictionObject'
         resume_point:
-          description: >
-            The user's most recent position in the episode. Set if the supplied
-            access token is a user token and has the scope
-            'user-read-playback-position'.
           $ref: '#/components/schemas/ResumePointObject'
         type:
           description: |
@@ -6046,6 +6063,18 @@ components:
         - type
         - uri
       type: object
+      x-konfig-properties:
+        external_urls:
+          description: |
+            External URLs for this episode.
+        restrictions:
+          description: |
+            Included in the response when a content restriction is applied.
+        resume_point:
+          description: >
+            The user's most recent position in the episode. Set if the supplied
+            access token is a user token and has the scope
+            'user-read-playback-position'.
     EpisodeObject:
       allOf:
         - $ref: '#/components/schemas/EpisodeBase'
@@ -6194,8 +6223,6 @@ components:
     LinkedTrackObject:
       properties:
         external_urls:
-          description: |
-            Known external URLs for this track.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: |
@@ -6217,6 +6244,10 @@ components:
           type: string
       type: object
       x-spotify-docs-type: LinkedTrackObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known external URLs for this track.
     Loudness:
       description: >
         The overall loudness of a track in decibels (dB). Loudness values are
@@ -6466,7 +6497,6 @@ components:
     PlayHistoryObject:
       properties:
         context:
-          description: The context the track was played from.
           $ref: '#/components/schemas/ContextObject'
         played_at:
           description: The date and time the track was played.
@@ -6474,10 +6504,14 @@ components:
           type: string
           x-spotify-docs-type: Timestamp
         track:
-          description: The track the user listened to.
           $ref: '#/components/schemas/TrackObject'
       type: object
       x-spotify-docs-type: PlayHistoryObject
+      x-konfig-properties:
+        context:
+          description: The context the track was played from.
+        track:
+          description: The track the user listened to.
     PlayerErrorObject:
       properties:
         message:
@@ -6493,6 +6527,7 @@ components:
           type: integer
       type: object
       x-spotify-docs-type: PlayerErrorObject
+      x-konfig-properties: {}
     PlayerErrorReasons:
       description: >
         * `NO_PREV_TRACK` - The command requires a previous track, but there is
@@ -6573,11 +6608,8 @@ components:
             `true` if the owner allows other users to modify the playlist.
           type: boolean
         external_urls:
-          description: |
-            Known external URLs for this playlist.
           $ref: '#/components/schemas/ExternalUrlObject'
         followers:
-          description: Information about the followers of the playlist.
           $ref: '#/components/schemas/FollowersObject'
         href:
           description: >
@@ -6605,8 +6637,6 @@ components:
             The name of the playlist.
           type: string
         owner:
-          description: |
-            The user who owns the playlist
           $ref: '#/components/schemas/PlaylistOwnerObject'
         public:
           description: >
@@ -6621,9 +6651,6 @@ components:
             other requests to target a specific playlist version
           type: string
         tracks:
-          description: |
-            The tracks of the playlist.
-          type: object
           $ref: '#/components/schemas/PagingPlaylistTrackObject'
         type:
           description: |
@@ -6636,6 +6663,19 @@ components:
           type: string
       type: object
       x-spotify-docs-type: PlaylistObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known external URLs for this playlist.
+        followers:
+          description: Information about the followers of the playlist.
+        owner:
+          description: |
+            The user who owns the playlist
+        tracks:
+          description: |
+            The tracks of the playlist.
+          type: object
     PlaylistOwnerObject:
       allOf:
         - $ref: '#/components/schemas/PlaylistUserObject'
@@ -6657,9 +6697,6 @@ components:
           type: string
           x-spotify-docs-type: Timestamp
         added_by:
-          description: >
-            The Spotify user who added the track or episode. _**Note**: some
-            very old playlists may return `null` in this field._
           $ref: '#/components/schemas/PlaylistUserObject'
         is_local:
           description: >
@@ -6677,6 +6714,11 @@ components:
           x-spotify-docs-type: TrackObject | EpisodeObject
       type: object
       x-spotify-docs-type: PlaylistTrackObject
+      x-konfig-properties:
+        added_by:
+          description: >
+            The Spotify user who added the track or episode. _**Note**: some
+            very old playlists may return `null` in this field._
     PlaylistTracksRefObject:
       properties:
         href:
@@ -6693,12 +6735,8 @@ components:
     PlaylistUserObject:
       properties:
         external_urls:
-          description: |
-            Known public external URLs for this user.
           $ref: '#/components/schemas/ExternalUrlObject'
         followers:
-          description: |
-            Information about the followers of this user.
           $ref: '#/components/schemas/FollowersObject'
         href:
           description: |
@@ -6722,6 +6760,13 @@ components:
           type: string
       type: object
       x-spotify-docs-type: PlaylistUserObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known public external URLs for this user.
+        followers:
+          description: |
+            Information about the followers of this user.
     PrivateUserObject:
       properties:
         country:
@@ -6747,17 +6792,10 @@ components:
             scope._
           type: string
         explicit_content:
-          description: >
-            The user's explicit content settings. _This field is only available
-            when the current user has granted access to the
-            [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
-            scope._
           $ref: '#/components/schemas/ExplicitContentSettingsObject'
         external_urls:
-          description: Known external URLs for this user.
           $ref: '#/components/schemas/ExternalUrlObject'
         followers:
-          description: Information about the followers of the user.
           $ref: '#/components/schemas/FollowersObject'
         href:
           description: |
@@ -6793,6 +6831,17 @@ components:
           type: string
       type: object
       x-spotify-docs-type: PrivateUserObject
+      x-konfig-properties:
+        explicit_content:
+          description: >
+            The user's explicit content settings. _This field is only available
+            when the current user has granted access to the
+            [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
+            scope._
+        external_urls:
+          description: Known external URLs for this user.
+        followers:
+          description: Information about the followers of the user.
     PublicUserObject:
       properties:
         display_name:
@@ -6801,12 +6850,8 @@ components:
           nullable: true
           type: string
         external_urls:
-          description: |
-            Known public external URLs for this user.
           $ref: '#/components/schemas/ExternalUrlObject'
         followers:
-          description: |
-            Information about the followers of this user.
           $ref: '#/components/schemas/FollowersObject'
         href:
           description: |
@@ -6836,6 +6881,13 @@ components:
           type: string
       type: object
       x-spotify-docs-type: PublicUserObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known public external URLs for this user.
+        followers:
+          description: |
+            Information about the followers of this user.
     QueueObject:
       properties:
         currently_playing:
@@ -6940,10 +6992,12 @@ components:
           type: string
           x-spotify-docs-type: Timestamp
         album:
-          description: Information about the album.
           $ref: '#/components/schemas/AlbumObject'
       type: object
       x-spotify-docs-type: SavedAlbumObject
+      x-konfig-properties:
+        album:
+          description: Information about the album.
     SavedEpisodeObject:
       properties:
         added_at:
@@ -6956,10 +7010,12 @@ components:
           type: string
           x-spotify-docs-type: Timestamp
         episode:
-          description: Information about the episode.
           $ref: '#/components/schemas/EpisodeObject'
       type: object
       x-spotify-docs-type: SavedEpisodeObject
+      x-konfig-properties:
+        episode:
+          description: Information about the episode.
     SavedShowObject:
       properties:
         added_at:
@@ -6976,10 +7032,12 @@ components:
           type: string
           x-spotify-docs-type: Timestamp
         show:
-          description: Information about the show.
           $ref: '#/components/schemas/SimplifiedShowObject'
       type: object
       x-spotify-docs-type: SavedShowObject
+      x-konfig-properties:
+        show:
+          description: Information about the show.
     SavedTrackObject:
       properties:
         added_at:
@@ -6996,10 +7054,12 @@ components:
           type: string
           x-spotify-docs-type: Timestamp
         track:
-          description: Information about the track.
           $ref: '#/components/schemas/TrackObject'
       type: object
       x-spotify-docs-type: SavedTrackObject
+      x-konfig-properties:
+        track:
+          description: Information about the track.
     SectionObject:
       properties:
         confidence:
@@ -7227,8 +7287,6 @@ components:
             false = no it does not OR unknown).
           type: boolean
         external_urls:
-          description: |
-            External URLs for this show.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: |
@@ -7307,18 +7365,24 @@ components:
         - type
         - uri
       type: object
+      x-konfig-properties:
+        external_urls:
+          description: |
+            External URLs for this show.
     ShowObject:
       allOf:
         - $ref: '#/components/schemas/ShowBase'
         - properties:
             episodes:
-              description: |
-                The episodes of the show.
-              type: object
               $ref: '#/components/schemas/PagingSimplifiedEpisodeObject'
           required:
             - episodes
           type: object
+          x-konfig-properties:
+            episodes:
+              description: |
+                The episodes of the show.
+              type: object
       x-spotify-docs-type: ShowObject
     SimplifiedAlbumObject:
       allOf:
@@ -7350,8 +7414,6 @@ components:
     SimplifiedArtistObject:
       properties:
         external_urls:
-          description: |
-            Known external URLs for this artist.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: |
@@ -7379,6 +7441,10 @@ components:
           type: string
       type: object
       x-spotify-docs-type: SimplifiedArtistObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known external URLs for this artist.
     SimplifiedAudiobookObject:
       allOf:
         - $ref: '#/components/schemas/AudiobookBase'
@@ -7408,8 +7474,6 @@ components:
             `true` if the owner allows other users to modify the playlist.
           type: boolean
         external_urls:
-          description: |
-            Known external URLs for this playlist.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: >
@@ -7437,8 +7501,6 @@ components:
             The name of the playlist.
           type: string
         owner:
-          description: |
-            The user who owns the playlist
           $ref: '#/components/schemas/PlaylistOwnerObject'
         public:
           description: >
@@ -7453,12 +7515,6 @@ components:
             other requests to target a specific playlist version
           type: string
         tracks:
-          description: >
-            A collection containing a link ( `href` ) to the Web API endpoint
-            where full details of the playlist's tracks can be retrieved, along
-            with the `total` number of tracks in the playlist. Note, a track
-            object may be `null`. This can happen if a track is no longer
-            available.
           $ref: '#/components/schemas/PlaylistTracksRefObject'
         type:
           description: |
@@ -7471,6 +7527,20 @@ components:
           type: string
       type: object
       x-spotify-docs-type: SimplifiedPlaylistObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            Known external URLs for this playlist.
+        owner:
+          description: |
+            The user who owns the playlist
+        tracks:
+          description: >
+            A collection containing a link ( `href` ) to the Web API endpoint
+            where full details of the playlist's tracks can be retrieved, along
+            with the `total` number of tracks in the playlist. Note, a track
+            object may be `null`. This can happen if a track is no longer
+            available.
     SimplifiedShowObject:
       allOf:
         - $ref: '#/components/schemas/ShowBase'
@@ -7507,8 +7577,6 @@ components:
             `false` = no it does not OR unknown).
           type: boolean
         external_urls:
-          description: |
-            External URLs for this track.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: A link to the Web API endpoint providing full details of the track.
@@ -7530,13 +7598,6 @@ components:
             Otherwise `false`.
           type: boolean
         linked_from:
-          description: >-
-            Part of the response when [Track
-            Relinking](/documentation/web-api/concepts/track-relinking/) is
-            applied and is only part of the response if the track linking, in
-            fact, exists. The requested track has been replaced with a different
-            track. The track in the `linked_from` object contains information
-            about the originally requested track.
           $ref: '#/components/schemas/LinkedTrackObject'
         name:
           description: The name of the track.
@@ -7548,8 +7609,6 @@ components:
           x-spotify-policy-list:
             - $ref: '#/components/x-spotify-policy/StandalonePreview'
         restrictions:
-          description: |
-            Included in the response when a content restriction is applied.
           $ref: '#/components/schemas/TrackRestrictionObject'
         track_number:
           description: >
@@ -7567,6 +7626,21 @@ components:
           type: string
       type: object
       x-spotify-docs-type: SimplifiedTrackObject
+      x-konfig-properties:
+        external_urls:
+          description: |
+            External URLs for this track.
+        linked_from:
+          description: >-
+            Part of the response when [Track
+            Relinking](/documentation/web-api/concepts/track-relinking/) is
+            applied and is only part of the response if the track linking, in
+            fact, exists. The requested track has been replaced with a different
+            track. The track in the `linked_from` object contains information
+            about the originally requested track.
+        restrictions:
+          description: |
+            Included in the response when a content restriction is applied.
     Tempo:
       description: >
         The overall estimated tempo of a track in beats per minute (BPM). In
@@ -7606,9 +7680,6 @@ components:
     TrackObject:
       properties:
         album:
-          description: >
-            The album on which the track appears. The album object includes a
-            link in `href` to full information about the album.
           $ref: '#/components/schemas/SimplifiedAlbumObject'
         artists:
           description: >
@@ -7640,12 +7711,8 @@ components:
             `false` = no it does not OR unknown).
           type: boolean
         external_ids:
-          description: |
-            Known external IDs for the track.
           $ref: '#/components/schemas/ExternalIdObject'
         external_urls:
-          description: |
-            Known external URLs for this track.
           $ref: '#/components/schemas/ExternalUrlObject'
         href:
           description: |
@@ -7702,8 +7769,6 @@ components:
           x-spotify-policy-list:
             - $ref: '#/components/x-spotify-policy/StandalonePreview'
         restrictions:
-          description: |
-            Included in the response when a content restriction is applied.
           $ref: '#/components/schemas/TrackRestrictionObject'
         track_number:
           description: >
@@ -7723,6 +7788,20 @@ components:
           type: string
       type: object
       x-spotify-docs-type: TrackObject
+      x-konfig-properties:
+        album:
+          description: >
+            The album on which the track appears. The album object includes a
+            link in `href` to full information about the album.
+        external_ids:
+          description: |
+            Known external IDs for the track.
+        external_urls:
+          description: |
+            Known external URLs for this track.
+        restrictions:
+          description: |
+            Included in the response when a content restriction is applied.
     TrackRestrictionObject:
       properties:
         reason:

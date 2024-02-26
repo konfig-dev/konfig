@@ -374,7 +374,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateBlockRequest'
+              $ref: '#/components/schemas/BlockDefinition'
             example:
               Type: Standard
               Description: My Block Name
@@ -515,7 +515,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateBlockRequest'
+              $ref: '#/components/schemas/BlockDefinition'
       responses:
         '200':
           description: Block definition updated successfully
@@ -698,7 +698,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateQuestionRequest'
+              $ref: '#/components/schemas/QuestionDefinition'
       responses:
         '200':
           description: Successful create question response
@@ -775,7 +775,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetQuestionResponse'
+                $ref: '#/components/schemas/QuestionDefinition'
         '400':
           description: Invalid request
           content:
@@ -834,7 +834,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateQuestionRequest'
+              $ref: '#/components/schemas/QuestionDefinition'
       responses:
         '200':
           description: Question definition updated successfully
@@ -1014,7 +1014,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateFlowRequest'
+              $ref: '#/components/schemas/FlowDefinition'
       responses:
         '200':
           description: Flow definition updated successfully
@@ -1116,7 +1116,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateFlowElementRequest'
+              $ref: '#/components/schemas/Flow'
       responses:
         '200':
           description: Update flow element response
@@ -1236,7 +1236,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSurveyOptionsRequest'
+              $ref: '#/components/schemas/SurveyOptions'
       responses:
         '200':
           description: Options updated successfully
@@ -1560,7 +1560,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateQuotaRequest'
+              $ref: '#/components/schemas/Quota'
       responses:
         '200':
           description: Successful create quota response
@@ -1696,7 +1696,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateQuotaRequest'
+              $ref: '#/components/schemas/Quota'
       responses:
         '200':
           description: Quota definition updated successfully
@@ -1894,7 +1894,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateQuotaGroupRequest'
+              $ref: '#/components/schemas/QuotaGroup'
       responses:
         '200':
           description: Successful create quota group response
@@ -2030,7 +2030,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateQuotaGroupRequest'
+              $ref: '#/components/schemas/QuotaGroup'
       responses:
         '200':
           description: Quota group definition updated successfully
@@ -2229,7 +2229,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateSurveyLanguagesBody'
+              $ref: '#/components/schemas/SurveyLanguages'
       responses:
         '200':
           description: Languages updated successfully
@@ -2422,7 +2422,7 @@ components:
     CreateSurveyRequest:
       oneOf:
         - $ref: '#/components/schemas/CreateNewSurveyRequest'
-        - $ref: '#/components/schemas/ImportSurveyRequest'
+        - $ref: '#/components/schemas/SurveyQSF'
     CreateNewSurveyRequest:
       title: Create survey request body
       type: object
@@ -2506,8 +2506,6 @@ components:
       required:
         - meta
         - result
-    ImportSurveyRequest:
-      $ref: '#/components/schemas/SurveyQSF'
     CreateSurveyVersionRequest:
       title: Create survey version request body
       type: object
@@ -2717,8 +2715,6 @@ components:
           $ref: '#/components/schemas/SurveyDefinition'
       x-tags:
         - Schemas
-    CreateBlockRequest:
-      $ref: '#/components/schemas/BlockDefinition'
     CreateBlockResponse:
       title: Create block response
       type: object
@@ -2948,10 +2944,6 @@ components:
       required:
         - meta
         - result
-    UpdateQuotaRequest:
-      $ref: '#/components/schemas/Quota'
-    CreateQuotaRequest:
-      $ref: '#/components/schemas/Quota'
     CreateQuotaResponse:
       title: Create quota response
       type: object
@@ -2974,8 +2966,6 @@ components:
               $ref: '#/components/schemas/QuotaGroupID'
       x-tags:
         - Schemas
-    UpdateQuotaGroupRequest:
-      $ref: '#/components/schemas/QuotaGroup'
     GetQuotaGroupResponse:
       title: Get quota group response
       type: object
@@ -3002,8 +2992,6 @@ components:
               - QO_4G2c2sS0P2pzaFW
       x-tags:
         - Schemas
-    CreateQuotaGroupRequest:
-      $ref: '#/components/schemas/QuotaGroup'
     CreateQuotaGroupResponse:
       title: Create quota group response
       type: object
@@ -3241,10 +3229,6 @@ components:
           $ref: '#/components/schemas/BlockDefinition'
       x-tags:
         - Schemas
-    UpdateBlockRequest:
-      $ref: '#/components/schemas/BlockDefinition'
-    UpdateQuestionRequest:
-      $ref: '#/components/schemas/QuestionDefinition'
     MetadataResponse:
       title: Get metadata response
       type: object
@@ -3258,8 +3242,6 @@ components:
           $ref: '#/components/schemas/SurveyMetadata'
       x-tags:
         - Schemas
-    CreateQuestionRequest:
-      $ref: '#/components/schemas/QuestionDefinition'
     CreateQuestionResponse:
       title: Get question response
       type: object
@@ -3301,8 +3283,6 @@ components:
                 $ref: '#/components/schemas/QuestionDefinition'
       x-tags:
         - Schemas
-    GetQuestionResponse:
-      $ref: '#/components/schemas/QuestionDefinition'
     GetFlowResponse:
       title: Get flow response
       type: object
@@ -4315,8 +4295,6 @@ components:
             - FR
       x-tags:
         - Schemas
-    UpdateSurveyLanguagesBody:
-      $ref: '#/components/schemas/SurveyLanguages'
     SurveyLanguageElements:
       title: SurveyLanguageElements
       description: Array of language codes to enable.
@@ -4425,8 +4403,6 @@ components:
           $ref: '#/components/schemas/SurveyOptions'
       x-tags:
         - Schemas
-    UpdateSurveyOptionsRequest:
-      $ref: '#/components/schemas/SurveyOptions'
     SurveyOptions:
       title: Survey Options
       type: object
@@ -4546,7 +4522,7 @@ components:
         SurveyMetaDescription:
           $ref: '#/components/schemas/SurveyMetaDescription'
         SurveyLanguage:
-          $ref: '#/components/schemas/SurveyLanguage'
+          $ref: '#/components/schemas/LanguageCode'
         SurveyName:
           $ref: '#/components/schemas/SurveyName'
         SurveyProtection:
@@ -5208,8 +5184,6 @@ components:
       type: object
       x-tags:
         - Schemas
-    UpdateFlowRequest:
-      $ref: '#/components/schemas/FlowDefinition'
     FlowDefinition:
       title: Flow definition
       type: object
@@ -5569,8 +5543,6 @@ components:
                   - Page Break
       x-tags:
         - Schemas
-    UpdateFlowElementRequest:
-      $ref: '#/components/schemas/Flow'
     FlowType:
       title: Flow type
       description: >-
@@ -8182,8 +8154,6 @@ components:
       maxLength: 100
       x-tags:
         - Schemas
-    SurveyLanguage:
-      $ref: '#/components/schemas/LanguageCode'
     SurveyName:
       description: Name of the survey
       type: string

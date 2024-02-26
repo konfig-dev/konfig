@@ -6,7 +6,7 @@ info:
     upon HTTPS for transport. We respond with meaningful HTTP response codes and
     if an error occurs, we include error details in the response body.  API
     Documentation is at https://api.ynab.com
-  version: 1.0.0
+  version: 1.67.0
 servers:
   - url: https://api.ynab.com/v1
 tags:
@@ -2485,6 +2485,8 @@ components:
           type: boolean
         flag_color:
           $ref: '#/components/schemas/TransactionFlagColor'
+        flag_name:
+          $ref: '#/components/schemas/TransactionFlagName'
         account_id:
           type: string
           format: uuid
@@ -2830,6 +2832,8 @@ components:
           nullable: true
         flag_color:
           $ref: '#/components/schemas/TransactionFlagColor'
+        flag_name:
+          $ref: '#/components/schemas/TransactionFlagName'
         account_id:
           type: string
           format: uuid
@@ -3021,6 +3025,10 @@ components:
         - blue
         - purple
         - null
+      nullable: true
+    TransactionFlagName:
+      description: The customized name of a transaction flag
+      type: string
       nullable: true
     TransactionClearedStatus:
       description: The cleared status of the transaction

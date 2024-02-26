@@ -25465,22 +25465,12 @@ components:
       title: Activity 3.1
       properties:
         category:
-          description: >-
-            The category associated with the event. This field is present only
-            when the activity type is `category`.
           $ref: '#/components/schemas/category'
         channel:
-          description: >-
-            The channel associated with the event. This field is present only
-            when the activity type is `channel`.
           $ref: '#/components/schemas/channel'
         clip:
-          description: The video associated with the activity.
           $ref: '#/components/schemas/video'
         group:
-          description: >-
-            The group associated with the event. This field is present only when
-            the activity type is `group`.
           $ref: '#/components/schemas/group'
         metadata:
           description: Information about the activity's metadata.
@@ -25512,9 +25502,6 @@ components:
             - connections
           type: object
         tag:
-          description: >-
-            The tag associated with the event. This field is present only when
-            the activity type is `tag`.
           $ref: '#/components/schemas/tag'
         time:
           description: The time that the event occurred.
@@ -25551,9 +25538,6 @@ components:
           example: appearance
           type: string
         user:
-          description: >-
-            The user associated with the event. This field is present only when
-            the activity type is `like`, `appearance`, or `share`.
           $ref: '#/components/schemas/user'
       required:
         - clip
@@ -25561,6 +25545,29 @@ components:
         - time
         - type
       type: object
+      x-konfig-properties:
+        category:
+          description: >-
+            The category associated with the event. This field is present only
+            when the activity type is `category`.
+        channel:
+          description: >-
+            The channel associated with the event. This field is present only
+            when the activity type is `channel`.
+        clip:
+          description: The video associated with the activity.
+        group:
+          description: >-
+            The group associated with the event. This field is present only when
+            the activity type is `group`.
+        tag:
+          description: >-
+            The tag associated with the event. This field is present only when
+            the activity type is `tag`.
+        user:
+          description: >-
+            The user associated with the event. This field is present only when
+            the activity type is `like`, `appearance`, or `share`.
     album:
       title: Album
       properties:
@@ -25599,8 +25606,6 @@ components:
           example: '2015-12-17T21:32:44+00:00'
           type: string
         custom_logo:
-          description: The custom logo of the showcase.
-          nullable: true
           $ref: '#/components/schemas/picture'
         domain:
           description: The custom domain of the showcase.
@@ -25935,7 +25940,6 @@ components:
           example: Vimeo Holiday Videos!
           type: string
         pictures:
-          description: The active image of the showcase.
           $ref: '#/components/schemas/picture'
         privacy:
           description: The privacy settings of the showcase.
@@ -26054,7 +26058,6 @@ components:
           example: false
           type: boolean
         user:
-          description: The owner of the showcase.
           $ref: '#/components/schemas/user'
         web_brand_color:
           description: Whether to use the showcase's brand color in the web layout.
@@ -26109,6 +26112,14 @@ components:
         - web_brand_color
         - web_custom_logo
       type: object
+      x-konfig-properties:
+        custom_logo:
+          description: The custom logo of the showcase.
+          nullable: true
+        pictures:
+          description: The active image of the showcase.
+        user:
+          description: The owner of the showcase.
     analytics:
       title: Analytics
       properties:
@@ -26380,7 +26391,6 @@ components:
           example: 01019a4a62aec63db077317ab7bb429db75652401e
           type: string
         app:
-          description: The API application associated with the token.
           $ref: '#/components/schemas/api-app'
         expires_on:
           description: The token's expiration date.
@@ -26407,7 +26417,6 @@ components:
           example: bearer
           type: string
         user:
-          description: The user associated with the token.
           $ref: '#/components/schemas/user'
       required:
         - access_token
@@ -26415,6 +26424,11 @@ components:
         - scope
         - token_type
       type: object
+      x-konfig-properties:
+        app:
+          description: The API application associated with the token.
+        user:
+          description: The user associated with the token.
     auth-error:
       title: Auth Error
       properties:
@@ -26434,7 +26448,6 @@ components:
       title: Category
       properties:
         icon:
-          description: The active icon for the category.
           $ref: '#/components/schemas/picture'
         is_deprecated:
           description: >-
@@ -26617,9 +26630,6 @@ components:
             - uri
           type: object
         pictures:
-          description: >-
-            The active picture for this category. The default shows vertical
-            color bars.
           $ref: '#/components/schemas/picture'
         resource_key:
           description: The resource key of the category.
@@ -26669,6 +26679,13 @@ components:
         - top_level
         - uri
       type: object
+      x-konfig-properties:
+        icon:
+          description: The active icon for the category.
+        pictures:
+          description: >-
+            The active picture for this category. The default shows vertical
+            color bars.
     channel:
       title: Channel
       properties:
@@ -26696,7 +26713,6 @@ components:
           example: '2007-10-23T17:00:43+00:00'
           type: string
         header:
-          description: The banner that appears by default at the top of the channel page.
           $ref: '#/components/schemas/picture'
         link:
           description: The URL to access the channel in a browser.
@@ -26936,9 +26952,6 @@ components:
           example: Vimeo Staff Picks
           type: string
         pictures:
-          description: >-
-            The active image for the channel. The default is the thumbnail of
-            the last video added to the channel.
           $ref: '#/components/schemas/picture'
         privacy:
           description: The privacy settings of the channel.
@@ -26969,7 +26982,6 @@ components:
           example: /channels/927
           type: string
         user:
-          description: The Vimeo user who owns the channel.
           $ref: '#/components/schemas/user'
       required:
         - categories
@@ -26987,6 +26999,15 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        header:
+          description: The banner that appears by default at the top of the channel page.
+        pictures:
+          description: >-
+            The active image for the channel. The default is the thumbnail of
+            the last video added to the channel.
+        user:
+          description: The Vimeo user who owns the channel.
     chapter:
       title: Chapter
       properties:
@@ -27056,12 +27077,43 @@ components:
                     - total
                     - uri
                   type: object
+                user:
+                  description: Information about the user who posted the reply.
+                  properties:
+                    link:
+                      description: >-
+                        The absolute URL of the authenticated users's profile
+                        page.
+                      type: string
+                    name:
+                      description: The display name of the user who posted the reply.
+                      type: string
+                    pictures:
+                      $ref: '#/components/schemas/picture'
+                    uri:
+                      description: The unique identifier to access the user resource.
+                      type: string
+                  required:
+                    - link
+                    - name
+                    - pictures
+                    - uri
+                  type: object
+                  x-konfig-properties:
+                    pictures:
+                      description: Information about the user's portraits.
               required:
                 - replies
+                - user
               type: object
           required:
             - connections
           type: object
+        replies:
+          description: The list of replies to the comment.
+          items:
+            $ref: '#/components/schemas/reply'
+          type: array
         resource_key:
           description: The comment's resource key string.
           example: bac1033deba2310ebba2caec33c23e4beea67aba
@@ -27085,19 +27137,24 @@ components:
           example: /videos/258684937/comments/12345
           type: string
         user:
-          description: The user who posted the comment.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - created_on
         - link
         - metadata
+        - replies
         - resource_key
         - text
         - type
         - uri
         - user
       type: object
+      x-konfig-properties:
+        user:
+          description: >-
+            The user who posted the comment. _This field is deprecated. Use the
+            `metadata.connections.user` field instead._
+          nullable: true
     content-rating:
       title: Content Rating
       properties:
@@ -27194,16 +27251,19 @@ components:
           example: /videos/258684937/credits/1234
           type: string
         user:
-          description: The Vimeo user associated with the credit.
           $ref: '#/components/schemas/user'
         video:
-          description: The video associated with the credit.
           $ref: '#/components/schemas/video'
       required:
         - name
         - role
         - uri
       type: object
+      x-konfig-properties:
+        user:
+          description: The Vimeo user associated with the credit.
+        video:
+          description: The video associated with the credit.
     disabled-video-properties:
       title: Disabled Video Properties
       properties:
@@ -28381,7 +28441,6 @@ components:
             - color_two
           type: object
         email_capture_form:
-          description: The email capture form settings associated with the video.
           $ref: '#/components/schemas/email-capture-form'
         end_screen:
           description: >-
@@ -28584,6 +28643,9 @@ components:
         - transcript
         - volume
       type: object
+      x-konfig-properties:
+        email_capture_form:
+          description: The email capture form settings associated with the video.
     endpoint:
       title: Endpoint
       properties:
@@ -28830,7 +28892,6 @@ components:
           example: Vimeo Weekend Challenge
           type: string
         pictures:
-          description: The active picture for the group.
           $ref: '#/components/schemas/picture'
         privacy:
           description: The group's privacy settings.
@@ -28911,8 +28972,6 @@ components:
           example: /groups/1108
           type: string
         user:
-          description: The owner of the group.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - created_time
@@ -28926,6 +28985,12 @@ components:
         - resource_key
         - uri
       type: object
+      x-konfig-properties:
+        pictures:
+          description: The active picture for the group.
+        user:
+          description: The owner of the group.
+          nullable: true
     hls-dash-video-file:
       title: HLS/DASH Video File
       properties:
@@ -29297,9 +29362,18 @@ components:
               example: true
               type: boolean
             play_button_position:
-              description: The position for the player's play button.
-              example: 0
-              type: number
+              description: |
+                The position of the player's play button.
+
+                Option descriptions:
+                 * `0` - The play button has the default position.
+                 * `1` - The play button appears at the bottom of the interface.
+                 * `2` - The play button appears in the center of the interface.
+              enum:
+                - 0
+                - 1
+                - 2
+              type: string
             playbar:
               description: Whether the embedded RLE player should include the playbar.
               example: true
@@ -29659,12 +29733,8 @@ components:
           nullable: true
           type: string
         parent_folder:
-          description: Information about the folder that contains the event.
-          nullable: true
-          x-mill-non-default: true
           $ref: '#/components/schemas/project'
         pictures:
-          description: The active thumbnail image of the event.
           $ref: '#/components/schemas/picture'
         playlist_sort:
           description: >
@@ -29727,9 +29797,6 @@ components:
           nullable: true
           type: string
         schedule:
-          description: >-
-            The description of the time or times that the event is expected to
-            be live.
           $ref: '#/components/schemas/live-event-schedule'
         scheduled_playback:
           description: Whether the scheduled playback feature is enabled.
@@ -29863,7 +29930,6 @@ components:
           example: /live_events/12345
           type: string
         user:
-          description: The owner of the event.
           $ref: '#/components/schemas/user'
         view_link:
           description: >-
@@ -29930,6 +29996,19 @@ components:
         - view_link
         - webinar
       type: object
+      x-konfig-properties:
+        parent_folder:
+          description: Information about the folder that contains the event.
+          nullable: true
+          x-mill-non-default: true
+        pictures:
+          description: The active thumbnail image of the event.
+        schedule:
+          description: >-
+            The description of the time or times that the event is expected to
+            be live.
+        user:
+          description: The owner of the event.
     live-event-automated-closed-captions:
       title: Live Event Automated Closed Captions
       properties:
@@ -30459,9 +30538,18 @@ components:
               example: true
               type: boolean
             play_button_position:
-              description: The position for the player's play button.
-              example: 0
-              type: number
+              description: |
+                The position of the player's play button.
+
+                Option descriptions:
+                 * `0` - The play button has the default position.
+                 * `1` - The play button appears at the bottom of the interface.
+                 * `2` - The play button appears in the center of the interface.
+              enum:
+                - 0
+                - 1
+                - 2
+              type: string
             playbar:
               description: Whether the embedded RLE player should include the playbar.
               example: true
@@ -30821,12 +30909,8 @@ components:
           nullable: true
           type: string
         parent_folder:
-          description: Information about the folder that contains the event.
-          nullable: true
-          x-mill-non-default: true
           $ref: '#/components/schemas/project'
         pictures:
-          description: The active thumbnail image of the event.
           $ref: '#/components/schemas/picture'
         playlist_sort:
           description: >
@@ -30889,9 +30973,6 @@ components:
           nullable: true
           type: string
         schedule:
-          description: >-
-            The description of the time or times that the event is expected to
-            be live.
           $ref: '#/components/schemas/live-event-schedule'
         scheduled_playback:
           description: Whether the scheduled playback feature is enabled.
@@ -31025,7 +31106,6 @@ components:
           example: /live_events/12345
           type: string
         user:
-          description: The owner of the event.
           $ref: '#/components/schemas/user'
         view_link:
           description: >-
@@ -31092,6 +31172,19 @@ components:
         - view_link
         - webinar
       type: object
+      x-konfig-properties:
+        parent_folder:
+          description: Information about the folder that contains the event.
+          nullable: true
+          x-mill-non-default: true
+        pictures:
+          description: The active thumbnail image of the event.
+        schedule:
+          description: >-
+            The description of the time or times that the event is expected to
+            be live.
+        user:
+          description: The owner of the event.
     live-event-schedule:
       title: Live Event Schedule
       properties:
@@ -31510,8 +31603,6 @@ components:
           nullable: true
           type: string
         background:
-          description: The background image for the On Demand page.
-          nullable: true
           $ref: '#/components/schemas/picture'
         colors:
           description: The first and second colors of the On Demand page.
@@ -31626,7 +31717,6 @@ components:
             - rent
           type: object
         film:
-          description: The On Demand page's film, if the page is for a film.
           $ref: '#/components/schemas/video'
         genres:
           description: An array of the genres assigned to the On Demand page.
@@ -31835,12 +31925,14 @@ components:
                 - metadata
               type: object
             interactions:
-              description: The user's available purchase interactions.
               $ref: '#/components/schemas/purchase-interaction'
           required:
             - connections
             - interactions
           type: object
+          x-konfig-properties:
+            interactions:
+              description: The user's available purchase interactions.
         modified_time:
           description: >-
             The time in ISO 8601 format when the On Demand page was last
@@ -31852,8 +31944,6 @@ components:
           example: Darby Forever
           type: string
         pictures:
-          description: The active poster for the On Demand page.
-          nullable: true
           $ref: '#/components/schemas/picture'
         preorder:
           properties:
@@ -31942,12 +32032,8 @@ components:
           example: vader
           type: string
         thumbnail:
-          description: The thumbnail image for the On Demand page.
-          nullable: true
           $ref: '#/components/schemas/picture'
         trailer:
-          description: The trailer for the On Demand page.
-          nullable: true
           $ref: '#/components/schemas/video'
         type:
           description: |
@@ -31966,8 +32052,6 @@ components:
           example: /ondemand/pages/61326
           type: string
         user:
-          description: The user who created the On Demand page.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - background
@@ -31993,6 +32077,24 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        background:
+          description: The background image for the On Demand page.
+          nullable: true
+        film:
+          description: The On Demand page's film, if the page is for a film.
+        pictures:
+          description: The active poster for the On Demand page.
+          nullable: true
+        thumbnail:
+          description: The thumbnail image for the On Demand page.
+          nullable: true
+        trailer:
+          description: The trailer for the On Demand page.
+          nullable: true
+        user:
+          description: The user who created the On Demand page.
+          nullable: true
     on-demand-promotion:
       title: On Demand Promotion
       properties:
@@ -32264,8 +32366,6 @@ components:
           example: /ondemand/pages/61326/seasons/12345
           type: string
         user:
-          description: The creator of the season's On Demand page.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - description
@@ -32277,6 +32377,10 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        user:
+          description: The creator of the season's On Demand page.
+          nullable: true
     on-demand-video:
       title: On Demand Video
       properties:
@@ -32449,7 +32553,6 @@ components:
             type: string
           type: array
         pictures:
-          description: The active picture of the video.
           $ref: '#/components/schemas/picture'
         play_progress:
           description: >-
@@ -32510,7 +32613,6 @@ components:
           example: /ondemand/pages/61326/videos/12345
           type: string
         user:
-          description: The owner of the video.
           $ref: '#/components/schemas/user'
       required:
         - buy
@@ -32523,6 +32625,11 @@ components:
         - type
         - uri
       type: object
+      x-konfig-properties:
+        pictures:
+          description: The active picture of the video.
+        user:
+          description: The owner of the video.
     ott-destination:
       title: OTT Destination
       properties:
@@ -32803,10 +32910,8 @@ components:
       title: Play
       properties:
         dash:
-          description: The DASH video file.
           $ref: '#/components/schemas/hls-dash-video-file'
         hls:
-          description: The HLS video file.
           $ref: '#/components/schemas/hls-dash-video-file'
         progressive:
           description: The progressive video files.
@@ -32948,6 +33053,11 @@ components:
       required:
         - status
       type: object
+      x-konfig-properties:
+        dash:
+          description: The DASH video file.
+        hls:
+          description: The HLS video file.
     portfolio:
       title: Portfolio
       properties:
@@ -33378,8 +33488,6 @@ components:
           example: /users/152184/presets/12345
           type: string
         user:
-          description: The owner of the preset.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - metadata
@@ -33388,6 +33496,10 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        user:
+          description: The owner of the preset.
+          nullable: true
     project:
       title: Project
       properties:
@@ -33953,7 +34065,6 @@ components:
           example: /users/112233/projects/12345
           type: string
         user:
-          description: The owner of the folder.
           $ref: '#/components/schemas/user'
       required:
         - access_grant
@@ -33975,14 +34086,15 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        user:
+          description: The owner of the folder.
     project-item:
       title: Project Item
       properties:
         folder:
-          description: The project item folder.
           $ref: '#/components/schemas/project'
         live_event:
-          description: The project item live event.
           $ref: '#/components/schemas/live-event-recurring'
         type:
           description: |
@@ -33999,11 +34111,17 @@ components:
           example: folder
           type: string
         video:
-          description: The project item video.
           $ref: '#/components/schemas/video'
       required:
         - type
       type: object
+      x-konfig-properties:
+        folder:
+          description: The project item folder.
+        live_event:
+          description: The project item live event.
+        video:
+          description: The project item video.
     purchase-interaction:
       title: Purchase Interaction
       properties:
@@ -34072,6 +34190,83 @@ components:
           type: boolean
       required:
         - lowLatency
+      type: object
+    reply:
+      title: Reply
+      properties:
+        created_on:
+          description: The time in ISO 8601 format when the reply was posted.
+          example: '2018-03-05T21:04:47+00:00'
+          type: string
+        link:
+          description: The permalink to the reply.
+          example: https://vimeo.com/258684937#comment_12345
+          type: string
+        metadata:
+          properties:
+            connections:
+              properties:
+                user:
+                  description: Information about the user who posted the reply.
+                  properties:
+                    link:
+                      description: >-
+                        The absolute URL of the authenticated users's profile
+                        page.
+                      type: string
+                    name:
+                      description: The display name of the user who posted the reply.
+                      type: string
+                    pictures:
+                      $ref: '#/components/schemas/picture'
+                    uri:
+                      description: The unique identifier to access the user resource.
+                      type: string
+                  required:
+                    - link
+                    - name
+                    - pictures
+                    - uri
+                  type: object
+                  x-konfig-properties:
+                    pictures:
+                      description: Information about the user's portraits.
+              required:
+                - user
+              type: object
+          required:
+            - connections
+          type: object
+        resource_key:
+          description: The comment's resource key string.
+          example: bac1033deba2310ebba2caec33c23e4beea67aba
+          type: string
+        text:
+          description: The content of the reply.
+          example: I love this!
+          type: string
+        type:
+          description: |
+            The Vimeo content to which the reply relates.
+
+            Option descriptions:
+             * `video` - The comment is about a video.
+          enum:
+            - video
+          example: video
+          type: string
+        uri:
+          description: The unique identifier to access the reply resource.
+          example: /videos/258684937/comments/12345/replies/7890
+          type: string
+      required:
+        - created_on
+        - link
+        - metadata
+        - resource_key
+        - text
+        - type
+        - uri
       type: object
     segment:
       title: Segment
@@ -34595,6 +34790,11 @@ components:
             - regional_delivery
             - video
           type: object
+        applicable_roles:
+          description: An array of the team roles this team member can have.
+          items:
+            $ref: '#/components/schemas/team-role'
+          type: array
         created_time:
           description: The time in ISO 8601 format when the invite was sent.
           example: '2017-05-15T17:42:07+00:00'
@@ -34755,15 +34955,12 @@ components:
           example: /users/152184/team_users/12345
           type: string
         user:
-          description: >-
-            The team member. The value of this field is null if the user hasn't
-            joined the team yet.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - access_grant
         - active
         - applicable_permission_policies
+        - applicable_roles
         - created_time
         - email
         - invite_url
@@ -34777,9 +34974,88 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        user:
+          description: >-
+            The team member. The value of this field is null if the user hasn't
+            joined the team yet.
+          nullable: true
     team-role:
       title: Team Role
       properties:
+        applicable_permission_policies:
+          description: The applicable permission policies for the role.
+          properties:
+            folder:
+              description: The applicable folder-related permission policies for the role.
+              items:
+                type: string
+              type: array
+            regional_delivery:
+              description: >-
+                The applicable permission policies related to regional delivery
+                for the role.
+              items:
+                type: object
+                properties:
+                  display_description:
+                    description: >-
+                      The translated display description of the regional
+                      delivery permission policy.
+                    example: >-
+                      This policy allows the user to restrict the delivery of
+                      videos to specific regions.
+                    type: string
+                  display_name:
+                    description: >-
+                      The translated display name of the regional delivery
+                      permission policy.
+                    example: Regional delivery
+                    type: string
+                  name:
+                    description: The name of the regional delivery permission policy.
+                    example: regional_delivery
+                    type: string
+                required:
+                  - display_description
+                  - display_name
+                  - name
+              type: array
+            video:
+              description: The applicable video-related permission policies for the role.
+              items:
+                type: string
+              type: array
+          type: object
+        count:
+          description: The total number of team members with this role.
+          example: 3
+          type: number
+        display_name:
+          description: The translated display name of the role.
+          example: Admin
+          type: string
+        permission_level:
+          description: |
+            The untranslated role of the user who made the request.
+
+            Option descriptions:
+             * `Admin` - The team member has admin permissions. They can upload and edit videos for the entire team and perform team administration tasks.
+             * `Contributor` - The team member has contributor permissions. They can upload and edit videos for the entire team but can’t perform team administration tasks.
+             * `Contributor Plus` - The team member has contributor-plus permissions. They can upload and edit videos for the entire team and have additional sets of permissions but can't perform team administration tasks.
+             * `Owner` - The team member has owner permissions.
+             * `Uploader` - The team member has uploader permissions. They can upload videos for the entire team but can't edit videos.
+             * `Viewer` - The team member has viewer permissions. They can access team videos and specific team folders but can't upload or edit videos.
+          enum:
+            - Admin
+            - Contributor
+            - Contributor Plus
+            - Owner
+            - Uploader
+            - Viewer
+          example: Admin
+          nullable: true
+          type: string
         role:
           description: |
             The untranslated role of the user who made the request.
@@ -34787,12 +35063,14 @@ components:
             Option descriptions:
              * `Admin` - The team member has admin permissions. They can upload and edit videos for the entire team and perform team administration tasks.
              * `Contributor` - The team member has contributor permissions. They can upload and edit videos for the entire team but can’t perform team administration tasks.
+             * `Contributor Plus` - The team member has contributor-plus permissions. They can upload and edit videos for the entire team and have additional sets of permissions but can't perform team administration tasks.
              * `Owner` - The team member has owner permissions.
              * `Uploader` - The team member has uploader permissions. They can upload videos for the entire team but can’t edit videos.
              * `Viewer` - The team member has viewer permissions. They can access team videos and specific team folders but can’t upload or edit videos.
           enum:
             - Admin
             - Contributor
+            - Contributor Plus
             - Owner
             - Uploader
             - Viewer
@@ -34804,6 +35082,7 @@ components:
           example: /users/152184/team/role
           type: string
       required:
+        - permission_level
         - role
         - uri
       type: object
@@ -35035,7 +35314,6 @@ components:
       title: Upload Attempt
       properties:
         clip:
-          description: The video to upload.
           $ref: '#/components/schemas/video'
         form:
           description: The HTML upload form.
@@ -35053,7 +35331,6 @@ components:
           example: /users/152184/uploads/12345
           type: string
         user:
-          description: The owner of the uploaded video.
           $ref: '#/components/schemas/user'
       required:
         - ticket_id
@@ -35061,6 +35338,11 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        clip:
+          description: The video to upload.
+        user:
+          description: The owner of the uploaded video.
     user:
       title: User
       properties:
@@ -35170,8 +35452,6 @@ components:
           nullable: true
           type: string
         location_details:
-          description: The authenticated user's location details.
-          nullable: true
           $ref: '#/components/schemas/location'
         metadata:
           description: The authenticated user's metadata.
@@ -35874,7 +36154,6 @@ components:
           example: Vimeo Staff
           type: string
         pictures:
-          description: The active portrait of the authenticated user.
           $ref: '#/components/schemas/picture'
         preferences:
           properties:
@@ -36249,6 +36528,12 @@ components:
         - uri
         - websites
       type: object
+      x-konfig-properties:
+        location_details:
+          description: The authenticated user's location details.
+          nullable: true
+        pictures:
+          description: The active portrait of the authenticated user.
     version-transcode-status:
       title: Version Transcode Status
       properties:
@@ -36289,7 +36574,6 @@ components:
             type: string
           type: array
         app:
-          description: The API application associated with the video owner's token.
           $ref: '#/components/schemas/api-app'
         can_move_to_project:
           description: >-
@@ -36398,7 +36682,6 @@ components:
           type: string
           x-mill-non-default: true
         disabled_properties:
-          description: Information about what features may be disabled on the video.
           $ref: '#/components/schemas/disabled-video-properties'
         download:
           description: >-
@@ -36414,12 +36697,8 @@ components:
           example: 81
           type: number
         edit_session:
-          description: >-
-            Information about the video's Vimeo Create editing session. This
-            data requires a bearer token with the `private` scope.
           $ref: '#/components/schemas/editing-session'
         embed:
-          description: Information about embedding the video.
           $ref: '#/components/schemas/embed-settings'
         files:
           description: >-
@@ -36895,7 +37174,32 @@ components:
                         type: string
                       type: array
                     reason:
-                      description: TThe reason why the summary method is disabled.
+                      description: |
+                        The reason why the summary method is disabled.
+
+                        Option descriptions:
+                         * `transcript_ready_but_not_english` - The transcript is ready, but isn't in English.
+                         * `transcript_status_does_not_exist` - The transcript doesn't exist.
+                         * `transcript_status_exceeds_maximum_duration` - The transcript duration is too long.
+                         * `transcript_status_failed` - The transcript job failed.
+                         * `transcript_status_in_progress` - The transcript job is in progress.
+                         * `transcript_status_language_not_supported` - The transcript's language isn't supported.
+                         * `transcript_status_no_speech` - There's no speech detected for the transcript.
+                         * `transcript_status_not_started` - The transcript job hasn't started.
+                         * `transcript_status_unknown` - The transcript job status is unknown.
+                         * `video_not_ready` - The video isn't ready.
+                      enum:
+                        - transcript_ready_but_not_english
+                        - transcript_status_does_not_exist
+                        - transcript_status_exceeds_maximum_duration
+                        - transcript_status_failed
+                        - transcript_status_in_progress
+                        - transcript_status_language_not_supported
+                        - transcript_status_no_speech
+                        - transcript_status_not_started
+                        - transcript_status_unknown
+                        - video_not_ready
+                      example: transcript_ready_but_not_english
                       nullable: true
                       type: string
                     uri:
@@ -37723,8 +38027,6 @@ components:
           example: false
           type: boolean
         parent_folder:
-          description: Information about the folder that contains the video.
-          nullable: true
           $ref: '#/components/schemas/project'
         password:
           description: >-
@@ -37735,10 +38037,8 @@ components:
           example: hunter1
           type: string
         pictures:
-          description: The video's active picture.
           $ref: '#/components/schemas/picture'
         play:
-          description: The `Play` representation.
           $ref: '#/components/schemas/play'
         player_embed_url:
           description: The video's player embed URL.
@@ -38114,26 +38414,22 @@ components:
               type: string
               x-mill-non-default: true
             pictures:
-              description: The active portrait of the user who uploaded the video.
               $ref: '#/components/schemas/picture'
           required:
             - link
             - name
             - pictures
           type: object
+          x-konfig-properties:
+            pictures:
+              description: The active portrait of the user who uploaded the video.
         uri:
           description: The video's canonical relative URI.
           example: /videos/258684937
           type: string
         user:
-          description: The video's owner.
-          nullable: true
           $ref: '#/components/schemas/user'
         version_transcode_status:
-          description: >-
-            Detailed transcode status information for the current version of the
-            video upload.
-          x-mill-non-default: true
           $ref: '#/components/schemas/version-transcode-status'
         vod:
           description: The video's Vimeo On Demand information.
@@ -38205,6 +38501,32 @@ components:
         - vod
         - width
       type: object
+      x-konfig-properties:
+        app:
+          description: The API application associated with the video owner's token.
+        disabled_properties:
+          description: Information about what features may be disabled on the video.
+        edit_session:
+          description: >-
+            Information about the video's Vimeo Create editing session. This
+            data requires a bearer token with the `private` scope.
+        embed:
+          description: Information about embedding the video.
+        parent_folder:
+          description: Information about the folder that contains the video.
+          nullable: true
+        pictures:
+          description: The video's active picture.
+        play:
+          description: The `Play` representation.
+        user:
+          description: The video's owner.
+          nullable: true
+        version_transcode_status:
+          description: >-
+            Detailed transcode status information for the current version of the
+            video upload.
+          x-mill-non-default: true
     video-file:
       title: Video File
       properties:
@@ -38388,7 +38710,6 @@ components:
           example: true
           type: boolean
         app:
-          description: The API app associated with the video version.
           $ref: '#/components/schemas/api-app'
         can_restore_create:
           description: Whether the version can be restored.
@@ -38468,7 +38789,6 @@ components:
           example: false
           type: boolean
         play:
-          description: The `Play` representation.
           $ref: '#/components/schemas/play'
         transcode:
           description: The version's transcode information.
@@ -38553,8 +38873,6 @@ components:
           example: /videos/258684937/versions/12345
           type: string
         user:
-          description: The owner of the video version.
-          nullable: true
           $ref: '#/components/schemas/user'
       required:
         - active
@@ -38576,6 +38894,14 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        app:
+          description: The API app associated with the video version.
+        play:
+          description: The `Play` representation.
+        user:
+          description: The owner of the video version.
+          nullable: true
     webinar:
       title: Webinar
       properties:
@@ -38704,7 +39030,6 @@ components:
           type: object
           x-mill-non-default: true
         email_settings:
-          description: The settings for emails that are sent about the webinar.
           $ref: '#/components/schemas/webinar-email-settings'
         events:
           description: The details of the webinar events associated with the webinar.
@@ -38837,7 +39162,6 @@ components:
           type: object
           x-mill-non-default: true
         registration_form:
-          description: The registration form settings associated with the webinar.
           $ref: '#/components/schemas/email-capture-form'
         schedule:
           description: >-
@@ -38923,7 +39247,6 @@ components:
           example: /webinars/f19bfa08-b266-4f20-bfce-db1d0719b52f
           type: string
         user:
-          description: The owner of the webinar.
           $ref: '#/components/schemas/user'
       required:
         - completed_on
@@ -38949,6 +39272,13 @@ components:
         - uri
         - user
       type: object
+      x-konfig-properties:
+        email_settings:
+          description: The settings for emails that are sent about the webinar.
+        registration_form:
+          description: The registration form settings associated with the webinar.
+        user:
+          description: The owner of the webinar.
     webinar-email-content:
       title: Webinar Email Content
       properties:
@@ -39033,40 +39363,46 @@ components:
             which goes out 24 hours before the event.
           properties:
             custom:
-              description: >-
-                The email custom details for the webinar reminder email, which
-                goes out 24 hours before the event.
-              nullable: true
               $ref: '#/components/schemas/webinar-email-content'
             default:
-              description: >-
-                The email default details for the webinar reminder email, which
-                goes out 24 hours before the event.
               $ref: '#/components/schemas/webinar-email-content'
           required:
             - custom
             - default
           type: object
+          x-konfig-properties:
+            custom:
+              description: >-
+                The email custom details for the webinar reminder email, which
+                goes out 24 hours before the event.
+              nullable: true
+            default:
+              description: >-
+                The email default details for the webinar reminder email, which
+                goes out 24 hours before the event.
         email_post_event_thank_you:
           description: >-
             The email customization details for the webinar post-event thank-you
             email.
           properties:
             custom:
-              description: >-
-                The email custom details for the webinar post-event thank-you
-                email.
-              nullable: true
               $ref: '#/components/schemas/webinar-email-content'
             default:
-              description: >-
-                The email default details for the webinar post-event thank-you
-                email.
               $ref: '#/components/schemas/webinar-email-content'
           required:
             - custom
             - default
           type: object
+          x-konfig-properties:
+            custom:
+              description: >-
+                The email custom details for the webinar post-event thank-you
+                email.
+              nullable: true
+            default:
+              description: >-
+                The email default details for the webinar post-event thank-you
+                email.
         email_preferences:
           description: >-
             A list of preferences for the emails to send during the webinar
@@ -39080,27 +39416,28 @@ components:
             confirmation email.
           properties:
             custom:
-              description: >-
-                The email custom details for the webinar registration
-                confirmation email.
-              nullable: true
               $ref: '#/components/schemas/webinar-email-content'
             default:
-              description: >-
-                The email default details for the webinar registration
-                confirmation email.
               $ref: '#/components/schemas/webinar-email-content'
           required:
             - custom
             - default
           type: object
+          x-konfig-properties:
+            custom:
+              description: >-
+                The email custom details for the webinar registration
+                confirmation email.
+              nullable: true
+            default:
+              description: >-
+                The email default details for the webinar registration
+                confirmation email.
         follow_up_send_on:
           description: The time in ISO 8601 format when the follow-up email was sent.
           example: '2016-11-03T09:24:56+00:00'
           type: string
         follow_up_sender:
-          description: The user who manually triggered the follow-up email.
-          nullable: true
           $ref: '#/components/schemas/user'
         from:
           description: The name of the sender for emails that are sent about the webinar.
@@ -39114,8 +39451,6 @@ components:
           nullable: true
           type: string
         pictures:
-          description: The logo to include in emails that are sent about the webinar.
-          nullable: true
           $ref: '#/components/schemas/picture'
         reply_email:
           description: The sender's reply email address.
@@ -39176,6 +39511,13 @@ components:
         - use_sender_address
         - use_sender_policy_url
       type: object
+      x-konfig-properties:
+        follow_up_sender:
+          description: The user who manually triggered the follow-up email.
+          nullable: true
+        pictures:
+          description: The logo to include in emails that are sent about the webinar.
+          nullable: true
     webinar-event:
       title: Webinar Event
       properties:
@@ -39501,9 +39843,18 @@ components:
               example: true
               type: boolean
             play_button_position:
-              description: The position for the player's play button.
-              example: 0
-              type: number
+              description: |
+                The position of the player's play button.
+
+                Option descriptions:
+                 * `0` - The play button has the default position.
+                 * `1` - The play button appears at the bottom of the interface.
+                 * `2` - The play button appears in the center of the interface.
+              enum:
+                - 0
+                - 1
+                - 2
+              type: string
             playbar:
               description: Whether the embedded RLE player should include the playbar.
               example: true
@@ -39863,12 +40214,8 @@ components:
           nullable: true
           type: string
         parent_folder:
-          description: Information about the folder that contains the event.
-          nullable: true
-          x-mill-non-default: true
           $ref: '#/components/schemas/project'
         pictures:
-          description: The active thumbnail image of the event.
           $ref: '#/components/schemas/picture'
         playlist_sort:
           description: >
@@ -39931,9 +40278,6 @@ components:
           nullable: true
           type: string
         schedule:
-          description: >-
-            The description of the time or times that the event is expected to
-            be live.
           $ref: '#/components/schemas/live-event-schedule'
         scheduled_playback:
           description: Whether the scheduled playback feature is enabled.
@@ -40067,7 +40411,6 @@ components:
           example: /webinars/events/h17vfa38-b561-4fc0-bgce-eb4d076gb52f
           type: string
         user:
-          description: The owner of the event.
           $ref: '#/components/schemas/user'
         view_link:
           description: >-
@@ -40134,6 +40477,19 @@ components:
         - view_link
         - webinar
       type: object
+      x-konfig-properties:
+        parent_folder:
+          description: Information about the folder that contains the event.
+          nullable: true
+          x-mill-non-default: true
+        pictures:
+          description: The active thumbnail image of the event.
+        schedule:
+          description: >-
+            The description of the time or times that the event is expected to
+            be live.
+        user:
+          description: The owner of the event.
     webinar-registrant:
       title: Webinar Registrant
       properties:
