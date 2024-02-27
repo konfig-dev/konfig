@@ -4,24 +4,22 @@ require '{{{gemName}}}'
 {{{apiDocumentationAuthenticationPartial}}}
 {{/apiDocumentationAuthenticationPartial}}
 {{^apiDocumentationAuthenticationPartial}}
-configuration = {{moduleName}}::Configuration.new
 {{#authMethods}}
 {{#isBasic}}
 {{#isBasicBasic}}
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+{{moduleName}}.username = 'YOUR_USERNAME'
+{{moduleName}}.password = 'YOUR_PASSWORD'
 {{/isBasicBasic}}
 {{#isBasicBearer}}
-configuration.access_token = 'YOUR_BEARER_TOKEN'
+{{moduleName}}.access_token = 'YOUR_BEARER_TOKEN'
 {{/isBasicBearer}}
 {{/isBasic}}
 {{#isApiKey}}
-configuration.{{> securityKeyName}} = 'YOUR API KEY'
+{{moduleName}}.{{> securityKeyName}} = 'YOUR API KEY'
 {{/isApiKey}}
 {{#isOAuth}}
-configuration.access_token = 'YOUR ACCESS TOKEN'
+{{moduleName}}.access_token = 'YOUR ACCESS TOKEN'
 {{/isOAuth}}
 {{/authMethods}}
-{{clientNameLowercase}} = {{moduleName}}::Client.new(configuration)
 {{/apiDocumentationAuthenticationPartial}}
 {{> api_doc_example_execute_call}}
