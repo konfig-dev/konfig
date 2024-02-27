@@ -323,6 +323,7 @@ const refundResponse = await typescriptsplitit.installmentPlan.refund({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
   Amount: 3.14,
+  RefundStrategy: "FutureInstallmentsFirst",
 });
 ```
 
@@ -407,6 +408,7 @@ const updateOrderResponse = await typescriptsplitit.installmentPlan.updateOrder(
     installmentPlanNumber: "installmentPlanNumber_example",
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",
+    ShippingStatus: "Pending",
   }
 );
 ```
@@ -455,6 +457,7 @@ const updateOrder2Response =
   await typescriptsplitit.installmentPlan.updateOrder2({
     xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
     xSplititTouchPoint: "",
+    ShippingStatus: "Shipped",
   });
 ```
 

@@ -184,7 +184,10 @@ User Data Sources
 
 ```typescript
 const queryUserDataSourcesResponse =
-  await carbon.dataSources.queryUserDataSources({});
+  await carbon.dataSources.queryUserDataSources({
+    order_by: "created_at",
+    order_dir: "desc",
+  });
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
@@ -342,6 +345,8 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const getDocumentsResponse = await carbon.embeddings.getDocuments({
   query: "query_example",
   k: 1,
+  media_type: "TEXT",
+  embedding_model: "OPENAI",
 });
 ```
 
@@ -421,8 +426,11 @@ Retrieve Embeddings And Content
 ```typescript
 const getEmbeddingsAndChunksResponse =
   await carbon.embeddings.getEmbeddingsAndChunks({
+    order_by: "created_at",
+    order_dir: "desc",
     filters: {
       user_file_id: 1,
+      embedding_model: "OPENAI",
     },
     include_vectors: false,
   });
@@ -462,7 +470,7 @@ Upload Chunks And Embeddings
 ```typescript
 const uploadChunksAndEmbeddingsResponse =
   await carbon.embeddings.uploadChunksAndEmbeddings({
-    embedding_model: "string_example",
+    embedding_model: "OPENAI",
     chunks_and_embeddings: [
       {
         file_id: 1,
@@ -752,7 +760,10 @@ the resulting query. It is `false` by default.
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const queryUserFilesResponse = await carbon.files.queryUserFiles({});
+const queryUserFilesResponse = await carbon.files.queryUserFiles({
+  order_by: "created_at",
+  order_dir: "desc",
+});
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
@@ -792,7 +803,10 @@ This route is deprecated. Use `/user_files_v2` instead.
 
 ```typescript
 const queryUserFilesDeprecatedResponse =
-  await carbon.files.queryUserFilesDeprecated({});
+  await carbon.files.queryUserFilesDeprecated({
+    order_by: "created_at",
+    order_dir: "desc",
+  });
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
@@ -891,6 +905,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const uploadResponse = await carbon.files.upload({
   skipEmbeddingGeneration: false,
   setPageAsBoundary: false,
+  embeddingModel: "OPENAI",
   useOcr: false,
   generateSparseVectors: false,
   prependFilenameToChunks: false,
@@ -962,6 +977,7 @@ const uploadFromUrlResponse = await carbon.files.uploadFromUrl({
   url: "url_example",
   skip_embedding_generation: false,
   set_page_as_boundary: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   use_textract: false,
   prepend_filename_to_chunks: false,
@@ -1024,6 +1040,7 @@ set `VERTEX_MULTIMODAL` as an `embedding_model`. This model is used automaticall
 const uploadTextResponse = await carbon.files.uploadText({
   contents: "contents_example",
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
 });
 ```
@@ -1094,6 +1111,7 @@ const connectFreshdeskResponse = await carbon.integrations.connectFreshdesk({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1178,10 +1196,11 @@ Get Oauth Url
 
 ```typescript
 const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
-  service: "string_example",
+  service: "GOOGLE_DRIVE",
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1314,6 +1333,7 @@ const syncConfluenceResponse = await carbon.integrations.syncConfluence({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1397,6 +1417,7 @@ const syncFilesResponse = await carbon.integrations.syncFiles({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1498,6 +1519,7 @@ const syncGmailResponse = await carbon.integrations.syncGmail({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1606,6 +1628,7 @@ const syncOutlookResponse = await carbon.integrations.syncOutlook({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1656,6 +1679,7 @@ const syncRssFeedResponse = await carbon.integrations.syncRssFeed({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -1706,6 +1730,7 @@ const syncS3FilesResponse = await carbon.integrations.syncS3Files({
   chunk_size: 1500,
   chunk_overlap: 20,
   skip_embedding_generation: false,
+  embedding_model: "OPENAI",
   generate_sparse_vectors: false,
   prepend_filename_to_chunks: false,
 });
@@ -2154,7 +2179,10 @@ Webhook Urls
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```typescript
-const urlsResponse = await carbon.webhooks.urls({});
+const urlsResponse = await carbon.webhooks.urls({
+  order_by: "created_at",
+  order_dir: "desc",
+});
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
