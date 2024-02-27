@@ -512,7 +512,7 @@ class Configuration
         if ($prefix === null) {
             $keyWithPrefix = $apiKey;
         } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
+            $keyWithPrefix = $prefix . $apiKey;
         }
 
         return $keyWithPrefix;
