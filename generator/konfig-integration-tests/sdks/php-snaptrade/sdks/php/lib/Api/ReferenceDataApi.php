@@ -1848,9 +1848,10 @@ class ReferenceDataApi extends \SnapTrade\CustomApi
     /**
      * Operation getSymbolsByTicker
      *
-     * Get details of a symbol by the ticker or the universal_symbol_id
+     * Get details of a symbol by the ticker
      *
-     * @param  string $query The ticker or universal_symbol_id of the UniversalSymbol to get. (required)
+     * @param  string $ticker The ticker of the UniversalSymbol to get. (required)
+     * @param  string $symbol_id OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSymbolsByTicker'] to see the possible values for this operation
      *
      * @throws \SnapTrade\ApiException on non-2xx response
@@ -1858,31 +1859,33 @@ class ReferenceDataApi extends \SnapTrade\CustomApi
      * @return \SnapTrade\Model\UniversalSymbol
      */
     public function getSymbolsByTicker(
-        $query,
+        $ticker,
+        $symbol_id = SENTINEL_VALUE,
 
         string $contentType = self::contentTypes['getSymbolsByTicker'][0]
     )
     {
 
-        list($response) = $this->getSymbolsByTickerWithHttpInfo($query, $contentType);
+        list($response) = $this->getSymbolsByTickerWithHttpInfo($ticker, $symbol_id, $contentType);
         return $response;
     }
 
     /**
      * Operation getSymbolsByTickerWithHttpInfo
      *
-     * Get details of a symbol by the ticker or the universal_symbol_id
+     * Get details of a symbol by the ticker
      *
-     * @param  string $query The ticker or universal_symbol_id of the UniversalSymbol to get. (required)
+     * @param  string $ticker The ticker of the UniversalSymbol to get. (required)
+     * @param  string $symbol_id OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSymbolsByTicker'] to see the possible values for this operation
      *
      * @throws \SnapTrade\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SnapTrade\Model\UniversalSymbol, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSymbolsByTickerWithHttpInfo($query, string $contentType = self::contentTypes['getSymbolsByTicker'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
+    public function getSymbolsByTickerWithHttpInfo($ticker, $symbol_id = null, string $contentType = self::contentTypes['getSymbolsByTicker'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
     {
-        ["request" => $request, "serializedBody" => $serializedBody] = $this->getSymbolsByTickerRequest($query, $contentType);
+        ["request" => $request, "serializedBody" => $serializedBody] = $this->getSymbolsByTickerRequest($ticker, $symbol_id, $contentType);
 
         // Customization hook
         $this->beforeSendHook($request, $requestOptions, $this->config);
@@ -1898,7 +1901,8 @@ class ReferenceDataApi extends \SnapTrade\CustomApi
                     $requestOptions->shouldRetryOAuth()
                 ) {
                     return $this->getSymbolsByTickerWithHttpInfo(
-                        $query,
+                        $ticker,
+                        $symbol_id,
                         $contentType,
                         $requestOptions->setRetryOAuth(false)
                     );
@@ -1986,22 +1990,24 @@ class ReferenceDataApi extends \SnapTrade\CustomApi
     /**
      * Operation getSymbolsByTickerAsync
      *
-     * Get details of a symbol by the ticker or the universal_symbol_id
+     * Get details of a symbol by the ticker
      *
-     * @param  string $query The ticker or universal_symbol_id of the UniversalSymbol to get. (required)
+     * @param  string $ticker The ticker of the UniversalSymbol to get. (required)
+     * @param  string $symbol_id OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSymbolsByTicker'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function getSymbolsByTickerAsync(
-        $query,
+        $ticker,
+        $symbol_id = SENTINEL_VALUE,
 
         string $contentType = self::contentTypes['getSymbolsByTicker'][0]
     )
     {
 
-        return $this->getSymbolsByTickerAsyncWithHttpInfo($query, $contentType)
+        return $this->getSymbolsByTickerAsyncWithHttpInfo($ticker, $symbol_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2012,18 +2018,19 @@ class ReferenceDataApi extends \SnapTrade\CustomApi
     /**
      * Operation getSymbolsByTickerAsyncWithHttpInfo
      *
-     * Get details of a symbol by the ticker or the universal_symbol_id
+     * Get details of a symbol by the ticker
      *
-     * @param  string $query The ticker or universal_symbol_id of the UniversalSymbol to get. (required)
+     * @param  string $ticker The ticker of the UniversalSymbol to get. (required)
+     * @param  string $symbol_id OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSymbolsByTicker'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getSymbolsByTickerAsyncWithHttpInfo($query, string $contentType = self::contentTypes['getSymbolsByTicker'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
+    public function getSymbolsByTickerAsyncWithHttpInfo($ticker, $symbol_id = null, string $contentType = self::contentTypes['getSymbolsByTicker'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
     {
         $returnType = '\SnapTrade\Model\UniversalSymbol';
-        ["request" => $request, "serializedBody" => $serializedBody] = $this->getSymbolsByTickerRequest($query, $contentType);
+        ["request" => $request, "serializedBody" => $serializedBody] = $this->getSymbolsByTickerRequest($ticker, $symbol_id, $contentType);
 
         // Customization hook
         $this->beforeSendHook($request, $requestOptions, $this->config);
@@ -2067,41 +2074,57 @@ class ReferenceDataApi extends \SnapTrade\CustomApi
     /**
      * Create request for operation 'getSymbolsByTicker'
      *
-     * @param  string $query The ticker or universal_symbol_id of the UniversalSymbol to get. (required)
+     * @param  string $ticker The ticker of the UniversalSymbol to get. (required)
+     * @param  string $symbol_id OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSymbolsByTicker'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getSymbolsByTickerRequest($query, string $contentType = self::contentTypes['getSymbolsByTicker'][0])
+    public function getSymbolsByTickerRequest($ticker, $symbol_id = SENTINEL_VALUE, string $contentType = self::contentTypes['getSymbolsByTicker'][0])
     {
 
-        // Check if $query is a string
-        if ($query !== SENTINEL_VALUE && !is_string($query)) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($query, true), gettype($query)));
+        // Check if $ticker is a string
+        if ($ticker !== SENTINEL_VALUE && !is_string($ticker)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($ticker, true), gettype($ticker)));
         }
-        // verify the required parameter 'query' is set
-        if ($query === SENTINEL_VALUE || (is_array($query) && count($query) === 0)) {
+        // verify the required parameter 'ticker' is set
+        if ($ticker === SENTINEL_VALUE || (is_array($ticker) && count($ticker) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter query when calling getSymbolsByTicker'
+                'Missing the required parameter ticker when calling getSymbolsByTicker'
             );
         }
+        // Check if $symbol_id is a string
+        if ($symbol_id !== SENTINEL_VALUE && !is_string($symbol_id)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($symbol_id, true), gettype($symbol_id)));
+        }
 
 
-        $resourcePath = '/symbols/{query}';
+        $resourcePath = '/symbols/{ticker}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
+        if ($symbol_id !== SENTINEL_VALUE) {
+            // query params
+            $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+                $symbol_id,
+                'symbolId', // param base name
+                'string', // openApiType
+                'form', // style
+                true, // explode
+                false // required
+            ) ?? []);
+        }
 
 
         // path params
-        if ($query !== SENTINEL_VALUE) {
+        if ($ticker !== SENTINEL_VALUE) {
             $resourcePath = str_replace(
-                '{' . 'query' . '}',
-                ObjectSerializer::toPathValue($query),
+                '{' . 'ticker' . '}',
+                ObjectSerializer::toPathValue($ticker),
                 $resourcePath
             );
         }

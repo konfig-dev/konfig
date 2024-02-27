@@ -118,24 +118,6 @@ class BrokerageTest extends TestCase
     }
 
     /**
-     * Test attribute "aws_s3_square_logo_url"
-     */
-    public function testPropertyAwsS3SquareLogoUrl()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "open_url"
-     */
-    public function testPropertyOpenUrl()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test attribute "slug"
      */
     public function testPropertySlug()

@@ -55,8 +55,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_name' => 'string',
         'description' => 'string',
         'aws_s3_logo_url' => 'string',
-        'aws_s3_square_logo_url' => 'string',
-        'open_url' => 'string',
         'slug' => 'string',
         'url' => 'string',
         'enabled' => 'bool',
@@ -85,8 +83,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_name' => null,
         'description' => null,
         'aws_s3_logo_url' => 'url',
-        'aws_s3_square_logo_url' => 'url',
-        'open_url' => 'url',
         'slug' => null,
         'url' => 'url',
         'enabled' => null,
@@ -113,8 +109,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
 		'display_name' => false,
 		'description' => false,
 		'aws_s3_logo_url' => false,
-		'aws_s3_square_logo_url' => true,
-		'open_url' => true,
 		'slug' => false,
 		'url' => false,
 		'enabled' => false,
@@ -221,8 +215,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_name' => 'display_name',
         'description' => 'description',
         'aws_s3_logo_url' => 'aws_s3_logo_url',
-        'aws_s3_square_logo_url' => 'aws_s3_square_logo_url',
-        'open_url' => 'open_url',
         'slug' => 'slug',
         'url' => 'url',
         'enabled' => 'enabled',
@@ -249,8 +241,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_name' => 'setDisplayName',
         'description' => 'setDescription',
         'aws_s3_logo_url' => 'setAwsS3LogoUrl',
-        'aws_s3_square_logo_url' => 'setAwsS3SquareLogoUrl',
-        'open_url' => 'setOpenUrl',
         'slug' => 'setSlug',
         'url' => 'setUrl',
         'enabled' => 'setEnabled',
@@ -277,8 +267,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         'display_name' => 'getDisplayName',
         'description' => 'getDescription',
         'aws_s3_logo_url' => 'getAwsS3LogoUrl',
-        'aws_s3_square_logo_url' => 'getAwsS3SquareLogoUrl',
-        'open_url' => 'getOpenUrl',
         'slug' => 'getSlug',
         'url' => 'getUrl',
         'enabled' => 'getEnabled',
@@ -356,8 +344,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('display_name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('aws_s3_logo_url', $data ?? [], null);
-        $this->setIfExists('aws_s3_square_logo_url', $data ?? [], null);
-        $this->setIfExists('open_url', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('enabled', $data ?? [], null);
@@ -556,78 +542,6 @@ class Brokerage implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['aws_s3_logo_url'] = $aws_s3_logo_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets aws_s3_square_logo_url
-     *
-     * @return string|null
-     */
-    public function getAwsS3SquareLogoUrl()
-    {
-        return $this->container['aws_s3_square_logo_url'];
-    }
-
-    /**
-     * Sets aws_s3_square_logo_url
-     *
-     * @param string|null $aws_s3_square_logo_url aws_s3_square_logo_url
-     *
-     * @return self
-     */
-    public function setAwsS3SquareLogoUrl($aws_s3_square_logo_url)
-    {
-
-        if (is_null($aws_s3_square_logo_url)) {
-            array_push($this->openAPINullablesSetToNull, 'aws_s3_square_logo_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('aws_s3_square_logo_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-
-        $this->container['aws_s3_square_logo_url'] = $aws_s3_square_logo_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets open_url
-     *
-     * @return string|null
-     */
-    public function getOpenUrl()
-    {
-        return $this->container['open_url'];
-    }
-
-    /**
-     * Sets open_url
-     *
-     * @param string|null $open_url open_url
-     *
-     * @return self
-     */
-    public function setOpenUrl($open_url)
-    {
-
-        if (is_null($open_url)) {
-            array_push($this->openAPINullablesSetToNull, 'open_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('open_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-
-        $this->container['open_url'] = $open_url;
 
         return $this;
     }

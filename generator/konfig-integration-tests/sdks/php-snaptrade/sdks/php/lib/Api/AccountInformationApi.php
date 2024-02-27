@@ -1389,13 +1389,12 @@ class AccountInformationApi extends \SnapTrade\CustomApi
     /**
      * Operation getUserAccountOrders
      *
-     * List account orders
+     * Get history of orders placed in account
      *
      * @param  string $user_id user_id (required)
      * @param  string $user_secret user_secret (required)
      * @param  string $account_id The ID of the account to get orders. (required)
      * @param  string $state defaults value is set to \&quot;all\&quot; (optional)
-     * @param  int $days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserAccountOrders'] to see the possible values for this operation
      *
      * @throws \SnapTrade\ApiException on non-2xx response
@@ -1407,35 +1406,33 @@ class AccountInformationApi extends \SnapTrade\CustomApi
         $user_secret,
         $account_id,
         $state = SENTINEL_VALUE,
-        $days = SENTINEL_VALUE,
 
         string $contentType = self::contentTypes['getUserAccountOrders'][0]
     )
     {
 
-        list($response) = $this->getUserAccountOrdersWithHttpInfo($user_id, $user_secret, $account_id, $state, $days, $contentType);
+        list($response) = $this->getUserAccountOrdersWithHttpInfo($user_id, $user_secret, $account_id, $state, $contentType);
         return $response;
     }
 
     /**
      * Operation getUserAccountOrdersWithHttpInfo
      *
-     * List account orders
+     * Get history of orders placed in account
      *
      * @param  string $user_id (required)
      * @param  string $user_secret (required)
      * @param  string $account_id The ID of the account to get orders. (required)
      * @param  string $state defaults value is set to \&quot;all\&quot; (optional)
-     * @param  int $days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserAccountOrders'] to see the possible values for this operation
      *
      * @throws \SnapTrade\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SnapTrade\Model\AccountOrderRecord[]|\SnapTrade\Model\Model500UnexpectedExceptionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserAccountOrdersWithHttpInfo($user_id, $user_secret, $account_id, $state = null, $days = null, string $contentType = self::contentTypes['getUserAccountOrders'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
+    public function getUserAccountOrdersWithHttpInfo($user_id, $user_secret, $account_id, $state = null, string $contentType = self::contentTypes['getUserAccountOrders'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
     {
-        ["request" => $request, "serializedBody" => $serializedBody] = $this->getUserAccountOrdersRequest($user_id, $user_secret, $account_id, $state, $days, $contentType);
+        ["request" => $request, "serializedBody" => $serializedBody] = $this->getUserAccountOrdersRequest($user_id, $user_secret, $account_id, $state, $contentType);
 
         // Customization hook
         $this->beforeSendHook($request, $requestOptions, $this->config);
@@ -1455,7 +1452,6 @@ class AccountInformationApi extends \SnapTrade\CustomApi
                         $user_secret,
                         $account_id,
                         $state,
-                        $days,
                         $contentType,
                         $requestOptions->setRetryOAuth(false)
                     );
@@ -1566,13 +1562,12 @@ class AccountInformationApi extends \SnapTrade\CustomApi
     /**
      * Operation getUserAccountOrdersAsync
      *
-     * List account orders
+     * Get history of orders placed in account
      *
      * @param  string $user_id (required)
      * @param  string $user_secret (required)
      * @param  string $account_id The ID of the account to get orders. (required)
      * @param  string $state defaults value is set to \&quot;all\&quot; (optional)
-     * @param  int $days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserAccountOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1583,13 +1578,12 @@ class AccountInformationApi extends \SnapTrade\CustomApi
         $user_secret,
         $account_id,
         $state = SENTINEL_VALUE,
-        $days = SENTINEL_VALUE,
 
         string $contentType = self::contentTypes['getUserAccountOrders'][0]
     )
     {
 
-        return $this->getUserAccountOrdersAsyncWithHttpInfo($user_id, $user_secret, $account_id, $state, $days, $contentType)
+        return $this->getUserAccountOrdersAsyncWithHttpInfo($user_id, $user_secret, $account_id, $state, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1600,22 +1594,21 @@ class AccountInformationApi extends \SnapTrade\CustomApi
     /**
      * Operation getUserAccountOrdersAsyncWithHttpInfo
      *
-     * List account orders
+     * Get history of orders placed in account
      *
      * @param  string $user_id (required)
      * @param  string $user_secret (required)
      * @param  string $account_id The ID of the account to get orders. (required)
      * @param  string $state defaults value is set to \&quot;all\&quot; (optional)
-     * @param  int $days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserAccountOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserAccountOrdersAsyncWithHttpInfo($user_id, $user_secret, $account_id, $state = null, $days = null, string $contentType = self::contentTypes['getUserAccountOrders'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
+    public function getUserAccountOrdersAsyncWithHttpInfo($user_id, $user_secret, $account_id, $state = null, string $contentType = self::contentTypes['getUserAccountOrders'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
     {
         $returnType = '\SnapTrade\Model\AccountOrderRecord[]';
-        ["request" => $request, "serializedBody" => $serializedBody] = $this->getUserAccountOrdersRequest($user_id, $user_secret, $account_id, $state, $days, $contentType);
+        ["request" => $request, "serializedBody" => $serializedBody] = $this->getUserAccountOrdersRequest($user_id, $user_secret, $account_id, $state, $contentType);
 
         // Customization hook
         $this->beforeSendHook($request, $requestOptions, $this->config);
@@ -1663,13 +1656,12 @@ class AccountInformationApi extends \SnapTrade\CustomApi
      * @param  string $user_secret (required)
      * @param  string $account_id The ID of the account to get orders. (required)
      * @param  string $state defaults value is set to \&quot;all\&quot; (optional)
-     * @param  int $days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserAccountOrders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserAccountOrdersRequest($user_id, $user_secret, $account_id, $state = SENTINEL_VALUE, $days = SENTINEL_VALUE, string $contentType = self::contentTypes['getUserAccountOrders'][0])
+    public function getUserAccountOrdersRequest($user_id, $user_secret, $account_id, $state = SENTINEL_VALUE, string $contentType = self::contentTypes['getUserAccountOrders'][0])
     {
 
         // Check if $user_id is a string
@@ -1706,10 +1698,7 @@ class AccountInformationApi extends \SnapTrade\CustomApi
         if ($state !== SENTINEL_VALUE && !is_string($state)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($state, true), gettype($state)));
         }
-        if ($days !== SENTINEL_VALUE && $days < 1) {
-            throw new \InvalidArgumentException('invalid value for "days" when calling AccountInformationApi.getUserAccountOrders, must be bigger than or equal to 1.');
-        }
-        
+
 
         $resourcePath = '/accounts/{accountId}/orders';
         $formParams = [];
@@ -1746,17 +1735,6 @@ class AccountInformationApi extends \SnapTrade\CustomApi
                 $state,
                 'state', // param base name
                 'string', // openApiType
-                'form', // style
-                true, // explode
-                false // required
-            ) ?? []);
-        }
-        if ($days !== SENTINEL_VALUE) {
-            // query params
-            $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-                $days,
-                'days', // param base name
-                'integer', // openApiType
                 'form', // style
                 true, // explode
                 false // required

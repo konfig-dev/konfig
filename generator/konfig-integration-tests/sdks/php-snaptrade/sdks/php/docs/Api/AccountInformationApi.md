@@ -7,7 +7,7 @@ All URIs are relative to https://api.snaptrade.com/api/v1, except if the operati
 | [**getAllUserHoldings()**](AccountInformationApi.md#getAllUserHoldings) | **GET** /holdings | List all accounts for the user, plus balances, positions, and orders for each account. |
 | [**getUserAccountBalance()**](AccountInformationApi.md#getUserAccountBalance) | **GET** /accounts/{accountId}/balances | List account balances |
 | [**getUserAccountDetails()**](AccountInformationApi.md#getUserAccountDetails) | **GET** /accounts/{accountId} | Return details of a specific investment account |
-| [**getUserAccountOrders()**](AccountInformationApi.md#getUserAccountOrders) | **GET** /accounts/{accountId}/orders | List account orders |
+| [**getUserAccountOrders()**](AccountInformationApi.md#getUserAccountOrders) | **GET** /accounts/{accountId}/orders | Get history of orders placed in account |
 | [**getUserAccountPositions()**](AccountInformationApi.md#getUserAccountPositions) | **GET** /accounts/{accountId}/positions | List account positions |
 | [**getUserHoldings()**](AccountInformationApi.md#getUserHoldings) | **GET** /accounts/{accountId}/holdings | List balances, positions and orders for the specified account |
 | [**listUserAccounts()**](AccountInformationApi.md#listUserAccounts) | **GET** /accounts | List accounts |
@@ -110,7 +110,6 @@ try {
     );
     print_r($result->$getCurrency());
     print_r($result->$getCash());
-    print_r($result->$getBuyingPower());
 } catch (\Exception $e) {
     echo 'Exception when calling AccountInformationApi->getUserAccountBalance: ', $e->getMessage(), PHP_EOL;
 }
@@ -180,7 +179,6 @@ try {
     print_r($result->$getMeta());
     print_r($result->$getCashRestrictions());
     print_r($result->$getSyncStatus());
-    print_r($result->$getBalance());
 } catch (\Exception $e) {
     echo 'Exception when calling AccountInformationApi->getUserAccountDetails: ', $e->getMessage(), PHP_EOL;
 }
@@ -214,10 +212,10 @@ try {
 ## `getUserAccountOrders()`
 
 ```php
-getUserAccountOrders($user_id, $user_secret, $account_id, $state, $days): \SnapTrade\Model\AccountOrderRecord[]
+getUserAccountOrders($user_id, $user_secret, $account_id, $state): \SnapTrade\Model\AccountOrderRecord[]
 ```
 
-List account orders
+Get history of orders placed in account
 
 Fetch all recent orders from a user's account.
 
@@ -236,15 +234,13 @@ $user_id = "John.doe@snaptrade.com";
 $user_secret = "USERSECRET123";
 $account_id = "accountId_example"; // The ID of the account to get orders.
 $state = "all"; // defaults value is set to \"all\"
-$days = 30; // Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
 
 try {
     $result = $snaptrade->accountInformation->getUserAccountOrders(
         user_id: $user_id, 
         user_secret: $user_secret, 
         account_id: $account_id, 
-        state: $state, 
-        days: $days
+        state: $state
     );
     print_r($result->$getBrokerageOrderId());
     print_r($result->$getStatus());
@@ -277,7 +273,6 @@ try {
 | **user_secret** | **string**|  | |
 | **account_id** | **string**| The ID of the account to get orders. | |
 | **state** | **string**| defaults value is set to \&quot;all\&quot; | [optional] |
-| **days** | **int**| Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. | [optional] |
 
 ### Return type
 
@@ -462,7 +457,6 @@ try {
     print_r($result->$getMeta());
     print_r($result->$getCashRestrictions());
     print_r($result->$getSyncStatus());
-    print_r($result->$getBalance());
 } catch (\Exception $e) {
     echo 'Exception when calling AccountInformationApi->listUserAccounts: ', $e->getMessage(), PHP_EOL;
 }
@@ -531,7 +525,6 @@ try {
     print_r($result->$getMeta());
     print_r($result->$getCashRestrictions());
     print_r($result->$getSyncStatus());
-    print_r($result->$getBalance());
 } catch (\Exception $e) {
     echo 'Exception when calling AccountInformationApi->updateUserAccount: ', $e->getMessage(), PHP_EOL;
 }

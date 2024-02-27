@@ -57,7 +57,7 @@ class StrategyOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializa
         'open_quantity' => 'float',
         'closed_quantity' => 'float',
         'order_type' => '\SnapTrade\Model\OrderType',
-        'time_in_force' => 'string',
+        'time_in_force' => '\SnapTrade\Model\TimeInForce',
         'limit_price' => 'float',
         'execution_price' => 'float',
         'time_placed' => 'string',
@@ -598,7 +598,7 @@ class StrategyOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets time_in_force
      *
-     * @return string|null
+     * @return \SnapTrade\Model\TimeInForce|null
      */
     public function getTimeInForce()
     {
@@ -608,7 +608,7 @@ class StrategyOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets time_in_force
      *
-     * @param string|null $time_in_force Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date
+     * @param \SnapTrade\Model\TimeInForce|null $time_in_force time_in_force
      *
      * @return self
      */

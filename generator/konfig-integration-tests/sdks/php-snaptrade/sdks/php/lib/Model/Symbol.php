@@ -57,8 +57,7 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'currency' => '\SnapTrade\Model\Currency',
         'exchange' => '\SnapTrade\Model\Exchange',
-        'type' => '\SnapTrade\Model\SecurityType',
-        'figi_code' => 'string'
+        'type' => '\SnapTrade\Model\SecurityType'
     ];
 
     /**
@@ -75,8 +74,7 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'currency' => null,
         'exchange' => null,
-        'type' => null,
-        'figi_code' => null
+        'type' => null
     ];
 
     /**
@@ -91,8 +89,7 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
 		'name' => false,
 		'currency' => false,
 		'exchange' => false,
-		'type' => false,
-		'figi_code' => true
+		'type' => false
     ];
 
     /**
@@ -187,8 +184,7 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'currency' => 'currency',
         'exchange' => 'exchange',
-        'type' => 'type',
-        'figi_code' => 'figi_code'
+        'type' => 'type'
     ];
 
     /**
@@ -203,8 +199,7 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'currency' => 'setCurrency',
         'exchange' => 'setExchange',
-        'type' => 'setType',
-        'figi_code' => 'setFigiCode'
+        'type' => 'setType'
     ];
 
     /**
@@ -219,8 +214,7 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'currency' => 'getCurrency',
         'exchange' => 'getExchange',
-        'type' => 'getType',
-        'figi_code' => 'getFigiCode'
+        'type' => 'getType'
     ];
 
     /**
@@ -287,7 +281,6 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('exchange', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('figi_code', $data ?? [], null);
     }
 
     /**
@@ -531,42 +524,6 @@ class Symbol implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets figi_code
-     *
-     * @return string|null
-     */
-    public function getFigiCode()
-    {
-        return $this->container['figi_code'];
-    }
-
-    /**
-     * Sets figi_code
-     *
-     * @param string|null $figi_code figi_code
-     *
-     * @return self
-     */
-    public function setFigiCode($figi_code)
-    {
-
-        if (is_null($figi_code)) {
-            array_push($this->openAPINullablesSetToNull, 'figi_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('figi_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-
-        $this->container['figi_code'] = $figi_code;
 
         return $this;
     }

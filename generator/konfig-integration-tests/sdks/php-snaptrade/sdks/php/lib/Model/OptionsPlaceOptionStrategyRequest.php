@@ -51,7 +51,7 @@ class OptionsPlaceOptionStrategyRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'order_type' => '\SnapTrade\Model\OrderType',
-        'time_in_force' => '\SnapTrade\Model\TimeInForceStrict',
+        'time_in_force' => '\SnapTrade\Model\TimeInForce',
         'price' => 'float'
     ];
 
@@ -334,7 +334,7 @@ class OptionsPlaceOptionStrategyRequest implements ModelInterface, ArrayAccess, 
     /**
      * Gets time_in_force
      *
-     * @return \SnapTrade\Model\TimeInForceStrict
+     * @return \SnapTrade\Model\TimeInForce
      */
     public function getTimeInForce()
     {
@@ -344,7 +344,7 @@ class OptionsPlaceOptionStrategyRequest implements ModelInterface, ArrayAccess, 
     /**
      * Sets time_in_force
      *
-     * @param \SnapTrade\Model\TimeInForceStrict $time_in_force time_in_force
+     * @param \SnapTrade\Model\TimeInForce $time_in_force time_in_force
      *
      * @return self
      */

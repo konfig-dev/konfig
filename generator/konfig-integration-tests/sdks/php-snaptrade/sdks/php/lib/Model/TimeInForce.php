@@ -1,6 +1,6 @@
 <?php
 /**
- * TimeInForceStrict
+ * TimeInForce
  *
  * PHP version 7.4
  *
@@ -25,20 +25,20 @@ namespace SnapTrade\Model;
 use \SnapTrade\ObjectSerializer;
 
 /**
- * TimeInForceStrict Class Doc Comment
+ * TimeInForce Class Doc Comment
  *
  * @category Class
- * @description Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled
+ * @description Trade time in force:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled
  * @package  SnapTrade
  */
-class TimeInForceStrict
+class TimeInForce
 {
     /**
      * Possible values of this enum
      */
-    public const FOK = 'FOK';
-
     public const DAY = 'Day';
+
+    public const FOK = 'FOK';
 
     public const GTC = 'GTC';
 
@@ -49,8 +49,8 @@ class TimeInForceStrict
     public static function getAllowableEnumValues()
     {
         return [
-            self::FOK,
             self::DAY,
+            self::FOK,
             self::GTC
         ];
     }

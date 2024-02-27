@@ -57,8 +57,7 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => '\SnapTrade\Model\Currency',
         'exchange' => '\SnapTrade\Model\Exchange',
         'type' => '\SnapTrade\Model\SecurityType',
-        'currencies' => '\SnapTrade\Model\Currency[]',
-        'figi_code' => 'string'
+        'currencies' => '\SnapTrade\Model\Currency[]'
     ];
 
     /**
@@ -76,8 +75,7 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => null,
         'exchange' => null,
         'type' => null,
-        'currencies' => null,
-        'figi_code' => null
+        'currencies' => null
     ];
 
     /**
@@ -93,8 +91,7 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
 		'currency' => false,
 		'exchange' => false,
 		'type' => false,
-		'currencies' => false,
-		'figi_code' => true
+		'currencies' => false
     ];
 
     /**
@@ -190,8 +187,7 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'currency',
         'exchange' => 'exchange',
         'type' => 'type',
-        'currencies' => 'currencies',
-        'figi_code' => 'figi_code'
+        'currencies' => 'currencies'
     ];
 
     /**
@@ -207,8 +203,7 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'setCurrency',
         'exchange' => 'setExchange',
         'type' => 'setType',
-        'currencies' => 'setCurrencies',
-        'figi_code' => 'setFigiCode'
+        'currencies' => 'setCurrencies'
     ];
 
     /**
@@ -224,8 +219,7 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'getCurrency',
         'exchange' => 'getExchange',
         'type' => 'getType',
-        'currencies' => 'getCurrencies',
-        'figi_code' => 'getFigiCode'
+        'currencies' => 'getCurrencies'
     ];
 
     /**
@@ -293,7 +287,6 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('exchange', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('currencies', $data ?? [], null);
-        $this->setIfExists('figi_code', $data ?? [], null);
     }
 
     /**
@@ -591,42 +584,6 @@ class BrokerageSymbolSymbol implements ModelInterface, ArrayAccess, \JsonSeriali
         }
 
         $this->container['currencies'] = $currencies;
-
-        return $this;
-    }
-
-    /**
-     * Gets figi_code
-     *
-     * @return string|null
-     */
-    public function getFigiCode()
-    {
-        return $this->container['figi_code'];
-    }
-
-    /**
-     * Sets figi_code
-     *
-     * @param string|null $figi_code figi_code
-     *
-     * @return self
-     */
-    public function setFigiCode($figi_code)
-    {
-
-        if (is_null($figi_code)) {
-            array_push($this->openAPINullablesSetToNull, 'figi_code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('figi_code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-
-        $this->container['figi_code'] = $figi_code;
 
         return $this;
     }

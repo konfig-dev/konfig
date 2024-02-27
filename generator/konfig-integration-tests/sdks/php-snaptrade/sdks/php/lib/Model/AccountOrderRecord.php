@@ -65,7 +65,7 @@ class AccountOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializab
         'limit_price' => 'float',
         'stop_price' => 'float',
         'order_type' => '\SnapTrade\Model\OrderType',
-        'time_in_force' => 'string',
+        'time_in_force' => '\SnapTrade\Model\TimeInForce',
         'time_placed' => 'string',
         'time_updated' => 'string',
         'expiry_date' => 'string'
@@ -589,7 +589,7 @@ class AccountOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets total_quantity
      *
-     * @param float|null $total_quantity Trade Units. Cannot work with notional value.
+     * @param float|null $total_quantity Trade Units
      *
      * @return self
      */
@@ -853,7 +853,7 @@ class AccountOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets time_in_force
      *
-     * @return string|null
+     * @return \SnapTrade\Model\TimeInForce|null
      */
     public function getTimeInForce()
     {
@@ -863,7 +863,7 @@ class AccountOrderRecord implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets time_in_force
      *
-     * @param string|null $time_in_force Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date
+     * @param \SnapTrade\Model\TimeInForce|null $time_in_force time_in_force
      *
      * @return self
      */

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **open_quantity** | **float** |  | [optional]
 **closed_quantity** | **float** |  | [optional]
 **order_type** | [**\SnapTrade\Model\OrderType**](OrderType.md) |  | [optional]
-**time_in_force** | **string** | Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date | [optional]
+**time_in_force** | [**\SnapTrade\Model\TimeInForce**](TimeInForce.md) |  | [optional]
 **limit_price** | **float** | Trade Price if limit or stop limit order | [optional]
 **execution_price** | **float** | Trade Price if limit or stop limit order | [optional]
 **time_placed** | **string** | Time | [optional]

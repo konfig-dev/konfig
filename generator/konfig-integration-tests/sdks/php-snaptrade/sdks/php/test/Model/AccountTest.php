@@ -161,13 +161,4 @@ class AccountTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test attribute "balance"
-     */
-    public function testPropertyBalance()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
 }

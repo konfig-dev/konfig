@@ -116,13 +116,4 @@ class SnapTradeLoginUserRequestBodyTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test attribute "connection_portal_version"
-     */
-    public function testPropertyConnectionPortalVersion()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
 }

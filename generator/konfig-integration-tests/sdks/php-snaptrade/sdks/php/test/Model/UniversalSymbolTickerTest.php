@@ -1,6 +1,6 @@
 <?php
 /**
- * UnderlyingSymbolTest
+ * UniversalSymbolTickerTest
  *
  * PHP version 7.4
  *
@@ -26,13 +26,13 @@ namespace SnapTrade\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * UnderlyingSymbolTest Class Doc Comment
+ * UniversalSymbolTickerTest Class Doc Comment
  *
  * @category    Class
- * @description Underlying Symbol
+ * @description Universal symbol
  * @package     SnapTrade
  */
-class UnderlyingSymbolTest extends TestCase
+class UniversalSymbolTickerTest extends TestCase
 {
 
     /**
@@ -64,9 +64,9 @@ class UnderlyingSymbolTest extends TestCase
     }
 
     /**
-     * Test "UnderlyingSymbol"
+     * Test "UniversalSymbolTicker"
      */
-    public function testUnderlyingSymbol()
+    public function testUniversalSymbolTicker()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
@@ -85,6 +85,15 @@ class UnderlyingSymbolTest extends TestCase
      * Test attribute "symbol"
      */
     public function testPropertySymbol()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "raw_symbol"
+     */
+    public function testPropertyRawSymbol()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

@@ -630,7 +630,6 @@ class TransactionsAndReportingApi extends \SnapTrade\CustomApi
      * @throws \SnapTrade\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SnapTrade\Model\PerformanceCustom
-     * @deprecated
      */
     public function getReportingCustomRange(
         $start_date,
@@ -666,7 +665,6 @@ class TransactionsAndReportingApi extends \SnapTrade\CustomApi
      * @throws \SnapTrade\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SnapTrade\Model\PerformanceCustom, HTTP status code, HTTP response headers (array of strings)
-     * @deprecated
      */
     public function getReportingCustomRangeWithHttpInfo($start_date, $end_date, $user_id, $user_secret, $accounts = null, $detailed = null, $frequency = null, string $contentType = self::contentTypes['getReportingCustomRange'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
     {
@@ -793,7 +791,6 @@ class TransactionsAndReportingApi extends \SnapTrade\CustomApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
      */
     public function getReportingCustomRangeAsync(
         $start_date,
@@ -832,7 +829,6 @@ class TransactionsAndReportingApi extends \SnapTrade\CustomApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
-     * @deprecated
      */
     public function getReportingCustomRangeAsyncWithHttpInfo($start_date, $end_date, $user_id, $user_secret, $accounts = null, $detailed = null, $frequency = null, string $contentType = self::contentTypes['getReportingCustomRange'][0], \SnapTrade\RequestOptions $requestOptions = new \SnapTrade\RequestOptions())
     {
@@ -892,7 +888,6 @@ class TransactionsAndReportingApi extends \SnapTrade\CustomApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
-     * @deprecated
      */
     public function getReportingCustomRangeRequest($start_date, $end_date, $user_id, $user_secret, $accounts = SENTINEL_VALUE, $detailed = SENTINEL_VALUE, $frequency = SENTINEL_VALUE, string $contentType = self::contentTypes['getReportingCustomRange'][0])
     {

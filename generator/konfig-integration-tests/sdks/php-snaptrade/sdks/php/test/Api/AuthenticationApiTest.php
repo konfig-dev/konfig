@@ -117,16 +117,4 @@ class AuthenticationApiTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test case for resetSnapTradeUserSecret
-     *
-     * Obtain a new user secret for a user.
-     *
-     */
-    public function testResetSnapTradeUserSecret()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
 }

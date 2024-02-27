@@ -308,7 +308,7 @@ $snaptrade = new \SnapTrade\Client(
 );
 
 $order_type = "Limit";
-$time_in_force = "FOK";
+$time_in_force = "Day";
 $user_id = "John.doe@snaptrade.com";
 $user_secret = "USERSECRET123";
 $account_id = "2bcd7cc3-e922-4976-bce1-9858296801c3"; // The ID of the account to execute the strategy in.

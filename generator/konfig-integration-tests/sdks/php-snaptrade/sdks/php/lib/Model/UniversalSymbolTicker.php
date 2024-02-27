@@ -1,6 +1,6 @@
 <?php
 /**
- * Amount
+ * UniversalSymbolTicker
  *
  * PHP version 7.4
  *
@@ -27,14 +27,14 @@ use \ArrayAccess;
 use \SnapTrade\ObjectSerializer;
 
 /**
- * Amount Class Doc Comment
+ * UniversalSymbolTicker Class Doc Comment
  *
  * @category Class
- * @description Total Value of the account
+ * @description Universal symbol
  * @package  SnapTrade
  * @implements \ArrayAccess<string, mixed>
  */
-class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
+class UniversalSymbolTicker implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -43,7 +43,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Amount';
+    protected static $openAPIModelName = 'UniversalSymbolTicker';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -51,8 +51,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'currency' => 'string'
+        'id' => 'string',
+        'symbol' => 'string',
+        'raw_symbol' => 'string',
+        'description' => 'string',
+        'currency' => '\SnapTrade\Model\Currency',
+        'exchange' => '\SnapTrade\Model\Exchange',
+        'type' => '\SnapTrade\Model\SecurityType',
+        'currencies' => '\SnapTrade\Model\Currency[]'
     ];
 
     /**
@@ -63,8 +69,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'currency' => null
+        'id' => 'uuid',
+        'symbol' => null,
+        'raw_symbol' => null,
+        'description' => null,
+        'currency' => null,
+        'exchange' => null,
+        'type' => null,
+        'currencies' => null
     ];
 
     /**
@@ -73,8 +85,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'currency' => false
+        'id' => false,
+		'symbol' => false,
+		'raw_symbol' => false,
+		'description' => false,
+		'currency' => false,
+		'exchange' => false,
+		'type' => false,
+		'currencies' => false
     ];
 
     /**
@@ -163,8 +181,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'currency' => 'currency'
+        'id' => 'id',
+        'symbol' => 'symbol',
+        'raw_symbol' => 'raw_symbol',
+        'description' => 'description',
+        'currency' => 'currency',
+        'exchange' => 'exchange',
+        'type' => 'type',
+        'currencies' => 'currencies'
     ];
 
     /**
@@ -173,8 +197,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency'
+        'id' => 'setId',
+        'symbol' => 'setSymbol',
+        'raw_symbol' => 'setRawSymbol',
+        'description' => 'setDescription',
+        'currency' => 'setCurrency',
+        'exchange' => 'setExchange',
+        'type' => 'setType',
+        'currencies' => 'setCurrencies'
     ];
 
     /**
@@ -183,8 +213,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency'
+        'id' => 'getId',
+        'symbol' => 'getSymbol',
+        'raw_symbol' => 'getRawSymbol',
+        'description' => 'getDescription',
+        'currency' => 'getCurrency',
+        'exchange' => 'getExchange',
+        'type' => 'getType',
+        'currencies' => 'getCurrencies'
     ];
 
     /**
@@ -244,8 +280,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('symbol', $data ?? [], null);
+        $this->setIfExists('raw_symbol', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('exchange', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('currencies', $data ?? [], null);
     }
 
     /**
@@ -291,30 +333,117 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets amount
+     * Gets id
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getAmount()
+    public function getId()
     {
-        return $this->container['amount'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets amount
+     * Sets id
      *
-     * @param float|null $amount amount
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setId($id)
     {
 
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
 
-        $this->container['amount'] = $amount;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
+     *
+     * @return string|null
+     */
+    public function getSymbol()
+    {
+        return $this->container['symbol'];
+    }
+
+    /**
+     * Sets symbol
+     *
+     * @param string|null $symbol symbol
+     *
+     * @return self
+     */
+    public function setSymbol($symbol)
+    {
+
+        if (is_null($symbol)) {
+            throw new \InvalidArgumentException('non-nullable symbol cannot be null');
+        }
+
+        $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_symbol
+     *
+     * @return string|null
+     */
+    public function getRawSymbol()
+    {
+        return $this->container['raw_symbol'];
+    }
+
+    /**
+     * Sets raw_symbol
+     *
+     * @param string|null $raw_symbol raw_symbol
+     *
+     * @return self
+     */
+    public function setRawSymbol($raw_symbol)
+    {
+
+        if (is_null($raw_symbol)) {
+            throw new \InvalidArgumentException('non-nullable raw_symbol cannot be null');
+        }
+
+        $this->container['raw_symbol'] = $raw_symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }
@@ -322,7 +451,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency
      *
-     * @return string|null
+     * @return \SnapTrade\Model\Currency|null
      */
     public function getCurrency()
     {
@@ -332,7 +461,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency currency
+     * @param \SnapTrade\Model\Currency|null $currency currency
      *
      * @return self
      */
@@ -344,6 +473,93 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange
+     *
+     * @return \SnapTrade\Model\Exchange|null
+     */
+    public function getExchange()
+    {
+        return $this->container['exchange'];
+    }
+
+    /**
+     * Sets exchange
+     *
+     * @param \SnapTrade\Model\Exchange|null $exchange exchange
+     *
+     * @return self
+     */
+    public function setExchange($exchange)
+    {
+
+        if (is_null($exchange)) {
+            throw new \InvalidArgumentException('non-nullable exchange cannot be null');
+        }
+
+        $this->container['exchange'] = $exchange;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return \SnapTrade\Model\SecurityType|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param \SnapTrade\Model\SecurityType|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets currencies
+     *
+     * @return \SnapTrade\Model\Currency[]|null
+     */
+    public function getCurrencies()
+    {
+        return $this->container['currencies'];
+    }
+
+    /**
+     * Sets currencies
+     *
+     * @param \SnapTrade\Model\Currency[]|null $currencies currencies
+     *
+     * @return self
+     */
+    public function setCurrencies($currencies)
+    {
+
+        if (is_null($currencies)) {
+            throw new \InvalidArgumentException('non-nullable currencies cannot be null');
+        }
+
+        $this->container['currencies'] = $currencies;
 
         return $this;
     }

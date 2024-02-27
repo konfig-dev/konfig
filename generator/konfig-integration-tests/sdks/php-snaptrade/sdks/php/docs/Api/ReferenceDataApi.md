@@ -9,7 +9,7 @@ All URIs are relative to https://api.snaptrade.com/api/v1, except if the operati
 | [**getSecurityTypes()**](ReferenceDataApi.md#getSecurityTypes) | **GET** /securityTypes | List of all security types |
 | [**getStockExchanges()**](ReferenceDataApi.md#getStockExchanges) | **GET** /exchanges | List exchanges |
 | [**getSymbols()**](ReferenceDataApi.md#getSymbols) | **POST** /symbols | Search for symbols |
-| [**getSymbolsByTicker()**](ReferenceDataApi.md#getSymbolsByTicker) | **GET** /symbols/{query} | Get details of a symbol by the ticker or the universal_symbol_id |
+| [**getSymbolsByTicker()**](ReferenceDataApi.md#getSymbolsByTicker) | **GET** /symbols/{ticker} | Get details of a symbol by the ticker |
 | [**listAllBrokerageAuthorizationType()**](ReferenceDataApi.md#listAllBrokerageAuthorizationType) | **GET** /brokerageAuthorizationTypes | List of all brokerage authorization types |
 | [**listAllBrokerages()**](ReferenceDataApi.md#listAllBrokerages) | **GET** /brokerages | List brokerages |
 | [**listAllCurrencies()**](ReferenceDataApi.md#listAllCurrencies) | **GET** /currencies | List currencies |
@@ -276,7 +276,6 @@ try {
     print_r($result->$getExchange());
     print_r($result->$getType());
     print_r($result->$getCurrencies());
-    print_r($result->$getFigiCode());
 } catch (\Exception $e) {
     echo 'Exception when calling ReferenceDataApi->getSymbols: ', $e->getMessage(), PHP_EOL;
 }
@@ -308,10 +307,10 @@ try {
 ## `getSymbolsByTicker()`
 
 ```php
-getSymbolsByTicker($query): \SnapTrade\Model\UniversalSymbol
+getSymbolsByTicker($ticker, $symbol_id): \SnapTrade\Model\UniversalSymbol
 ```
 
-Get details of a symbol by the ticker or the universal_symbol_id
+Get details of a symbol by the ticker
 
 ### Example
 
@@ -324,11 +323,13 @@ $snaptrade = new \SnapTrade\Client(
     consumerKey: getenv("SNAPTRADE_CONSUMER_KEY")
 );
 
-$query = "query_example"; // The ticker or universal_symbol_id of the UniversalSymbol to get.
+$ticker = "ticker_example"; // The ticker of the UniversalSymbol to get.
+$symbol_id = "046b6c7f-0b8a-43b9-b35d-6489e6daee91"; // OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get.
 
 try {
     $result = $snaptrade->referenceData->getSymbolsByTicker(
-        query: $query
+        ticker: $ticker, 
+        symbol_id: $symbol_id
     );
     print_r($result->$getId());
     print_r($result->$getSymbol());
@@ -338,7 +339,6 @@ try {
     print_r($result->$getExchange());
     print_r($result->$getType());
     print_r($result->$getCurrencies());
-    print_r($result->$getFigiCode());
 } catch (\Exception $e) {
     echo 'Exception when calling ReferenceDataApi->getSymbolsByTicker: ', $e->getMessage(), PHP_EOL;
 }
@@ -348,7 +348,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **query** | **string**| The ticker or universal_symbol_id of the UniversalSymbol to get. | |
+| **ticker** | **string**| The ticker of the UniversalSymbol to get. | |
+| **symbol_id** | **string**| OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. | [optional] |
 
 ### Return type
 
@@ -451,8 +452,6 @@ try {
     print_r($result->$getDisplayName());
     print_r($result->$getDescription());
     print_r($result->$getAwsS3LogoUrl());
-    print_r($result->$getAwsS3SquareLogoUrl());
-    print_r($result->$getOpenUrl());
     print_r($result->$getSlug());
     print_r($result->$getUrl());
     print_r($result->$getEnabled());
@@ -633,7 +632,6 @@ try {
     print_r($result->$getExchange());
     print_r($result->$getType());
     print_r($result->$getCurrencies());
-    print_r($result->$getFigiCode());
 } catch (\Exception $e) {
     echo 'Exception when calling ReferenceDataApi->symbolSearchUserAccount: ', $e->getMessage(), PHP_EOL;
 }

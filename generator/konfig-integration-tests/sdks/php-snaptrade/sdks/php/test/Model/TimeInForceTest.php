@@ -1,6 +1,6 @@
 <?php
 /**
- * TimeInForceStrictTest
+ * TimeInForceTest
  *
  * PHP version 7.4
  *
@@ -26,13 +26,13 @@ namespace SnapTrade\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * TimeInForceStrictTest Class Doc Comment
+ * TimeInForceTest Class Doc Comment
  *
  * @category    Class
- * @description Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled
+ * @description Trade time in force:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled
  * @package     SnapTrade
  */
-class TimeInForceStrictTest extends TestCase
+class TimeInForceTest extends TestCase
 {
 
     /**
@@ -64,9 +64,9 @@ class TimeInForceStrictTest extends TestCase
     }
 
     /**
-     * Test "TimeInForceStrict"
+     * Test "TimeInForce"
      */
-    public function testTimeInForceStrict()
+    public function testTimeInForce()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

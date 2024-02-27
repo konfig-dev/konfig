@@ -1,5 +1,5 @@
-# 
+# konfig
 
 |Language|Version|Package Manager|README|Source|
 |-|-|-|-|-|
-|Java|4.13.3|[Maven Central](https://central.sonatype.com/artifact/com.konfigthis/snaptrade-java-sdk/4.13.3)|[README](https://github.com/konfig-dev/konfig/tree/main/generator/konfig-integration-tests/sdks/java-snaptrade#readme)|[Source](https://github.com/konfig-dev/konfig/tree/main/generator/konfig-integration-tests/sdks/java-snaptrade)|
+|PHP (8.0+)|2.0.7|[Packagist](https://packagist.org/packages/konfig/snaptrade-php-sdk#2.0.7)|[README](https://github.com/passiv/snaptrade-php-sdk#readme)|[Source](https://github.com/passiv/snaptrade-php-sdk)|
