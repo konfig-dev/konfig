@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
+
+order:
+  - tag: API Status
+  - tag: Authentication
+    operations:
+      - Authentication_registerSnapTradeUser
+      - Authentication_loginSnapTradeUser
+  - tag: Connections
+  - tag: Account Information
+    operations:
+      - path: /accounts
+        method: get
+  - tag: Trading
+    operations:
+      - Trading_getUserAccountQuotes
+      - Trading_getOrderImpact
+      - Trading_placeOrder
+      - Trading_placeForceOrder
+      - Trading_placeOCOOrder
+      - Trading_cancelUserAccountOrder
+filterTags:
+  - Webhooks
+  - Development Tools
+  - Custom Brokerage API Credentials
+filterModels:
+  - SnapTradePartnerAPICredential
+  - WebhookBase
+  - MockSignatureResponse
+filterRequestBodies:
+  - CreateSnapTradeParterAPICredentialsRequestBody
+  - MockSignatureRequestBody
+allObjectsHaveAdditionalProperties:
+  requestBody: false
+  exclude:
+    - encryptedResponse
+    - LoginRedirectURI
+  include:
+    - PortfolioGroup
+outputDirectory: /tmp/snaptrade-sdks-out
+infoContactName: SnapTrade
+infoContactUrl: https://snaptrade.com/
+doNotValidateGloballyRequiredSecurity: true
+tagPriority:
+  - Account Information
+readmeHeader:
+  title: SnapTrade
+  image: header.png
+  url: https://snaptrade.com
+useSecurityKeyName: true
+generators:
+  php:
+    version: 2.0.7
+    outputDirectory: sdks/php
+    packageName: snaptrade-php-sdk
+    invokerPackage: SnapTrade
+    apiDocumentationAuthenticationPartial: snippets/phpDocAuthPartial.php
+    clientState:
+      - consumerKey
+    git:
+      userId: passiv
+      repoId: snaptrade-php-sdk
+specPath: api.yaml
