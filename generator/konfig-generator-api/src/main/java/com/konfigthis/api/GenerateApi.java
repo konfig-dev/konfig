@@ -369,6 +369,9 @@ public interface GenerateApi {
             putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
             putIfPresent(map, "removeDefaultConfigurationParameters", true);
         }
+        if (generator.equals("php") && existingCustomers.stream().noneMatch(packageName::contains)) {
+            putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
+        }
         if (additionalProperties.getObjectPropertyNamingConvention() != null) {
             putIfPresent(map, "useCamelCase",
                     additionalProperties.getObjectPropertyNamingConvention().equals("camelCase"));

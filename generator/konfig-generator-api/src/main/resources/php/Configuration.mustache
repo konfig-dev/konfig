@@ -217,7 +217,10 @@ class Configuration
         $this->{{setter}}(${{state}});
         {{/clientStateWithExamplesSetterGetterCamelCase}}
         {{#apiKeyMethods}}
-        $this->setApiKey("{{keyParamName}}", ${{> api_key_name}});
+        $this->setApiKey("{{> api_key_name}}", ${{> api_key_name}});
+        {{#vendorExtensions.x-konfig-prefix}}
+        $this->setApiKeyPrefix("{{> api_key_name}}", "{{vendorExtensions.x-konfig-prefix}}");
+        {{/vendorExtensions.x-konfig-prefix}}
         {{/apiKeyMethods}}
     }
 
@@ -598,7 +601,7 @@ class Configuration
         if ($prefix === null) {
             $keyWithPrefix = $apiKey;
         } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
+            $keyWithPrefix = $prefix . $apiKey;
         }
 
         return $keyWithPrefix;
