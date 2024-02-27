@@ -16,8 +16,10 @@ module SnapTrade
   class ManualTradeForm
     attr_accessor :account_id
 
+    # Trade Action
     attr_accessor :action
 
+    # Order Type
     attr_accessor :order_type
 
     # Trade Price if limit or stop limit order
@@ -26,6 +28,7 @@ module SnapTrade
     # Stop Price. If stop loss or stop limit order, the price to trigger the stop
     attr_accessor :stop
 
+    # Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled 
     attr_accessor :time_in_force
 
     attr_accessor :units

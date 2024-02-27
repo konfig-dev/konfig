@@ -23,7 +23,7 @@ instance = SnapTrade::Trade.new(
   account: null,
   symbol: null,
   universal_symbol: null,
-  action: null,
+  action: BUY,
   units: 6,
   price: 24.81,
   sequence: 1

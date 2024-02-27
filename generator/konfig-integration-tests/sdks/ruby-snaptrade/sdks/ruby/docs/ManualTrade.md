@@ -6,10 +6,10 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **account** | **String** |  | [optional] |
-| **order_type** | [**OrderType**](OrderType.md) |  | [optional] |
+| **order_type** | [**OrderType**](OrderType.md) | Order Type | [optional] |
 | **time_in_force** | **String** | Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date  | [optional] |
 | **symbol** | [**ManualTradeSymbol**](ManualTradeSymbol.md) |  | [optional] |
-| **action** | [**Action**](Action.md) |  | [optional] |
+| **action** | [**Action**](Action.md) | Trade Action | [optional] |
 | **units** | **Float** | Trade Units. Cannot work with notional value. | [optional] |
 | **price** | **Float** | Trade Price if limit or stop limit order | [optional] |
 

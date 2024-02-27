@@ -9,7 +9,7 @@
 | **symbol** | **String** |  | [optional] |
 | **universal_symbol** | [**UniversalSymbol**](UniversalSymbol.md) |  | [optional] |
 | **option_symbol** | [**OptionsSymbol**](OptionsSymbol.md) |  | [optional] |
-| **action** | [**Action**](Action.md) |  | [optional] |
+| **action** | [**Action**](Action.md) | Trade Action | [optional] |
 | **total_quantity** | **Float** | Trade Units. Cannot work with notional value. | [optional] |
 | **open_quantity** | **Float** | Trade Units | [optional] |
 | **canceled_quantity** | **Float** | Trade Units | [optional] |
@@ -17,7 +17,7 @@
 | **execution_price** | **Float** | Trade Price if limit or stop limit order | [optional] |
 | **limit_price** | **Float** | Trade Price if limit or stop limit order | [optional] |
 | **stop_price** | **Float** | Stop Price. If stop loss or stop limit order, the price to trigger the stop | [optional] |
-| **order_type** | [**OrderType**](OrderType.md) |  | [optional] |
+| **order_type** | [**OrderType**](OrderType.md) | Order Type | [optional] |
 | **time_in_force** | **String** | Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date  | [optional] |
 | **time_placed** | **String** | Time | [optional] |
 | **time_updated** | **String** | Time | [optional] |

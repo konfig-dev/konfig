@@ -321,7 +321,7 @@ module SnapTrade
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to get orders.
-    # @param state [String] defaults value is set to \&quot;all\&quot;
+    # @param state [String] defaults value is set to \"all\"
     # @param days [Integer] Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_user_account_orders(user_id:, user_secret:, account_id:, state: SENTINEL, days: SENTINEL, extra: {})
@@ -338,7 +338,7 @@ module SnapTrade
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to get orders.
-    # @param state [String] defaults value is set to \&quot;all\&quot;
+    # @param state [String] defaults value is set to \"all\"
     # @param days [Integer] Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_user_account_orders_with_http_info(user_id:, user_secret:, account_id:, state: SENTINEL, days: SENTINEL, extra: {})

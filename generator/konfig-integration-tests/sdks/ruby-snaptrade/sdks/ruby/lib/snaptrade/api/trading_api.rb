@@ -24,7 +24,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to cancel the order in.
     # @param brokerage_order_id [String] 
-    # @param body [TradingCancelUserAccountOrderRequest] The Order ID to be canceled
+    # @param body [TradingCancelUserAccountOrderRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def cancel_user_account_order(user_id:, user_secret:, account_id:, brokerage_order_id: SENTINEL, extra: {})
       _body = {}
@@ -40,7 +40,7 @@ module SnapTrade
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to cancel the order in.
     # @param brokerage_order_id [String] 
-    # @param body [TradingCancelUserAccountOrderRequest] The Order ID to be canceled
+    # @param body [TradingCancelUserAccountOrderRequest] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def cancel_user_account_order_with_http_info(user_id:, user_secret:, account_id:, brokerage_order_id: SENTINEL, extra: {})
       _body = {}
@@ -141,11 +141,11 @@ module SnapTrade
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] 
-    # @param action [Action] 
-    # @param order_type [OrderType] 
+    # @param action [Action] Trade Action
+    # @param order_type [OrderType] Order Type
     # @param price [Float] Trade Price if limit or stop limit order
     # @param stop [Float] Stop Price. If stop loss or stop limit order, the price to trigger the stop
-    # @param time_in_force [TimeInForceStrict] 
+    # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param units [Float] 
     # @param universal_symbol_id [String] 
     # @param notional_value [Float] 
@@ -172,11 +172,11 @@ module SnapTrade
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] 
-    # @param action [Action] 
-    # @param order_type [OrderType] 
+    # @param action [Action] Trade Action
+    # @param order_type [OrderType] Order Type
     # @param price [Float] Trade Price if limit or stop limit order
     # @param stop [Float] Stop Price. If stop loss or stop limit order, the price to trigger the stop
-    # @param time_in_force [TimeInForceStrict] 
+    # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param units [Float] 
     # @param universal_symbol_id [String] 
     # @param notional_value [Float] 
@@ -396,11 +396,11 @@ module SnapTrade
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] 
-    # @param action [Action] 
-    # @param order_type [OrderType] 
+    # @param action [Action] Trade Action
+    # @param order_type [OrderType] Order Type
     # @param price [Float] Trade Price if limit or stop limit order
     # @param stop [Float] Stop Price. If stop loss or stop limit order, the price to trigger the stop
-    # @param time_in_force [TimeInForceStrict] 
+    # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param units [Float] 
     # @param universal_symbol_id [String] 
     # @param notional_value [Float] 
@@ -427,11 +427,11 @@ module SnapTrade
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] 
-    # @param action [Action] 
-    # @param order_type [OrderType] 
+    # @param action [Action] Trade Action
+    # @param order_type [OrderType] Order Type
     # @param price [Float] Trade Price if limit or stop limit order
     # @param stop [Float] Stop Price. If stop loss or stop limit order, the price to trigger the stop
-    # @param time_in_force [TimeInForceStrict] 
+    # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param units [Float] 
     # @param universal_symbol_id [String] 
     # @param notional_value [Float] 

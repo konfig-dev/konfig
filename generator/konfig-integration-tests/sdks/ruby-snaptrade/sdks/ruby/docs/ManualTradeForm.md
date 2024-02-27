@@ -5,11 +5,11 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **account_id** | **String** |  | [optional] |
-| **action** | [**Action**](Action.md) |  | [optional] |
-| **order_type** | [**OrderType**](OrderType.md) |  | [optional] |
+| **action** | [**Action**](Action.md) | Trade Action | [optional] |
+| **order_type** | [**OrderType**](OrderType.md) | Order Type | [optional] |
 | **price** | **Float** | Trade Price if limit or stop limit order | [optional] |
 | **stop** | **Float** | Stop Price. If stop loss or stop limit order, the price to trigger the stop | [optional] |
-| **time_in_force** | [**TimeInForceStrict**](TimeInForceStrict.md) |  | [optional] |
+| **time_in_force** | [**TimeInForceStrict**](TimeInForceStrict.md) | Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled  | [optional] |
 | **units** | **Float** |  | [optional] |
 | **universal_symbol_id** | **String** |  | [optional] |
 | **notional_value** | **Float** |  | [optional] |

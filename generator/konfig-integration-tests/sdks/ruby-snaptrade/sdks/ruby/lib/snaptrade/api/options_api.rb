@@ -454,8 +454,8 @@ module SnapTrade
 
     # Place an option strategy order on the brokerage
     #
-    # @param order_type [OrderType] 
-    # @param time_in_force [TimeInForceStrict] 
+    # @param order_type [OrderType] Order Type
+    # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to execute the strategy in.
@@ -475,8 +475,8 @@ module SnapTrade
 
     # Place an option strategy order on the brokerage
     #
-    # @param order_type [OrderType] 
-    # @param time_in_force [TimeInForceStrict] 
+    # @param order_type [OrderType] Order Type
+    # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to execute the strategy in.

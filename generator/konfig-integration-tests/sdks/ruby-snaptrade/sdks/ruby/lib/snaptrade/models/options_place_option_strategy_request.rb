@@ -13,8 +13,10 @@ require 'time'
 
 module SnapTrade
   class OptionsPlaceOptionStrategyRequest
+    # Order Type
     attr_accessor :order_type
 
+    # Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled 
     attr_accessor :time_in_force
 
     # Trade Price if limit or stop limit order
