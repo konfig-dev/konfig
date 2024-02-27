@@ -1840,6 +1840,12 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
      * @return the example value
      */
     protected Object getObjectExample(Schema sc) {
+        if (ModelUtils.isComposedSchema(sc)) {
+            if (sc.getAllOf() != null && sc.getAllOf().stream().count() == 1) {
+                List<Schema> allOf = sc.getAllOf();
+                return getObjectExample(allOf.get(0));
+            }
+        }
         Schema schema = sc;
         String ref = sc.get$ref();
         if (ref != null) {

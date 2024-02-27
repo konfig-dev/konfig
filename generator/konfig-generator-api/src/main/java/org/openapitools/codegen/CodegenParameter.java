@@ -21,6 +21,7 @@ import io.swagger.v3.oas.models.media.Schema;
 import org.openapitools.codegen.utils.CamelizeOption;
 import org.openapitools.codegen.utils.StringUtils;
 
+import javax.validation.groups.Default;
 import java.util.*;
 
 /**
@@ -68,7 +69,8 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     public boolean isStrictlyObject;
 
     public String baseName, paramName, dataType, datatypeWithEnum, dataFormat, contentType,
-            collectionFormat, description, unescapedDescription, baseType, defaultValue, enumDefaultValue, enumName, style;
+            collectionFormat, description, baseType, defaultValue, enumDefaultValue, enumName, style;
+    public String unescapedDescription;
     public String dataTypeLowerCase;
 
     // When you need "HashMap" instead of "Map" in Java SDK
@@ -873,6 +875,39 @@ public class CodegenParameter implements IJsonSchemaValidationProperties {
     @Override
     public void setSchemaIsFromAdditionalProperties(boolean schemaIsFromAdditionalProperties) {
         this.schemaIsFromAdditionalProperties = schemaIsFromAdditionalProperties;
+    }
+
+    public String getDescriptionForSingleLine() {
+        if (unescapedDescription == null) return null;
+        String normalized = DefaultCodegen.normalizeDescriptionForSingleline(unescapedDescription);
+        String escaped = DefaultCodegen.escapeTextStatic(normalized);
+        return escaped;
+    }
+
+    /**
+     * Takes the description for a single line and wraps it whenever it exceeds the given line length (80 characters).
+     * @return the description wrapped for multiple lines
+     */
+    public String getDescriptionForMarkdown() {
+        if (getDescriptionForSingleLine() == null) return null;
+        /**
+         * Wrap the description to multiple lines if it exceeds the line length (80 characters).
+         */
+        List<String> lines = new ArrayList<>();
+        String[] words = getDescriptionForSingleLine().split(" ");
+        StringBuilder line = new StringBuilder();
+        for (String word : words) {
+            if (line.length() + word.length() + 1 > 80) {
+                lines.add(line.toString());
+                line = new StringBuilder();
+            }
+            if (line.length() > 0) {
+                line.append(" ");
+            }
+            line.append(word);
+        }
+        lines.add(line.toString());
+        return String.join("\n", lines);
     }
 }
 

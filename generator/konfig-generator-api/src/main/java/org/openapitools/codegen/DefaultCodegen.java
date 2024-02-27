@@ -1105,6 +1105,23 @@ public class DefaultCodegen implements CodegenConfig {
         return templatingEngine;
     }
 
+    /**
+     *
+     * @param description
+     * @return description where substrings like "\n     " are replaced with " ".
+     */
+    static public String normalizeDescriptionForSingleline(String description) {
+        // remove new lines
+        String desc = description.replaceAll("\\n", " ");
+        // remove repeating spaces
+        desc = desc.replaceAll("\\s+", " ");
+        return desc;
+    }
+
+    public static String escapeTextStatic(String input) {
+        return new DefaultCodegen().escapeText(input);
+    }
+
     // override with any special text escaping logic
     @Override
     @SuppressWarnings("static-method")
@@ -7392,7 +7409,7 @@ public class DefaultCodegen implements CodegenConfig {
 
         codegenParameter.isFormParam = Boolean.TRUE;
         codegenParameter.description = escapeText(codegenProperty.description);
-        codegenParameter.unescapedDescription = codegenProperty.getDescription();
+        codegenParameter.unescapedDescription = codegenProperty.getUnescapedDescription();
         codegenParameter.jsonSchema = Json.pretty(propertySchema);
 
         if (codegenProperty.getVendorExtensions() != null && !codegenProperty.getVendorExtensions().isEmpty()) {

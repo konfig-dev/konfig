@@ -30,8 +30,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -162,6 +162,12 @@ abstract public class AbstractRubyCodegen extends DefaultCodegen implements Code
                     return "Time.parse(\"" + String.format(Locale.ROOT, ((java.time.OffsetDateTime) p.getDefault()).atZoneSameInstant(ZoneId.systemDefault()).toString(), "") + "\")";
                 } else {
                     return "'" + escapeText((String.valueOf(p.getDefault()))) + "'";
+                }
+            }
+        } else if (ModelUtils.isComposedSchema(p)) {
+            if (p.getDefault() != null) {
+                if (p.getDefault() instanceof String) {
+                    return "'" + (String) p.getDefault() + "'";
                 }
             }
         }
