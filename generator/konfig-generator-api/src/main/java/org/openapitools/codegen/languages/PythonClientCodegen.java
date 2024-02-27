@@ -86,6 +86,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     public String objectOpenChar = "{";
     public String objectCloseChar = "}";
     public String objectFieldDelimiter = ": ";
+    public String binaryExampleOverride = null;
     protected String packageUrl;
     protected String apiDocPath = "docs/apis/tags/";
     protected String modelDocPath = "docs/models/";
@@ -1925,6 +1926,9 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     }
 
     private String generateBinaryExample(String example) {
+        if (binaryExampleOverride != null) {
+            return binaryExampleOverride;
+        }
         if (example == null)
             example = "/path/to/file";
         return binaryExample(example);
