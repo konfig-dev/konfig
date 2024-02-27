@@ -112,7 +112,7 @@ public class RubyClientCodegen extends AbstractRubyCodegen {
         outputFolder = "generated-code" + File.separator + "ruby";
         modelTemplateFiles.put("model.mustache", ".rb");
         apiTemplateFiles.put("api.mustache", ".rb");
-        modelDocTemplateFiles.put("model_doc.mustache", ".md");
+        // modelDocTemplateFiles.put("model_doc.mustache", ".md");
         // apiDocTemplateFiles.put("api_doc.mustache", ".md");
         embeddedTemplateDir = templateDir = "ruby-client";
 
