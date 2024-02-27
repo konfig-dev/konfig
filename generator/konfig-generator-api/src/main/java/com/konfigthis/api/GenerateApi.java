@@ -380,6 +380,9 @@ public interface GenerateApi {
             if (existingCustomers.stream().noneMatch(gemName::contains)) {
                 putIfPresent(map, "useSecurityKeyNameAsPropertyName", true);
                 putIfPresent(map, "removeDefaultConfigurationParameters", true);
+                // instead of mapping "data", "status_code", "headers", and "response" into a hash, continue
+                // returning it as a tuple
+                putIfPresent(map, "useNewWithHttpInfoReturnType", true);
             }
         }
 

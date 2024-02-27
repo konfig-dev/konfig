@@ -107,6 +107,15 @@ describe 'GettingStarted' do
     end
   end
 
+  it 'with_http_info' do
+    SnapTrade.client_id = "SNAPTRADE_CLIENT_ID"
+    SnapTrade.consumer_key = "SNAPTRADE_CONSUMER_KEY"
+    SnapTrade.host = "http://127.0.0.1:4072"
+    response = SnapTrade::APIStatus.check_with_http_info
+    expect(response).not_to be_nil
+    expect(response[1]).to eq(200)
+  end
+
   describe 'setting consumer key to nil' do
     it 'should fail with ArgumentError' do
       expect { SnapTrade.consumer_key = nil }.to raise_error(ArgumentError)

@@ -413,4 +413,17 @@ module SnapTrade
       end
     end
   end
+
+  # Represents an HTTP response for method that end with *_with_http_info
+  class APIResponse
+    attr_reader :data, :status_code, :headers, :response
+
+    def initialize(data, status_code, headers, response)
+      @data = data
+      @status_code = status_code
+      @headers = headers
+      @response = response
+    end
+
+  end
 end

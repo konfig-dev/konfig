@@ -87,7 +87,12 @@ module {{moduleName}}
     # @option opts [{{{dataType}}}] :{{paramName}} {{{description}}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
 {{/required}}
 {{/allParams}}
+{{^useNewWithHttpInfoReturnType}}
     # @return [Array<({{{returnType}}}{{^returnType}}nil{{/returnType}}, Integer, Hash)>] {{#returnType}}{{{.}}} data{{/returnType}}{{^returnType}}nil{{/returnType}}, response status code and response headers
+{{/useNewWithHttpInfoReturnType}}
+{{#useNewWithHttpInfoReturnType}}
+    # @return [APIResponse] data is {{#returnType}}{{{.}}}{{/returnType}}{{^returnType}}nil{{/returnType}}, status code, headers and response
+{{/useNewWithHttpInfoReturnType}}
     private def {{operationId}}_with_http_info_impl({{^vendorExtensions.x-group-parameters}}{{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}{{/vendorExtensions.x-group-parameters}}opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: {{classname}}.{{operationId}} ...'
@@ -258,7 +263,12 @@ module {{moduleName}}
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: {{classname}}#{{operationId}}\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
+      {{^useNewWithHttpInfoReturnType}}
       return data, status_code, headers, response
+      {{/useNewWithHttpInfoReturnType}}
+      {{#useNewWithHttpInfoReturnType}}
+      APIResponse::new(data, status_code, headers, response)
+      {{/useNewWithHttpInfoReturnType}}
     end
 {{^-last}}
 
