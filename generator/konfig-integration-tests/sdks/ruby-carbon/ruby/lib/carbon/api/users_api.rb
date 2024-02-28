@@ -25,8 +25,8 @@ module Carbon
       _body = {}
       _body[:customer_id] = customer_id if customer_id != SENTINEL
       user_request_content = _body
-      data, _status_code, _headers = get_with_http_info_impl(user_request_content, extra)
-      data
+      api_response = get_with_http_info_impl(user_request_content, extra)
+      api_response.data
     end
 
     # User Endpoint
@@ -119,8 +119,8 @@ module Carbon
       _body[:configuration_key_name] = configuration_key_name if configuration_key_name != SENTINEL
       _body[:value] = value if value != SENTINEL
       modify_user_configuration_input = _body
-      data, _status_code, _headers = toggle_user_features_with_http_info_impl(modify_user_configuration_input, extra)
-      data
+      api_response = toggle_user_features_with_http_info_impl(modify_user_configuration_input, extra)
+      api_response.data
     end
 
     # Toggle User Features

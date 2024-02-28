@@ -47,8 +47,8 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       fresh_desk_connect_request = _body
-      data, _status_code, _headers = connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
-      data
+      api_response = connect_freshdesk_with_http_info_impl(fresh_desk_connect_request, extra)
+      api_response.data
     end
 
     # Freshdesk Connect
@@ -170,8 +170,8 @@ module Carbon
       _body[:organization] = organization if organization != SENTINEL
       _body[:access_token] = access_token if access_token != SENTINEL
       gitbook_connect_request = _body
-      data, _status_code, _headers = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
-      data
+      api_response = connect_gitbook_with_http_info_impl(gitbook_connect_request, extra)
+      api_response.data
     end
 
     # Gitbook Connect
@@ -281,8 +281,8 @@ module Carbon
       _body[:access_key] = access_key if access_key != SENTINEL
       _body[:access_key_secret] = access_key_secret if access_key_secret != SENTINEL
       s3_auth_request = _body
-      data, _status_code, _headers = create_aws_iam_user_with_http_info_impl(s3_auth_request, extra)
-      data
+      api_response = create_aws_iam_user_with_http_info_impl(s3_auth_request, extra)
+      api_response.data
     end
 
     # S3 Auth
@@ -411,8 +411,8 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       o_auth_url_request = _body
-      data, _status_code, _headers = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
-      data
+      api_response = get_oauth_url_with_http_info_impl(o_auth_url_request, extra)
+      api_response.data
     end
 
     # Get Oauth Url
@@ -539,8 +539,8 @@ module Carbon
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       _body[:parent_id] = parent_id if parent_id != SENTINEL
       list_request = _body
-      data, _status_code, _headers = list_confluence_pages_with_http_info_impl(list_request, extra)
-      data
+      api_response = list_confluence_pages_with_http_info_impl(list_request, extra)
+      api_response.data
     end
 
     # Confluence List
@@ -647,8 +647,8 @@ module Carbon
       _body[:parent_id] = parent_id if parent_id != SENTINEL
       _body[:pagination] = pagination if pagination != SENTINEL
       list_data_source_items_request = _body
-      data, _status_code, _headers = list_data_source_items_with_http_info_impl(list_data_source_items_request, extra)
-      data
+      api_response = list_data_source_items_with_http_info_impl(list_data_source_items_request, extra)
+      api_response.data
     end
 
     # List Data Source Items
@@ -741,8 +741,8 @@ module Carbon
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_folders(extra: {})
-      data, _status_code, _headers = list_folders_with_http_info_impl(extra)
-      data
+      api_response = list_folders_with_http_info_impl(extra)
+      api_response.data
     end
 
     # Outlook Folders
@@ -820,8 +820,8 @@ module Carbon
     # @param data_source_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_gitbook_spaces(data_source_id:, extra: {})
-      data, _status_code, _headers = list_gitbook_spaces_with_http_info_impl(data_source_id, extra)
-      data
+      api_response = list_gitbook_spaces_with_http_info_impl(data_source_id, extra)
+      api_response.data
     end
 
     # Gitbook Spaces
@@ -906,8 +906,8 @@ module Carbon
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_labels(extra: {})
-      data, _status_code, _headers = list_labels_with_http_info_impl(extra)
-      data
+      api_response = list_labels_with_http_info_impl(extra)
+      api_response.data
     end
 
     # Gmail Labels
@@ -1010,8 +1010,8 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       sync_files_request = _body
-      data, _status_code, _headers = sync_confluence_with_http_info_impl(sync_files_request, extra)
-      data
+      api_response = sync_confluence_with_http_info_impl(sync_files_request, extra)
+      api_response.data
     end
 
     # Confluence Sync
@@ -1127,8 +1127,8 @@ module Carbon
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       sync_directory_request = _body
-      data, _status_code, _headers = sync_data_source_items_with_http_info_impl(sync_directory_request, extra)
-      data
+      api_response = sync_data_source_items_with_http_info_impl(sync_directory_request, extra)
+      api_response.data
     end
 
     # Sync Data Source Items
@@ -1237,8 +1237,8 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       sync_files_request = _body
-      data, _status_code, _headers = sync_files_with_http_info_impl(sync_files_request, extra)
-      data
+      api_response = sync_files_with_http_info_impl(sync_files_request, extra)
+      api_response.data
     end
 
     # Sync Files
@@ -1366,8 +1366,8 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       gitbook_sync_request = _body
-      data, _status_code, _headers = sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
-      data
+      api_response = sync_gitbook_with_http_info_impl(gitbook_sync_request, extra)
+      api_response.data
     end
 
     # Gitbook Sync
@@ -1544,8 +1544,8 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       gmail_sync_input = _body
-      data, _status_code, _headers = sync_gmail_with_http_info_impl(gmail_sync_input, extra)
-      data
+      api_response = sync_gmail_with_http_info_impl(gmail_sync_input, extra)
+      api_response.data
     end
 
     # Gmail Sync
@@ -1780,8 +1780,8 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       outlook_sync_input = _body
-      data, _status_code, _headers = sync_outlook_with_http_info_impl(outlook_sync_input, extra)
-      data
+      api_response = sync_outlook_with_http_info_impl(outlook_sync_input, extra)
+      api_response.data
     end
 
     # Outlook Sync
@@ -1965,8 +1965,8 @@ module Carbon
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       rss_feed_input = _body
-      data, _status_code, _headers = sync_rss_feed_with_http_info_impl(rss_feed_input, extra)
-      data
+      api_response = sync_rss_feed_with_http_info_impl(rss_feed_input, extra)
+      api_response.data
     end
 
     # Rss Feed
@@ -2091,8 +2091,8 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       s3_file_sync_input = _body
-      data, _status_code, _headers = sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
-      data
+      api_response = sync_s3_files_with_http_info_impl(s3_file_sync_input, extra)
+      api_response.data
     end
 
     # S3 Files

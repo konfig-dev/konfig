@@ -20,8 +20,8 @@ module Carbon
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_access_token(extra: {})
-      data, _status_code, _headers = get_access_token_with_http_info_impl(extra)
-      data
+      api_response = get_access_token_with_http_info_impl(extra)
+      api_response.data
     end
 
     # Get Access Token
@@ -97,8 +97,8 @@ module Carbon
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_white_labeling(extra: {})
-      data, _status_code, _headers = get_white_labeling_with_http_info_impl(extra)
-      data
+      api_response = get_white_labeling_with_http_info_impl(extra)
+      api_response.data
     end
 
     # Get White Labeling

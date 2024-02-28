@@ -25,8 +25,8 @@ module Carbon
       _body = {}
       _body[:url] = url if url != SENTINEL
       add_webhook_props = _body
-      data, _status_code, _headers = add_url_with_http_info_impl(add_webhook_props, extra)
-      data
+      api_response = add_url_with_http_info_impl(add_webhook_props, extra)
+      api_response.data
     end
 
     # Add Webhook Url
@@ -113,8 +113,8 @@ module Carbon
     # @param webhook_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete_url(webhook_id:, extra: {})
-      data, _status_code, _headers = delete_url_with_http_info_impl(webhook_id, extra)
-      data
+      api_response = delete_url_with_http_info_impl(webhook_id, extra)
+      api_response.data
     end
 
     # Delete Webhook Url
@@ -202,8 +202,8 @@ module Carbon
       _body[:order_dir] = order_dir if order_dir != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
       webhook_query_input = _body
-      data, _status_code, _headers = urls_with_http_info_impl(webhook_query_input, extra)
-      data
+      api_response = urls_with_http_info_impl(webhook_query_input, extra)
+      api_response.data
     end
 
     # Webhook Urls

@@ -29,8 +29,8 @@ module Carbon
     # @param url [String] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def fetch_urls(url:, extra: {})
-      data, _status_code, _headers = fetch_urls_with_http_info_impl(url, extra)
-      data
+      api_response = fetch_urls_with_http_info_impl(url, extra)
+      api_response.data
     end
 
     # Fetch Urls
@@ -130,8 +130,8 @@ module Carbon
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def fetch_youtube_transcripts(id:, raw: false, extra: {})
       extra[:raw] = raw if raw != SENTINEL
-      data, _status_code, _headers = fetch_youtube_transcripts_with_http_info_impl(id, extra)
-      data
+      api_response = fetch_youtube_transcripts_with_http_info_impl(id, extra)
+      api_response.data
     end
 
     # Fetch Youtube Transcripts
@@ -234,8 +234,8 @@ module Carbon
     # @param url [String] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def process_sitemap(url:, extra: {})
-      data, _status_code, _headers = process_sitemap_with_http_info_impl(url, extra)
-      data
+      api_response = process_sitemap_with_http_info_impl(url, extra)
+      api_response.data
     end
 
     # Sitemap
@@ -360,8 +360,8 @@ module Carbon
       _body[:css_selectors_to_skip] = css_selectors_to_skip if css_selectors_to_skip != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       sitemap_scrape_request = _body
-      data, _status_code, _headers = scrape_sitemap_with_http_info_impl(sitemap_scrape_request, extra)
-      data
+      api_response = scrape_sitemap_with_http_info_impl(sitemap_scrape_request, extra)
+      api_response.data
     end
 
     # Scrape Sitemap
@@ -492,8 +492,8 @@ module Carbon
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def scrape_web(body:, extra: {})
       webscrape_request = body
-      data, _status_code, _headers = scrape_web_with_http_info_impl(webscrape_request, extra)
-      data
+      api_response = scrape_web_with_http_info_impl(webscrape_request, extra)
+      api_response.data
     end
 
     # Web Scrape
@@ -608,8 +608,8 @@ module Carbon
     # @param query [String] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def search_urls(query:, extra: {})
-      data, _status_code, _headers = search_urls_with_http_info_impl(query, extra)
-      data
+      api_response = search_urls_with_http_info_impl(query, extra)
+      api_response.data
     end
 
     # Search Urls

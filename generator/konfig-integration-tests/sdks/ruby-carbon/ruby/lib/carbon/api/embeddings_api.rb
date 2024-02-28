@@ -146,8 +146,8 @@ module Carbon
       _body[:media_type] = media_type if media_type != SENTINEL
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       get_embedding_documents_body = _body
-      data, _status_code, _headers = get_documents_with_http_info_impl(get_embedding_documents_body, extra)
-      data
+      api_response = get_documents_with_http_info_impl(get_embedding_documents_body, extra)
+      api_response.data
     end
 
     # Embeddings
@@ -369,8 +369,8 @@ module Carbon
       _body[:filters] = filters if filters != SENTINEL
       _body[:include_vectors] = include_vectors if include_vectors != SENTINEL
       embeddings_and_chunks_query_input = _body
-      data, _status_code, _headers = get_embeddings_and_chunks_with_http_info_impl(embeddings_and_chunks_query_input, extra)
-      data
+      api_response = get_embeddings_and_chunks_with_http_info_impl(embeddings_and_chunks_query_input, extra)
+      api_response.data
     end
 
     # Retrieve Embeddings And Content
@@ -473,8 +473,8 @@ module Carbon
       _body[:chunks_and_embeddings] = chunks_and_embeddings if chunks_and_embeddings != SENTINEL
       _body[:overwrite_existing] = overwrite_existing if overwrite_existing != SENTINEL
       chunks_and_embeddings_upload_input = _body
-      data, _status_code, _headers = upload_chunks_and_embeddings_with_http_info_impl(chunks_and_embeddings_upload_input, extra)
-      data
+      api_response = upload_chunks_and_embeddings_with_http_info_impl(chunks_and_embeddings_upload_input, extra)
+      api_response.data
     end
 
     # Upload Chunks And Embeddings

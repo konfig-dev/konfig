@@ -39,8 +39,8 @@ module Carbon
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization_user_file_id] = organization_user_file_id if organization_user_file_id != SENTINEL
       organization_user_file_tag_create = _body
-      data, _status_code, _headers = create_user_file_tags_with_http_info_impl(organization_user_file_tag_create, extra)
-      data
+      api_response = create_user_file_tags_with_http_info_impl(organization_user_file_tag_create, extra)
+      api_response.data
     end
 
     # Create File Tags
@@ -143,8 +143,8 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def delete(file_id:, extra: {})
-      data, _status_code, _headers = delete_with_http_info_impl(file_id, extra)
-      data
+      api_response = delete_with_http_info_impl(file_id, extra)
+      api_response.data
     end
 
     # Delete File Endpoint
@@ -228,8 +228,8 @@ module Carbon
       _body[:tags] = tags if tags != SENTINEL
       _body[:organization_user_file_id] = organization_user_file_id if organization_user_file_id != SENTINEL
       organization_user_file_tags_remove = _body
-      data, _status_code, _headers = delete_file_tags_with_http_info_impl(organization_user_file_tags_remove, extra)
-      data
+      api_response = delete_file_tags_with_http_info_impl(organization_user_file_tags_remove, extra)
+      api_response.data
     end
 
     # Delete File Tags
@@ -328,8 +328,8 @@ module Carbon
       _body[:delete_non_synced_only] = delete_non_synced_only if delete_non_synced_only != SENTINEL
       _body[:send_webhook] = send_webhook if send_webhook != SENTINEL
       delete_files_query_input = _body
-      data, _status_code, _headers = delete_many_with_http_info_impl(delete_files_query_input, extra)
-      data
+      api_response = delete_many_with_http_info_impl(delete_files_query_input, extra)
+      api_response.data
     end
 
     # Delete Files Endpoint
@@ -424,8 +424,8 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_parsed_file(file_id:, extra: {})
-      data, _status_code, _headers = get_parsed_file_with_http_info_impl(file_id, extra)
-      data
+      api_response = get_parsed_file_with_http_info_impl(file_id, extra)
+      api_response.data
     end
 
     # Parsed File
@@ -509,8 +509,8 @@ module Carbon
     # @param file_id [Integer] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_raw_file(file_id:, extra: {})
-      data, _status_code, _headers = get_raw_file_with_http_info_impl(file_id, extra)
-      data
+      api_response = get_raw_file_with_http_info_impl(file_id, extra)
+      api_response.data
     end
 
     # Raw File
@@ -659,8 +659,8 @@ module Carbon
       _body[:include_parsed_text_file] = include_parsed_text_file if include_parsed_text_file != SENTINEL
       _body[:include_additional_files] = include_additional_files if include_additional_files != SENTINEL
       organization_user_files_to_sync_query_input = _body
-      data, _status_code, _headers = query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
-      data
+      api_response = query_user_files_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
+      api_response.data
     end
 
     # User Files V2
@@ -830,8 +830,8 @@ module Carbon
       _body[:include_parsed_text_file] = include_parsed_text_file if include_parsed_text_file != SENTINEL
       _body[:include_additional_files] = include_additional_files if include_additional_files != SENTINEL
       organization_user_files_to_sync_query_input = _body
-      data, _status_code, _headers = query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
-      data
+      api_response = query_user_files_deprecated_with_http_info_impl(organization_user_files_to_sync_query_input, extra)
+      api_response.data
     end
 
     # User Files
@@ -942,8 +942,8 @@ module Carbon
       _body[:chunk_size] = chunk_size if chunk_size != SENTINEL
       _body[:chunk_overlap] = chunk_overlap if chunk_overlap != SENTINEL
       resync_file_query_input = _body
-      data, _status_code, _headers = resync_with_http_info_impl(resync_file_query_input, extra)
-      data
+      api_response = resync_with_http_info_impl(resync_file_query_input, extra)
+      api_response.data
     end
 
     # Resync File
@@ -1082,8 +1082,8 @@ module Carbon
       extra[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       extra[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       extra[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
-      data, _status_code, _headers = upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
-      data
+      api_response = upload_with_http_info_impl(file, body_create_upload_file_uploadfile_post, extra)
+      api_response.data
     end
 
     # Create Upload File
@@ -1274,8 +1274,8 @@ module Carbon
       _body[:prepend_filename_to_chunks] = prepend_filename_to_chunks if prepend_filename_to_chunks != SENTINEL
       _body[:max_items_per_chunk] = max_items_per_chunk if max_items_per_chunk != SENTINEL
       upload_file_from_url_input = _body
-      data, _status_code, _headers = upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
-      data
+      api_response = upload_from_url_with_http_info_impl(upload_file_from_url_input, extra)
+      api_response.data
     end
 
     # Create Upload File From Url
@@ -1411,8 +1411,8 @@ module Carbon
       _body[:embedding_model] = embedding_model if embedding_model != SENTINEL
       _body[:generate_sparse_vectors] = generate_sparse_vectors if generate_sparse_vectors != SENTINEL
       raw_text_input = _body
-      data, _status_code, _headers = upload_text_with_http_info_impl(raw_text_input, extra)
-      data
+      api_response = upload_text_with_http_info_impl(raw_text_input, extra)
+      api_response.data
     end
 
     # Create Raw Text

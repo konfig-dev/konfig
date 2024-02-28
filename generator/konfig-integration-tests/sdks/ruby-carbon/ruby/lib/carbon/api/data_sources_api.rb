@@ -31,8 +31,8 @@ module Carbon
       _body[:order_dir] = order_dir if order_dir != SENTINEL
       _body[:filters] = filters if filters != SENTINEL
       organization_user_data_source_query_input = _body
-      data, _status_code, _headers = query_user_data_sources_with_http_info_impl(organization_user_data_source_query_input, extra)
-      data
+      api_response = query_user_data_sources_with_http_info_impl(organization_user_data_source_query_input, extra)
+      api_response.data
     end
 
     # User Data Sources
@@ -129,8 +129,8 @@ module Carbon
       _body = {}
       _body[:data_source_id] = data_source_id if data_source_id != SENTINEL
       revoke_access_token_input = _body
-      data, _status_code, _headers = revoke_access_token_with_http_info_impl(revoke_access_token_input, extra)
-      data
+      api_response = revoke_access_token_with_http_info_impl(revoke_access_token_input, extra)
+      api_response.data
     end
 
     # Revoke Access Token
