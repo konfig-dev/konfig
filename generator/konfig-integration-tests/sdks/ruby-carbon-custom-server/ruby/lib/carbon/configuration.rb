@@ -142,6 +142,8 @@ module Carbon
       @server_operation_variables = {}
       @api_key_store = {}
       @api_key_prefix = {}
+      @api_key_prefix['accessToken'] = "Token"
+      @api_key_prefix['apiKey'] = "Bearer"
       @client_side_validation = true
       @ssl_verify = true
       @ssl_verify_mode = nil
@@ -208,12 +210,13 @@ module Carbon
     # Gets API key (with prefix if set).
     # @param [String] param_name the parameter name of API key auth
     def api_key_with_prefix(param_name, param_alias = nil)
-      key = @api_key_store[param_name]
-      key = @api_key_store.fetch(param_alias, key) unless param_alias.nil?
+      value = @api_key_store[param_name]
+      value = @api_key_store.fetch(param_alias, value) unless param_alias.nil?
+      return nil if value.nil?
       if @api_key_prefix[param_name]
-        "#{@api_key_prefix[param_name]} #{key}"
+        "#{@api_key_prefix[param_name]} #{value}"
       else
-        key
+        value
       end
     end
 
