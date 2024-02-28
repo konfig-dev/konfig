@@ -160,7 +160,7 @@ export async function e2e(
 
 interface RouteConfig {
   path: string;
-  method: "get" | "post" | "put" | "delet"; // Extend as needed
+  method: "get" | "post" | "put" | "delete"; // Extend as needed
   isMultipartFormData?: boolean;
   response: object | "echo";
 }
