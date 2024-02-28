@@ -16,6 +16,11 @@ Hash<string, {{> api_doc_param_data_type}}>
 {{#isModel}}
 [`{{{dataType}}}`](./lib/{{gemName}}/models/{{modelFilename}}.rb)
 {{/isModel}}
+{{^isModel}}
+{{#isAnyType}}
+`Object`
+{{/isAnyType}}
+{{/isModel}}
 {{#isArray}}
 {{#items}}
 Array<{{> api_doc_param_data_type}}>
