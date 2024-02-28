@@ -16,6 +16,11 @@ Record<string, {{> api_doc_param_data_type}}>
 {{#isModel}}
 [`{{{dataType}}}`](./models/{{{modelFilename}}}.ts)
 {{/isModel}}
+{{^isModel}}
+{{#isAnyType}}
+`any`
+{{/isAnyType}}
+{{/isModel}}
 {{#isArray}}
 {{#items}}
 {{> api_doc_param_data_type}}[]

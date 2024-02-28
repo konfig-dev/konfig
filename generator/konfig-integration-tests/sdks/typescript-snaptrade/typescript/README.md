@@ -1687,11 +1687,11 @@ const placeOCOOrderResponse = await snaptrade.trading.placeOCOOrder({
 
 ##### userSecret: `string`<a id="usersecret-string"></a>
 
-##### first_trade_id:<a id="first_trade_id"></a>
+##### first_trade_id: `any`<a id="first_trade_id-any"></a>
 
 The ID of first trade object obtained from trade/impact endpoint
 
-##### second_trade_id:<a id="second_trade_id"></a>
+##### second_trade_id: `any`<a id="second_trade_id-any"></a>
 
 The ID of second trade object obtained from trade/impact endpoint
 

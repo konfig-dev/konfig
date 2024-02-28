@@ -1210,7 +1210,7 @@ const getOauthUrlResponse = await carbon.integrations.getOauthUrl({
 
 ##### service: [`DataSourceType`](./models/data-source-type.ts)<a id="service-datasourcetypemodelsdata-source-typets"></a>
 
-##### tags:<a id="tags"></a>
+##### tags: `any`<a id="tags-any"></a>
 
 ##### scope: `string`<a id="scope-string"></a>
 
