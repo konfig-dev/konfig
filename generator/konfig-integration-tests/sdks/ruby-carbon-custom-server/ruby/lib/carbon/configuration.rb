@@ -142,8 +142,8 @@ module Carbon
       @server_operation_variables = {}
       @api_key_store = {}
       @api_key_prefix = {}
-      @api_key_prefix['accessToken'] = "Token"
-      @api_key_prefix['apiKey'] = "Bearer"
+      @api_key_prefix['accessToken'] = 'Token '
+      @api_key_prefix['apiKey'] = 'Bearer '
       @client_side_validation = true
       @ssl_verify = true
       @ssl_verify_mode = nil
@@ -214,7 +214,7 @@ module Carbon
       value = @api_key_store.fetch(param_alias, value) unless param_alias.nil?
       return nil if value.nil?
       if @api_key_prefix[param_name]
-        "#{@api_key_prefix[param_name]} #{value}"
+        "#{@api_key_prefix[param_name]}#{value}"
       else
         value
       end
