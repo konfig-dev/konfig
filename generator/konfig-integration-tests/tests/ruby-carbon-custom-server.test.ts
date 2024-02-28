@@ -8,6 +8,14 @@ test("ruby-carbon-custom-server", async () => {
         {
           path: "/auth/v1/access_token",
           method: "get",
+          response: {
+            access_token: "123",
+            refresh_token: "xyz",
+          },
+        },
+        {
+          path: "/text_chunks",
+          method: "post",
           response: "echo",
         },
         {
