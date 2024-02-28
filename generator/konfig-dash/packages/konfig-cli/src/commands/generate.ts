@@ -362,7 +362,7 @@ export default class Deploy extends Command {
         const { files, ...restOfConfig } = rubyGeneratorConfig
         const requestJava: GenerateRequestBodyInputType['generators']['ruby'] =
           {
-            files: createTemplateFilesObject(files, 'csharp', configDir),
+            files: createTemplateFilesObject(files, 'ruby', configDir),
             ...handleReadmeSnippet({ config: restOfConfig }),
             ...handleReadmeSupportingDescriptionSnippet({
               config: restOfConfig,
