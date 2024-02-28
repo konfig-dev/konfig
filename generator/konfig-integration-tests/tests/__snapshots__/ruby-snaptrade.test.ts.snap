@@ -20,6 +20,7 @@ Connect brokerage accounts to your app for live positions and trading
 
 - [Installation](#installation)
 - [Getting Started](#getting-started)
+- [Raw HTTP Response](#raw-http-response)
 - [Reference](#reference)
   * [\`SnapTrade::AccountInformation.get_all_user_holdings\`](#snaptradeaccountinformationget_all_user_holdings)
   * [\`SnapTrade::AccountInformation.get_user_account_balance\`](#snaptradeaccountinformationget_user_account_balance)
@@ -89,6 +90,22 @@ result = SnapTrade::AccountInformation.get_all_user_holdings(
   brokerage_authorizations: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
 p result
+\`\`\`
+
+## Raw HTTP Response<a id="raw-http-response"></a>
+
+To access the raw HTTP response, suffix any method with \`_with_http_info\`.
+
+\`\`\`ruby
+result = SnapTrade::AccountInformation.get_all_user_holdings_with_http_info(
+  user_id: "John.doe@snaptrade.com",
+  user_secret: "USERSECRET123",
+  brokerage_authorizations: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
+)
+p result.data # [Array<AccountHoldings>] Deserialized data
+p.result.status_code # [Integer] HTTP status code
+p.result.headers # [Hash] HTTP headers
+p.result.response # [Faraday::Response] Raw HTTP response
 \`\`\`
 
 ## Reference<a id="reference"></a>
