@@ -1,0 +1,8 @@
+{{#returnType}}result = {{/returnType}}{{> api_doc_example_method}}_with_http_info{{#hasParams}}(
+{{> api_doc_example_execute_call_args}}){{/hasParams}}
+{{#returnType}}
+p result.data # [{{{returnType}}}] Deserialized data
+{{/returnType}}
+p.result.status_code # [Integer] HTTP status code
+p.result.headers # [Hash] HTTP headers
+p.result.response # [Faraday::Response] Raw HTTP response
