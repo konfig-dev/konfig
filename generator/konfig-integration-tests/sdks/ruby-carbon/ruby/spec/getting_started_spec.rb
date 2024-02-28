@@ -34,6 +34,20 @@ describe 'GettingStarted' do
     white_labeling = carbon.auth.get_white_labeling
   end
 
+  it 'files.create_file_user_tags' do
+    configuration = Carbon::Configuration.new
+    configuration.access_token = 'YOUR API KEY'
+    configuration.host = 'http://127.0.0.1:4073'
+    carbon = Carbon::Client.new(configuration)
+    result = carbon.files.create_user_file_tags(
+      tags: {
+            "key": "string_example",
+        },
+      organization_user_file_id: 1,
+    )
+    expect(result).to_not be_nil
+  end
+
   it 'Utilities.scrape_web' do
     result = Carbon::Utilities.scrape_web(
       body: [
