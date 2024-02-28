@@ -10,6 +10,11 @@ test("ruby-carbon-custom-server", async () => {
           method: "get",
           response: "echo",
         },
+        {
+          path: "/embeddings",
+          method: "post",
+          response: "echo",
+        },
       ],
     },
   });

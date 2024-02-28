@@ -44,4 +44,14 @@ describe 'GettingStarted' do
     expect(customer_id).to eq("CUSTOMER_ID")
   end
 
+  it 'embeddings.get_documents default value' do
+    configuration = Carbon::Configuration.new
+    configuration.host = "http://127.0.0.1:4129"
+    carbon = Carbon::Client.new(configuration)
+    api_response = carbon.embeddings.get_documents_with_http_info(query: "query", k: "k")
+    body = JSON.parse(api_response.response.body)["body"]
+    expect(body["media_type"]).to eq("TEXT")
+    expect(body["embedding_model"]).to eq("OPENAI")
+  end
+
 end
