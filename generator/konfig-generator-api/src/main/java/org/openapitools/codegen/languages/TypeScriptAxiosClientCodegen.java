@@ -130,6 +130,7 @@ public class TypeScriptAxiosClientCodegen extends AbstractTypeScriptClientCodege
         additionalProperties.put("modelRelativeToRoot", modelRelativeToRoot);
 
         supportingFiles.add(new SupportingFile("index.mustache", "", "index.ts"));
+        supportingFiles.add(new SupportingFile("operationParameterMap.mustache", "", "operationParameterMap.ts"));
         supportingFiles.add(new SupportingFile("baseApi.mustache", "", "base.ts"));
         supportingFiles.add(new SupportingFile("common.mustache", "", "common.ts"));
         supportingFiles.add(new SupportingFile("api.mustache", "", "api.ts"));

@@ -1,0 +1,25 @@
+type Parameter = {
+    name: string
+}
+type Entry = {
+    parameters: Parameter[]
+}
+export const operationParameterMap: Record<string, Entry> = {
+{{#apiInfo}}
+{{#apis}}
+{{#operations}}
+{{#operation}}
+    '{{{path}}}-{{{httpMethod}}}': {
+        parameters: [
+{{#allParamsWithRequestBodyProperties}}
+            {
+                name: '{{{baseName}}}'
+            },
+{{/allParamsWithRequestBodyProperties}}
+        ]
+    },
+{{/operation}}
+{{/operations}}
+{{/apis}}
+{{/apiInfo}}
+}
