@@ -75,8 +75,6 @@ public abstract class AbstractPhpCodegen extends DefaultCodegen implements Codeg
         this.modelTemplateFiles.put("model.mustache", ".php");
         this.apiTemplateFiles.put("api.mustache", ".php");
         this.apiTestTemplateFiles.put("api_test.mustache", ".php");
-        this.modelDocTemplateFiles.put("model_doc.mustache", ".md");
-        this.apiDocTemplateFiles.put("api_doc.mustache", ".md");
         this.apiPackage = this.invokerPackage + "\\" + this.apiDirName;
         this.modelPackage = this.invokerPackage + "\\" + this.modelDirName;
         this.setReservedWordsLowerCase(Arrays.asList("resourcePath", "httpBody", "queryParams", "headerParams", "formParams", "_header_accept", "_tempBody", "__halt_compiler", "abstract", "and", "array", "as", "break", "callable", "case", "catch", "class", "clone", "const", "continue", "declare", "default", "die", "do", "echo", "else", "elseif", "empty", "enddeclare", "endfor", "endforeach", "endif", "endswitch", "endwhile", "eval", "exit", "extends", "final", "for", "foreach", "function", "global", "goto", "if", "implements", "include", "include_once", "instanceof", "insteadof", "interface", "isset", "list", "namespace", "new", "or", "print", "private", "protected", "public", "require", "require_once", "return", "static", "switch", "throw", "trait", "try", "unset", "use", "var", "while", "xor"));

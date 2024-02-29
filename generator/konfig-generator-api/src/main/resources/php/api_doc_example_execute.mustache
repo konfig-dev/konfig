@@ -1,0 +1,10 @@
+{{#returnType}}$result = {{/returnType}}${{invokerPackageLowerCase}}->{{classNameCamelCase}}->{{{operationId}}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}(
+{{#bodyParam}}
+{{^isStrictlyObject}}
+    body: {{{example}}},
+{{/isStrictlyObject}}
+{{/bodyParam}}
+{{#allParamsWithRequestBodyProperties}}
+    {{^supportPhp7}}{{paramName}}: {{/supportPhp7}}{{{example}}}{{^-last}}, {{/-last}}
+{{/allParamsWithRequestBodyProperties}}
+){{/hasParams}};

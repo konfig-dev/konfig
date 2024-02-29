@@ -3,37 +3,4 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 {{> php_doc_auth_partial}}
 
-{{^vendorExtensions.x-group-parameters}}
-{{#allParamsWithRequestBodyProperties}}${{paramName}} = {{{example}}};{{#description}} // {{{.}}}{{/description}}
-{{/allParamsWithRequestBodyProperties}}{{#servers}}{{#-first}}
-$hostIndex = 0;
-$variables = [{{#variables}}
-    '{{{name}}}' => '{{{default}}}{{^default}}YOUR_VALUE{{/default}}',{{/variables}}
-];
-{{/-first}}{{/servers}}{{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}
-$request = [
-{{#allParams}}    '{{paramName}}' => {{#isModel}}new {{dataType}}({{/isModel}}{{{example}}}{{#isModel}}){{/isModel}},{{#description}} // {{{.}}}{{/description}}
-{{/allParams}}
-{{#servers}}{{#-first}}
-    'hostIndex' => 0,
-    $variables = [{{#variables}}
-        '{{{name}}}' => '{{{default}}}{{^default}}YOUR_VALUE{{/default}}',{{/variables}}
-    ],
-{{/-first}}{{/servers}}];
-{{/vendorExtensions.x-group-parameters}}
-
-try {
-    {{#returnType}}$result = {{/returnType}}${{invokerPackageLowerCase}}->{{classNameCamelCase}}->{{{operationId}}}{{^hasParams}}(){{/hasParams}}{{#hasParams}}{{^vendorExtensions.x-group-parameters}}(
-{{#bodyParam}}
-    {{^isStrictlyObject}}
-        body: {{{example}}},
-    {{/isStrictlyObject}}
-{{/bodyParam}}
-{{#allParamsWithRequestBodyProperties}}
-        {{^supportPhp7}}{{paramName}}: {{/supportPhp7}}${{paramName}}{{^-last}}, {{/-last}}
-{{/allParamsWithRequestBodyProperties}}
-    ){{/vendorExtensions.x-group-parameters}}{{#vendorExtensions.x-group-parameters}}(request){{/vendorExtensions.x-group-parameters}}{{/hasParams}};{{#returnType}}{{#returnModel}}{{#hasVars}}{{#vars}}
-    print_r($result->${{{getter}}}());{{/vars}}{{/hasVars}}{{^hasVars}}print_r($result);{{/hasVars}}{{/returnModel}}{{/returnType}}
-} catch (\Exception $e) {
-    echo 'Exception when calling {{classname}}->{{operationId}}: ', $e->getMessage(), PHP_EOL;
-}
+{{> api_doc_example_execute}}
