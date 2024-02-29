@@ -97,6 +97,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            path_template='/simple-endpoint',
             auth_settings=_auth,
             headers=_headers,
         )
@@ -187,6 +188,7 @@ class BaseApi(api_client.Api):
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            path_template='/simple-endpoint',
             auth_settings=_auth,
             headers=_headers,
         )

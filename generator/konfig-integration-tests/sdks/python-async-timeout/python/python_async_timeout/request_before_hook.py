@@ -22,6 +22,7 @@ def request_before_hook(
         body: typing.Any = None,
         fields: typing.Optional[typing.Tuple[typing.Tuple[str, str], ...]] = None,
         auth_settings: typing.Optional[typing.List[str]] = None,
+        **kwrags: typing.Any
 ):
     # sleep for 0.25 seconds
     import time
