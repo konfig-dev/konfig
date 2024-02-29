@@ -1,0 +1,19 @@
+operation_parameter_map = {
+{{#with apiInfo}}
+{{#each apis}}
+{{#with operations}}
+{{#each operation}}
+    '{{{path}}}-{{{httpMethodUpper}}}': {
+        'parameters': [
+{{#each allParamsWithRequestBodyProperties}}
+            {
+                'name': '{{{baseName}}}'
+            },
+{{/each}}
+        ]
+    },
+{{/each}}
+{{/with}}
+{{/each}}
+{{/with}}
+};

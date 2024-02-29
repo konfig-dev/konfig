@@ -128,6 +128,10 @@ public class CodegenOperation {
         return nonEmpty(queryParams);
     }
 
+    public String getHttpMethodUpper() {
+        return httpMethod.toUpperCase(Locale.ROOT);
+    }
+
     /**
      * Check if there's at least one query parameter or passing API keys in query
      *

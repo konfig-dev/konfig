@@ -422,6 +422,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
             supportingFiles.add(new SupportingFile("setup." + templateExtension, "", "setup.py"));
         }
         supportingFiles.add(new SupportingFile("configuration." + templateExtension, packagePath(), "configuration.py"));
+        supportingFiles.add(new SupportingFile("operation_parameter_map." + templateExtension, packagePath(), "operation_parameter_map.py"));
         supportingFiles.add(new SupportingFile("api_response." + templateExtension, packagePath(), "api_response.py"));
         supportingFiles.add(new SupportingFile("exceptions_base." + templateExtension, packagePath(), "exceptions_base.py"));
         supportingFiles.add(new SupportingFile("type_util." + templateExtension, packagePath(), "type_util.py"));
