@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.20
+
+### Patch Changes
+
+- [#589](https://github.com/konfig-dev/konfig/pull/589) [`c1ac616e`](https://github.com/konfig-dev/konfig/commit/c1ac616ead5316fe5ec30aed3dc5f3eb1899449f) Thanks [@dphuang2](https://github.com/dphuang2)! - support generating table of contents for Ruby SDK
+
 ## 1.38.19
 
 ### Patch Changes
