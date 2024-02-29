@@ -86,7 +86,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/service_groups/{service_group_id}/locations',
+                httpMethod: 'PUT'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(requestBody, localVarRequestOptions, configuration)
 
@@ -137,7 +139,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/{quote_id}/service-groups',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createQuoteServiceGroupRequest, localVarRequestOptions, configuration)
 
@@ -192,7 +196,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/{quote_id}/service_groups/{service_group_id}/flexible',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(flexibleServiceRequest, localVarRequestOptions, configuration)
 
@@ -240,7 +246,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/{quote_id}/service-group/{service_group_id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -287,7 +295,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/{quote_id}/service-group/{service_group_id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -341,7 +351,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/{quote_id}/service-groups/{service_group_id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(replaceServiceGroupRequest, localVarRequestOptions, configuration)
 
@@ -396,7 +408,9 @@ export const QuoteServiceGroupsApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes/{quote_id}/service-groups/{service_group_id}/services',
+                httpMethod: 'PUT'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateServiceGroupRequestV2, localVarRequestOptions, configuration)
 

@@ -60,7 +60,9 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/subscription',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -98,7 +100,9 @@ export const SubscriptionApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/subscription',
+                httpMethod: 'POST'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);

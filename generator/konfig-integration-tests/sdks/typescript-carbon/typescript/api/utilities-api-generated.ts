@@ -81,7 +81,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/fetch_urls',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -135,7 +137,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/fetch_youtube_transcript',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -184,7 +188,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/process_sitemap',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -233,7 +239,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/scrape_sitemap',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(sitemapScrapeRequest, localVarRequestOptions, configuration)
 
@@ -283,7 +291,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/web_scrape',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(webscrapeRequest, localVarRequestOptions, configuration)
 
@@ -333,7 +343,9 @@ export const UtilitiesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/search_urls',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);

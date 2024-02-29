@@ -77,7 +77,9 @@ export const TestApiAxiosParamCreator = function (configuration?: Configuration)
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/test',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(testRequestBody, localVarRequestOptions, configuration)
 

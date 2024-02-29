@@ -89,7 +89,9 @@ export const FeedbackApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/feedback',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(feedbackSubmitRequest, localVarRequestOptions, configuration)
 

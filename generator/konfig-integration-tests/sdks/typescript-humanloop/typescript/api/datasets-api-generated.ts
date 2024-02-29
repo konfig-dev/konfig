@@ -103,7 +103,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/datasets',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createDatasetRequest, localVarRequestOptions, configuration)
 
@@ -153,7 +155,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datasets/{dataset_id}/datapoints',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(datasetsCreateDatapointRequest, localVarRequestOptions, configuration)
 
@@ -196,7 +200,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datasets/{id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -238,7 +244,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datasets/{id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -280,7 +288,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/datasets',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -332,7 +342,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datasets/{dataset_id}/datapoints',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -381,7 +393,9 @@ export const DatasetsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datasets/{id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateDatasetRequest, localVarRequestOptions, configuration)
 

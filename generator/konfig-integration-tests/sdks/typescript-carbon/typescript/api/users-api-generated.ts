@@ -75,7 +75,9 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/user',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(userRequestContent, localVarRequestOptions, configuration)
 
@@ -125,7 +127,9 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/modify_user_configuration',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(modifyUserConfigurationInput, localVarRequestOptions, configuration)
 

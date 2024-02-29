@@ -89,7 +89,9 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/deleteUser',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -145,7 +147,9 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/encryptedJWT',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -187,7 +191,9 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/listUsers',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -248,7 +254,9 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/login',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(snapTradeLoginUserRequestBody, localVarRequestOptions, configuration)
 
@@ -298,7 +306,9 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/registerUser',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(snapTradeRegisterUserRequestBody, localVarRequestOptions, configuration)
 
@@ -348,7 +358,9 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/resetUserSecret',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(userIDandSecret, localVarRequestOptions, configuration)
 

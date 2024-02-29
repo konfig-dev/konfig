@@ -87,7 +87,9 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/user_data_sources',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(organizationUserDataSourceQueryInput, localVarRequestOptions, configuration)
 
@@ -137,7 +139,9 @@ export const DataSourcesApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/revoke_access_token',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(revokeAccessTokenInput, localVarRequestOptions, configuration)
 

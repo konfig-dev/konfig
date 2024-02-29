@@ -73,7 +73,9 @@ export const LeadsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/leads/{code}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -119,7 +121,9 @@ export const LeadsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/leads',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createLeadRequest, localVarRequestOptions, configuration)
 
@@ -163,7 +167,9 @@ export const LeadsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/leads/{code}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -207,7 +213,9 @@ export const LeadsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/leads',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -257,7 +265,9 @@ export const LeadsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/leads/{code}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(leadUpdateRequest, localVarRequestOptions, configuration)
 

@@ -99,7 +99,9 @@ export const FinetunesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/finetunes',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(finetuneRequest, localVarRequestOptions, configuration)
 
@@ -142,7 +144,9 @@ export const FinetunesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/finetunes',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -191,7 +195,9 @@ export const FinetunesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/finetunes/summary',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(finetuneRequest, localVarRequestOptions, configuration)
 
@@ -248,7 +254,9 @@ export const FinetunesApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/finetunes/{id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateFinetuneRequest, localVarRequestOptions, configuration)
 

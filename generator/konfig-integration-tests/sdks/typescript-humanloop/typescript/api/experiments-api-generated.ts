@@ -97,7 +97,9 @@ export const ExperimentsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/experiments',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createExperimentRequest, localVarRequestOptions, configuration)
 
@@ -140,7 +142,9 @@ export const ExperimentsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/experiments/{experiment_id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -182,7 +186,9 @@ export const ExperimentsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/experiments',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -224,7 +230,9 @@ export const ExperimentsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/experiments/{experiment_id}/model-config',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -273,7 +281,9 @@ export const ExperimentsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/experiments/{experiment_id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateExperimentRequest, localVarRequestOptions, configuration)
 

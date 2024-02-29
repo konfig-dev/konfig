@@ -255,7 +255,9 @@ export const SearchSimilarApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/search_similar',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -300,7 +302,9 @@ export const SearchSimilarApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/search_similar',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(moreLikeThisRequest, localVarRequestOptions, configuration)
 

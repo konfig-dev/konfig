@@ -105,7 +105,9 @@ export const OptionsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/optionStrategy',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(optionsGetOptionStrategyRequest, localVarRequestOptions, configuration)
 
@@ -173,7 +175,9 @@ export const OptionsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/optionsChain',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -237,7 +241,9 @@ export const OptionsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/optionStrategy/{optionStrategyId}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -297,7 +303,9 @@ export const OptionsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/options',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -368,7 +376,9 @@ export const OptionsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/optionStrategy/{optionStrategyId}/execute',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(optionsPlaceOptionStrategyRequest, localVarRequestOptions, configuration)
 

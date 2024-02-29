@@ -85,7 +85,9 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/add_webhook',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(addWebhookProps, localVarRequestOptions, configuration)
 
@@ -128,7 +130,9 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/delete_webhook/{webhook_id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -173,7 +177,9 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/webhooks',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(webhookQueryInput, localVarRequestOptions, configuration)
 

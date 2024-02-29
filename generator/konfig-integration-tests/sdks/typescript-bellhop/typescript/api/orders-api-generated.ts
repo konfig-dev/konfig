@@ -65,7 +65,9 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/orders/{quote_id}',
+                httpMethod: 'POST'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);

@@ -235,7 +235,9 @@ export const AuthorsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/authors',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -280,7 +282,9 @@ export const AuthorsApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/authors',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(authorSearchRequest, localVarRequestOptions, configuration)
 

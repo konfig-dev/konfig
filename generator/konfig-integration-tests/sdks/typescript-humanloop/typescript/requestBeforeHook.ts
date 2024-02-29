@@ -1,6 +1,7 @@
 import { Configuration } from "./configuration";
 import { AxiosRequestConfig } from "axios";
 import { ProviderApiKeys } from "./models";
+import { operationParameterMap } from "./operationParameterMap";
 
 export function requestBeforeHook({
   requestBody,
@@ -8,18 +9,30 @@ export function requestBeforeHook({
   path,
   requestConfig,
   configuration,
+  pathTemplate,
+  httpMethod,
 }: {
   requestBody?: any;
   queryParameters: Record<string, any>;
   path: string;
   requestConfig: AxiosRequestConfig;
   configuration?: Configuration;
+  pathTemplate?: string;
+  httpMethod?: string;
+  [key: string]: any;
 }): void {
   if (typeof requestBody !== "object") return;
   if (requestBody === null) return;
-  if (!path.startsWith("/chat") && !path.startsWith("/completion")) return;
+
+  const providerApiKeysParameter = operationParameterMap[
+    `${pathTemplate}-${httpMethod}`
+  ].parameters.find((param) => param.name === "provider_api_keys");
+  if (providerApiKeysParameter === undefined) return;
+
   const providerApiKeys: ProviderApiKeys =
-    "provider_api_keys" in requestBody ? requestBody["provider_api_keys"] : {};
+    requestBody["provider_api_keys"] !== undefined
+      ? requestBody["provider_api_keys"]
+      : {};
 
   // anthropic
   if (

@@ -111,7 +111,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/freshdesk',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(freshDeskConnectRequest, localVarRequestOptions, configuration)
 
@@ -161,7 +163,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/s3',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(s3AuthRequest, localVarRequestOptions, configuration)
 
@@ -211,7 +215,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/oauth_url',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(oAuthURLRequest, localVarRequestOptions, configuration)
 
@@ -261,7 +267,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/confluence/list',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(listRequest, localVarRequestOptions, configuration)
 
@@ -311,7 +319,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/items/list',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(listDataSourceItemsRequest, localVarRequestOptions, configuration)
 
@@ -361,7 +371,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/confluence/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(syncFilesRequest, localVarRequestOptions, configuration)
 
@@ -411,7 +423,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/items/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(syncDirectoryRequest, localVarRequestOptions, configuration)
 
@@ -461,7 +475,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/files/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(syncFilesRequest, localVarRequestOptions, configuration)
 
@@ -511,7 +527,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/gmail/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(gmailSyncInput, localVarRequestOptions, configuration)
 
@@ -561,7 +579,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/outlook/sync',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(outlookSyncInput, localVarRequestOptions, configuration)
 
@@ -611,7 +631,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/rss_feed',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(rSSFeedInput, localVarRequestOptions, configuration)
 
@@ -661,7 +683,9 @@ export const IntegrationsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/integrations/s3/files',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(s3FileSyncInput, localVarRequestOptions, configuration)
 

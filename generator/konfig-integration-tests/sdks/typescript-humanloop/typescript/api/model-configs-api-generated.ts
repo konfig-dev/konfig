@@ -105,7 +105,9 @@ export const ModelConfigsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/model-configs/deserialize',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(bodyModelConfigsDeserialize, localVarRequestOptions, configuration)
 
@@ -148,7 +150,9 @@ export const ModelConfigsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/model-configs/{id}/export',
+                httpMethod: 'POST'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -190,7 +194,9 @@ export const ModelConfigsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/model-configs/{id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -235,7 +241,9 @@ export const ModelConfigsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/model-configs',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(projectModelConfigRequest, localVarRequestOptions, configuration)
 
@@ -281,7 +289,9 @@ export const ModelConfigsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/model-configs/serialize',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(modelConfigsSerializeRequest, localVarRequestOptions, configuration)
 

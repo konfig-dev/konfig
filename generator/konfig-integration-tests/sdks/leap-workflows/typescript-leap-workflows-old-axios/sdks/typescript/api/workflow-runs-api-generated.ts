@@ -64,7 +64,9 @@ export const WorkflowRunsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/v1/runs/{workflow_run_id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -109,7 +111,9 @@ export const WorkflowRunsApiAxiosParamCreator = function (configuration?: Config
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/v1/runs',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(workflowRunPostRequest, localVarRequestOptions, configuration)
 

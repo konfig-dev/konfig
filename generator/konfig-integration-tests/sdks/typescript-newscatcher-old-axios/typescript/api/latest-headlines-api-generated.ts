@@ -229,7 +229,9 @@ export const LatestHeadlinesApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/latest_headlines',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -274,7 +276,9 @@ export const LatestHeadlinesApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/latest_headlines',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(latestHeadlinesRequest, localVarRequestOptions, configuration)
 

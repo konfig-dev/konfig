@@ -91,7 +91,9 @@ export const DatapointsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datapoints',
+                httpMethod: 'DELETE'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(requestBody, localVarRequestOptions, configuration)
 
@@ -134,7 +136,9 @@ export const DatapointsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datapoints/{id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -183,7 +187,9 @@ export const DatapointsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/datapoints/{id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateDatapointRequest, localVarRequestOptions, configuration)
 

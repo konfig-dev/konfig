@@ -74,7 +74,9 @@ export const QuotesApiAxiosParamCreator = function (configuration?: Configuratio
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/quotes',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createQuoteRequest, localVarRequestOptions, configuration)
 

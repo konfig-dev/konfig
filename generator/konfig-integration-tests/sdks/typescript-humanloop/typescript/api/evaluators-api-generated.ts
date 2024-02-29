@@ -97,7 +97,9 @@ export const EvaluatorsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/evaluators',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createEvaluatorRequest, localVarRequestOptions, configuration)
 
@@ -140,7 +142,9 @@ export const EvaluatorsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/evaluators/{id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -182,7 +186,9 @@ export const EvaluatorsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/evaluators/{id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -220,7 +226,9 @@ export const EvaluatorsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/evaluators',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -269,7 +277,9 @@ export const EvaluatorsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/evaluators/{id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateEvaluatorRequest, localVarRequestOptions, configuration)
 

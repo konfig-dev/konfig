@@ -113,7 +113,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/create_user_file_tags',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(organizationUserFileTagCreate, localVarRequestOptions, configuration)
 
@@ -160,7 +162,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/deletefile/{file_id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -209,7 +213,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/delete_user_file_tags',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(organizationUserFileTagsRemove, localVarRequestOptions, configuration)
 
@@ -259,7 +265,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/delete_files',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(deleteFilesQueryInput, localVarRequestOptions, configuration)
 
@@ -307,7 +315,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/parsed_file/{file_id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -354,7 +364,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/raw_file/{file_id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -403,7 +415,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/user_files_v2',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(organizationUserFilesToSyncQueryInput, localVarRequestOptions, configuration)
 
@@ -454,7 +468,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/user_files',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(organizationUserFilesToSyncQueryInput, localVarRequestOptions, configuration)
 
@@ -504,7 +520,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/resync_file',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(resyncFileQueryInput, localVarRequestOptions, configuration)
 
@@ -653,7 +671,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/uploadfile',
+                httpMethod: 'POST'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -702,7 +722,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/upload_file_from_url',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(uploadFileFromUrlInput, localVarRequestOptions, configuration)
 
@@ -752,7 +774,9 @@ export const FilesApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/upload_text',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(rawTextInput, localVarRequestOptions, configuration)
 

@@ -105,7 +105,9 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/chat',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(chatRequest, localVarRequestOptions, configuration)
 
@@ -151,7 +153,9 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/chat-deployed',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(chatDeployedRequest, localVarRequestOptions, configuration)
 
@@ -197,7 +201,9 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/chat-experiment',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(chatExperimentRequest, localVarRequestOptions, configuration)
 
@@ -243,7 +249,9 @@ export const ChatsApiAxiosParamCreator = function (configuration?: Configuration
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/chat-model-config',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(chatModelConfigRequest, localVarRequestOptions, configuration)
 

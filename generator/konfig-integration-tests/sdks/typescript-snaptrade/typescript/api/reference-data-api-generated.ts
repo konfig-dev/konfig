@@ -88,7 +88,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/currencies/rates/{currencyPair}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -130,7 +132,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/snapTrade/partners',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -172,7 +176,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/securityTypes',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -214,7 +220,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/exchanges',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -261,7 +269,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/symbols',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(symbolQuery, localVarRequestOptions, configuration)
 
@@ -308,7 +318,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/symbols/{query}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -355,7 +367,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/brokerageAuthorizationTypes',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -397,7 +411,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/brokerages',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -439,7 +455,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/currencies',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -481,7 +499,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/currencies/rates',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -546,7 +566,9 @@ export const ReferenceDataApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/symbols',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(symbolQuery, localVarRequestOptions, configuration)
 

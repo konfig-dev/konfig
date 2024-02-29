@@ -72,7 +72,9 @@ export const AuthorizationApiAxiosParamCreator = function (configuration?: Confi
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/authorize',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(auth0TokenRequest, localVarRequestOptions, configuration)
 

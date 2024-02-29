@@ -117,7 +117,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(createProjectRequest, localVarRequestOptions, configuration)
 
@@ -167,7 +169,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/feedback-types',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(feedbackTypeRequest, localVarRequestOptions, configuration)
 
@@ -215,7 +219,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/active-config',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -262,7 +268,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/active-experiment',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -304,7 +312,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -350,7 +360,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/deployed-config/{environment_id}',
+                httpMethod: 'DELETE'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -399,7 +411,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{project_id}/deploy-config',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(environmentProjectConfigRequest, localVarRequestOptions, configuration)
 
@@ -452,7 +466,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/export',
+                httpMethod: 'POST'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -494,7 +510,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -541,7 +559,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/active-config',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -609,7 +629,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -656,7 +678,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/configs',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -698,7 +722,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/deployed-configs',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -747,7 +773,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateProjectRequest, localVarRequestOptions, configuration)
 
@@ -797,7 +825,9 @@ export const ProjectsApiAxiosParamCreator = function (configuration?: Configurat
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/projects/{id}/feedback-types',
+                httpMethod: 'PATCH'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(feedbackTypeRequest, localVarRequestOptions, configuration)
 

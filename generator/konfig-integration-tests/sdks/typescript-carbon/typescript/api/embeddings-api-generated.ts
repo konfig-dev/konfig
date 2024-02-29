@@ -103,7 +103,9 @@ export const EmbeddingsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/embeddings',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(getEmbeddingDocumentsBody, localVarRequestOptions, configuration)
 
@@ -153,7 +155,9 @@ export const EmbeddingsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/text_chunks',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(embeddingsAndChunksQueryInput, localVarRequestOptions, configuration)
 
@@ -203,7 +207,9 @@ export const EmbeddingsApiAxiosParamCreator = function (configuration?: Configur
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/upload_chunks_and_embeddings',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(chunksAndEmbeddingsUploadInput, localVarRequestOptions, configuration)
 

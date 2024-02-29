@@ -72,7 +72,9 @@ export const LocationsApiAxiosParamCreator = function (configuration?: Configura
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/locations',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(quotingLocationRequest, localVarRequestOptions, configuration)
 

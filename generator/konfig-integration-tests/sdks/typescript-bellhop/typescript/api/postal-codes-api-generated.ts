@@ -73,7 +73,9 @@ export const PostalCodesApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/postal-codes/serviceability',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);

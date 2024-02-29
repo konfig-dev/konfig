@@ -98,7 +98,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/holdings',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -158,7 +160,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/balances',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -218,7 +222,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -288,7 +294,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/orders',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -348,7 +356,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/positions',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -408,7 +418,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}/holdings',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -464,7 +476,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -524,7 +538,9 @@ export const AccountInformationApiAxiosParamCreator = function (configuration?: 
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/accounts/{accountId}',
+                httpMethod: 'PUT'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);

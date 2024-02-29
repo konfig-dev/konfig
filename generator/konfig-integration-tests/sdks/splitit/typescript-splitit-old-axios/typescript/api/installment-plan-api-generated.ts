@@ -141,7 +141,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/{installmentPlanNumber}/cancel',
+                httpMethod: 'POST'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -200,7 +202,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/check-eligibility',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(checkInstallmentsEligibilityRequest, localVarRequestOptions, configuration)
 
@@ -257,7 +261,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/{installmentPlanNumber}',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -321,7 +327,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/initiate',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanInitiateRequest, localVarRequestOptions, configuration)
 
@@ -386,7 +394,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanCreateRequest, localVarRequestOptions, configuration)
 
@@ -450,7 +460,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/{installmentPlanNumber}/refund',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanRefundRequest, localVarRequestOptions, configuration)
 
@@ -518,7 +530,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/search',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -581,7 +595,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/{installmentPlanNumber}/updateorder',
+                httpMethod: 'PUT'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(updateOrderRequest, localVarRequestOptions, configuration)
 
@@ -641,7 +657,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/updateorder',
+                httpMethod: 'PUT'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanUpdateRequestByIdentifier, localVarRequestOptions, configuration)
 
@@ -698,7 +716,9 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/installmentplans/{installmentPlanNumber}/verifyauthorization',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);

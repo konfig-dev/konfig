@@ -97,7 +97,9 @@ export const CompletionsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/completion',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(completionRequest, localVarRequestOptions, configuration)
 
@@ -143,7 +145,9 @@ export const CompletionsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/completion-deployed',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(completionDeployedRequest, localVarRequestOptions, configuration)
 
@@ -189,7 +193,9 @@ export const CompletionsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/completion-experiment',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(completionExperimentRequest, localVarRequestOptions, configuration)
 
@@ -235,7 +241,9 @@ export const CompletionsApiAxiosParamCreator = function (configuration?: Configu
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/completion-model-config',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(completionModelConfigRequest, localVarRequestOptions, configuration)
 

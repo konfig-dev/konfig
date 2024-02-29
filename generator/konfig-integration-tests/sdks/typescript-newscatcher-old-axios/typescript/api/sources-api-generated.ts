@@ -72,7 +72,9 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/sources',
+                httpMethod: 'GET'
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -117,7 +119,9 @@ export const SourcesApiAxiosParamCreator = function (configuration?: Configurati
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
-                configuration
+                configuration,
+                pathTemplate: '/api/sources',
+                httpMethod: 'POST'
             });
             localVarRequestOptions.data = serializeDataIfNeeded(sourcesRequest, localVarRequestOptions, configuration)
 
