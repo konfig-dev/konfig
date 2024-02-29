@@ -17,8 +17,14 @@ module {{moduleName}}
     {{> api_operation_arg_doc}}
     def {{operationId}}({{> api_operation_args}})
 {{> api_operation_args_mapped}}
+      {{#useNewWithHttpInfoReturnType}}
       {{#returnType}}api_response = {{/returnType}}{{operationId}}_with_http_info_impl({{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}extra)
       {{#returnType}}api_response.data{{/returnType}}{{^returnType}}nil{{/returnType}}
+      {{/useNewWithHttpInfoReturnType}}
+      {{^useNewWithHttpInfoReturnType}}
+      {{#returnType}}data, _status_code, _headers = {{/returnType}}{{operationId}}_with_http_info_impl({{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}extra)
+      {{#returnType}}data{{/returnType}}{{^returnType}}nil{{/returnType}}
+      {{/useNewWithHttpInfoReturnType}}
     end
 
     {{> api_operation_arg_doc}}

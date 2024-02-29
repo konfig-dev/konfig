@@ -330,9 +330,11 @@ module SnapTrade
       Array(auth_names).each do |auth_name|
         auth_setting = @config.auth_settings[auth_name]
         next unless auth_setting
+        value = auth_setting[:value]
+        next unless value
         case auth_setting[:in]
-        when 'header' then header_params[auth_setting[:key]] = auth_setting[:value]
-        when 'query'  then query_params[auth_setting[:key]] = auth_setting[:value]
+        when 'header' then header_params[auth_setting[:key]] = value
+        when 'query'  then query_params[auth_setting[:key]] = value
         else fail ArgumentError, 'Authentication token must be in `query` or `header`'
         end
       end

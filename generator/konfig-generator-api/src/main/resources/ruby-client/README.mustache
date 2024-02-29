@@ -52,9 +52,20 @@ gem '{{{gemName}}}', '~> {{{gemVersion}}}'
 
 To access the raw HTTP response, suffix any method with `_with_http_info`.
 
+{{#apiInfo}}
+{{#apis}}
+{{#-first}}
+{{#operations}}
+{{#operation}}
+{{#-first}}
 ```ruby
-{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}{{> api_doc_example_execute_call_with_http_info}}{{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
-```
+{{> api_doc_example_execute_call_with_http_info}}```
+{{/-first}}
+{{/operation}}
+{{/operations}}
+{{/-first}}
+{{/apis}}
+{{/apiInfo}}
 
 {{^omitApiDocumentation}}
 ## Reference
