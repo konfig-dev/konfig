@@ -5,7 +5,7 @@ info:
     The Lob API is organized around REST. Our API is designed to have
     predictable, resource-oriented URLs and uses HTTP response codes to indicate
     any API errors. <p>
-  version: 1.19.24
+  version: 1.19.28
   license:
     name: MIT
     url: https://mit-license.org/
@@ -515,6 +515,7 @@ tags:
     name: Zip Lookups
   - name: Accounts
   - name: Lob Credits
+  - name: Snap Packs
   - description: >
       Requests made to the API are protected with <a
       href="https://en.wikipedia.org/wiki/Basic_access_authentication"
@@ -3064,7 +3065,7 @@ tags:
       When backwards-incompatible changes are made to the API, a new dated
       version
 
-      is released. The latest version of the API is version **2020-02-11**. 
+      is released. The latest version of the API is version **2024-01-01**. 
 
       All versions prior to, and inclusive of, 2019-02-11 have been sunsetted.
       You can
@@ -3088,7 +3089,7 @@ tags:
       ```bash
         curl https://api.lob.com/v1/addresses \
           -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc: \
-          -H "Lob-Version: 2020-02-11"
+          -H "Lob-Version: 2024-01-01"
       ```
 
 
@@ -9788,6 +9789,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/idem-header'
         - $ref: '#/components/parameters/idem-query'
+        - $ref: '#/components/parameters/lob-version'
       requestBody:
         required: true
         content:
@@ -13403,6 +13405,388 @@ paths:
                 return err
             }
           label: GO
+  /snap_packs:
+    post:
+      tags:
+        - Snap Packs
+      summary: Create
+      operationId: SnapPacks_createNewSnapPack
+      description: Creates a new snap_pack given information
+      parameters:
+        - $ref: '#/components/parameters/idem-header'
+        - $ref: '#/components/parameters/idem-query'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/snap_pack_editable'
+            example:
+              description: Demo Snap Pack Job
+              to: adr_bae820679f3f536b
+              from: adr_210a8d4b0b76d77b
+              inside: https://lob.com/snappackinside.pdf
+              outside: https://lob.com/snappackoutside.pdf
+              size: 8.5x11
+              metadata:
+                spiffy: 'true'
+              mail_type: usps_standard
+              merge_variables:
+                name: Harry
+              send_date: '2017-11-01T00:00:00.000Z'
+              use_type: marketing
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/snap_pack_editable'
+            example:
+              description: Demo Snap Pack job
+              to: adr_bae820679f3f536b
+              from: adr_210a8d4b0b76d77b
+              inside: https://lob.com/snappackinside.pdf
+              outside: https://lob.com/snappackoutside.pdf
+              size: 8.5x11
+              metadata:
+                spiffy: 'true'
+              mail_type: usps_standard
+              merge_variables:
+                name: Harry
+              send_date: '2017-11-01T00:00:00.000Z'
+              use_type: marketing
+      responses:
+        '200':
+          $ref: '#/components/responses/post_snap_pack'
+        default:
+          $ref: '#/components/responses/mailpiece_error'
+      x-codeSamples:
+        - lang: Shell
+          source: |
+            curl https://api.lob.com/v1/snap_packs \
+              -u test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc: \
+              -d "description=Demo Snap Pack job" \
+              -d "to[name]=Harry Zhang" \
+              -d "to[address_line1]=210 King St" \
+              -d "to[address_city]=San Francisco" \
+              -d "to[address_state]=CA" \
+              -d "to[address_zip]=94107" \
+              -d "from=adr_210a8d4b0b76d77b" \
+              -d "use_type=marketing" \
+              --data-urlencode "inside=<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>" \
+              --data-urlencode "outside=<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>" \
+              -d "merge_variables[name]=Harry" \
+              -d 'fsc=false'
+          label: CURL
+        - lang: Typescript
+          source: |
+            const snapPackCreate = new SnapPackEditable({
+              to: {
+              name: 'Harry Zhang',
+              address_line1: '210 King St',
+              address_line2: '# 6100',
+              address_city: 'San Francisco',
+              address_state: 'CA',
+              address_zip: '94107',
+            },
+              from: 'adr_xxxx',
+              inside:
+              'https://s3.us-west-2.amazonaws.com/public.lob.com/assets/8.5x11_Snappack_template_address.pdf',
+              outside:
+              'https://s3.us-west-2.amazonaws.com/public.lob.com/assets/8.5x11_Snappack_template_address.pdf',
+              use_type: 'marketing'
+              fsc: false
+            });
+
+            try {
+              const mySnapPack = await new SnapPacksApi(config).create(snapPackCreate);
+            } catch (err: any) {
+              console.error(err);
+            }
+          label: TYPESCRIPT
+        - lang: Javascript
+          source: |
+            Lob.snapPacks.create({
+              description: 'Demo Snap Packs job',
+              to: {
+                name: 'Harry Zhang',
+                address_line1: '210 King St',
+                address_city: 'San Francisco',
+                address_state: 'CA',
+                address_zip: '94107'
+              },
+              from: 'adr_210a8d4b0b76d77b',
+              inside: '<html style="padding: 1in; font-size: 50;">Inside HTML for {{name}}</html>',
+              outside: '<html style="padding: 1in; font-size: 20;">Outside HTML for {{name}}</html>',
+              merge_variables: {
+                name: 'Harry'
+              },
+              use_type: 'marketing'
+              fsc: false
+            }, function (err, res) {
+              console.log(err, res);
+            });
+          label: NODE
+        - lang: Ruby
+          source: |
+            snapPackCreate = SnapPackEditable.new({
+              description: "Demo Snap Pack job",
+              from: "adr_210a8d4b0b76d77b",
+              inside: "<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>",
+              outside: "<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>",
+              to: AddressEditable.new({
+                name: "Harry Zhang",
+                address_line1: "210 King St",
+                address_line2: "# 6100",
+                address_city: "San Francisco",
+                address_state: "CA",
+                address_zip: "94107",
+              }),
+              merge_variables: {
+                name: "Harry"
+              },
+              use_type: 'marketing',
+              fsc: true
+            });
+
+            snapPackApi = SnapPacksApi.new(config)
+
+            begin
+              createdSnapPack = snapPackApi.create(snapPackCreate)
+            rescue => err
+              p err.message
+            end
+          label: RUBY
+        - lang: Python
+          source: |
+            snap_pack_editable = SnapPackEditable(
+              description = "Demo Snap Pack job",
+              _from = "adr_210a8d4b0b76d77b",
+              inside = "<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>",
+              outside = "<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>",
+              to = AddressEditable(
+                name = "Harry Zhang",
+                address_line1 = "210 King St",
+                address_line2 = "# 6100",
+                address_city = "San Francisco",
+                address_state = "CA",
+                address_zip = "94107",
+              ),
+              merge_variables = MergeVariables(
+                name = "Harry",
+              ),
+              use_type = "marketing",
+              fsc = true
+            )
+
+            with ApiClient(configuration) as api_client:
+              api = SnapPacksApi(api_client)
+
+            try:
+              created_snap_pack = api.create(snap_pack_editable)
+            except ApiException as e:
+              print(e)
+          label: PYTHON
+        - lang: PHP
+          source: >
+            $to = new OpenAPI\Client\Model\AddressEditable(
+              array(
+                "name"     => "Harry Zhang",
+                "address_line1"     => "210 King St",
+                "address_line2"     => "# 6100",
+                "address_city"     => "San Francisco",
+                "address_state"     => "CA",
+                "address_zip"     => "94107",
+              )
+            );
+
+
+            $merge_variables = new stdClass;
+
+            $merge_variables->name = "Harry";
+
+
+            $use_type = "marketing";
+
+            $fsc = true;
+
+
+            $apiInstance = new OpenAPI\Client\Api\SnapPacksApi($config, new
+            GuzzleHttp\Client());
+
+            $snap_pack_editable = new OpenAPI\Client\Model\SnapPackEditable(
+              array(
+                "description"     => "Demo Snap Pack job",
+                "from"     => "adr_210a8d4b0b76d77b",
+                "inside"     => "<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>",
+                "outside"     => "<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>",
+                "to"     => $to,
+                "merge_variables"     => $merge_variables,
+                "use_type"    => $use_type,
+                "fsc"  => $fsc
+              )
+            );
+
+
+            try {
+                $result = $apiInstance->create($snap_pack_editable);
+            } catch (Exception $e) {
+                echo $e->getMessage(), PHP_EOL;
+            }
+        - lang: Java
+          source: |
+            Map<String, String> merge_variables = new HashMap<String, String>();
+            merge_variables.put("name", "Harry");
+
+            SnapPacksApi apiInstance = new SnapPacksApi(config);
+
+            AddressEditable to = new AddressEditable();
+            to.setName("Harry Zhang");
+            to.setAddressLine1("210 King St");
+            to.setAddressLine2("# 6100");
+            to.setAddressCity("San Francisco");
+            to.setAddressState("CA");
+            to.setAddressZip("94107");
+
+            try {
+              SnapPackEditable SnapPackEditable = new SnapPackEditable();
+              SnapPackEditable.setDescription("Demo Snap Pack job");
+              SnapPackEditable.setFrom("adr_210a8d4b0b76d77b");
+              SnapPackEditable.setInside("<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>");
+              SnapPackEditable.setOutside("<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>");
+              SnapPackEditable.setTo(to);
+              SnapPackEditable.setMergeVariables(merge_variables);
+              SnapPackEditable.setUseType("marketing");
+              SnapPackEditable.setFsc(true);
+
+
+              SnapPack result = apiInstance.create(SnapPackEditable, null);
+            } catch (ApiException e) {
+              e.printStackTrace();
+            }
+          label: JAVA
+        - lang: Elixir
+          source: |
+            Lob.SnapPack.create(%{
+              description: "Demo Snap Pack job",
+              to: %{
+                name: "Harry Zhang",
+                address_line1: "210 King St",
+                address_city: "San Francisco",
+                address_state: "CA",
+                address_zip: "94107"
+              },
+              from: "adr_210a8d4b0b76d77b",
+              inside: "<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>",
+              outside: "<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>",
+              merge_variables: %{
+                name: "Harry"
+              },
+              use_type: "marketing",
+              fsc: true
+            })
+          label: ELIXIR
+        - lang: CSharp
+          source: >
+            Dictionary<string, string> mergeVariables = new Dictionary<string,
+            string>();
+
+            mergeVariables.Add("name", "Harry");
+
+
+            SnapPacksApi api = new SnapPacksApi(config);
+
+
+            AddressEditable to = new AddressEditable(
+              "210 King St",  // addressLine1
+              "# 6100",  // addressLine2
+              "San Francisco",  // addressCity
+              "CA",  // addressState
+              "94107",  // addressZip
+              default(CountryExtended),  // addressCounty
+              null,  // description
+              "Harry Zhang" // name
+            );
+
+
+            Fsc fsc = new Fsc(true);
+
+
+            SnapPackEditable SnapPackEditable = new SnapPackEditable(
+              to.ToJson(),  // to
+              "adr_249af768103d2810",  // from
+              default(SnapPacksize),  // size
+              "Demo Snap Pack Job",  // description
+              default(Dictionary<string, string>),  // metadata
+              default(MailType),  // mailType
+              mergeVariables,  // mergeVariables
+              default(DateTime),  // sendDate
+              "<html style='padding: 1in; font-size: 50;'>Inside HTML for {{name}}</html>",  // inside
+              "<html style='padding: 1in; font-size: 20;'>Outside HTML for {{name}}</html>", // outside
+              "marketing", // use_type
+              fsc
+            );
+
+
+            try {
+              SnapPack result = api.create(SnapPackEditable, null);
+            } catch (ApiException e) {
+              Console.WriteLine(e.ToString());
+            }
+          label: CSHARP
+        - lang: Go
+          source: >
+            var context = context.Background()
+
+            context = context.WithValue(suite.ctx, lob.ContextBasicAuth,
+            lob.BasicAuth{UserName: os.Getenv("<YOUR_API_KEY>")})
+
+
+            var apiClient = *lob.NewAPIClient(configuration)
+
+
+            var to = *lob.NewAddressEditable()
+
+            to.SetAddressLine1("210 King St")
+
+            to.SetAddressLine2("# 6100")
+
+            to.SetAddressCity("San Francisco")
+
+            to.SetAddressState("CA")
+
+            to.SetAddressZip("94107")
+
+            to.SetAddressCountry(lob.COUNTRYEXTENDED_US)
+
+            to.SetDescription("")
+
+            to.SetName("Harry Zhang")
+
+
+            var SnapPackCreate = *lob.NewSnapPackEditable()
+
+            SnapPackCreate.SetDescription("Demo Snap Pack job")
+
+            SnapPackCreate.SetFrom("adr_210a8d4b0b76d77b")
+
+            SnapPackCreate.SetInside("<html style='padding: 1in; font-size:
+            50;'>Inside HTML for {{name}}</html>")
+
+            SnapPackCreate.SetOutside("<html style='padding: 1in; font-size:
+            20;'>Outside HTML for {{name}}</html>")
+
+            SnapPackCreate.SetTo(to)
+
+            SnapPackCreate.SetFsc(true)
+
+
+
+            createdSnapPack, _, err :=
+            apiClient.SnapPacksApi.Create(context).SnapPackEditable(SnapPackCreate).Execute()
+
+
+            if err != nil {
+                return err
+            }
+          label: GO
   /templates/{tmpl_id}/versions/{vrsn_id}:
     parameters:
       - description: The ID of the template to which the version belongs.
@@ -16583,6 +16967,18 @@ components:
       required: false
       schema:
         $ref: '#/components/schemas/campaign_id'
+    lob-version:
+      description: >
+        A string representing the version of the API being used. For more
+        information on versioning, refer to our [Versioning and
+        Changelog]((#tag/Versioning-and-Changelog) documentation.
+      in: header
+      name: Lob-Version
+      required: false
+      schema:
+        type: string
+        example: '2024-01-01'
+        pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}$
   responses:
     address_error:
       description: Error
@@ -18429,6 +18825,91 @@ components:
             use_type: marketing
             fsc: false
             object: self_mailer
+    post_snap_pack:
+      description: Returns a snap_pack object
+      headers:
+        ratelimit-limit:
+          $ref: '#/components/headers/ratelimit-limit'
+        ratelimit-remaining:
+          $ref: '#/components/headers/ratelimit-remaining'
+        ratelimit-reset:
+          $ref: '#/components/headers/ratelimit-reset'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/snap_pack'
+          example:
+            description: April Campaign
+            id: ord_0d6a16a3fff6318ac8f8008dc1
+            to:
+              description: null
+              id: adr_bae820679f3f536bX
+              name: HARRY ZHANG
+              company: null
+              phone: null
+              email: null
+              address_line1: 210 KING ST STE 6100
+              address_line2: null
+              address_city: SAN FRANCISCO
+              address_state: CA
+              address_zip: 94107-1741
+              address_country: UNITED STATES
+              metadata: {}
+              date_created: '2017-09-05T17:47:53.767Z'
+              date_modified: '2017-09-05T17:47:53.767Z'
+              deleted: true
+              object: address
+            from:
+              description: null
+              id: adr_210a8d4b0b76d77bX
+              name: LEORE AVIDAR
+              company: null
+              phone: null
+              email: null
+              address_line1: 210 KING ST STE 6100
+              address_line2: null
+              address_city: SAN FRANCISCO
+              address_state: CA
+              address_zip: 94107-1741
+              address_country: UNITED STATES
+              metadata: {}
+              date_created: '2017-09-05T17:47:53.767Z'
+              date_modified: '2017-09-05T17:47:53.767Z'
+              deleted: true
+              object: address
+            url: >-
+              https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d.pdf?version=v1&expires=1618512040&signature=qvyCqXI1ndBvc4AjvG8FlirqLXEcfmYo4sDrRtabaXMOsX88to9G3K49uIk_aqevvZXe8HoRYD_nWydbQHqaCA
+            outside_template_id: tmpl_a3cb937f26d7eec
+            inside_template_id: tmpl_a3cb937f26d7eec
+            inside_template_version_id: vrsn_bfdf70893b00a85
+            outside_template_version_id: vrsn_bfdf70893b00a85
+            carrier: USPS
+            tracking_events: []
+            thumbnails:
+              - small: >-
+                  https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d_thumb_small_1.png?version=v1&expires=1618512040&signature=-bipeUHP-hAMcCBSrWM0ZH1VwRdSPNVGGZN9hAZKr6Lh4ly6uxvratVd5LXJCK_zOEMYk_mTWASt0ge7OY6SDA
+                medium: >-
+                  https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d_thumb_medium_1.png?version=v1&expires=1618512040&signature=ryxN7bsXGtw_GRFSP3Cs3A3IYjxZi3cW9BHDCNgMt6p3nobVmsc_iFHt2e-S7ndAXhhN7nP-MQVov3bt3r37BQ
+                large: >-
+                  https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d_thumb_large_1.png?version=v1&expires=1618512040&signature=kBrm00xkyCkJNJRHxH8HshFaebtOxnzjVWOs1VVmGMuw8H6OBNcMAMxt9s49K0jlpHoh3Nr9uSncEZMQaaNjAg
+              - small: >-
+                  https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d_thumb_small_2.png?version=v1&expires=1618512040&signature=3gTgU7Fd3KoT_vNlQnTGptRps5ZgnkhSnPrAwk7L98higIzSwfKoLvuu_DIpMM48dHbxckKT9waR8euJ4KSDBQ
+                medium: >-
+                  https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d_thumb_medium_2.png?version=v1&expires=1618512040&signature=Ue1lw5CMj7KRx6cMQL8xPeazaHCdJzWcACd1w3acuYPnWkVIpSt62OIO7hAtpAQK9xm1dhhlFj0rqRZMdRMMBA
+                large: >-
+                  https://lob-assets.com/order-creatives/ord_0d6a16a3fff6318ac8f8008dc1_comp_a20fd48ba4efda76ee827400d_thumb_large_2.png?version=v1&expires=1618512040&signature=cICc7HEm1xG_eyM4a_wtvPk2FqoLRmtgGa29kJisWnMIYBL0OkyzG4ZCYGMhp-5cZpJlSpXfTgGKh_Qmeo1TDw
+            merge_variables:
+              name: null
+            size: 8.5x11
+            mail_type: usps_first_class
+            expected_delivery_date: '2021-03-24'
+            date_created: '2021-03-16T18:40:40.504Z'
+            date_modified: '2021-03-16T18:40:40.504Z'
+            send_date: '2021-03-16T18:45:40.493Z'
+            use_type: marketing
+            fsc: false
+            color: false
+            object: snap_pack
     template_error:
       description: Error
       content:
@@ -20359,7 +20840,7 @@ components:
         request is initiated, a new signed URL will be generated.
       type: string
       pattern: >-
-        ^https://lob-assets.com/(letters|postcards|bank-accounts|checks|self-mailers|cards)/[a-z]{3,4}_[a-z0-9]{15,16}('|_signature)(.pdf|_thumb_[a-z]+_[0-9]+.png|.png)?(version=[a-z0-9]*&)expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+
+        ^https://lob-assets.com/(letters|postcards|bank-accounts|checks|self-mailers|cards|order-creatives)/([a-z]{3,4}_[a-z0-9]{15,16}|[a-z]{3}_[a-z0-9]{26}_[a-z]{4}_[a-z0-9]{26})('|_signature)(.pdf|_thumb_[a-z]+_[0-9]+.png|.png)?(version=[a-z0-9]*&)expires=[0-9]{10}&signature=[a-zA-Z0-9-_]+
     bank_account:
       allOf:
         - $ref: '#/components/schemas/bank_account_base'
@@ -22002,6 +22483,8 @@ components:
           * `certified` - track and confirm delivery for domestic destinations. An extra sheet (1 PDF page single-sided or 2 PDF pages double-sided) is added to the beginning of your letter for address and barcode information. See here for templates: <a href="https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_template.pdf" target="_blank">#10 envelope</a> and <a href="https://s3-us-west-2.amazonaws.com/public.lob.com/assets/templates/letter_certified_flat_template.pdf" target="_blank">flat envelope</a> (used for letters over 6 pages single-sided or 12 pages double-sided). You will not be charged for this extra sheet.
           * `certified_return_receipt` - request an electronic copy of the recipient's signature to prove delivery of your certified letter
           * `registered` - provides tracking and confirmation for international addresses
+          
+        Not available for `us_legal` letter size.
       type: string
       enum:
         - certified
@@ -23123,14 +23606,16 @@ components:
             - name
           properties:
             type:
-              description: non-Certified postcards, self mailers, letters, and checks
+              description: >-
+                non-Certified postcards, self mailers, letters, checks and snap
+                packs
               type: string
               enum:
                 - normal
             name:
               description: >
                 Name of tracking event (for normal postcards, self mailers,
-                letters, and checks):
+                letters, checks and snap packs):
 
                   * `Mailed` - The mailpiece has been handed off to and accepted by USPS
                     and is en route. <a href="https://help.lob.com/print-and-mail/getting-data-and-results/tracking-your-mail#mailed-tracking-events-4" target="_blank">More about
@@ -24374,9 +24859,10 @@ components:
       title: campaign_id
       description: >-
         Denotes resources created by the provided campaign id, prefixed with
-        `cmp_`.
+        `cmp_`. In the case of snap packs and letters with size `us_legal`, the
+        campaign id is prefixed with `camp_` instead of `cmp_`.
       type: string
-      pattern: ^cmp_[a-zA-Z0-9]+$
+      pattern: ^(cmp|camp)_[a-zA-Z0-9]+$
       nullable: true
     ltr_use_type:
       description: >-
@@ -24932,7 +25418,9 @@ components:
         - type: string
       default: false
     qr_code:
-      description: Customize and place a QR code on the creative at the required position.
+      description: >-
+        Customize and place a QR code on the creative at the required position.
+        Not available for `us_legal` letter size and snap packs.
       type: object
       required:
         - position
@@ -24990,6 +25478,23 @@ components:
             page number ranges such as "1-3", or a comma separated combination
             of both ("1,3,5-7").
           type: string
+    ltr_size:
+      description: >
+        Specifies the size of the letter. It accepts two values `us_letter` and
+        `us_legal`. If the [Lob-Version header](#tag/Versioning-and-Changelog)
+        in the request is set to `2024-01-01` and above, the `size` property is
+        automatically included with the default value of `us_letter`, unless
+        explicitly specified.
+
+
+        Please note that attempting to include the `size` property in the
+        request with the `Lob-Version` header predating to `2024-01-01` will
+        result in an error.
+      type: string
+      enum:
+        - us_letter
+        - us_legal
+      default: us_letter
     letter_editable:
       allOf:
         - $ref: '#/components/schemas/input_to'
@@ -25010,7 +25515,8 @@ components:
             cards:
               description: >-
                 A single-element array containing an existing card id in a
-                string format. See [cards](#tag/Cards) for more information.
+                string format. See [cards](#tag/Cards) for more information. Not
+                available for `us_legal` letter size.
               type: array
               items:
                 $ref: '#/components/schemas/card_id'
@@ -25052,9 +25558,12 @@ components:
             fsc:
               description: >-
                 This is in beta. Contact support@lob.com or your account contact
-                to learn more. Not available for `A4` letter size.
+                to learn more. Not available for `A4` and `us_legal` letter
+                size.
               type: boolean
               default: false
+            size:
+              $ref: '#/components/schemas/ltr_size'
     psc_id:
       description: Unique identifier prefixed with `psc_`.
       type: string
@@ -25562,6 +26071,176 @@ components:
                 to learn more. Not available for `11x9_bifold` self-mailer size.
               type: boolean
               default: false
+    snap_pack_size:
+      description: Specifies the size of the snap pack.
+      type: string
+      enum:
+        - 8.5x11
+      default: 8.5x11
+    snap_pack_base:
+      allOf:
+        - $ref: '#/components/schemas/editable'
+        - type: object
+          properties:
+            size:
+              $ref: '#/components/schemas/snap_pack_size'
+    snap_pack_use_type:
+      description: >-
+        The use type for each mailpiece. Can be one of marketing, operational,
+        or null. Null use_type is only allowed if an account default use_type is
+        selected in Account Settings. For more information on use_type, see our 
+        [Help Center
+        article](https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings/declaring-mail-use-type).
+      type: string
+      enum:
+        - marketing
+        - operational
+        - null
+      nullable: true
+    snap_pack_editable:
+      allOf:
+        - $ref: '#/components/schemas/snap_pack_base'
+        - $ref: '#/components/schemas/input_to'
+        - $ref: '#/components/schemas/input_from_us'
+        - type: object
+          required:
+            - to
+            - inside
+            - outside
+            - use_type
+          properties:
+            inside:
+              description: >
+                The artwork to use as the inside of your snap pack.
+
+
+                Notes:
+
+                - HTML merge variables should not include delimiting whitespace.
+
+                - PDF, PNG, and JPGs must be sized at 8.5"x11" at 300 DPI, while
+                supplied HTML will be rendered to the specified `size`.
+
+                - Be sure to leave room for address and postage information by
+                following the template provided here:
+                  - <a href="https://s3.us-west-2.amazonaws.com/public.lob.com/assets/8.5x11_Snappack_template_address.pdf" target="_blank">8.5x11 snap pack template</a>
+
+
+                See [here](#section/HTML-Examples) for HTML examples.
+              oneOf:
+                - $ref: '#/components/schemas/html_string'
+                - $ref: '#/components/schemas/tmpl_id'
+                - $ref: '#/components/schemas/remote_file_url'
+                - $ref: '#/components/schemas/local_file_path'
+            outside:
+              description: >
+                The artwork to use as the outside of your snap pack.
+
+
+                Notes:
+
+                - HTML merge variables should not include delimiting whitespace.
+
+                - PDF, PNG, and JPGs must be sized at 6"x18" at 300 DPI, while
+                supplied HTML will be rendered to the specified `size`.
+
+
+                See [here](#section/HTML-Examples) for HTML examples.
+              oneOf:
+                - $ref: '#/components/schemas/html_string'
+                - $ref: '#/components/schemas/tmpl_id'
+                - $ref: '#/components/schemas/remote_file_url'
+                - $ref: '#/components/schemas/local_file_path'
+            billing_group_id:
+              $ref: '#/components/schemas/billing_group_id'
+            use_type:
+              $ref: '#/components/schemas/snap_pack_use_type'
+            color:
+              allOf:
+                - $ref: '#/components/schemas/color'
+                - default: false
+    snap_pack_id:
+      description: Unique identifier prefixed with `ord_`.
+      type: string
+      pattern: ^ord_[0-9a-f]{26}$
+    snap_pack:
+      allOf:
+        - $ref: '#/components/schemas/snap_pack_base'
+        - $ref: '#/components/schemas/generated'
+        - $ref: '#/components/schemas/from_us'
+        - type: object
+          required:
+            - id
+            - url
+            - use_type
+          properties:
+            id:
+              $ref: '#/components/schemas/snap_pack_id'
+            outside_template_id:
+              description: >-
+                The unique ID of the HTML template used for the outside of the
+                snap pack.
+              allOf:
+                - $ref: '#/components/schemas/tmpl_id'
+                - type: string
+                  nullable: true
+            inside_template_id:
+              description: >-
+                The unique ID of the HTML template used for the inside of the
+                snap pack.
+              allOf:
+                - $ref: '#/components/schemas/tmpl_id'
+                - type: string
+                  nullable: true
+            outside_template_version_id:
+              description: >-
+                The unique ID of the specific version of the HTML template used
+                for the outside of the snap pack.
+              allOf:
+                - $ref: '#/components/schemas/vrsn_id'
+                - type: string
+                  nullable: true
+            inside_template_version_id:
+              description: >-
+                The unique ID of the specific version of the HTML template used
+                for the inside of the snap pack.
+              allOf:
+                - $ref: '#/components/schemas/vrsn_id'
+                - type: string
+                  nullable: true
+            object:
+              description: Value is resource type.
+              type: string
+              enum:
+                - snap_pack
+              default: snap_pack
+            tracking_events:
+              description: >-
+                An array of tracking events ordered by ascending `time`. Not
+                populated in test mode.
+              type: array
+              items:
+                $ref: '#/components/schemas/tracking_event_normal'
+            use_type:
+              $ref: '#/components/schemas/snap_pack_use_type'
+            url:
+              $ref: '#/components/schemas/signed_link'
+            fsc:
+              description: >-
+                Contact support@lob.com or your account contact to learn more.
+                Not available for snap_pack currently.
+              type: boolean
+              default: false
+            status:
+              $ref: '#/components/schemas/status'
+            campaign_id:
+              $ref: '#/components/schemas/campaign_id'
+            failure_reason:
+              allOf:
+                - $ref: '#/components/schemas/failure_reason'
+                - nullable: true
+            color:
+              $ref: '#/components/schemas/color'
     template_html:
       description: >
         An HTML string of less than 100,000 characters to be used as the
@@ -26647,6 +27326,7 @@ x-tagGroups:
       - Self Mailers
       - Letters
       - Checks
+      - Snap Packs
       - Bank Accounts
       - Templates
       - Template Versions

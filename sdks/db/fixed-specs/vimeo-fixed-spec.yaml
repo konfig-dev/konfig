@@ -37188,6 +37188,7 @@ components:
                          * `transcript_status_not_started` - The transcript job hasn't started.
                          * `transcript_status_unknown` - The transcript job status is unknown.
                          * `video_not_ready` - The video isn't ready.
+                         * `video_too_short` - The video is too short.
                       enum:
                         - transcript_ready_but_not_english
                         - transcript_status_does_not_exist
@@ -37199,6 +37200,7 @@ components:
                         - transcript_status_not_started
                         - transcript_status_unknown
                         - video_not_ready
+                        - video_too_short
                       example: transcript_ready_but_not_english
                       nullable: true
                       type: string
@@ -37879,6 +37881,24 @@ components:
                     - options
                     - uri
                   type: object
+                view_privacy:
+                  description: >-
+                    Information about whether a user has permissions to view the
+                    privacy of the video.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
                 view_team_members:
                   description: >-
                     Information about whether a user can view the team members
@@ -37979,6 +37999,7 @@ components:
                 - transcript_video_editor
                 - trim
                 - validate
+                - view_privacy
                 - view_team_members
                 - watched
                 - watchlater

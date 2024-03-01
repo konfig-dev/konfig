@@ -16,7 +16,7 @@ export default function ZuoraTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/logo.png"
       clientNameCamelCase="zuora"
       homepage="zuora.com"
-      lastUpdated={new Date("2024-02-26T03:11:32.903Z")}
+      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png"
       // Missing contactUrl
       contactEmail="docs@zuora.com"
@@ -31791,7 +31791,7 @@ export default function ZuoraTypeScriptSdk() {
     ]
   },
   {
-    "url": "/v1/rev-rec-events",
+    "url": "/v1/uno-regenerate/rev-rec-events",
     "method": "createRevRecEvents",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Regenerate",
@@ -31849,6 +31849,11 @@ export default function ZuoraTypeScriptSdk() {
         "name": "mode",
         "schema": "string",
         "description": "The generation mode."
+      },
+      {
+        "name": "forRevenueRecollect",
+        "schema": "boolean",
+        "description": "Indicates whether the data regenerated is for Zuora Revenue to recollect."
       }
     ],
     "responses": [
@@ -31859,7 +31864,7 @@ export default function ZuoraTypeScriptSdk() {
     ]
   },
   {
-    "url": "/v1/rev-rec-events/daily-consumption",
+    "url": "/v1/uno-regenerate/rev-rec-events/daily-consumption",
     "method": "generateRevRecEventsForDailyConsumption",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Regenerate",
@@ -31907,6 +31912,11 @@ export default function ZuoraTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "Comma separated IDs. If you have <a href=\"https://knowledgecenter.zuora.com/Zuora_Central_Platform/Multi-Org\" target=\"_blank\">Zuora Multi-Org</a> enabled, \nyou can use this header to specify which orgs to perform the operation in. If you do not have Zuora Multi-Org enabled, you should not set this header.\n\nThe IDs must be a sub-set of the user's accessible orgs. If you specify an org that the user does not have access to, the operation fails.\n\nIf the header is not set, the operation is performed in scope of the user's accessible orgs.\n"
+      },
+      {
+        "name": "forRevenueRecollect",
+        "schema": "boolean",
+        "description": "Indicates whether the data regenerated is for Zuora Revenue to recollect."
       },
       {
         "name": "chargeSegmentNumber",
@@ -33763,11 +33773,11 @@ export default function ZuoraTypeScriptSdk() {
       language="TypeScript"
       apiTitle="API Reference"
       apiBaseUrl="https://rest.zuora.com"
-      apiVersion="2024-02-23"
+      apiVersion="2024-03-01"
       endpoints={343}
       sdkMethods={457}
-      schemas={1050}
-      parameters={4294}
+      schemas={1051}
+      parameters={4296}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/openapi.yaml"
     />

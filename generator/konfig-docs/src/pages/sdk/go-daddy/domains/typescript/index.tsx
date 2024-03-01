@@ -17,7 +17,7 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/logo.png"
       clientNameCamelCase="goDaddy"
       homepage="developer.godaddy.com"
-      lastUpdated={new Date("2024-02-03T00:33:34.350Z")}
+      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3597,7 +3597,7 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     }
       language="TypeScript"
       apiTitle=""
-      apiBaseUrl="//api.ote-godaddy.com"
+      apiBaseUrl="https:////api.ote-godaddy.com"
       apiVersion="1.0.0"
       endpoints={42}
       sdkMethods={53}

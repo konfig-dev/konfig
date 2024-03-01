@@ -16,7 +16,7 @@ export default function LobTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/logo.svg"
       clientNameCamelCase="lob"
       homepage="lob.com"
-      lastUpdated={new Date("2024-02-17T01:07:29.666Z")}
+      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png"
       contactUrl="https://support.lob.com/"
       contactEmail="lob-openapi@lob.com"
@@ -1607,6 +1607,12 @@ export default function LobTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+      },
+      {
+        "name": "lobVersion",
+        "schema": "string",
+        "required": false,
+        "description": "A string representing the version of the API being used. For more information on versioning, refer to our [Versioning and Changelog]((#tag/Versioning-and-Changelog) documentation.\n"
       }
     ],
     "responses": [
@@ -2269,6 +2275,38 @@ export default function LobTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Self Mailers",
     "typeScriptTag": "selfMailers",
+    "description": "Create",
+    "parameters": [
+      {
+        "name": "idempotencyKey",
+        "schema": "string",
+        "required": false,
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+      },
+      {
+        "name": "idempotencyKey",
+        "schema": "string",
+        "required": false,
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "Lob uses RESTful HTTP response codes to indicate success or failure of an API request. In general, 2xx indicates success, 4xx indicate an input error, and 5xx indicates an error on Lob's end."
+      }
+    ]
+  },
+  {
+    "url": "/snap_packs",
+    "method": "createNewSnapPack",
+    "httpMethod": HttpMethodsEnum.POST,
+    "tag": "Snap Packs",
+    "typeScriptTag": "snapPacks",
     "description": "Create",
     "parameters": [
       {
@@ -3030,11 +3068,11 @@ export default function LobTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Lob"
       apiBaseUrl="https://api.lob.com/v1"
-      apiVersion="1.19.24"
-      endpoints={54}
-      sdkMethods={118}
-      schemas={272}
-      parameters={216}
+      apiVersion="1.19.28"
+      endpoints={55}
+      sdkMethods={119}
+      schemas={279}
+      parameters={219}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/openapi.yaml"
     />

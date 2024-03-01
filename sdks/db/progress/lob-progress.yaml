@@ -41,6 +41,8 @@ operationIds:
   /self_mailers/{sfm_id}:
     delete: SelfMailers_removeSelfMailer
     get: SelfMailers_getDetails
+  /snap_packs:
+    post: SnapPacks_createNewSnapPack
   /templates/{tmpl_id}/versions:
     get: TemplateVersions_getList
     post: TemplateVersions_createNewVersion
@@ -152,6 +154,8 @@ responseSchemaNames:
         application/json: ReportRetrieve403Response
 securityParameters:
   Idempotency-Key:
+    header: false
+  Lob-Version:
     header: false
   before/after:
     query: false

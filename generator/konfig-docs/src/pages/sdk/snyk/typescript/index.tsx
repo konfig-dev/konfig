@@ -17,7 +17,7 @@ export default function SnykTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-02-16T00:45:04.983Z")}
+      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -5469,6 +5469,200 @@ export default function SnykTypeScriptSdk() {
     ]
   },
   {
+    "url": "/orgs/{org_id}/targets",
+    "method": "listByOrgId",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Targets",
+    "typeScriptTag": "targets",
+    "description": "Get targets by org ID",
+    "parameters": [
+      {
+        "name": "version",
+        "schema": "string",
+        "required": true,
+        "description": "The requested version of the endpoint to process the request"
+      },
+      {
+        "name": "startingAfter",
+        "schema": "string",
+        "description": "Return the page of results immediately after this cursor"
+      },
+      {
+        "name": "endingBefore",
+        "schema": "string",
+        "description": "Return the page of results immediately before this cursor"
+      },
+      {
+        "name": "count",
+        "schema": "boolean",
+        "description": "Calculate total amount of filtered results"
+      },
+      {
+        "name": "limit",
+        "schema": "integer",
+        "description": "Number of results to return per page"
+      },
+      {
+        "name": "orgId",
+        "schema": "string",
+        "required": true,
+        "description": "The id of the org to return a list of targets"
+      },
+      {
+        "name": "isPrivate",
+        "schema": "boolean",
+        "description": "Return targets that match the provided value of is_private"
+      },
+      {
+        "name": "excludeEmpty",
+        "schema": "boolean",
+        "description": "Return only the targets that has projects"
+      },
+      {
+        "name": "url",
+        "schema": "string",
+        "description": "Return targets that match the provided remote_url."
+      },
+      {
+        "name": "sourceTypes",
+        "schema": "array",
+        "description": "Return targets that match the provided source_types"
+      },
+      {
+        "name": "displayName",
+        "schema": "string",
+        "description": "Return targets with display names starting with the provided string"
+      },
+      {
+        "name": "createdGte",
+        "schema": "string",
+        "description": "Return only targets which have been created at or after the specified date.\n"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "500",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/orgs/{org_id}/targets/{target_id}",
+    "method": "deleteById",
+    "httpMethod": HttpMethodsEnum.DELETE,
+    "tag": "Targets",
+    "typeScriptTag": "targets",
+    "description": "Delete target by target ID",
+    "parameters": [
+      {
+        "name": "version",
+        "schema": "string",
+        "required": true,
+        "description": "The requested version of the endpoint to process the request"
+      },
+      {
+        "name": "orgId",
+        "schema": "string",
+        "required": true,
+        "description": "The id of the org to delete"
+      },
+      {
+        "name": "targetId",
+        "schema": "string",
+        "required": true,
+        "description": "The id of the target to delete"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "400",
+        "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "500",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/orgs/{org_id}/targets/{target_id}",
+    "method": "getById",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Targets",
+    "typeScriptTag": "targets",
+    "description": "Get target by target ID",
+    "parameters": [
+      {
+        "name": "version",
+        "schema": "string",
+        "required": true,
+        "description": "The requested version of the endpoint to process the request"
+      },
+      {
+        "name": "orgId",
+        "schema": "string",
+        "required": true,
+        "description": "The id of the org to return the target from"
+      },
+      {
+        "name": "targetId",
+        "schema": "string",
+        "required": true,
+        "description": "The id of the target to return"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "500",
+        "description": ""
+      }
+    ]
+  },
+  {
     "url": "/self/apps",
     "method": "listApps",
     "httpMethod": HttpMethodsEnum.GET,
@@ -5818,10 +6012,10 @@ export default function SnykTypeScriptSdk() {
       apiTitle="Snyk API"
       apiBaseUrl="https://api.snyk.io/rest"
       apiVersion="REST"
-      endpoints={59}
-      sdkMethods={154}
-      schemas={182}
-      parameters={421}
+      endpoints={61}
+      sdkMethods={159}
+      schemas={183}
+      parameters={439}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/openapi.yaml"
     />

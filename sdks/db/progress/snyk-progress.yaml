@@ -148,6 +148,11 @@ operationIds:
     get: Slack_getChannels
   /orgs/{org_id}/slack_app/{tenant_id}/channels/{channel_id}:
     get: Slack_getChannelNameById
+  /orgs/{org_id}/targets:
+    get: Targets_listByOrgId
+  /orgs/{org_id}/targets/{target_id}:
+    delete: Targets_deleteById
+    get: Targets_getById
   /self/apps:
     get: Apps_listApps
   /self/apps/installs:
@@ -275,23 +280,63 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: AppsListGroupAppInstallsResponse
+      '400':
+        application/vnd.api+json: AppsListGroupAppInstalls400Response
+      '401':
+        application/vnd.api+json: AppsListGroupAppInstalls401Response
       '403':
         application/vnd.api+json: AppsListGroupAppInstalls403Response
+      '404':
+        application/vnd.api+json: AppsListGroupAppInstalls404Response
+      '409':
+        application/vnd.api+json: AppsListGroupAppInstalls409Response
+      '500':
+        application/vnd.api+json: AppsListGroupAppInstalls500Response
     post:
       '201':
         application/vnd.api+json: AppsInstallGroupAppResponse
+      '400':
+        application/vnd.api+json: AppsInstallGroupApp400Response
+      '401':
+        application/vnd.api+json: AppsInstallGroupApp401Response
       '403':
         application/vnd.api+json: AppsInstallGroupApp403Response
+      '404':
+        application/vnd.api+json: AppsInstallGroupApp404Response
+      '409':
+        application/vnd.api+json: AppsInstallGroupApp409Response
+      '500':
+        application/vnd.api+json: AppsInstallGroupApp500Response
   /groups/{group_id}/apps/installs/{install_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsRevokeGroupAppInstallResponse
+      '401':
+        application/vnd.api+json: AppsRevokeGroupAppInstall401Response
       '403':
         application/vnd.api+json: AppsRevokeGroupAppInstallResponse
+      '404':
+        application/vnd.api+json: AppsRevokeGroupAppInstall404Response
+      '409':
+        application/vnd.api+json: AppsRevokeGroupAppInstall409Response
+      '500':
+        application/vnd.api+json: AppsRevokeGroupAppInstall500Response
   /groups/{group_id}/apps/installs/{install_id}/secrets:
     post:
       '200':
         application/vnd.api+json: AppsCreateInstallSecretResponse
+      '400':
+        application/vnd.api+json: AppsCreateInstallSecret400Response
+      '401':
+        application/vnd.api+json: AppsCreateInstallSecret401Response
       '403':
         application/vnd.api+json: AppsCreateInstallSecret403Response
+      '404':
+        application/vnd.api+json: AppsCreateInstallSecret404Response
+      '409':
+        application/vnd.api+json: AppsCreateInstallSecret409Response
+      '500':
+        application/vnd.api+json: AppsCreateInstallSecret500Response
   /groups/{group_id}/audit_logs/search:
     get:
       '200':
@@ -310,10 +355,30 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: IssuesByGroupIdResponse
+      '401':
+        application/vnd.api+json: IssuesByGroupId401Response
+      '403':
+        application/vnd.api+json: IssuesByGroupId403Response
+      '404':
+        application/vnd.api+json: IssuesByGroupId404Response
+      '500':
+        application/vnd.api+json: IssuesByGroupId500Response
   /groups/{group_id}/issues/{issue_id}:
     get:
       '200':
         application/vnd.api+json: IssuesGetByIssueIdResponse
+      '400':
+        application/vnd.api+json: IssuesGetByIssueId400Response
+      '401':
+        application/vnd.api+json: IssuesGetByIssueId401Response
+      '403':
+        application/vnd.api+json: IssuesGetByIssueId403Response
+      '404':
+        application/vnd.api+json: IssuesGetByIssueId404Response
+      '409':
+        application/vnd.api+json: IssuesGetByIssueId409Response
+      '500':
+        application/vnd.api+json: IssuesGetByIssueId500Response
   /groups/{group_id}/service_accounts:
     get:
       '200':
@@ -475,91 +540,271 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: AppsListAppBotsResponse
+      '400':
+        application/vnd.api+json: AppsListAppBots400Response
+      '401':
+        application/vnd.api+json: AppsListAppBots401Response
       '403':
         application/vnd.api+json: AppsListAppBots403Response
+      '404':
+        application/vnd.api+json: AppsListAppBots404Response
+      '409':
+        application/vnd.api+json: AppsListAppBots409Response
+      '500':
+        application/vnd.api+json: AppsListAppBots500Response
   /orgs/{org_id}/app_bots/{bot_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsRevokeBotAuthorizationResponse
+      '401':
+        application/vnd.api+json: AppsRevokeBotAuthorization401Response
       '403':
         application/vnd.api+json: AppsRevokeBotAuthorizationResponse
+      '404':
+        application/vnd.api+json: AppsRevokeBotAuthorization404Response
+      '409':
+        application/vnd.api+json: AppsRevokeBotAuthorization409Response
+      '500':
+        application/vnd.api+json: AppsRevokeBotAuthorization500Response
   /orgs/{org_id}/apps:
     get:
       '200':
         application/vnd.api+json: AppsListOrgAppsResponse
+      '400':
+        application/vnd.api+json: AppsListOrgApps400Response
+      '401':
+        application/vnd.api+json: AppsListOrgApps401Response
       '403':
         application/vnd.api+json: AppsListOrgApps403Response
+      '404':
+        application/vnd.api+json: AppsListOrgApps404Response
+      '409':
+        application/vnd.api+json: AppsListOrgApps409Response
+      '500':
+        application/vnd.api+json: AppsListOrgApps500Response
     post:
+      '400':
+        application/vnd.api+json: AppsCreateOrganizationAppResponse
+      '401':
+        application/vnd.api+json: AppsCreateOrganizationApp401Response
       '403':
         application/vnd.api+json: AppsCreateOrganizationAppResponse
+      '404':
+        application/vnd.api+json: AppsCreateOrganizationApp404Response
+      '409':
+        application/vnd.api+json: AppsCreateOrganizationApp409Response
+      '500':
+        application/vnd.api+json: AppsCreateOrganizationApp500Response
   /orgs/{org_id}/apps/creations:
     get:
       '200':
         application/vnd.api+json: AppsListOrgCreationsResponse
+      '400':
+        application/vnd.api+json: AppsListOrgCreations400Response
+      '401':
+        application/vnd.api+json: AppsListOrgCreations401Response
       '403':
         application/vnd.api+json: AppsListOrgCreations403Response
+      '404':
+        application/vnd.api+json: AppsListOrgCreations404Response
+      '409':
+        application/vnd.api+json: AppsListOrgCreations409Response
+      '500':
+        application/vnd.api+json: AppsListOrgCreations500Response
     post:
+      '400':
+        application/vnd.api+json: AppsCreateNewAppForOrganizationResponse
+      '401':
+        application/vnd.api+json: AppsCreateNewAppForOrganization401Response
       '403':
         application/vnd.api+json: AppsCreateNewAppForOrganizationResponse
+      '404':
+        application/vnd.api+json: AppsCreateNewAppForOrganization404Response
+      '409':
+        application/vnd.api+json: AppsCreateNewAppForOrganization409Response
+      '500':
+        application/vnd.api+json: AppsCreateNewAppForOrganization500Response
   /orgs/{org_id}/apps/creations/{app_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsDeleteByAppIdResponse
+      '401':
+        application/vnd.api+json: AppsDeleteByAppId401Response
       '403':
         application/vnd.api+json: AppsDeleteByAppIdResponse
+      '404':
+        application/vnd.api+json: AppsDeleteByAppId404Response
+      '409':
+        application/vnd.api+json: AppsDeleteByAppId409Response
+      '500':
+        application/vnd.api+json: AppsDeleteByAppId500Response
     get:
       '200':
         application/vnd.api+json: AppsGetByAppIdResponse
+      '400':
+        application/vnd.api+json: AppsGetByAppId400Response
+      '401':
+        application/vnd.api+json: AppsGetByAppId401Response
       '403':
         application/vnd.api+json: AppsGetByAppId403Response
+      '404':
+        application/vnd.api+json: AppsGetByAppId404Response
+      '409':
+        application/vnd.api+json: AppsGetByAppId409Response
+      '500':
+        application/vnd.api+json: AppsGetByAppId500Response
     patch:
       '200':
         application/vnd.api+json: AppsUpdateCreationAttributesByIdResponse
+      '400':
+        application/vnd.api+json: AppsUpdateCreationAttributesById400Response
+      '401':
+        application/vnd.api+json: AppsUpdateCreationAttributesById401Response
       '403':
         application/vnd.api+json: AppsUpdateCreationAttributesById403Response
+      '404':
+        application/vnd.api+json: AppsUpdateCreationAttributesById404Response
+      '409':
+        application/vnd.api+json: AppsUpdateCreationAttributesById409Response
+      '500':
+        application/vnd.api+json: AppsUpdateCreationAttributesById500Response
   /orgs/{org_id}/apps/creations/{app_id}/secrets:
     post:
       '200':
         application/vnd.api+json: AppsManageClientSecretForSnykAppResponse
+      '400':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp400Response
+      '401':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp401Response
       '403':
         application/vnd.api+json: AppsManageClientSecretForSnykApp403Response
+      '404':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp404Response
+      '409':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp409Response
+      '500':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp500Response
   /orgs/{org_id}/apps/installs:
     get:
       '200':
         application/vnd.api+json: AppsListOrgInstallsResponse
+      '400':
+        application/vnd.api+json: AppsListOrgInstalls400Response
+      '401':
+        application/vnd.api+json: AppsListOrgInstalls401Response
       '403':
         application/vnd.api+json: AppsListOrgInstalls403Response
+      '404':
+        application/vnd.api+json: AppsListOrgInstalls404Response
+      '409':
+        application/vnd.api+json: AppsListOrgInstalls409Response
+      '500':
+        application/vnd.api+json: AppsListOrgInstalls500Response
     post:
       '201':
         application/vnd.api+json: AppsInstallSnykAppToOrgResponse
+      '400':
+        application/vnd.api+json: AppsInstallSnykAppToOrg400Response
+      '401':
+        application/vnd.api+json: AppsInstallSnykAppToOrg401Response
       '403':
         application/vnd.api+json: AppsInstallSnykAppToOrg403Response
+      '404':
+        application/vnd.api+json: AppsInstallSnykAppToOrg404Response
+      '409':
+        application/vnd.api+json: AppsInstallSnykAppToOrg409Response
+      '500':
+        application/vnd.api+json: AppsInstallSnykAppToOrg500Response
   /orgs/{org_id}/apps/installs/{install_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsByInstallIdResponse
+      '401':
+        application/vnd.api+json: AppsByInstallId401Response
       '403':
         application/vnd.api+json: AppsByInstallIdResponse
+      '404':
+        application/vnd.api+json: AppsByInstallId404Response
+      '409':
+        application/vnd.api+json: AppsByInstallId409Response
+      '500':
+        application/vnd.api+json: AppsByInstallId500Response
   /orgs/{org_id}/apps/installs/{install_id}/secrets:
     post:
       '200':
         application/vnd.api+json: AppsManageClientSecretForSnykApp200Response
+      '400':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp400Response
+      '401':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp401Response
       '403':
         application/vnd.api+json: AppsManageClientSecretForSnykApp403Response1
+      '404':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp404Response
+      '409':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp409Response
+      '500':
+        application/vnd.api+json: AppsManageClientSecretForSnykApp500Response
   /orgs/{org_id}/apps/{client_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsDeleteAppByIdResponse
+      '401':
+        application/vnd.api+json: AppsDeleteAppById401Response
       '403':
         application/vnd.api+json: AppsDeleteAppByIdResponse
+      '404':
+        application/vnd.api+json: AppsDeleteAppById404Response
+      '409':
+        application/vnd.api+json: AppsDeleteAppById409Response
+      '500':
+        application/vnd.api+json: AppsDeleteAppById500Response
     get:
       '200':
         application/vnd.api+json: AppsGetByClientIdResponse
+      '400':
+        application/vnd.api+json: AppsGetByClientId400Response
+      '401':
+        application/vnd.api+json: AppsGetByClientId401Response
       '403':
         application/vnd.api+json: AppsGetByClientId403Response
+      '404':
+        application/vnd.api+json: AppsGetByClientId404Response
+      '409':
+        application/vnd.api+json: AppsGetByClientId409Response
+      '500':
+        application/vnd.api+json: AppsGetByClientId500Response
     patch:
       '200':
         application/vnd.api+json: AppsUpdateAttributesResponse
+      '400':
+        application/vnd.api+json: AppsUpdateAttributes400Response
+      '401':
+        application/vnd.api+json: AppsUpdateAttributes401Response
       '403':
         application/vnd.api+json: AppsUpdateAttributes403Response
+      '404':
+        application/vnd.api+json: AppsUpdateAttributes404Response
+      '409':
+        application/vnd.api+json: AppsUpdateAttributes409Response
+      '500':
+        application/vnd.api+json: AppsUpdateAttributes500Response
   /orgs/{org_id}/apps/{client_id}/secrets:
     post:
       '200':
         application/vnd.api+json: AppsManageClientSecretsResponse
+      '400':
+        application/vnd.api+json: AppsManageClientSecrets400Response
+      '401':
+        application/vnd.api+json: AppsManageClientSecrets401Response
       '403':
         application/vnd.api+json: AppsManageClientSecrets403Response
+      '404':
+        application/vnd.api+json: AppsManageClientSecrets404Response
+      '409':
+        application/vnd.api+json: AppsManageClientSecrets409Response
+      '500':
+        application/vnd.api+json: AppsManageClientSecrets500Response
   /orgs/{org_id}/audit_logs/search:
     get:
       '200':
@@ -772,6 +1017,30 @@ responseSchemaNames:
         application/vnd.api+json: InvitesCancelPendingInvitation404Response
       '500':
         application/vnd.api+json: InvitesCancelPendingInvitation500Response
+  /orgs/{org_id}/issues:
+    get:
+      '401':
+        application/vnd.api+json: IssuesListByOrgIdResponse
+      '403':
+        application/vnd.api+json: IssuesListByOrgId403Response
+      '404':
+        application/vnd.api+json: IssuesListByOrgId404Response
+      '500':
+        application/vnd.api+json: IssuesListByOrgId500Response
+  /orgs/{org_id}/issues/{issue_id}:
+    get:
+      '400':
+        application/vnd.api+json: IssuesGetByIdResponse
+      '401':
+        application/vnd.api+json: IssuesGetById401Response
+      '403':
+        application/vnd.api+json: IssuesGetById403Response
+      '404':
+        application/vnd.api+json: IssuesGetById404Response
+      '409':
+        application/vnd.api+json: IssuesGetById409Response
+      '500':
+        application/vnd.api+json: IssuesGetById500Response
   /orgs/{org_id}/packages/issues:
     post:
       '400':
@@ -1136,36 +1405,104 @@ responseSchemaNames:
         application/vnd.api+json: SlackGetChannelNameById409Response
       '500':
         application/vnd.api+json: SlackGetChannelNameById500Response
+  /orgs/{org_id}/targets:
+    get:
+      '200':
+        application/vnd.api+json: TargetsListByOrgIdResponse
+  /orgs/{org_id}/targets/{target_id}:
+    get:
+      '200':
+        application/vnd.api+json: TargetsGetByIdResponse
   /self/apps:
     get:
       '200':
         application/vnd.api+json: AppsListAppsResponse
+      '400':
+        application/vnd.api+json: AppsListApps400Response
+      '401':
+        application/vnd.api+json: AppsListApps401Response
       '403':
         application/vnd.api+json: AppsListApps403Response
+      '404':
+        application/vnd.api+json: AppsListApps404Response
+      '409':
+        application/vnd.api+json: AppsListApps409Response
+      '500':
+        application/vnd.api+json: AppsListApps500Response
   /self/apps/installs:
     get:
       '200':
         application/vnd.api+json: AppsListUserInstalledAppsResponse
+      '400':
+        application/vnd.api+json: AppsListUserInstalledApps400Response
+      '401':
+        application/vnd.api+json: AppsListUserInstalledApps401Response
       '403':
         application/vnd.api+json: AppsListUserInstalledApps403Response
+      '404':
+        application/vnd.api+json: AppsListUserInstalledApps404Response
+      '409':
+        application/vnd.api+json: AppsListUserInstalledApps409Response
+      '500':
+        application/vnd.api+json: AppsListUserInstalledApps500Response
   /self/apps/installs/{install_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsRevokeByInstallIdResponse
+      '401':
+        application/vnd.api+json: AppsRevokeByInstallId401Response
       '403':
         application/vnd.api+json: AppsRevokeByInstallIdResponse
+      '404':
+        application/vnd.api+json: AppsRevokeByInstallId404Response
+      '409':
+        application/vnd.api+json: AppsRevokeByInstallId409Response
+      '500':
+        application/vnd.api+json: AppsRevokeByInstallId500Response
   /self/apps/{app_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsRevokeAppByIdResponse
+      '401':
+        application/vnd.api+json: AppsRevokeAppById401Response
       '403':
         application/vnd.api+json: AppsRevokeAppByIdResponse
+      '404':
+        application/vnd.api+json: AppsRevokeAppById404Response
+      '409':
+        application/vnd.api+json: AppsRevokeAppById409Response
+      '500':
+        application/vnd.api+json: AppsRevokeAppById500Response
   /self/apps/{app_id}/sessions:
     get:
       '200':
         application/vnd.api+json: AppsGetActiveSessionsResponse
+      '400':
+        application/vnd.api+json: AppsGetActiveSessions400Response
+      '401':
+        application/vnd.api+json: AppsGetActiveSessions401Response
       '403':
         application/vnd.api+json: AppsGetActiveSessions403Response
+      '404':
+        application/vnd.api+json: AppsGetActiveSessions404Response
+      '409':
+        application/vnd.api+json: AppsGetActiveSessions409Response
+      '500':
+        application/vnd.api+json: AppsGetActiveSessions500Response
   /self/apps/{app_id}/sessions/{session_id}:
     delete:
+      '400':
+        application/vnd.api+json: AppsRevokeUserAppSessionResponse
+      '401':
+        application/vnd.api+json: AppsRevokeUserAppSession401Response
       '403':
         application/vnd.api+json: AppsRevokeUserAppSessionResponse
+      '404':
+        application/vnd.api+json: AppsRevokeUserAppSession404Response
+      '409':
+        application/vnd.api+json: AppsRevokeUserAppSession409Response
+      '500':
+        application/vnd.api+json: AppsRevokeUserAppSession500Response
 securityParameters:
   business_criticality:
     query: false
@@ -1173,13 +1510,19 @@ securityParameters:
     query: false
   cli_monitored_before:
     query: false
+  count:
+    query: false
   created_after:
     query: false
   created_before:
     query: false
+  created_gte:
+    query: false
   cursor:
     query: false
   direction:
+    query: false
+  display_name:
     query: false
   effective_severity_level:
     query: false
@@ -1188,6 +1531,8 @@ securityParameters:
   environment:
     query: false
   event:
+    query: false
+  exclude_empty:
     query: false
   exclude_event:
     query: false
@@ -1214,6 +1559,8 @@ securityParameters:
   is_generated:
     query: false
   is_personal:
+    query: false
+  is_private:
     query: false
   lifecycle:
     query: false
@@ -1259,6 +1606,8 @@ securityParameters:
     query: false
   sort_order:
     query: false
+  source_types:
+    query: false
   starting_after:
     query: false
   status:
@@ -1284,6 +1633,8 @@ securityParameters:
   updated_after:
     query: false
   updated_before:
+    query: false
+  url:
     query: false
   user_id:
     query: false

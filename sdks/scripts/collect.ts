@@ -241,7 +241,7 @@ async function processFiltered(): Promise<Db> {
       homepage: getProviderName(spec),
       serviceName: getServiceName(spec),
       apiVersion: getVersion(spec),
-      apiBaseUrl: apiBaseUrl,
+      apiBaseUrl: ensureBaseUrlHasHttps(apiBaseUrl),
       apiDescription: spec.spec.info.description,
       apiTitle: spec.spec.info.title,
       endpoints: numberOfEndpoints,
@@ -259,6 +259,13 @@ async function processFiltered(): Promise<Db> {
     };
   }
   return db;
+}
+
+function ensureBaseUrlHasHttps(baseUrl: string): string {
+  if (!baseUrl.startsWith("http")) {
+    return `https://${baseUrl}`;
+  }
+  return baseUrl;
 }
 
 async function addDifficulty(db: Db): Promise<DbWithDifficulty> {

@@ -6,13 +6,13 @@
     }
   },
   "apiBaseUrl": "https://api.lob.com/v1",
-  "apiVersion": "1.19.24",
+  "apiVersion": "1.19.28",
   "apiDescription": "The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors.",
   "apiTitle": "Lob",
-  "endpoints": 54,
-  "sdkMethods": 118,
-  "schemas": 272,
-  "parameters": 216,
+  "endpoints": 55,
+  "sdkMethods": 119,
+  "schemas": 279,
+  "parameters": 219,
   "contactUrl": "https://support.lob.com/",
   "contactEmail": "lob-openapi@lob.com",
   "originalCustomRequest": {
@@ -20,7 +20,7 @@
     "url": "https://raw.githubusercontent.com/lob/lob-openapi/main/dist/lob-api-bundled.yml"
   },
   "customRequestSpecFilename": "lob.com.yaml",
-  "difficultyScore": 308,
+  "difficultyScore": 313.25,
   "difficulty": "Hard",
   "company": "Lob",
   "sdkName": "lob-{language}-sdk",
@@ -1615,6 +1615,12 @@
           "schema": "string",
           "required": false,
           "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        },
+        {
+          "name": "lobVersion",
+          "schema": "string",
+          "required": false,
+          "description": "A string representing the version of the API being used. For more information on versioning, refer to our [Versioning and Changelog]((#tag/Versioning-and-Changelog) documentation.\n"
         }
       ],
       "responses": [
@@ -2277,6 +2283,38 @@
       "httpMethod": "post",
       "tag": "Self Mailers",
       "typeScriptTag": "selfMailers",
+      "description": "Create",
+      "parameters": [
+        {
+          "name": "idempotencyKey",
+          "schema": "string",
+          "required": false,
+          "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        },
+        {
+          "name": "idempotencyKey",
+          "schema": "string",
+          "required": false,
+          "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "default",
+          "description": "Lob uses RESTful HTTP response codes to indicate success or failure of an API request. In general, 2xx indicates success, 4xx indicate an input error, and 5xx indicates an error on Lob's end."
+        }
+      ]
+    },
+    {
+      "url": "/snap_packs",
+      "method": "createNewSnapPack",
+      "httpMethod": "post",
+      "tag": "Snap Packs",
+      "typeScriptTag": "snapPacks",
       "description": "Create",
       "parameters": [
         {
@@ -3039,7 +3077,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png",
   "clientNameCamelCase": "lob",
-  "lastUpdated": "2024-02-17T01:07:29.666Z",
+  "lastUpdated": "2024-03-01T22:42:46.741Z",
   "typescriptSdkUsageCode": "import { Lob } from 'lob-typescript-sdk';\n\nconst lob = new Lob({\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n})",
   "fixedSpecFileName": "lob-fixed-spec.yaml"
 }

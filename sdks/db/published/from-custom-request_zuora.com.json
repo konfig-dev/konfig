@@ -1,20 +1,20 @@
 {
   "securitySchemes": {},
   "apiBaseUrl": "https://rest.zuora.com",
-  "apiVersion": "2024-02-23",
+  "apiVersion": "2024-03-01",
   "apiDescription": "Welcome to the REST API reference for the Zuora Billing, Payments, and Central Platform!\n\nTo learn about the common use cases of Zuora REST APIs, check out the [REST API Tutorials](https://developer.zuora.com/rest-api/api-guides/overview/).\n\nIn addition to Zuora API Reference, we also provide API references for other Zuora products:\n\n  * [Revenue API Reference](https://developer.zuora.com/api-references/revenue/overview/)\n  * [Collections API Reference](https://developer.zuora.com/api-references/collections/overview/)\n\n    \nThe Zuora REST API provides a broad set of operations and resources that:\n\n  * Enable Web Storefront integration from your website.\n  * Support self-service subscriber sign-ups and account management.\n  * Process revenue schedules through custom revenue rule models.\n  * Enable manipulation of most objects in the Zuora Billing Object Model.\n\nWant to share your opinion on how our API works for you? <a href=\"https://community.zuora.com/t5/Developers/API-Feedback-Form/gpm-p/21399\" target=\"_blank\">Tell us how you feel </a>about using our API and what we can do to make it better.\n\nSome of our older APIs are no longer recommended but still available, not affecting any existing integration. To find related API documentation, see [Older API Reference](https://developer.zuora.com/api-references/older-api/overview/).\n",
   "apiTitle": "API Reference",
   "endpoints": 343,
   "sdkMethods": 457,
-  "schemas": 1050,
-  "parameters": 4294,
+  "schemas": 1051,
+  "parameters": 4296,
   "contactEmail": "docs@zuora.com",
   "originalCustomRequest": {
     "type": "GET",
     "url": "https://developer.zuora.com/yaml/zuora_openapi.yaml"
   },
   "customRequestSpecFilename": "zuora.com.yaml",
-  "difficultyScore": 2055.5,
+  "difficultyScore": 2056.5,
   "difficulty": "Very Hard",
   "company": "Zuora",
   "sdkName": "zuora-{language}-sdk",
@@ -31795,7 +31795,7 @@
       ]
     },
     {
-      "url": "/v1/rev-rec-events",
+      "url": "/v1/uno-regenerate/rev-rec-events",
       "method": "createRevRecEvents",
       "httpMethod": "post",
       "tag": "Regenerate",
@@ -31853,6 +31853,11 @@
           "name": "mode",
           "schema": "string",
           "description": "The generation mode."
+        },
+        {
+          "name": "forRevenueRecollect",
+          "schema": "boolean",
+          "description": "Indicates whether the data regenerated is for Zuora Revenue to recollect."
         }
       ],
       "responses": [
@@ -31863,7 +31868,7 @@
       ]
     },
     {
-      "url": "/v1/rev-rec-events/daily-consumption",
+      "url": "/v1/uno-regenerate/rev-rec-events/daily-consumption",
       "method": "generateRevRecEventsForDailyConsumption",
       "httpMethod": "post",
       "tag": "Regenerate",
@@ -31911,6 +31916,11 @@
           "schema": "string",
           "required": false,
           "description": "Comma separated IDs. If you have <a href=\"https://knowledgecenter.zuora.com/Zuora_Central_Platform/Multi-Org\" target=\"_blank\">Zuora Multi-Org</a> enabled, \nyou can use this header to specify which orgs to perform the operation in. If you do not have Zuora Multi-Org enabled, you should not set this header.\n\nThe IDs must be a sub-set of the user's accessible orgs. If you specify an org that the user does not have access to, the operation fails.\n\nIf the header is not set, the operation is performed in scope of the user's accessible orgs.\n"
+        },
+        {
+          "name": "forRevenueRecollect",
+          "schema": "boolean",
+          "description": "Indicates whether the data regenerated is for Zuora Revenue to recollect."
         },
         {
           "name": "chargeSegmentNumber",
@@ -33768,7 +33778,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png",
   "clientNameCamelCase": "zuora",
-  "lastUpdated": "2024-02-26T03:11:32.903Z",
+  "lastUpdated": "2024-03-01T22:42:46.741Z",
   "typescriptSdkUsageCode": "import { Zuora } from 'zuora-typescript-sdk';\n\nconst zuora = new Zuora()",
   "fixedSpecFileName": "zuora-fixed-spec.yaml"
 }
