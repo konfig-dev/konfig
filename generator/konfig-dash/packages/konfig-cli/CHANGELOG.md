@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.21
+
+### Patch Changes
+
+- [#601](https://github.com/konfig-dev/konfig/pull/601) [`3827c00e`](https://github.com/konfig-dev/konfig/commit/3827c00e735e54cdda8fda0e608ece2313ab6e7f) Thanks [@dphuang2](https://github.com/dphuang2)! - Fix duplicate entries in enums in "konfig fix"
+
 ## 1.38.20
 
 ### Patch Changes
