@@ -145,6 +145,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     numberOfAdditionalPropertiesFixed,
     numberOfSingletonAllOfUsagesFlattened,
     numberOfPassthroughRefsFixed,
+    numberOfDuplicateEntriesInEnumFixed,
   } = await fixOas({
     spec,
     progress,
@@ -197,6 +198,7 @@ Fixed ${numberOfAnyOfTypeNullUsagesReverted} anyOf type null usages
 Fixed ${numberOfOas31UsagesFixed} OAS 3.1.x usages
 Fixed ${numberOfExamplesUsageRemoved} "examples" usage
 Fixed ${numberOfSingletonAllOfUsagesFlattened} length 1 allOf usages
+Fixed ${numberOfDuplicateEntriesInEnumFixed} duplicate entries in enum
 Fixed ${numberOfPassthroughRefsFixed} passthrough refs`,
       {
         title: `Fixed ${issuesFixed} Issues`,

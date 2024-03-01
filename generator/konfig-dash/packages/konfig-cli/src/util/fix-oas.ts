@@ -37,6 +37,7 @@ import { overrideSecuritySchemes } from './override-security-schemes'
 import { fixAdditionalPropertiesFalse } from './fix-additional-properties-false'
 import { fixFlattenSingletonAllOf } from './fix-flatten-singleton-all-of'
 import { fixPassthroughRefs } from './fix-passthrough-refs'
+import { fixDuplicateEntriesInEnum } from './fix-duplicate-entries-in-enum'
 
 export async function fixOas({
   spec,
@@ -276,6 +277,11 @@ export async function fixOas({
   // Fix passthrough refs
   const numberOfPassthroughRefsFixed = await fixPassthroughRefs({ spec })
 
+  // Fix duplicate entries in enum
+  const numberOfDuplicateEntriesInEnumFixed = await fixDuplicateEntriesInEnum({
+    spec,
+  })
+
   // Monkey patch here!
   fixFalseOas3ValidSchemaExample({ spec: spec.spec })
 
@@ -316,6 +322,7 @@ export async function fixOas({
     numberOfAdditionalPropertiesFixed,
     numberOfSingletonAllOfUsagesFlattened,
     numberOfPassthroughRefsFixed,
+    numberOfDuplicateEntriesInEnumFixed,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {
