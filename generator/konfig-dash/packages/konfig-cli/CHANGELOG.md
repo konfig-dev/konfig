@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.23
+
+### Patch Changes
+
+- [#604](https://github.com/konfig-dev/konfig/pull/604) [`17aa6eed`](https://github.com/konfig-dev/konfig/commit/17aa6eed508facabc89d797b7ddcc1ea707c9c1a) Thanks [@dphuang2](https://github.com/dphuang2)! - Make sourceUrl work for Go SDK and more robust for all SDKs
+
 ## 1.38.22
 
 ### Patch Changes
