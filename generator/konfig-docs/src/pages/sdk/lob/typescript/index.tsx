@@ -16,7 +16,7 @@ export default function LobTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/logo.svg"
       clientNameCamelCase="lob"
       homepage="lob.com"
-      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
+      lastUpdated={new Date("2024-03-01T23:14:01.656Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png"
       contactUrl="https://support.lob.com/"
       contactEmail="lob-openapi@lob.com"
@@ -1612,7 +1612,7 @@ export default function LobTypeScriptSdk() {
         "name": "lobVersion",
         "schema": "string",
         "required": false,
-        "description": "A string representing the version of the API being used. For more information on versioning, refer to our [Versioning and Changelog]((#tag/Versioning-and-Changelog) documentation.\n"
+        "description": "A string representing the version of the API being used. For more information on versioning, refer to our [Versioning and Changelog](https://docs.lob.com/#tag/Versioning-and-Changelog) documentation.\n"
       }
     ],
     "responses": [

@@ -98,8 +98,18 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 
 const customRequests: Record<string, CustomRequest> = {
   "lob.com": {
-    type: "GET",
-    url: "https://raw.githubusercontent.com/lob/lob-openapi/main/dist/lob-api-bundled.yml",
+    lambda: async () => {
+      const response = await fetch(
+        "https://raw.githubusercontent.com/lob/lob-openapi/main/dist/lob-api-bundled.yml"
+      );
+      let rawSpecString = await response.text();
+      rawSpecString = rawSpecString.replaceAll(
+        "#tag/Versioning-and-Changelog",
+        "https://docs.lob.com/#tag/Versioning-and-Changelog"
+      );
+      rawSpecString = rawSpecString.replaceAll("((http", "(http");
+      return rawSpecString;
+    },
   },
   "vimeo.com": {
     lambda: async () => {
