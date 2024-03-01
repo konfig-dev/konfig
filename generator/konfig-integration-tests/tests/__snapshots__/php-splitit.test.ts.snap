@@ -1,18 +1,42 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`splitit/php-splitit 1`] = `
-"# splitit-web-php-sdk [Packagist](https://packagist.org/packages/konfig/konfig)
+"# splitit-web-php-sdk<a id="splitit-web-php-sdk"></a>
 
 Splitit's Web API
 
+[![Packagist](https://img.shields.io/badge/Packagist-v2.3.0-blue)](https://packagist.org/packages/konfig/konfig)
 
-## Installation & Usage
+## Table of Contents<a id="table-of-contents"></a>
 
-### Requirements
+<!-- toc -->
+
+- [Installation & Usage](#installation--usage)
+  * [Requirements](#requirements)
+  * [Composer](#composer)
+  * [Manual Installation](#manual-installation)
+- [Getting Started](#getting-started)
+- [Reference](#reference)
+  * [\`splitit.installmentPlan.cancel\`](#splititinstallmentplancancel)
+  * [\`splitit.installmentPlan.checkEligibility\`](#splititinstallmentplancheckeligibility)
+  * [\`splitit.installmentPlan.get\`](#splititinstallmentplanget)
+  * [\`splitit.installmentPlan.post\`](#splititinstallmentplanpost)
+  * [\`splitit.installmentPlan.post2\`](#splititinstallmentplanpost2)
+  * [\`splitit.installmentPlan.refund\`](#splititinstallmentplanrefund)
+  * [\`splitit.installmentPlan.search\`](#splititinstallmentplansearch)
+  * [\`splitit.installmentPlan.updateOrder\`](#splititinstallmentplanupdateorder)
+  * [\`splitit.installmentPlan.updateOrder2\`](#splititinstallmentplanupdateorder2)
+  * [\`splitit.installmentPlan.verifyAuthorization\`](#splititinstallmentplanverifyauthorization)
+
+<!-- tocstop -->
+
+## Installation & Usage<a id="installation--usage"></a>
+
+### Requirements<a id="requirements"></a>
 
 This library requires \`PHP ^7.0\`
 
-### Composer
+### Composer<a id="composer"></a>
 
 To install the bindings via [Composer](https://getcomposer.org/), add the following to \`composer.json\`:
 
@@ -32,7 +56,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
 
 Then run \`composer install\`
 
-### Manual Installation
+### Manual Installation<a id="manual-installation"></a>
 
 Download the files and include \`autoload.php\`:
 
@@ -41,7 +65,7 @@ Download the files and include \`autoload.php\`:
 require_once('/path/to/splitit-web-php-sdk/vendor/autoload.php');
 \`\`\`
 
-## Getting Started
+## Getting Started<a id="getting-started"></a>
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
@@ -54,107 +78,535 @@ $splitit = new \\Splitit\\Client(
     getenv("SPLITIT_CLIENT_SECRET")
 );
 
-$installment_plan_number = "installmentPlanNumber_example";
-$x_splitit_idempotency_key = "X-Splitit-IdempotencyKey_example";
-$x_splitit_touch_point = ""; // TouchPoint
+$result = $splitit->installmentPlan->cancel(
+    "installmentPlanNumber_example", 
+    "X-Splitit-IdempotencyKey_example", 
+    ""
+);
+\`\`\`
+## Reference<a id="reference"></a>
 
-try {
-    $result = $splitit->installmentPlan->cancel(
-        $installment_plan_number, 
-        $x_splitit_idempotency_key, 
-        $x_splitit_touch_point
-    );
-    print_r($result->$getInstallmentPlanNumber());
-} catch (\\Exception $e) {
-    echo 'Exception when calling InstallmentPlanApi->cancel: ', $e->getMessage(), PHP_EOL;
-}
+
+### \`splitit.installmentPlan.cancel\`<a id="splititinstallmentplancancel"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->cancel(
+    "installmentPlanNumber_example", 
+    "X-Splitit-IdempotencyKey_example", 
+    ""
+);
 \`\`\`
 
-## API Endpoints
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-All URIs are relative to *https://web-api-v3.production.splitit.com*
+##### installment_plan_number: \`string\`<a id="installment_plan_number-string"></a>
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*InstallmentPlanApi* | [**cancel**](docs/Api/InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel | 
-*InstallmentPlanApi* | [**checkEligibility**](docs/Api/InstallmentPlanApi.md#checkeligibility) | **POST** /api/installmentplans/check-eligibility | 
-*InstallmentPlanApi* | [**get**](docs/Api/InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} | 
-*InstallmentPlanApi* | [**post**](docs/Api/InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate | 
-*InstallmentPlanApi* | [**post2**](docs/Api/InstallmentPlanApi.md#post2) | **POST** /api/installmentplans | 
-*InstallmentPlanApi* | [**refund**](docs/Api/InstallmentPlanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund | 
-*InstallmentPlanApi* | [**search**](docs/Api/InstallmentPlanApi.md#search) | **GET** /api/installmentplans/search | 
-*InstallmentPlanApi* | [**updateOrder**](docs/Api/InstallmentPlanApi.md#updateorder) | **PUT** /api/installmentplans/{installmentPlanNumber}/updateorder | 
-*InstallmentPlanApi* | [**updateOrder2**](docs/Api/InstallmentPlanApi.md#updateorder2) | **PUT** /api/installmentplans/updateorder | 
-*InstallmentPlanApi* | [**verifyAuthorization**](docs/Api/InstallmentPlanApi.md#verifyauthorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
 
-## Models
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
 
-- [AddressData](docs/Model/AddressData.md)
-- [AddressDataModel](docs/Model/AddressDataModel.md)
-- [AuthorizationModel](docs/Model/AuthorizationModel.md)
-- [BluesnapVaultedShopperToken](docs/Model/BluesnapVaultedShopperToken.md)
-- [CardBrand](docs/Model/CardBrand.md)
-- [CardData](docs/Model/CardData.md)
-- [CardType](docs/Model/CardType.md)
-- [CheckInstallmentsEligibilityRequest](docs/Model/CheckInstallmentsEligibilityRequest.md)
-- [Error](docs/Model/Error.md)
-- [ErrorExtended](docs/Model/ErrorExtended.md)
-- [ErrorExtendedAllOf](docs/Model/ErrorExtendedAllOf.md)
-- [EventsEndpointsModel](docs/Model/EventsEndpointsModel.md)
-- [FailedResponse](docs/Model/FailedResponse.md)
-- [GatewayTokenData](docs/Model/GatewayTokenData.md)
-- [GwAuthorizationStatus](docs/Model/GwAuthorizationStatus.md)
-- [IdentifierContract](docs/Model/IdentifierContract.md)
-- [InitiatePlanResponse](docs/Model/InitiatePlanResponse.md)
-- [InitiateRedirectionEndpointsModel](docs/Model/InitiateRedirectionEndpointsModel.md)
-- [Installment](docs/Model/Installment.md)
-- [InstallmentPlanCancelResponse](docs/Model/InstallmentPlanCancelResponse.md)
-- [InstallmentPlanCreateRequest](docs/Model/InstallmentPlanCreateRequest.md)
-- [InstallmentPlanCreateResponse](docs/Model/InstallmentPlanCreateResponse.md)
-- [InstallmentPlanGetResponse](docs/Model/InstallmentPlanGetResponse.md)
-- [InstallmentPlanInitiateRequest](docs/Model/InstallmentPlanInitiateRequest.md)
-- [InstallmentPlanRefundRequest](docs/Model/InstallmentPlanRefundRequest.md)
-- [InstallmentPlanRefundResponse](docs/Model/InstallmentPlanRefundResponse.md)
-- [InstallmentPlanSearchResponse](docs/Model/InstallmentPlanSearchResponse.md)
-- [InstallmentPlanUpdateRequest](docs/Model/InstallmentPlanUpdateRequest.md)
-- [InstallmentPlanUpdateRequestByIdentifier](docs/Model/InstallmentPlanUpdateRequestByIdentifier.md)
-- [InstallmentPlanUpdateRequestByIdentifierAllOf](docs/Model/InstallmentPlanUpdateRequestByIdentifierAllOf.md)
-- [InstallmentPlanUpdateResponse](docs/Model/InstallmentPlanUpdateResponse.md)
-- [InstallmentStatus](docs/Model/InstallmentStatus.md)
-- [InstallmentsEligibilityResponse](docs/Model/InstallmentsEligibilityResponse.md)
-- [LinksData](docs/Model/LinksData.md)
-- [LinksModel](docs/Model/LinksModel.md)
-- [MockerShopperToken](docs/Model/MockerShopperToken.md)
-- [PaymentMethodModel](docs/Model/PaymentMethodModel.md)
-- [PaymentMethodType](docs/Model/PaymentMethodType.md)
-- [PaymentPlanOptionModel](docs/Model/PaymentPlanOptionModel.md)
-- [PlanData](docs/Model/PlanData.md)
-- [PlanDataModel](docs/Model/PlanDataModel.md)
-- [PlanErrorResponse](docs/Model/PlanErrorResponse.md)
-- [PlanErrorResponseAllOf](docs/Model/PlanErrorResponseAllOf.md)
-- [PlanStatus](docs/Model/PlanStatus.md)
-- [ProcessingData](docs/Model/ProcessingData.md)
-- [ProcessingData2](docs/Model/ProcessingData2.md)
-- [PurchaseMethod](docs/Model/PurchaseMethod.md)
-- [RedirectionEndpointsModel](docs/Model/RedirectionEndpointsModel.md)
-- [RefundModel](docs/Model/RefundModel.md)
-- [RefundStatus](docs/Model/RefundStatus.md)
-- [RefundStrategy](docs/Model/RefundStrategy.md)
-- [RefundSummary](docs/Model/RefundSummary.md)
-- [SearchInstallmentPlanResponseItem](docs/Model/SearchInstallmentPlanResponseItem.md)
-- [ShippingStatus](docs/Model/ShippingStatus.md)
-- [ShippingStatus2](docs/Model/ShippingStatus2.md)
-- [ShopperData](docs/Model/ShopperData.md)
-- [SpreedlyToken](docs/Model/SpreedlyToken.md)
-- [TestModes](docs/Model/TestModes.md)
-- [ThreeDSData](docs/Model/ThreeDSData.md)
-- [ThreeDSData2](docs/Model/ThreeDSData2.md)
-- [ThreeDsRedirectDataV3](docs/Model/ThreeDsRedirectDataV3.md)
-- [UpdateOrderRequest](docs/Model/UpdateOrderRequest.md)
-- [UxSettingsModel](docs/Model/UxSettingsModel.md)
-- [VerifyAuthorizationResponse](docs/Model/VerifyAuthorizationResponse.md)
+TouchPoint
 
-## Author
 
-This PHP package is automatically generated by [Konfig](https://konfigthis.com):"
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanCancelResponse**](./lib/Model/InstallmentPlanCancelResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/cancel\` \`POST\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.checkEligibility\`<a id="splititinstallmentplancheckeligibility"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->checkEligibility(
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    [
+        "total_amount" => 3.14,
+        "number_of_installments" => 1,
+        "purchase_method" => "InStore",
+    ], 
+    [
+        "card_brand" => "Mastercard",
+        "card_type" => "Credit",
+    ], 
+    [
+    ]
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### PlanData: [\`PlanData\`](./lib/Model/PlanData.php)<a id="plandata-plandatalibmodelplandataphp"></a>
+
+##### CardDetails: [\`CardData\`](./lib/Model/CardData.php)<a id="carddetails-carddatalibmodelcarddataphp"></a>
+
+##### BillingAddress: [\`AddressData\`](./lib/Model/AddressData.php)<a id="billingaddress-addressdatalibmodeladdressdataphp"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentsEligibilityResponse**](./lib/Model/InstallmentsEligibilityResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/check-eligibility\` \`POST\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.get\`<a id="splititinstallmentplanget"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->get(
+    "installmentPlanNumber_example", 
+    "X-Splitit-IdempotencyKey_example", 
+    ""
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### installment_plan_number: \`string\`<a id="installment_plan_number-string"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanGetResponse**](./lib/Model/InstallmentPlanGetResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}\` \`GET\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.post\`<a id="splititinstallmentplanpost"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->post(
+    True, 
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    True, 
+    [
+    ], 
+    [
+        "total_amount" => 3.14,
+        "purchase_method" => "InStore",
+    ], 
+    [
+    ], 
+    [
+    ], 
+    [
+    ], 
+    [
+    ], 
+    [
+    ], 
+    "None"
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### AutoCapture: \`bool\`<a id="autocapture-bool"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### Attempt3dSecure: \`bool\`<a id="attempt3dsecure-bool"></a>
+
+##### Shopper: [\`ShopperData\`](./lib/Model/ShopperData.php)<a id="shopper-shopperdatalibmodelshopperdataphp"></a>
+
+##### PlanData: [\`PlanDataModel\`](./lib/Model/PlanDataModel.php)<a id="plandata-plandatamodellibmodelplandatamodelphp"></a>
+
+##### BillingAddress: [\`AddressDataModel\`](./lib/Model/AddressDataModel.php)<a id="billingaddress-addressdatamodellibmodeladdressdatamodelphp"></a>
+
+##### RedirectUrls: [\`InitiateRedirectionEndpointsModel\`](./lib/Model/InitiateRedirectionEndpointsModel.php)<a id="redirecturls-initiateredirectionendpointsmodellibmodelinitiateredirectionendpointsmodelphp"></a>
+
+##### UxSettings: [\`UxSettingsModel\`](./lib/Model/UxSettingsModel.php)<a id="uxsettings-uxsettingsmodellibmodeluxsettingsmodelphp"></a>
+
+##### EventsEndpoints: [\`EventsEndpointsModel\`](./lib/Model/EventsEndpointsModel.php)<a id="eventsendpoints-eventsendpointsmodellibmodeleventsendpointsmodelphp"></a>
+
+##### ProcessingData: [\`ProcessingData\`](./lib/Model/ProcessingData.php)<a id="processingdata-processingdatalibmodelprocessingdataphp"></a>
+
+##### x_splitit_test_mode: \`string\`<a id="x_splitit_test_mode-string"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InitiatePlanResponse**](./lib/Model/InitiatePlanResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/initiate\` \`POST\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.post2\`<a id="splititinstallmentplanpost2"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->post2(
+    True, 
+    True, 
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    True, 
+    [
+    ], 
+    [
+        "total_amount" => 3.14,
+        "purchase_method" => "InStore",
+    ], 
+    [
+    ], 
+    [
+        "type" => "Card",
+    ], 
+    [
+    ], 
+    [
+    ], 
+    [
+    ], 
+    "None"
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### AutoCapture: \`bool\`<a id="autocapture-bool"></a>
+
+##### TermsAndConditionsAccepted: \`bool\`<a id="termsandconditionsaccepted-bool"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### Attempt3dSecure: \`bool\`<a id="attempt3dsecure-bool"></a>
+
+##### Shopper: [\`ShopperData\`](./lib/Model/ShopperData.php)<a id="shopper-shopperdatalibmodelshopperdataphp"></a>
+
+##### PlanData: [\`PlanDataModel\`](./lib/Model/PlanDataModel.php)<a id="plandata-plandatamodellibmodelplandatamodelphp"></a>
+
+##### BillingAddress: [\`AddressDataModel\`](./lib/Model/AddressDataModel.php)<a id="billingaddress-addressdatamodellibmodeladdressdatamodelphp"></a>
+
+##### PaymentMethod: [\`PaymentMethodModel\`](./lib/Model/PaymentMethodModel.php)<a id="paymentmethod-paymentmethodmodellibmodelpaymentmethodmodelphp"></a>
+
+##### RedirectUrls: [\`RedirectionEndpointsModel\`](./lib/Model/RedirectionEndpointsModel.php)<a id="redirecturls-redirectionendpointsmodellibmodelredirectionendpointsmodelphp"></a>
+
+##### ProcessingData: [\`ProcessingData\`](./lib/Model/ProcessingData.php)<a id="processingdata-processingdatalibmodelprocessingdataphp"></a>
+
+##### EventsEndpoints: [\`EventsEndpointsModel\`](./lib/Model/EventsEndpointsModel.php)<a id="eventsendpoints-eventsendpointsmodellibmodeleventsendpointsmodelphp"></a>
+
+##### x_splitit_test_mode: \`string\`<a id="x_splitit_test_mode-string"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanCreateResponse**](./lib/Model/InstallmentPlanCreateResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans\` \`POST\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.refund\`<a id="splititinstallmentplanrefund"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->refund(
+    3.14, 
+    "installmentPlanNumber_example", 
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    "FutureInstallmentsFirst"
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### Amount: \`float\`<a id="amount-float"></a>
+
+##### installment_plan_number: \`string\`<a id="installment_plan_number-string"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### RefundStrategy:<a id="refundstrategy"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanRefundResponse**](./lib/Model/InstallmentPlanRefundResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/refund\` \`POST\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.search\`<a id="splititinstallmentplansearch"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->search(
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    "string_example", 
+    "string_example", 
+    [
+        "key": "string_example",
+    ]
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### installment_plan_number: \`string\`<a id="installment_plan_number-string"></a>
+
+##### ref_order_number: \`string\`<a id="ref_order_number-string"></a>
+
+##### extended_params: array<string, \`string\`><a id="extended_params-array"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanSearchResponse**](./lib/Model/InstallmentPlanSearchResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/search\` \`GET\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.updateOrder\`<a id="splititinstallmentplanupdateorder"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->updateOrder(
+    "installmentPlanNumber_example", 
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    "string_example", 
+    "string_example", 
+    "Pending", 
+    True
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### installment_plan_number: \`string\`<a id="installment_plan_number-string"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### TrackingNumber: \`string\`<a id="trackingnumber-string"></a>
+
+##### RefOrderNumber: \`string\`<a id="refordernumber-string"></a>
+
+##### ShippingStatus:<a id="shippingstatus"></a>
+
+##### Capture: \`bool\`<a id="capture-bool"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanUpdateResponse**](./lib/Model/InstallmentPlanUpdateResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/updateorder\` \`PUT\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.updateOrder2\`<a id="splititinstallmentplanupdateorder2"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->updateOrder2(
+    "X-Splitit-IdempotencyKey_example", 
+    "", 
+    "string_example", 
+    "string_example", 
+    True, 
+    "Shipped", 
+    [
+    ]
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+##### RefOrderNumber: \`string\`<a id="refordernumber-string"></a>
+
+##### TrackingNumber: \`string\`<a id="trackingnumber-string"></a>
+
+##### Capture: \`bool\`<a id="capture-bool"></a>
+
+##### ShippingStatus:<a id="shippingstatus"></a>
+
+##### Identifier: [\`IdentifierContract\`](./lib/Model/IdentifierContract.php)<a id="identifier-identifiercontractlibmodelidentifiercontractphp"></a>
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**InstallmentPlanUpdateResponse**](./lib/Model/InstallmentPlanUpdateResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/updateorder\` \`PUT\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### \`splitit.installmentPlan.verifyAuthorization\`<a id="splititinstallmentplanverifyauthorization"></a>
+
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+\`\`\`php
+$result = $splitit->installmentPlan->verifyAuthorization(
+    "installmentPlanNumber_example", 
+    "X-Splitit-IdempotencyKey_example", 
+    ""
+);
+\`\`\`
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### installment_plan_number: \`string\`<a id="installment_plan_number-string"></a>
+
+##### x_splitit_idempotency_key: \`string\`<a id="x_splitit_idempotency_key-string"></a>
+
+##### x_splitit_touch_point: \`string\`<a id="x_splitit_touch_point-string"></a>
+
+TouchPoint
+
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[**VerifyAuthorizationResponse**](./lib/Model/VerifyAuthorizationResponse.php)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+\`/api/installmentplans/{installmentPlanNumber}/verifyauthorization\` \`GET\`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+## Author<a id="author"></a>
+This PHP package is automatically generated by [Konfig](https://konfigthis.com)
+"
 `;
