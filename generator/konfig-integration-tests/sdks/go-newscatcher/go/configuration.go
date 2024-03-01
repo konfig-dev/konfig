@@ -153,7 +153,7 @@ func (c *Configuration) SetHost(host string) {
 }
 
 func (c *Configuration) SetApiKey(apiKey string) {
-	c.AddAPIKey("x-api-token", APIKey{Key: apiKey})
+	c.AddAPIKey("apiKey", APIKey{Key: apiKey})
 }
 
 // Setup OAuth Client Credentials Flow for all requests

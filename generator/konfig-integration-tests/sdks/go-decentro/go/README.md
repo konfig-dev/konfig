@@ -62,7 +62,6 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `GeneratePaymentLinkResponse.GeneratePaymentLink.Data`: %v\n", *resp.Data)
     fmt.Fprintf(os.Stdout, "Response from `GeneratePaymentLinkResponse.GeneratePaymentLink.ResponseKey`: %v\n", *resp.ResponseKey)
 }
-
 ```
 
 ## Documentation for API Endpoints

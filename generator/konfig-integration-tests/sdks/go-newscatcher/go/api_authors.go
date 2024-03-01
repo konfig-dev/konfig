@@ -395,7 +395,7 @@ func (a *AuthorsApiService) GetExecute(r AuthorsApiGetRequest) (*AuthorsGetRespo
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -523,7 +523,7 @@ func (a *AuthorsApiService) PostExecute(r AuthorsApiPostRequest) (*AuthorsPostRe
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

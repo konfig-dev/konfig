@@ -79,7 +79,6 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `AuthorsGetResponse.Get.Articles`: %v\n", resp.Articles)
     fmt.Fprintf(os.Stdout, "Response from `AuthorsGetResponse.Get.UserInput`: %v\n", resp.UserInput)
 }
-
 ```
 
 ## Documentation for API Endpoints

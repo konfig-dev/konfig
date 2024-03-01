@@ -400,7 +400,7 @@ func (a *LatestHeadlinesApiService) GetExecute(r LatestHeadlinesApiGetRequest) (
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -528,7 +528,7 @@ func (a *LatestHeadlinesApiService) PostExecute(r LatestHeadlinesApiPostRequest)
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

@@ -109,7 +109,7 @@ func (a *SourcesApiService) GetExecute(r SourcesApiGetRequest) (*SourceResponse,
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -237,7 +237,7 @@ func (a *SourcesApiService) PostExecute(r SourcesApiPostRequest) (*SourceRespons
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

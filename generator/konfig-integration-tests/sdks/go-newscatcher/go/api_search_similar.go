@@ -434,7 +434,7 @@ func (a *SearchSimilarApiService) GetExecute(r SearchSimilarApiGetRequest) (*Sea
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -562,7 +562,7 @@ func (a *SearchSimilarApiService) PostExecute(r SearchSimilarApiPostRequest) (*S
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

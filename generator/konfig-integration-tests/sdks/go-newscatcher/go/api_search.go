@@ -458,7 +458,7 @@ func (a *SearchApiService) GetExecute(r SearchApiGetRequest) (*SearchGetResponse
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -586,7 +586,7 @@ func (a *SearchApiService) PostExecute(r SearchApiPostRequest) (*SearchPostRespo
 			if apiKey, ok := auth["apiKey"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

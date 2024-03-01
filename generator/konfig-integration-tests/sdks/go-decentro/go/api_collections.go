@@ -95,7 +95,7 @@ func (a *CollectionsApiService) GeneratePaymentLinkExecute(r CollectionsApiGener
 			if apiKey, ok := auth["client_id"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -109,7 +109,7 @@ func (a *CollectionsApiService) GeneratePaymentLinkExecute(r CollectionsApiGener
 			if apiKey, ok := auth["client_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -123,7 +123,7 @@ func (a *CollectionsApiService) GeneratePaymentLinkExecute(r CollectionsApiGener
 			if apiKey, ok := auth["module_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -137,7 +137,7 @@ func (a *CollectionsApiService) GeneratePaymentLinkExecute(r CollectionsApiGener
 			if apiKey, ok := auth["provider_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -265,7 +265,7 @@ func (a *CollectionsApiService) GetTransactionStatusExecute(r CollectionsApiGetT
 			if apiKey, ok := auth["client_id"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -279,7 +279,7 @@ func (a *CollectionsApiService) GetTransactionStatusExecute(r CollectionsApiGetT
 			if apiKey, ok := auth["client_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -293,7 +293,7 @@ func (a *CollectionsApiService) GetTransactionStatusExecute(r CollectionsApiGetT
 			if apiKey, ok := auth["module_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -307,7 +307,7 @@ func (a *CollectionsApiService) GetTransactionStatusExecute(r CollectionsApiGetT
 			if apiKey, ok := auth["provider_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -431,7 +431,7 @@ func (a *CollectionsApiService) IssueCollectRequestExecute(r CollectionsApiIssue
 			if apiKey, ok := auth["client_id"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -445,7 +445,7 @@ func (a *CollectionsApiService) IssueCollectRequestExecute(r CollectionsApiIssue
 			if apiKey, ok := auth["client_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -459,7 +459,7 @@ func (a *CollectionsApiService) IssueCollectRequestExecute(r CollectionsApiIssue
 			if apiKey, ok := auth["module_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -473,7 +473,7 @@ func (a *CollectionsApiService) IssueCollectRequestExecute(r CollectionsApiIssue
 			if apiKey, ok := auth["provider_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -599,7 +599,7 @@ func (a *CollectionsApiService) IssueUpiRefundExecute(r CollectionsApiIssueUpiRe
 			if apiKey, ok := auth["client_id"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -613,7 +613,7 @@ func (a *CollectionsApiService) IssueUpiRefundExecute(r CollectionsApiIssueUpiRe
 			if apiKey, ok := auth["client_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -627,7 +627,7 @@ func (a *CollectionsApiService) IssueUpiRefundExecute(r CollectionsApiIssueUpiRe
 			if apiKey, ok := auth["module_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -641,7 +641,7 @@ func (a *CollectionsApiService) IssueUpiRefundExecute(r CollectionsApiIssueUpiRe
 			if apiKey, ok := auth["provider_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -767,7 +767,7 @@ func (a *CollectionsApiService) ValidateUpiHandleExecute(r CollectionsApiValidat
 			if apiKey, ok := auth["client_id"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -781,7 +781,7 @@ func (a *CollectionsApiService) ValidateUpiHandleExecute(r CollectionsApiValidat
 			if apiKey, ok := auth["client_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -795,7 +795,7 @@ func (a *CollectionsApiService) ValidateUpiHandleExecute(r CollectionsApiValidat
 			if apiKey, ok := auth["module_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}
@@ -809,7 +809,7 @@ func (a *CollectionsApiService) ValidateUpiHandleExecute(r CollectionsApiValidat
 			if apiKey, ok := auth["provider_secret"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
+					key = apiKey.Prefix + apiKey.Key
 				} else {
 					key = apiKey.Key
 				}

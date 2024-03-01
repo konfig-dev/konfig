@@ -42,7 +42,6 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Cancel`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
 }
-
 ```
 
 ## Documentation for API Endpoints
