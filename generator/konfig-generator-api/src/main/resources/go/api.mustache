@@ -300,16 +300,6 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			{{#vendorExtensions.x-auth-id-alias}}
-			if apiKey, ok := auth["{{.}}"]; ok {
-				var key string
-				if prefix, ok := auth["{{name}}"]; ok && prefix.Prefix != "" {
-					key = prefix.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-			{{/vendorExtensions.x-auth-id-alias}}
-			{{^vendorExtensions.x-auth-id-alias}}
 			if apiKey, ok := auth["{{name}}"]; ok {
 				var key string
 				if apiKey.Prefix != "" {
@@ -317,7 +307,6 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 				} else {
 					key = apiKey.Key
 				}
-			{{/vendorExtensions.x-auth-id-alias}}
 				{{#isKeyInHeader}}
 				localVarHeaderParams["{{keyParamName}}"] = key
 				{{/isKeyInHeader}}
