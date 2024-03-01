@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.8
+
+### Patch Changes
+
+- [#600](https://github.com/konfig-dev/konfig/pull/600) [`a323c6f2`](https://github.com/konfig-dev/konfig/commit/a323c6f2aba9f76d704ed6e1e563bf965c0745de) Thanks [@eddiechayes](https://github.com/eddiechayes)! - php readme changes
+
 ## 1.36.7
 
 ### Patch Changes
