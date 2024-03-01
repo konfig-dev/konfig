@@ -39,7 +39,7 @@ export async function generateReadme({
           'generator' in config
             ? (config as KonfigYamlAdditionalGeneratorConfig).generator
             : generatorName
-        const sourceUrl = `https://${config.git.host}/${config.git.userId}/${config.git.repoId}`
+        const sourceUrl = `https://${config.git.host}/${config.git.userId}/${config.git.repoName}/tree/HEAD/${config.outputDirectory}`
         return {
           language: generatorNameAsDisplayName({
             generatorConfig: config,
