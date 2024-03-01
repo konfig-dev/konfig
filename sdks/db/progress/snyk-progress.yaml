@@ -221,61 +221,6 @@ requestSchemaNames:
       application/vnd.api+json: SastSettingsToggleSnykCodeSettingsRequest
 responseDescriptions: {}
 responseSchemaNames:
-  /custom_base_images:
-    get:
-      '400':
-        application/vnd.api+json: CustomBaseImagesListResponse
-      '401':
-        application/vnd.api+json: CustomBaseImagesList401Response
-      '403':
-        application/vnd.api+json: CustomBaseImagesList403Response
-      '404':
-        application/vnd.api+json: CustomBaseImagesList404Response
-      '500':
-        application/vnd.api+json: CustomBaseImagesList500Response
-    post:
-      '400':
-        application/vnd.api+json: CustomBaseImagesMarkImageAsCustomBaseResponse
-      '401':
-        application/vnd.api+json: CustomBaseImagesMarkImageAsCustomBase401Response
-      '403':
-        application/vnd.api+json: CustomBaseImagesMarkImageAsCustomBase403Response
-      '404':
-        application/vnd.api+json: CustomBaseImagesMarkImageAsCustomBase404Response
-      '409':
-        application/vnd.api+json: CustomBaseImagesMarkImageAsCustomBase409Response
-      '500':
-        application/vnd.api+json: CustomBaseImagesMarkImageAsCustomBase500Response
-  /custom_base_images/{custombaseimage_id}:
-    delete:
-      '401':
-        application/vnd.api+json: CustomBaseImagesRemoveCustomBaseImageResponse
-      '404':
-        application/vnd.api+json: CustomBaseImagesRemoveCustomBaseImage404Response
-      '500':
-        application/vnd.api+json: CustomBaseImagesRemoveCustomBaseImage500Response
-    get:
-      '400':
-        application/vnd.api+json: CustomBaseImagesGetByIdResponse
-      '401':
-        application/vnd.api+json: CustomBaseImagesGetById401Response
-      '403':
-        application/vnd.api+json: CustomBaseImagesGetById403Response
-      '404':
-        application/vnd.api+json: CustomBaseImagesGetById404Response
-      '500':
-        application/vnd.api+json: CustomBaseImagesGetById500Response
-    patch:
-      '400':
-        application/vnd.api+json: CustomBaseImagesUpdateAttributesResponse
-      '401':
-        application/vnd.api+json: CustomBaseImagesUpdateAttributes401Response
-      '403':
-        application/vnd.api+json: CustomBaseImagesUpdateAttributes403Response
-      '404':
-        application/vnd.api+json: CustomBaseImagesUpdateAttributes404Response
-      '500':
-        application/vnd.api+json: CustomBaseImagesUpdateAttributes500Response
   /groups/{group_id}/apps/installs:
     get:
       '200':
@@ -314,7 +259,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsRevokeGroupAppInstall401Response
       '403':
-        application/vnd.api+json: AppsRevokeGroupAppInstallResponse
+        application/vnd.api+json: AppsRevokeGroupAppInstall403Response
       '404':
         application/vnd.api+json: AppsRevokeGroupAppInstall404Response
       '409':
@@ -341,16 +286,6 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: AuditLogsSearchGroupAuditLogsResponse
-      '400':
-        application/vnd.api+json: AuditLogsSearchGroupAuditLogs400Response
-      '401':
-        application/vnd.api+json: AuditLogsSearchGroupAuditLogs401Response
-      '403':
-        application/vnd.api+json: AuditLogsSearchGroupAuditLogs403Response
-      '404':
-        application/vnd.api+json: AuditLogsSearchGroupAuditLogs404Response
-      '500':
-        application/vnd.api+json: AuditLogsSearchGroupAuditLogs500Response
   /groups/{group_id}/issues:
     get:
       '200':
@@ -383,106 +318,27 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: ServiceAccountsListGroupServiceAccountsResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsListGroupServiceAccounts400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsListGroupServiceAccounts401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsListGroupServiceAccounts403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsListGroupServiceAccounts404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsListGroupServiceAccounts500Response
     post:
       '201':
         application/vnd.api+json: ServiceAccountsCreateGroupResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsCreateGroup400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsCreateGroup401Response
-      '404':
-        application/vnd.api+json: ServiceAccountsCreateGroup404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsCreateGroup500Response
   /groups/{group_id}/service_accounts/{serviceaccount_id}:
-    delete:
-      '400':
-        application/vnd.api+json: ServiceAccountsDeleteGroupServiceAccountResponse
-      '401':
-        application/vnd.api+json: ServiceAccountsDeleteGroupServiceAccount401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsDeleteGroupServiceAccount403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsDeleteGroupServiceAccount404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsDeleteGroupServiceAccount500Response
     get:
       '200':
         application/vnd.api+json: ServiceAccountsGetGroupServiceAccountResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsGetGroupServiceAccount400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsGetGroupServiceAccount401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsGetGroupServiceAccount403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsGetGroupServiceAccount404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsGetGroupServiceAccount500Response
     patch:
       '200':
         application/vnd.api+json: ServiceAccountsUpdateGroupNameByIdResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsUpdateGroupNameById400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsUpdateGroupNameById401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsUpdateGroupNameById403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsUpdateGroupNameById404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsUpdateGroupNameById500Response
   /groups/{group_id}/service_accounts/{serviceaccount_id}/secrets:
     post:
       '200':
         application/vnd.api+json: ServiceAccountsManageClientSecretResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsManageClientSecret400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsManageClientSecret401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsManageClientSecret403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsManageClientSecret404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsManageClientSecret500Response
   /groups/{group_id}/settings/iac:
     get:
       '200':
         application/vnd.api+json: IacSettingsGetForGroupResponse
-      '400':
-        application/vnd.api+json: IacSettingsGetForGroup400Response
-      '401':
-        application/vnd.api+json: IacSettingsGetForGroup401Response
-      '403':
-        application/vnd.api+json: IacSettingsGetForGroup403Response
-      '404':
-        application/vnd.api+json: IacSettingsGetForGroup404Response
-      '500':
-        application/vnd.api+json: IacSettingsGetForGroup500Response
     patch:
       '200':
         application/vnd.api+json: IacSettingsUpdateForGroupResponse
-      '400':
-        application/vnd.api+json: IacSettingsUpdateForGroup400Response
-      '401':
-        application/vnd.api+json: IacSettingsUpdateForGroup401Response
-      '403':
-        application/vnd.api+json: IacSettingsUpdateForGroup403Response
-      '404':
-        application/vnd.api+json: IacSettingsUpdateForGroup404Response
-      '500':
-        application/vnd.api+json: IacSettingsUpdateForGroup500Response
   /openapi:
     get:
       '200':
@@ -495,47 +351,13 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: OrgsListAccessibleOrganizationsResponse
-      '400':
-        application/vnd.api+json: OrgsListAccessibleOrganizations400Response
-      '401':
-        application/vnd.api+json: OrgsListAccessibleOrganizations401Response
-      '403':
-        application/vnd.api+json: OrgsListAccessibleOrganizations403Response
-      '404':
-        application/vnd.api+json: OrgsListAccessibleOrganizations404Response
-      '500':
-        application/vnd.api+json: OrgsListAccessibleOrganizations500Response
   /orgs/{org_id}:
     get:
       '200':
         application/vnd.api+json: OrgsGetDetailsResponse
-      '400':
-        application/vnd.api+json: OrgsGetDetails400Response
-      '401':
-        application/vnd.api+json: OrgsGetDetails401Response
-      '403':
-        application/vnd.api+json: OrgsGetDetails403Response
-      '404':
-        application/vnd.api+json: OrgsGetDetails404Response
-      '409':
-        application/vnd.api+json: OrgsGetDetails409Response
-      '500':
-        application/vnd.api+json: OrgsGetDetails500Response
     patch:
       '200':
         application/vnd.api+json: OrgsUpdateDetailsResponse
-      '400':
-        application/vnd.api+json: OrgsUpdateDetails400Response
-      '401':
-        application/vnd.api+json: OrgsUpdateDetails401Response
-      '403':
-        application/vnd.api+json: OrgsUpdateDetails403Response
-      '404':
-        application/vnd.api+json: OrgsUpdateDetails404Response
-      '409':
-        application/vnd.api+json: OrgsUpdateDetails409Response
-      '500':
-        application/vnd.api+json: OrgsUpdateDetails500Response
   /orgs/{org_id}/app_bots:
     get:
       '200':
@@ -559,7 +381,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsRevokeBotAuthorization401Response
       '403':
-        application/vnd.api+json: AppsRevokeBotAuthorizationResponse
+        application/vnd.api+json: AppsRevokeBotAuthorization403Response
       '404':
         application/vnd.api+json: AppsRevokeBotAuthorization404Response
       '409':
@@ -588,7 +410,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsCreateOrganizationApp401Response
       '403':
-        application/vnd.api+json: AppsCreateOrganizationAppResponse
+        application/vnd.api+json: AppsCreateOrganizationApp403Response
       '404':
         application/vnd.api+json: AppsCreateOrganizationApp404Response
       '409':
@@ -617,7 +439,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsCreateNewAppForOrganization401Response
       '403':
-        application/vnd.api+json: AppsCreateNewAppForOrganizationResponse
+        application/vnd.api+json: AppsCreateNewAppForOrganization403Response
       '404':
         application/vnd.api+json: AppsCreateNewAppForOrganization404Response
       '409':
@@ -631,7 +453,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsDeleteByAppId401Response
       '403':
-        application/vnd.api+json: AppsDeleteByAppIdResponse
+        application/vnd.api+json: AppsDeleteByAppId403Response
       '404':
         application/vnd.api+json: AppsDeleteByAppId404Response
       '409':
@@ -722,7 +544,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsByInstallId401Response
       '403':
-        application/vnd.api+json: AppsByInstallIdResponse
+        application/vnd.api+json: AppsByInstallId403Response
       '404':
         application/vnd.api+json: AppsByInstallId404Response
       '409':
@@ -738,7 +560,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsManageClientSecretForSnykApp401Response
       '403':
-        application/vnd.api+json: AppsManageClientSecretForSnykApp403Response1
+        application/vnd.api+json: AppsManageClientSecretForSnykApp403Response
       '404':
         application/vnd.api+json: AppsManageClientSecretForSnykApp404Response
       '409':
@@ -752,7 +574,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsDeleteAppById401Response
       '403':
-        application/vnd.api+json: AppsDeleteAppByIdResponse
+        application/vnd.api+json: AppsDeleteAppById403Response
       '404':
         application/vnd.api+json: AppsDeleteAppById404Response
       '409':
@@ -809,214 +631,39 @@ responseSchemaNames:
     get:
       '200':
         application/vnd.api+json: AuditLogsSearchOrganizationAuditLogsResponse
-      '400':
-        application/vnd.api+json: AuditLogsSearchOrganizationAuditLogs400Response
-      '401':
-        application/vnd.api+json: AuditLogsSearchOrganizationAuditLogs401Response
-      '403':
-        application/vnd.api+json: AuditLogsSearchOrganizationAuditLogs403Response
-      '404':
-        application/vnd.api+json: AuditLogsSearchOrganizationAuditLogs404Response
-      '500':
-        application/vnd.api+json: AuditLogsSearchOrganizationAuditLogs500Response
   /orgs/{org_id}/collections:
     get:
       '200':
         application/vnd.api+json: CollectionGetListResponse
-      '400':
-        application/vnd.api+json: CollectionGetList400Response
-      '401':
-        application/vnd.api+json: CollectionGetList401Response
-      '403':
-        application/vnd.api+json: CollectionGetList403Response
-      '404':
-        application/vnd.api+json: CollectionGetList404Response
-      '500':
-        application/vnd.api+json: CollectionGetList500Response
     post:
       '201':
         application/vnd.api+json: CollectionCreateNewResponse
-      '400':
-        application/vnd.api+json: CollectionCreateNew400Response
-      '401':
-        application/vnd.api+json: CollectionCreateNew401Response
-      '403':
-        application/vnd.api+json: CollectionCreateNew403Response
-      '404':
-        application/vnd.api+json: CollectionCreateNew404Response
-      '409':
-        application/vnd.api+json: CollectionCreateNew409Response
-      '500':
-        application/vnd.api+json: CollectionCreateNew500Response
   /orgs/{org_id}/collections/{collection_id}:
-    delete:
-      '400':
-        application/vnd.api+json: CollectionRemoveByIdResponse
-      '401':
-        application/vnd.api+json: CollectionRemoveById401Response
-      '403':
-        application/vnd.api+json: CollectionRemoveById403Response
-      '404':
-        application/vnd.api+json: CollectionRemoveById404Response
-      '409':
-        application/vnd.api+json: CollectionRemoveById409Response
-      '500':
-        application/vnd.api+json: CollectionRemoveById500Response
     get:
       '200':
         application/vnd.api+json: CollectionGetByIdResponse
-      '400':
-        application/vnd.api+json: CollectionGetById400Response
-      '401':
-        application/vnd.api+json: CollectionGetById401Response
-      '403':
-        application/vnd.api+json: CollectionGetById403Response
-      '404':
-        application/vnd.api+json: CollectionGetById404Response
-      '409':
-        application/vnd.api+json: CollectionGetById409Response
-      '500':
-        application/vnd.api+json: CollectionGetById500Response
     patch:
       '200':
         application/vnd.api+json: CollectionEditCollectionResponse
-      '400':
-        application/vnd.api+json: CollectionEditCollection400Response
-      '401':
-        application/vnd.api+json: CollectionEditCollection401Response
-      '403':
-        application/vnd.api+json: CollectionEditCollection403Response
-      '404':
-        application/vnd.api+json: CollectionEditCollection404Response
-      '409':
-        application/vnd.api+json: CollectionEditCollection409Response
-      '500':
-        application/vnd.api+json: CollectionEditCollection500Response
-  /orgs/{org_id}/collections/{collection_id}/relationships/projects:
-    delete:
-      '400':
-        application/vnd.api+json: CollectionRemoveProjectsResponse
-      '401':
-        application/vnd.api+json: CollectionRemoveProjects401Response
-      '403':
-        application/vnd.api+json: CollectionRemoveProjects403Response
-      '404':
-        application/vnd.api+json: CollectionRemoveProjects404Response
-      '409':
-        application/vnd.api+json: CollectionRemoveProjects409Response
-      '500':
-        application/vnd.api+json: CollectionRemoveProjects500Response
-    get:
-      '400':
-        application/vnd.api+json: CollectionGetProjectsResponse
-      '401':
-        application/vnd.api+json: CollectionGetProjects401Response
-      '403':
-        application/vnd.api+json: CollectionGetProjects403Response
-      '404':
-        application/vnd.api+json: CollectionGetProjects404Response
-      '500':
-        application/vnd.api+json: CollectionGetProjects500Response
-    post:
-      '400':
-        application/vnd.api+json: CollectionAddProjectsToResponse
-      '401':
-        application/vnd.api+json: CollectionAddProjectsTo401Response
-      '403':
-        application/vnd.api+json: CollectionAddProjectsTo403Response
-      '404':
-        application/vnd.api+json: CollectionAddProjectsTo404Response
-      '409':
-        application/vnd.api+json: CollectionAddProjectsTo409Response
-      '500':
-        application/vnd.api+json: CollectionAddProjectsTo500Response
   /orgs/{org_id}/container_images:
     get:
       '200':
         application/vnd.api+json: ContainerImageListInstancesOfContainerImageResponse
-      '400':
-        application/vnd.api+json: ContainerImageListInstancesOfContainerImage400Response
-      '401':
-        application/vnd.api+json: ContainerImageListInstancesOfContainerImage401Response
-      '403':
-        application/vnd.api+json: ContainerImageListInstancesOfContainerImage403Response
-      '404':
-        application/vnd.api+json: ContainerImageListInstancesOfContainerImage404Response
-      '409':
-        application/vnd.api+json: ContainerImageListInstancesOfContainerImage409Response
-      '500':
-        application/vnd.api+json: ContainerImageListInstancesOfContainerImage500Response
   /orgs/{org_id}/container_images/{image_id}:
     get:
       '200':
         application/vnd.api+json: ContainerImageGetInstanceResponse
-      '400':
-        application/vnd.api+json: ContainerImageGetInstance400Response
-      '401':
-        application/vnd.api+json: ContainerImageGetInstance401Response
-      '403':
-        application/vnd.api+json: ContainerImageGetInstance403Response
-      '404':
-        application/vnd.api+json: ContainerImageGetInstance404Response
-      '409':
-        application/vnd.api+json: ContainerImageGetInstance409Response
-      '500':
-        application/vnd.api+json: ContainerImageGetInstance500Response
   /orgs/{org_id}/container_images/{image_id}/relationships/image_target_refs:
     get:
       '200':
         application/vnd.api+json: ContainerImageListImageTargetRefsResponse
-      '400':
-        application/vnd.api+json: ContainerImageListImageTargetRefs400Response
-      '401':
-        application/vnd.api+json: ContainerImageListImageTargetRefs401Response
-      '403':
-        application/vnd.api+json: ContainerImageListImageTargetRefs403Response
-      '404':
-        application/vnd.api+json: ContainerImageListImageTargetRefs404Response
-      '409':
-        application/vnd.api+json: ContainerImageListImageTargetRefs409Response
-      '500':
-        application/vnd.api+json: ContainerImageListImageTargetRefs500Response
   /orgs/{org_id}/invites:
     get:
       '200':
         application/vnd.api+json: InvitesListPendingUserInvitationsResponse
-      '400':
-        application/vnd.api+json: InvitesListPendingUserInvitations400Response
-      '401':
-        application/vnd.api+json: InvitesListPendingUserInvitations401Response
-      '403':
-        application/vnd.api+json: InvitesListPendingUserInvitations403Response
-      '404':
-        application/vnd.api+json: InvitesListPendingUserInvitations404Response
-      '500':
-        application/vnd.api+json: InvitesListPendingUserInvitations500Response
     post:
       '201':
         application/vnd.api+json: InvitesUserToOrganizationResponse
-      '400':
-        application/vnd.api+json: InvitesUserToOrganization400Response
-      '401':
-        application/vnd.api+json: InvitesUserToOrganization401Response
-      '403':
-        application/vnd.api+json: InvitesUserToOrganization403Response
-      '404':
-        application/vnd.api+json: InvitesUserToOrganization404Response
-      '500':
-        application/vnd.api+json: InvitesUserToOrganization500Response
-  /orgs/{org_id}/invites/{invite_id}:
-    delete:
-      '400':
-        application/vnd.api+json: InvitesCancelPendingInvitationResponse
-      '401':
-        application/vnd.api+json: InvitesCancelPendingInvitation401Response
-      '403':
-        application/vnd.api+json: InvitesCancelPendingInvitation403Response
-      '404':
-        application/vnd.api+json: InvitesCancelPendingInvitation404Response
-      '500':
-        application/vnd.api+json: InvitesCancelPendingInvitation500Response
   /orgs/{org_id}/issues:
     get:
       '401':
@@ -1041,370 +688,71 @@ responseSchemaNames:
         application/vnd.api+json: IssuesGetById409Response
       '500':
         application/vnd.api+json: IssuesGetById500Response
-  /orgs/{org_id}/packages/issues:
-    post:
-      '400':
-        application/vnd.api+json: IssuesQueryForPackagesResponse
-      '401':
-        application/vnd.api+json: IssuesQueryForPackages401Response
-      '403':
-        application/vnd.api+json: IssuesQueryForPackages403Response
-      '404':
-        application/vnd.api+json: IssuesQueryForPackages404Response
-      '409':
-        application/vnd.api+json: IssuesQueryForPackages409Response
-      '500':
-        application/vnd.api+json: IssuesQueryForPackages500Response
-  /orgs/{org_id}/packages/{purl}/issues:
-    get:
-      '400':
-        application/vnd.api+json: IssuesListByPackageResponse
-      '401':
-        application/vnd.api+json: IssuesListByPackage401Response
-      '403':
-        application/vnd.api+json: IssuesListByPackage403Response
-      '404':
-        application/vnd.api+json: IssuesListByPackage404Response
-      '409':
-        application/vnd.api+json: IssuesListByPackage409Response
-      '500':
-        application/vnd.api+json: IssuesListByPackage500Response
   /orgs/{org_id}/projects:
     get:
       '200':
         application/vnd.api+json: ProjectsListForOrgResponse
-      '400':
-        application/vnd.api+json: ProjectsListForOrg400Response
-      '401':
-        application/vnd.api+json: ProjectsListForOrg401Response
-      '403':
-        application/vnd.api+json: ProjectsListForOrg403Response
-      '404':
-        application/vnd.api+json: ProjectsListForOrg404Response
-      '500':
-        application/vnd.api+json: ProjectsListForOrg500Response
   /orgs/{org_id}/projects/{project_id}:
-    delete:
-      '400':
-        application/vnd.api+json: ProjectsDeleteByProjectIdResponse
-      '401':
-        application/vnd.api+json: ProjectsDeleteByProjectId401Response
-      '403':
-        application/vnd.api+json: ProjectsDeleteByProjectId403Response
-      '404':
-        application/vnd.api+json: ProjectsDeleteByProjectId404Response
-      '500':
-        application/vnd.api+json: ProjectsDeleteByProjectId500Response
     get:
       '200':
         application/vnd.api+json: ProjectsGetByProjectIdResponse
-      '400':
-        application/vnd.api+json: ProjectsGetByProjectId400Response
-      '401':
-        application/vnd.api+json: ProjectsGetByProjectId401Response
-      '403':
-        application/vnd.api+json: ProjectsGetByProjectId403Response
-      '404':
-        application/vnd.api+json: ProjectsGetByProjectId404Response
-      '500':
-        application/vnd.api+json: ProjectsGetByProjectId500Response
     patch:
       '200':
         application/vnd.api+json: ProjectsUpdateByProjectIdResponse
-      '400':
-        application/vnd.api+json: ProjectsUpdateByProjectId400Response
-      '401':
-        application/vnd.api+json: ProjectsUpdateByProjectId401Response
-      '403':
-        application/vnd.api+json: ProjectsUpdateByProjectId403Response
-      '404':
-        application/vnd.api+json: ProjectsUpdateByProjectId404Response
-      '500':
-        application/vnd.api+json: ProjectsUpdateByProjectId500Response
-  /orgs/{org_id}/projects/{project_id}/sbom:
-    get:
-      '400':
-        application/vnd.api+json: SbomGetProjectDocumentResponse
-      '401':
-        application/vnd.api+json: SbomGetProjectDocument401Response
-      '403':
-        application/vnd.api+json: SbomGetProjectDocument403Response
-      '404':
-        application/vnd.api+json: SbomGetProjectDocument404Response
-      '409':
-        application/vnd.api+json: SbomGetProjectDocument409Response
-      '500':
-        application/vnd.api+json: SbomGetProjectDocument500Response
   /orgs/{org_id}/service_accounts:
     get:
       '200':
         application/vnd.api+json: ServiceAccountsListOrganizationServiceAccountsResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsListOrganizationServiceAccounts400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsListOrganizationServiceAccounts401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsListOrganizationServiceAccounts403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsListOrganizationServiceAccounts404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsListOrganizationServiceAccounts500Response
     post:
       '201':
         application/vnd.api+json: ServiceAccountsCreateForOrganizationResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsCreateForOrganization400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsCreateForOrganization401Response
-      '404':
-        application/vnd.api+json: ServiceAccountsCreateForOrganization404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsCreateForOrganization500Response
   /orgs/{org_id}/service_accounts/{serviceaccount_id}:
-    delete:
-      '400':
-        application/vnd.api+json: ServiceAccountsDeleteOrgServiceAccountResponse
-      '401':
-        application/vnd.api+json: ServiceAccountsDeleteOrgServiceAccount401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsDeleteOrgServiceAccount403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsDeleteOrgServiceAccount404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsDeleteOrgServiceAccount500Response
     get:
       '200':
         application/vnd.api+json: ServiceAccountsGetOrganizationAccountByIdResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsGetOrganizationAccountById400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsGetOrganizationAccountById401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsGetOrganizationAccountById403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsGetOrganizationAccountById404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsGetOrganizationAccountById500Response
     patch:
       '200':
         application/vnd.api+json: ServiceAccountsUpdateOrganizationServiceAccountNameResponse
-      '400':
-        application/vnd.api+json: ServiceAccountsUpdateOrganizationServiceAccountName400Response
-      '401':
-        application/vnd.api+json: ServiceAccountsUpdateOrganizationServiceAccountName401Response
-      '403':
-        application/vnd.api+json: ServiceAccountsUpdateOrganizationServiceAccountName403Response
-      '404':
-        application/vnd.api+json: ServiceAccountsUpdateOrganizationServiceAccountName404Response
-      '500':
-        application/vnd.api+json: ServiceAccountsUpdateOrganizationServiceAccountName500Response
   /orgs/{org_id}/service_accounts/{serviceaccount_id}/secrets:
     post:
       '200':
         application/vnd.api+json: ServiceAccountsManageClientSecretForOrganizationServiceAccountResponse
-      '400':
-        application/vnd.api+json: >-
-          ServiceAccountsManageClientSecretForOrganizationServiceAccount400Response
-      '401':
-        application/vnd.api+json: >-
-          ServiceAccountsManageClientSecretForOrganizationServiceAccount401Response
-      '403':
-        application/vnd.api+json: >-
-          ServiceAccountsManageClientSecretForOrganizationServiceAccount403Response
-      '404':
-        application/vnd.api+json: >-
-          ServiceAccountsManageClientSecretForOrganizationServiceAccount404Response
-      '500':
-        application/vnd.api+json: >-
-          ServiceAccountsManageClientSecretForOrganizationServiceAccount500Response
   /orgs/{org_id}/settings/iac:
     get:
       '200':
         application/vnd.api+json: IacSettingsGetForOrgIacResponse
-      '400':
-        application/vnd.api+json: IacSettingsGetForOrgIac400Response
-      '401':
-        application/vnd.api+json: IacSettingsGetForOrgIac401Response
-      '403':
-        application/vnd.api+json: IacSettingsGetForOrgIac403Response
-      '404':
-        application/vnd.api+json: IacSettingsGetForOrgIac404Response
-      '500':
-        application/vnd.api+json: IacSettingsGetForOrgIac500Response
     patch:
       '200':
         application/vnd.api+json: IacSettingsUpdateForOrgResponse
-      '400':
-        application/vnd.api+json: IacSettingsUpdateForOrg400Response
-      '401':
-        application/vnd.api+json: IacSettingsUpdateForOrg401Response
-      '403':
-        application/vnd.api+json: IacSettingsUpdateForOrg403Response
-      '404':
-        application/vnd.api+json: IacSettingsUpdateForOrg404Response
-      '500':
-        application/vnd.api+json: IacSettingsUpdateForOrg500Response
   /orgs/{org_id}/settings/sast:
     get:
       '200':
         application/vnd.api+json: SastSettingsGetForOrgResponse
-      '400':
-        application/vnd.api+json: SastSettingsGetForOrg400Response
-      '401':
-        application/vnd.api+json: SastSettingsGetForOrg401Response
-      '403':
-        application/vnd.api+json: SastSettingsGetForOrg403Response
-      '404':
-        application/vnd.api+json: SastSettingsGetForOrg404Response
-      '500':
-        application/vnd.api+json: SastSettingsGetForOrg500Response
     patch:
       '201':
         application/vnd.api+json: SastSettingsToggleSnykCodeSettingsResponse
-      '400':
-        application/vnd.api+json: SastSettingsToggleSnykCodeSettings400Response
-      '401':
-        application/vnd.api+json: SastSettingsToggleSnykCodeSettings401Response
-      '403':
-        application/vnd.api+json: SastSettingsToggleSnykCodeSettings403Response
-      '404':
-        application/vnd.api+json: SastSettingsToggleSnykCodeSettings404Response
-      '500':
-        application/vnd.api+json: SastSettingsToggleSnykCodeSettings500Response
   /orgs/{org_id}/slack_app/{bot_id}:
-    delete:
-      '400':
-        application/vnd.api+json: SlackSettingsRemoveIntegrationResponse
-      '401':
-        application/vnd.api+json: SlackSettingsRemoveIntegration401Response
-      '403':
-        application/vnd.api+json: SlackSettingsRemoveIntegration403Response
-      '404':
-        application/vnd.api+json: SlackSettingsRemoveIntegration404Response
-      '409':
-        application/vnd.api+json: SlackSettingsRemoveIntegration409Response
-      '500':
-        application/vnd.api+json: SlackSettingsRemoveIntegration500Response
     get:
       '200':
         application/vnd.api+json: SlackSettingsGetDefaultNotificationSettingsResponse
-      '400':
-        application/vnd.api+json: SlackSettingsGetDefaultNotificationSettings400Response
-      '401':
-        application/vnd.api+json: SlackSettingsGetDefaultNotificationSettings401Response
-      '403':
-        application/vnd.api+json: SlackSettingsGetDefaultNotificationSettings403Response
-      '404':
-        application/vnd.api+json: SlackSettingsGetDefaultNotificationSettings404Response
-      '409':
-        application/vnd.api+json: SlackSettingsGetDefaultNotificationSettings409Response
-      '500':
-        application/vnd.api+json: SlackSettingsGetDefaultNotificationSettings500Response
     post:
       '201':
         application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettingsResponse
-      '400':
-        application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettings400Response
-      '401':
-        application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettings401Response
-      '403':
-        application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettings403Response
-      '404':
-        application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettings404Response
-      '409':
-        application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettings409Response
-      '500':
-        application/vnd.api+json: SlackSettingsCreateDefaultNotificationSettings500Response
-  /orgs/{org_id}/slack_app/{bot_id}/projects:
-    get:
-      '400':
-        application/vnd.api+json: SlackSettingsGetOverridesForProjectsResponse
-      '401':
-        application/vnd.api+json: SlackSettingsGetOverridesForProjects401Response
-      '403':
-        application/vnd.api+json: SlackSettingsGetOverridesForProjects403Response
-      '404':
-        application/vnd.api+json: SlackSettingsGetOverridesForProjects404Response
-      '409':
-        application/vnd.api+json: SlackSettingsGetOverridesForProjects409Response
-      '500':
-        application/vnd.api+json: SlackSettingsGetOverridesForProjects500Response
   /orgs/{org_id}/slack_app/{bot_id}/projects/{project_id}:
-    delete:
-      '400':
-        application/vnd.api+json: SlackSettingsRemoveProjectOverrideResponse
-      '401':
-        application/vnd.api+json: SlackSettingsRemoveProjectOverride401Response
-      '403':
-        application/vnd.api+json: SlackSettingsRemoveProjectOverride403Response
-      '404':
-        application/vnd.api+json: SlackSettingsRemoveProjectOverride404Response
-      '409':
-        application/vnd.api+json: SlackSettingsRemoveProjectOverride409Response
-      '500':
-        application/vnd.api+json: SlackSettingsRemoveProjectOverride500Response
     patch:
       '200':
         application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProjectResponse
-      '400':
-        application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProject400Response
-      '401':
-        application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProject401Response
-      '403':
-        application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProject403Response
-      '404':
-        application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProject404Response
-      '409':
-        application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProject409Response
-      '500':
-        application/vnd.api+json: SlackSettingsUpdateNotificationSettingsForProject500Response
     post:
       '201':
         application/vnd.api+json: SlackSettingsProjectOverrideResponse
-      '400':
-        application/vnd.api+json: SlackSettingsProjectOverride400Response
-      '401':
-        application/vnd.api+json: SlackSettingsProjectOverride401Response
-      '403':
-        application/vnd.api+json: SlackSettingsProjectOverride403Response
-      '404':
-        application/vnd.api+json: SlackSettingsProjectOverride404Response
-      '409':
-        application/vnd.api+json: SlackSettingsProjectOverride409Response
-      '500':
-        application/vnd.api+json: SlackSettingsProjectOverride500Response
   /orgs/{org_id}/slack_app/{tenant_id}/channels:
     get:
       '200':
         application/vnd.api+json: SlackGetChannelsResponse
-      '400':
-        application/vnd.api+json: SlackGetChannels400Response
-      '401':
-        application/vnd.api+json: SlackGetChannels401Response
-      '403':
-        application/vnd.api+json: SlackGetChannels403Response
-      '404':
-        application/vnd.api+json: SlackGetChannels404Response
-      '409':
-        application/vnd.api+json: SlackGetChannels409Response
-      '500':
-        application/vnd.api+json: SlackGetChannels500Response
   /orgs/{org_id}/slack_app/{tenant_id}/channels/{channel_id}:
     get:
       '200':
         application/vnd.api+json: SlackGetChannelNameByIdResponse
-      '400':
-        application/vnd.api+json: SlackGetChannelNameById400Response
-      '401':
-        application/vnd.api+json: SlackGetChannelNameById401Response
-      '403':
-        application/vnd.api+json: SlackGetChannelNameById403Response
-      '404':
-        application/vnd.api+json: SlackGetChannelNameById404Response
-      '409':
-        application/vnd.api+json: SlackGetChannelNameById409Response
-      '500':
-        application/vnd.api+json: SlackGetChannelNameById500Response
   /orgs/{org_id}/targets:
     get:
       '200':
@@ -1452,7 +800,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsRevokeByInstallId401Response
       '403':
-        application/vnd.api+json: AppsRevokeByInstallIdResponse
+        application/vnd.api+json: AppsRevokeByInstallId403Response
       '404':
         application/vnd.api+json: AppsRevokeByInstallId404Response
       '409':
@@ -1466,7 +814,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsRevokeAppById401Response
       '403':
-        application/vnd.api+json: AppsRevokeAppByIdResponse
+        application/vnd.api+json: AppsRevokeAppById403Response
       '404':
         application/vnd.api+json: AppsRevokeAppById404Response
       '409':
@@ -1496,7 +844,7 @@ responseSchemaNames:
       '401':
         application/vnd.api+json: AppsRevokeUserAppSession401Response
       '403':
-        application/vnd.api+json: AppsRevokeUserAppSessionResponse
+        application/vnd.api+json: AppsRevokeUserAppSession403Response
       '404':
         application/vnd.api+json: AppsRevokeUserAppSession404Response
       '409':
