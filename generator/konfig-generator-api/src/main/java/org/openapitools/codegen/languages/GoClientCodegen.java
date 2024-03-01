@@ -164,6 +164,8 @@ public class GoClientCodegen extends AbstractGoCodegen {
     public void postProcessFile(File file, String fileType) {
         super.postProcessFile(file, fileType);
 
+        /**
+         * TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         // if "fileType" is "api-test":
         //  detect if os.NewFile is used and add "os" to list of imports
         if ("api-test".equals(fileType)) {
@@ -219,6 +221,7 @@ public class GoClientCodegen extends AbstractGoCodegen {
                 }
             }
         }
+         */
     }
 
     @Override
