@@ -241,7 +241,7 @@ func (c *Configuration) SetHost(host string) {
 
 {{#apiKeyMethods}}
 func (c *Configuration) Set{{nameInCamelCase}}({{nameInPascalCase}} string) {
-	c.AddAPIKey("{{name}}", APIKey{Key: {{nameInPascalCase}}})
+	c.AddAPIKey("{{name}}", APIKey{Key: {{nameInPascalCase}}{{#vendorExtensions.x-konfig-prefix}}, Prefix: "{{{.}}}"{{/vendorExtensions.x-konfig-prefix}}})
 }
 
 {{/apiKeyMethods}}

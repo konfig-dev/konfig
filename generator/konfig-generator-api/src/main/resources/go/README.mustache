@@ -1,3 +1,19 @@
+{{#readmeHeader}}
+<div align={{#leftAlignDescription}}"left"{{/leftAlignDescription}}{{^leftAlignDescription}}"center"{{/leftAlignDescription}}>
+
+[![Visit {{{title}}}](./header.png)]({{{url}}})
+
+# [{{{title}}}]({{{url}}})
+{{^omitInfoDescription}}
+
+{{{unescapedAppDescription}}}
+{{/omitInfoDescription}}
+
+{{> README_badges}}
+
+</div>
+{{/readmeHeader}}
+{{^readmeHeader}}
 # {{packageName}} - {{infoName}}'s Go SDK
 
 {{#appDescriptionWithNewLines}}
@@ -7,20 +23,27 @@
 {{#infoUrl}}
 For more information, please visit [{{{infoUrl}}}]({{{infoUrl}}})
 {{/infoUrl}}
+{{/readmeHeader}}
 
 ## Installation
 
 Add to your project:
 
 ```shell
-go get {{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}
+go get {{> git_url}}
 ```
 
 ## Getting Started
 
-```golang{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
+```golang
+{{#readmeSnippet}}
+{{{.}}}
+{{/readmeSnippet}}
+{{^readmeSnippet}}
+{{#apiInfo}}{{#apis}}{{#-first}}{{#operations}}{{#operation}}{{#-first}}
 {{> api_doc_example}}
 {{/-first}}{{/operation}}{{/operations}}{{/-first}}{{/apis}}{{/apiInfo}}
+{{/readmeSnippet}}
 ```
 
 ## Documentation for API Endpoints
