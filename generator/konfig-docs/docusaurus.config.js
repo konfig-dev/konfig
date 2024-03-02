@@ -158,6 +158,14 @@ async function createConfig() {
         "classic",
         /** @type {import('@docusaurus/preset-classic').Options} */
         ({
+          sitemap: {
+            ignorePatterns: [
+              "**/sdk-sign-up/",
+              "**/sales-demo/",
+              "**/search/",
+              "**/blog/archive/",
+            ],
+          },
           docs: {
             beforeDefaultRemarkPlugins: beforeRemarkPlugins,
             remarkPlugins: remarkPlugins,
