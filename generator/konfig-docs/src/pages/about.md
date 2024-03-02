@@ -33,7 +33,7 @@ We are a passionate team of 3 people.
   - Dylan built SDK & API tooling at C3.ai. Dylan is also an avid builder and
     once built a viral website with over 210,000 unique users
 - Eddie (Founding Engineer) [LinkedIn](https://www.linkedin.com/in/eddie-chayes)
-  - Eddie built a [next-gen SDK for data
-    scientists to explore data and deploy enterprise AI applications](https://developer.c3.ai/blog/data-science/enterprise-grade-pandas-interface-data-exploration-and-rapid-productionization) at C3.ai
+  - Eddie built a next-gen SDK for data
+    scientists to explore data and deploy enterprise AI applications at C3.ai
 
 </div>

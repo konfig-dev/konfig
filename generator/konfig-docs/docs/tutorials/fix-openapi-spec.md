@@ -2,7 +2,7 @@
 
 To generate your first set of high quality SDKs you need to pass [Konfig's
 Linter](/docs/tutorials/setup-linting/). But manually updating your OAS is tedious. Use [konfig
-fix](https://github.com/konfig-dev/konfig-cli#konfig-fix) to expedite the process. Today `konfig fix` will:
+fix](https://www.npmjs.com/package/konfig-cli#konfig-fix) to expedite the process. Today `konfig fix` will:
 
 - Add [missing global tags](https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules#operation-tag-defined)
 - Add [missing OpenAPI object info description](https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules#info-description)
