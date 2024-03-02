@@ -572,6 +572,8 @@ function Sidebar({
           <SidebarSectionTitle>API Title</SidebarSectionTitle>
           <SidebarSectionContent>{apiTitle}</SidebarSectionContent>
         </SidebarSection>
+        {/*
+        Commented because this would often be a broken external link which hurts SEO
         <SidebarSection>
           <SidebarSectionTitle>API Base URL</SidebarSectionTitle>
           <SidebarSectionContent className="whitespace-nowrap max-w-xs overflow-x-scroll">
@@ -579,7 +581,7 @@ function Sidebar({
               {apiBaseUrl}
             </a>
           </SidebarSectionContent>
-        </SidebarSection>
+        </SidebarSection> */}
         {apiVersion && (
           <SidebarSection>
             <SidebarSectionTitle>API Version</SidebarSectionTitle>
