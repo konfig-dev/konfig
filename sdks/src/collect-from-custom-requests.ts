@@ -280,6 +280,16 @@ const customRequests: Record<string, CustomRequest> = {
       );
     },
   },
+  "spotify.com_1.0.0": {
+    lambda: async () => {
+      const response = await fetch(
+        "https://developer.spotify.com/_data/documentation/web-api/reference/open-api-schema.yml"
+      );
+      let rawSpecString = await response.text();
+      rawSpecString = rawSpecString.replaceAll("$ref: '../policies.yaml'", "");
+      return rawSpecString;
+    },
+  },
 };
 
 export async function collectFromCustomRequests(): Promise<Db> {

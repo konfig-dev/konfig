@@ -218,6 +218,14 @@ responseSchemaNames:
         application/json: AlbumsListSeveral403Response
       '429':
         application/json: AlbumsListSeveral429Response
+  /albums/{id}:
+    get:
+      '401':
+        application/json: AlbumsGetInformationResponse
+      '403':
+        application/json: AlbumsGetInformation403Response
+      '429':
+        application/json: AlbumsGetInformation429Response
   /artists:
     get:
       '200':
@@ -264,6 +272,10 @@ responseSchemaNames:
     get:
       '200':
         application/json: AlbumsCheckSavedResponse
+  /me/audiobooks/contains:
+    get:
+      '200':
+        application/json: AudiobooksCheckUserSavedResponse
   /me/following:
     get:
       '200':
