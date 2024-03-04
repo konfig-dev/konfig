@@ -38,6 +38,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   path: string
   oauthTokenUrl: string | null
   requestBodyParameter: Parameter | null
+  metaDescription: string
   pathParameters: Parameter[]
   queryParameters: Parameter[]
   hideNonSdkSnippets: boolean
@@ -278,10 +279,18 @@ export async function generatePropsForReferencePage({
     })
   ).allMarkdown
 
+  const title = props.konfigYaml.portal.title
+  const metaDescription =
+    operation.operation.description ??
+    `API Explorer and documentation and for constructing a ${operation.method.toUpperCase()} request to "${
+      operation.path
+    }" at ${title}'s API`
+
   return {
     props: {
       ...props,
       title: props.konfigYaml.portal.title,
+      metaDescription,
       contentType,
       hideNonSdkSnippets: props.konfigYaml.portal.hideNonSdkSnippets ?? false,
       httpMethod: operation.method,

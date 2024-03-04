@@ -25,9 +25,11 @@ export function extractMetaDescription({
   const mdast = processor.parse(markdown)
 
   // filter for all paragraphs
-  const node = mdast.children.filter(({ type }) => type === 'paragraph')
+  const node = mdast
 
   const textContent = toString(node)
+
+  console.log(textContent)
 
   const truncated = textContent.slice(0, 160)
   const lastPeriod = truncated.lastIndexOf('.')

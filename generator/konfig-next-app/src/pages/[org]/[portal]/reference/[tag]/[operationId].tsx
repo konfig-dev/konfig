@@ -90,6 +90,7 @@ const Operation = ({
   responses,
   allMarkdown,
   logo,
+  metaDescription,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
@@ -103,6 +104,8 @@ const Operation = ({
 
   const [opened, setOpened] = useState(false)
   const navbarClasses = useNavbarStyles()
+  const metaTitle =
+    operation.operation.summary ?? `${operation.method} ${operation.path}`
   return (
     <MantineProvider
       inherit
@@ -115,100 +118,99 @@ const Operation = ({
         primaryColor: 'brand',
       }}
     >
-      <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId}>
-        <Head>
-          <title>
-            {operation.operation.summary ??
-              `${operation.method} ${operation.path}`}
-          </title>
-          {faviconLink ? (
-            <link rel="icon" href={faviconLink} />
-          ) : (
-            <link rel="icon" href="/favicon.png" />
-          )}
-        </Head>
-        <Script
-          src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}
-        />
-        <AppShell
-          styles={{
-            main: {
-              background: colorScheme === 'dark' ? colors.dark[8] : undefined,
-            },
-          }}
-          navbarOffsetBreakpoint="lg"
-          asideOffsetBreakpoint="lg"
-          navbar={
-            <Navbar
-              className={navbarClasses.classes.navbar}
-              hiddenBreakpoint="lg"
-              hidden={!opened}
-              width={{ lg: NAVBAR_WIDTH }}
-              sx={{
-                height:
-                  'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
-              }}
-            >
-              <ScrollArea>
-                <ReferenceNavbar
-                  setOauthTokenUrl={setOauthTokenUrl}
-                  oauthTokenUrls={oauthTokenUrls}
-                  originalOauthTokenUrl={originalOauthTokenUrl}
-                  setOauthTokenUrls={setOauthTokenUrls}
-                  servers={servers}
-                  setServers={setServers}
-                  owner={owner}
-                  repo={repo}
-                  basePath={basePath}
-                  setBasePath={setBasePath}
-                  oauthTokenUrl={oauthTokenUrl}
-                  setOpened={setOpened}
-                  navbarData={navbarData}
-                  originalServers={initialServers}
-                />
-              </ScrollArea>
-            </Navbar>
-          }
-          header={
-            <ReferenceHeader
-              owner={owner}
-              repo={repo}
-              hasDocumentation={hasDocumentation}
-              allMarkdown={allMarkdown}
-              opened={opened}
-              setOpened={setOpened}
-              title={title}
-              demos={demos}
-              logo={logo}
-              omitOwnerAndRepo={omitOwnerAndRepo}
-            />
-          }
-        >
-          <OperationReferenceMain
-            path={path}
-            requestBodyParameter={requestBodyParameter}
-            hideNonSdkSnippets={hideNonSdkSnippets}
-            originalOauthTokenUrl={originalOauthTokenUrl}
-            contentType={contentType}
+      <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId} />
+      <Head>
+        <title>{metaTitle}</title>
+        <meta property="og:title" content={metaTitle} />
+        <meta name="description" content={metaDescription} />
+        <meta property="og:description" content={metaDescription} />
+        {faviconLink ? (
+          <link rel="icon" href={faviconLink} />
+        ) : (
+          <link rel="icon" href="/favicon.png" />
+        )}
+      </Head>
+      <Script
+        src={`https://unpkg.com/${konfigYaml.generators.typescript?.npmName}@${konfigYaml.generators.typescript?.version}/dist/browser.js`}
+      />
+      <AppShell
+        styles={{
+          main: {
+            background: colorScheme === 'dark' ? colors.dark[8] : undefined,
+          },
+        }}
+        navbarOffsetBreakpoint="lg"
+        asideOffsetBreakpoint="lg"
+        navbar={
+          <Navbar
+            className={navbarClasses.classes.navbar}
+            hiddenBreakpoint="lg"
+            hidden={!opened}
+            width={{ lg: NAVBAR_WIDTH }}
+            sx={{
+              height:
+                'calc(100% - var(--mantine-header-height, 0rem) - var(--mantine-footer-height, 0rem));',
+            }}
+          >
+            <ScrollArea>
+              <ReferenceNavbar
+                setOauthTokenUrl={setOauthTokenUrl}
+                oauthTokenUrls={oauthTokenUrls}
+                originalOauthTokenUrl={originalOauthTokenUrl}
+                setOauthTokenUrls={setOauthTokenUrls}
+                servers={servers}
+                setServers={setServers}
+                owner={owner}
+                repo={repo}
+                basePath={basePath}
+                setBasePath={setBasePath}
+                oauthTokenUrl={oauthTokenUrl}
+                setOpened={setOpened}
+                navbarData={navbarData}
+                originalServers={initialServers}
+              />
+            </ScrollArea>
+          </Navbar>
+        }
+        header={
+          <ReferenceHeader
             owner={owner}
-            servers={servers}
             repo={repo}
-            konfigYaml={konfigYaml}
-            oauthTokenUrl={oauthTokenUrl}
-            pathParameters={pathParameters}
-            queryParameters={queryParameters}
-            headerParameters={headerParameters}
-            cookieParameters={cookieParameters}
-            requestBodyProperties={requestBodyProperties}
-            requestBodyRequired={requestBodyRequired}
-            responses={responses}
-            securitySchemes={securitySchemes}
-            operation={operation}
-            httpMethod={httpMethod}
-            basePath={basePath ?? servers[0]}
+            hasDocumentation={hasDocumentation}
+            allMarkdown={allMarkdown}
+            opened={opened}
+            setOpened={setOpened}
+            title={title}
+            demos={demos}
+            logo={logo}
+            omitOwnerAndRepo={omitOwnerAndRepo}
           />
-        </AppShell>
-      </GoogleAnalyticsProvider>
+        }
+      >
+        <OperationReferenceMain
+          path={path}
+          requestBodyParameter={requestBodyParameter}
+          hideNonSdkSnippets={hideNonSdkSnippets}
+          originalOauthTokenUrl={originalOauthTokenUrl}
+          contentType={contentType}
+          owner={owner}
+          servers={servers}
+          repo={repo}
+          konfigYaml={konfigYaml}
+          oauthTokenUrl={oauthTokenUrl}
+          pathParameters={pathParameters}
+          queryParameters={queryParameters}
+          headerParameters={headerParameters}
+          cookieParameters={cookieParameters}
+          requestBodyProperties={requestBodyProperties}
+          requestBodyRequired={requestBodyRequired}
+          responses={responses}
+          securitySchemes={securitySchemes}
+          operation={operation}
+          httpMethod={httpMethod}
+          basePath={basePath ?? servers[0]}
+        />
+      </AppShell>
     </MantineProvider>
   )
 }

@@ -10,6 +10,7 @@ import { generateLogoLink } from './generate-logo-link'
 import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
+import { extractMetaDescription } from './extract-meta-description'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -92,6 +93,7 @@ export async function generateDemosDataFromGithub({
       allMarkdown: MarkdownPageProps['allMarkdown']
       faviconLink: string | null
       logo: ReturnType<typeof generateLogoLink>
+      metaDescription: string
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -110,11 +112,14 @@ export async function generateDemosDataFromGithub({
   }
   if (demo === undefined) return { result: 'error', reason: 'demo not found' }
 
+  const metaDescription = extractMetaDescription({ markdown: demo.markdown })
+
   return {
     result: 'success',
     ...(socials ? { socials } : {}),
     mainBranch,
     organization,
+    metaDescription,
     portal,
     googleAnalyticsId: fetchResult.googleAnalyticsId,
     demo,
