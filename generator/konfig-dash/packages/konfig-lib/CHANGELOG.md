@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.9
+
+### Patch Changes
+
+- [#609](https://github.com/konfig-dev/konfig/pull/609) [`290152bc`](https://github.com/konfig-dev/konfig/commit/290152bc140131c465ac82ce6e6ac34973851df8) Thanks [@dphuang2](https://github.com/dphuang2)! - Handle upper-case "in" property for security schemes in "konfig fix"
+
 ## 1.36.8
 
 ### Patch Changes
