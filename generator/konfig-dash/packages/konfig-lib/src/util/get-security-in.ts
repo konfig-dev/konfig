@@ -15,5 +15,5 @@ export function getSecurityIn({
     security.type === 'oauth2'
   )
     return 'header'
-  return securitySchemeInSchema.parse(security.in)
+  return securitySchemeInSchema.parse(security.in.toLowerCase())
 }

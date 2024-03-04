@@ -1,0 +1,955 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /archive_files:
+    get: Archiving_meetingFilesList
+  /archive_files/statistics:
+    get: Archiving_getStatistics
+  /archive_files/{fileId}:
+    patch: Archiving_updateAutoDeleteStatus
+  /devices:
+    get: Devices_list
+    post: Devices_createNewDevice
+  /devices/{deviceId}:
+    delete: Devices_removeDeviceZMD
+    get: Devices_getDetail
+    patch: Devices_updateDeviceName
+  /devices/{deviceId}/assignment:
+    patch: Devices_changeDeviceAssociation
+  /h323/devices:
+    get: H323Devices_listDevices
+    post: H323Devices_createDevice
+  /h323/devices/{deviceId}:
+    delete: H323Devices_deleteDevice
+    patch: H323Devices_updateDeviceInfo
+  /live_meetings/{meetingId}/chat/messages/{messageId}:
+    delete: Meetings_deleteMeetingChatMessage
+    patch: Meetings_updateMessage
+  /live_meetings/{meetingId}/events:
+    patch: Meetings_controlInMeetingFeatures
+  /live_webinars/{webinarId}/chat/messages/{messageId}:
+    delete: Webinars_deleteMessageById
+  /meetings/meeting_summaries:
+    get: Meetings_listMeetingSummaries
+  /meetings/{meetingId}:
+    delete: Meetings_removeMeeting
+    get: Meetings_getDetails
+    patch: Meetings_updateDetails
+  /meetings/{meetingId}/batch_polls:
+    post: Meetings_createBatchPolls
+  /meetings/{meetingId}/batch_registrants:
+    post: Meetings_batchRegistrantsCreate
+  /meetings/{meetingId}/invitation:
+    get: Meetings_getInvitationNote
+  /meetings/{meetingId}/invite_links:
+    post: Meetings_createInviteLinks
+  /meetings/{meetingId}/jointoken/live_streaming:
+    get: Meetings_getJoinToken
+  /meetings/{meetingId}/jointoken/local_archiving:
+    get: Meetings_getMeetingArchiveTokenForLocalArchiving
+  /meetings/{meetingId}/jointoken/local_recording:
+    get: Meetings_getJoinTokenLocalRecording
+  /meetings/{meetingId}/livestream:
+    get: Meetings_getLivestreamDetails
+    patch: Meetings_updateLivestream
+  /meetings/{meetingId}/livestream/status:
+    patch: Meetings_livestreamStatusUpdate
+  /meetings/{meetingId}/meeting_summary:
+    get: Meetings_getMeetingSummary
+  /meetings/{meetingId}/polls:
+    get: Meetings_listMeetingPolls
+    post: Meetings_createPoll
+  /meetings/{meetingId}/polls/{pollId}:
+    delete: Meetings_pollDelete
+    get: Meetings_getPoll
+    put: Meetings_updateMeetingPoll
+  /meetings/{meetingId}/recordings:
+    delete: CloudRecording_deleteMeetingRecordings
+    get: CloudRecording_getMeetingRecordings
+  /meetings/{meetingId}/recordings/registrants:
+    get: CloudRecording_listRegistrants
+    post: CloudRecording_createRegistrant
+  /meetings/{meetingId}/recordings/registrants/questions:
+    get: CloudRecording_listRegistrationQuestions
+    patch: CloudRecording_updateRegistrationQuestions
+  /meetings/{meetingId}/recordings/registrants/status:
+    put: CloudRecording_updateRegistrantStatus
+  /meetings/{meetingId}/recordings/settings:
+    get: CloudRecording_getSettings
+    patch: CloudRecording_updateSettings
+  /meetings/{meetingId}/recordings/{recordingId}:
+    delete: CloudRecording_deleteRecording
+  /meetings/{meetingId}/recordings/{recordingId}/status:
+    put: CloudRecording_recoverStatus
+  /meetings/{meetingId}/registrants:
+    get: Meetings_listRegistrants
+    post: Meetings_addRegistrant
+  /meetings/{meetingId}/registrants/questions:
+    get: Meetings_listRegistrationQuestions
+    patch: Meetings_updateRegistrationQuestions
+  /meetings/{meetingId}/registrants/status:
+    put: Meetings_updateRegistrantStatus
+  /meetings/{meetingId}/registrants/{registrantId}:
+    delete: Meetings_deleteRegistrant
+    get: Meetings_getRegistrantDetails
+  /meetings/{meetingId}/sip_dialing:
+    post: Meetings_getSipUriWithPasscode
+  /meetings/{meetingId}/status:
+    put: Meetings_updateMeetingStatus
+  /meetings/{meetingId}/survey:
+    delete: Meetings_deleteMeetingSurvey
+    get: Meetings_getMeetingSurvey
+    patch: Meetings_updateSurvey
+  /meetings/{meetingId}/token:
+    get: Meetings_getMeetingToken
+  /meetings/{meetingUUID}/recordings/status:
+    put: CloudRecording_recoverRecordingStatus
+  /past_meetings/{meetingId}:
+    get: Meetings_getDetails
+  /past_meetings/{meetingId}/instances:
+    get: Meetings_listPastMeetingInstances
+  /past_meetings/{meetingId}/participants:
+    get: Meetings_getPastMeetingParticipants
+  /past_meetings/{meetingId}/polls:
+    get: Meetings_listPastMeetingPolls
+  /past_meetings/{meetingId}/qa:
+    get: Meetings_listPastMeetingQA
+  /past_meetings/{meetingUUID}/archive_files:
+    delete: Archiving_meetingFilesDelete
+    get: Archiving_meetingFilesList
+  /past_webinars/{webinarId}/absentees:
+    get: Webinars_listAbsentees
+  /past_webinars/{webinarId}/instances:
+    get: Webinars_listPastInstances
+  /past_webinars/{webinarId}/participants:
+    get: Webinars_listParticipants
+  /past_webinars/{webinarId}/polls:
+    get: Webinars_listPollResults
+  /past_webinars/{webinarId}/qa:
+    get: Webinars_listPastWebinarQa
+  /report/activities:
+    get: Reports_listSignInSignOutActivities
+  /report/billing:
+    get: Reports_getBillingDepartmentReports
+  /report/billing/invoices:
+    get: Reports_getBillingInvoices
+  /report/cloud_recording:
+    get: Reports_getCloudRecordingUsageReport
+  /report/daily:
+    get: Reports_getDailyUsageReport
+  /report/meetings/{meetingId}:
+    get: Reports_getMeetingDetailReports
+  /report/meetings/{meetingId}/participants:
+    get: Reports_getMeetingParticipantReports
+  /report/meetings/{meetingId}/polls:
+    get: Reports_getMeetingPollReports
+  /report/meetings/{meetingId}/qa:
+    get: Reports_getMeetingQaReport
+  /report/operationlogs:
+    get: Reports_getOperationLogsReport
+  /report/telephone:
+    get: Reports_getTelephoneReports
+  /report/upcoming_events:
+    get: Reports_listUpcomingEventsReport
+  /report/users:
+    get: Reports_getActiveInactiveHostReports
+  /report/users/{userId}/meetings:
+    get: Reports_getMeetingReports
+  /report/webinars/{webinarId}:
+    get: Reports_getWebinarDetailsReport
+  /report/webinars/{webinarId}/participants:
+    get: Reports_webinarParticipantsList
+  /report/webinars/{webinarId}/polls:
+    get: Reports_getWebinarPollReports
+  /report/webinars/{webinarId}/qa:
+    get: Reports_getWebinarQAReport
+  /sip_phones:
+    get: SipPhone_list
+    post: SipPhone_enableUserSipPhone
+  /sip_phones/{phoneId}:
+    delete: SipPhone_deletePhone
+    patch: SipPhone_updateSpecificPhone
+  /tracking_fields:
+    get: TrackingField_list
+    post: TrackingField_createField
+  /tracking_fields/{fieldId}:
+    delete: TrackingField_deleteField
+    get: TrackingField_get
+    patch: TrackingField_update
+  /tsp:
+    get: Tsp_getAccountInfo
+    patch: Tsp_updateAccountTspInformation
+  /users/{userId}/meeting_templates:
+    get: Meetings_listMeetingTemplates
+    post: Meetings_createTemplateFromMeeting
+  /users/{userId}/meetings:
+    get: Meetings_listHostScheduled
+    post: Meetings_createMeeting
+  /users/{userId}/pac:
+    get: Pac_listAccounts
+  /users/{userId}/recordings:
+    get: CloudRecording_listRecordings
+  /users/{userId}/tsp:
+    get: Tsp_listUserTspAccounts
+    post: Tsp_addUserTspAccount
+  /users/{userId}/tsp/settings:
+    patch: Tsp_setGlobalDialInUrl
+  /users/{userId}/tsp/{tspId}:
+    delete: Tsp_deleteUserTspAccount
+    get: Tsp_getUserTspAccount
+    patch: Tsp_updateUserTspAccount
+  /users/{userId}/webinar_templates:
+    get: Webinars_listWebinarTemplates
+    post: Webinars_createWebinarTemplate
+  /users/{userId}/webinars:
+    get: Webinars_listWebinars
+    post: Webinars_createWebinar
+  /webinars/{webinarId}:
+    delete: Webinars_removeWebinar
+    get: Webinars_getDetails
+    patch: Webinars_updateScheduledWebinar
+  /webinars/{webinarId}/batch_registrants:
+    post: Webinars_createBatchRegistrants
+  /webinars/{webinarId}/branding:
+    get: Webinars_getSessionBranding
+  /webinars/{webinarId}/branding/name_tags:
+    delete: Webinars_deleteBrandingNameTag
+    post: Webinars_createBrandingNameTag
+  /webinars/{webinarId}/branding/name_tags/{nameTagId}:
+    patch: Webinars_updateBrandingNameTag
+  /webinars/{webinarId}/branding/virtual_backgrounds:
+    delete: Webinars_deleteBrandingVirtualBackground
+    patch: Webinars_setDefaultBrandingVirtualBackground
+    post: Webinars_uploadBrandingVirtualBackground
+  /webinars/{webinarId}/branding/wallpaper:
+    delete: Webinars_deleteBrandingWallpaper
+    post: Webinars_uploadBrandingWallpaper
+  /webinars/{webinarId}/invite_links:
+    post: Webinars_createInviteLinks
+  /webinars/{webinarId}/jointoken/live_streaming:
+    get: Webinars_joinTokenLiveStreaming
+  /webinars/{webinarId}/jointoken/local_archiving:
+    get: Webinars_getMeetingArchiveTokenForLocalArchiving
+  /webinars/{webinarId}/jointoken/local_recording:
+    get: Webinars_getJoinTokenLocalRecording
+  /webinars/{webinarId}/livestream:
+    get: Webinars_getLiveStreamDetails
+    patch: Webinars_updateLiveStream
+  /webinars/{webinarId}/livestream/status:
+    patch: Webinars_updateLiveStreamStatus
+  /webinars/{webinarId}/panelists:
+    delete: Webinars_removePanelists
+    get: Webinars_listPanelists
+    post: Webinars_addPanelists
+  /webinars/{webinarId}/panelists/{panelistId}:
+    delete: Webinars_removePanelist
+  /webinars/{webinarId}/polls:
+    get: Webinars_listPolls
+    post: Webinars_createPoll
+  /webinars/{webinarId}/polls/{pollId}:
+    delete: Webinars_deletePoll
+    get: Webinars_getPollDetails
+    put: Webinars_updatePoll
+  /webinars/{webinarId}/registrants:
+    get: Webinars_listRegistrants
+    post: Webinars_addRegistrant
+  /webinars/{webinarId}/registrants/questions:
+    get: Webinars_listRegistrationQuestions
+    patch: Webinars_updateRegistrationQuestions
+  /webinars/{webinarId}/registrants/status:
+    put: Webinars_updateRegistrantStatus
+  /webinars/{webinarId}/registrants/{registrantId}:
+    delete: Webinars_deleteRegistrant
+    get: Webinars_registrantDetails
+  /webinars/{webinarId}/sip_dialing:
+    post: Webinars_getSipUriWithPasscode
+  /webinars/{webinarId}/status:
+    put: Webinars_updateStatus
+  /webinars/{webinarId}/survey:
+    delete: Webinars_deleteSurvey
+    get: Webinars_getSurvey
+    patch: Webinars_updateSurvey
+  /webinars/{webinarId}/token:
+    get: Webinars_getWebinarToken
+  /webinars/{webinarId}/tracking_sources:
+    get: Webinars_listTrackingSources
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /archive_files/{fileId}:
+    patch:
+      application/json: ArchivingUpdateAutoDeleteStatusRequest
+  /devices:
+    post:
+      application/json: DevicesCreateNewDeviceRequest
+  /devices/{deviceId}:
+    patch:
+      application/json: DevicesUpdateDeviceNameRequest
+  /devices/{deviceId}/assignment:
+    patch:
+      application/json: DevicesChangeDeviceAssociationRequest
+  /h323/devices:
+    post:
+      application/json: H323DevicesCreateDeviceRequest
+  /h323/devices/{deviceId}:
+    patch:
+      application/json: H323DevicesUpdateDeviceInfoRequest
+  /live_meetings/{meetingId}/chat/messages/{messageId}:
+    patch:
+      application/json: MeetingsUpdateMessageRequest
+  /live_meetings/{meetingId}/events:
+    patch:
+      application/json: MeetingsControlInMeetingFeaturesRequest
+  /meetings/{meetingId}:
+    patch:
+      application/json: MeetingsUpdateDetailsRequest
+  /meetings/{meetingId}/batch_polls:
+    post:
+      application/json: MeetingsCreateBatchPollsRequest
+  /meetings/{meetingId}/batch_registrants:
+    post:
+      application/json: MeetingsBatchRegistrantsCreateRequest
+  /meetings/{meetingId}/invite_links:
+    post:
+      application/json: MeetingsCreateInviteLinksRequest
+  /meetings/{meetingId}/livestream:
+    patch:
+      application/json: MeetingsUpdateLivestreamRequest
+  /meetings/{meetingId}/livestream/status:
+    patch:
+      application/json: MeetingsLivestreamStatusUpdateRequest
+  /meetings/{meetingId}/polls:
+    post:
+      application/json: MeetingsCreatePollRequest
+  /meetings/{meetingId}/polls/{pollId}:
+    put:
+      application/json: MeetingsUpdateMeetingPollRequest
+  /meetings/{meetingId}/recordings/registrants:
+    post:
+      application/json: CloudRecordingCreateRegistrantRequest
+  /meetings/{meetingId}/recordings/registrants/questions:
+    patch:
+      application/json: CloudRecordingUpdateRegistrationQuestionsRequest
+  /meetings/{meetingId}/recordings/registrants/status:
+    put:
+      application/json: CloudRecordingUpdateRegistrantStatusRequest
+  /meetings/{meetingId}/recordings/settings:
+    patch:
+      application/json: CloudRecordingUpdateSettingsRequest
+  /meetings/{meetingId}/recordings/{recordingId}/status:
+    put:
+      application/json: CloudRecordingRecoverStatusRequest
+  /meetings/{meetingId}/registrants:
+    post:
+      application/json: MeetingsAddRegistrantRequest
+  /meetings/{meetingId}/registrants/questions:
+    patch:
+      application/json: MeetingsUpdateRegistrationQuestionsRequest
+  /meetings/{meetingId}/registrants/status:
+    put:
+      application/json: MeetingsUpdateRegistrantStatusRequest
+  /meetings/{meetingId}/sip_dialing:
+    post:
+      application/json: MeetingsGetSipUriWithPasscodeRequest
+  /meetings/{meetingId}/status:
+    put:
+      application/json: MeetingsUpdateMeetingStatusRequest
+  /meetings/{meetingId}/survey:
+    patch:
+      application/json: MeetingsUpdateSurveyRequest
+  /meetings/{meetingUUID}/recordings/status:
+    put:
+      application/json: CloudRecordingRecoverRecordingStatusRequest
+  /sip_phones:
+    post:
+      application/json: SipPhoneEnableUserSipPhoneRequest
+  /sip_phones/{phoneId}:
+    patch:
+      application/json: SipPhoneUpdateSpecificPhoneRequest
+  /tracking_fields:
+    post:
+      application/json: TrackingFieldCreateFieldRequest
+  /tracking_fields/{fieldId}:
+    patch:
+      application/json: TrackingFieldUpdateRequest
+  /tsp:
+    patch:
+      application/json: TspUpdateAccountTspInformationRequest
+  /users/{userId}/meeting_templates:
+    post:
+      application/json: MeetingsCreateTemplateFromMeetingRequest
+  /users/{userId}/meetings:
+    post:
+      application/json: MeetingsCreateMeetingRequest
+  /users/{userId}/tsp:
+    post:
+      application/json: TspAddUserTspAccountRequest
+  /users/{userId}/tsp/settings:
+    patch:
+      application/json: TspSetGlobalDialInUrlRequest
+  /users/{userId}/tsp/{tspId}:
+    patch:
+      application/json: TspUpdateUserTspAccountRequest
+  /users/{userId}/webinar_templates:
+    post:
+      application/json: WebinarsCreateWebinarTemplateRequest
+  /users/{userId}/webinars:
+    post:
+      application/json: WebinarsCreateWebinarRequest
+  /webinars/{webinarId}:
+    patch:
+      application/json: WebinarsUpdateScheduledWebinarRequest
+  /webinars/{webinarId}/batch_registrants:
+    post:
+      application/json: WebinarsCreateBatchRegistrantsRequest
+  /webinars/{webinarId}/branding/name_tags:
+    post:
+      application/json: WebinarsCreateBrandingNameTagRequest
+  /webinars/{webinarId}/branding/name_tags/{nameTagId}:
+    patch:
+      application/json: WebinarsUpdateBrandingNameTagRequest
+  /webinars/{webinarId}/branding/virtual_backgrounds:
+    post:
+      multipart/form-data: WebinarsUploadBrandingVirtualBackgroundRequest
+  /webinars/{webinarId}/branding/wallpaper:
+    post:
+      multipart/form-data: WebinarsUploadBrandingWallpaperRequest
+  /webinars/{webinarId}/invite_links:
+    post:
+      application/json: WebinarsCreateInviteLinksRequest
+  /webinars/{webinarId}/livestream:
+    patch:
+      application/json: WebinarsUpdateLiveStreamRequest
+  /webinars/{webinarId}/livestream/status:
+    patch:
+      application/json: WebinarsUpdateLiveStreamStatusRequest
+  /webinars/{webinarId}/panelists:
+    post:
+      application/json: WebinarsAddPanelistsRequest
+  /webinars/{webinarId}/polls:
+    post:
+      application/json: WebinarsCreatePollRequest
+  /webinars/{webinarId}/polls/{pollId}:
+    put:
+      application/json: WebinarsUpdatePollRequest
+  /webinars/{webinarId}/registrants:
+    post:
+      application/json: WebinarsAddRegistrantRequest
+  /webinars/{webinarId}/registrants/questions:
+    patch:
+      application/json: WebinarsUpdateRegistrationQuestionsRequest
+  /webinars/{webinarId}/registrants/status:
+    put:
+      application/json: WebinarsUpdateRegistrantStatusRequest
+  /webinars/{webinarId}/sip_dialing:
+    post:
+      application/json: WebinarsGetSipUriWithPasscodeRequest
+  /webinars/{webinarId}/status:
+    put:
+      application/json: WebinarsUpdateStatusRequest
+  /webinars/{webinarId}/survey:
+    patch:
+      application/json: WebinarsUpdateSurveyRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /archive_files:
+    get:
+      '200':
+        application/json: ArchivingMeetingFilesListResponse
+  /archive_files/statistics:
+    get:
+      '200':
+        application/json: ArchivingGetStatisticsResponse
+  /devices:
+    get:
+      '200':
+        application/json: DevicesListResponse
+  /devices/{deviceId}:
+    get:
+      '200':
+        application/json: DevicesGetDetailResponse
+  /h323/devices:
+    get:
+      '200':
+        application/json: H323DevicesListDevicesResponse
+    post:
+      '201':
+        application/json: H323DevicesCreateDeviceResponse
+  /meetings/meeting_summaries:
+    get:
+      '200':
+        application/json: MeetingsListMeetingSummariesResponse
+  /meetings/{meetingId}:
+    get:
+      '200':
+        application/json: MeetingsGetDetailsResponse
+  /meetings/{meetingId}/batch_polls:
+    post:
+      '201':
+        application/json: MeetingsCreateBatchPollsResponse
+  /meetings/{meetingId}/batch_registrants:
+    post:
+      '201':
+        application/json: MeetingsBatchRegistrantsCreateResponse
+  /meetings/{meetingId}/invitation:
+    get:
+      '200':
+        application/json: MeetingsGetInvitationNoteResponse
+  /meetings/{meetingId}/invite_links:
+    post:
+      '201':
+        application/json: MeetingsCreateInviteLinksResponse
+  /meetings/{meetingId}/jointoken/live_streaming:
+    get:
+      '200':
+        application/json: MeetingsGetJoinTokenResponse
+  /meetings/{meetingId}/jointoken/local_archiving:
+    get:
+      '200':
+        application/json: MeetingsGetMeetingArchiveTokenForLocalArchivingResponse
+  /meetings/{meetingId}/jointoken/local_recording:
+    get:
+      '200':
+        application/json: MeetingsGetJoinTokenLocalRecordingResponse
+  /meetings/{meetingId}/livestream:
+    get:
+      '200':
+        application/json: MeetingsGetLivestreamDetailsResponse
+  /meetings/{meetingId}/meeting_summary:
+    get:
+      '200':
+        application/json: MeetingsGetMeetingSummaryResponse
+  /meetings/{meetingId}/polls:
+    get:
+      '200':
+        application/json: MeetingsListMeetingPollsResponse
+    post:
+      '201':
+        application/json: MeetingsCreatePollResponse
+  /meetings/{meetingId}/polls/{pollId}:
+    get:
+      '200':
+        application/json: MeetingsGetPollResponse
+  /meetings/{meetingId}/recordings:
+    get:
+      '200':
+        application/json: CloudRecordingGetMeetingRecordingsResponse
+  /meetings/{meetingId}/recordings/analytics_details:
+    get:
+      '200':
+        application/json: AnalyticsDetailsResponse
+  /meetings/{meetingId}/recordings/analytics_summary:
+    get:
+      '200':
+        application/json: AnalyticsSummaryResponse
+  /meetings/{meetingId}/recordings/registrants:
+    get:
+      '200':
+        application/json: CloudRecordingListRegistrantsResponse
+    post:
+      '201':
+        application/json: CloudRecordingCreateRegistrantResponse
+  /meetings/{meetingId}/recordings/registrants/questions:
+    get:
+      '200':
+        application/json: CloudRecordingListRegistrationQuestionsResponse
+  /meetings/{meetingId}/recordings/settings:
+    get:
+      '200':
+        application/json: CloudRecordingGetSettingsResponse
+  /meetings/{meetingId}/registrants:
+    get:
+      '200':
+        application/json: MeetingsListRegistrantsResponse
+    post:
+      '201':
+        application/json: MeetingsAddRegistrantResponse
+  /meetings/{meetingId}/registrants/questions:
+    get:
+      '200':
+        application/json: MeetingsListRegistrationQuestionsResponse
+  /meetings/{meetingId}/registrants/{registrantId}:
+    get:
+      '200':
+        application/json: MeetingsGetRegistrantDetailsResponse
+  /meetings/{meetingId}/sip_dialing:
+    post:
+      '200':
+        application/json: MeetingsGetSipUriWithPasscodeResponse
+  /meetings/{meetingId}/survey:
+    get:
+      '200':
+        application/json: MeetingsGetMeetingSurveyResponse
+  /meetings/{meetingId}/token:
+    get:
+      '200':
+        application/json: MeetingsGetMeetingTokenResponse
+  /past_meetings/{meetingId}:
+    get:
+      '200':
+        application/json: MeetingsGetDetails200Response
+  /past_meetings/{meetingId}/instances:
+    get:
+      '200':
+        application/json: MeetingsListPastMeetingInstancesResponse
+  /past_meetings/{meetingId}/participants:
+    get:
+      '200':
+        application/json: MeetingsGetPastMeetingParticipantsResponse
+  /past_meetings/{meetingId}/polls:
+    get:
+      '200':
+        application/json: MeetingsListPastMeetingPollsResponse
+  /past_meetings/{meetingId}/qa:
+    get:
+      '200':
+        application/json: MeetingsListPastMeetingQaResponse
+  /past_meetings/{meetingUUID}/archive_files:
+    get:
+      '200':
+        application/json: ArchivingMeetingFilesList200Response
+  /past_webinars/{webinarId}/absentees:
+    get:
+      '200':
+        application/json: WebinarsListAbsenteesResponse
+  /past_webinars/{webinarId}/instances:
+    get:
+      '200':
+        application/json: WebinarsListPastInstancesResponse
+  /past_webinars/{webinarId}/participants:
+    get:
+      '200':
+        application/json: WebinarsListParticipantsResponse
+  /past_webinars/{webinarId}/polls:
+    get:
+      '200':
+        application/json: WebinarsListPollResultsResponse
+  /past_webinars/{webinarId}/qa:
+    get:
+      '200':
+        application/json: WebinarsListPastWebinarQaResponse
+  /report/activities:
+    get:
+      '200':
+        application/json: ReportsListSignInSignOutActivitiesResponse
+  /report/billing:
+    get:
+      '200':
+        application/json: ReportsGetBillingDepartmentReportsResponse
+  /report/billing/invoices:
+    get:
+      '200':
+        application/json: ReportsGetBillingInvoicesResponse
+  /report/cloud_recording:
+    get:
+      '200':
+        application/json: ReportsGetCloudRecordingUsageReportResponse
+  /report/daily:
+    get:
+      '200':
+        application/json: ReportsGetDailyUsageReportResponse
+  /report/meetings/{meetingId}:
+    get:
+      '200':
+        application/json: ReportsGetMeetingDetailReportsResponse
+  /report/meetings/{meetingId}/participants:
+    get:
+      '200':
+        application/json: ReportsGetMeetingParticipantReportsResponse
+  /report/meetings/{meetingId}/polls:
+    get:
+      '200':
+        application/json: ReportsGetMeetingPollReportsResponse
+  /report/meetings/{meetingId}/qa:
+    get:
+      '200':
+        application/json: ReportsGetMeetingQaReportResponse
+  /report/operationlogs:
+    get:
+      '200':
+        application/json: ReportsGetOperationLogsReportResponse
+  /report/telephone:
+    get:
+      '200':
+        application/json: ReportsGetTelephoneReportsResponse
+  /report/upcoming_events:
+    get:
+      '200':
+        application/json: ReportsListUpcomingEventsReportResponse
+  /report/users:
+    get:
+      '200':
+        application/json: ReportsGetActiveInactiveHostReportsResponse
+  /report/users/{userId}/meetings:
+    get:
+      '200':
+        application/json: ReportsGetMeetingReportsResponse
+  /report/webinars/{webinarId}:
+    get:
+      '200':
+        application/json: ReportsGetWebinarDetailsReportResponse
+  /report/webinars/{webinarId}/participants:
+    get:
+      '200':
+        application/json: ReportsWebinarParticipantsListResponse
+  /report/webinars/{webinarId}/polls:
+    get:
+      '200':
+        application/json: ReportsGetWebinarPollReportsResponse
+  /report/webinars/{webinarId}/qa:
+    get:
+      '200':
+        application/json: ReportsGetWebinarQaReportResponse
+  /sip_phones:
+    get:
+      '200':
+        application/json: SipPhoneListResponse
+    post:
+      '201':
+        application/json: SipPhoneEnableUserSipPhoneResponse
+  /tracking_fields:
+    get:
+      '200':
+        application/json: TrackingFieldListResponse
+    post:
+      '201':
+        application/json: TrackingFieldCreateFieldResponse
+  /tracking_fields/{fieldId}:
+    get:
+      '200':
+        application/json: TrackingFieldGetResponse
+  /tsp:
+    get:
+      '200':
+        application/json: TspGetAccountInfoResponse
+  /users/{userId}/meeting_templates:
+    get:
+      '200':
+        application/json: MeetingsListMeetingTemplatesResponse
+    post:
+      '201':
+        application/json: MeetingsCreateTemplateFromMeetingResponse
+  /users/{userId}/meetings:
+    get:
+      '200':
+        application/json: MeetingsListHostScheduledResponse
+    post:
+      '201':
+        application/json: MeetingsCreateMeetingResponse
+  /users/{userId}/pac:
+    get:
+      '200':
+        application/json: PacListAccountsResponse
+  /users/{userId}/recordings:
+    get:
+      '200':
+        application/json: CloudRecordingListRecordingsResponse
+  /users/{userId}/tsp:
+    get:
+      '200':
+        application/json: TspListUserTspAccountsResponse
+    post:
+      '201':
+        application/json: TspAddUserTspAccountResponse
+  /users/{userId}/tsp/{tspId}:
+    get:
+      '200':
+        application/json: TspGetUserTspAccountResponse
+  /users/{userId}/webinar_templates:
+    get:
+      '200':
+        application/json: WebinarsListWebinarTemplatesResponse
+    post:
+      '201':
+        application/json: WebinarsCreateWebinarTemplateResponse
+  /users/{userId}/webinars:
+    get:
+      '200':
+        application/json: WebinarsListWebinarsResponse
+    post:
+      '201':
+        application/json: WebinarsCreateWebinarResponse
+  /webinars/{webinarId}:
+    get:
+      '200':
+        application/json: WebinarsGetDetailsResponse
+  /webinars/{webinarId}/batch_registrants:
+    post:
+      '201':
+        application/json: WebinarsCreateBatchRegistrantsResponse
+  /webinars/{webinarId}/branding:
+    get:
+      '200':
+        application/json: WebinarsGetSessionBrandingResponse
+  /webinars/{webinarId}/branding/name_tags:
+    post:
+      '201':
+        application/json: WebinarsCreateBrandingNameTagResponse
+  /webinars/{webinarId}/branding/virtual_backgrounds:
+    post:
+      '201':
+        application/json: WebinarsUploadBrandingVirtualBackgroundResponse
+  /webinars/{webinarId}/branding/wallpaper:
+    post:
+      '201':
+        application/json: WebinarsUploadBrandingWallpaperResponse
+  /webinars/{webinarId}/invite_links:
+    post:
+      '201':
+        application/json: WebinarsCreateInviteLinksResponse
+  /webinars/{webinarId}/jointoken/live_streaming:
+    get:
+      '200':
+        application/json: WebinarsJoinTokenLiveStreamingResponse
+  /webinars/{webinarId}/jointoken/local_archiving:
+    get:
+      '200':
+        application/json: WebinarsGetMeetingArchiveTokenForLocalArchivingResponse
+  /webinars/{webinarId}/jointoken/local_recording:
+    get:
+      '200':
+        application/json: WebinarsGetJoinTokenLocalRecordingResponse
+  /webinars/{webinarId}/livestream:
+    get:
+      '200':
+        application/json: WebinarsGetLiveStreamDetailsResponse
+  /webinars/{webinarId}/panelists:
+    get:
+      '200':
+        application/json: WebinarsListPanelistsResponse
+    post:
+      '201':
+        application/json: WebinarsAddPanelistsResponse
+  /webinars/{webinarId}/polls:
+    get:
+      '200':
+        application/json: WebinarsListPollsResponse
+    post:
+      '201':
+        application/json: WebinarsCreatePollResponse
+  /webinars/{webinarId}/polls/{pollId}:
+    get:
+      '200':
+        application/json: WebinarsGetPollDetailsResponse
+  /webinars/{webinarId}/registrants:
+    get:
+      '200':
+        application/json: WebinarsListRegistrantsResponse
+    post:
+      '201':
+        application/json: WebinarsAddRegistrantResponse
+  /webinars/{webinarId}/registrants/questions:
+    get:
+      '200':
+        application/json: WebinarsListRegistrationQuestionsResponse
+  /webinars/{webinarId}/registrants/{registrantId}:
+    get:
+      '200':
+        application/json: WebinarsRegistrantDetailsResponse
+  /webinars/{webinarId}/sip_dialing:
+    post:
+      '201':
+        application/json: WebinarsGetSipUriWithPasscodeResponse
+  /webinars/{webinarId}/status:
+    put:
+      '200':
+        application/json: WebinarsUpdateStatusResponse
+  /webinars/{webinarId}/survey:
+    get:
+      '200':
+        application/json: WebinarsGetSurveyResponse
+  /webinars/{webinarId}/token:
+    get:
+      '200':
+        application/json: WebinarsGetWebinarTokenResponse
+  /webinars/{webinarId}/tracking_sources:
+    get:
+      '200':
+        application/json: WebinarsListTrackingSourcesResponse
+securityParameters:
+  action:
+    query: false
+  anonymous:
+    query: false
+  billing_id:
+    query: false
+  cancel_meeting_reminder:
+    query: false
+  cancel_webinar_reminder:
+    query: false
+  category_type:
+    query: false
+  device_model:
+    query: false
+  device_status:
+    query: false
+  device_type:
+    query: false
+  device_vendor:
+    query: false
+  file_ids:
+    query: false
+  from:
+    query: false
+  group_id:
+    query: false
+  id:
+    query: false
+  ids:
+    query: false
+  include_fields:
+    query: false
+  is_enrolled_in_zdm:
+    query: false
+  mc:
+    query: false
+  meeting_id:
+    query: false
+  month:
+    query: false
+  name_tag_ids:
+    query: false
+  next_page_token:
+    query: false
+  occurrence_id:
+    query: false
+  occurrence_ids:
+    query: false
+  page_number:
+    query: false
+  page_size:
+    query: false
+  platform_os:
+    query: false
+  query_date_type:
+    query: false
+  schedule_for_reminder:
+    query: false
+  search_key:
+    query: false
+  search_text:
+    query: false
+  set_default_for_all_panelists:
+    query: false
+  show_previous_occurrences:
+    query: false
+  status:
+    query: false
+  to:
+    query: false
+  tracking_source_id:
+    query: false
+  trash:
+    query: false
+  trash_type:
+    query: false
+  ttl:
+    query: false
+  type:
+    query: false
+  year:
+    query: false
+validServerUrls: {}
