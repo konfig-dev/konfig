@@ -1,0 +1,77 @@
+---
+slug: changelog-11
+title: "Changelog #11 - Revamped Ruby, PHP, Swift SDKs and pnpm"
+description: "Revamped Ruby, PHP, Swift SDKs and pnpm for TypeScript SDKs in Konfig"
+tags:
+    - Changelog
+    - Konfig
+image: ./changelog-11-assets/banner.png
+---
+
+![banner](./changelog-11-assets/banner.png)
+
+In this changelog, we're excited to announce the release of the revamped Ruby,
+PHP, and Swift SDKs. We've also made a change to the TypeScript SDKs to use
+`pnpm` instead of `yarn` or `npm`. This change has improved the reliability and
+performance of our TypeScript SDKs.
+
+Furthermore, we've made several improvements and fixes to the Konfig's SDKs.
+These include various bug fixes, better documentation, security vulnerability
+fixes, and more rigorous testing for PHP, Python, Ruby, Go, TypeScript, and
+Swift SDKs.
+
+## Revamped Ruby, PHP, and Swift SDKs
+
+![Revamped SDKs](./changelog-11-assets/revamped-sdks.png)
+
+We've revamped the Ruby, PHP, and Swift SDKs to be more consistent with the
+quality of our Python and TypeScript SDKs.  This includes:
+
+- Improved code quality
+- Better test coverage
+- Better documentation
+
+In particular, we removed the array of `.md` files that were generated as
+documentation and replaced it with the singular `README.md` file that includes
+everything you need to know about the SDK. Putting everything on one page makes
+it easier to navigate and find what you need.
+
+<Figure caption={<p><b>README.md</b> now includes a branded header, getting started instructions, and a reference section with documentation for every operation in the SDK. This screenshot was taken from <a href="https://github.com/passiv/snaptrade-sdks/tree/master/sdks/typescript#readme">SnapTrade's TypeScript SDK</a> which served as a template for all revamped SDKs.</p>}>
+![Improved README](./changelog-11-assets/readme.png)
+</Figure>
+
+## Konfig's TypeScript SDKs now use `pnpm`
+
+![pnpm](./changelog-11-assets/pnpm.png)
+
+Based on internal quality assurance and integration tests that we regularly run
+on our SDKs, we've found that `pnpm` is a better fit for our TypeScript SDKs.
+It's faster, more reliable, and uses less disk space than `npm` or `yarn`.  The
+breaking point for us was concurrency bugs that were not fixable while using
+`yarn`. When switching to `pnpm`, we found that these issues were resolved
+without special configuration. This change allowed us to fix flaky tests and
+continually ensure our generator was working as expected.
+
+{/* TRUNCATE */}
+
+<details>
+<summary>Improvements and Fixes</summary>
+- Fix lost descriptions when using `allOf` with a single schema
+- Fix bug where TypeScript SDK would send extra data in the request body
+- Add `"strict": true` to `tsconfig.json` in the generated TypeScript SDK
+- Fix OAuth 2.0 Token URL not being generated correctly in TypeScript SDK
+- Fix refreshing the token in the generated TypeScript SDK
+- Fix links in README.md not working on npmjs.com for the TypeScript SDK
+- Fix security vulnerability from `aiohttp` in the generated Python SDK
+- Add `x-konfig-prefix` support in Go, Ruby, PHP, Python, and TypeScript
+- Fix default naming logic for security requirements in Go, Ruby, PHP, Python, and TypeScript
+- Add more rigorous testing for the PHP SDK
+- Add more rigorous testing for the Python SDK
+- Add more rigorous testing for the Ruby SDK
+- Add more rigorous testing for the Go SDK
+- Add more rigorous testing for the TypeScript SDK
+- Add more rigorous testing for the Swift SDK
+- Add `securitySchemeOverride` to `konfig.yaml` to override security schemes
+- Cleanup interface of top-level client class C# SDK
+- Fix handling of upper-case "in" field in `securitySchemes` in the OpenAPI specification
+</details>
