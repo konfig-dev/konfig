@@ -20,6 +20,7 @@ import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
+import { extractMetaDescription } from './extract-meta-description'
 
 export type MarkdownPageProps = {
   konfigYaml: KonfigYamlType
@@ -35,6 +36,7 @@ export type MarkdownPageProps = {
   googleAnalyticsId: string | null
   markdown: string
   defaultBranch: string
+  metaDescription: string
   allMarkdown: Awaited<ReturnType<typeof computeDocumentProps>>['allMarkdown']
 
   /**
@@ -195,9 +197,13 @@ export async function generatePropsForMarkdownPage({
   if (breadcrumb === undefined)
     throw Error(`Couldn't find breadcrumb for document id: ${documentId}`)
 
+  // Truncate content of markdown to 110 to 160 characters. Try to find a stopping point that isn't the middle of a line
+  const metaDescription = extractMetaDescription({ markdown })
+
   return {
     props: {
       title: konfigYaml.content.portal?.title,
+      metaDescription,
       konfigYaml: konfigYaml.content,
       markdown,
       googleAnalyticsId: konfigYaml.content.portal?.googleAnalyticsId ?? null,

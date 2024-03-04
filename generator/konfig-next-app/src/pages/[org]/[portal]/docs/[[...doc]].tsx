@@ -102,6 +102,7 @@ const DocumentationPage = observer(
     demos,
     faviconLink,
     logo,
+    metaDescription,
   }: InferGetServerSidePropsType<typeof getStaticProps>) => {
     const theme = useMantineTheme()
     const { colorScheme } = useMantineColorScheme()
@@ -150,6 +151,9 @@ const DocumentationPage = observer(
           ) : (
             <link rel="icon" href="/favicon.png" />
           )}
+          <meta name="description" content={metaDescription} />
+          <meta property="og:description" content={metaDescription} />
+          <meta property="og:title" content={docTitle} />
         </Head>
         <MantineProvider
           inherit
