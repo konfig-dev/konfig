@@ -303,6 +303,10 @@ async function main() {
   }
   console.log("Processing custom requests");
   let customRequestDb = await collectFromCustomRequests();
+  if (process.env.CUSTOM_REQUESTS !== undefined) {
+    console.log(JSON.stringify(customRequestDb, null, 2));
+    return;
+  }
   console.log("Processing filtered specs");
   const openapiDirectoryDb = await processFiltered();
   const mergedDb = {

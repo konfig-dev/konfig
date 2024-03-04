@@ -4,6 +4,7 @@ import { Db } from "../scripts/collect";
 import * as fs from "fs";
 import deepmerge from "deepmerge";
 import yaml from "js-yaml";
+import puppeteer from "puppeteer";
 import {
   computeDifficultyScore,
   customRequestSpecsDir,
@@ -277,6 +278,35 @@ const customRequests: Record<string, CustomRequest> = {
   "zuora.com": {
     type: "GET",
     url: "https://developer.zuora.com/yaml/zuora_openapi.yaml",
+  },
+  "zoom.us_meeting": {
+    lambda: async () => {
+      const url =
+        "https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#overview";
+
+      // Launch a browser instance
+      const browser = await puppeteer.launch({ headless: "new" });
+      const page = await browser.newPage();
+
+      // Navigate to the page
+      await page.goto(url, { waitUntil: "networkidle0" }); // Wait until network is idle
+
+      // Get the content of the page after all JavaScript has executed
+      const html = await page.evaluate(
+        () => document.documentElement.outerHTML
+      );
+
+      const marker = "data:application/json;base64,";
+      const start = html.indexOf(marker);
+      const end = html.indexOf('"', start);
+      const base64 = html.slice(start + marker.length, end);
+      const json = Buffer.from(base64, "base64").toString("utf-8");
+
+      // Close the browser
+      await browser.close();
+
+      return json;
+    },
   },
   "snyk.com": {
     lambda: async () => {
