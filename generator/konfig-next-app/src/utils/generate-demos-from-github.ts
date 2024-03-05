@@ -93,7 +93,6 @@ export async function generateDemosDataFromGithub({
       allMarkdown: MarkdownPageProps['allMarkdown']
       faviconLink: string | null
       logo: ReturnType<typeof generateLogoLink>
-      metaDescription: string
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -112,14 +111,11 @@ export async function generateDemosDataFromGithub({
   }
   if (demo === undefined) return { result: 'error', reason: 'demo not found' }
 
-  const metaDescription = extractMetaDescription({ markdown: demo.markdown })
-
   return {
     result: 'success',
     ...(socials ? { socials } : {}),
     mainBranch,
     organization,
-    metaDescription,
     portal,
     googleAnalyticsId: fetchResult.googleAnalyticsId,
     demo,

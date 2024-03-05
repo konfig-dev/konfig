@@ -62,7 +62,6 @@ const DemoPage = observer(
     repo,
     faviconLink,
     logo,
-    metaDescription,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
       () =>

@@ -96,7 +96,7 @@ export class PortalState {
     this.mainBranch = mainBranch
     this.organizationId = organizationId
     this.demos = demos.map(
-      ({ name, markdown, id, showCode }) =>
+      ({ name, markdown, id, showCode, metaDescription }) =>
         new DemoState({
           markdown,
           name,
@@ -105,6 +105,7 @@ export class PortalState {
           showCode: showCode ?? undefined,
           owner: organizationId,
           repo: portalId,
+          metaDescription,
           omitOwnerAndRepo,
         })
     )
@@ -365,6 +366,12 @@ export const DemoPortal = observer(
                   {state.currentDemoIndex === i && (
                     <Head>
                       <title>{demo.name}</title>
+                      <meta property="og:title" content={demo.name} />
+                      <meta name="description" content={demo.metaDescription} />
+                      <meta
+                        property="og:description"
+                        content={demo.metaDescription}
+                      />
                     </Head>
                   )}
                   <Box

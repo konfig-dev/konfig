@@ -198,7 +198,7 @@ export async function generatePropsForMarkdownPage({
     throw Error(`Couldn't find breadcrumb for document id: ${documentId}`)
 
   // Truncate content of markdown to 110 to 160 characters. Try to find a stopping point that isn't the middle of a line
-  const metaDescription = extractMetaDescription({ markdown })
+  const metaDescription = await extractMetaDescription({ markdown })
 
   return {
     props: {

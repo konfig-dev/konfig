@@ -55,6 +55,7 @@ export class DemoState {
   owner: string
   repo: string
   omitOwnerAndRepo: boolean
+  metaDescription: string
 
   constructor(parameters: {
     markdown: string
@@ -65,12 +66,14 @@ export class DemoState {
     owner: string
     repo: string
     omitOwnerAndRepo: boolean
+    metaDescription: string
   }) {
     makeAutoObservable(this)
     this.showCode = parameters.showCode ?? false
     this.omitOwnerAndRepo = parameters.omitOwnerAndRepo
     this.owner = parameters.owner
     this.repo = parameters.repo
+    this.metaDescription = parameters.metaDescription
     if (parameters && parameters.markdown !== undefined) {
       this.markdown = parameters.markdown
     }

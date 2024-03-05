@@ -1,26 +1,30 @@
 import { Demo } from './demos'
 import { Demo as DemoObject } from 'konfig-lib/dist/KonfigYamlCommon'
 import { findFirstHeadingText } from './find-first-heading-text'
+import { extractMetaDescription } from './extract-meta-description'
 
 export type DemoInput = Omit<DemoObject, 'path'> & { content: string }
 
-export function generateDemosFromFilenameAndContent({
+export async function generateDemosFromFilenameAndContent({
   demos,
 }: {
   demos: DemoInput[]
-}): Demo[] {
+}): Promise<Demo[]> {
   const result: Demo[] = []
 
-  demos.forEach(({ content, id, showCode }) => {
+  for (const { content, id, showCode } of demos) {
     const name = findFirstHeadingText({ markdown: content })
+
+    const metaDescription = await extractMetaDescription({ markdown: content })
 
     result.push({
       id,
       name,
       markdown: content,
       showCode: showCode ?? null,
+      metaDescription,
     })
-  })
+  }
 
   result.sort((a, b) => {
     if (demos)

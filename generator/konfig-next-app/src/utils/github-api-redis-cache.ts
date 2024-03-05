@@ -28,7 +28,43 @@ function computeCacheKey({
 
 export async function clearGithubApiCache() {
   const client = await githubApiRedisCache()
-  await client.flushAll()
+
+  // Flush all keys under GitHub Namespaces
+  const namespaces = Object.keys(GitHubNamespaces)
+  for (const namespace of namespaces) {
+    const keys = await client.keys(`${namespace}:*`)
+    for (const key of keys) {
+      await client.del(key)
+    }
+  }
+}
+
+const GitHubNamespaces = {
+  search: true,
+  content: true,
+  'get-files-in-dir': true,
+  'get-repository': true,
+}
+
+const OpenAINamespaces = {
+  'meta-description': true,
+}
+
+type GitHubNamespaces = keyof typeof GitHubNamespaces
+type OpenAINamespaces = keyof typeof OpenAINamespaces
+
+type AllNamespaces = GitHubNamespaces | OpenAINamespaces
+
+export async function setOpenAiRedisCache({
+  namespace,
+  key,
+  value,
+}: {
+  namespace: OpenAINamespaces
+  key: string
+  value: string
+}) {
+  await _setCache({ namespace, key, value })
 }
 
 export async function setGithubApiCache({
@@ -36,7 +72,19 @@ export async function setGithubApiCache({
   key,
   value,
 }: {
-  namespace: string
+  namespace: GitHubNamespaces
+  key: string
+  value: string
+}) {
+  await _setCache({ namespace, key, value })
+}
+
+async function _setCache({
+  namespace,
+  key,
+  value,
+}: {
+  namespace: AllNamespaces
   key: string
   value: string
 }) {
@@ -53,7 +101,27 @@ export async function getGithubApiCache({
   namespace,
   key,
 }: {
-  namespace: string
+  namespace: GitHubNamespaces
+  key: string
+}) {
+  return await _getCache({ namespace, key })
+}
+
+export async function getOpenAiRedisCache({
+  namespace,
+  key,
+}: {
+  namespace: OpenAINamespaces
+  key: string
+}) {
+  return await _getCache({ namespace, key })
+}
+
+async function _getCache({
+  namespace,
+  key,
+}: {
+  namespace: AllNamespaces
   key: string
 }) {
   const client = await githubApiRedisCache()

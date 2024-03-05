@@ -3,6 +3,7 @@ export type Demo = {
   name: string
   markdown: string
   showCode: boolean | null
+  metaDescription: string
 }
 export type Portal = {
   id: string
