@@ -62,10 +62,11 @@ export function Sdk({
   language = "TypeScript",
   doesNotHaveApiDescription,
 }: Omit<SdkPageProps, "difficultyScore" | "providerName"> & ReactProps) {
+  const description = `Explore the ${company} TypeScript SDK. Dive into comprehensive documentation and utilize ${methods.length} methods to integrate ${company}'s API into your application.`;
   return (
     <Layout
-      title={`${company} API - ${language} SDK and OpenAPI Specification`}
-      description={`${company} API ${language} SDK, Documentation, and OpenAPI Specification - ${metaDescription}}`}
+      title={`${company} API - ${language} SDK, Documentation, and OpenAPI Specification`}
+      description={description}
     >
       <Head>
         <link
@@ -77,7 +78,7 @@ export function Sdk({
           }
         />
         <meta property="og:image" content={previewLinkImage} />
-        <meta property="og:description" content={metaDescription} />
+        <meta property="og:description" content={description} />
         <style>
           {`p {
             margin-bottom: 0px;
