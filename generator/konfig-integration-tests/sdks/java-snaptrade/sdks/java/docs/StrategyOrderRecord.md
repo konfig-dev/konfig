@@ -14,7 +14,7 @@ Strategy order record
 |**openQuantity** | **Double** |  |  [optional] |
 |**closedQuantity** | **Double** |  |  [optional] |
 |**orderType** | **OrderType** |  |  [optional] |
-|**timeInForce** | **TimeInForce** |  |  [optional] |
+|**timeInForce** | **String** | Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date  |  [optional] |
 |**limitPrice** | **Double** | Trade Price if limit or stop limit order |  [optional] |
 |**executionPrice** | **Double** | Trade Price if limit or stop limit order |  [optional] |
 |**timePlaced** | **String** | Time |  [optional] |

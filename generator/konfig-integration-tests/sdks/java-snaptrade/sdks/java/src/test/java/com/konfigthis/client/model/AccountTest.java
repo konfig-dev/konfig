@@ -17,6 +17,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.client.model.AccountBalance;
 import com.konfigthis.client.model.AccountSyncStatus;
 import com.konfigthis.client.model.CashRestriction;
 import io.swagger.annotations.ApiModel;
@@ -123,6 +124,14 @@ public class AccountTest {
     @Test
     public void syncStatusTest() {
         // TODO: test syncStatus
+    }
+
+    /**
+     * Test the property 'balance'
+     */
+    @Test
+    public void balanceTest() {
+        // TODO: test balance
     }
 
 }

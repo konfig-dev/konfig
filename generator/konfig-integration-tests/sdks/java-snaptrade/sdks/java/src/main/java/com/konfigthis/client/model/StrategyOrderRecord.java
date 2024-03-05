@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.OptionStrategy;
 import com.konfigthis.client.model.OrderType;
-import com.konfigthis.client.model.TimeInForce;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -161,7 +160,7 @@ public class StrategyOrderRecord {
 
   public static final String SERIALIZED_NAME_TIME_IN_FORCE = "time_in_force";
   @SerializedName(SERIALIZED_NAME_TIME_IN_FORCE)
-  private TimeInForce timeInForce;
+  private String timeInForce;
 
   public static final String SERIALIZED_NAME_LIMIT_PRICE = "limit_price";
   @SerializedName(SERIALIZED_NAME_LIMIT_PRICE)
@@ -383,7 +382,7 @@ public class StrategyOrderRecord {
   }
 
 
-  public StrategyOrderRecord timeInForce(TimeInForce timeInForce) {
+  public StrategyOrderRecord timeInForce(String timeInForce) {
     
     
     
@@ -393,18 +392,18 @@ public class StrategyOrderRecord {
   }
 
    /**
-   * Get timeInForce
+   * Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date 
    * @return timeInForce
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date ")
 
-  public TimeInForce getTimeInForce() {
+  public String getTimeInForce() {
     return timeInForce;
   }
 
 
-  public void setTimeInForce(TimeInForce timeInForce) {
+  public void setTimeInForce(String timeInForce) {
     
     
     
@@ -702,6 +701,9 @@ public class StrategyOrderRecord {
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("time_in_force") != null && !jsonObj.get("time_in_force").isJsonNull()) && !jsonObj.get("time_in_force").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `time_in_force` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_in_force").toString()));
       }
       if ((jsonObj.get("time_placed") != null && !jsonObj.get("time_placed").isJsonNull()) && !jsonObj.get("time_placed").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `time_placed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_placed").toString()));

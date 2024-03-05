@@ -655,6 +655,7 @@ public class AuthenticationApiGenerated {
         private String customRedirect;
         private String reconnect;
         private String connectionType;
+        private String connectionPortalVersion;
 
         private LoginSnapTradeUserRequestBuilder(String userId, String userSecret) {
             this.userId = userId;
@@ -693,7 +694,7 @@ public class AuthenticationApiGenerated {
         
         /**
          * Set reconnect
-         * @param reconnect The UUID of the brokerage connection to be reconnected (optional)
+         * @param reconnect The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information. (optional)
          * @return LoginSnapTradeUserRequestBuilder
          */
         public LoginSnapTradeUserRequestBuilder reconnect(String reconnect) {
@@ -708,6 +709,16 @@ public class AuthenticationApiGenerated {
          */
         public LoginSnapTradeUserRequestBuilder connectionType(String connectionType) {
             this.connectionType = connectionType;
+            return this;
+        }
+        
+        /**
+         * Set connectionPortalVersion
+         * @param connectionPortalVersion Sets the version of the connection portal to render, with a default to &#39;v2&#39; (optional)
+         * @return LoginSnapTradeUserRequestBuilder
+         */
+        public LoginSnapTradeUserRequestBuilder connectionPortalVersion(String connectionPortalVersion) {
+            this.connectionPortalVersion = connectionPortalVersion;
             return this;
         }
         
@@ -736,6 +747,8 @@ public class AuthenticationApiGenerated {
             snapTradeLoginUserRequestBody.reconnect(this.reconnect);
             if (this.connectionType != null)
             snapTradeLoginUserRequestBody.connectionType(SnapTradeLoginUserRequestBody.ConnectionTypeEnum.fromValue(this.connectionType));
+            if (this.connectionPortalVersion != null)
+            snapTradeLoginUserRequestBody.connectionPortalVersion(SnapTradeLoginUserRequestBody.ConnectionPortalVersionEnum.fromValue(this.connectionPortalVersion));
             return snapTradeLoginUserRequestBody;
         }
 
@@ -982,5 +995,188 @@ public class AuthenticationApiGenerated {
      */
     public RegisterSnapTradeUserRequestBuilder registerSnapTradeUser() throws IllegalArgumentException {
         return new RegisterSnapTradeUserRequestBuilder();
+    }
+    private okhttp3.Call resetSnapTradeUserSecretCall(UserIDandSecret userIDandSecret, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = userIDandSecret;
+
+        // create path and map variables
+        String localVarPath = "/snapTrade/resetUserSecret";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "PartnerClientId", "PartnerSignature", "PartnerTimestamp" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call resetSnapTradeUserSecretValidateBeforeCall(UserIDandSecret userIDandSecret, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'userIDandSecret' is set
+        if (userIDandSecret == null) {
+            throw new ApiException("Missing the required parameter 'userIDandSecret' when calling resetSnapTradeUserSecret(Async)");
+        }
+
+        return resetSnapTradeUserSecretCall(userIDandSecret, _callback);
+
+    }
+
+
+    private ApiResponse<UserIDandSecret> resetSnapTradeUserSecretWithHttpInfo(UserIDandSecret userIDandSecret) throws ApiException {
+        okhttp3.Call localVarCall = resetSnapTradeUserSecretValidateBeforeCall(userIDandSecret, null);
+        Type localVarReturnType = new TypeToken<UserIDandSecret>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call resetSnapTradeUserSecretAsync(UserIDandSecret userIDandSecret, final ApiCallback<UserIDandSecret> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = resetSnapTradeUserSecretValidateBeforeCall(userIDandSecret, _callback);
+        Type localVarReturnType = new TypeToken<UserIDandSecret>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class ResetSnapTradeUserSecretRequestBuilder {
+        private String userId;
+        private String userSecret;
+
+        private ResetSnapTradeUserSecretRequestBuilder() {
+        }
+
+        /**
+         * Set userId
+         * @param userId SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it&#39;s unique to a user (optional)
+         * @return ResetSnapTradeUserSecretRequestBuilder
+         */
+        public ResetSnapTradeUserSecretRequestBuilder userId(String userId) {
+            this.userId = userId;
+            return this;
+        }
+        
+        /**
+         * Set userSecret
+         * @param userSecret SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user. (optional)
+         * @return ResetSnapTradeUserSecretRequestBuilder
+         */
+        public ResetSnapTradeUserSecretRequestBuilder userSecret(String userSecret) {
+            this.userSecret = userSecret;
+            return this;
+        }
+        
+        /**
+         * Build call for resetSnapTradeUserSecret
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> New user secret is generated </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            UserIDandSecret userIDandSecret = buildBodyParams();
+            return resetSnapTradeUserSecretCall(userIDandSecret, _callback);
+        }
+
+        private UserIDandSecret buildBodyParams() {
+            UserIDandSecret userIDandSecret = new UserIDandSecret();
+            userIDandSecret.userId(this.userId);
+            userIDandSecret.userSecret(this.userSecret);
+            return userIDandSecret;
+        }
+
+        /**
+         * Execute resetSnapTradeUserSecret request
+         * @return UserIDandSecret
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> New user secret is generated </td><td>  -  </td></tr>
+         </table>
+         */
+        public UserIDandSecret execute() throws ApiException {
+            UserIDandSecret userIDandSecret = buildBodyParams();
+            ApiResponse<UserIDandSecret> localVarResp = resetSnapTradeUserSecretWithHttpInfo(userIDandSecret);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute resetSnapTradeUserSecret request with HTTP info returned
+         * @return ApiResponse&lt;UserIDandSecret&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> New user secret is generated </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UserIDandSecret> executeWithHttpInfo() throws ApiException {
+            UserIDandSecret userIDandSecret = buildBodyParams();
+            return resetSnapTradeUserSecretWithHttpInfo(userIDandSecret);
+        }
+
+        /**
+         * Execute resetSnapTradeUserSecret request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> New user secret is generated </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UserIDandSecret> _callback) throws ApiException {
+            UserIDandSecret userIDandSecret = buildBodyParams();
+            return resetSnapTradeUserSecretAsync(userIDandSecret, _callback);
+        }
+    }
+
+    /**
+     * Obtain a new user secret for a user
+     * 
+     * @param userIDandSecret  (required)
+     * @return ResetSnapTradeUserSecretRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> New user secret is generated </td><td>  -  </td></tr>
+     </table>
+     */
+    public ResetSnapTradeUserSecretRequestBuilder resetSnapTradeUserSecret() throws IllegalArgumentException {
+        return new ResetSnapTradeUserSecretRequestBuilder();
     }
 }

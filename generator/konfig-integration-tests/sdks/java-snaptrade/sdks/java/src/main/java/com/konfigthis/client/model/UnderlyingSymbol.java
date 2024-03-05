@@ -85,6 +85,10 @@ public class UnderlyingSymbol {
   @SerializedName(SERIALIZED_NAME_CURRENCIES)
   private List<Currency> currencies = null;
 
+  public static final String SERIALIZED_NAME_FIGI_CODE = "figi_code";
+  @SerializedName(SERIALIZED_NAME_FIGI_CODE)
+  private String figiCode;
+
   public UnderlyingSymbol() {
   }
 
@@ -298,6 +302,35 @@ public class UnderlyingSymbol {
     this.currencies = currencies;
   }
 
+
+  public UnderlyingSymbol figiCode(String figiCode) {
+    
+    
+    
+    
+    this.figiCode = figiCode;
+    return this;
+  }
+
+   /**
+   * Get figiCode
+   * @return figiCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "BBG000B9XRY4", value = "")
+
+  public String getFigiCode() {
+    return figiCode;
+  }
+
+
+  public void setFigiCode(String figiCode) {
+    
+    
+    
+    this.figiCode = figiCode;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -359,7 +392,8 @@ public class UnderlyingSymbol {
         Objects.equals(this.currency, underlyingSymbol.currency) &&
         Objects.equals(this.exchange, underlyingSymbol.exchange) &&
         Objects.equals(this.type, underlyingSymbol.type) &&
-        Objects.equals(this.currencies, underlyingSymbol.currencies)&&
+        Objects.equals(this.currencies, underlyingSymbol.currencies) &&
+        Objects.equals(this.figiCode, underlyingSymbol.figiCode)&&
         Objects.equals(this.additionalProperties, underlyingSymbol.additionalProperties);
   }
 
@@ -369,7 +403,7 @@ public class UnderlyingSymbol {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, symbol, description, currency, exchange, type, currencies, additionalProperties);
+    return Objects.hash(id, symbol, description, currency, exchange, type, currencies, figiCode, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -390,6 +424,7 @@ public class UnderlyingSymbol {
     sb.append("    exchange: ").append(toIndentedString(exchange)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
+    sb.append("    figiCode: ").append(toIndentedString(figiCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -420,6 +455,7 @@ public class UnderlyingSymbol {
     openapiFields.add("exchange");
     openapiFields.add("type");
     openapiFields.add("currencies");
+    openapiFields.add("figi_code");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -471,6 +507,9 @@ public class UnderlyingSymbol {
             Currency.validateJsonObject(jsonArraycurrencies.get(i).getAsJsonObject());
           };
         }
+      }
+      if (!jsonObj.get("figi_code").isJsonNull() && (jsonObj.get("figi_code") != null && !jsonObj.get("figi_code").isJsonNull()) && !jsonObj.get("figi_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `figi_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("figi_code").toString()));
       }
   }
 

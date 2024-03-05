@@ -665,7 +665,7 @@ public class AccountInformationApiGenerated {
 
         return new GetUserAccountDetailsRequestBuilder(userId, userSecret, accountId);
     }
-    private okhttp3.Call getUserAccountOrdersCall(String userId, String userSecret, UUID accountId, String state, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getUserAccountOrdersCall(String userId, String userSecret, UUID accountId, String state, Integer days, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -703,6 +703,10 @@ public class AccountInformationApiGenerated {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("state", state));
         }
 
+        if (days != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("days", days));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -723,7 +727,7 @@ public class AccountInformationApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUserAccountOrdersValidateBeforeCall(String userId, String userSecret, UUID accountId, String state, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getUserAccountOrdersValidateBeforeCall(String userId, String userSecret, UUID accountId, String state, Integer days, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userId' is set
         if (userId == null) {
             throw new ApiException("Missing the required parameter 'userId' when calling getUserAccountOrders(Async)");
@@ -739,20 +743,20 @@ public class AccountInformationApiGenerated {
             throw new ApiException("Missing the required parameter 'accountId' when calling getUserAccountOrders(Async)");
         }
 
-        return getUserAccountOrdersCall(userId, userSecret, accountId, state, _callback);
+        return getUserAccountOrdersCall(userId, userSecret, accountId, state, days, _callback);
 
     }
 
 
-    private ApiResponse<List<AccountOrderRecord>> getUserAccountOrdersWithHttpInfo(String userId, String userSecret, UUID accountId, String state) throws ApiException {
-        okhttp3.Call localVarCall = getUserAccountOrdersValidateBeforeCall(userId, userSecret, accountId, state, null);
+    private ApiResponse<List<AccountOrderRecord>> getUserAccountOrdersWithHttpInfo(String userId, String userSecret, UUID accountId, String state, Integer days) throws ApiException {
+        okhttp3.Call localVarCall = getUserAccountOrdersValidateBeforeCall(userId, userSecret, accountId, state, days, null);
         Type localVarReturnType = new TypeToken<List<AccountOrderRecord>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getUserAccountOrdersAsync(String userId, String userSecret, UUID accountId, String state, final ApiCallback<List<AccountOrderRecord>> _callback) throws ApiException {
+    private okhttp3.Call getUserAccountOrdersAsync(String userId, String userSecret, UUID accountId, String state, Integer days, final ApiCallback<List<AccountOrderRecord>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUserAccountOrdersValidateBeforeCall(userId, userSecret, accountId, state, _callback);
+        okhttp3.Call localVarCall = getUserAccountOrdersValidateBeforeCall(userId, userSecret, accountId, state, days, _callback);
         Type localVarReturnType = new TypeToken<List<AccountOrderRecord>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -763,6 +767,7 @@ public class AccountInformationApiGenerated {
         private final String userSecret;
         private final UUID accountId;
         private String state;
+        private Integer days;
 
         private GetUserAccountOrdersRequestBuilder(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
@@ -781,6 +786,16 @@ public class AccountInformationApiGenerated {
         }
         
         /**
+         * Set days
+         * @param days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
+         * @return GetUserAccountOrdersRequestBuilder
+         */
+        public GetUserAccountOrdersRequestBuilder days(Integer days) {
+            this.days = days;
+            return this;
+        }
+        
+        /**
          * Build call for getUserAccountOrders
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -792,7 +807,7 @@ public class AccountInformationApiGenerated {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getUserAccountOrdersCall(userId, userSecret, accountId, state, _callback);
+            return getUserAccountOrdersCall(userId, userSecret, accountId, state, days, _callback);
         }
 
 
@@ -807,7 +822,7 @@ public class AccountInformationApiGenerated {
          </table>
          */
         public List<AccountOrderRecord> execute() throws ApiException {
-            ApiResponse<List<AccountOrderRecord>> localVarResp = getUserAccountOrdersWithHttpInfo(userId, userSecret, accountId, state);
+            ApiResponse<List<AccountOrderRecord>> localVarResp = getUserAccountOrdersWithHttpInfo(userId, userSecret, accountId, state, days);
             return localVarResp.getResponseBody();
         }
 
@@ -822,7 +837,7 @@ public class AccountInformationApiGenerated {
          </table>
          */
         public ApiResponse<List<AccountOrderRecord>> executeWithHttpInfo() throws ApiException {
-            return getUserAccountOrdersWithHttpInfo(userId, userSecret, accountId, state);
+            return getUserAccountOrdersWithHttpInfo(userId, userSecret, accountId, state, days);
         }
 
         /**
@@ -837,12 +852,12 @@ public class AccountInformationApiGenerated {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<List<AccountOrderRecord>> _callback) throws ApiException {
-            return getUserAccountOrdersAsync(userId, userSecret, accountId, state, _callback);
+            return getUserAccountOrdersAsync(userId, userSecret, accountId, state, days, _callback);
         }
     }
 
     /**
-     * Get history of orders placed in account
+     * List account orders
      * Fetch all recent orders from a user&#39;s account.
      * @param userId  (required)
      * @param userSecret  (required)

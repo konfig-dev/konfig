@@ -19,7 +19,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.OptionStrategy;
 import com.konfigthis.client.model.OrderType;
-import com.konfigthis.client.model.TimeInForce;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;

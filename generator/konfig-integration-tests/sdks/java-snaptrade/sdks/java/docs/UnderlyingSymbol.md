@@ -15,6 +15,7 @@ Underlying Symbol
 |**exchange** | [**USExchange**](USExchange.md) |  |  [optional] |
 |**type** | [**SecurityType**](SecurityType.md) |  |  [optional] |
 |**currencies** | [**List&lt;Currency&gt;**](Currency.md) |  |  [optional] |
+|**figiCode** | **String** |  |  [optional] |
 
 
 

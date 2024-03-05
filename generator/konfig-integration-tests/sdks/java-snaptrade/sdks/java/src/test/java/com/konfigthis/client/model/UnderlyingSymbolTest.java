@@ -101,4 +101,12 @@ public class UnderlyingSymbolTest {
         // TODO: test currencies
     }
 
+    /**
+     * Test the property 'figiCode'
+     */
+    @Test
+    public void figiCodeTest() {
+        // TODO: test figiCode
+    }
+
 }

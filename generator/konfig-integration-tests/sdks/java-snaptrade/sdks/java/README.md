@@ -188,7 +188,7 @@ Class | Method | HTTP request | Description
 *AccountInformationApi* | [**getAllUserHoldings**](docs/AccountInformationApi.md#getAllUserHoldings) | **GET** /holdings | List all accounts for the user, plus balances, positions, and orders for each account.
 *AccountInformationApi* | [**getUserAccountBalance**](docs/AccountInformationApi.md#getUserAccountBalance) | **GET** /accounts/{accountId}/balances | List account balances
 *AccountInformationApi* | [**getUserAccountDetails**](docs/AccountInformationApi.md#getUserAccountDetails) | **GET** /accounts/{accountId} | Return details of a specific investment account
-*AccountInformationApi* | [**getUserAccountOrders**](docs/AccountInformationApi.md#getUserAccountOrders) | **GET** /accounts/{accountId}/orders | Get history of orders placed in account
+*AccountInformationApi* | [**getUserAccountOrders**](docs/AccountInformationApi.md#getUserAccountOrders) | **GET** /accounts/{accountId}/orders | List account orders
 *AccountInformationApi* | [**getUserAccountPositions**](docs/AccountInformationApi.md#getUserAccountPositions) | **GET** /accounts/{accountId}/positions | List account positions
 *AccountInformationApi* | [**getUserHoldings**](docs/AccountInformationApi.md#getUserHoldings) | **GET** /accounts/{accountId}/holdings | List balances, positions and orders for the specified account
 *AccountInformationApi* | [**listUserAccounts**](docs/AccountInformationApi.md#listUserAccounts) | **GET** /accounts | List accounts
@@ -199,6 +199,7 @@ Class | Method | HTTP request | Description
 *AuthenticationApi* | [**listSnapTradeUsers**](docs/AuthenticationApi.md#listSnapTradeUsers) | **GET** /snapTrade/listUsers | List SnapTrade users
 *AuthenticationApi* | [**loginSnapTradeUser**](docs/AuthenticationApi.md#loginSnapTradeUser) | **POST** /snapTrade/login | Login user &amp; generate connection link
 *AuthenticationApi* | [**registerSnapTradeUser**](docs/AuthenticationApi.md#registerSnapTradeUser) | **POST** /snapTrade/registerUser | Create SnapTrade user
+*AuthenticationApi* | [**resetSnapTradeUserSecret**](docs/AuthenticationApi.md#resetSnapTradeUserSecret) | **POST** /snapTrade/resetUserSecret | Obtain a new user secret for a user
 *ConnectionsApi* | [**detailBrokerageAuthorization**](docs/ConnectionsApi.md#detailBrokerageAuthorization) | **GET** /authorizations/{authorizationId} | Get brokerage authorization details
 *ConnectionsApi* | [**listBrokerageAuthorizations**](docs/ConnectionsApi.md#listBrokerageAuthorizations) | **GET** /authorizations | List all brokerage authorizations for the user
 *ConnectionsApi* | [**removeBrokerageAuthorization**](docs/ConnectionsApi.md#removeBrokerageAuthorization) | **DELETE** /authorizations/{authorizationId} | Delete brokerage authorization
@@ -214,7 +215,7 @@ Class | Method | HTTP request | Description
 *ReferenceDataApi* | [**getSecurityTypes**](docs/ReferenceDataApi.md#getSecurityTypes) | **GET** /securityTypes | List of all security types
 *ReferenceDataApi* | [**getStockExchanges**](docs/ReferenceDataApi.md#getStockExchanges) | **GET** /exchanges | List exchanges
 *ReferenceDataApi* | [**getSymbols**](docs/ReferenceDataApi.md#getSymbols) | **POST** /symbols | Search for symbols
-*ReferenceDataApi* | [**getSymbolsByTicker**](docs/ReferenceDataApi.md#getSymbolsByTicker) | **GET** /symbols/{ticker} | Get details of a symbol by the ticker
+*ReferenceDataApi* | [**getSymbolsByTicker**](docs/ReferenceDataApi.md#getSymbolsByTicker) | **GET** /symbols/{query} | Get details of a symbol by the ticker or the universal_symbol_id
 *ReferenceDataApi* | [**listAllBrokerageAuthorizationType**](docs/ReferenceDataApi.md#listAllBrokerageAuthorizationType) | **GET** /brokerageAuthorizationTypes | List of all brokerage authorization types
 *ReferenceDataApi* | [**listAllBrokerages**](docs/ReferenceDataApi.md#listAllBrokerages) | **GET** /brokerages | List brokerages
 *ReferenceDataApi* | [**listAllCurrencies**](docs/ReferenceDataApi.md#listAllCurrencies) | **GET** /currencies | List currencies
@@ -233,6 +234,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Account](docs/Account.md)
+ - [AccountBalance](docs/AccountBalance.md)
  - [AccountHoldings](docs/AccountHoldings.md)
  - [AccountHoldingsAccount](docs/AccountHoldingsAccount.md)
  - [AccountOrderRecord](docs/AccountOrderRecord.md)
@@ -240,6 +242,8 @@ Class | Method | HTTP request | Description
  - [AccountSimple](docs/AccountSimple.md)
  - [AccountSyncStatus](docs/AccountSyncStatus.md)
  - [Action](docs/Action.md)
+ - [Amount](docs/Amount.md)
+ - [AmountNullable](docs/AmountNullable.md)
  - [Balance](docs/Balance.md)
  - [Brokerage](docs/Brokerage.md)
  - [BrokerageAuthorization](docs/BrokerageAuthorization.md)
@@ -321,7 +325,7 @@ Class | Method | HTTP request | Description
  - [SymbolQuery](docs/SymbolQuery.md)
  - [SymbolsQuotesInner](docs/SymbolsQuotesInner.md)
  - [TargetAsset](docs/TargetAsset.md)
- - [TimeInForce](docs/TimeInForce.md)
+ - [TimeInForceStrict](docs/TimeInForceStrict.md)
  - [Trade](docs/Trade.md)
  - [TradeExecutionStatus](docs/TradeExecutionStatus.md)
  - [TradeImpact](docs/TradeImpact.md)
@@ -333,10 +337,10 @@ Class | Method | HTTP request | Description
  - [UniversalActivity](docs/UniversalActivity.md)
  - [UniversalSymbol](docs/UniversalSymbol.md)
  - [UniversalSymbolNullable](docs/UniversalSymbolNullable.md)
- - [UniversalSymbolTicker](docs/UniversalSymbolTicker.md)
  - [UserErrorLog](docs/UserErrorLog.md)
  - [UserIDandSecret](docs/UserIDandSecret.md)
  - [UserSettings](docs/UserSettings.md)
+ - [ValidatedTradeBody](docs/ValidatedTradeBody.md)
 
 
 ## Author

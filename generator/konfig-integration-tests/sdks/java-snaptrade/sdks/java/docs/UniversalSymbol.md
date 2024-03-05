@@ -16,6 +16,7 @@ Universal symbol
 |**exchange** | [**Exchange**](Exchange.md) |  |  [optional] |
 |**type** | [**SecurityType**](SecurityType.md) |  |  |
 |**currencies** | [**List&lt;Currency&gt;**](Currency.md) |  |  |
+|**figiCode** | **String** |  |  [optional] |
 
 
 

@@ -24,19 +24,19 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Trade time in force:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled 
+ * Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled 
  */
-@JsonAdapter(TimeInForce.Adapter.class)public enum TimeInForce {
-  
-  DAY("Day"),
+@JsonAdapter(TimeInForceStrict.Adapter.class)public enum TimeInForceStrict {
   
   FOK("FOK"),
+  
+  DAY("Day"),
   
   GTC("GTC");
 
   private String value;
 
-  TimeInForce(String value) {
+  TimeInForceStrict(String value) {
     this.value = value;
   }
 
@@ -49,8 +49,8 @@ import com.google.gson.stream.JsonWriter;
     return String.valueOf(value);
   }
 
-  public static TimeInForce fromValue(String value) {
-    for (TimeInForce b : TimeInForce.values()) {
+  public static TimeInForceStrict fromValue(String value) {
+    for (TimeInForceStrict b : TimeInForceStrict.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -58,16 +58,16 @@ import com.google.gson.stream.JsonWriter;
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<TimeInForce> {
+  public static class Adapter extends TypeAdapter<TimeInForceStrict> {
     @Override
-    public void write(final JsonWriter jsonWriter, final TimeInForce enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final TimeInForceStrict enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public TimeInForce read(final JsonReader jsonReader) throws IOException {
+    public TimeInForceStrict read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return TimeInForce.fromValue(value);
+      return TimeInForceStrict.fromValue(value);
     }
   }
 }

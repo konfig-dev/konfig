@@ -849,7 +849,7 @@ public class ReferenceDataApiGenerated {
     public GetSymbolsRequestBuilder getSymbols() throws IllegalArgumentException {
         return new GetSymbolsRequestBuilder();
     }
-    private okhttp3.Call getSymbolsByTickerCall(String ticker, UUID symbolId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSymbolsByTickerCall(String query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -866,18 +866,14 @@ public class ReferenceDataApiGenerated {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/symbols/{ticker}"
-            .replace("{" + "ticker" + "}", localVarApiClient.escapeString(ticker.toString()));
+        String localVarPath = "/symbols/{query}"
+            .replace("{" + "query" + "}", localVarApiClient.escapeString(query.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (symbolId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("symbolId", symbolId));
-        }
 
         final String[] localVarAccepts = {
             "*/*"
@@ -899,49 +895,38 @@ public class ReferenceDataApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSymbolsByTickerValidateBeforeCall(String ticker, UUID symbolId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'ticker' is set
-        if (ticker == null) {
-            throw new ApiException("Missing the required parameter 'ticker' when calling getSymbolsByTicker(Async)");
+    private okhttp3.Call getSymbolsByTickerValidateBeforeCall(String query, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'query' is set
+        if (query == null) {
+            throw new ApiException("Missing the required parameter 'query' when calling getSymbolsByTicker(Async)");
         }
 
-        return getSymbolsByTickerCall(ticker, symbolId, _callback);
+        return getSymbolsByTickerCall(query, _callback);
 
     }
 
 
-    private ApiResponse<UniversalSymbol> getSymbolsByTickerWithHttpInfo(String ticker, UUID symbolId) throws ApiException {
-        okhttp3.Call localVarCall = getSymbolsByTickerValidateBeforeCall(ticker, symbolId, null);
+    private ApiResponse<UniversalSymbol> getSymbolsByTickerWithHttpInfo(String query) throws ApiException {
+        okhttp3.Call localVarCall = getSymbolsByTickerValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<UniversalSymbol>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getSymbolsByTickerAsync(String ticker, UUID symbolId, final ApiCallback<UniversalSymbol> _callback) throws ApiException {
+    private okhttp3.Call getSymbolsByTickerAsync(String query, final ApiCallback<UniversalSymbol> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSymbolsByTickerValidateBeforeCall(ticker, symbolId, _callback);
+        okhttp3.Call localVarCall = getSymbolsByTickerValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<UniversalSymbol>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class GetSymbolsByTickerRequestBuilder {
-        private final String ticker;
-        private UUID symbolId;
+        private final String query;
 
-        private GetSymbolsByTickerRequestBuilder(String ticker) {
-            this.ticker = ticker;
+        private GetSymbolsByTickerRequestBuilder(String query) {
+            this.query = query;
         }
 
-        /**
-         * Set symbolId
-         * @param symbolId OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. (optional)
-         * @return GetSymbolsByTickerRequestBuilder
-         */
-        public GetSymbolsByTickerRequestBuilder symbolId(UUID symbolId) {
-            this.symbolId = symbolId;
-            return this;
-        }
-        
         /**
          * Build call for getSymbolsByTicker
          * @param _callback ApiCallback API callback
@@ -956,7 +941,7 @@ public class ReferenceDataApiGenerated {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getSymbolsByTickerCall(ticker, symbolId, _callback);
+            return getSymbolsByTickerCall(query, _callback);
         }
 
 
@@ -973,7 +958,7 @@ public class ReferenceDataApiGenerated {
          </table>
          */
         public UniversalSymbol execute() throws ApiException {
-            ApiResponse<UniversalSymbol> localVarResp = getSymbolsByTickerWithHttpInfo(ticker, symbolId);
+            ApiResponse<UniversalSymbol> localVarResp = getSymbolsByTickerWithHttpInfo(query);
             return localVarResp.getResponseBody();
         }
 
@@ -990,7 +975,7 @@ public class ReferenceDataApiGenerated {
          </table>
          */
         public ApiResponse<UniversalSymbol> executeWithHttpInfo() throws ApiException {
-            return getSymbolsByTickerWithHttpInfo(ticker, symbolId);
+            return getSymbolsByTickerWithHttpInfo(query);
         }
 
         /**
@@ -1007,14 +992,14 @@ public class ReferenceDataApiGenerated {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<UniversalSymbol> _callback) throws ApiException {
-            return getSymbolsByTickerAsync(ticker, symbolId, _callback);
+            return getSymbolsByTickerAsync(query, _callback);
         }
     }
 
     /**
-     * Get details of a symbol by the ticker
+     * Get details of a symbol by the ticker or the universal_symbol_id
      * 
-     * @param ticker The ticker of the UniversalSymbol to get. (required)
+     * @param query The ticker or universal_symbol_id of the UniversalSymbol to get. (required)
      * @return GetSymbolsByTickerRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1024,11 +1009,11 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetSymbolsByTickerRequestBuilder getSymbolsByTicker(String ticker) throws IllegalArgumentException {
-        if (ticker == null) throw new IllegalArgumentException("\"ticker\" is required but got null");
+    public GetSymbolsByTickerRequestBuilder getSymbolsByTicker(String query) throws IllegalArgumentException {
+        if (query == null) throw new IllegalArgumentException("\"query\" is required but got null");
             
 
-        return new GetSymbolsByTickerRequestBuilder(ticker);
+        return new GetSymbolsByTickerRequestBuilder(query);
     }
     private okhttp3.Call listAllBrokerageAuthorizationTypeCall(String brokerage, final ApiCallback _callback) throws ApiException {
         String basePath = null;

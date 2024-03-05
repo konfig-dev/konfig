@@ -1,13 +1,13 @@
 
 
-# TimeInForce
+# TimeInForceStrict
 
 ## Enum
 
 
-* `DAY` (value: `"Day"`)
-
 * `FOK` (value: `"FOK"`)
+
+* `DAY` (value: `"Day"`)
 
 * `GTC` (value: `"GTC"`)
 

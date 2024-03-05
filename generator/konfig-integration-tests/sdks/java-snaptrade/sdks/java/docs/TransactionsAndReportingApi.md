@@ -14,7 +14,7 @@ All URIs are relative to *https://api.snaptrade.com/api/v1*
 
 Get transaction history for a user
 
-Returns activities (transactions) for a user. Specifing start and end date is highly recommended for better performance
+Returns activities (transactions) for a user. Specifying start and end date is highly recommended for better performance
 
 ### Example
 ```java
@@ -129,7 +129,7 @@ public class Example {
 
 Get performance information for a specific timeframe
 
-Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Total Equity Timeframe and Rate of Returns are experimental and should not be trusted to be 100% accurate
+Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies.
 
 ### Example
 ```java

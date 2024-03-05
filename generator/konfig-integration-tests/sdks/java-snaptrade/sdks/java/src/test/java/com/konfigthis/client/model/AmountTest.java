@@ -17,27 +17,33 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.client.model.Currency;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for Balance
+ * Model tests for Amount
  */
-public class BalanceTest {
-    private final Balance model = new Balance();
+public class AmountTest {
+    private final Amount model = new Amount();
 
     /**
-     * Model tests for Balance
+     * Model tests for Amount
      */
     @Test
-    public void testBalance() {
-        // TODO: test Balance
+    public void testAmount() {
+        // TODO: test Amount
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
     }
 
     /**
@@ -46,22 +52,6 @@ public class BalanceTest {
     @Test
     public void currencyTest() {
         // TODO: test currency
-    }
-
-    /**
-     * Test the property 'cash'
-     */
-    @Test
-    public void cashTest() {
-        // TODO: test cash
-    }
-
-    /**
-     * Test the property 'buyingPower'
-     */
-    @Test
-    public void buyingPowerTest() {
-        // TODO: test buyingPower
     }
 
 }

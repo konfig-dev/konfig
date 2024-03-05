@@ -9,7 +9,7 @@ All URIs are relative to *https://api.snaptrade.com/api/v1*
 | [**getSecurityTypes**](ReferenceDataApi.md#getSecurityTypes) | **GET** /securityTypes | List of all security types |
 | [**getStockExchanges**](ReferenceDataApi.md#getStockExchanges) | **GET** /exchanges | List exchanges |
 | [**getSymbols**](ReferenceDataApi.md#getSymbols) | **POST** /symbols | Search for symbols |
-| [**getSymbolsByTicker**](ReferenceDataApi.md#getSymbolsByTicker) | **GET** /symbols/{ticker} | Get details of a symbol by the ticker |
+| [**getSymbolsByTicker**](ReferenceDataApi.md#getSymbolsByTicker) | **GET** /symbols/{query} | Get details of a symbol by the ticker or the universal_symbol_id |
 | [**listAllBrokerageAuthorizationType**](ReferenceDataApi.md#listAllBrokerageAuthorizationType) | **GET** /brokerageAuthorizationTypes | List of all brokerage authorization types |
 | [**listAllBrokerages**](ReferenceDataApi.md#listAllBrokerages) | **GET** /brokerages | List brokerages |
 | [**listAllCurrencies**](ReferenceDataApi.md#listAllCurrencies) | **GET** /currencies | List currencies |
@@ -479,9 +479,9 @@ public class Example {
 
 <a name="getSymbolsByTicker"></a>
 # **getSymbolsByTicker**
-> UniversalSymbol getSymbolsByTicker(ticker).symbolId(symbolId).execute();
+> UniversalSymbol getSymbolsByTicker(query).execute();
 
-Get details of a symbol by the ticker
+Get details of a symbol by the ticker or the universal_symbol_id
 
 ### Example
 ```java
@@ -505,13 +505,11 @@ public class Example {
     configuration.consumerKey = System.getenv("SNAPTRADE_CONSUMER_KEY");
     
     Snaptrade client = new Snaptrade(configuration);
-    String ticker = "ticker_example"; // The ticker of the UniversalSymbol to get.
-    UUID symbolId = UUID.randomUUID(); // OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get.
+    String query = "query_example"; // The ticker or universal_symbol_id of the UniversalSymbol to get.
     try {
       UniversalSymbol result = client
               .referenceData
-              .getSymbolsByTicker(ticker)
-              .symbolId(symbolId)
+              .getSymbolsByTicker(query)
               .execute();
       System.out.println(result);
       System.out.println(result.getId());
@@ -522,6 +520,7 @@ public class Example {
       System.out.println(result.getExchange());
       System.out.println(result.getType());
       System.out.println(result.getCurrencies());
+      System.out.println(result.getFigiCode());
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferenceDataApi#getSymbolsByTicker");
       System.err.println("Status code: " + e.getStatusCode());
@@ -534,8 +533,7 @@ public class Example {
     try {
       ApiResponse<UniversalSymbol> response = client
               .referenceData
-              .getSymbolsByTicker(ticker)
-              .symbolId(symbolId)
+              .getSymbolsByTicker(query)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -558,8 +556,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ticker** | **String**| The ticker of the UniversalSymbol to get. | |
-| **symbolId** | **UUID**| OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get. | [optional] |
+| **query** | **String**| The ticker or universal_symbol_id of the UniversalSymbol to get. | |
 
 ### Return type
 
@@ -964,7 +961,7 @@ public class Example {
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
-    UUID accountId = UUID.randomUUID(); // The ID of the account to search for symbols within.
+    UUID accountId = UUID.fromString("917c8734-8470-4a3e-a18f-57c3f2ee6631"); // The ID of the account to search for symbols within.
     String substring = "substring_example";
     try {
       List<UniversalSymbol> result = client

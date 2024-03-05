@@ -42,7 +42,7 @@ public class Example {
     Snaptrade client = new Snaptrade(configuration);
     String userId = "userId_example";
     String userSecret = "userSecret_example";
-    UUID accountId = UUID.randomUUID(); // The ID of the account to cancel the order in.
+    UUID accountId = UUID.fromString("917c8734-8470-4a3e-a18f-57c3f2ee6631"); // The ID of the account to cancel the order in.
     UUID brokerageOrderId = UUID.randomUUID();
     try {
       AccountOrderRecord result = client
@@ -163,9 +163,10 @@ public class Example {
     OrderType orderType = OrderType.fromValue("Limit");
     Double price = 3.4D; // Trade Price if limit or stop limit order
     Double stop = 3.4D; // Stop Price. If stop loss or stop limit order, the price to trigger the stop
-    TimeInForce timeInForce = TimeInForce.fromValue("Day");
-    Double units = 3.4D; // Trade Units
+    TimeInForceStrict timeInForce = TimeInForceStrict.fromValue("FOK");
+    Double units = 3.4D; // Trade Units. Cannot work with notional value.
     UUID universalSymbolId = UUID.randomUUID();
+    Double notionalValue = 3.4D; // Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades**
     try {
       ManualTradeAndImpact result = client
               .trading
@@ -178,6 +179,7 @@ public class Example {
               .timeInForce(timeInForce)
               .units(units)
               .universalSymbolId(universalSymbolId)
+              .notionalValue(notionalValue)
               .execute();
       System.out.println(result);
       System.out.println(result.getTrade());
@@ -204,6 +206,7 @@ public class Example {
               .timeInForce(timeInForce)
               .units(units)
               .universalSymbolId(universalSymbolId)
+              .notionalValue(notionalValue)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -280,7 +283,7 @@ public class Example {
     String userId = "userId_example";
     String userSecret = "userSecret_example";
     String symbols = "symbols_example"; // List of universal_symbol_id or tickers to get quotes for.
-    String accountId = "accountId_example"; // The ID of the account to get quotes.
+    UUID accountId = UUID.fromString("917c8734-8470-4a3e-a18f-57c3f2ee6631"); // The ID of the account to get quotes.
     Boolean useTicker = true; // Should be set to True if providing tickers.
     try {
       List<SymbolsQuotesInner> result = client
@@ -328,7 +331,7 @@ public class Example {
 | **userId** | **String**|  | |
 | **userSecret** | **String**|  | |
 | **symbols** | **String**| List of universal_symbol_id or tickers to get quotes for. | |
-| **accountId** | **String**| The ID of the account to get quotes. | |
+| **accountId** | **UUID**| The ID of the account to get quotes. | |
 | **useTicker** | **Boolean**| Should be set to True if providing tickers. | [optional] |
 
 ### Return type
@@ -384,9 +387,10 @@ public class Example {
     OrderType orderType = OrderType.fromValue("Limit");
     Double price = 3.4D; // Trade Price if limit or stop limit order
     Double stop = 3.4D; // Stop Price. If stop loss or stop limit order, the price to trigger the stop
-    TimeInForce timeInForce = TimeInForce.fromValue("Day");
-    Double units = 3.4D; // Trade Units
+    TimeInForceStrict timeInForce = TimeInForceStrict.fromValue("FOK");
+    Double units = 3.4D; // Trade Units. Cannot work with notional value.
     UUID universalSymbolId = UUID.randomUUID();
+    Double notionalValue = 3.4D; // Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades**
     try {
       AccountOrderRecord result = client
               .trading
@@ -399,6 +403,7 @@ public class Example {
               .timeInForce(timeInForce)
               .units(units)
               .universalSymbolId(universalSymbolId)
+              .notionalValue(notionalValue)
               .execute();
       System.out.println(result);
       System.out.println(result.getBrokerageOrderId());
@@ -440,6 +445,7 @@ public class Example {
               .timeInForce(timeInForce)
               .units(units)
               .universalSymbolId(universalSymbolId)
+              .notionalValue(notionalValue)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -605,7 +611,7 @@ public class Example {
 
 <a name="placeOrder"></a>
 # **placeOrder**
-> AccountOrderRecord placeOrder(tradeId, userId, userSecret).execute();
+> AccountOrderRecord placeOrder(tradeId, userId, userSecret).validatedTradeBody(validatedTradeBody).execute();
 
 Place order
 
@@ -634,10 +640,12 @@ public class Example {
     UUID tradeId = UUID.randomUUID(); // The ID of trade object obtained from trade/impact endpoint
     String userId = "userId_example";
     String userSecret = "userSecret_example";
+    Boolean waitToConfirm = true; // Optional, defaults to true. Determines if a wait is performed to check on order status. If false, latency will be reduced but orders returned will be more likely to be of status PENDING as we will not wait to check on the status before responding to the request
     try {
       AccountOrderRecord result = client
               .trading
               .placeOrder(tradeId, userId, userSecret)
+              .waitToConfirm(waitToConfirm)
               .execute();
       System.out.println(result);
       System.out.println(result.getBrokerageOrderId());
@@ -671,6 +679,7 @@ public class Example {
       ApiResponse<AccountOrderRecord> response = client
               .trading
               .placeOrder(tradeId, userId, userSecret)
+              .waitToConfirm(waitToConfirm)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -696,6 +705,7 @@ public class Example {
 | **tradeId** | **UUID**| The ID of trade object obtained from trade/impact endpoint | |
 | **userId** | **String**|  | |
 | **userSecret** | **String**|  | |
+| **validatedTradeBody** | [**ValidatedTradeBody**](ValidatedTradeBody.md)|  | [optional] |
 
 ### Return type
 
@@ -707,7 +717,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

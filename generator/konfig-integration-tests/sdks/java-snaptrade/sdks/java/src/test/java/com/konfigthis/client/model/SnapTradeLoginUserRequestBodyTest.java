@@ -78,4 +78,12 @@ public class SnapTradeLoginUserRequestBodyTest {
         // TODO: test connectionType
     }
 
+    /**
+     * Test the property 'connectionPortalVersion'
+     */
+    @Test
+    public void connectionPortalVersionTest() {
+        // TODO: test connectionPortalVersion
+    }
+
 }

@@ -26,6 +26,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.UUID;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -81,6 +82,10 @@ public class Symbol {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private SecurityType type;
+
+  public static final String SERIALIZED_NAME_FIGI_CODE = "figi_code";
+  @SerializedName(SERIALIZED_NAME_FIGI_CODE)
+  private String figiCode;
 
   public Symbol() {
   }
@@ -287,6 +292,35 @@ public class Symbol {
     this.type = type;
   }
 
+
+  public Symbol figiCode(String figiCode) {
+    
+    
+    
+    
+    this.figiCode = figiCode;
+    return this;
+  }
+
+   /**
+   * Get figiCode
+   * @return figiCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "BBG000B9XRY4", value = "")
+
+  public String getFigiCode() {
+    return figiCode;
+  }
+
+
+  public void setFigiCode(String figiCode) {
+    
+    
+    
+    this.figiCode = figiCode;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -348,13 +382,25 @@ public class Symbol {
         Objects.equals(this.name, symbol.name) &&
         Objects.equals(this.currency, symbol.currency) &&
         Objects.equals(this.exchange, symbol.exchange) &&
-        Objects.equals(this.type, symbol.type)&&
+        Objects.equals(this.type, symbol.type) &&
+        Objects.equals(this.figiCode, symbol.figiCode)&&
         Objects.equals(this.additionalProperties, symbol.additionalProperties);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, symbol, rawSymbol, name, currency, exchange, type, additionalProperties);
+    return Objects.hash(id, symbol, rawSymbol, name, currency, exchange, type, figiCode, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -368,6 +414,7 @@ public class Symbol {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    exchange: ").append(toIndentedString(exchange)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    figiCode: ").append(toIndentedString(figiCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -398,6 +445,7 @@ public class Symbol {
     openapiFields.add("currency");
     openapiFields.add("exchange");
     openapiFields.add("type");
+    openapiFields.add("figi_code");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -438,6 +486,9 @@ public class Symbol {
       // validate the optional field `type`
       if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
         SecurityType.validateJsonObject(jsonObj.getAsJsonObject("type"));
+      }
+      if (!jsonObj.get("figi_code").isJsonNull() && (jsonObj.get("figi_code") != null && !jsonObj.get("figi_code").isJsonNull()) && !jsonObj.get("figi_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `figi_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("figi_code").toString()));
       }
   }
 

@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.client.model.AccountBalance;
 import com.konfigthis.client.model.AccountSyncStatus;
 import com.konfigthis.client.model.CashRestriction;
 import io.swagger.annotations.ApiModel;
@@ -96,6 +97,10 @@ public class Account {
   public static final String SERIALIZED_NAME_SYNC_STATUS = "sync_status";
   @SerializedName(SERIALIZED_NAME_SYNC_STATUS)
   private AccountSyncStatus syncStatus;
+
+  public static final String SERIALIZED_NAME_BALANCE = "balance";
+  @SerializedName(SERIALIZED_NAME_BALANCE)
+  private AccountBalance balance;
 
   public Account() {
   }
@@ -405,6 +410,35 @@ public class Account {
     this.syncStatus = syncStatus;
   }
 
+
+  public Account balance(AccountBalance balance) {
+    
+    
+    
+    
+    this.balance = balance;
+    return this;
+  }
+
+   /**
+   * Get balance
+   * @return balance
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public AccountBalance getBalance() {
+    return balance;
+  }
+
+
+  public void setBalance(AccountBalance balance) {
+    
+    
+    
+    this.balance = balance;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -469,13 +503,14 @@ public class Account {
         Objects.equals(this.createdDate, account.createdDate) &&
         Objects.equals(this.meta, account.meta) &&
         Objects.equals(this.cashRestrictions, account.cashRestrictions) &&
-        Objects.equals(this.syncStatus, account.syncStatus)&&
+        Objects.equals(this.syncStatus, account.syncStatus) &&
+        Objects.equals(this.balance, account.balance)&&
         Objects.equals(this.additionalProperties, account.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, brokerageAuthorization, portfolioGroup, name, number, institutionName, createdDate, meta, cashRestrictions, syncStatus, additionalProperties);
+    return Objects.hash(id, brokerageAuthorization, portfolioGroup, name, number, institutionName, createdDate, meta, cashRestrictions, syncStatus, balance, additionalProperties);
   }
 
   @Override
@@ -492,6 +527,7 @@ public class Account {
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    cashRestrictions: ").append(toIndentedString(cashRestrictions)).append("\n");
     sb.append("    syncStatus: ").append(toIndentedString(syncStatus)).append("\n");
+    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -525,6 +561,7 @@ public class Account {
     openapiFields.add("meta");
     openapiFields.add("cash_restrictions");
     openapiFields.add("sync_status");
+    openapiFields.add("balance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -580,6 +617,10 @@ public class Account {
       // validate the optional field `sync_status`
       if (jsonObj.get("sync_status") != null && !jsonObj.get("sync_status").isJsonNull()) {
         AccountSyncStatus.validateJsonObject(jsonObj.getAsJsonObject("sync_status"));
+      }
+      // validate the optional field `balance`
+      if (jsonObj.get("balance") != null && !jsonObj.get("balance").isJsonNull()) {
+        AccountBalance.validateJsonObject(jsonObj.getAsJsonObject("balance"));
       }
   }
 

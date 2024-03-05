@@ -84,6 +84,22 @@ public class BrokerageTest {
     }
 
     /**
+     * Test the property 'awsS3SquareLogoUrl'
+     */
+    @Test
+    public void awsS3SquareLogoUrlTest() {
+        // TODO: test awsS3SquareLogoUrl
+    }
+
+    /**
+     * Test the property 'openUrl'
+     */
+    @Test
+    public void openUrlTest() {
+        // TODO: test openUrl
+    }
+
+    /**
      * Test the property 'slug'
      */
     @Test

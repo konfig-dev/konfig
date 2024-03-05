@@ -12,6 +12,8 @@
 |**displayName** | **String** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
 |**awsS3LogoUrl** | **String** |  |  [optional] |
+|**awsS3SquareLogoUrl** | **String** |  |  [optional] |
+|**openUrl** | **String** |  |  [optional] |
 |**slug** | **String** |  |  [optional] |
 |**url** | **String** |  |  [optional] |
 |**enabled** | **Boolean** |  |  [optional] |

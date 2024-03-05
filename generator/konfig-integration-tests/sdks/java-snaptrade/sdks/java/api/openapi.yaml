@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: API is alive and kicking in some fashion
+          description: API is operational.
         default:
           description: Unexpected error.
       security: []
@@ -305,6 +305,48 @@ paths:
       - Authentication
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--snapTrade-encryptedJWT
+      x-accepts: application/json
+  /snapTrade/resetUserSecret:
+    post:
+      operationId: Authentication_resetSnapTradeUserSecret
+      requestBody:
+        $ref: '#/components/requestBodies/ResetUserSecretRequestBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserIDandSecret'
+          description: New user secret is generated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400FailedRequestResponse'
+          description: Bad Request. Could be caused by various reasons. Error message
+            is provided in response
+          x-do-not-generate: true
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401FailedRequestResponse'
+          description: "Failed authenticaion. Wrong clientId, userId or userSecret\
+            \ provided"
+          x-do-not-generate: true
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500UnexpectedExceptionResponse'
+          description: Unexpected error
+          x-do-not-generate: true
+      summary: Obtain a new user secret for a user
+      tags:
+      - Authentication
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--snapTrade-resetUserSecret
+      x-content-type: application/json
       x-accepts: application/json
   /authorizations:
     get:
@@ -654,8 +696,11 @@ paths:
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-get-parameters-2-schema
         style: simple
       responses:
         "200":
@@ -742,8 +787,11 @@ paths:
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-balances-get-parameters-2-schema
         style: simple
       responses:
         "200":
@@ -787,8 +835,11 @@ paths:
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-positions-get-parameters-2-schema
         style: simple
       responses:
         "200":
@@ -839,14 +890,31 @@ paths:
           - executed
           type: string
         style: form
+      - description: Number of days in the past to fetch the most recent orders. Defaults
+          to the last 90 days if no value is passed in.
+        explode: true
+        in: query
+        name: days
+        required: false
+        schema:
+          example: 30
+          format: int32
+          minimum: 1
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-orders-get-parameters-3-schema
+        style: form
       - description: The ID of the account to get orders.
         explode: false
         in: path
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-orders-get-parameters-4-schema
         style: simple
       responses:
         "200":
@@ -865,7 +933,7 @@ paths:
                 $ref: '#/components/schemas/500UnexpectedExceptionResponse'
           description: Unexpected error
           x-do-not-generate: true
-      summary: Get history of orders placed in account
+      summary: List account orders
       tags:
       - Account Information
       x-konfig-operation-can-have-single-parameter: true
@@ -911,7 +979,11 @@ paths:
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-quotes-get-parameters-4-schema
         style: simple
       responses:
         "200":
@@ -1010,6 +1082,8 @@ paths:
         schema:
           $ref: '#/components/schemas/UserSecret'
         style: form
+      requestBody:
+        $ref: '#/components/requestBodies/ValidatedTradeRequestBody'
       responses:
         "200":
           content:
@@ -1031,6 +1105,7 @@ paths:
       - Trading
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--trade-tradeId
+      x-content-type: application/json
       x-accepts: application/json
   /trade/place:
     post:
@@ -1084,6 +1159,7 @@ paths:
       x-accepts: application/json
   /trade/oco:
     post:
+      deprecated: true
       operationId: Trading_placeOCOOrder
       parameters:
       - explode: true
@@ -1149,8 +1225,11 @@ paths:
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-orders-cancel-post-parameters-2-schema
         style: simple
       requestBody:
         $ref: '#/components/requestBodies/CancelOrderRequestBody'
@@ -1248,8 +1327,11 @@ paths:
         name: accountId
         required: true
         schema:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-symbols-post-parameters-2-schema
         style: simple
       requestBody:
         content:
@@ -1776,28 +1858,18 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--symbols
       x-content-type: application/json
       x-accepts: application/json
-  /symbols/{ticker}:
+  /symbols/{query}:
     get:
       operationId: ReferenceData_getSymbolsByTicker
       parameters:
-      - description: The ticker of the UniversalSymbol to get.
+      - description: The ticker or universal_symbol_id of the UniversalSymbol to get.
         explode: false
         in: path
-        name: ticker
+        name: query
         required: true
         schema:
           type: string
         style: simple
-      - description: OPTIONAL IN PATH Can be used instead of the ticker ; The ID of
-          the UniversalSymbol to get.
-        explode: true
-        in: query
-        name: symbolId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -1809,16 +1881,16 @@ paths:
           description: No symbol with the specified ticker found.
         default:
           description: Unexpected error
-      summary: Get details of a symbol by the ticker
+      summary: Get details of a symbol by the ticker or the universal_symbol_id
       tags:
       - Reference Data
       x-konfig-operation-can-have-single-parameter: true
-      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--symbols-ticker
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--symbols-query
       x-accepts: '*/*'
   /activities:
     get:
-      description: Returns activities (transactions) for a user. Specifing start and
-        end date is highly recommended for better performance
+      description: Returns activities (transactions) for a user. Specifying start
+        and end date is highly recommended for better performance
       operationId: TransactionsAndReporting_getActivities
       parameters:
       - explode: true
@@ -1904,9 +1976,11 @@ paths:
       x-accepts: application/json
   /performance/custom:
     get:
+      deprecated: true
       description: "Returns performance information (contributions, dividends, rate\
-        \ of return, etc) for a specific timeframe. Total Equity Timeframe and Rate\
-        \ of Returns are experimental and should not be trusted to be 100% accurate"
+        \ of return, etc) for a specific timeframe. Please note that Total Equity\
+        \ Timeframe and Rate of Returns are experimental features. Please contact\
+        \ support@snaptrade.com if you notice any inconsistencies."
       operationId: TransactionsAndReporting_getReportingCustomRange
       parameters:
       - explode: true
@@ -1990,6 +2064,12 @@ components:
           schema:
             $ref: '#/components/schemas/SnapTradeRegisterUserRequestBody'
       required: true
+    ResetUserSecretRequestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserIDandSecret'
+      required: true
     SnapTradeLoginUserRequestBody:
       content:
         application/json:
@@ -2031,6 +2111,12 @@ components:
           schema:
             $ref: '#/components/schemas/ManualTradeForm'
       required: true
+    ValidatedTradeRequestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidatedTradeBody'
+      required: false
     CancelOrderRequestBody:
       content:
         application/json:
@@ -2203,11 +2289,37 @@ components:
           type: string
           x-konfig-original-example: 2022-01-24
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SyncStatusDate
+    AccountBalance:
+      description: Balance of the account
+      example:
+        total:
+          amount: 15363.23
+          currency: USD
+      properties:
+        total:
+          $ref: '#/components/schemas/AmountNullable'
+    Amount:
+      description: Total Value of the account
+      properties:
+        amount:
+          example: 15363.23
+          type: number
+          x-konfig-original-example: 15363.23
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Amount-properties-amount
+        currency:
+          example: USD
+          type: string
+          x-konfig-original-example: USD
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Amount-properties-currency
     Account:
       additionalProperties: true
       description: SnapTradeUser Investment Account
       example:
         number: Q6542138443
+        balance:
+          total:
+            amount: 15363.23
+            currency: USD
         brokerage_authorization: 2bcd7cc3-e922-4976-bce1-9858296801c3
         meta:
           type: Margin
@@ -2290,6 +2402,8 @@ components:
           type: array
         sync_status:
           $ref: '#/components/schemas/AccountSyncStatus'
+        balance:
+          $ref: '#/components/schemas/AccountBalance'
       type: object
       x-konfig-is-used-in-successful-response: true
     AccountSimple:
@@ -2348,15 +2462,18 @@ components:
             name: US Dollar
             id: 87b24961-b51e-4db8-9226-f198f6518a89
           cash: 300.71
+          buying_power: 410.71
         - currency:
             code: USD
             name: US Dollar
             id: 87b24961-b51e-4db8-9226-f198f6518a89
           cash: 300.71
+          buying_power: 410.71
         positions:
         - symbol:
             is_quotable: true
             symbol:
+              figi_code: BBG000B9XRY4
               symbol: VAB.TO
               raw_symbol: VAB
               description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2398,6 +2515,7 @@ components:
         - symbol:
             is_quotable: true
             symbol:
+              figi_code: BBG000B9XRY4
               symbol: VAB.TO
               raw_symbol: VAB
               description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2447,11 +2565,13 @@ components:
               - 4bcd8cc3-c122-4974-dc21-1858296801f4
               description: Questrade is an online brokerage firm and wealth management
                 firm based in Canada. It is Canada's largest discount broker.
+              open_url: https://www.brokerage.com
               display_name: Questrade
               url: https://www.questrade.com/
               enabled: true
               allows_trading: true
               has_reporting: true
+              aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
               is_real_time_connection: true
               name: Questrade
               allows_trading_through_snaptrade_api: true
@@ -2513,15 +2633,18 @@ components:
             name: US Dollar
             id: 87b24961-b51e-4db8-9226-f198f6518a89
           cash: 300.71
+          buying_power: 410.71
         - currency:
             code: USD
             name: US Dollar
             id: 87b24961-b51e-4db8-9226-f198f6518a89
           cash: 300.71
+          buying_power: 410.71
         positions:
         - symbol:
             is_quotable: true
             symbol:
+              figi_code: BBG000B9XRY4
               symbol: VAB.TO
               raw_symbol: VAB
               description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2563,6 +2686,7 @@ components:
         - symbol:
             is_quotable: true
             symbol:
+              figi_code: BBG000B9XRY4
               symbol: VAB.TO
               raw_symbol: VAB
               description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2609,12 +2733,13 @@ components:
           limit_price: 31.33
           time_updated: 2022-01-21T20:11:19.217Z
           canceled_quantity: 1.4658129805029452
-          time_in_force: null
+          time_in_force: time_in_force
           execution_price: 31.33
           stop_price: 31.33
           action: null
           total_quantity: 0.8008281904610115
           universal_symbol:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2652,6 +2777,7 @@ components:
             is_mini_option: false
             option_type: CALL
             underlying_symbol:
+              figi_code: BBG000B9XRY4
               symbol: SPY
               description: SPDR S&P 500 ETF Trust
               currency:
@@ -2694,12 +2820,13 @@ components:
           limit_price: 31.33
           time_updated: 2022-01-21T20:11:19.217Z
           canceled_quantity: 1.4658129805029452
-          time_in_force: null
+          time_in_force: time_in_force
           execution_price: 31.33
           stop_price: 31.33
           action: null
           total_quantity: 0.8008281904610115
           universal_symbol:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2737,6 +2864,7 @@ components:
             is_mini_option: false
             option_type: CALL
             underlying_symbol:
+              figi_code: BBG000B9XRY4
               symbol: SPY
               description: SPDR S&P 500 ETF Trust
               currency:
@@ -2828,12 +2956,13 @@ components:
         limit_price: 31.33
         time_updated: 2022-01-21T20:11:19.217Z
         canceled_quantity: 1.4658129805029452
-        time_in_force: null
+        time_in_force: time_in_force
         execution_price: 31.33
         stop_price: 31.33
         action: null
         total_quantity: 0.8008281904610115
         universal_symbol:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -2871,6 +3000,7 @@ components:
           is_mini_option: false
           option_type: CALL
           underlying_symbol:
+            figi_code: BBG000B9XRY4
             symbol: SPY
             description: SPDR S&P 500 ETF Trust
             currency:
@@ -2925,7 +3055,8 @@ components:
         action:
           $ref: '#/components/schemas/Action'
         total_quantity:
-          description: Trade Units
+          description: Trade Units. Cannot work with notional value.
+          nullable: true
           type: number
         open_quantity:
           description: Trade Units
@@ -2964,7 +3095,13 @@ components:
         order_type:
           $ref: '#/components/schemas/OrderType'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          description: |
+            Trade time in force examples:
+              * FOK - Fill Or Kill
+              * Day - Day
+              * GTC - Good Til Canceled
+              * GTD - Good Til Date
+          type: string
         time_placed:
           description: Time
           example: 2022-01-21T20:11:19.217Z
@@ -3014,6 +3151,7 @@ components:
       example:
         symbol:
           symbol:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -3053,11 +3191,13 @@ components:
               - 4bcd8cc3-c122-4974-dc21-1858296801f4
               description: Questrade is an online brokerage firm and wealth management
                 firm based in Canada. It is Canada's largest discount broker.
+              open_url: https://www.brokerage.com
               display_name: Questrade
               url: https://www.questrade.com/
               enabled: true
               allows_trading: true
               has_reporting: true
+              aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
               is_real_time_connection: true
               name: Questrade
               allows_trading_through_snaptrade_api: true
@@ -3087,6 +3227,7 @@ components:
             is_mini_option: false
             option_type: CALL
             underlying_symbol:
+              figi_code: BBG000B9XRY4
               symbol: SPY
               description: SPDR S&P 500 ETF Trust
               currency:
@@ -3278,6 +3419,7 @@ components:
         strategy_type: BUTTERFLY
         id: 2bcd7cc3-e922-4976-bce1-9858296801c3
         underlying_symbol_id:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -3355,6 +3497,7 @@ components:
           strategy_type: BUTTERFLY
           id: 2bcd7cc3-e922-4976-bce1-9858296801c3
           underlying_symbol_id:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -3424,7 +3567,7 @@ components:
       additionalProperties: true
       description: Strategy order record
       example:
-        time_in_force: null
+        time_in_force: time_in_force
         execution_price: 31.33
         time_placed: 2022-01-21T20:11:19.217Z
         strategy:
@@ -3441,6 +3584,7 @@ components:
           strategy_type: BUTTERFLY
           id: 2bcd7cc3-e922-4976-bce1-9858296801c3
           underlying_symbol_id:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -3520,7 +3664,13 @@ components:
         order_type:
           $ref: '#/components/schemas/OrderType'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          description: |
+            Trade time in force examples:
+              * FOK - Fill Or Kill
+              * Day - Day
+              * GTC - Good Til Canceled
+              * GTD - Good Til Date
+          type: string
         limit_price:
           description: Trade Price if limit or stop limit order
           example: 31.33
@@ -3563,11 +3713,13 @@ components:
             - 4bcd8cc3-c122-4974-dc21-1858296801f4
             description: Questrade is an online brokerage firm and wealth management
               firm based in Canada. It is Canada's largest discount broker.
+            open_url: https://www.brokerage.com
             display_name: Questrade
             url: https://www.questrade.com/
             enabled: true
             allows_trading: true
             has_reporting: true
+            aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
             is_real_time_connection: true
             name: Questrade
             allows_trading_through_snaptrade_api: true
@@ -3739,11 +3891,13 @@ components:
       properties:
         value:
           example: 32600.71
+          nullable: true
           type: number
           x-konfig-original-example: 32600.71
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SnapTradeHoldingsTotalValue-properties-value
         currency:
           example: USD
+          nullable: true
           type: string
           x-konfig-original-example: USD
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SnapTradeHoldingsTotalValue-properties-currency
@@ -3757,6 +3911,7 @@ components:
           name: US Dollar
           id: 87b24961-b51e-4db8-9226-f198f6518a89
         cash: 300.71
+        buying_power: 410.71
       properties:
         currency:
           $ref: '#/components/schemas/Currency'
@@ -3766,6 +3921,12 @@ components:
           type: number
           x-konfig-original-example: 300.71
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-Balance-properties-cash
+        buying_power:
+          example: 410.71
+          nullable: true
+          type: number
+          x-konfig-original-example: 410.71
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Balance-properties-buying_power
       type: object
     ConsumerKey:
       description: Shared key used to sign requests
@@ -4000,6 +4161,7 @@ components:
         commissions: 3.26
         dividends:
         - symbol:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -4032,6 +4194,7 @@ components:
           amount: 165.05
           currency: USD
         - symbol:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -4287,11 +4450,13 @@ components:
           - 4bcd8cc3-c122-4974-dc21-1858296801f4
           description: Questrade is an online brokerage firm and wealth management
             firm based in Canada. It is Canada's largest discount broker.
+          open_url: https://www.brokerage.com
           display_name: Questrade
           url: https://www.questrade.com/
           enabled: true
           allows_trading: true
           has_reporting: true
+          aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
           is_real_time_connection: true
           name: Questrade
           allows_trading_through_snaptrade_api: true
@@ -4310,11 +4475,13 @@ components:
           - 4bcd8cc3-c122-4974-dc21-1858296801f4
           description: Questrade is an online brokerage firm and wealth management
             firm based in Canada. It is Canada's largest discount broker.
+          open_url: https://www.brokerage.com
           display_name: Questrade
           url: https://www.questrade.com/
           enabled: true
           allows_trading: true
           has_reporting: true
+          aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
           is_real_time_connection: true
           name: Questrade
           allows_trading_through_snaptrade_api: true
@@ -4409,6 +4576,7 @@ components:
         symbol:
           is_quotable: true
           symbol:
+            figi_code: BBG000B9XRY4
             symbol: VAB.TO
             raw_symbol: VAB
             description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -4566,6 +4734,7 @@ components:
     SnapTradeLoginUserRequestBody:
       description: Data to login a user via SnapTrade Partner
       example:
+        connectionPortalVersion: v2
         reconnect: 8b5f262d-4bb9-365d-888a-202bd3b15fa1
         immediateRedirect: true
         customRedirect: https://snaptrade.com
@@ -4593,7 +4762,9 @@ components:
           x-konfig-original-example: https://snaptrade.com
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SnapTradeLoginUserRequestBody-properties-customRedirect
         reconnect:
-          description: The UUID of the brokerage connection to be reconnected
+          description: The UUID of the brokerage connection to be reconnected. This
+            parameter should be left empty unless you are reconnecting a disabled
+            connection. See ‘Reconnecting Accounts’ for more information.
           example: 8b5f262d-4bb9-365d-888a-202bd3b15fa1
           type: string
           x-konfig-original-example: 8b5f262d-4bb9-365d-888a-202bd3b15fa1
@@ -4603,6 +4774,13 @@ components:
           enum:
           - read
           - trade
+          type: string
+        connectionPortalVersion:
+          description: "Sets the version of the connection portal to render, with\
+            \ a default to 'v2'"
+          enum:
+          - v2
+          - v3
           type: string
       type: object
     SnapTradeUserID:
@@ -4624,6 +4802,7 @@ components:
       additionalProperties: true
       description: Symbol
       example:
+        figi_code: BBG000B9XRY4
         symbol: VAB.TO
         raw_symbol: VAB
         name: Vanguard Canadian Aggregate Bond Index ETF
@@ -4674,6 +4853,12 @@ components:
           $ref: '#/components/schemas/Exchange'
         type:
           $ref: '#/components/schemas/SecurityType'
+        figi_code:
+          example: BBG000B9XRY4
+          nullable: true
+          type: string
+          x-konfig-original-example: BBG000B9XRY4
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Symbol-properties-figi_code
       type: object
     Timestamp:
       description: Unix Epoch time
@@ -4684,7 +4869,6 @@ components:
       x-konfig-original-example: 1635790389
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-Timestamp
     UserIDandSecret:
-      additionalProperties: true
       description: Response when register user is successful
       example:
         userSecret: h81@cx1lkalablakwjaltkejraj11=
@@ -4795,11 +4979,13 @@ components:
         - 4bcd8cc3-c122-4974-dc21-1858296801f4
         description: Questrade is an online brokerage firm and wealth management firm
           based in Canada. It is Canada's largest discount broker.
+        open_url: https://www.brokerage.com
         display_name: Questrade
         url: https://www.questrade.com/
         enabled: true
         allows_trading: true
         has_reporting: true
+        aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
         is_real_time_connection: true
         name: Questrade
         allows_trading_through_snaptrade_api: true
@@ -4841,6 +5027,20 @@ components:
           type: string
           x-konfig-original-example: https://www.snaptrade.com/questrade.logo
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-Brokerage-properties-aws_s3_logo_url
+        aws_s3_square_logo_url:
+          example: https://www.snaptrade.com/questrade.logo
+          format: url
+          nullable: true
+          type: string
+          x-konfig-original-example: https://www.snaptrade.com/questrade.logo
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Brokerage-properties-aws_s3_square_logo_url
+        open_url:
+          example: https://www.brokerage.com
+          format: url
+          nullable: true
+          type: string
+          x-konfig-original-example: https://www.brokerage.com
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Brokerage-properties-open_url
         slug:
           example: QUESTRADE
           type: string
@@ -4927,11 +5127,13 @@ components:
           - 4bcd8cc3-c122-4974-dc21-1858296801f4
           description: Questrade is an online brokerage firm and wealth management
             firm based in Canada. It is Canada's largest discount broker.
+          open_url: https://www.brokerage.com
           display_name: Questrade
           url: https://www.questrade.com/
           enabled: true
           allows_trading: true
           has_reporting: true
+          aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
           is_real_time_connection: true
           name: Questrade
           allows_trading_through_snaptrade_api: true
@@ -5071,6 +5273,7 @@ components:
       description: Brokerage symbol
       example:
         symbol:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -5110,11 +5313,13 @@ components:
             - 4bcd8cc3-c122-4974-dc21-1858296801f4
             description: Questrade is an online brokerage firm and wealth management
               firm based in Canada. It is Canada's largest discount broker.
+            open_url: https://www.brokerage.com
             display_name: Questrade
             url: https://www.questrade.com/
             enabled: true
             allows_trading: true
             has_reporting: true
+            aws_s3_square_logo_url: https://www.snaptrade.com/questrade.logo
             is_real_time_connection: true
             name: Questrade
             allows_trading_through_snaptrade_api: true
@@ -5144,6 +5349,7 @@ components:
           is_mini_option: false
           option_type: CALL
           underlying_symbol:
+            figi_code: BBG000B9XRY4
             symbol: SPY
             description: SPDR S&P 500 ETF Trust
             currency:
@@ -5207,6 +5413,7 @@ components:
       example:
         is_quotable: true
         symbol:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -5491,6 +5698,7 @@ components:
       description: Object representing total dividends received during a timeframe
       example:
         symbol:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -5918,7 +6126,7 @@ components:
             code: USD
             name: US Dollar
             id: 87b24961-b51e-4db8-9226-f198f6518a89
-        time_in_force: null
+        time_in_force: time_in_force
         price: 31.33
         action: null
         id: 2bcd7cc3-e922-4976-bce1-9858296801c3
@@ -5940,13 +6148,20 @@ components:
         order_type:
           $ref: '#/components/schemas/OrderType'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          description: |
+            Trade time in force examples:
+              * FOK - Fill Or Kill
+              * Day - Day
+              * GTC - Good Til Canceled
+              * GTD - Good Til Date
+          type: string
         symbol:
           $ref: '#/components/schemas/ManualTradeSymbol'
         action:
           $ref: '#/components/schemas/Action'
         units:
-          description: Trade Units
+          description: Trade Units. Cannot work with notional value.
+          nullable: true
           type: number
         price:
           description: Trade Price if limit or stop limit order
@@ -6012,6 +6227,10 @@ components:
         cash: 1.11
         account:
           number: Q6542138443
+          balance:
+            total:
+              amount: 15363.23
+              currency: USD
           brokerage_authorization: 2bcd7cc3-e922-4976-bce1-9858296801c3
           meta:
             type: Margin
@@ -6065,7 +6284,7 @@ components:
               code: USD
               name: US Dollar
               id: 87b24961-b51e-4db8-9226-f198f6518a89
-          time_in_force: null
+          time_in_force: time_in_force
           price: 31.33
           action: null
           id: 2bcd7cc3-e922-4976-bce1-9858296801c3
@@ -6083,7 +6302,7 @@ components:
               code: USD
               name: US Dollar
               id: 87b24961-b51e-4db8-9226-f198f6518a89
-          time_in_force: null
+          time_in_force: time_in_force
           price: 31.33
           action: null
           id: 2bcd7cc3-e922-4976-bce1-9858296801c3
@@ -6100,7 +6319,7 @@ components:
               code: USD
               name: US Dollar
               id: 87b24961-b51e-4db8-9226-f198f6518a89
-          time_in_force: null
+          time_in_force: time_in_force
           price: 31.33
           action: null
           id: 2bcd7cc3-e922-4976-bce1-9858296801c3
@@ -6115,6 +6334,10 @@ components:
           cash: 1.11
           account:
             number: Q6542138443
+            balance:
+              total:
+                amount: 15363.23
+                currency: USD
             brokerage_authorization: 2bcd7cc3-e922-4976-bce1-9858296801c3
             meta:
               type: Margin
@@ -6165,6 +6388,7 @@ components:
         account_id: 2bcd7cc3-e922-4976-bce1-9858296801c3
         stop: 31.33
         price: 31.33
+        notional_value: 100
         action: null
         units: 0.8008281904610115
         order_type: null
@@ -6195,9 +6419,10 @@ components:
           x-konfig-original-example: 31.33
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-StopPrice
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          $ref: '#/components/schemas/TimeInForceStrict'
         units:
-          description: Trade Units
+          description: Trade Units. Cannot work with notional value.
+          nullable: true
           type: number
         universal_symbol_id:
           example: 2bcd7cc3-e922-4976-bce1-9858296801c3
@@ -6205,6 +6430,32 @@ components:
           type: string
           x-konfig-original-example: 2bcd7cc3-e922-4976-bce1-9858296801c3
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-Id
+        notional_value:
+          description: "Dollar amount to trade. Cannot work with units. Can only work\
+            \ for market order types and day for time in force. **Only available for\
+            \ Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access\
+            \ to place notional trades**"
+          example: 100
+          nullable: true
+          type: number
+          x-konfig-original-example: 100
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-NotionalValue
+      type: object
+    ValidatedTradeBody:
+      description: Validated Trade Form
+      example:
+        wait_to_confirm: true
+      properties:
+        wait_to_confirm:
+          description: "Optional, defaults to true. Determines if a wait is performed\
+            \ to check on order status. If false, latency will be reduced but orders\
+            \ returned will be more likely to be of status PENDING as we will not\
+            \ wait to check on the status before responding to the request"
+          example: true
+          nullable: true
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidatedTradeBody-properties-wait_to_confirm
       type: object
     Cash:
       description: Cash
@@ -6233,16 +6484,24 @@ components:
           x-konfig-original-example: 2022-01-21T20:11:19.217Z
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SnapTradeAPIDisclaimerAcceptStatus-properties-timestamp
       type: object
-    TimeInForce:
+    TimeInForceStrict:
       description: |
-        Trade time in force:
+        Trade time in force examples:
           * FOK - Fill Or Kill
           * Day - Day
           * GTC - Good Til Canceled
       enum:
-      - Day
       - FOK
+      - Day
       - GTC
+      type: string
+    TimeInForce:
+      description: |
+        Trade time in force examples:
+          * FOK - Fill Or Kill
+          * Day - Day
+          * GTC - Good Til Canceled
+          * GTD - Good Til Date
       type: string
     Action:
       description: Trade Action
@@ -6251,7 +6510,7 @@ components:
       - SELL
       type: string
     Units:
-      description: Trade Units
+      description: Trade Units. Cannot work with notional value.
       type: number
     OpenUnits:
       description: Trade Units
@@ -6272,6 +6531,15 @@ components:
       type: number
       x-konfig-original-example: 31.33
       x-konfig-generated-schema: konfig-generated-schema-components-schemas-Price
+    NotionalValue:
+      description: "Dollar amount to trade. Cannot work with units. Can only work\
+        \ for market order types and day for time in force. **Only available for Alpaca,\
+        \ Alpaca Paper, and Robinhood. Please contact support to get access to place\
+        \ notional trades**"
+      example: 100
+      type: number
+      x-konfig-original-example: 100
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-NotionalValue
     StopPrice:
       description: "Stop Price. If stop loss or stop limit order, the price to trigger\
         \ the stop"
@@ -6285,6 +6553,7 @@ components:
       description: A transaction or activity from an institution
       example:
         symbol:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           name: Vanguard Canadian Aggregate Bond Index ETF
@@ -6331,6 +6600,7 @@ components:
           is_mini_option: false
           option_type: CALL
           underlying_symbol:
+            figi_code: BBG000B9XRY4
             symbol: SPY
             description: SPDR S&P 500 ETF Trust
             currency:
@@ -6468,6 +6738,7 @@ components:
       additionalProperties: true
       description: Universal symbol
       example:
+        figi_code: BBG000B9XRY4
         symbol: VAB.TO
         raw_symbol: VAB
         description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -6530,6 +6801,12 @@ components:
           items:
             $ref: '#/components/schemas/Currency'
           type: array
+        figi_code:
+          example: BBG000B9XRY4
+          nullable: true
+          type: string
+          x-konfig-original-example: BBG000B9XRY4
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UniversalSymbol-properties-figi_code
       required:
       - currencies
       - currency
@@ -6539,46 +6816,11 @@ components:
       - type
       type: object
       x-konfig-is-used-in-successful-response: true
-    UniversalSymbolTicker:
-      additionalProperties: true
-      description: Universal symbol
-      properties:
-        id:
-          example: 2bcd7cc3-e922-4976-bce1-9858296801c3
-          format: uuid
-          type: string
-          x-konfig-original-example: 2bcd7cc3-e922-4976-bce1-9858296801c3
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Id
-        symbol:
-          example: VAB.TO
-          type: string
-          x-konfig-original-example: VAB.TO
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UniversalSymbolTicker-properties-symbol
-        raw_symbol:
-          example: VAB
-          type: string
-          x-konfig-original-example: VAB
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UniversalSymbolTicker-properties-raw_symbol
-        description:
-          example: VANGUARD CDN AGGREGATE BOND INDEX ETF
-          type: string
-          x-konfig-original-example: VANGUARD CDN AGGREGATE BOND INDEX ETF
-          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UniversalSymbolTicker-properties-description
-        currency:
-          $ref: '#/components/schemas/Currency'
-        exchange:
-          $ref: '#/components/schemas/Exchange'
-        type:
-          $ref: '#/components/schemas/SecurityType'
-        currencies:
-          items:
-            $ref: '#/components/schemas/Currency'
-          type: array
-      type: object
     UnderlyingSymbol:
       additionalProperties: true
       description: Underlying Symbol
       example:
+        figi_code: BBG000B9XRY4
         symbol: SPY
         description: SPDR S&P 500 ETF Trust
         currency:
@@ -6636,6 +6878,12 @@ components:
           items:
             $ref: '#/components/schemas/Currency'
           type: array
+        figi_code:
+          example: BBG000B9XRY4
+          nullable: true
+          type: string
+          x-konfig-original-example: BBG000B9XRY4
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UnderlyingSymbol-properties-figi_code
       type: object
     OptionsSymbol:
       additionalProperties: true
@@ -6647,6 +6895,7 @@ components:
         is_mini_option: false
         option_type: CALL
         underlying_symbol:
+          figi_code: BBG000B9XRY4
           symbol: SPY
           description: SPDR S&P 500 ETF Trust
           currency:
@@ -6979,6 +7228,38 @@ components:
       example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       type: string
       x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-get-parameters-2-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-balances-get-parameters-2-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-positions-get-parameters-2-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-orders-get-parameters-3-schema:
+      example: 30
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-orders-get-parameters-4-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-quotes-get-parameters-4-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-orders-cancel-post-parameters-2-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--accounts-accountId-symbols-post-parameters-2-schema:
+      example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+      type: string
+      x-do-not-generate: true
     konfig-generated-schema-paths--brokerageAuthorizationTypes-get-parameters-0-schema:
       example: "QUESTRADE,ALPACA"
       type: string
@@ -7008,6 +7289,14 @@ components:
     konfig-generated-schema-components-schemas-CashRestriction-properties-amount:
       example: 100
       type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Amount-properties-amount:
+      example: 15363.23
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Amount-properties-currency:
+      example: USD
+      type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-Account-properties-name:
       example: Registered Retirement Savings Account
@@ -7407,6 +7696,10 @@ components:
       example: 300.71
       type: number
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Balance-properties-buying_power:
+      example: 410.71
+      type: number
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-ConsumerKey:
       example: UxrFb4cHdRWlmJKNuJjA6hoaN8uVa6jPGFVUl2UKHuKmurCnaU
       type: string
@@ -7673,6 +7966,10 @@ components:
       example: Vanguard Canadian Aggregate Bond Index ETF
       type: string
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Symbol-properties-figi_code:
+      example: BBG000B9XRY4
+      type: string
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-Timestamp:
       example: 1635790389
       type: number
@@ -7714,6 +8011,14 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-Brokerage-properties-aws_s3_logo_url:
       example: https://www.snaptrade.com/questrade.logo
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Brokerage-properties-aws_s3_square_logo_url:
+      example: https://www.snaptrade.com/questrade.logo
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-Brokerage-properties-open_url:
+      example: https://www.brokerage.com
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-Brokerage-properties-slug:
@@ -8073,6 +8378,10 @@ components:
       example: 344
       type: number
       x-do-not-generate: true
+    konfig-generated-schema-components-schemas-ValidatedTradeBody-properties-wait_to_confirm:
+      example: true
+      type: boolean
+      x-do-not-generate: true
     konfig-generated-schema-components-schemas-Cash:
       example: 1.11
       type: number
@@ -8083,6 +8392,10 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-Price:
       example: 31.33
+      type: number
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-NotionalValue:
+      example: 100
       type: number
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-StopPrice:
@@ -8149,16 +8462,8 @@ components:
       example: VANGUARD CDN AGGREGATE BOND INDEX ETF
       type: string
       x-do-not-generate: true
-    konfig-generated-schema-components-schemas-UniversalSymbolTicker-properties-symbol:
-      example: VAB.TO
-      type: string
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-UniversalSymbolTicker-properties-raw_symbol:
-      example: VAB
-      type: string
-      x-do-not-generate: true
-    konfig-generated-schema-components-schemas-UniversalSymbolTicker-properties-description:
-      example: VANGUARD CDN AGGREGATE BOND INDEX ETF
+    konfig-generated-schema-components-schemas-UniversalSymbol-properties-figi_code:
+      example: BBG000B9XRY4
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UnderlyingSymbol-properties-symbol:
@@ -8167,6 +8472,10 @@ components:
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-UnderlyingSymbol-properties-description:
       example: SPDR S&P 500 ETF Trust
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-components-schemas-UnderlyingSymbol-properties-figi_code:
+      example: BBG000B9XRY4
       type: string
       x-do-not-generate: true
     konfig-generated-schema-components-schemas-OptionsSymbol-properties-ticker:
@@ -8351,7 +8660,9 @@ components:
           x-konfig-original-example: https://snaptrade.com
           x-konfig-generated-schema: konfig-generated-schema-components-schemas-SnapTradeLoginUserRequestBody-properties-customRedirect
         reconnect:
-          description: The UUID of the brokerage connection to be reconnected
+          description: The UUID of the brokerage connection to be reconnected. This
+            parameter should be left empty unless you are reconnecting a disabled
+            connection. See ‘Reconnecting Accounts’ for more information.
           example: 8b5f262d-4bb9-365d-888a-202bd3b15fa1
           type: string
           x-konfig-original-example: 8b5f262d-4bb9-365d-888a-202bd3b15fa1
@@ -8361,6 +8672,13 @@ components:
           enum:
           - read
           - trade
+          type: string
+        connectionPortalVersion:
+          description: "Sets the version of the connection portal to render, with\
+            \ a default to 'v2'"
+          enum:
+          - v2
+          - v3
           type: string
       required:
       - userId
@@ -8402,6 +8720,16 @@ components:
       x-konfig-is-parameter:
       - userId
       - userSecret
+    konfig-generated-schema-single-parameter-schema-post--snapTrade-resetUserSecret:
+      additionalProperties: true
+      properties:
+        userId:
+          $ref: '#/components/schemas/SnapTradeUserID'
+        userSecret:
+          $ref: '#/components/schemas/SnapTradeUserSecret'
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
     konfig-generated-schema-single-parameter-schema-get--authorizations:
       additionalProperties: true
       properties:
@@ -8540,8 +8868,11 @@ components:
         userSecret:
           $ref: '#/components/schemas/UserSecret'
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-get-parameters-2-schema
       required:
       - accountId
       - userId
@@ -8580,8 +8911,11 @@ components:
         userSecret:
           $ref: '#/components/schemas/UserSecret'
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-balances-get-parameters-2-schema
       required:
       - accountId
       - userId
@@ -8600,8 +8934,11 @@ components:
         userSecret:
           $ref: '#/components/schemas/UserSecret'
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-positions-get-parameters-2-schema
       required:
       - accountId
       - userId
@@ -8625,9 +8962,19 @@ components:
           - open
           - executed
           type: string
+        days:
+          example: 30
+          format: int32
+          minimum: 1
+          type: integer
+          x-konfig-original-example: 30
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-orders-get-parameters-3-schema
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-orders-get-parameters-4-schema
       required:
       - accountId
       - userId
@@ -8638,6 +8985,7 @@ components:
       - userId
       - userSecret
       - state
+      - days
       - accountId
     konfig-generated-schema-single-parameter-schema-get--accounts-accountId-quotes:
       additionalProperties: true
@@ -8651,7 +8999,11 @@ components:
         use_ticker:
           type: boolean
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-quotes-get-parameters-4-schema
       required:
       - accountId
       - symbols
@@ -8683,11 +9035,13 @@ components:
         stop:
           $ref: '#/components/schemas/StopPrice'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          $ref: '#/components/schemas/TimeInForceStrict'
         units:
-          $ref: '#/components/schemas/Units'
+          $ref: '#/components/schemas/UnitsNullable'
         universal_symbol_id:
           $ref: '#/components/schemas/Id'
+        notional_value:
+          $ref: '#/components/schemas/NotionalValueNullable'
       required:
       - userId
       - userSecret
@@ -8706,6 +9060,16 @@ components:
           $ref: '#/components/schemas/UserID'
         userSecret:
           $ref: '#/components/schemas/UserSecret'
+        wait_to_confirm:
+          description: "Optional, defaults to true. Determines if a wait is performed\
+            \ to check on order status. If false, latency will be reduced but orders\
+            \ returned will be more likely to be of status PENDING as we will not\
+            \ wait to check on the status before responding to the request"
+          example: true
+          nullable: true
+          type: boolean
+          x-konfig-original-example: true
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-ValidatedTradeBody-properties-wait_to_confirm
       required:
       - tradeId
       - userId
@@ -8734,11 +9098,13 @@ components:
         stop:
           $ref: '#/components/schemas/StopPrice'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          $ref: '#/components/schemas/TimeInForceStrict'
         units:
-          $ref: '#/components/schemas/Units'
+          $ref: '#/components/schemas/UnitsNullable'
         universal_symbol_id:
           $ref: '#/components/schemas/Id'
+        notional_value:
+          $ref: '#/components/schemas/NotionalValueNullable'
       required:
       - userId
       - userSecret
@@ -8774,8 +9140,11 @@ components:
         userSecret:
           $ref: '#/components/schemas/UserSecret'
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-orders-cancel-post-parameters-2-schema
         brokerage_order_id:
           $ref: '#/components/schemas/Id'
       required:
@@ -8802,8 +9171,11 @@ components:
         userSecret:
           $ref: '#/components/schemas/UserSecret'
         accountId:
+          example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
           format: uuid
           type: string
+          x-konfig-original-example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
+          x-konfig-generated-schema: konfig-generated-schema-paths--accounts-accountId-symbols-post-parameters-2-schema
         substring:
           example: apple
           type: string
@@ -8935,7 +9307,7 @@ components:
         order_type:
           $ref: '#/components/schemas/OrderType'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          $ref: '#/components/schemas/TimeInForceStrict'
         price:
           $ref: '#/components/schemas/Price'
       required:
@@ -9031,21 +9403,17 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
-    konfig-generated-schema-single-parameter-schema-get--symbols-ticker:
+    konfig-generated-schema-single-parameter-schema-get--symbols-query:
       additionalProperties: true
       properties:
-        ticker:
-          type: string
-        symbolId:
-          format: uuid
+        query:
           type: string
       required:
-      - ticker
+      - query
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
-      - ticker
-      - symbolId
+      - query
     konfig-generated-schema-single-parameter-schema-get--activities:
       additionalProperties: true
       properties:
@@ -9296,6 +9664,27 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter: []
+    AmountNullable:
+      description: Total Value of the account
+      example:
+        amount: 15363.23
+        currency: USD
+      nullable: true
+      properties:
+        amount:
+          example: 15363.23
+          type: number
+          x-konfig-original-example: 15363.23
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Amount-properties-amount
+        currency:
+          example: USD
+          type: string
+          x-konfig-original-example: USD
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-Amount-properties-currency
+    UnitsNullable:
+      description: Trade Units. Cannot work with notional value.
+      nullable: true
+      type: number
     CurrencyNullable:
       additionalProperties: true
       description: Currency
@@ -9326,6 +9715,7 @@ components:
       additionalProperties: true
       description: Universal symbol
       example:
+        figi_code: BBG000B9XRY4
         symbol: VAB.TO
         raw_symbol: VAB
         description: VANGUARD CDN AGGREGATE BOND INDEX ETF
@@ -9389,6 +9779,12 @@ components:
           items:
             $ref: '#/components/schemas/Currency'
           type: array
+        figi_code:
+          example: BBG000B9XRY4
+          nullable: true
+          type: string
+          x-konfig-original-example: BBG000B9XRY4
+          x-konfig-generated-schema: konfig-generated-schema-components-schemas-UniversalSymbol-properties-figi_code
       required:
       - currencies
       - currency
@@ -9408,6 +9804,7 @@ components:
         is_mini_option: false
         option_type: CALL
         underlying_symbol:
+          figi_code: BBG000B9XRY4
           symbol: SPY
           description: SPDR S&P 500 ETF Trust
           currency:
@@ -9495,6 +9892,16 @@ components:
       - ticker
       - underlying_symbol
       type: object
+    NotionalValueNullable:
+      description: "Dollar amount to trade. Cannot work with units. Can only work\
+        \ for market order types and day for time in force. **Only available for Alpaca,\
+        \ Alpaca Paper, and Robinhood. Please contact support to get access to place\
+        \ notional trades**"
+      example: 100
+      nullable: true
+      type: number
+      x-konfig-original-example: 100
+      x-konfig-generated-schema: konfig-generated-schema-components-schemas-NotionalValue
     Trading_placeOCOOrder_request:
       properties:
         first_trade_id:
@@ -9537,7 +9944,7 @@ components:
         order_type:
           $ref: '#/components/schemas/OrderType'
         time_in_force:
-          $ref: '#/components/schemas/TimeInForce'
+          $ref: '#/components/schemas/TimeInForceStrict'
         price:
           description: Trade Price if limit or stop limit order
           example: 31.33
@@ -10023,6 +10430,7 @@ components:
     SymbolsQuotes_inner:
       example:
         symbol:
+          figi_code: BBG000B9XRY4
           symbol: VAB.TO
           raw_symbol: VAB
           description: VANGUARD CDN AGGREGATE BOND INDEX ETF

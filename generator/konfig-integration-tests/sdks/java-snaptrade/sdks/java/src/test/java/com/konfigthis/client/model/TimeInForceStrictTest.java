@@ -19,15 +19,15 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for TimeInForce
+ * Model tests for TimeInForceStrict
  */
-public class TimeInForceTest {
+public class TimeInForceStrictTest {
     /**
-     * Model tests for TimeInForce
+     * Model tests for TimeInForceStrict
      */
     @Test
-    public void testTimeInForce() {
-        // TODO: test TimeInForce
+    public void testTimeInForceStrict() {
+        // TODO: test TimeInForceStrict
     }
 
 }

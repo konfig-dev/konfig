@@ -116,16 +116,14 @@ public class ReferenceDataApiTest {
     }
 
     /**
-     * Get details of a symbol by the ticker
+     * Get details of a symbol by the ticker or the universal_symbol_id
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void getSymbolsByTickerTest() throws ApiException {
-        String ticker = null;
-        UUID symbolId = null;
-        UniversalSymbol response = api.getSymbolsByTicker(ticker)
-                .symbolId(symbolId)
+        String query = null;
+        UniversalSymbol response = api.getSymbolsByTicker(query)
                 .execute();
         // TODO: test validations
     }

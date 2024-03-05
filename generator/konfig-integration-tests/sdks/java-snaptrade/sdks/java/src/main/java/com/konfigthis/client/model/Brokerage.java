@@ -74,6 +74,14 @@ public class Brokerage {
   @SerializedName(SERIALIZED_NAME_AWS_S3_LOGO_URL)
   private String awsS3LogoUrl;
 
+  public static final String SERIALIZED_NAME_AWS_S3_SQUARE_LOGO_URL = "aws_s3_square_logo_url";
+  @SerializedName(SERIALIZED_NAME_AWS_S3_SQUARE_LOGO_URL)
+  private String awsS3SquareLogoUrl;
+
+  public static final String SERIALIZED_NAME_OPEN_URL = "open_url";
+  @SerializedName(SERIALIZED_NAME_OPEN_URL)
+  private String openUrl;
+
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
   private String slug;
@@ -271,6 +279,64 @@ public class Brokerage {
     
     
     this.awsS3LogoUrl = awsS3LogoUrl;
+  }
+
+
+  public Brokerage awsS3SquareLogoUrl(String awsS3SquareLogoUrl) {
+    
+    
+    
+    
+    this.awsS3SquareLogoUrl = awsS3SquareLogoUrl;
+    return this;
+  }
+
+   /**
+   * Get awsS3SquareLogoUrl
+   * @return awsS3SquareLogoUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "https://www.snaptrade.com/questrade.logo", value = "")
+
+  public String getAwsS3SquareLogoUrl() {
+    return awsS3SquareLogoUrl;
+  }
+
+
+  public void setAwsS3SquareLogoUrl(String awsS3SquareLogoUrl) {
+    
+    
+    
+    this.awsS3SquareLogoUrl = awsS3SquareLogoUrl;
+  }
+
+
+  public Brokerage openUrl(String openUrl) {
+    
+    
+    
+    
+    this.openUrl = openUrl;
+    return this;
+  }
+
+   /**
+   * Get openUrl
+   * @return openUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "https://www.brokerage.com", value = "")
+
+  public String getOpenUrl() {
+    return openUrl;
+  }
+
+
+  public void setOpenUrl(String openUrl) {
+    
+    
+    
+    this.openUrl = openUrl;
   }
 
 
@@ -718,6 +784,8 @@ public class Brokerage {
         Objects.equals(this.displayName, brokerage.displayName) &&
         Objects.equals(this.description, brokerage.description) &&
         Objects.equals(this.awsS3LogoUrl, brokerage.awsS3LogoUrl) &&
+        Objects.equals(this.awsS3SquareLogoUrl, brokerage.awsS3SquareLogoUrl) &&
+        Objects.equals(this.openUrl, brokerage.openUrl) &&
         Objects.equals(this.slug, brokerage.slug) &&
         Objects.equals(this.url, brokerage.url) &&
         Objects.equals(this.enabled, brokerage.enabled) &&
@@ -740,7 +808,7 @@ public class Brokerage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, displayName, description, awsS3LogoUrl, slug, url, enabled, maintenanceMode, allowsFractionalUnits, allowsTrading, hasReporting, isRealTimeConnection, allowsTradingThroughSnaptradeApi, isScrapingIntegration, defaultCurrency, brokerageType, exchanges, additionalProperties);
+    return Objects.hash(id, name, displayName, description, awsS3LogoUrl, awsS3SquareLogoUrl, openUrl, slug, url, enabled, maintenanceMode, allowsFractionalUnits, allowsTrading, hasReporting, isRealTimeConnection, allowsTradingThroughSnaptradeApi, isScrapingIntegration, defaultCurrency, brokerageType, exchanges, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -759,6 +827,8 @@ public class Brokerage {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    awsS3LogoUrl: ").append(toIndentedString(awsS3LogoUrl)).append("\n");
+    sb.append("    awsS3SquareLogoUrl: ").append(toIndentedString(awsS3SquareLogoUrl)).append("\n");
+    sb.append("    openUrl: ").append(toIndentedString(openUrl)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
@@ -800,6 +870,8 @@ public class Brokerage {
     openapiFields.add("display_name");
     openapiFields.add("description");
     openapiFields.add("aws_s3_logo_url");
+    openapiFields.add("aws_s3_square_logo_url");
+    openapiFields.add("open_url");
     openapiFields.add("slug");
     openapiFields.add("url");
     openapiFields.add("enabled");
@@ -844,6 +916,12 @@ public class Brokerage {
       }
       if ((jsonObj.get("aws_s3_logo_url") != null && !jsonObj.get("aws_s3_logo_url").isJsonNull()) && !jsonObj.get("aws_s3_logo_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `aws_s3_logo_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aws_s3_logo_url").toString()));
+      }
+      if (!jsonObj.get("aws_s3_square_logo_url").isJsonNull() && (jsonObj.get("aws_s3_square_logo_url") != null && !jsonObj.get("aws_s3_square_logo_url").isJsonNull()) && !jsonObj.get("aws_s3_square_logo_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `aws_s3_square_logo_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aws_s3_square_logo_url").toString()));
+      }
+      if (!jsonObj.get("open_url").isJsonNull() && (jsonObj.get("open_url") != null && !jsonObj.get("open_url").isJsonNull()) && !jsonObj.get("open_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `open_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("open_url").toString()));
       }
       if ((jsonObj.get("slug") != null && !jsonObj.get("slug").isJsonNull()) && !jsonObj.get("slug").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slug").toString()));

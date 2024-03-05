@@ -436,7 +436,7 @@ public class Example {
     
     Snaptrade client = new Snaptrade(configuration);
     OrderType orderType = OrderType.fromValue("Limit");
-    TimeInForce timeInForce = TimeInForce.fromValue("Day");
+    TimeInForceStrict timeInForce = TimeInForceStrict.fromValue("FOK");
     String userId = "userId_example";
     String userSecret = "userSecret_example";
     UUID accountId = UUID.randomUUID(); // The ID of the account to execute the strategy in.

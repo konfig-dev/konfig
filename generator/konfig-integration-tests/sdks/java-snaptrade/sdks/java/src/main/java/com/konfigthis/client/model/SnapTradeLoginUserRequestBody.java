@@ -117,6 +117,57 @@ public class SnapTradeLoginUserRequestBody {
   @SerializedName(SERIALIZED_NAME_CONNECTION_TYPE)
   private ConnectionTypeEnum connectionType;
 
+  /**
+   * Sets the version of the connection portal to render, with a default to &#39;v2&#39;
+   */
+  @JsonAdapter(ConnectionPortalVersionEnum.Adapter.class)
+ public enum ConnectionPortalVersionEnum {
+    V2("v2"),
+    
+    V3("v3");
+
+    private String value;
+
+    ConnectionPortalVersionEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ConnectionPortalVersionEnum fromValue(String value) {
+      for (ConnectionPortalVersionEnum b : ConnectionPortalVersionEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<ConnectionPortalVersionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ConnectionPortalVersionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ConnectionPortalVersionEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return ConnectionPortalVersionEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CONNECTION_PORTAL_VERSION = "connectionPortalVersion";
+  @SerializedName(SERIALIZED_NAME_CONNECTION_PORTAL_VERSION)
+  private ConnectionPortalVersionEnum connectionPortalVersion;
+
   public SnapTradeLoginUserRequestBody() {
   }
 
@@ -217,11 +268,11 @@ public class SnapTradeLoginUserRequestBody {
   }
 
    /**
-   * The UUID of the brokerage connection to be reconnected
+   * The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information.
    * @return reconnect
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "8b5f262d-4bb9-365d-888a-202bd3b15fa1", value = "The UUID of the brokerage connection to be reconnected")
+  @ApiModelProperty(example = "8b5f262d-4bb9-365d-888a-202bd3b15fa1", value = "The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information.")
 
   public String getReconnect() {
     return reconnect;
@@ -262,6 +313,35 @@ public class SnapTradeLoginUserRequestBody {
     
     
     this.connectionType = connectionType;
+  }
+
+
+  public SnapTradeLoginUserRequestBody connectionPortalVersion(ConnectionPortalVersionEnum connectionPortalVersion) {
+    
+    
+    
+    
+    this.connectionPortalVersion = connectionPortalVersion;
+    return this;
+  }
+
+   /**
+   * Sets the version of the connection portal to render, with a default to &#39;v2&#39;
+   * @return connectionPortalVersion
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Sets the version of the connection portal to render, with a default to 'v2'")
+
+  public ConnectionPortalVersionEnum getConnectionPortalVersion() {
+    return connectionPortalVersion;
+  }
+
+
+  public void setConnectionPortalVersion(ConnectionPortalVersionEnum connectionPortalVersion) {
+    
+    
+    
+    this.connectionPortalVersion = connectionPortalVersion;
   }
 
   /**
@@ -323,13 +403,14 @@ public class SnapTradeLoginUserRequestBody {
         Objects.equals(this.immediateRedirect, snapTradeLoginUserRequestBody.immediateRedirect) &&
         Objects.equals(this.customRedirect, snapTradeLoginUserRequestBody.customRedirect) &&
         Objects.equals(this.reconnect, snapTradeLoginUserRequestBody.reconnect) &&
-        Objects.equals(this.connectionType, snapTradeLoginUserRequestBody.connectionType)&&
+        Objects.equals(this.connectionType, snapTradeLoginUserRequestBody.connectionType) &&
+        Objects.equals(this.connectionPortalVersion, snapTradeLoginUserRequestBody.connectionPortalVersion)&&
         Objects.equals(this.additionalProperties, snapTradeLoginUserRequestBody.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(broker, immediateRedirect, customRedirect, reconnect, connectionType, additionalProperties);
+    return Objects.hash(broker, immediateRedirect, customRedirect, reconnect, connectionType, connectionPortalVersion, additionalProperties);
   }
 
   @Override
@@ -341,6 +422,7 @@ public class SnapTradeLoginUserRequestBody {
     sb.append("    customRedirect: ").append(toIndentedString(customRedirect)).append("\n");
     sb.append("    reconnect: ").append(toIndentedString(reconnect)).append("\n");
     sb.append("    connectionType: ").append(toIndentedString(connectionType)).append("\n");
+    sb.append("    connectionPortalVersion: ").append(toIndentedString(connectionPortalVersion)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -369,6 +451,7 @@ public class SnapTradeLoginUserRequestBody {
     openapiFields.add("customRedirect");
     openapiFields.add("reconnect");
     openapiFields.add("connectionType");
+    openapiFields.add("connectionPortalVersion");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -397,6 +480,9 @@ public class SnapTradeLoginUserRequestBody {
       }
       if ((jsonObj.get("connectionType") != null && !jsonObj.get("connectionType").isJsonNull()) && !jsonObj.get("connectionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `connectionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("connectionType").toString()));
+      }
+      if ((jsonObj.get("connectionPortalVersion") != null && !jsonObj.get("connectionPortalVersion").isJsonNull()) && !jsonObj.get("connectionPortalVersion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `connectionPortalVersion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("connectionPortalVersion").toString()));
       }
   }
 

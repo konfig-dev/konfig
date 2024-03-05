@@ -96,7 +96,7 @@ public class AccountInformationApiTest {
     }
 
     /**
-     * Get history of orders placed in account
+     * List account orders
      *
      * Fetch all recent orders from a user&#39;s account.
      *
@@ -108,8 +108,10 @@ public class AccountInformationApiTest {
         String userSecret = null;
         UUID accountId = null;
         String state = null;
+        Integer days = null;
         List<AccountOrderRecord> response = api.getUserAccountOrders(userId, userSecret, accountId)
                 .state(state)
+                .days(days)
                 .execute();
         // TODO: test validations
     }

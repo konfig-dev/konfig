@@ -23,7 +23,6 @@ import com.konfigthis.client.model.AccountOrderRecordStatus;
 import com.konfigthis.client.model.Action;
 import com.konfigthis.client.model.OptionsSymbol;
 import com.konfigthis.client.model.OrderType;
-import com.konfigthis.client.model.TimeInForce;
 import com.konfigthis.client.model.UniversalSymbol;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -116,7 +115,7 @@ public class AccountOrderRecord {
 
   public static final String SERIALIZED_NAME_TIME_IN_FORCE = "time_in_force";
   @SerializedName(SERIALIZED_NAME_TIME_IN_FORCE)
-  private TimeInForce timeInForce;
+  private String timeInForce;
 
   public static final String SERIALIZED_NAME_TIME_PLACED = "time_placed";
   @SerializedName(SERIALIZED_NAME_TIME_PLACED)
@@ -326,11 +325,11 @@ public class AccountOrderRecord {
   }
 
    /**
-   * Trade Units
+   * Trade Units. Cannot work with notional value.
    * @return totalQuantity
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Trade Units")
+  @ApiModelProperty(value = "Trade Units. Cannot work with notional value.")
 
   public Double getTotalQuantity() {
     return totalQuantity;
@@ -602,7 +601,7 @@ public class AccountOrderRecord {
   }
 
 
-  public AccountOrderRecord timeInForce(TimeInForce timeInForce) {
+  public AccountOrderRecord timeInForce(String timeInForce) {
     
     
     
@@ -612,18 +611,18 @@ public class AccountOrderRecord {
   }
 
    /**
-   * Get timeInForce
+   * Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date 
    * @return timeInForce
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date ")
 
-  public TimeInForce getTimeInForce() {
+  public String getTimeInForce() {
     return timeInForce;
   }
 
 
-  public void setTimeInForce(TimeInForce timeInForce) {
+  public void setTimeInForce(String timeInForce) {
     
     
     
@@ -902,6 +901,9 @@ public class AccountOrderRecord {
       // validate the optional field `option_symbol`
       if (jsonObj.get("option_symbol") != null && !jsonObj.get("option_symbol").isJsonNull()) {
         OptionsSymbol.validateJsonObject(jsonObj.getAsJsonObject("option_symbol"));
+      }
+      if ((jsonObj.get("time_in_force") != null && !jsonObj.get("time_in_force").isJsonNull()) && !jsonObj.get("time_in_force").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `time_in_force` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_in_force").toString()));
       }
       if ((jsonObj.get("time_placed") != null && !jsonObj.get("time_placed").isJsonNull()) && !jsonObj.get("time_placed").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `time_placed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_placed").toString()));

@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.Action;
 import com.konfigthis.client.model.ManualTradeSymbol;
 import com.konfigthis.client.model.OrderType;
-import com.konfigthis.client.model.TimeInForce;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -70,7 +69,7 @@ public class ManualTrade {
 
   public static final String SERIALIZED_NAME_TIME_IN_FORCE = "time_in_force";
   @SerializedName(SERIALIZED_NAME_TIME_IN_FORCE)
-  private TimeInForce timeInForce;
+  private String timeInForce;
 
   public static final String SERIALIZED_NAME_SYMBOL = "symbol";
   @SerializedName(SERIALIZED_NAME_SYMBOL)
@@ -178,7 +177,7 @@ public class ManualTrade {
   }
 
 
-  public ManualTrade timeInForce(TimeInForce timeInForce) {
+  public ManualTrade timeInForce(String timeInForce) {
     
     
     
@@ -188,18 +187,18 @@ public class ManualTrade {
   }
 
    /**
-   * Get timeInForce
+   * Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date 
    * @return timeInForce
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date ")
 
-  public TimeInForce getTimeInForce() {
+  public String getTimeInForce() {
     return timeInForce;
   }
 
 
-  public void setTimeInForce(TimeInForce timeInForce) {
+  public void setTimeInForce(String timeInForce) {
     
     
     
@@ -284,11 +283,11 @@ public class ManualTrade {
   }
 
    /**
-   * Trade Units
+   * Trade Units. Cannot work with notional value.
    * @return units
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Trade Units")
+  @ApiModelProperty(value = "Trade Units. Cannot work with notional value.")
 
   public Double getUnits() {
     return units;
@@ -487,6 +486,9 @@ public class ManualTrade {
       }
       if ((jsonObj.get("account") != null && !jsonObj.get("account").isJsonNull()) && !jsonObj.get("account").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `account` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account").toString()));
+      }
+      if ((jsonObj.get("time_in_force") != null && !jsonObj.get("time_in_force").isJsonNull()) && !jsonObj.get("time_in_force").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `time_in_force` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_in_force").toString()));
       }
       // validate the optional field `symbol`
       if (jsonObj.get("symbol") != null && !jsonObj.get("symbol").isJsonNull()) {

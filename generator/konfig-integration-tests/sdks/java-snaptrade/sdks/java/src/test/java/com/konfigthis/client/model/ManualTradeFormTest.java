@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.Action;
 import com.konfigthis.client.model.OrderType;
-import com.konfigthis.client.model.TimeInForce;
+import com.konfigthis.client.model.TimeInForceStrict;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -105,6 +105,14 @@ public class ManualTradeFormTest {
     @Test
     public void universalSymbolIdTest() {
         // TODO: test universalSymbolId
+    }
+
+    /**
+     * Test the property 'notionalValue'
+     */
+    @Test
+    public void notionalValueTest() {
+        // TODO: test notionalValue
     }
 
 }

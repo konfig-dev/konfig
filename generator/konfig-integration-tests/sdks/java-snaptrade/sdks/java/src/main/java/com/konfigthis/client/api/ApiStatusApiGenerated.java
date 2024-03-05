@@ -150,7 +150,7 @@ public class ApiStatusApiGenerated {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> API is alive and kicking in some fashion </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> API is operational. </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
@@ -166,7 +166,7 @@ public class ApiStatusApiGenerated {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> API is alive and kicking in some fashion </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> API is operational. </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
@@ -182,7 +182,7 @@ public class ApiStatusApiGenerated {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> API is alive and kicking in some fashion </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> API is operational. </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
@@ -198,7 +198,7 @@ public class ApiStatusApiGenerated {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> API is alive and kicking in some fashion </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> API is operational. </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
          </table>
          */
@@ -214,7 +214,7 @@ public class ApiStatusApiGenerated {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> API is alive and kicking in some fashion </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> API is operational. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */

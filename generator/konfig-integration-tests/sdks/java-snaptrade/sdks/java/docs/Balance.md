@@ -10,6 +10,7 @@ Account Balance
 |------------ | ------------- | ------------- | -------------|
 |**currency** | [**Currency**](Currency.md) |  |  [optional] |
 |**cash** | **Double** |  |  [optional] |
+|**buyingPower** | **Double** |  |  [optional] |
 
 
 

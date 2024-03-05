@@ -14,7 +14,7 @@ Record of order in brokerageaccount
 |**universalSymbol** | [**UniversalSymbol**](UniversalSymbol.md) |  |  [optional] |
 |**optionSymbol** | [**OptionsSymbol**](OptionsSymbol.md) |  |  [optional] |
 |**action** | **Action** |  |  [optional] |
-|**totalQuantity** | **Double** | Trade Units |  [optional] |
+|**totalQuantity** | **Double** | Trade Units. Cannot work with notional value. |  [optional] |
 |**openQuantity** | **Double** | Trade Units |  [optional] |
 |**canceledQuantity** | **Double** | Trade Units |  [optional] |
 |**filledQuantity** | **Double** | Trade Units |  [optional] |
@@ -22,7 +22,7 @@ Record of order in brokerageaccount
 |**limitPrice** | **Double** | Trade Price if limit or stop limit order |  [optional] |
 |**stopPrice** | **Double** | Stop Price. If stop loss or stop limit order, the price to trigger the stop |  [optional] |
 |**orderType** | **OrderType** |  |  [optional] |
-|**timeInForce** | **TimeInForce** |  |  [optional] |
+|**timeInForce** | **String** | Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date  |  [optional] |
 |**timePlaced** | **String** | Time |  [optional] |
 |**timeUpdated** | **String** | Time |  [optional] |
 |**expiryDate** | **String** | Time |  [optional] |

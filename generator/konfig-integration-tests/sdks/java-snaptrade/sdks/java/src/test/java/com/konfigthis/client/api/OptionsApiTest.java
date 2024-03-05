@@ -24,7 +24,7 @@ import com.konfigthis.client.model.OptionsPosition;
 import com.konfigthis.client.model.OrderType;
 import com.konfigthis.client.model.StrategyOrderRecord;
 import com.konfigthis.client.model.StrategyQuotes;
-import com.konfigthis.client.model.TimeInForce;
+import com.konfigthis.client.model.TimeInForceStrict;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -123,7 +123,7 @@ public class OptionsApiTest {
     @Test
     public void placeOptionStrategyTest() throws ApiException {
         OrderType orderType = null;
-        TimeInForce timeInForce = null;
+        TimeInForceStrict timeInForce = null;
         String userId = null;
         String userSecret = null;
         UUID accountId = null;

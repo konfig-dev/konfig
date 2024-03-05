@@ -22,10 +22,11 @@ import com.konfigthis.client.model.ManualTradeAndImpact;
 import com.konfigthis.client.model.ManualTradeForm;
 import com.konfigthis.client.model.OrderType;
 import com.konfigthis.client.model.SymbolsQuotesInner;
-import com.konfigthis.client.model.TimeInForce;
+import com.konfigthis.client.model.TimeInForceStrict;
 import com.konfigthis.client.model.TradingCancelUserAccountOrderRequest;
 import com.konfigthis.client.model.TradingPlaceOCOOrderRequest;
 import java.util.UUID;
+import com.konfigthis.client.model.ValidatedTradeBody;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -81,9 +82,10 @@ public class TradingApiTest {
         OrderType orderType = null;
         Double price = null;
         Double stop = null;
-        TimeInForce timeInForce = null;
+        TimeInForceStrict timeInForce = null;
         Double units = null;
         UUID universalSymbolId = null;
+        Double notionalValue = null;
         ManualTradeAndImpact response = api.getOrderImpact(userId, userSecret)
                 .accountId(accountId)
                 .action(action)
@@ -93,6 +95,7 @@ public class TradingApiTest {
                 .timeInForce(timeInForce)
                 .units(units)
                 .universalSymbolId(universalSymbolId)
+                .notionalValue(notionalValue)
                 .execute();
         // TODO: test validations
     }
@@ -107,7 +110,7 @@ public class TradingApiTest {
         String userId = null;
         String userSecret = null;
         String symbols = null;
-        String accountId = null;
+        UUID accountId = null;
         Boolean useTicker = null;
         List<SymbolsQuotesInner> response = api.getUserAccountQuotes(userId, userSecret, symbols, accountId)
                 .useTicker(useTicker)
@@ -129,9 +132,10 @@ public class TradingApiTest {
         OrderType orderType = null;
         Double price = null;
         Double stop = null;
-        TimeInForce timeInForce = null;
+        TimeInForceStrict timeInForce = null;
         Double units = null;
         UUID universalSymbolId = null;
+        Double notionalValue = null;
         AccountOrderRecord response = api.placeForceOrder(userId, userSecret)
                 .accountId(accountId)
                 .action(action)
@@ -141,6 +145,7 @@ public class TradingApiTest {
                 .timeInForce(timeInForce)
                 .units(units)
                 .universalSymbolId(universalSymbolId)
+                .notionalValue(notionalValue)
                 .execute();
         // TODO: test validations
     }
@@ -173,7 +178,9 @@ public class TradingApiTest {
         UUID tradeId = null;
         String userId = null;
         String userSecret = null;
+        Boolean waitToConfirm = null;
         AccountOrderRecord response = api.placeOrder(tradeId, userId, userSecret)
+                .waitToConfirm(waitToConfirm)
                 .execute();
         // TODO: test validations
     }

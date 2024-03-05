@@ -89,6 +89,10 @@ public class UniversalSymbol {
   @SerializedName(SERIALIZED_NAME_CURRENCIES)
   private List<Currency> currencies = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_FIGI_CODE = "figi_code";
+  @SerializedName(SERIALIZED_NAME_FIGI_CODE)
+  private String figiCode;
+
   public UniversalSymbol() {
   }
 
@@ -328,6 +332,35 @@ public class UniversalSymbol {
     this.currencies = currencies;
   }
 
+
+  public UniversalSymbol figiCode(String figiCode) {
+    
+    
+    
+    
+    this.figiCode = figiCode;
+    return this;
+  }
+
+   /**
+   * Get figiCode
+   * @return figiCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "BBG000B9XRY4", value = "")
+
+  public String getFigiCode() {
+    return figiCode;
+  }
+
+
+  public void setFigiCode(String figiCode) {
+    
+    
+    
+    this.figiCode = figiCode;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -390,7 +423,8 @@ public class UniversalSymbol {
         Objects.equals(this.currency, universalSymbol.currency) &&
         Objects.equals(this.exchange, universalSymbol.exchange) &&
         Objects.equals(this.type, universalSymbol.type) &&
-        Objects.equals(this.currencies, universalSymbol.currencies)&&
+        Objects.equals(this.currencies, universalSymbol.currencies) &&
+        Objects.equals(this.figiCode, universalSymbol.figiCode)&&
         Objects.equals(this.additionalProperties, universalSymbol.additionalProperties);
   }
 
@@ -400,7 +434,7 @@ public class UniversalSymbol {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, symbol, rawSymbol, description, currency, exchange, type, currencies, additionalProperties);
+    return Objects.hash(id, symbol, rawSymbol, description, currency, exchange, type, currencies, figiCode, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -422,6 +456,7 @@ public class UniversalSymbol {
     sb.append("    exchange: ").append(toIndentedString(exchange)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
+    sb.append("    figiCode: ").append(toIndentedString(figiCode)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -453,6 +488,7 @@ public class UniversalSymbol {
     openapiFields.add("exchange");
     openapiFields.add("type");
     openapiFields.add("currencies");
+    openapiFields.add("figi_code");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -513,6 +549,9 @@ public class UniversalSymbol {
       for (int i = 0; i < jsonArraycurrencies.size(); i++) {
         Currency.validateJsonObject(jsonArraycurrencies.get(i).getAsJsonObject());
       };
+      if (!jsonObj.get("figi_code").isJsonNull() && (jsonObj.get("figi_code") != null && !jsonObj.get("figi_code").isJsonNull()) && !jsonObj.get("figi_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `figi_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("figi_code").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -104,12 +104,14 @@ public class AuthenticationApiTest {
         String customRedirect = null;
         String reconnect = null;
         String connectionType = null;
+        String connectionPortalVersion = null;
         Object response = api.loginSnapTradeUser(userId, userSecret)
                 .broker(broker)
                 .immediateRedirect(immediateRedirect)
                 .customRedirect(customRedirect)
                 .reconnect(reconnect)
                 .connectionType(connectionType)
+                .connectionPortalVersion(connectionPortalVersion)
                 .execute();
         // TODO: test validations
     }
@@ -124,6 +126,22 @@ public class AuthenticationApiTest {
         String userId = null;
         UserIDandSecret response = api.registerSnapTradeUser()
                 .userId(userId)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * Obtain a new user secret for a user
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void resetSnapTradeUserSecretTest() throws ApiException {
+        String userId = null;
+        String userSecret = null;
+        UserIDandSecret response = api.resetSnapTradeUserSecret()
+                .userId(userId)
+                .userSecret(userSecret)
                 .execute();
         // TODO: test validations
     }

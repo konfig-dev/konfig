@@ -60,7 +60,7 @@ paths:
       security: []
       responses:
         "200":
-          description: API is alive and kicking in some fashion
+          description: API is operational.
           content:
             application/json:
               schema:
@@ -273,6 +273,41 @@ paths:
                 $ref: "#/components/schemas/404FailedRequestResponse"
         "500":
           description: Unexpected Error
+  /snapTrade/resetUserSecret:
+    post:
+      tags:
+        - Authentication
+      summary: Obtain a new user secret for a user
+      operationId: Authentication_resetSnapTradeUserSecret
+      requestBody:
+        $ref: "#/components/requestBodies/ResetUserSecretRequestBody"
+      responses:
+        "200":
+          description: New user secret is generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserIDandSecret"
+        "400":
+          description:
+            Bad Request. Could be caused by various reasons. Error message is
+            provided in response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/400FailedRequestResponse"
+        "401":
+          description: Failed authenticaion. Wrong clientId, userId or userSecret provided
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401FailedRequestResponse"
+        "500":
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/500UnexpectedExceptionResponse"
   /snapTrade/partners:
     get:
       tags:
@@ -460,6 +495,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: Details of a specific investment account
@@ -528,6 +564,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: List of all balances in investment account
@@ -563,6 +600,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: List all positions in investment account
@@ -578,7 +616,7 @@ paths:
     get:
       tags:
         - Account Information
-      summary: Get history of orders placed in account
+      summary: List account orders
       operationId: AccountInformation_getUserAccountOrders
       description: Fetch all recent orders from a user's account.
       parameters:
@@ -601,6 +639,14 @@ paths:
               - all
               - open
               - executed
+        - in: query
+          name: days
+          description: Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            example: 30
         - in: path
           name: accountId
           required: true
@@ -608,6 +654,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: List all orders in account
@@ -657,6 +704,8 @@ paths:
           description: The ID of the account to get quotes.
           schema:
             type: string
+            format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: Returns quotes object with different prices
@@ -694,6 +743,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
 
       requestBody:
         $ref: '#/components/requestBodies/CancelOrderRequestBody'
@@ -745,6 +795,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       requestBody:
         content:
           application/json:
@@ -1287,26 +1338,19 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/SymbolQuery"
-  /symbols/{ticker}:
+  /symbols/{query}:
     get:
       tags:
         - Reference Data
-      summary: Get details of a symbol by the ticker
+      summary: Get details of a symbol by the ticker or the universal_symbol_id
       operationId: ReferenceData_getSymbolsByTicker
       parameters:
         - in: path
-          name: ticker
+          name: query
           required: true
-          description: The ticker of the UniversalSymbol to get.
+          description: The ticker or universal_symbol_id of the UniversalSymbol to get.
           schema:
             type: string
-        - in: query
-          name: symbolId
-          required: false
-          description: OPTIONAL IN PATH Can be used instead of the ticker ; The ID of the UniversalSymbol to get.
-          schema:
-            type: string
-            format: uuid
       responses:
         "200":
           description: Successfully gets a symbol
@@ -1438,8 +1482,11 @@ paths:
                 $ref: "#/components/schemas/400FailedRequestResponse"
         "500":
           description: Unexpected Error
+      requestBody:
+        $ref: "#/components/requestBodies/ValidatedTradeRequestBody"
   /trade/oco:
     post:
+      deprecated: true
       tags:
         - Trading
       summary: Place a OCO (One Cancels Other) order
@@ -1479,7 +1526,7 @@ paths:
       summary: Get transaction history for a user
       operationId: TransactionsAndReporting_getActivities
       description:
-        Returns activities (transactions) for a user. Specifing start and
+        Returns activities (transactions) for a user. Specifying start and
         end date is highly recommended for better performance
       parameters:
         - in: query
@@ -1557,15 +1604,14 @@ paths:
           description: Unexpected error
   /performance/custom:
     get:
+      deprecated: true
       tags:
         - Transactions And Reporting
       summary: Get performance information for a specific timeframe
       operationId: TransactionsAndReporting_getReportingCustomRange
       description:
         Returns performance information (contributions, dividends, rate of
-        return, etc) for a specific timeframe. Total Equity Timeframe and Rate
-        of Returns are experimental and should not be trusted to be 100%
-        accurate
+        return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies.
       parameters:
         - in: query
           required: true
@@ -1776,6 +1822,12 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/SnapTradeRegisterUserRequestBody"
+    ResetUserSecretRequestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/UserIDandSecret"
     SnapTradeLoginUserRequestBody:
       content:
         application/json:
@@ -1817,8 +1869,12 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/ManualTradeForm"
-
-
+    ValidatedTradeRequestBody:
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ValidatedTradeBody"
     CancelOrderRequestBody:
       description: The Order ID to be canceled
       required: true
@@ -1891,7 +1947,7 @@ components:
               order_type:
                 $ref: "#/components/schemas/OrderType"
               time_in_force:
-                $ref: "#/components/schemas/TimeInForce"
+                $ref: "#/components/schemas/TimeInForceStrict"
               price:
                 $ref: "#/components/schemas/Price"
 
@@ -1982,6 +2038,23 @@ components:
           type: boolean
         last_successful_sync:
           $ref: "#/components/schemas/SyncStatusDate"
+    AccountBalance:
+      description: Balance of the account
+      properties:
+        total:
+          description: Total value of this account (includes cash, equity, fixed income, etc)
+          nullable: true
+          allOf:
+           - $ref: "#/components/schemas/Amount"
+    Amount:
+      description: Total Value of the account
+      properties:
+        amount:
+          type: number
+          example: 15363.23
+        currency:
+          type: string
+          example: USD
     Account:
       description: SnapTradeUser Investment Account
       type: object
@@ -2016,6 +2089,8 @@ components:
             $ref: "#/components/schemas/CashRestriction"
         sync_status:
           $ref: "#/components/schemas/AccountSyncStatus"
+        balance:
+          $ref: "#/components/schemas/AccountBalance"
     AccountSimple:
       description: SnapTradeUser Investment Account
       type: object
@@ -2097,7 +2172,9 @@ components:
         action:
           $ref: "#/components/schemas/Action"
         total_quantity:
-          $ref: "#/components/schemas/Units"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Units"
         open_quantity:
           $ref: "#/components/schemas/OpenUnits"
         canceled_quantity:
@@ -2608,8 +2685,10 @@ components:
         value:
           type: number
           example: 32600.71
+          nullable: true
         currency:
           type: string
+          nullable: true
           example: USD
     Balance:
       description: Account Balance
@@ -2620,6 +2699,10 @@ components:
         cash:
           type: number
           example: 300.71
+          nullable: true
+        buying_power:
+          type: number
+          example: 410.71
           nullable: true
     ConsumerKey:
       description: Shared key used to sign requests
@@ -3049,7 +3132,7 @@ components:
           type: string
           example: https://snaptrade.com
         reconnect:
-          description: The UUID of the brokerage connection to be reconnected
+          description: The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information.
           type: string
           example: 8b5f262d-4bb9-365d-888a-202bd3b15fa1
         connectionType:
@@ -3058,6 +3141,12 @@ components:
           enum:
             - read
             - trade
+        connectionPortalVersion:
+          description: Sets the version of the connection portal to render, with a default to 'v2'
+          type: string
+          enum:
+            - v2
+            - v3
     SnapTradeUserID:
       description: SnapTrade User ID. Provided by SnapTrade Partner. Can be any
         string, as long as it's unique to a user
@@ -3088,6 +3177,10 @@ components:
           $ref: "#/components/schemas/Exchange"
         type:
           $ref: "#/components/schemas/SecurityType"
+        figi_code:
+          type: string
+          example: BBG000B9XRY4
+          nullable: true
     Timestamp:
       externalDocs:
         url: https://en.wikipedia.org/wiki/Unix_time
@@ -3179,6 +3272,16 @@ components:
           type: string
           format: url
           example: https://www.snaptrade.com/questrade.logo
+        aws_s3_square_logo_url:
+          type: string
+          format: url
+          example: https://www.snaptrade.com/questrade.logo
+          nullable: true
+        open_url:
+          type: string
+          format: url
+          example: https://www.brokerage.com
+          nullable: true
         slug:
           type: string
           example: QUESTRADE
@@ -3790,7 +3893,9 @@ components:
         action:
           $ref: "#/components/schemas/Action"
         units:
-          $ref: "#/components/schemas/Units"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Units"
         price:
           $ref: "#/components/schemas/Price"
     ManualTradeSymbol:
@@ -3872,11 +3977,26 @@ components:
         stop:
           $ref: "#/components/schemas/StopPrice"
         time_in_force:
-          $ref: "#/components/schemas/TimeInForce"
+          $ref: "#/components/schemas/TimeInForceStrict"
         units:
-          $ref: "#/components/schemas/Units"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Units"
         universal_symbol_id:
           $ref: "#/components/schemas/Id"
+        notional_value:
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/NotionalValue"
+    ValidatedTradeBody:
+      description: Validated Trade Form
+      type: object
+      properties:
+        wait_to_confirm:
+          nullable: true
+          example: true
+          type: boolean
+          description: Optional, defaults to true. Determines if a wait is performed to check on order status. If false, latency will be reduced but orders returned will be more likely to be of status PENDING as we will not wait to check on the status before responding to the request
     Cash:
       description: Cash
       type: number
@@ -3899,17 +4019,25 @@ components:
         timestamp:
           type: string
           example: 2022-01-21T15:11:19.217000-05:00
-    TimeInForce:
+    TimeInForceStrict:
       description: |
-        Trade time in force:
+        Trade time in force examples:
           * FOK - Fill Or Kill
           * Day - Day
           * GTC - Good Til Canceled
       type: string
       enum:
-        - Day
         - FOK
+        - Day
         - GTC
+    TimeInForce:
+      description: |
+        Trade time in force examples:
+          * FOK - Fill Or Kill
+          * Day - Day
+          * GTC - Good Til Canceled
+          * GTD - Good Til Date
+      type: string
     Action:
       description: Trade Action
       type: string
@@ -3917,7 +4045,7 @@ components:
         - BUY
         - SELL
     Units:
-      description: Trade Units
+      description: Trade Units. Cannot work with notional value.
       type: number
     OpenUnits:
       description: Trade Units
@@ -3936,6 +4064,10 @@ components:
       type: number
       nullable: true
       example: 31.33
+    NotionalValue:
+      description: Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades**
+      type: number
+      example: 100.00
     StopPrice:
       description:
         Stop Price. If stop loss or stop limit order, the price to trigger
@@ -4048,6 +4180,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Currency"
+        figi_code:
+          type: string
+          example: BBG000B9XRY4
+          nullable: true
       required:
         - id
         - symbol
@@ -4055,33 +4191,6 @@ components:
         - currency
         - type
         - currencies
-
-
-    UniversalSymbolTicker:
-        description: Universal symbol
-        type: object
-        properties:
-          id:
-            $ref: "#/components/schemas/Id"
-          symbol:
-            type: string
-            example: VAB.TO
-          raw_symbol:
-            type: string
-            example: VAB
-          description:
-            type: string
-            example: VANGUARD CDN AGGREGATE BOND INDEX ETF
-          currency:
-            $ref: "#/components/schemas/Currency"
-          exchange:
-            $ref: "#/components/schemas/Exchange"
-          type:
-            $ref: "#/components/schemas/SecurityType"
-          currencies:
-            type: array
-            items:
-              $ref: "#/components/schemas/Currency"
     UnderlyingSymbol:
       description: Underlying Symbol
       type: object
@@ -4105,6 +4214,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Currency"
+        figi_code:
+          type: string
+          example: BBG000B9XRY4
+          nullable: true
     OptionsSymbol:
       description: Options Symbol
       type: object

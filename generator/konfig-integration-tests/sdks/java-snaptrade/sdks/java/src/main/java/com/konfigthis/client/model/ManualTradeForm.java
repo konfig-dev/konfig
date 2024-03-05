@@ -21,7 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.client.model.Action;
 import com.konfigthis.client.model.OrderType;
-import com.konfigthis.client.model.TimeInForce;
+import com.konfigthis.client.model.TimeInForceStrict;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -77,7 +77,7 @@ public class ManualTradeForm {
 
   public static final String SERIALIZED_NAME_TIME_IN_FORCE = "time_in_force";
   @SerializedName(SERIALIZED_NAME_TIME_IN_FORCE)
-  private TimeInForce timeInForce;
+  private TimeInForceStrict timeInForce;
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
@@ -86,6 +86,10 @@ public class ManualTradeForm {
   public static final String SERIALIZED_NAME_UNIVERSAL_SYMBOL_ID = "universal_symbol_id";
   @SerializedName(SERIALIZED_NAME_UNIVERSAL_SYMBOL_ID)
   private UUID universalSymbolId;
+
+  public static final String SERIALIZED_NAME_NOTIONAL_VALUE = "notional_value";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_VALUE)
+  private Double notionalValue;
 
   public ManualTradeForm() {
   }
@@ -253,7 +257,7 @@ public class ManualTradeForm {
   }
 
 
-  public ManualTradeForm timeInForce(TimeInForce timeInForce) {
+  public ManualTradeForm timeInForce(TimeInForceStrict timeInForce) {
     
     
     
@@ -269,12 +273,12 @@ public class ManualTradeForm {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public TimeInForce getTimeInForce() {
+  public TimeInForceStrict getTimeInForce() {
     return timeInForce;
   }
 
 
-  public void setTimeInForce(TimeInForce timeInForce) {
+  public void setTimeInForce(TimeInForceStrict timeInForce) {
     
     
     
@@ -301,11 +305,11 @@ public class ManualTradeForm {
   }
 
    /**
-   * Trade Units
+   * Trade Units. Cannot work with notional value.
    * @return units
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Trade Units")
+  @ApiModelProperty(value = "Trade Units. Cannot work with notional value.")
 
   public Double getUnits() {
     return units;
@@ -346,6 +350,44 @@ public class ManualTradeForm {
     
     
     this.universalSymbolId = universalSymbolId;
+  }
+
+
+  public ManualTradeForm notionalValue(Double notionalValue) {
+    
+    
+    
+    
+    this.notionalValue = notionalValue;
+    return this;
+  }
+
+  public ManualTradeForm notionalValue(Integer notionalValue) {
+    
+    
+    
+    
+    this.notionalValue = notionalValue.doubleValue();
+    return this;
+  }
+
+   /**
+   * Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades**
+   * @return notionalValue
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "100", value = "Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades**")
+
+  public Double getNotionalValue() {
+    return notionalValue;
+  }
+
+
+  public void setNotionalValue(Double notionalValue) {
+    
+    
+    
+    this.notionalValue = notionalValue;
   }
 
   /**
@@ -410,7 +452,8 @@ public class ManualTradeForm {
         Objects.equals(this.stop, manualTradeForm.stop) &&
         Objects.equals(this.timeInForce, manualTradeForm.timeInForce) &&
         Objects.equals(this.units, manualTradeForm.units) &&
-        Objects.equals(this.universalSymbolId, manualTradeForm.universalSymbolId)&&
+        Objects.equals(this.universalSymbolId, manualTradeForm.universalSymbolId) &&
+        Objects.equals(this.notionalValue, manualTradeForm.notionalValue)&&
         Objects.equals(this.additionalProperties, manualTradeForm.additionalProperties);
   }
 
@@ -420,7 +463,7 @@ public class ManualTradeForm {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, action, orderType, price, stop, timeInForce, units, universalSymbolId, additionalProperties);
+    return Objects.hash(accountId, action, orderType, price, stop, timeInForce, units, universalSymbolId, notionalValue, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -442,6 +485,7 @@ public class ManualTradeForm {
     sb.append("    timeInForce: ").append(toIndentedString(timeInForce)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    universalSymbolId: ").append(toIndentedString(universalSymbolId)).append("\n");
+    sb.append("    notionalValue: ").append(toIndentedString(notionalValue)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -473,6 +517,7 @@ public class ManualTradeForm {
     openapiFields.add("time_in_force");
     openapiFields.add("units");
     openapiFields.add("universal_symbol_id");
+    openapiFields.add("notional_value");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
