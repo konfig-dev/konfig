@@ -1172,10 +1172,11 @@ function handleAllOfWithNullable({ spec }: { spec: Spec }): void {
     nullableSchema['nullable'] = true
     spec.spec.components.schemas[nullableComponentName] = nullableSchema
     // replace all objects that are exactly the same as the referenced schema (the one with allOf)
+    const schemaCopy = { ...schema } // copy the object since it will get mutated below
     recurseObject(spec.spec, ({ value: matchingSchema }) => {
       if (matchingSchema === null) return
       if (typeof matchingSchema !== 'object') return
-      if (equals(matchingSchema, schema)) {
+      if (equals(matchingSchema, schemaCopy)) {
         // remove all properties and assign $ref to nullableComponentName
         Object.keys(matchingSchema).forEach((key) => delete matchingSchema[key])
         matchingSchema['$ref'] = `#/components/schemas/${nullableComponentName}`
