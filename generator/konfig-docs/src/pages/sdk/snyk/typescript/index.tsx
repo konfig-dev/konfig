@@ -17,7 +17,7 @@ export default function SnykTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
+      lastUpdated={new Date("2024-03-05T22:46:10.886Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -818,6 +818,79 @@ export default function SnykTypeScriptSdk() {
       },
       {
         "statusCode": "409",
+        "description": ""
+      },
+      {
+        "statusCode": "500",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/groups/{group_id}/orgs",
+    "method": "listGroupOrganizations",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Orgs",
+    "typeScriptTag": "orgs",
+    "description": "List all organizations in group",
+    "parameters": [
+      {
+        "name": "version",
+        "schema": "string",
+        "required": true,
+        "description": "The requested version of the endpoint to process the request"
+      },
+      {
+        "name": "startingAfter",
+        "schema": "string",
+        "description": "Return the page of results immediately after this cursor"
+      },
+      {
+        "name": "endingBefore",
+        "schema": "string",
+        "description": "Return the page of results immediately before this cursor"
+      },
+      {
+        "name": "limit",
+        "schema": "integer",
+        "description": "Number of results to return per page"
+      },
+      {
+        "name": "groupId",
+        "schema": "string",
+        "required": true,
+        "description": "Unique identifier for group"
+      },
+      {
+        "name": "name",
+        "schema": "string",
+        "description": "Only return organizations whose name contains this value. Case insensitive."
+      },
+      {
+        "name": "slug",
+        "schema": "string",
+        "description": "Only return organizations whose slug exactly matches this value. Case sensitive."
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
+      },
+      {
+        "statusCode": "404",
         "description": ""
       },
       {
@@ -3988,6 +4061,11 @@ export default function SnykTypeScriptSdk() {
         "description": "Return projects that match the provided names."
       },
       {
+        "name": "namesStartWith",
+        "schema": "array",
+        "description": "Return projects with names starting with the specified prefix."
+      },
+      {
         "name": "origins",
         "schema": "array",
         "description": "Return projects that match the provided origins."
@@ -6012,10 +6090,10 @@ export default function SnykTypeScriptSdk() {
       apiTitle="Snyk API"
       apiBaseUrl="https://api.snyk.io/rest"
       apiVersion="REST"
-      endpoints={61}
-      sdkMethods={159}
+      endpoints={62}
+      sdkMethods={161}
       schemas={183}
-      parameters={439}
+      parameters={447}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/openapi.yaml"
     />

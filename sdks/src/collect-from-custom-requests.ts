@@ -123,8 +123,19 @@ const customRequests: Record<string, CustomRequest> = {
     },
   },
   "svix.com": {
-    type: "GET",
-    url: "https://api.svix.com/api/v1/openapi.json",
+    lambda: async () => {
+      const url = "https://api.svix.com/api/v1/openapi.json";
+      const response = await fetch(url);
+      const rawSpecString = await response.text();
+      const parsedSpec = JSON.parse(rawSpecString);
+
+      // Remove line that includes "<SecurityDefinitions />" from api description
+      parsedSpec.info.description = parsedSpec.info.description.replace(
+        "<SecurityDefinitions />",
+        ""
+      );
+      return JSON.stringify(parsedSpec);
+    },
   },
   "ynab.com": {
     type: "GET",

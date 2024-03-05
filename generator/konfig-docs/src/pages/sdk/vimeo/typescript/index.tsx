@@ -16,7 +16,7 @@ export default function VimeoTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/logo.avif"
       clientNameCamelCase="vimeo"
       homepage="developer.vimeo.com"
-      lastUpdated={new Date("2024-02-25T09:49:43.849Z")}
+      lastUpdated={new Date("2024-03-05T22:46:10.886Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg"
       contactUrl="https://developer.vimeo.com/help"
       // Missing contactEmail
@@ -6901,12 +6901,6 @@ export default function VimeoTypeScriptSdk() {
     "description": "Get a list of all payments service payment methods",
     "parameters": [
       {
-        "name": "accountId",
-        "schema": "string",
-        "required": false,
-        "description": "The ID associated with the account."
-      },
-      {
         "name": "cardmemberName",
         "schema": "string",
         "required": false,
@@ -6929,6 +6923,12 @@ export default function VimeoTypeScriptSdk() {
         "schema": "boolean",
         "required": false,
         "description": "Whether to return disabled payment methods."
+      },
+      {
+        "name": "userId",
+        "schema": "number",
+        "required": true,
+        "description": "The ID of the user."
       },
       {
         "name": "type",
