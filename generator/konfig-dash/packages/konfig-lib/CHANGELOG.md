@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.10
+
+### Patch Changes
+
+- [#613](https://github.com/konfig-dev/konfig/pull/613) [`2b725021`](https://github.com/konfig-dev/konfig/commit/2b7250217ff1a68502a048d5b6e0d4efbb14b64d) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Fix C# transformSpec bug where nullable allOf not properly replaced
+
 ## 1.36.9
 
 ### Patch Changes
