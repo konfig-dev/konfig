@@ -122,6 +122,10 @@ const customRequests: Record<string, CustomRequest> = {
       return response.text();
     },
   },
+  "svix.com": {
+    type: "GET",
+    url: "https://api.svix.com/api/v1/openapi.json",
+  },
   "ynab.com": {
     type: "GET",
     url: "https://api.ynab.com/papi/open_api_spec.yaml",
