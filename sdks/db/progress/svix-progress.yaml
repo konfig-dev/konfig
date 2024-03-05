@@ -1,0 +1,150 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /api/v1/app/:
+    get: Application_listAll
+    post: Application_createNewApplication
+  /api/v1/app/{app_id}/:
+    delete: Application_removeApp
+    get: Application_getById
+    patch: Application_partiallyUpdate
+    put: Application_updateApp
+  /api/v1/app/{app_id}/attempt/endpoint/{endpoint_id}/:
+    get: MessageAttempt_listByEndpoint
+  /api/v1/app/{app_id}/attempt/msg/{msg_id}/:
+    get: MessageAttempt_listByMsgAttemptedDestinations
+  /api/v1/app/{app_id}/endpoint/:
+    get: Endpoint_listEndpoints
+    post: Endpoint_createNew
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/:
+    delete: Endpoint_remove
+    get: Endpoint_getEndpoint
+    patch: Endpoint_partiallyUpdate
+    put: Endpoint_updateEndpoint
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/headers/:
+    get: Endpoint_getHeaders
+    patch: Endpoint_partiallySetHeaders
+    put: Endpoint_updateHeaders
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/msg/:
+    get: MessageAttempt_listAttemptedMessages
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/recover/:
+    post: Endpoint_resendFailedWebhooks
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/replay-missing/:
+    post: Endpoint_replayMissingWebhooks
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/secret/:
+    get: Endpoint_getSecret
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/secret/rotate/:
+    post: Endpoint_rotateSecret
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/send-example/:
+    post: Endpoint_sendExampleMessage
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/stats/:
+    get: Endpoint_getStats
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/transformation/:
+    get: Endpoint_getTransformationCode
+    patch: Endpoint_setTransformationCode
+  /api/v1/app/{app_id}/integration/:
+    get: Integration_listIntegrations
+    post: Integration_createNewIntegration
+  /api/v1/app/{app_id}/integration/{integ_id}/:
+    delete: Integration_deleteById
+    get: Integration_getById
+    put: Integration_updateIntegration
+  /api/v1/app/{app_id}/integration/{integ_id}/key/:
+    get: Integration_getKey
+  /api/v1/app/{app_id}/integration/{integ_id}/key/rotate/:
+    post: Integration_rotateIntegrationKey
+  /api/v1/app/{app_id}/msg/:
+    get: Message_listAllMessages
+    post: Message_createNew
+  /api/v1/app/{app_id}/msg/{msg_id}/:
+    get: Message_getByIdOrEventId
+  /api/v1/app/{app_id}/msg/{msg_id}/attempt/:
+    get: MessageAttempt_listByMsgAttemptedDestinations
+  /api/v1/app/{app_id}/msg/{msg_id}/attempt/{attempt_id}/:
+    get: MessageAttempt_getByDestination
+  /api/v1/app/{app_id}/msg/{msg_id}/attempt/{attempt_id}/content/:
+    delete: MessageAttempt_deleteResponseBody
+  /api/v1/app/{app_id}/msg/{msg_id}/content/:
+    delete: Message_deletePayload
+  /api/v1/app/{app_id}/msg/{msg_id}/endpoint/:
+    get: MessageAttempt_listAttemptedDestinations
+  /api/v1/app/{app_id}/msg/{msg_id}/endpoint/{endpoint_id}/attempt/:
+    get: MessageAttempt_listByEndpointDeprecated
+  /api/v1/app/{app_id}/msg/{msg_id}/endpoint/{endpoint_id}/resend/:
+    post: MessageAttempt_resendMessageToEndpoint
+  /api/v1/auth/app-portal-access/{app_id}/:
+    post: Authentication_obtainMagicLinkAndCode
+  /api/v1/auth/app/{app_id}/expire-all/:
+    post: Authentication_expireAppTokens
+  /api/v1/auth/dashboard-access/{app_id}/:
+    post: Authentication_generateMagicLink
+  /api/v1/auth/logout/:
+    post: Authentication_revokeToken
+  /api/v1/background-task/:
+    get: BackgroundTasks_listRecentTasks
+  /api/v1/background-task/{task_id}/:
+    get: BackgroundTasks_getTaskById
+  /api/v1/event-type/:
+    get: EventType_getList
+    post: EventType_createOrUpdate
+  /api/v1/event-type/import/openapi/:
+    post: EventType_importFromOpenapi
+  /api/v1/event-type/{event_type_name}/:
+    delete: EventType_archiveType
+    get: EventType_getByName
+    patch: EventType_partiallyUpdateType
+    put: EventType_updateType
+  /api/v1/health/:
+    get: Health_checkServerStatus
+  /api/v1/stats/usage/app/:
+    post: Statistics_calculateMessageDestinations
+  /api/v1/stats/usage/event-types/:
+    put: Statistics_calculateEventTypesForAllApps
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  after:
+    query: false
+  before:
+    query: false
+  channel:
+    query: false
+  endpoint_id:
+    query: false
+  event_types:
+    query: false
+  expunge:
+    query: false
+  get_if_exists:
+    query: false
+  idempotency-key:
+    header: false
+  include_archived:
+    query: false
+  iterator:
+    query: false
+  limit:
+    query: false
+  order:
+    query: false
+  since:
+    query: false
+  status:
+    query: false
+  status_code_class:
+    query: false
+  tag:
+    query: false
+  task:
+    query: false
+  until:
+    query: false
+  with_content:
+    query: false
+  with_msg:
+    query: false
+validServerUrls: {}
