@@ -264,7 +264,7 @@ async function getMetaDescription(
       name: "addMetaDescription",
       message: "Would you like to add the meta description?",
     });
-    return addMetaDescription.addMetaDescription ? metaDescription : null;
+    if (addMetaDescription.addMetaDescription) return metaDescription;
   }
   console.log("⚪️ Meta description not found in data-from-html.json");
   const oai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });

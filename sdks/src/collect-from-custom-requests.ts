@@ -269,6 +269,22 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://stoplight.io/api/v1/projects/qualtricsv2/publicapidocs/nodes/reference/surveyDefinitions.json?fromExportButton=true&snapshotType=http_service",
   },
+  "slack.com_web": {
+    lambda: async () => {
+      // const url =
+      //   "https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json";
+      const url =
+        "https://raw.githubusercontent.com/APIs-guru/openapi-directory/main/APIs/slack.com/1.7.0/openapi.yaml";
+      const response = await fetch(url);
+      let jsonString = await response.text();
+
+      // replace every markdown link (e.g. "(URL)"") that starts with "(/" or "(#" with "(https://slack.dev)"
+      const regex = /(\((\/|#).*?\))/g;
+      jsonString = jsonString.replaceAll(regex, `(https://slack.dev)`);
+
+      return jsonString;
+    },
+  },
   /**
    * Got this from inspecting network tab when going to API Reference page at:
    * https://developer.walmart.com/api/us/cp/feeds
