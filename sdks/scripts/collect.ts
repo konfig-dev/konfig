@@ -308,7 +308,21 @@ async function main() {
     return;
   }
   console.log("Processing filtered specs");
-  const openapiDirectoryDb = await processFiltered();
+  const processedFilteredPath = path.join(
+    path.dirname(__dirname),
+    "db",
+    "processedFiltered.json"
+  );
+  const processFilteredBefore = fs.existsSync(processedFilteredPath);
+  const openapiDirectoryDb = processFilteredBefore
+    ? JSON.parse(fs.readFileSync(processedFilteredPath, "utf-8"))
+    : await processFiltered();
+  if (!processFilteredBefore) {
+    fs.writeFileSync(
+      processedFilteredPath,
+      JSON.stringify(openapiDirectoryDb, null, 2)
+    );
+  }
   const mergedDb = {
     specifications: {
       ...openapiDirectoryDb.specifications,
