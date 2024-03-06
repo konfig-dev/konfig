@@ -7350,11 +7350,18 @@ public class DefaultCodegen implements CodegenConfig {
             // any schema with no type set, composed schemas often do this
 
             // Dylan: make sure we capture imports from composed schemas
+            // 3/6/2024: There was a bug when composed includes array type with item as $ref not adding it to imports
             if (ModelUtils.isComposedSchema(ps)) {
                 CodegenProperty composed = fromProperty("composed", ps, false);
-                Optional.ofNullable(composed.getComposedSchemas().getAllOf()).ifPresent(schemas -> schemas.forEach(schema -> imports.add(schema.baseType)));
-                Optional.ofNullable(composed.getComposedSchemas().getOneOf()).ifPresent(schemas -> schemas.forEach(schema -> imports.add(schema.baseType)));
-                Optional.ofNullable(composed.getComposedSchemas().getAnyOf()).ifPresent(schemas -> schemas.forEach(schema -> imports.add(schema.baseType)));
+                Consumer<CodegenProperty> addImportsFromSchema = (schema) -> {
+                    imports.add(schema.baseType);
+                    if (schema.items != null) {
+                        imports.add(schema.items.baseType);
+                    }
+                };
+                Optional.ofNullable(composed.getComposedSchemas().getAllOf()).ifPresent(schemas -> schemas.forEach(addImportsFromSchema));
+                Optional.ofNullable(composed.getComposedSchemas().getOneOf()).ifPresent(schemas -> schemas.forEach(addImportsFromSchema));
+                Optional.ofNullable(composed.getComposedSchemas().getAnyOf()).ifPresent(schemas -> schemas.forEach(addImportsFromSchema));
             }
         } else if (ModelUtils.isArraySchema(ps)) {
             Schema inner = getSchemaItems((ArraySchema) ps);
