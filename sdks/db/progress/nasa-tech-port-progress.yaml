@@ -1,0 +1,73 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /api:
+    get: Resource_getSpecification
+  /api/organizations:
+    get: Organization_getListByName
+  /api/organizations/types:
+    get: Organization_listTypes
+  /api/organizations/{organizationId}:
+    get: Organization_getInformation
+  /api/projects:
+    get: Project_listAvailableIds
+  /api/projects/search:
+    get: Project_findMatchingProjects
+  /api/projects/{projectId}:
+    get: Project_getInfo
+operationTags:
+  /api:
+    get: Resource
+  /api/organizations:
+    get: Organization
+  /api/organizations/types:
+    get: Organization
+  /api/organizations/{organizationId}:
+    get: Organization
+  /api/projects:
+    get: Project
+  /api/projects/search:
+    get: Project
+  /api/projects/{projectId}:
+    get: Project
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /api/organizations:
+    get:
+      '200':
+        application/json: OrganizationGetListByNameResponse
+  /api/organizations/types:
+    get:
+      '200':
+        application/json: OrganizationListTypesResponse
+  /api/organizations/{organizationId}:
+    get:
+      '200':
+        application/json: OrganizationGetInformationResponse
+  /api/projects:
+    get:
+      '200':
+        application/json: ProjectListAvailableIdsResponse
+  /api/projects/search:
+    get:
+      '200':
+        application/json: ProjectFindMatchingProjectsResponse
+securityParameters:
+  missionDirectorate:
+    query: false
+  name:
+    query: false
+  program:
+    query: false
+  projectId:
+    query: false
+  searchQuery:
+    query: false
+  titleSearch:
+    query: false
+  updatedSince:
+    query: false
+validServerUrls: {}

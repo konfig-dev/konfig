@@ -16,7 +16,7 @@ export default function YouNeedABudgetTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/logo.png"
       clientNameCamelCase="ynab"
       homepage="api.youneedabudget.com"
-      lastUpdated={new Date("2024-02-25T09:49:43.849Z")}
+      lastUpdated={new Date("2024-03-06T23:12:10.512Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1161,7 +1161,7 @@ export default function YouNeedABudgetTypeScriptSdk() {
       language="TypeScript"
       apiTitle="YNAB API Endpoints"
       apiBaseUrl="https://api.ynab.com/v1"
-      apiVersion="1.67.0"
+      apiVersion="1.68.0"
       endpoints={24}
       sdkMethods={31}
       schemas={66}
