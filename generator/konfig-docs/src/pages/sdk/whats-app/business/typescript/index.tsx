@@ -16,7 +16,7 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/logo.png"
       clientNameCamelCase="whatsApp"
       homepage="developers.facebook.com/docs/whatsapp"
-      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -65,6 +65,10 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "201",
+        "description": "Created: the account already exists. You are already registered, so you do not need to do anything else."
+      },
+      {
         "statusCode": "202",
         "description": ""
       }
@@ -103,7 +107,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/account/verify",
@@ -120,7 +129,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/certificates/external",
@@ -130,7 +144,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "certificates",
     "description": "Upload-Certificate",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/certificates/external/ca",
@@ -155,7 +174,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "certificates",
     "description": "Delete Webhook CA Certificate",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/certificates/webhooks/ca",
@@ -180,7 +204,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "certificates",
     "description": "Upload Webhook CA Certificate",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/contacts",
@@ -290,7 +319,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/admins",
@@ -313,7 +347,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/admins",
@@ -336,7 +375,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/icon",
@@ -359,7 +403,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/icon",
@@ -376,7 +425,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/icon",
@@ -399,7 +453,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/invite",
@@ -416,7 +475,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/invite",
@@ -455,7 +519,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/groups/{GroupId}/participants",
@@ -478,7 +547,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/health",
@@ -488,7 +562,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "health",
     "description": "Check-Health",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/media",
@@ -520,7 +599,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/media/{MediaId}",
@@ -659,7 +743,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/metrics",
@@ -690,7 +779,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "twoStepVerification",
     "description": "Disable-Two-Step",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/account/two-step",
@@ -707,7 +801,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/application",
@@ -717,7 +816,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "application",
     "description": "Reset-Application-Settings",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/application",
@@ -823,7 +927,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "application",
     "description": "Update-Media-Providers",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/application/media/providers/{ProviderName}",
@@ -840,7 +949,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": "Provider Name"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/backup",
@@ -918,7 +1032,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/profile/about",
@@ -950,7 +1069,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/profile/photo",
@@ -960,7 +1084,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "profile",
     "description": "Delete-Profile-Photo",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/profile/photo",
@@ -998,7 +1127,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/settings/restore",
@@ -1021,7 +1155,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/stats/app",
@@ -1138,7 +1277,12 @@ export default function WhatsAppBusinessTypeScriptSdk() {
     "typeScriptTag": "users",
     "description": "Logout-User",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/users/{UserUsername}",

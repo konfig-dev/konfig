@@ -16,7 +16,7 @@ export default function LobTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/logo.svg"
       clientNameCamelCase="lob"
       homepage="lob.com"
-      lastUpdated={new Date("2024-03-01T23:14:01.656Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png"
       contactUrl="https://support.lob.com/"
       contactEmail="lob-openapi@lob.com"
@@ -2749,7 +2749,12 @@ export default function LobTypeScriptSdk() {
     "typeScriptTag": "uploads",
     "description": "Delete",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successful Response"
+      }
+    ]
   },
   {
     "url": "/uploads/{upl_id}",

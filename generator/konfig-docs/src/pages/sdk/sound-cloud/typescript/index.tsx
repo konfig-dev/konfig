@@ -17,7 +17,7 @@ export default function SoundCloudTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/logo.jpg"
       clientNameCamelCase="soundCloud"
       homepage="developers.soundcloud.com"
-      lastUpdated={new Date("2024-02-16T00:45:04.983Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/favicon.jpeg"
       contactUrl="https://github.com/soundcloud/api"
       // Missing contactEmail
@@ -59,6 +59,14 @@ export default function SoundCloudTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      },
+      {
+        "statusCode": "302",
+        "description": "Redirect to connect portal"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -685,6 +693,10 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "statusCode": "401",
         "description": ""
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Server Error"
       }
     ]
   },
@@ -874,6 +886,10 @@ export default function SoundCloudTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -1060,6 +1076,10 @@ export default function SoundCloudTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -1403,6 +1423,10 @@ export default function SoundCloudTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      },
       {
         "statusCode": "302",
         "description": ""
@@ -1955,6 +1979,10 @@ export default function SoundCloudTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1980,6 +2008,10 @@ export default function SoundCloudTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "201",
+        "description": "Created"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -2007,6 +2039,10 @@ export default function SoundCloudTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2032,6 +2068,10 @@ export default function SoundCloudTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "201",
+        "description": "Created"
+      },
       {
         "statusCode": "401",
         "description": ""

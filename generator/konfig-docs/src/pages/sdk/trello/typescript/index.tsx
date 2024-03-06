@@ -16,7 +16,7 @@ export default function TrelloTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/trello/logo.png"
       clientNameCamelCase="trello"
       homepage="developer.atlassian.com/cloud/trello"
-      lastUpdated={new Date("2024-02-16T00:45:04.983Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/trello/favicon.ico"
       contactUrl="https://trello.com/home"
       // Missing contactEmail
@@ -39,7 +39,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}",
@@ -98,7 +107,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}",
@@ -120,7 +138,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/board",
@@ -143,7 +170,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/board/{field}",
@@ -166,7 +202,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/card",
@@ -189,7 +234,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/card/{field}",
@@ -212,7 +266,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/display",
@@ -229,7 +292,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/entities",
@@ -246,7 +318,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/list",
@@ -269,7 +350,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/list/{field}",
@@ -292,7 +382,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/member",
@@ -315,7 +414,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/member/{field}",
@@ -338,7 +446,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/memberCreator",
@@ -361,7 +478,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/memberCreator/{field}",
@@ -384,7 +510,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/organization",
@@ -407,7 +542,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/organization/{field}",
@@ -430,7 +574,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/text",
@@ -452,7 +605,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/actions/{idAction}/{field}",
@@ -475,7 +637,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/batch",
@@ -492,7 +663,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "list of API v1 GET routes, not including the version prefix"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards",
@@ -658,7 +838,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}",
@@ -897,7 +1086,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}",
@@ -1069,7 +1267,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/actions",
@@ -1170,7 +1377,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/boardStars",
@@ -1193,7 +1409,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: mine or none"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/calendarKey/generate",
@@ -1210,7 +1435,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/cards",
@@ -1305,7 +1539,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/cards/{filter}",
@@ -1328,7 +1571,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/cards/{idCard}",
@@ -1447,7 +1699,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/checklists",
@@ -1500,7 +1761,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: idBoard, idCard, name or pos"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/checklists",
@@ -1522,7 +1792,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/closed",
@@ -1544,7 +1823,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/deltas",
@@ -1573,7 +1861,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "a number from -1 to Infinity"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/desc",
@@ -1595,7 +1892,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/emailKey/generate",
@@ -1612,7 +1918,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/idOrganization",
@@ -1634,7 +1949,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labelNames/blue",
@@ -1656,7 +1980,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labelNames/green",
@@ -1678,7 +2011,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labelNames/orange",
@@ -1700,7 +2042,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labelNames/purple",
@@ -1722,7 +2073,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labelNames/red",
@@ -1744,7 +2104,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labelNames/yellow",
@@ -1766,7 +2135,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labels",
@@ -1795,7 +2173,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "a number from 0 to 1000"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labels",
@@ -1822,7 +2209,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/labels/{idLabel}",
@@ -1851,7 +2247,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: color, idBoard, name or uses"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/lists",
@@ -1892,7 +2297,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/lists",
@@ -1919,7 +2333,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/lists/{filter}",
@@ -1942,7 +2365,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/markAsViewed",
@@ -1959,7 +2391,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/members",
@@ -1994,7 +2435,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "true or false ; works for premium organizations only."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/members",
@@ -2026,7 +2476,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/members/{filter}",
@@ -2049,7 +2508,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/members/{idMember}",
@@ -2072,7 +2540,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/members/{idMember}",
@@ -2110,7 +2587,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/members/{idMember}/cards",
@@ -2211,7 +2697,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/membersInvited",
@@ -2234,7 +2729,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/membersInvited/{field}",
@@ -2257,7 +2761,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/memberships",
@@ -2292,7 +2805,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/memberships/{idMembership}",
@@ -2327,7 +2849,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/memberships/{idMembership}",
@@ -2360,7 +2891,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs",
@@ -2377,7 +2917,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "board_id"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/emailPosition",
@@ -2399,7 +2948,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/idEmailList",
@@ -2421,7 +2979,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showListGuide",
@@ -2443,7 +3010,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebar",
@@ -2465,7 +3041,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebarActivity",
@@ -2487,7 +3072,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebarBoardActions",
@@ -2509,7 +3103,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/myPrefs/showSidebarMembers",
@@ -2531,7 +3134,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/name",
@@ -2553,7 +3165,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/organization",
@@ -2576,7 +3197,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/organization/{field}",
@@ -2599,7 +3229,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/powerUps",
@@ -2621,7 +3260,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/powerUps/{powerUp}",
@@ -2644,7 +3292,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "powerUp"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/background",
@@ -2666,7 +3323,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/calendarFeedEnabled",
@@ -2688,7 +3354,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/cardAging",
@@ -2710,7 +3385,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/cardCovers",
@@ -2732,7 +3416,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/comments",
@@ -2754,7 +3447,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/invitations",
@@ -2776,7 +3478,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/permissionLevel",
@@ -2798,7 +3509,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/selfJoin",
@@ -2820,7 +3540,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/prefs/voting",
@@ -2842,7 +3571,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/subscribed",
@@ -2864,7 +3602,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/boards/{idBoard}/{field}",
@@ -2887,7 +3634,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards",
@@ -2978,7 +3734,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}",
@@ -2995,7 +3760,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}",
@@ -3150,7 +3924,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}",
@@ -3247,7 +4030,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/actions",
@@ -3348,7 +4140,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/actions/comments",
@@ -3370,7 +4171,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/actions/{idAction}/comments",
@@ -3393,7 +4203,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAction"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/actions/{idAction}/comments",
@@ -3421,7 +4240,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/attachments",
@@ -3450,7 +4278,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "A boolean value or &quot;cover&quot; for only card cover attachments"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/attachments",
@@ -3487,7 +4324,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/attachments/{idAttachment}",
@@ -3510,7 +4356,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idAttachment"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/attachments/{idAttachment}",
@@ -3539,7 +4394,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: bytes, date, edgeColor, idMember, isUpload, mimeType, name, previews or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/board",
@@ -3562,7 +4426,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/board/{field}",
@@ -3585,7 +4458,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checkItemStates",
@@ -3608,7 +4490,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: idCheckItem or state"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklistCurrent}/checkItem/{idCheckItem}",
@@ -3657,7 +4548,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem",
@@ -3690,7 +4590,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}",
@@ -3719,7 +4628,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCheckItem"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/convertToCard",
@@ -3748,7 +4666,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCheckItem"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/name",
@@ -3782,7 +4709,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/pos",
@@ -3816,7 +4752,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklist/{idChecklist}/checkItem/{idCheckItem}/state",
@@ -3850,7 +4795,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklists",
@@ -3903,7 +4857,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: idBoard, idCard, name or pos"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklists",
@@ -3935,7 +4898,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/checklists/{idChecklist}",
@@ -3958,7 +4930,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idChecklist"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/closed",
@@ -3980,7 +4961,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/desc",
@@ -4002,7 +4992,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/due",
@@ -4024,7 +5023,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idAttachmentCover",
@@ -4046,7 +5054,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idBoard",
@@ -4073,7 +5090,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idLabels",
@@ -4095,7 +5121,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idLabels/{idLabel}",
@@ -4118,7 +5153,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idLabel"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idList",
@@ -4140,7 +5184,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idMembers",
@@ -4162,7 +5215,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idMembers",
@@ -4184,7 +5246,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/idMembers/{idMember}",
@@ -4207,7 +5278,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/labels",
@@ -4239,7 +5319,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/labels",
@@ -4271,7 +5360,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/labels/{color}",
@@ -4294,7 +5392,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "color"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/list",
@@ -4317,7 +5424,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/list/{field}",
@@ -4340,7 +5456,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/markAssociatedNotificationsRead",
@@ -4357,7 +5482,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "card id or shortlink"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/members",
@@ -4380,7 +5514,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/membersVoted",
@@ -4403,7 +5546,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/membersVoted",
@@ -4425,7 +5577,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/membersVoted/{idMember}",
@@ -4448,7 +5609,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/name",
@@ -4470,7 +5640,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/pos",
@@ -4492,7 +5671,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/stickers",
@@ -4515,7 +5703,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: image, imageScaled, imageUrl, left, rotate, top or zIndex"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/stickers",
@@ -4557,7 +5754,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/stickers/{idSticker}",
@@ -4580,7 +5786,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSticker"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/stickers/{idSticker}",
@@ -4609,7 +5824,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: image, imageScaled, imageUrl, left, rotate, top or zIndex"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/stickers/{idSticker}",
@@ -4657,7 +5881,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/subscribed",
@@ -4679,7 +5912,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/cards/{idCard}/{field}",
@@ -4702,7 +5944,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists",
@@ -4738,7 +5989,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}",
@@ -4755,7 +6015,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idChecklist"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}",
@@ -4802,7 +6071,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: idBoard, idCard, name or pos"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}",
@@ -4844,7 +6122,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/board",
@@ -4867,7 +6154,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/board/{field}",
@@ -4890,7 +6186,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/cards",
@@ -4985,7 +6290,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/cards/{filter}",
@@ -5008,7 +6322,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/checkItems",
@@ -5037,7 +6360,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: name, nameData, pos, state or type"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/checkItems",
@@ -5069,7 +6401,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/checkItems/{idCheckItem}",
@@ -5092,7 +6433,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCheckItem"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/checkItems/{idCheckItem}",
@@ -5121,7 +6471,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: name, nameData, pos, state or type"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/idCard",
@@ -5143,7 +6502,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/name",
@@ -5165,7 +6533,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/pos",
@@ -5187,7 +6564,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/checklists/{idChecklist}/{field}",
@@ -5210,7 +6596,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels",
@@ -5236,7 +6631,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}",
@@ -5253,7 +6657,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idLabel"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}",
@@ -5276,7 +6689,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: color, idBoard, name or uses"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}",
@@ -5308,7 +6730,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}/board",
@@ -5331,7 +6762,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}/board/{field}",
@@ -5354,7 +6794,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}/color",
@@ -5376,7 +6825,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/labels/{idLabel}/name",
@@ -5398,7 +6856,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists",
@@ -5439,7 +6906,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}",
@@ -5486,7 +6962,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}",
@@ -5533,7 +7018,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/actions",
@@ -5634,7 +7128,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/archiveAllCards",
@@ -5651,7 +7154,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idList"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/board",
@@ -5674,7 +7186,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/board/{field}",
@@ -5697,7 +7218,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/cards",
@@ -5792,7 +7322,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/cards",
@@ -5834,7 +7373,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/cards/{filter}",
@@ -5857,7 +7405,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/closed",
@@ -5879,7 +7436,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/idBoard",
@@ -5906,7 +7472,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/moveAllCards",
@@ -5928,7 +7503,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/name",
@@ -5950,7 +7534,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/pos",
@@ -5972,7 +7565,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/subscribed",
@@ -5994,7 +7596,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/lists/{idList}/{field}",
@@ -6017,7 +7628,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}",
@@ -6346,7 +7966,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}",
@@ -6403,7 +8032,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/actions",
@@ -6504,7 +8142,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/avatar",
@@ -6526,7 +8173,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/avatarSource",
@@ -6548,7 +8204,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/bio",
@@ -6570,7 +8235,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardBackgrounds",
@@ -6593,7 +8267,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all, custom, default, none or premium"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardBackgrounds",
@@ -6625,7 +8308,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardBackgrounds/{idBoardBackground}",
@@ -6648,7 +8340,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardBackground"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardBackgrounds/{idBoardBackground}",
@@ -6677,7 +8378,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: brightness, fullSizeUrl, scaled or tile"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardBackgrounds/{idBoardBackground}",
@@ -6715,7 +8425,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars",
@@ -6732,7 +8451,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars",
@@ -6759,7 +8487,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}",
@@ -6782,7 +8519,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardStar"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}",
@@ -6805,7 +8551,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardStar"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}",
@@ -6838,7 +8593,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}/idBoard",
@@ -6866,7 +8630,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardStars/{idBoardStar}/pos",
@@ -6894,7 +8667,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boards",
@@ -6983,7 +8765,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all, closed, none or open"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boards/{filter}",
@@ -7006,7 +8797,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardsInvited",
@@ -7029,7 +8829,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/boardsInvited/{field}",
@@ -7052,7 +8861,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/cards",
@@ -7147,7 +8965,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/cards/{filter}",
@@ -7170,7 +8997,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds",
@@ -7193,7 +9029,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all or none"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds",
@@ -7225,7 +9070,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds/{idBoardBackground}",
@@ -7248,7 +9102,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idBoardBackground"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds/{idBoardBackground}",
@@ -7277,7 +9140,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: brightness, fullSizeUrl, scaled or tile"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customBoardBackgrounds/{idBoardBackground}",
@@ -7315,7 +9187,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customEmoji",
@@ -7338,7 +9219,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all or none"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customEmoji",
@@ -7365,7 +9255,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customEmoji/{idCustomEmoji}",
@@ -7394,7 +9293,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: name or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customStickers",
@@ -7417,7 +9325,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all or none"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customStickers",
@@ -7439,7 +9356,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customStickers/{idCustomSticker}",
@@ -7462,7 +9388,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idCustomSticker"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/customStickers/{idCustomSticker}",
@@ -7491,7 +9426,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: scaled or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/deltas",
@@ -7520,7 +9464,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "a number from -1 to Infinity"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/fullName",
@@ -7542,7 +9495,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/initials",
@@ -7564,7 +9526,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/notifications",
@@ -7647,7 +9618,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/notifications/{filter}",
@@ -7670,7 +9650,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/oneTimeMessagesDismissed",
@@ -7692,7 +9681,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/organizations",
@@ -7727,7 +9725,16 @@ export default function TrelloTypeScriptSdk() {
         "description": " true or false"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/organizations/{filter}",
@@ -7750,7 +9757,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/organizationsInvited",
@@ -7773,7 +9789,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/organizationsInvited/{field}",
@@ -7796,7 +9821,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/prefs/colorBlind",
@@ -7818,7 +9852,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/prefs/locale",
@@ -7840,7 +9883,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/prefs/minutesBetweenSummaries",
@@ -7862,7 +9914,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches",
@@ -7879,7 +9940,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches",
@@ -7911,7 +9981,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}",
@@ -7934,7 +10013,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSavedSearch"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}",
@@ -7957,7 +10045,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idSavedSearch"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}",
@@ -7995,7 +10092,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}/name",
@@ -8023,7 +10129,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}/pos",
@@ -8051,7 +10166,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/savedSearches/{idSavedSearch}/query",
@@ -8079,7 +10203,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/tokens",
@@ -8102,7 +10235,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all or none"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/username",
@@ -8124,7 +10266,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/members/{idMember}/{field}",
@@ -8147,7 +10298,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/all/read",
@@ -8157,7 +10317,16 @@ export default function TrelloTypeScriptSdk() {
     "typeScriptTag": "notification",
     "description": "addNotificationsAllRead()",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}",
@@ -8258,7 +10427,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}",
@@ -8280,7 +10458,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/board",
@@ -8303,7 +10490,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/board/{field}",
@@ -8326,7 +10522,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/card",
@@ -8349,7 +10554,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/card/{field}",
@@ -8372,7 +10586,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/display",
@@ -8389,7 +10612,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idNotification"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/entities",
@@ -8406,7 +10638,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idNotification"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/list",
@@ -8429,7 +10670,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: closed, idBoard, name, pos or subscribed"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/list/{field}",
@@ -8452,7 +10702,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/member",
@@ -8475,7 +10734,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/member/{field}",
@@ -8498,7 +10766,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/memberCreator",
@@ -8521,7 +10798,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/memberCreator/{field}",
@@ -8544,7 +10830,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/organization",
@@ -8567,7 +10862,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/organization/{field}",
@@ -8590,7 +10894,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/unread",
@@ -8612,7 +10925,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/notifications/{idNotification}/{field}",
@@ -8635,7 +10957,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations",
@@ -8706,7 +11037,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}",
@@ -8723,7 +11063,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}",
@@ -8890,7 +11239,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: billableMemberCount, desc, descData, displayName, idBoards, invitations, invited, logoHash, memberships, name, powerUps, prefs, premiumFeatures, products, url or website"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}",
@@ -8967,7 +11325,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/actions",
@@ -9068,7 +11435,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/boards",
@@ -9157,7 +11533,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "One of: all, closed, none or open"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/boards/{filter}",
@@ -9180,7 +11565,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/deltas",
@@ -9209,7 +11603,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "a number from -1 to Infinity"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/desc",
@@ -9231,7 +11634,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/displayName",
@@ -9253,7 +11665,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/logo",
@@ -9270,7 +11691,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/logo",
@@ -9292,7 +11722,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members",
@@ -9327,7 +11766,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "true or false ; works for premium organizations only."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members",
@@ -9359,7 +11807,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members/{filter}",
@@ -9382,7 +11839,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "filter"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}",
@@ -9405,7 +11871,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}",
@@ -9443,7 +11918,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}/all",
@@ -9466,7 +11950,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idMember"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}/cards",
@@ -9567,7 +12060,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: badges, checkItemStates, closed, dateLastActivity, desc, descData, due, email, idAttachmentCover, idBoard, idChecklists, idLabels, idList, idMembers, idMembersVoted, idShort, labels, manualCoverAttachment, name, pos, shortLink, shortUrl, subscribed or url"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/members/{idMember}/deactivated",
@@ -9595,7 +12097,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/membersInvited",
@@ -9618,7 +12129,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/membersInvited/{field}",
@@ -9641,7 +12161,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/memberships",
@@ -9676,7 +12205,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/memberships/{idMembership}",
@@ -9711,7 +12249,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, bio, bioData, confirmed, fullName, idPremOrgsAdmin, initials, memberType, products, status, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/memberships/{idMembership}",
@@ -9744,7 +12291,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/name",
@@ -9766,7 +12322,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/associatedDomain",
@@ -9783,7 +12348,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idOrg or name"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/associatedDomain",
@@ -9805,7 +12379,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/boardVisibilityRestrict/org",
@@ -9827,7 +12410,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/boardVisibilityRestrict/private",
@@ -9849,7 +12441,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/boardVisibilityRestrict/public",
@@ -9871,7 +12472,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/externalMembersDisabled",
@@ -9893,7 +12503,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/googleAppsVersion",
@@ -9915,7 +12534,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/orgInviteRestrict",
@@ -9938,7 +12566,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "An email address with optional expansion tokens"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/orgInviteRestrict",
@@ -9960,7 +12597,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/prefs/permissionLevel",
@@ -9982,7 +12628,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/website",
@@ -10004,7 +12659,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/organizations/{idOrg}/{field}",
@@ -10027,7 +12691,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/search",
@@ -10158,7 +12831,16 @@ export default function TrelloTypeScriptSdk() {
         "description": " true or false"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/search/members",
@@ -10199,7 +12881,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "A boolean"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/sessions",
@@ -10220,7 +12911,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/sessions/socket",
@@ -10230,7 +12930,16 @@ export default function TrelloTypeScriptSdk() {
     "typeScriptTag": "session",
     "description": "getSessionsSocket()",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/sessions/{idSession}",
@@ -10257,7 +12966,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/sessions/{idSession}/status",
@@ -10279,7 +12997,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}",
@@ -10289,7 +13016,16 @@ export default function TrelloTypeScriptSdk() {
     "typeScriptTag": "token",
     "description": "deleteTokensByToken()",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}",
@@ -10312,7 +13048,16 @@ export default function TrelloTypeScriptSdk() {
         "description": " true or false"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/member",
@@ -10329,7 +13074,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "all or a comma-separated list of: avatarHash, avatarSource, bio, bioData, confirmed, email, fullName, gravatarHash, idBoards, idBoardsPinned, idOrganizations, idPremOrgsAdmin, initials, loginTypes, memberType, oneTimeMessagesDismissed, prefs, premiumFeatures, products, status, status, trophies, uploadedAvatarHash, url or username"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/member/{field}",
@@ -10346,7 +13100,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/webhooks",
@@ -10356,7 +13119,16 @@ export default function TrelloTypeScriptSdk() {
     "typeScriptTag": "token",
     "description": "getTokensWebhooksByToken()",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/webhooks",
@@ -10382,7 +13154,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/webhooks",
@@ -10408,7 +13189,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/webhooks/{idWebhook}",
@@ -10425,7 +13215,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/webhooks/{idWebhook}",
@@ -10442,7 +13241,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/tokens/{token}/{field}",
@@ -10465,7 +13273,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/types/{id}",
@@ -10482,7 +13299,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "id"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks",
@@ -10513,7 +13339,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}",
@@ -10530,7 +13365,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}",
@@ -10547,7 +13391,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "idWebhook"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}",
@@ -10584,7 +13437,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}/active",
@@ -10606,7 +13468,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}/callbackURL",
@@ -10628,7 +13499,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}/description",
@@ -10650,7 +13530,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}/idModel",
@@ -10672,7 +13561,16 @@ export default function TrelloTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   },
   {
     "url": "/webhooks/{idWebhook}/{field}",
@@ -10695,7 +13593,16 @@ export default function TrelloTypeScriptSdk() {
         "description": "field"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Server rejection"
+      }
+    ]
   }
 ]
     }

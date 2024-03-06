@@ -16,7 +16,7 @@ export default function SpotifyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/logo.png"
       clientNameCamelCase="spotify"
       homepage="developer.spotify.com"
-      lastUpdated={new Date("2024-03-02T01:08:21.296Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/favicon.ico"
       contactUrl="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer"
       // Missing contactEmail
@@ -725,6 +725,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Audiobook(s) have been removed from the library"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -794,6 +798,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Audiobook(s) are saved to the library"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -1182,6 +1190,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Playlist updated"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1488,6 +1500,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Album(s) have been removed from the library"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1569,6 +1585,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The album is saved"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1637,6 +1657,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Track removed"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -1720,6 +1744,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Track saved"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1788,6 +1816,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Episode removed"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -1871,6 +1903,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Episode saved"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1941,6 +1977,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Show removed"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2010,6 +2050,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Show saved"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -2265,6 +2309,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Playlist unfollowed"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2299,6 +2347,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Playlist followed"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -2542,6 +2594,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": "Image uploaded"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2622,6 +2678,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Artist or user unfollowed"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -2710,6 +2770,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Artist or user followed"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3270,6 +3334,10 @@ export default function SpotifyTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "204",
+        "description": "Playback not available or active"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3305,6 +3373,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Playback transferred"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3423,6 +3495,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Playback started"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3452,6 +3528,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Playback paused"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3483,6 +3563,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Command sent"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3512,6 +3596,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Command sent"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3549,6 +3637,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Command sent"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3584,6 +3676,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Command sent"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3621,6 +3717,10 @@ export default function SpotifyTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Command sent"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3656,6 +3756,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Command sent"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3765,6 +3869,10 @@ export default function SpotifyTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Command received"
+      },
       {
         "statusCode": "401",
         "description": ""

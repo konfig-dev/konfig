@@ -17,7 +17,7 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/logo.png"
       clientNameCamelCase="goDaddy"
       homepage="developer.godaddy.com"
-      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -344,6 +344,14 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "No response was specified"
+      },
+      {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -592,6 +600,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -781,6 +793,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -923,6 +939,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1003,6 +1023,14 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "No response was specified"
+      },
+      {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1058,6 +1086,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1177,6 +1209,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1232,6 +1268,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1294,6 +1334,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1362,6 +1406,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1518,6 +1566,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1750,6 +1802,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1805,6 +1861,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -1934,6 +1994,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2003,6 +2067,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -2158,6 +2226,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Command successful"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2270,6 +2342,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Message acknowledged"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2361,6 +2437,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/REGISTER to poll status"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2519,6 +2599,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2706,6 +2790,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Request was successful"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2830,6 +2918,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/REDEEM to poll status"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2905,6 +2997,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/RENEW to poll status"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -3016,6 +3112,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER to poll status"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -3084,6 +3184,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_IN_ACCEPT to poll status"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -3146,6 +3250,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_IN_CANCEL to poll status"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3199,6 +3307,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_IN_RESTART to poll status"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3259,6 +3371,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_IN_RETRY to poll status"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -3328,6 +3444,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_OUT_REQUESTED to poll status"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -3385,6 +3505,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_OUT_ACCEPT to poll status"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -3445,6 +3569,10 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "Request Accepted. You may use GET /v2/customers/{customerId}/domains/{domain}/actions/TRANSFER_OUT_REJECT to poll status"
+      },
       {
         "statusCode": "401",
         "description": ""

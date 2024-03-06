@@ -303,14 +303,20 @@ function SdkMethod({
           "h-auto": expanded,
         })}
       >
-        <SdkMethodSection Icon={IconAdjustments} header="Parameter">
+        <SdkMethodSection
+          Icon={IconAdjustments}
+          header={parameters.length === 0 ? "No Parameters" : "Parameter"}
+        >
           <div className="space-y-2">
             {parameters.map((parameter) => {
               return <SdkMethodParameter key={parameter.name} {...parameter} />;
             })}
           </div>
         </SdkMethodSection>
-        <SdkMethodSection header="Response" Icon={IconCube}>
+        <SdkMethodSection
+          header={responses.length === 0 ? "No Responses" : "Response"}
+          Icon={IconCube}
+        >
           <div className="space-y-2 w-full">
             {responses.map((response) => {
               return (

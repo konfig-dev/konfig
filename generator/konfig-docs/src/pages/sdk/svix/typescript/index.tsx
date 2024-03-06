@@ -16,7 +16,7 @@ export default function SvixTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/svix/logo.png"
       clientNameCamelCase="svix"
       homepage="svix.com"
-      lastUpdated={new Date("2024-03-05T22:56:39.921Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/svix/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -160,6 +160,10 @@ export default function SvixTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "no content"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -215,6 +219,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -402,6 +410,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -833,6 +845,10 @@ export default function SvixTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "no content"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1227,6 +1243,10 @@ export default function SvixTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "no content"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1553,6 +1573,10 @@ export default function SvixTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "no content"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1610,6 +1634,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1728,6 +1756,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2053,6 +2085,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2685,6 +2721,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -3403,6 +3443,10 @@ export default function SvixTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "no content"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -3465,6 +3509,10 @@ export default function SvixTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "202",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -3749,6 +3797,10 @@ export default function SvixTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "no content"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -4022,6 +4074,10 @@ export default function SvixTypeScriptSdk() {
     "description": "Health",
     "parameters": [],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "no content"
+      },
       {
         "statusCode": "400",
         "description": ""

@@ -16,7 +16,7 @@ export default function ZuoraTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/logo.png"
       clientNameCamelCase="zuora"
       homepage="zuora.com"
-      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png"
       // Missing contactUrl
       contactEmail="docs@zuora.com"
@@ -61,6 +61,10 @@ export default function ZuoraTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": "Too Many Requests"
       }
     ]
   },
@@ -24786,6 +24790,10 @@ export default function ZuoraTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "No Content"
+      },
+      {
         "statusCode": "404",
         "description": ""
       },
@@ -25221,6 +25229,10 @@ export default function ZuoraTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "No Content"
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -25710,6 +25722,10 @@ export default function ZuoraTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "No Content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -26350,6 +26366,10 @@ export default function ZuoraTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "No Content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -30505,6 +30525,10 @@ export default function ZuoraTypeScriptSdk() {
         "description": "When Tenant's Compare API returns a result, this object is used to send the response to UI."
       },
       {
+        "statusCode": "201",
+        "description": "created.\nThe request has been fulfilled and resulted in a new resource being created. The newly created resource can be referenced by the URL(s) returned in the entity of the response, with the most specific URL for the resource given by a Location header field.\n"
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -30627,6 +30651,10 @@ export default function ZuoraTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Response after migration is added."
+      },
+      {
+        "statusCode": "201",
+        "description": "created.\nThe request has been fulfilled and resulted in a new resource being created. The newly created resource can be referenced by the URL(s) returned in the entity of the response, with the most specific URL for the resource given by a Location header field.\n"
       },
       {
         "statusCode": "400",
@@ -30899,6 +30927,10 @@ export default function ZuoraTypeScriptSdk() {
         "description": "Contains all template details."
       },
       {
+        "statusCode": "201",
+        "description": "created.\nThe request has been fulfilled and resulted in a new resource being created. The newly created resource can be referenced by the URL(s) returned in the entity of the response, with the most specific URL for the resource given by a Location header field.\n"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -30968,6 +31000,14 @@ export default function ZuoraTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "Successfully deleted the template."
+      },
+      {
+        "statusCode": "204",
+        "description": "No Content"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -33001,7 +33041,12 @@ export default function ZuoraTypeScriptSdk() {
         "description": "The Zuora ID of the file to retrieve.\n"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/v1/object/import",

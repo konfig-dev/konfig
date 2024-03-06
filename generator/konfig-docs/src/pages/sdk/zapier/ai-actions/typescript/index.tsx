@@ -17,7 +17,7 @@ export default function ZapierAiActionsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/logo.png"
       clientNameCamelCase="zapierActions"
       homepage="zapier.com"
-      lastUpdated={new Date("2024-02-20T18:53:32.830Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -33,7 +33,12 @@ export default function ZapierAiActionsTypeScriptSdk() {
     "typeScriptTag": "check",
     "description": "Check",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/api/v1/configuration-link",
@@ -43,7 +48,12 @@ export default function ZapierAiActionsTypeScriptSdk() {
     "typeScriptTag": "configuration",
     "description": "Get Configuration Link",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/api/v1/exposed",

@@ -16,7 +16,7 @@ export default function AblyPlatformTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/logo.png"
       clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-02-01T19:39:12.790Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/favicon.ico"
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
@@ -124,6 +124,10 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "statusCode": "2XX",
         "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "Error"
       }
     ]
   },
@@ -332,6 +336,10 @@ export default function AblyPlatformTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "2XX",
+        "description": "OK"
+      },
+      {
         "statusCode": "default",
         "description": "Returned error from failed REST."
       }
@@ -387,6 +395,10 @@ export default function AblyPlatformTypeScriptSdk() {
     "parameters": [],
     "responses": [
       {
+        "statusCode": "2XX",
+        "description": "OK"
+      },
+      {
         "statusCode": "default",
         "description": "Returned error from failed REST."
       }
@@ -431,6 +443,10 @@ export default function AblyPlatformTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "2XX",
+        "description": "OK"
+      },
       {
         "statusCode": "default",
         "description": "Returned error from failed REST."
@@ -548,6 +564,10 @@ export default function AblyPlatformTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "2XX",
+        "description": "OK"
+      },
       {
         "statusCode": "default",
         "description": "Returned error from failed REST."
@@ -760,6 +780,10 @@ export default function AblyPlatformTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "2XX",
+        "description": "OK"
+      },
       {
         "statusCode": "default",
         "description": "Returned error from failed REST."

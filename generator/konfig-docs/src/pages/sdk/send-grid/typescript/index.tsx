@@ -16,7 +16,7 @@ export default function SendGridTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/logo.png"
       clientNameCamelCase="sendGrid"
       homepage="sendgrid.com/en-us"
-      lastUpdated={new Date("2024-03-06T00:41:18.587Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -488,6 +488,10 @@ export default function SendGridTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2478,6 +2482,10 @@ export default function SendGridTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
       }
     ]
   },
@@ -3801,6 +3809,10 @@ export default function SendGridTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "202",
+        "description": ""
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -4952,6 +4964,10 @@ export default function SendGridTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "408",
+        "description": ""
+      },
+      {
         "statusCode": "500",
         "description": ""
       }
@@ -5021,6 +5037,10 @@ export default function SendGridTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
         "statusCode": "500",
         "description": ""
       }
@@ -5082,6 +5102,10 @@ export default function SendGridTypeScriptSdk() {
     "description": "Delete Custom Field Definition",
     "parameters": [],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -5409,6 +5433,10 @@ export default function SendGridTypeScriptSdk() {
         "description": "If the request is incorrect, an array of errors will be returned."
       },
       {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
         "statusCode": "500",
         "description": "If the request is incorrect, an array of errors will be returned."
       }
@@ -5451,6 +5479,14 @@ export default function SendGridTypeScriptSdk() {
         "description": "If the request is incorrect, an array of errors will be returned."
       },
       {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
+      },
+      {
         "statusCode": "500",
         "description": "If the request is incorrect, an array of errors will be returned."
       }
@@ -5466,8 +5502,16 @@ export default function SendGridTypeScriptSdk() {
     "parameters": [],
     "responses": [
       {
+        "statusCode": "202",
+        "description": ""
+      },
+      {
         "statusCode": "400",
         "description": "If the request is incorrect, an array of errors will be returned."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -5531,6 +5575,10 @@ export default function SendGridTypeScriptSdk() {
       {
         "statusCode": "400",
         "description": "If the request is incorrect, an array of errors will be returned."
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -5812,6 +5860,10 @@ export default function SendGridTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
         "statusCode": "404",
         "description": ""
       },
@@ -5978,6 +6030,10 @@ export default function SendGridTypeScriptSdk() {
     "description": "Delete Single Send by ID",
     "parameters": [],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -6273,6 +6329,10 @@ export default function SendGridTypeScriptSdk() {
       {
         "statusCode": "400",
         "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": ""
       }
     ]
   },
@@ -6378,6 +6438,10 @@ export default function SendGridTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "CSV data"
+      },
+      {
+        "statusCode": "400",
+        "description": ""
       }
     ]
   },
@@ -6432,6 +6496,10 @@ export default function SendGridTypeScriptSdk() {
       },
       {
         "statusCode": "400",
+        "description": ""
+      },
+      {
+        "statusCode": "404",
         "description": ""
       }
     ]
@@ -6840,6 +6908,14 @@ export default function SendGridTypeScriptSdk() {
     "parameters": [],
     "responses": [
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -7225,6 +7301,10 @@ export default function SendGridTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "OK"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -7368,6 +7448,10 @@ export default function SendGridTypeScriptSdk() {
     "description": "Delete an SSO Integration",
     "parameters": [],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -8810,6 +8894,10 @@ export default function SendGridTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -9180,7 +9268,12 @@ export default function SendGridTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/templates/{template_id}/versions/{version_id}",
@@ -9885,6 +9978,10 @@ export default function SendGridTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -10357,7 +10454,12 @@ export default function SendGridTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      }
+    ]
   },
   {
     "url": "/user/webhooks/parse/settings",
@@ -10919,6 +11021,10 @@ export default function SendGridTypeScriptSdk() {
     "parameters": [],
     "responses": [
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -11103,6 +11209,10 @@ export default function SendGridTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
       {
         "statusCode": "400",
         "description": ""

@@ -17,7 +17,7 @@ export default function SnykTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-03-05T23:20:55.483Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -196,6 +196,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully deleted the custom base image"
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -476,6 +480,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The app install has been de-authorized."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1041,6 +1049,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Service account was successfully deleted."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1573,6 +1585,10 @@ export default function SnykTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1698,6 +1714,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The app bot has been deauthorized"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2002,6 +2022,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The app has been deleted"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2379,6 +2403,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The app install has been revoked."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -2496,6 +2524,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The app has been deleted"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -2977,6 +3009,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Collection was deleted successfully"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -3159,6 +3195,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "successfully removing projects from a collection"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -3312,6 +3352,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "successfully adding projects to a collection"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -3696,6 +3740,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -4203,6 +4251,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The project has been deleted"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -4562,6 +4614,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The service account has been deleted."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -4990,6 +5046,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "Slack App integration successfully removed"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -5244,6 +5304,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "Slack settings override for the project removed successfully."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -5673,6 +5737,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The target is deleted with all projects, if it is found in the specified org."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -5890,6 +5958,10 @@ export default function SnykTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The app install has been revoked."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -5937,6 +6009,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The app has been revoked"
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -6058,6 +6134,10 @@ export default function SnykTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user app sessions has been revoked."
+      },
       {
         "statusCode": "400",
         "description": ""

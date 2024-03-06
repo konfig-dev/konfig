@@ -16,7 +16,7 @@ export default function ZoomMeetingTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/logo.png"
       clientNameCamelCase="zoomMeeting"
       homepage="zoom.us/"
-      lastUpdated={new Date("2024-03-04T06:39:15.459Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/favicon.png"
       contactUrl="https://developer.zoom.us/"
       // Missing contactEmail
@@ -73,6 +73,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request  \n\n **Error Code:** `2001` <br>\n Account does not exist: {accountId} <br>\n"
       }
     ]
   },
@@ -101,6 +105,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `2001` <br>\nAccount does not exist: {accountId}\n\n"
       }
     ]
   },
@@ -125,7 +133,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n "
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
+      }
+    ]
   },
   {
     "url": "/past_meetings/{meetingUUID}/archive_files",
@@ -142,7 +163,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. For example, after a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `200`   \n \n Meeting archived files returned."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nOnly available for Paid account.\n\n**Error Code:** `200` <br>\nNot available for this account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {0}\n\n"
+      }
+    ]
   },
   {
     "url": "/past_meetings/{meetingUUID}/archive_files",
@@ -163,6 +197,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found  \n\n **Error Code:** `3001` <br>\n Meeting {meetingUUId} does not exist. <br> <br>\n"
       }
     ]
   },
@@ -187,7 +225,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The recording delete actions:  \n `trash` - Move recording to trash.  \n `delete` - Delete recording permanently."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "**HTTP Status Code:** `200`   \n \nRecordings deleted. \n\n**Error Code:** `200`   \n \nYou do not have the right permission."
+      },
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting recording deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}. <br/>\n\n**Error Code:** `3332` <br>\nThis recording was selected for a simulive webinar. You cannot delete or trash it.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist or does not belong to this account.<br>\n\n**Error Code:** `3301` <br>\nThere is no recording for this meeting.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/recordings",
@@ -220,6 +275,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "This field returns a list of recording files for each participant. The API only returns this response when the **Record a separate audio file of each participant** setting is enabled."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request  \n\n **Error Code:** `1010` <br>\n User not found on this account: {accountId}. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found  \n\n **Error Code:** `1001` <br>\n User \"{userId}\" does not exist or does not belong to this account. <br>\n**Error Code:** `3301` <br>\n There is no recording for this meeting. <br>\n"
       }
     ]
   },
@@ -272,6 +335,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser not found on this account: {accountId}\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3301` <br>\nThere is no recording for this meeting.\n\n"
       }
     ]
   },
@@ -306,6 +377,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser not found on this account: {accountId}\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3301` <br>\nThere is no recording for this meeting.\n\n"
       }
     ]
   },
@@ -352,6 +431,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting cloud recording registrant."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -482,6 +565,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -504,6 +591,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Recording Registrant Questions"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -532,7 +623,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `200`  \n \nRecording Registrant Questions Updated"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/recordings/registrants/status",
@@ -561,7 +661,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nRegistrant status updated."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/recordings/settings",
@@ -582,6 +691,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
       }
     ]
   },
@@ -655,7 +768,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`    Meeting recording setting's updated."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/recordings/{recordingId}",
@@ -684,7 +806,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The recording delete actions:  \n `trash` - Move recording to trash.  \n `delete` - Delete recording permanently."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "**HTTP Status Code:** `200`   \n \nRecording deleted. \n\n**Error Code:** `200`  \n \nYou do not have the right permissions."
+      },
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting recording file deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.<br>\n\n**Error Code:** `3303` <br>\nYou can not delete an uncompleted meeting. <br/>\n\n**Error Code:** `3332` <br>\nThis recording was selected for a simulive webinar. You cannot delete or trash it. <br>\n\n**Error Code:** `3332` <br>\nUnable to delete this file because this recording is being used for Zoom IQ for Sales.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist or does not belong to this account.<br>\n\n**Error Code:** `3301` <br>\nThere is no recording for this meeting.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/recordings/{recordingId}/status",
@@ -712,7 +851,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n  Meeting recording recovered.\n\n"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.\n\n**Error Code:** `3309` <br>\nNot enough cloud storage available. Either purchase additional storage or delete cloud recordings to free up storage.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist or does not belong to this account.<br>\n\n**Error Code:** `3301` <br>\nThere is no recording for this meeting.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingUUID}/recordings/status",
@@ -734,7 +886,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "**HTTP Status Code:** `200`   \n \nRecordings recovered. \n\n**Error Code:** `200`  \n \nYou do not have the right permissions."
+      },
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nDeleted recordings of the meeting recovered."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.\n\n**Error Code:** `3309` <br>\nNot enough cloud storage available. Either purchase additional storage or delete cloud recordings to free up storage.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: {userId}.<br>\n\n**Error Code:** `3301` <br>\nThere is no recording for this meeting.\n\n"
+      }
+    ]
   },
   {
     "url": "/users/{userId}/recordings",
@@ -803,6 +972,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "The pagination object."
+      },
+      {
+        "statusCode": "401",
+        "description": "**HTTP Status Code:** `401` <br>\n Unauthorized  \n\n **Error Code:** `124` <br>\n Requires an access token. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found  \n\n **Error Code:** `1001` <br>\n User {userId} does not exist, or does not belong to this account. <br>\n**Error Code:** `3301` <br>\n There is no recording for this session. <br>\n"
       }
     ]
   },
@@ -873,6 +1050,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `30055008` <br>\nno permission.\n\n"
       }
     ]
   },
@@ -939,7 +1120,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "202",
+        "description": "**HTTP Status:** `202` **Accepted**\nRequest processed successfully."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `30055001` <br>\nzoom room does not exist. \n\n**Error Code:** `30055002` <br>\nrequired param can not be empty or null.\n\n**Error Code:** `30055003` <br>\ndevice type does not support.\n\n**Error Code:** `30055004` <br>\nmodel or vendor not exist.\n\n**Error Code:** `30055005` <br>\ntag length can not be more than 64.\n\n**Error Code:** `30055006` <br>\ndevice has already exist.\n\n**Error Code:** `30055007` <br>\ninvalid mac address.\n\n**Error Code:** `30055008` <br>\nno permission.\n\n**Error Code:** `30055009` <br>\nemail does not have plan.\n\n"
+      }
+    ]
   },
   {
     "url": "/devices/{deviceId}",
@@ -956,7 +1146,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "Unique identifier of the device."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` **No Content** Device deleted successfully."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `30055008` <br>\n no permission. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `30055012` <br>\n no found unified deviceId. <br>\n"
+      }
+    ]
   },
   {
     "url": "/devices/{deviceId}",
@@ -977,6 +1180,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the device."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `30055008` <br>\n No permission. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `30055012` <br>\n No found unified deviceId. <br>\n"
       }
     ]
   },
@@ -1019,7 +1230,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` **No Content** \n \nRequest processed successfully."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `30055001` <br>\n zoom room does not exist. . <br>\n**Error Code:** `30055002` <br>\n required param can not be empty or null. <br>\n**Error Code:** `30055003` <br>\n device type does not support. <br>\n**Error Code:** `30055011` <br>\n device is not enrolled. <br>\n**Error Code:** `30055013` <br>\n device not support this app. <br>\n**Error Code:** `30055014` <br>\n room not support this app. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `30055012` <br>\n Device does not exist: {deviceId}. <br>\n"
+      }
+    ]
   },
   {
     "url": "/devices/{deviceId}/assignment",
@@ -1048,7 +1272,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` **No Content**  \n \nRequest processed successfully."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `8500` <br>\nDevice not enrolled in Zoom Device Management.\n\n**Error Code:** `8501` <br>\nDevice does not support this app.\n\n**Error Code:** `8502` <br>\nRoom does not support this app.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1012` <br>\nRoom does not exist: {roomId}.\n\n**Error Code:** `8503` <br>\nDevice does not exist: {deviceId}.\n\n"
+      }
+    ]
   },
   {
     "url": "/h323/devices",
@@ -1121,6 +1358,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "The H.323/SIP device object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `2020` <br>\nH.323 device's display name:{displayName} is already in use.\n\n"
       }
     ]
   },
@@ -1139,7 +1384,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The device ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "You do not have the permission to delete this device."
+      },
+      {
+        "statusCode": "204",
+        "description": "H.323/SIP device deleted."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/h323/devices/{deviceId}",
@@ -1180,7 +1438,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nH.323/SIP device updated."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `2020` <br>\nH.323 device's display name:{displayName} is already in use.\n\n"
+      }
+    ]
   },
   {
     "url": "/live_meetings/{meetingId}/chat/messages/{messageId}",
@@ -1209,7 +1476,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The live webinar chat file's universally unique identifier (UUID), in base64-encoded format. Separate multiple values with commas."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting chat message deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n * Only available for Paid accounts. \n* DLP is not enabled. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Meeting {meetingId} does not exist. <br>\n"
+      }
+    ]
   },
   {
     "url": "/live_meetings/{meetingId}/chat/messages/{messageId}",
@@ -1238,7 +1518,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` <br>\n Meeting chat message updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n DLP is not enabled on this account <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Meeting {meetingId} does not exist. <br>\n"
+      }
+    ]
   },
   {
     "url": "/live_meetings/{meetingId}/events",
@@ -1265,7 +1558,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "202",
+        "description": "**HTTP Status:** `202` **Accepted**\nRequest processed successfully."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n * Meeting id does not exist.<br>\n* Invalid meeting id.<br>\n* Meeting does not exist.<br>\n* No permission.<br>\n* This API is not available for this account, please contact Zoom support. <br>\n**Error Code:** `3309` <br>\n Not enough cloud storage available. Either purchase additional storage or delete cloud recordings to free up storage. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Meeting {meetingId} is not found or has expired. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n undefined \n\n "
+      }
+    ]
   },
   {
     "url": "/meetings/meeting_summaries",
@@ -1304,6 +1614,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n**Error Code:** `3000` <br>\n Meeting summary disabled. To enable this feature, enable the \"Meeting Summary with AI Companion\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "**HTTP Status Code:** `401` <br>\n Unauthorized \n\n **Error Code:** `1001` <br>\n User {userId} not exist or not belong to this account. <br>\n"
       }
     ]
   },
@@ -1340,7 +1658,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "`true`: Notify registrants about the meeting cancellation via email. \n\n`false`: Do not send any email notification to meeting registrants. \n\nThe default value of this field is `false`."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code**: `204`   \n \nMeeting deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.<br>\n\n**Error Code:** `3000` <br>\nCannot access meeting information.<br>Invalid occurrence_id.<br>\n\n**Error Code:** `3002` <br>\nSorry, you cannot delete this meeting since it is in progress.<br>\n\n**Error Code:** `3003` <br>\nYou are not the meeting host.<br>\n\n**Error Code:** `3007` <br>\nSorry, you cannot delete this meeting since it has ended.<br>\n\n**Error Code:** `3018` <br>\nNot allowed to delete PMI.<br>\n\n**Error Code:** `3037` <br>\nNot allowed to delete PAC.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: {userId}.<br>\n\n**Error Code:** `3001` <br>\nMeeting with this {meetingId} is not found or has expired.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}",
@@ -1373,6 +1704,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Meeting object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User not found on this account: {accountId}.<br> <br>\n**Error Code:** `3000` <br>\n Cannot access webinar info. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User not exist: {userId}.<br> <br>\n**Error Code:** `3001` <br>\n Meeting {meetingId} is not found or has expired. <br>\n"
       }
     ]
   },
@@ -1462,7 +1801,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nMeeting updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User not found on this account: {accountId} <br>\n**Error Code:** `3000` <br>\n Cannot access meeting information. <br>\n**Error Code:** `3003` <br>\n You are not the meeting host. <br>\n**Error Code:** `3000` <br>\n * Instant meetings do not support the \"schedule_for\" parameter. You cannot schedule an instant meeting for another user. \n* Users in \"{0}\" have been blocked from joining meetings and webinars. To unblock them, go to the \"Settings\" page in the Zoom web portal and update the \"Block users in specific domains from joining meetings and webinars\" setting. \n* Prescheduling is only available for scheduled meetings (type 2) and recurring meetings with no fixed time (type 3). \n* You cannot schedule a meeting for \"{0}\". \n* You cannot update or delete meetings that have started using this method. \n* Unable to schedule for a user outside of your account for a meeting with continuous chat. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n**Error Code:** `300` <br>\n * The value that you entered for the schedule_for field is invalid. Enter a valid value and try again. <br> \n* Invalid enforce_login_domains, separate multiple domains by semicolon. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User does not exist: {userId}.<br> <br>\n**Error Code:** `3001` <br>\n A meeting with this {meetingId} is not found or has expired. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests \n\n "
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/batch_polls",
@@ -1488,6 +1844,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid Meeting ID.\n\n**Error Code:** `300` <br>\nMeeting id does not exist.\n\n**Error Code:** `3000` <br>\nCannot access meeting information.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}.<br>\n\n**Error Code:** `4400` <br>\n* You can only add a maximum of 50 polls. \n* Meeting polls disabled. To enable this feature, enable the \"Meeting Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. \n* Advanced meeting polls disabled. To enable this feature, enable the \"Allow host to create advanced polls and quizzes\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
       }
     ]
   },
@@ -1525,6 +1885,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3038` <br>\nMeeting is over, you can not register now. If you have any questions, please contact the Meeting host.<br><br>\n\n**Error Code:** `303` <br>\nThis API can only be used for scheduled meeting(meeting type: 2). Batch registration is not supported for other meeting types.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}.<br>\n\n**Error Code:** `3043` <br>\nMeeting has reached maximum attendee capacity.<br>\n\n**Error Code:** `404` <br>\nRegistration has not been enabled for this meeting: {meetingId}.\n\n"
       }
     ]
   },
@@ -1547,6 +1915,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Meeting invitation details."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
       }
     ]
   },
@@ -1579,6 +1951,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Invite links response."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\n* Meeting ID does not exist. \n* Invalid meeting ID.\n\n**Error Code:** `3000` <br>\nCannot access webinar information.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
       }
     ]
   },
@@ -1601,6 +1977,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting's join token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid meeting ID.\n\n**Error Code:** `3000` <br>\nCannot access Webinar information.\n\n**Error Code:** `124` <br>\nThis API only supports OAuth2 authorization.\n\n**Error Code:** `3000` <br>\nNot allowed to start live streaming. To use this feature, enable the \"Allow livestreaming of meetings\" setting in the \"Settings\" page of the Zoom web portal.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nMeeting ID does not exist.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n"
       }
     ]
   },
@@ -1623,6 +2007,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting's local archive token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid meeting ID.\n\n**Error Code:** `3000` <br>\nCannot access Webinar information.\n\n**Error Code:** `124` <br>\nThis API only supports OAuth2 authorization.\n\n**Error Code:** `3000` <br>\nNot allowed to start local archiving. To use this feature, enable the \"Archive meetings and webinars\" setting in the \"Settings\" page of the Zoom web portal.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nMeeting ID does not exist.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n"
       }
     ]
   },
@@ -1645,6 +2037,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting's local recorder join token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid meeting ID.\n\n**Error Code:** `3000` <br>\nCannot access Webinar information.\n\n**Error Code:** `124` <br>\nThis API only supports OAuth2 authorization.\n\n**Error Code:** `3000` <br>\nNot allowed to start local recording. To use this feature, enable the \"Local Recording\" setting in the \"Settings\" page of the Zoom web portal.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nMeeting ID does not exist.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n"
       }
     ]
   },
@@ -1667,6 +2067,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nMissing meetingId<br>\nInvalid meetingId<br><br>\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist.\n\n"
       }
     ]
   },
@@ -1709,7 +2117,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nMeeting livestream updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.<br>\n\n**Error Code:** `3000` <br>\nCannot access webinar info.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/livestream/status",
@@ -1736,7 +2157,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting livestream updated.\n\n"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3000` <br>\nCannot access webinar info.<br>\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist.<br>\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/meeting_summary",
@@ -1785,6 +2219,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Poll List"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `4400` <br>\nMeeting polls disabled. To enable this feature, enable the \"Meeting Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `404` <br>\nMeeting Poll not found\n\n"
       }
     ]
   },
@@ -1827,6 +2269,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Information about meeting and webinar polling."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `4400` <br>\n* Meeting polls disabled. To enable this feature, enable the \"Meeting Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. \n* Advanced meeting polls disabled. To enable this feature, enable the \"Allow host to create advanced polls and quizzes\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `404` <br>\nMeeting not found\n\n"
       }
     ]
   },
@@ -1851,7 +2301,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The poll ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting Poll deleted"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `4400` <br>\nMeeting polls disabled. To enable this feature, enable the \"Meeting Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `404` <br>\nMeeting Poll not found\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/polls/{pollId}",
@@ -1878,6 +2341,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about meeting and webinar polling."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `4400` <br>\nMeeting polls disabled. To enable this feature, enable the \"Meeting Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `404` <br>\nMeeting Poll not found.\n\n"
       }
     ]
   },
@@ -1922,7 +2393,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting Poll Updated"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `4400` <br>\n* Meeting polls disabled. To enable this feature, enable the \"Meeting Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. \n* Advanced meeting polls disabled. To enable this feature, enable the \"Allow host to create advanced polls and quizzes\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `404` <br>\nMeeting Poll not found\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/registrants",
@@ -1973,6 +2457,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of users."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account: {accountId}.<br> <br>\n**Error Code:** `3003` <br>\n You are not the meeting host.<br> <br>\n**Error Code:** `3000` <br>\n Cannot access meeting info. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n Meeting host does not exist: {userId}. <br>\n"
       }
     ]
   },
@@ -2115,6 +2607,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}\n\n**Error Code:** `3003` <br>\nYou are not the meeting host.\n\n**Error Code:** `3043` <br>\nMeeting has reached maximum attendee capacity.\n\n**Error Code:** `3000` <br>\nCannot access meeting info.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nMeeting host does not exist: {userId}\n\n"
       }
     ]
   },
@@ -2137,6 +2637,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Meeting Registrant Questions"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -2165,7 +2673,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nMeeting Registrant Questions Updated"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/registrants/status",
@@ -2200,7 +2721,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nRegistrant status updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.<br>\n\n**Error Code:** `3000` <br>\nCannot access meeting information.<br>\n\n**Error Code:** `3003` <br>\nYou're not the meeting host.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: {userId}.<br>\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/registrants/{registrantId}",
@@ -2229,7 +2763,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The meeting registrant ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP status code:** `204`   \n \nOK"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nOnly available for paid users: {0}.<br>\n\n**Error Code:** `300` <br>\nThe value that you entered for the Registrant ID field is invalid. Enter a valid value and try again.<br>\n\n**Error Code:** `404` <br>\nRegistration has not been enabled for this meeting: {0}.<br>\n\n**Error Code:** `1001` <br>\nUser {userId} does not exist or does not belong to this account.<br>\n\n**Error Code:** `3000` <br>\nCannot access webinar info.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {0}.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/registrants/{registrantId}",
@@ -2256,6 +2799,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": " Registrant."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account: \"{accountId}\"<br> <br>\n**Error Code:** `3003` <br>\n You are not the meeting host.<br> <br>\n**Error Code:** `3000` <br>\n >\nCannot access meeting info. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n Meeting host does not exist: \"{userId}\" <br>\n"
       }
     ]
   },
@@ -2283,6 +2834,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting's encoded SIP URI."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid meeting ID.\n\n**Error Code:** `3000` <br>\nThe meeting's SIP URI does not exist: {meetingId}.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nMeeting ID does not exist.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n"
       }
     ]
   },
@@ -2306,7 +2865,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nMeeting updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}.\n\n**Error Code:** `3000` <br>\nCannot access meeting info.\n\n**Error Code:** `3003` <br>\nYou're not the meeting host.\n\n**Error Code:** `3063` <br>\nCan not end on-premise user's meeting: {meetingId}.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nMeeting host does not exist: {userId}.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/survey",
@@ -2323,7 +2895,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n Meeting survey deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid meeting ID.\n\n**Error Code:** `3000` <br>\n* Cannot access Webinar information. <br>\n * Meeting survey disabled. To enable this feature, enable the \"Meeting Survey\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nMeeting ID does not exist.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}.\n\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/survey",
@@ -2344,6 +2929,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting survey."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n Invalid meeting ID. <br>\n**Error Code:** `3000` <br>\n Cannot access Webinar information. <br>\n**Error Code:** `3000` <br>\n Meeting survey disabled. To enable this feature, enable the \"Meeting Survey\" setting in the Zoom web portal's \"Settings\" interface. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `300` <br>\n Meeting ID does not exist. <br>\n**Error Code:** `3001` <br>\n Meeting does not exist: {meetingId}. <br>\n"
       }
     ]
   },
@@ -2377,7 +2970,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n Meeting survey updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n Invalid meeting ID. <br>\n**Error Code:** `300` <br>\n Invalid third party survey: {third_party_survey}. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n**Error Code:** `3000` <br>\n Cannot access Webinar information. <br>\n**Error Code:** `3000` <br>\n Meeting survey disabled. To enable this feature, enable the \"Meeting Survey\" setting in the Zoom web portal's \"Settings\" interface. <br>\n**Error Code:** `3000` <br>\n Not allowed host to use a 3rd-party survey link. To use this feature, enable the \"Allow host to use a 3rd-party survey link\" setting in the \"Account Settings\" page of the Zoom web portal. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `300` <br>\n Meeting ID does not exist. <br>\n**Error Code:** `3001` <br>\n Meeting does not exist: {meetingId}. <br>\n"
+      }
+    ]
   },
   {
     "url": "/meetings/{meetingId}/token",
@@ -2404,6 +3010,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the meeting token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid meeting ID.\n\n**Error Code:** `3000` <br>\n* Cannot access Webinar information. <br>\n* Meeting survey disabled. To enable this feature, enable the \"Meeting Survey\" setting in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nMeeting ID does not exist.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n"
       }
     ]
   },
@@ -2426,6 +3040,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\n* User does not exist: {userId} \n* User \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `300` <br>\nCannot access meeting information.\n\n**Error Code:** `200` <br>\nOnly available for paid account: {accountId}\n\n**Error Code:** `12702` <br>\nCan not access a meeting a year ago.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\n* This meeting is not available or the meeting ID is invalid. \n* The meeting ID is invalid or the meeting has not ended.\n\n"
       }
     ]
   },
@@ -2448,6 +3070,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of Meetings"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -2482,6 +3108,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Pagination object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User {userId} not exist or not belong to this account.<br><br> <br>\n**Error Code:** `300` <br>\n Cannot access meeting information.<br><br> <br>\n**Error Code:** `200` <br>\n Only available for paid account: {accountId} <br>\n**Error Code:** `12702` <br>\n Can not access a meeting a year ago. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} not exist or not belong to this account.<br>\nUser not exist: {userId}<br><br> <br>\n**Error Code:** `3001` <br>\n This meeting is not available or ID is not valid.<br>\nMeeting ID is invalid or not end. <br>\n"
       }
     ]
   },
@@ -2504,6 +3138,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `12702` <br>\n Can not access a meeting a year ago. <br>\n"
       }
     ]
   },
@@ -2526,6 +3164,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": "**HTTP Status Code:** `401` <br>\n Unauthorized \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Meeting ID is invalid or not end.<br>\nThis Meeting id does not belong to you:{meetingId}. <br>\n"
       }
     ]
   },
@@ -2548,6 +3194,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User not exist: {userId}.<br>\nUser {userId} does not exist or does not belong to this account. <br>\n"
       }
     ]
   },
@@ -2590,6 +3244,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\n* Meeting ID does not exist. \n* Invalid meeting ID. \n* You can only create up to 40 meeting templates.\n\n**Error Code:** `3000` <br>\n* Cannot access webinar information. \n* Meeting template name already exists: {templateName}.\n\n**Error Code:** `3001` <br>\nMeeting does not exist: {meetingId}\n\n**Error Code:** `3161` <br>\nMeeting hosting and scheduling capabilities are not allowed for your user account.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\n* User not exist: {userId}. \n* User {userId} does not exist or does not belong to this account.\n\n"
       }
     ]
   },
@@ -2648,6 +3310,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Pagination Object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} not exist or not belong to this account.<br> <br>\n"
       }
     ]
   },
@@ -2740,6 +3410,18 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Meeting object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `3000` <br>\n * Instant meetings do not support the schedule_for parameter; you cannot schedule an instant meeting for another user.<br>\n* Users in '{0}' have been blocked from joining meetings and webinars. To unblock them, go to the Settings page in the Zoom web portal and update 'Block users in specific domains from joining meetings and webinars'.<br> \n* You cannot schedule a meeting for {0}. <br>\n**Error Code:** `3161` <br>\n Meeting hosting and scheduling capabilities are not allowed for your user account. <br>\n**Error Code:** `300` <br>\n * The value that you entered for the schedule_for field is invalid. Enter a valid value and try again. <br> \n* Invalid enforce_login_domains, separate multiple domains by semicolon. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} not exist or not belong to this account. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests \n\n "
       }
     ]
   },
@@ -2762,6 +3444,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `2024` <br>\n User does not have PAC enabled. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User does not exist: $userId <br>\n"
       }
     ]
   },
@@ -2802,6 +3492,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Report object"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
       }
     ]
   },
@@ -2817,6 +3511,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.\n\n"
       }
     ]
   },
@@ -2839,6 +3537,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `5010` <br>\nReport does not exist.\n\n"
       }
     ]
   },
@@ -2873,6 +3575,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.<br>\n’\n\n"
       }
     ]
   },
@@ -2907,6 +3613,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nDaily report can only be provided for a month that falls within the recent 6 months.\n\n**Error Code:** `200` <br>\nNo permission.<br>\n’\n\n"
       }
     ]
   },
@@ -2929,6 +3639,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `12702` <br>\nCan not access meeting a year ago.<br>\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\nMeeting {meetingId} not found or has expired.<br>\n\n"
       }
     ]
   },
@@ -2969,6 +3687,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Pagination object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n**Error Code:** `12702` <br>\n Can not access meeting a year ago.<br> <br>\n**Error Code:** `200` <br>\n No permission.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Meeting  {MeetingId} not found or has expired.<br> <br>\n"
       }
     ]
   },
@@ -2991,6 +3717,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `12702` <br>\nCan not access meeting a year ago.\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\nMeeting \"{meetingId}\" not found or has expired.\n\n"
       }
     ]
   },
@@ -3013,6 +3747,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: {userId}.<br>\n\n**Error Code:** `3001` <br>\nMeeting {meetingId} not found or has expired.<br>\n\n"
       }
     ]
   },
@@ -3059,6 +3801,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Pagination object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
       }
     ]
   },
@@ -3169,6 +3915,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nThis is only available for the paid account: {accountId} <br>\n\n**Error Code:** `300` <br>\nThe next page token is invalid or expired.\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
       }
     ]
   },
@@ -3227,6 +3977,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n No permission.<br>\n’ <br>\n"
       }
     ]
   },
@@ -3279,6 +4033,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Pagination Object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nThis is only available for paid account:{accountId}.<br>\n\n**Error Code:** `300` <br>\nThe next page token is invalid or expired.\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} not exist or not belong to this account.\n\n"
       }
     ]
   },
@@ -3301,6 +4063,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account:{accountId}.<br>\n\n**Error Code:** `12702` <br>\nCan not access a webinar a year ago.<br>\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\nMeeting  {meetingId} not found or has expired.<br>\n\n"
       }
     ]
   },
@@ -3341,6 +4111,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Pagination object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account: {accountId} <br>\n**Error Code:** `12702` <br>\n Can not access a webinar a year ago.<br> <br>\n**Error Code:** `200` <br>\n No permission.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar \"{webinarId}\" not found or has expired <br>\n"
       }
     ]
   },
@@ -3363,6 +4141,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account:{accountId}.<br>\n\n**Error Code:** `12702` <br>\nCan not access a webinar a year ago.<br>\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `3001` <br>\nWebinar  {webinarId} not found or has expired.<br>\n\n"
       }
     ]
   },
@@ -3385,6 +4171,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nNo permission.<br>\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: {userId}.<br>\n\n**Error Code:** `3001` <br>\nWebinar  {webinarId} not found or has expired.<br>\n\n"
       }
     ]
   },
@@ -3425,6 +4219,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n"
       }
     ]
   },
@@ -3537,6 +4335,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nPermission missing: Enable SIP Phone Integration by contacting a Zoom Admin first.<br>\n\n**Error Code:** `300` <br>\nSIP Phone with the same email already exists.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} not exist or not belong to this account.\n\n"
       }
     ]
   },
@@ -3555,7 +4361,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The SIP phone ID. It can be retrieved from the List SIP Phones API."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "**Error Code:** `200`  \n Permission missing: Enable SIP Phone Integration by contacting a Zoom Admin first."
+      },
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nSIP Phone deleted."
+      }
+    ]
   },
   {
     "url": "/sip_phones/{phoneId}",
@@ -3662,7 +4477,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "**Error Code:** `200`  \n \nPermission missing: Enable SIP Phone Integration by contacting a Zoom Admin first.\n"
+      },
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nSIP Phone information updated successfully.\n"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n"
+      }
+    ]
   },
   {
     "url": "/tsp",
@@ -3723,7 +4551,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` **No Content**  \n \nTSP Account updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid parameter: tsp_bridge.\n\n"
+      }
+    ]
   },
   {
     "url": "/users/{userId}/tsp",
@@ -3744,6 +4581,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `2024` <br>\nAccount has not enabled TSP.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: $userId.<br>\n\n**Error Code:** `1120` <br>\nA valid invitation to join the Zoom account was not found for this user.<br>\nThis error is thrown if you added a user in your account but the user did not accept the invitation on time and the invitation expired - thus making the userId invalid.\n\n"
       }
     ]
   },
@@ -3790,6 +4635,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "List of TSP accounts."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `2024` <br>\nAccount has not enabled TSP.<br>\n\n**Error Code:** `300` <br>\nMedia link is required for AT&T TSP accounts.<br>\n\n**Error Code:** `300` <br>\nYou can add a max of two tsp configs.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: $userId.<br>\n\n**Error Code:** `1120` <br>\nA valid invitation to join the Zoom account was not found for this user.<br>\nThis error is thrown if you added a user in your account but the user did not accept the invitation on time and the invitation expired - thus making the userId invalid.\n\n"
       }
     ]
   },
@@ -3813,7 +4666,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**Status Code:** `204` **No Content**   \n \nURL set successfully."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `2000` <br>\nNot TSP special account.<br>\n\nThs error means that the account does not have special TSP privilege. Contact Zoom Developer Support for details.<br>\n\n**Error Code:** `2024` <br>\nAccount not enable TSP\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser {userId} not exist or not belong to this account.\n\n**Error Code:** `1120` <br>\nInvite not exist.\n\nThis error is thrown if you added a user in your account but the user did not accept the invitation on time and the invitation expired - thus making the userId invalid.\n\n"
+      }
+    ]
   },
   {
     "url": "/users/{userId}/tsp/{tspId}",
@@ -3836,7 +4702,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "TSP account ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**Status Code:** `204` **No Content**  \n \nTSP account deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `2024` <br>\nAccount not enable TSP.<br>\n\n**Error Code:** `300` <br>\nThe TSP id provided does not exist.<br>\n\n**Error Code:** `300` <br>\nTSP Config does not exist.<br>\n\n**Error Code:** `300` <br>\nAt least one tsp config must be available.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: $userId.<br>\n\n**Error Code:** `1120` <br>\nA valid invitation to join the Zoom account was not found for this user.<br>\nThis error is thrown if you added a user in your account but the user did not accept the invitation on time and the invitation expired - thus making the userId invalid.\n\n"
+      }
+    ]
   },
   {
     "url": "/users/{userId}/tsp/{tspId}",
@@ -3863,6 +4742,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "TSP account of the user."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nThe TSP id provided does not exist.<br>\n\n**Error Code:** `300` <br>\nTSP Config does not exist.<br>\n\n**Error Code:** `2024` <br>\nAccount has not enabled TSP.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: $userId.<br>\n\n**Error Code:** `1120` <br>\nA valid invitation to join the Zoom account was not found for this user.<br>\nThis error is thrown if you added a user in your account but the user did not accept the invitation on time and the invitation expired - thus making the userId invalid.\n\n"
       }
     ]
   },
@@ -3911,7 +4798,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:**`204` **No Content**  \n \nTSP account updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `2024` <br>\nAccount has not enabled TSP.<br>\n\n**Error Code:** `300` <br>\nThe TSP id provided does not exist.<br>\n\n**Error Code:** `300` <br>\nTSP Config does not exist.<br>\n\n**Error Code:** `300` <br>\nAt least one tsp config must be available.<br>\n\n**Error Code:** `300` <br>\nMedia link is required for AT&T TSP accounts.\n\n**Error Code:** `300` <br>\nInvalid parameter: tsp_bridge.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser does not exist: $userId.<br>\n\n**Error Code:** `1120` <br>\nA valid invitation to join the Zoom account was not found for this user.<br>\nThis error is thrown if you added a user in your account but the user did not accept the invitation on time and the invitation expired - thus making the userId invalid.\n\n"
+      }
+    ]
   },
   {
     "url": "/tracking_fields",
@@ -3979,7 +4879,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The Tracking Field ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nTracking Field deleted"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/tracking_fields/{fieldId}",
@@ -4000,6 +4909,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Tracking Field"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -4038,7 +4951,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nTracking Field updated"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/live_webinars/{webinarId}/chat/messages/{messageId}",
@@ -4067,7 +4989,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The live webinar chat file's universally unique identifier (UUID), in base64-encoded format. Separate multiple values with commas."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nWebinar chat message deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n * Only available for paid accounts. * DLP is not enabled. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar  {webinarId} does not exist. <br>\n"
+      }
+    ]
   },
   {
     "url": "/past_webinars/{webinarId}/absentees",
@@ -4106,6 +5041,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of users."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n The request could not be completed because you have provided an invalid occurrence ID: {occurrenceId}<br> <br>\n**Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n**Error Code:** `3000` <br>\n This Webinar has not registration required: {webinarUUID} <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Meeting ID is invalid or not end. <br>\n"
       }
     ]
   },
@@ -4128,6 +5071,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of webinars."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
       }
     ]
   },
@@ -4162,6 +5109,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n No permission.<br>\nOnly available for paid account: {accountId}.<br><br> <br>\n**Error Code:** `300` <br>\n The next page token is invalid or expired. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar does not exist. <br>\n"
       }
     ]
   },
@@ -4184,6 +5139,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": "**HTTP Status Code:** `401` <br>\n Unauthorized \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar ID is invalid or not end.<br>\nThis webinar id does not belong to you:{webinarId}. <br>\n"
       }
     ]
   },
@@ -4206,6 +5169,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "401",
+        "description": "**HTTP Status Code:** `401` <br>\n Unauthorized \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar ID is invalid or not end.<br>\nThis webinar id does not belong to you:{webinarId}. <br>\n"
       }
     ]
   },
@@ -4228,6 +5199,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n Cannot use webinar API, you need to subscribe webinar plan and then enable webinar for this user:{userId}.<br> <br>\n**Error Code:** `1001` <br>\n * User not exist: {userId}.\n* User {userId} does not exist or does not belong to this account. <br>\n"
       }
     ]
   },
@@ -4270,6 +5245,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `200` <br>\nWebinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {userId}.\n\n**Error Code:** `300` <br>\nYou can only create up to 40 webinar templates.\n\n**Error Code:** `3000` <br>\n* Cannot access meeting info. \n* Webinar template name already exists: {templateName}.\n\n**Error Code:** `3001` <br>\nWebinar does not exist: {webinarId}.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\n* User does not exist. \n* User {userId} does not exist or does not belong to this account.\n\n"
       }
     ]
   },
@@ -4310,6 +5293,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of webinars."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} not exist or not belong to this account. <br>\n"
       }
     ]
   },
@@ -4402,6 +5389,18 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Webinar object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request  \n\n **Error Code:** `200` <br>\n Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {userId}. <br>\n**Error Code:** `300` <br>\n The value that you entered for the schedule_for field is invalid. Enter a valid value and try again. <br>\n**Error Code:** `300` <br>\n Can not schedule simulive webinar for others. <br>\n**Error Code:** `300` <br>\n Account hasn't enabled Simulive Webinar. <br>\n**Error Code:** `300` <br>\n Record file does not exist. <br>\n**Error Code:** `3000` <br>\n You cannot schedule a meeting for {userId}. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found  \n\n **Error Code:** `1001` <br>\n User does not exist: {userId}. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests  \n\n **Error Code:** `429` <br>\n A maximum of ({rateLimitNumber}) webinars can be created and updated for a single user in one day. <br>\n"
       }
     ]
   },
@@ -4432,7 +5431,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "`true` - Notify panelists and registrants about the webinar cancellation via email. \n\n`false` - Do not send any email notification to webinar registrants and panelists. \n\nThe default value of this field is `false`."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` <br>\n Webinar deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n**Error Code:** `3002` <br>\n Sorry, you cannot delete this webinar since it is in progress.<br> <br>\n**Error Code:** `3003` <br>\n You are not the webinar host.<br> <br>\n**Error Code:** `3007` <br>\n Sorry, you cannot delete this webinar since it has ended.<br> <br>\n**Error Code:** `3018` <br>\n Not allowed to delete PMI.<br> <br>\n**Error Code:** `3037` <br>\n Not allowed to delete PAC.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}",
@@ -4465,6 +5477,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Webinar object."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request  \n\n **Error Code:** `300` <br>\n Invalid webinar ID. <br>\n**Error Code:** `200` <br>\n Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user to perform this action. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found  \n\n **Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}. <br>\n"
       }
     ]
   },
@@ -4554,7 +5574,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nWebinar updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account: {accountId} <br>\n**Error Code:** `3003` <br>\n * You are not the meeting host. \n* Users in \"{0}\" have been blocked from joining meetings and webinars. To unblock them, go to the \"Settings\" page in the Zoom web portal and update the \"Block users in specific domains from joining meetings and webinars\" setting. <br>\n**Error Code:** `3000` <br>\n You cannot update or delete simulive webinars that have started using this method. <br>\n**Error Code:** `300` <br>\n The value that you entered for the schedule_for field is invalid. Enter a valid value and try again. <br>\n**Error Code:** `200` <br>\n Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {userId}. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/batch_registrants",
@@ -4585,6 +5618,18 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n Webinar plan is missing. You must subscribe to the Webinar plan and enable webinars for the \"{0}\" user to perform this action. <br>\n**Error Code:** `300` <br>\n This API can only be used for scheduled webinars (type 5). Batch registration is not supported for other webinar types. <br>\n**Error Code:** `3038` <br>\n The webinar is over. You cannot register now. If you have any questions, contact the Webinar host. <br>\n**Error Code:** `3000` <br>\n Registration not enabled for this webinar: {0} <br>\n**Error Code:** `3000` <br>\n You have reached the limit for the number of attendees you can add. Contact Zoom Support for more information. <br>\n**Error Code:** `3000` <br>\n The Zoom REST API does not support paid registration. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar does not exist: {0}.<br><br> <br>\n**Error Code:** `3043` <br>\n Webinar has reached maximum attendee capacity.<br><br> <br>\n**Error Code:** `404` <br>\n Registration has not been enabled for this meeting: {meetingId}. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests \n\n "
       }
     ]
   },
@@ -4607,6 +5652,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the webinar's sessions branding."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}\n\n**Error Code:** `3000` <br>\nYou cannot enable session branding for this webinar.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3001` <br>\nWebinar \"{webinarId}\" not found or has expired.\n\n"
       }
     ]
   },
@@ -4631,7 +5684,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar's ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n* No content. \n* Name tag(s) deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid parameter: name_tag_ids\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/branding/name_tags",
@@ -4688,6 +5754,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.<br>\nYou have reached the limit for the number of name tags you can add for this webinar. The limit is 20.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
       }
     ]
   },
@@ -4742,7 +5816,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n* No content. \n* Name tag updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/branding/virtual_backgrounds",
@@ -4765,7 +5852,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar's ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n* No content. \n* Virtual Background file(s) deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}\n\n**Error Code:** `300` <br>\nInvalid parameter: ids\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3001` <br>\nWebinar \"{webinarId}\" not found or has expired.\n\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/branding/virtual_backgrounds",
@@ -4794,7 +5894,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar's ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n* No content. \n* Virtual Background updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}\n\n**Error Code:** `300` <br>\nInvalid parameter: {id}\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3001` <br>\nWebinar \"{webinarId}\" not found or has expired.\n\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/branding/virtual_backgrounds",
@@ -4833,6 +5946,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n**Error Code:** `120` <br>\n* No file uploaded. Verify that a file has been uploaded. \n* File size cannot exceed 15M. \n* A maximum of 10 files are allowed for a webinar. \n* Only JPG/JPEG, GIF, or PNG image files can be uploaded.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3001` <br>\nWebinar \"{webinarId}\" not found or has expired.\n\n"
       }
     ]
   },
@@ -4851,7 +5972,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar's ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n* No content. \n* Webinar wallpaper deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `1010` <br>\nUser does not belong to this account: {accountId}\n\n**Error Code:** `300` <br>\nInvalid parameter: {id}\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3001` <br>\nWebinar \"{webinarId}\" not found or has expired.\n\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/branding/wallpaper",
@@ -4878,6 +6012,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `3000` <br>\nThis webinar does not have session branding enabled.\n\n**Error Code:** `120` <br>\n* No file uploaded. Verify that a file has been uploaded. \n* File size cannot exceed 15M. \n* A maximum of 10 files are allowed for a webinar. \n* Only JPG/JPEG, GIF, or PNG image files can be uploaded.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `1001` <br>\nUser \"{userId}\" does not exist or does not belong to this account.\n\n**Error Code:** `3001` <br>\nWebinar \"{webinarId}\" not found or has expired.\n\n"
       }
     ]
   },
@@ -4910,6 +6052,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Invite links response."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n * Webinar Id does not exist.<br>\n* Invalid Webinar Id.<br> <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}.<br> <br>\n**Error Code:** `1001` <br>\n User does not exist: {userId}.<br> <br>\n**Error Code:** `200` <br>\n Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {userId}. <br>\n"
       }
     ]
   },
@@ -4932,6 +6078,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the webinar's join token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid webinar ID.\n\n**Error Code:** `124` <br>\nThis API only supports OAuth2 authorization.\n\n**Error Code:** `3000` <br>\nNot allowed to start live streaming. To use this feature, enable the \"Allow livestreaming of webinars\" setting in the \"Settings\" page of the Zoom web portal.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nWebinar ID does not exist.\n\n**Error Code:** `3001` <br>\nWebinar does not exist: {webinarId}\n\n"
       }
     ]
   },
@@ -4954,6 +6108,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the webinar's local archive token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid webinar ID.\n\n**Error Code:** `124` <br>\nThis API only supports OAuth2 authorization.\n\n**Error Code:** `3000` <br>\nNot allowed to start local archiving. To use this feature, enable the \"Archive meetings and webinars\" setting in the \"Settings\" page of the Zoom web portal.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nWebinar ID does not exist.\n\n**Error Code:** `3001` <br>\nWebinar does not exist: {webinarId}\n\n"
       }
     ]
   },
@@ -4976,6 +6138,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the webinar's local recorder join token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid webinar ID.\n\n**Error Code:** `124` <br>\nThis API only supports OAuth2 authorization.\n\n**Error Code:** `3000` <br>\nNot allowed to start local recording. To use this feature, enable the \"Local Recording\" setting in the \"Settings\" page of the Zoom web portal.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nWebinar ID does not exist.\n\n**Error Code:** `3001` <br>\nWebinar does not exist: {webinarId}\n\n"
       }
     ]
   },
@@ -4998,6 +6168,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n * Webinar ID does not exist.<br>* Invalid Webinar ID.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} does not exist.<br> <br>\n**Error Code:** `1001` <br>\n User {userId} does not exist.<br> <br>\n**Error Code:** `200` <br>\n * Webinar plan is missing. Subscribe to the webinar plan and enable webinars for user  {userId} in order to perform this action.<br>* The current user has not enabled the custom live streaming feature of the webinar. <br>\n"
       }
     ]
   },
@@ -5040,7 +6214,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nMeeting live stream updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n * Webinar Id does not exist.<br>\n* Invalid Webinar Id.<br> <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}.<br> <br>\n**Error Code:** `1001` <br>\n User does not exist: {userId}.<br> <br>\n**Error Code:** `200` <br>\n * Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {userId}.<br>\n* The current user has not enabled the custom live streaming feature of the webinar. <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/livestream/status",
@@ -5067,7 +6250,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \nMeeting live stream updated.\n\n"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n * Webinar Id does not exist.<br>\n* Invalid Webinar Id.<br> <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}.<br> <br>\n**Error Code:** `1001` <br>\n User does not exist: {userId}.<br> <br>\n**Error Code:** `200` <br>\n * Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {userId}.<br>\n* The current user has not enabled the custom live streaming feature of the webinar.<br>\n* Webinar {0} has not started. <br> <br>\n**Error Code:** `3000` <br>\n The current webinar is not configured with a custom streaming service. <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/panelists",
@@ -5084,7 +6276,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar's ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nPanelists removed."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/panelists",
@@ -5105,6 +6310,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Webinar panelist."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
       }
     ]
   },
@@ -5132,6 +6345,18 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n**Error Code:** `3000` <br>\n You have reached the limit for the number of panelists you can add. Contact Zoom Support for more information.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests \n\n "
       }
     ]
   },
@@ -5156,7 +6381,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The panelist's ID or email."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nPanelist removed."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User  {accountId} does not belong to this account. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {email} does not exist or does not belong to this account. <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired. <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/polls",
@@ -5183,6 +6421,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Poll List"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `4400` <br>\n Webinar polls disabled. To enable this feature, enable the \"Webinar Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
       }
     ]
   },
@@ -5225,6 +6471,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Information about meeting and webinar polling."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `4400` <br>\n * Webinar polls disabled. To enable this feature, enable the \"Webinar Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. \n* Advanced webinar polls disabled. To enable this feature, enable the \"Allow host to create advanced polls and quizzes\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
       }
     ]
   },
@@ -5249,7 +6503,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The poll ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nWebinar Poll deleted"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `4400` <br>\n Webinar polls disabled. To enable this feature, enable the \"Webinar Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/polls/{pollId}",
@@ -5276,6 +6543,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about meeting and webinar polling."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `4400` <br>\n Webinar polls disabled. To enable this feature, enable the \"Webinar Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
       }
     ]
   },
@@ -5320,7 +6595,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`  \n \nWebinar Poll Updated"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `4400` <br>\n * Webinar polls disabled. To enable this feature, enable the \"Webinar Polls/Quizzes\" setting in the Zoom web portal's \"Settings\" interface. \n* Advanced webinar polls disabled. To enable this feature, enable the \"Allow host to create advanced polls and quizzes\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/registrants",
@@ -5377,6 +6665,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of users."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
       }
     ]
   },
@@ -5519,6 +6815,18 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account: {accountId} <br>\n**Error Code:** `3000` <br>\n This webinar does not have registration as required: {webinarId}. <br>\n**Error Code:** `3027` <br>\n Host cannot register. <br>\n**Error Code:** `3034` <br>\n If you have been invited, please input your work email address. <br>\n**Error Code:** `3038` <br>\n Webinar is over, you cannot register now. If you have any questions, contact the webinar host. <br>\n**Error Code:** `3000` <br>\n You have reached the limit for the number of attendees you can add. Contact Zoom Support for more information. <br>\n**Error Code:** `3000` <br>\n The Zoom REST API does not support paid registration. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User \"{userId}\" does not exist or does not belong to this account. <br>\n**Error Code:** `3001` <br>\n Webinar \"{webinarId}\" not found or has expired. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests \n\n "
       }
     ]
   },
@@ -5541,6 +6849,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Webinar Registrant Questions"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
       }
     ]
   },
@@ -5569,7 +6881,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   Webinar registrant questions updated."
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n "
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/registrants/status",
@@ -5604,7 +6925,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204` <br>\n Registrant status updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account: {accountId}. <br>\n**Error Code:** `3035` <br>\n Webinar has reached maximum attendee capacity. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account. <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired. <br>\n"
+      },
+      {
+        "statusCode": "429",
+        "description": "**HTTP Status Code:** `429` <br>\n Too Many Requests \n\n "
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/registrants/{registrantId}",
@@ -5633,7 +6971,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar occurrence ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP status code:** `204`   \n \nOK"
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `200` <br>\n Webinar plan is missing. You must subscribe to the webinar plan and enable webinars for this user in order to perform this action: {0}.<br> <br>\n**Error Code:** `300` <br>\n The value that you entered for the Registrant ID field is invalid. Enter a valid value and try again.<br> <br>\n**Error Code:** `404` <br>\n Registration has not been enabled for this webinar: {0}.<br> <br>\n**Error Code:** `3000` <br>\n Registrant {0} was not found.<br> <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {0}. <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/registrants/{registrantId}",
@@ -5666,6 +7013,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Webinar registrant."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
       }
     ]
   },
@@ -5693,6 +7048,10 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Information about the webinar's encoded SIP URI."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n Webinar Id does not exist. <br>\n**Error Code:** `300` <br>\n Invalid Webinar Id. <br>\n**Error Code:** `3000` <br>\n Cannot access meeting info. <br>\n**Error Code:** `3000` <br>\n The webinar's SIP URI does not exist: {webinarId}. <br>\n"
       }
     ]
   },
@@ -5720,6 +7079,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `1010` <br>\n User does not belong to this account:{accountId}.<br> <br>\n**Error Code:** `3003` <br>\n You are not the meeting host.<br> <br>\n**Error Code:** `3063` <br>\n Can not end on-premise user's meeting:{meetingId}.<br> <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `1001` <br>\n User {userId} does not exist or does not belong to this account.<br> <br>\n**Error Code:** `3001` <br>\n Webinar {webinarId} not found or has expired.<br> <br>\n"
       }
     ]
   },
@@ -5738,7 +7105,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": "The webinar's ID."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n Webinar survey deleted."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n Invalid webinar ID. <br>\n**Error Code:** `3000` <br>\n Webinar survey disabled. To enable this feature, enable the \"Webinar Survey\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `300` <br>\n Webinar ID does not exist. <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}. <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/survey",
@@ -5759,6 +7139,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the webinar survey."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n Invalid webinar ID. <br>\n**Error Code:** `3000` <br>\n Webinar survey disabled. To enable this feature, enable the \"Webinar Survey\" setting in the Zoom web portal's \"Settings\" interface. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `300` <br>\n Webinar ID does not exist. <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}. <br>\n"
       }
     ]
   },
@@ -5797,7 +7185,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "**HTTP Status Code:** `204`   \n \n Webinar survey updated."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request \n\n **Error Code:** `300` <br>\n Invalid webinar ID. <br>\n**Error Code:** `300` <br>\n Invalid third party survey: {third_party_survey}. <br>\n**Error Code:** `3000` <br>\n Webinar survey disabled. To use this feature, enable the \"Webinar Survey\" setting in the Zoom web portal's \"Settings\" interface. <br>\n**Error Code:** `3000` <br>\n The host isn't allowed to use a third party survey link. To use this feature, enable the \"Allow host to use a 3rd-party survey link\" setting in the \"Account Settings\" page of the Zoom web portal. <br>\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found \n\n **Error Code:** `300` <br>\n Webinar ID does not exist. <br>\n**Error Code:** `3001` <br>\n Webinar does not exist: {webinarId}. <br>\n"
+      }
+    ]
   },
   {
     "url": "/webinars/{webinarId}/token",
@@ -5824,6 +7225,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about the webinar token."
+      },
+      {
+        "statusCode": "400",
+        "description": "**HTTP Status Code:** `400` <br>\n Bad Request\n\n**Error Code:** `300` <br>\nInvalid webinar ID.\n\n**Error Code:** `3000` <br>\nClosed captioning disabled. To enable this feature, enable the \"Closed captioning\" and \"Allow use of caption API Token to integrate with 3rd-party Closed Captioning services\" settings in the Zoom web portal's \"Settings\" interface.\n\n**Error Code:** `3000` <br>\nWebinar {webinarId} has not started.\n\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "**HTTP Status Code:** `404` <br>\n Not Found\n\n**Error Code:** `300` <br>\nWebinar ID does not exist.\n\n**Error Code:** `3001` <br>\nWebinar does not exist: {webinarId}\n\n"
       }
     ]
   },

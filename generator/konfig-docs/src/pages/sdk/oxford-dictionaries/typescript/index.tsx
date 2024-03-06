@@ -17,7 +17,7 @@ export default function OxfordDictionariesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/oxford-dictionaries/logo.png"
       clientNameCamelCase="oxfordDictionaries"
       homepage="developer.oxforddictionaries.com"
-      lastUpdated={new Date("2024-02-03T00:19:54.817Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/oxford-dictionaries/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -50,6 +50,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexicalcategories, registers utility endpoints."
+      },
+      {
+        "statusCode": "400",
+        "description": "source_language and target_language are same."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown source_language and/or target_language."
       }
     ]
   },
@@ -72,6 +80,10 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexicalcategories, registers utility endpoints."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown source_language."
       }
     ]
   },
@@ -100,6 +112,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the 'sentences' endpoint"
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_language\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -128,6 +148,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the 'entries' endpoints"
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_lang or filters are not recognized\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -156,6 +184,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for thesaurus endpoint"
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_lang or filters are not recognized\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -190,6 +226,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the 'entries' endpoints"
+      },
+      {
+        "statusCode": "404",
+        "description": "no entry is found matching supplied source_lang and id\nand/or that entry has no senses with translations in the target language. \n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -218,6 +262,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for thesaurus endpoint"
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_lang or filters are not recognized\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -246,6 +298,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for thesaurus endpoint"
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_lang or filters are not recognized\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -280,6 +340,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the 'entries' endpoints"
+      },
+      {
+        "statusCode": "404",
+        "description": "no entry is found matching supplied source_lang and id\nand/or that entry has no senses with translations in the target language. \n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -314,6 +382,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the 'entries' endpoints"
+      },
+      {
+        "statusCode": "400",
+        "description": "any of target languages is unknown"
+      },
+      {
+        "statusCode": "404",
+        "description": "no entry is found matching supplied source_lang and id\nand/or that entry has no senses with translations in the target language(s). \n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -329,6 +409,10 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the Filters endpoint."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data."
       }
     ]
   },
@@ -351,6 +435,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the Filters endpoint."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown endpoint."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data."
       }
     ]
   },
@@ -373,6 +465,10 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexicalcategories, registers utility endpoints."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown source_language."
       }
     ]
   },
@@ -407,6 +503,10 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the inflections endpoint."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -435,6 +535,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for the languages endpoint."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown sourceLanguage and/or targetLanguage."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data."
       }
     ]
   },
@@ -457,6 +565,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexicalcategories, registers utility endpoints."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown language."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data."
       }
     ]
   },
@@ -479,6 +595,10 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for region endpoint."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown source_language."
       }
     ]
   },
@@ -501,6 +621,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexicalcategories, registers utility endpoints."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown source_language."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data."
       }
     ]
   },
@@ -529,6 +657,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexicalcategories, registers utility endpoints."
+      },
+      {
+        "statusCode": "400",
+        "description": "source_language and target_language are same."
+      },
+      {
+        "statusCode": "404",
+        "description": "Unknown source_language and/or target_language."
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data."
       }
     ]
   },
@@ -581,6 +721,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for wordlist endpoint."
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_lang or filters are not recognized\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -639,6 +787,14 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for wordlist endpoint."
+      },
+      {
+        "statusCode": "404",
+        "description": "No entry is found matching supplied id and source_lang or filters are not recognized\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -715,6 +871,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for wordlist endpoint."
+      },
+      {
+        "statusCode": "400",
+        "description": "disjoint sets of word_length values (eg <3>10); filter has no values; total number of filters > 20; filters and excludes values can not be the same; source_lang and translations can not be same; word_length conflicts with prefix length."
+      },
+      {
+        "statusCode": "404",
+        "description": "No entries is found matching supplied filters or lang or filters is not recognized.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -755,6 +923,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for wordlist endpoint."
+      },
+      {
+        "statusCode": "400",
+        "description": "filter has no values; total number of filters > 20."
+      },
+      {
+        "statusCode": "404",
+        "description": "No entries is found matching supplied filters or lang or filters is not recognized.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -861,6 +1041,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for corpus ngrams."
+      },
+      {
+        "statusCode": "400",
+        "description": "Invalid option name...\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "language is not in...\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -913,6 +1105,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexi-stats results for a word/trueCase/lemma/lexicalCategory returned as a frequency"
+      },
+      {
+        "statusCode": "400",
+        "description": "You need to specify at least one option. Try one of 'wordform, lemma, trueCase, lexicalCategory'.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "language is not in...\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   },
@@ -1019,6 +1223,18 @@ export default function OxfordDictionariesTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Schema for lexi-stats results for a word/trueCase/lemma/lexicalCategory returned as a list of frequencies per wordform-trueCase-lemma-lexicalCategory entry."
+      },
+      {
+        "statusCode": "400",
+        "description": "Invalid option name...; Option ... must have a value.; The option 'minFrequency' has to have an non-negative integer parameter.; The option 'maxFrequency' has to have an non-negative integer parameter.; The option 'limit' has to have an non-negative integer parameter.; The option 'offset' has to have an non-negative integer parameter."
+      },
+      {
+        "statusCode": "404",
+        "description": "language is not in...\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "Internal Error. An error occurred while processing the data.\n"
       }
     ]
   }

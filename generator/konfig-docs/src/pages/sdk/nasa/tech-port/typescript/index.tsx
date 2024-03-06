@@ -16,7 +16,7 @@ export default function NasaTechPortTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/nasa/techport/logo.png"
       clientNameCamelCase="nasaTechPort"
       homepage="techport.nasa.gov/home"
-      lastUpdated={new Date("2024-03-06T23:12:10.512Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/nasa/techport/favicon.png"
       contactUrl="https://techport.nasa.gov"
       contactEmail="hq-techport@mail.nasa.gov"
@@ -32,7 +32,16 @@ export default function NasaTechPortTypeScriptSdk() {
     "typeScriptTag": "resource",
     "description": "Returns the swagger specification for the API.",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Successful response"
+      },
+      {
+        "statusCode": "default",
+        "description": "Object not found."
+      }
+    ]
   },
   {
     "url": "/api/projects",
@@ -53,6 +62,10 @@ export default function NasaTechPortTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "Object not found."
       }
     ]
   },
@@ -99,6 +112,10 @@ export default function NasaTechPortTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of projects that match the criteria."
+      },
+      {
+        "statusCode": "default",
+        "description": "Object not found."
       }
     ]
   },
@@ -121,6 +138,10 @@ export default function NasaTechPortTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Top-level TechPort object representing a NASA technology project and its associated data."
+      },
+      {
+        "statusCode": "default",
+        "description": "Object not found."
       }
     ]
   },
@@ -143,6 +164,10 @@ export default function NasaTechPortTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "Object not found."
       }
     ]
   },
@@ -158,6 +183,10 @@ export default function NasaTechPortTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "Object not found."
       }
     ]
   },
@@ -180,6 +209,10 @@ export default function NasaTechPortTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "Error."
       }
     ]
   }

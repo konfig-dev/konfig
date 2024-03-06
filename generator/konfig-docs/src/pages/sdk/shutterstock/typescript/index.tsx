@@ -16,7 +16,7 @@ export default function ShutterstockTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/logo.png"
       clientNameCamelCase="shutterstock"
       homepage="developers.shutterstock.com"
-      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -102,6 +102,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List Descriptors results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -143,6 +159,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Image search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -165,6 +193,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Audio render data"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -187,6 +231,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Audio render data"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -219,6 +275,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of tracks"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -250,6 +318,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -272,6 +352,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Collection creation response"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -290,7 +382,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "Collection ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully deleted collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/audio/collections/{id}",
@@ -321,6 +434,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about a collection of assets"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
       }
     ]
   },
@@ -345,7 +474,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully updated collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/audio/collections/{id}/items",
@@ -367,7 +517,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "One or more item IDs to remove from the collection"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully removed collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/audio/collections/{id}/items",
@@ -408,6 +579,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of items in a collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
       }
     ]
   },
@@ -432,7 +619,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully added collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/audio/genres",
@@ -539,6 +747,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of download events"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -571,6 +791,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of audio license results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -593,6 +825,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Audio License URL object"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -735,6 +979,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Audio search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -767,6 +1023,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Audio metadata"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -958,6 +1226,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of search results for each given query"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -994,6 +1274,10 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of catalog collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Invalid status value"
       }
     ]
   },
@@ -1046,7 +1330,16 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "The ID of the collection to delete"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "OK"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/catalog/collections/{collection_id}",
@@ -1184,6 +1477,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of catalog collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1206,6 +1511,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of contributor profiles"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1228,6 +1545,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Contributor profile data"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1255,6 +1584,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Contributor not found"
       }
     ]
   },
@@ -1283,6 +1628,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about a collection of assets"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Set not found"
       }
     ]
   },
@@ -1326,6 +1687,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of items in a collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Set not found"
       }
     ]
   },
@@ -1348,6 +1725,26 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Asset upload information"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "413",
+        "description": "Payload Too Large"
+      },
+      {
+        "statusCode": "415",
+        "description": "Unsupported Media Type"
       }
     ]
   },
@@ -1370,6 +1767,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of keywords"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "415",
+        "description": "Unsupported Media Type"
       }
     ]
   },
@@ -1422,6 +1835,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Image search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1474,6 +1899,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Video search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1489,6 +1926,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial categories"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1504,6 +1953,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial categories"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1570,6 +2031,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of download events"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -1598,6 +2071,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial license results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -1630,6 +2119,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial livefeeds"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -1658,6 +2163,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about editorial livefeed"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -1686,6 +2207,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -1748,6 +2285,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Editorial search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -1818,6 +2371,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Editorial updated results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -1846,6 +2415,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about editorial content"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -1874,6 +2459,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial license results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -1906,6 +2507,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial livefeeds"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -1934,6 +2551,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about editorial livefeed"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -1962,6 +2595,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -2024,6 +2673,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Editorial search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -2094,6 +2759,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Editorial updated results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -2109,6 +2790,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial video categories"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2175,6 +2868,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of download events"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2203,6 +2908,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of editorial license results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2275,6 +2992,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Editorial search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -2308,6 +3041,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about editorial content"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "406",
+        "description": "Not Acceptable"
       }
     ]
   },
@@ -2341,6 +3090,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about editorial content"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not Found"
       }
     ]
   },
@@ -2373,6 +3138,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of images"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2395,6 +3172,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Image upload information"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "413",
+        "description": "Payload Too Large"
       }
     ]
   },
@@ -2416,6 +3209,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of categories that images can belong to"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2447,6 +3252,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2469,6 +3286,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Collection creation response"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2500,6 +3329,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of featured collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2532,6 +3373,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about a featured collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Featured collection not found"
       }
     ]
   },
@@ -2564,6 +3421,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of items in a collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Featured collection not found"
       }
     ]
   },
@@ -2582,7 +3455,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "Collection ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully deleted collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/images/collections/{id}",
@@ -2613,6 +3507,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about a collection of assets"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
       }
     ]
   },
@@ -2637,7 +3547,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully updated collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/images/collections/{id}/items",
@@ -2659,7 +3590,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "One or more image IDs to remove from the collection"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully removed collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/images/collections/{id}/items",
@@ -2700,6 +3652,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of items in a collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
       }
     ]
   },
@@ -2724,7 +3692,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully added collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/images/licenses",
@@ -2789,6 +3778,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of download events"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2831,6 +3832,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of information about licensed images"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2873,6 +3886,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "URL object"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -2905,6 +3930,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of recommended images"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3121,6 +4158,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Image search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3148,6 +4197,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of search suggestions"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3170,6 +4231,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "The response to a request for keyword analysis"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3258,6 +4331,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about an image"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3300,6 +4385,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Image search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3358,6 +4455,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Access token response to client apps"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3406,8 +4515,24 @@ export default function ShutterstockTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "OK"
+      },
+      {
         "statusCode": "302",
         "description": "HTML redirect URL that contains the application authorization 'code'"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3450,6 +4575,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of sound effects"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3521,6 +4658,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of download events"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3543,6 +4692,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of information about licensed sound effects"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3565,6 +4726,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Sound effect license URL object"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3646,6 +4819,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Sound effects search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "503",
+        "description": "Service Unavailable"
       }
     ]
   },
@@ -3688,6 +4877,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "SFX metadata"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "503",
+        "description": "Service Unavailable"
       }
     ]
   },
@@ -3709,6 +4914,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Text to echo in the response"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3741,6 +4958,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Validation results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3756,6 +4985,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "User details"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3771,6 +5012,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Access token details that are currently associated with this user"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3786,6 +5039,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of subscriptions"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3818,6 +5083,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of videos"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3839,6 +5116,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of categories that images can belong to"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3870,6 +5159,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3892,6 +5193,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "201",
         "description": "Collection creation response"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3913,6 +5226,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of featured collections"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -3940,6 +5265,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about a featured collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Featured collection not found"
       }
     ]
   },
@@ -3972,6 +5313,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of items in a collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Featured collection not found"
       }
     ]
   },
@@ -3990,7 +5347,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "The ID of the collection to delete"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully deleted collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/videos/collections/{id}",
@@ -4021,6 +5399,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Metadata about a collection of assets"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
       }
     ]
   },
@@ -4045,7 +5439,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully updated collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/videos/collections/{id}/items",
@@ -4067,7 +5482,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": "One or more video IDs to remove from the collection"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully removed collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/videos/collections/{id}/items",
@@ -4108,6 +5544,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of items in a collection"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
       }
     ]
   },
@@ -4132,7 +5584,28 @@ export default function ShutterstockTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "Successfully added collection items"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Collection not found"
+      }
+    ]
   },
   {
     "url": "/v2/videos/licenses",
@@ -4197,6 +5670,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of download events"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -4234,6 +5719,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of video license results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -4276,6 +5773,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "URL object"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -4437,6 +5946,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Video search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not found"
       }
     ]
   },
@@ -4464,6 +5989,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "List of search suggestions"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   },
@@ -4547,6 +6084,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Information about a video"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      },
+      {
+        "statusCode": "404",
+        "description": "Not found"
       }
     ]
   },
@@ -4589,6 +6142,18 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": "Video search results"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "401",
+        "description": "Unauthorized"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
       }
     ]
   }

@@ -16,7 +16,7 @@ export default function VimeoTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/logo.avif"
       clientNameCamelCase="vimeo"
       homepage="developer.vimeo.com"
-      lastUpdated={new Date("2024-03-05T23:20:55.483Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg"
       contactUrl="https://developer.vimeo.com/help"
       // Missing contactEmail
@@ -505,6 +505,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The channel was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -627,6 +631,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The channel was added to the categories."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -667,6 +675,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The channel was removed."
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -702,6 +714,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The channel was added to the category."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -742,6 +758,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The moderators were removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -861,6 +881,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The moderators were added."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -896,6 +920,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The moderator was removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -956,6 +984,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -1081,6 +1113,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user can't acceess the private channel."
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -1112,6 +1148,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "The user can now view the private channel."
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -1211,6 +1251,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The tag was removed."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1247,6 +1291,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The tag has been added to the channel."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1278,6 +1326,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The tag was added."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -1377,6 +1429,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The videos were removed."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -1455,6 +1511,10 @@ export default function VimeoTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "304",
+        "description": "No videos have been added to this channel since the given `If-Modified-Since` header."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -1487,6 +1547,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The videos were added."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -1518,6 +1582,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -1582,6 +1650,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -2224,6 +2296,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The event destination was deleted."
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -2454,6 +2530,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The group was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -2606,6 +2686,10 @@ export default function VimeoTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "304",
+        "description": "No videos have been added to the group since the given `If-Modified-Since` header."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -2633,6 +2717,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -2698,6 +2786,10 @@ export default function VimeoTypeScriptSdk() {
         "description": ""
       },
       {
+        "statusCode": "202",
+        "description": "The video is in pending status."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -2752,7 +2844,12 @@ export default function VimeoTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/live_events",
@@ -2994,6 +3091,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The event was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -3449,6 +3550,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The thumbnail was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -3595,6 +3700,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The domains were added to the whitelist."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -3633,6 +3742,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -3750,6 +3863,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were added."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -4042,6 +4159,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The showcase was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -4290,6 +4411,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "201",
+        "description": "The videos were added."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -4321,6 +4446,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -4391,6 +4520,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -4693,7 +4826,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The name of the category."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user has stopped following the category."
+      }
+    ]
   },
   {
     "url": "/me/categories/{category}",
@@ -4710,7 +4848,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The name of the category."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is following the category."
+      }
+    ]
   },
   {
     "url": "/me/categories/{category}",
@@ -4727,7 +4870,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The name of the category."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is following the category."
+      }
+    ]
   },
   {
     "url": "/me/channels",
@@ -4778,6 +4926,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "304",
+        "description": "No channel has been followed since the given `If-Modified-Since` header."
       }
     ]
   },
@@ -4797,6 +4949,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is unsubscribed from the channel."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -4820,6 +4976,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user follows the channel."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -4841,6 +5001,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is subscribed to the channel."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -4902,6 +5066,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The custom logo was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -4942,6 +5110,10 @@ export default function VimeoTypeScriptSdk() {
     "description": "Get all available live event destinations for the user to stream to",
     "parameters": [],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "The event destinations were returned."
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -5107,6 +5279,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The users were followed."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -5143,7 +5319,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the user to unfollow."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user was unfollowed."
+      }
+    ]
   },
   {
     "url": "/me/following/{follow_user_id}",
@@ -5161,6 +5342,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The authenticated user follows the specified user."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -5183,6 +5368,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user was followed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -5258,6 +5447,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user was removed from the group."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -5280,6 +5473,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user belongs to the group."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -5301,6 +5498,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user joined the group."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -5376,6 +5577,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was unliked."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -5398,6 +5603,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user has liked the video."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -5419,6 +5628,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was liked."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -5444,7 +5657,12 @@ export default function VimeoTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/me/live_events",
@@ -5686,6 +5904,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The event was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -6216,6 +6438,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The M3U8 playback URL was returned."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -6324,6 +6550,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The thumbnail was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -6471,6 +6701,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The domains were added to the whitelist."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -6509,6 +6743,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -6626,6 +6864,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were added."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -7035,7 +7277,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the picture."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The portrait image was removed."
+      }
+    ]
   },
   {
     "url": "/me/pictures/{portraitset_id}",
@@ -7235,6 +7482,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -7290,6 +7541,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -7554,6 +7809,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The folder was deleted."
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -7670,6 +7929,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The items were removed."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -7728,7 +7991,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The way to sort the results.\n\nOption descriptions:\n * `alphabetical` - Sort the results alphabetically.\n * `date` - Sort the results by date.\n * `default` - Use the default sort order.\n * `duration` - Sort the results by duration. Items without a duration, namely events and folders, are grouped by type in ascending alphabetical order, with events first.\n * `last_user_action_event_date` - Sort the results by the date of the last user action.\n"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/me/projects/{project_id}/videos",
@@ -7758,6 +8026,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -7885,6 +8157,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The videos were added."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -7920,6 +8196,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -7957,6 +8237,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -7978,6 +8262,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were deleted."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -8095,6 +8383,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "304",
+        "description": "The authenticated user hasn't uploaded any videos since the given **If-Modified-Since** header."
       }
     ]
   },
@@ -8351,6 +8643,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "OK"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -8385,6 +8681,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The M3U8 playback URL was returned."
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -8406,7 +8706,12 @@ export default function VimeoTypeScriptSdk() {
     "typeScriptTag": "usersWatchHistory",
     "description": "Delete the user's watch history",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The authenticated user's watch history was deleted."
+      }
+    ]
   },
   {
     "url": "/me/watched/videos",
@@ -8455,7 +8760,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was deleted from the authenticated user's watch history."
+      }
+    ]
   },
   {
     "url": "/me/watchlater",
@@ -8512,6 +8822,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "304",
+        "description": "The user hasn't added any videos to their Watch Later queue since the given `If-Modified-Since` header."
       }
     ]
   },
@@ -8530,7 +8844,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      }
+    ]
   },
   {
     "url": "/me/watchlater/{video_id}",
@@ -8573,7 +8892,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      }
+    ]
   },
   {
     "url": "/me/webinars",
@@ -8966,6 +9290,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The webinar data was captured."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -8997,6 +9325,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The webinar registrant was deleted."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -9335,6 +9667,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The On Demand page was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -9511,6 +9847,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The background image was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -9645,6 +9985,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The genre was removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -10089,6 +10433,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The promotion was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -10301,6 +10649,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The region was removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -10594,6 +10946,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -10749,7 +11105,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The type of subscription plan.\n\nOption descriptions:\n * `advanced` - The plan type is Vimeo Advanced.\n * `business` - The plan type is Vimeo Business.\n * `free` - The plan type is Vimeo Free.\n * `live_premium` - The plan type is Vimeo Premium.\n * `plus` - The plan type is Vimeo Plus.\n * `pro` - The plan type is Vimeo Pro.\n * `pro_unlimited` - The plan type is Vimeo Pro Unlimited.\n * `standard` - The plan type is Vimeo Standard.\n * `starter` - The plan type is Vimeo Starter.\n"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/tags/{word}",
@@ -10838,7 +11199,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The code corresponding to the desired team. This value appears under `TeamUser` > `code`."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/tokens",
@@ -10849,6 +11215,10 @@ export default function VimeoTypeScriptSdk() {
     "description": "Revoke the current access token",
     "parameters": [],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The token was revoked."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -10863,7 +11233,12 @@ export default function VimeoTypeScriptSdk() {
     "typeScriptTag": "tutorialEssentials",
     "description": "Get started with the Vimeo API",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/users",
@@ -11120,7 +11495,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "A comma-separated list of showcase URIs."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos and events were added to the showcases."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/albums",
@@ -11246,6 +11626,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The showcase was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -11511,6 +11895,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The custom thumbnail was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -11717,6 +12105,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The custom logo was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -11937,6 +12329,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "201",
+        "description": "The videos were added."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -11974,6 +12370,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -12056,6 +12456,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -12394,7 +12798,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the user."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user has stopped following the category."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/categories/{category}",
@@ -12417,7 +12826,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the user."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is following the category."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/categories/{category}",
@@ -12440,7 +12854,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the user."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is following the category."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/channels",
@@ -12497,6 +12916,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "304",
+        "description": "No channel has been followed since the given `If-Modified-Since` header."
       }
     ]
   },
@@ -12522,6 +12945,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is unsubscribed from the channel."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -12551,6 +12978,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user follows the channel."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -12578,6 +13009,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user is subscribed to the channel."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -12659,6 +13094,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The custom logo was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -12712,6 +13151,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "The event destinations were returned."
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -12901,6 +13344,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The users were followed."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -12943,7 +13390,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the user."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user was unfollowed."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/following/{follow_user_id}",
@@ -12967,6 +13419,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The authenticated user follows the specified user."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -12995,6 +13451,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user was followed."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -13082,6 +13542,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user was removed from the group."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -13110,6 +13574,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user belongs to the group."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -13137,6 +13605,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The user joined the group."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -13224,6 +13696,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was unliked."
+      },
+      {
         "statusCode": "403",
         "description": ""
       }
@@ -13252,6 +13728,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user has liked the video."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -13279,6 +13759,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was liked."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -13310,7 +13794,12 @@ export default function VimeoTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/live_events",
@@ -13570,6 +14059,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The event was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -14148,6 +14641,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The M3U8 playback URL was returned."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -14195,6 +14692,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The OTT destination was deleted."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -14399,6 +14900,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The thumbnail was deleted."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -14569,6 +15074,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The domains were added to the whitelist."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -14613,6 +15122,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -14742,6 +15255,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were added."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -15079,7 +15596,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the user."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The portrait image was removed."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/pictures/{portraitset_id}",
@@ -15315,6 +15837,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -15382,6 +15908,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -15694,6 +16224,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The folder was deleted."
+      },
+      {
         "statusCode": "401",
         "description": ""
       },
@@ -15844,7 +16378,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The way to sort the results.\n\nOption descriptions:\n * `alphabetical` - Sort the results alphabetically.\n * `date` - Sort the results by date.\n * `default` - Use the default sort order.\n * `duration` - Sort the results by duration. Items without a duration, namely events and folders, are grouped by type in ascending alphabetical order, with events first.\n * `last_user_action_event_date` - Sort the results by the date of the last user action.\n"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/projects/{project_id}/videos",
@@ -15880,6 +16419,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -16019,6 +16562,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The videos were added."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -16060,6 +16607,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -16103,6 +16654,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The video was added."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -16123,7 +16678,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the team owner."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/team_users/{team_user_id}",
@@ -16146,7 +16706,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the team owner."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/uploads/{upload_id}",
@@ -16182,6 +16747,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "201",
+        "description": "The streaming upload has been completed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -16246,6 +16815,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The videos were deleted."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -16369,6 +16942,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "304",
+        "description": "The authenticated user hasn't uploaded any videos since the given **If-Modified-Since** header."
       }
     ]
   },
@@ -16649,6 +17226,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "OK"
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -16688,6 +17269,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "200",
+        "description": "The M3U8 playback URL was returned."
+      },
       {
         "statusCode": "401",
         "description": ""
@@ -16763,6 +17348,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "304",
+        "description": "The user hasn't added any videos to their Watch Later queue since the given `If-Modified-Since` header."
       }
     ]
   },
@@ -16787,7 +17376,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was removed."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/watchlater/{video_id}",
@@ -16842,7 +17436,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was added."
+      }
+    ]
   },
   {
     "url": "/users/{user_id}/webinars",
@@ -17277,6 +17876,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "200",
+        "description": "The webinar data was captured."
+      },
+      {
         "statusCode": "400",
         "description": ""
       },
@@ -17314,6 +17917,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The webinar registrant was deleted."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -17471,6 +18078,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -17788,6 +18399,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The set of animated thumbnails was deleted."
+      },
       {
         "statusCode": "404",
         "description": ""
@@ -18164,6 +18779,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The chapter was deleted."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -18350,6 +18969,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The chapter thumbnail was deleted."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -18526,6 +19149,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The comment was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -18877,6 +19504,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The credit was deleted."
+      },
+      {
         "statusCode": "400",
         "description": ""
       }
@@ -18975,7 +19606,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The fragments were deleted."
+      }
+    ]
   },
   {
     "url": "/videos/{video_id}/fragments",
@@ -19014,7 +19650,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The fragments were updated."
+      }
+    ]
   },
   {
     "url": "/videos/{video_id}/likes",
@@ -19149,7 +19790,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The thumbnail was deleted."
+      }
+    ]
   },
   {
     "url": "/videos/{video_id}/pictures/{picture_id}",
@@ -19235,6 +19881,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The embed preset was removed."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -19263,6 +19913,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The embed preset has been added to the video."
+      },
+      {
         "statusCode": "404",
         "description": ""
       }
@@ -19289,7 +19943,12 @@ export default function VimeoTypeScriptSdk() {
         "description": "The ID of the video."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "204",
+        "description": "The embed preset was added to the video."
+      }
+    ]
   },
   {
     "url": "/videos/{video_id}/privacy/domains",
@@ -19352,6 +20011,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The domain was removed."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -19383,6 +20046,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video is embeddable on the domain."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -19472,6 +20139,10 @@ export default function VimeoTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": "The user has been restricted from accessing the unlisted video."
+      },
+      {
         "statusCode": "403",
         "description": ""
       },
@@ -19506,6 +20177,10 @@ export default function VimeoTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "204",
+        "description": "The user can already access this unlisted video."
       },
       {
         "statusCode": "403",
@@ -19633,6 +20308,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The tag was removed."
+      },
       {
         "statusCode": "400",
         "description": ""
@@ -19833,6 +20512,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The text track was deleted."
+      },
       {
         "statusCode": "403",
         "description": ""
@@ -20209,6 +20892,10 @@ export default function VimeoTypeScriptSdk() {
       }
     ],
     "responses": [
+      {
+        "statusCode": "204",
+        "description": "The video version was deleted."
+      },
       {
         "statusCode": "404",
         "description": ""

@@ -16,7 +16,7 @@ export default function StackExchangeTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/stack-exchange/logo.png"
       clientNameCamelCase="stackExchange"
       homepage="api.stackexchange.com"
-      lastUpdated={new Date("2024-02-09T23:50:03.376Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/stack-exchange/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -63,6 +63,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -105,6 +145,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -177,6 +257,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -255,6 +375,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -333,6 +493,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -375,6 +575,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -452,6 +692,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -529,6 +809,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -581,6 +901,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -658,6 +1018,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -736,6 +1136,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -794,6 +1234,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -866,6 +1346,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -944,6 +1464,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -983,7 +1543,52 @@ export default function StackExchangeTypeScriptSdk() {
         "description": ""
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "OK"
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
+      }
+    ]
   },
   {
     "url": "/comments/{id}/edit",
@@ -1030,6 +1635,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1066,6 +1711,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1088,6 +1773,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1135,6 +1860,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1171,6 +1936,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1193,6 +1998,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1229,6 +2074,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1270,6 +2155,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1292,6 +2217,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1364,6 +2329,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1436,6 +2441,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1472,6 +2517,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1544,6 +2629,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1616,6 +2741,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1694,6 +2859,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1766,6 +2971,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1808,6 +3053,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1855,6 +3140,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1927,6 +3252,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -1963,6 +3328,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2005,6 +3410,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2047,6 +3492,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2089,6 +3574,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2161,6 +3686,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2233,6 +3798,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2305,6 +3910,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2377,6 +4022,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2449,6 +4134,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2481,6 +4206,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2523,6 +4288,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2565,6 +4370,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2637,6 +4482,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2709,6 +4594,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2787,6 +4712,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2865,6 +4830,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2917,6 +4922,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -2959,6 +5004,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3001,6 +5086,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3043,6 +5168,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3079,6 +5244,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3115,6 +5320,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3187,6 +5432,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3265,6 +5550,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3343,6 +5668,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3401,6 +5766,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3479,6 +5884,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3527,6 +5972,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3569,6 +6054,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3646,6 +6171,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3723,6 +6288,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3800,6 +6405,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3877,6 +6522,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -3955,6 +6640,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4033,6 +6758,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4111,6 +6876,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4189,6 +6994,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4267,6 +7112,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4325,6 +7210,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4383,6 +7308,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4470,6 +7435,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4612,6 +7617,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4699,6 +7744,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4735,6 +7820,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4807,6 +7932,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4885,6 +8050,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -4962,6 +8167,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5039,6 +8284,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5116,6 +8401,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5188,6 +8513,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5236,6 +8601,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5314,6 +8719,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5362,6 +8807,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5440,6 +8925,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5488,6 +9013,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5542,6 +9107,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5596,6 +9201,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5673,6 +9318,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5745,6 +9430,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5817,6 +9542,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5895,6 +9660,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -5973,6 +9778,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6015,6 +9860,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6093,6 +9978,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6171,6 +10096,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6255,6 +10220,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6333,6 +10338,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6411,6 +10456,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6453,6 +10538,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6531,6 +10656,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6609,6 +10774,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6687,6 +10892,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6765,6 +11010,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6843,6 +11128,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6901,6 +11226,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -6949,6 +11314,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7027,6 +11432,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7105,6 +11550,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7163,6 +11648,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7211,6 +11736,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7264,6 +11829,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7312,6 +11917,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7360,6 +12005,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7408,6 +12093,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7456,6 +12181,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7540,6 +12305,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7624,6 +12429,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7672,6 +12517,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7720,6 +12605,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   },
@@ -7768,6 +12693,46 @@ export default function StackExchangeTypeScriptSdk() {
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": "bad_parameter Ã¢â‚¬â€œ 400 An invalid parameter was passed, this includes even \"high level\" parameters like key or site.\n"
+      },
+      {
+        "statusCode": "401",
+        "description": "access_token_required Ã¢â‚¬â€œ 401 A method that requires an access token (obtained via authentication) was called without one.\n"
+      },
+      {
+        "statusCode": "402",
+        "description": "invalid_access_token Ã¢â‚¬â€œ 402 An invalid access token was passed to a method.\n"
+      },
+      {
+        "statusCode": "403",
+        "description": "access_denied Ã¢â‚¬â€œ 403 A method which requires certain permissions was called with an access token that lacks those permissions.\n"
+      },
+      {
+        "statusCode": "404",
+        "description": "no_method Ã¢â‚¬â€œ 404 An attempt was made to call a method that does not exist. Note, calling methods that expect numeric ids (like /users/{ids}) with non-numeric ids can also result in this error.\n"
+      },
+      {
+        "statusCode": "405",
+        "description": "key_required Ã¢â‚¬â€œ 405 A method was called in a manner that requires an application key (generally, with an access token), but no key was passed.\n"
+      },
+      {
+        "statusCode": "406",
+        "description": "access_token_compromised Ã¢â‚¬â€œ 406 An access token is no longer believed to be secure, normally because it was used on a non-HTTPS call. The access token will be invalidated if this error is returned.\n"
+      },
+      {
+        "statusCode": "500",
+        "description": "internal_error Ã¢â‚¬â€œ 500 An unexpected error occurred in the API. It has been logged, and Stack Exchange developers have been notified. You should report these errors on Stack Apps if you want to be notified when they're fixed.\n"
+      },
+      {
+        "statusCode": "502",
+        "description": "throttle_violation Ã¢â‚¬â€œ 502 An application has violated part of the rate limiting contract, so the request was terminated.\n"
+      },
+      {
+        "statusCode": "503",
+        "description": "temporarily_unavailable Ã¢â‚¬â€œ 503 Some or all of the API is unavailable. Applications should backoff on requests to the method invoked.\n"
       }
     ]
   }

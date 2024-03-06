@@ -16,7 +16,7 @@ export default function PostmarkTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/logo.svg"
       clientNameCamelCase="postmark"
       homepage="postmarkapp.com"
-      lastUpdated={new Date("2024-03-01T22:42:46.741Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -88,6 +88,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -114,6 +118,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -140,6 +148,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -166,6 +178,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -185,6 +201,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -270,6 +290,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -289,6 +313,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -314,6 +342,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -418,6 +450,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -490,6 +526,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -516,6 +556,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -542,6 +586,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -568,6 +616,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -630,6 +682,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -734,6 +790,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -772,6 +832,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -876,6 +940,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -914,6 +982,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -940,6 +1012,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -966,6 +1042,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -985,6 +1065,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1075,6 +1159,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1110,6 +1198,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1145,6 +1237,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1180,6 +1276,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1215,6 +1315,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1250,6 +1354,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1285,6 +1393,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1320,6 +1432,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1355,6 +1471,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1390,6 +1510,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1425,6 +1549,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1460,6 +1588,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1495,6 +1627,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1527,6 +1663,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1577,6 +1717,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1622,6 +1766,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1648,6 +1796,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1674,6 +1826,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1730,6 +1886,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1762,6 +1922,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1787,6 +1951,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   },
@@ -1813,6 +1981,10 @@ export default function PostmarkTypeScriptSdk() {
       {
         "statusCode": "422",
         "description": "A Postmark API error."
+      },
+      {
+        "statusCode": "500",
+        "description": ""
       }
     ]
   }

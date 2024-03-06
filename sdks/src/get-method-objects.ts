@@ -91,7 +91,16 @@ export function getMethodObjects(spec: Spec): Method[] {
         refOrObject: mediaObjectOrRef,
         $ref: spec.$ref,
       }).content;
-      if (mediaObject === undefined) continue;
+      if (mediaObject === undefined) {
+        responses.push({
+          statusCode,
+          description:
+            "description" in mediaObjectOrRef
+              ? mediaObjectOrRef.description
+              : "",
+        });
+        continue;
+      }
       const mediaTypes = Object.keys(mediaObject);
       const mediaType = mediaTypes[0];
       const responseObjectOrRef = mediaObject[mediaType];

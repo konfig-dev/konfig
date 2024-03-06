@@ -16,7 +16,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/logo.svg"
       clientNameCamelCase="openBanking"
       homepage="openbanking.org.uk"
-      lastUpdated={new Date("2024-02-02T23:02:23.295Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/favicon.png"
       // Missing contactUrl
       contactEmail="ServiceDesk@openbanking.org.uk"
@@ -79,8 +79,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "415",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -129,12 +149,32 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
     ],
     "responses": [
       {
+        "statusCode": "204",
+        "description": ""
+      },
+      {
         "statusCode": "400",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -191,8 +231,24 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -243,8 +299,24 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -301,8 +373,24 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -359,8 +447,24 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -417,8 +521,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -475,8 +599,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -533,8 +677,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -591,8 +755,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -649,8 +833,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -707,8 +911,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -765,8 +989,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -823,8 +1067,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -891,8 +1155,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -955,8 +1239,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1019,8 +1323,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1083,8 +1407,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1151,8 +1495,24 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1203,8 +1563,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1255,8 +1635,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1307,8 +1707,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1359,8 +1779,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1411,8 +1851,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1463,8 +1923,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1515,8 +1995,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1567,8 +2067,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1629,8 +2149,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",
@@ -1691,8 +2231,28 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
       },
       {
+        "statusCode": "401",
+        "description": ""
+      },
+      {
         "statusCode": "403",
         "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+      },
+      {
+        "statusCode": "404",
+        "description": ""
+      },
+      {
+        "statusCode": "405",
+        "description": ""
+      },
+      {
+        "statusCode": "406",
+        "description": ""
+      },
+      {
+        "statusCode": "429",
+        "description": ""
       },
       {
         "statusCode": "500",

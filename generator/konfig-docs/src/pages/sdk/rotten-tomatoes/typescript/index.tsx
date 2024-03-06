@@ -17,7 +17,7 @@ export default function RottenTomatoesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/logo.png"
       clientNameCamelCase="rottenTomatoes"
       homepage="developer.fandango.com/rotten_tomatoes"
-      lastUpdated={new Date("2024-02-16T00:45:04.983Z")}
+      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/favicon.jpeg"
       contactUrl="https://github.com/mermade/mashery2openapi"
       contactEmail="mike.ralphson@gmail.com"
@@ -33,7 +33,20 @@ export default function RottenTomatoesTypeScriptSdk() {
     "typeScriptTag": "topLevelLists",
     "description": "",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/dvds.json",
@@ -43,7 +56,20 @@ export default function RottenTomatoesTypeScriptSdk() {
     "typeScriptTag": "topLevelLists",
     "description": "",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/dvds/current_releases.json",
@@ -72,7 +98,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/dvds/new_releases.json",
@@ -101,7 +140,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/dvds/top_rentals.json",
@@ -124,7 +176,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/dvds/upcoming.json",
@@ -153,7 +218,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/movies.json",
@@ -163,7 +241,20 @@ export default function RottenTomatoesTypeScriptSdk() {
     "typeScriptTag": "topLevelLists",
     "description": "",
     "parameters": [],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/movies/box_office.json",
@@ -186,7 +277,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/movies/in_theaters.json",
@@ -215,7 +319,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/movies/opening.json",
@@ -238,7 +355,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/lists/movies/upcoming.json",
@@ -267,7 +397,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movie_alias.json",
@@ -290,7 +433,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Only supports imdb lookup at this time"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movies.json",
@@ -319,7 +475,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "The selected page of movie search results"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movies/{id}.json",
@@ -336,7 +505,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movies/{id}/cast.json",
@@ -353,7 +535,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movies/{id}/clips.json",
@@ -370,7 +565,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movies/{id}/reviews.json",
@@ -411,7 +619,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   },
   {
     "url": "/movies/{id}/similar.json",
@@ -434,7 +655,20 @@ export default function RottenTomatoesTypeScriptSdk() {
         "description": "Limit the number of similar movies to show"
       }
     ],
-    "responses": []
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": "Success"
+      },
+      {
+        "statusCode": "400",
+        "description": "Bad Request"
+      },
+      {
+        "statusCode": "403",
+        "description": "Forbidden"
+      }
+    ]
   }
 ]
     }
