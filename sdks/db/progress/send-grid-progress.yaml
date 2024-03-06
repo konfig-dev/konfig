@@ -1,0 +1,2057 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /asm/groups/{group_id}:
+    delete:
+      '204':
+        application/json: {}
+  /asm/groups/{group_id}/suppressions/{email}:
+    delete:
+      '204':
+        application/json: {}
+  /asm/suppressions/global/{email}:
+    delete:
+      '204':
+        application/json: {}
+  /campaigns:
+    post:
+      '401':
+        application/json: {}
+  /campaigns/{campaign_id}:
+    delete:
+      '204':
+        application/json: {}
+      '404':
+        application/json: {}
+  /campaigns/{campaign_id}/schedules:
+    delete:
+      '204':
+        application/json: {}
+  /contactdb/lists:
+    delete:
+      '204':
+        application/json: {}
+  /contactdb/lists/{list_id}:
+    delete:
+      '202':
+        application/json: {}
+  /contactdb/lists/{list_id}/recipients:
+    post:
+      '201':
+        application/json: {}
+  /contactdb/lists/{list_id}/recipients/{recipient_id}:
+    delete:
+      '204':
+        application/json: {}
+    post:
+      '201':
+        application/json: {}
+  /contactdb/recipients:
+    delete:
+      '200':
+        application/json: {}
+    get:
+      '400':
+        application/json: {}
+  /contactdb/recipients/{recipient_id}:
+    delete:
+      '204':
+        application/json: {}
+    get:
+      '400':
+        application/json: {}
+      '404':
+        application/json: {}
+  /contactdb/segments/{segment_id}:
+    delete:
+      '204':
+        application/json: {}
+  /contactdb/segments/{segment_id}/recipients:
+    get:
+      '400':
+        application/json: {}
+      '404':
+        application/json: {}
+  /designs/{id}:
+    delete:
+      '204':
+        application/json: {}
+  /ips/pools/{pool_name}:
+    delete:
+      '204':
+        application/json: {}
+  /ips/pools/{pool_name}/ips/{ip}:
+    delete:
+      '204':
+        application/json: {}
+  /ips/warmup/{ip_address}:
+    delete:
+      '204':
+        application/json: {}
+  /marketing/contacts:
+    get:
+      '404':
+        application/json: {}
+  /marketing/contacts/batch:
+    post:
+      '404':
+        application/json: {}
+  /marketing/lists/{id}:
+    patch:
+      '404':
+        application/json: {}
+  /marketing/lists/{id}/contacts:
+    delete:
+      '404':
+        application/json: {}
+  /marketing/lists/{id}/contacts/count:
+    get:
+      '404':
+        application/json: {}
+  /marketing/segments/delete:
+    post:
+      '202':
+        application/json: {}
+  /marketing/segments/{segment_id}:
+    delete:
+      '202':
+        application/json: {}
+  /marketing/stats/singlesends/{id}/links:
+    get:
+      '404':
+        application/json: {}
+  /marketing/test/send_email:
+    post:
+      '202':
+        application/json: {}
+  /messages/{msg_id}:
+    get:
+      '400':
+        application/json: {}
+  /scopes/requests/{request_id}/approve:
+    patch:
+      '401':
+        application/json: {}
+  /suppression/bounces:
+    delete:
+      '204':
+        application/json: {}
+  /suppression/bounces/{email}:
+    delete:
+      '204':
+        application/json: {}
+  /templates/{template_id}:
+    delete:
+      '204':
+        application/json: {}
+  /user/scheduled_sends/{batch_id}:
+    patch:
+      '204':
+        application/json: {}
+  /user/webhooks/parse/settings/{hostname}:
+    delete:
+      '204':
+        application/json: {}
+  /verified_senders/resend/{id}:
+    post:
+      '204':
+        application/json: {}
+  /verified_senders/{id}:
+    delete:
+      '204':
+        application/json: {}
+  /whitelabel/domains/subuser:
+    delete:
+      '204':
+        application/json: {}
+  /whitelabel/domains/{domain_id}:
+    delete:
+      '204':
+        application/json: {}
+  /whitelabel/ips/{id}:
+    delete:
+      '204':
+        application/json: {}
+  /whitelabel/links/subuser:
+    delete:
+      '204':
+        application/json: {}
+  /whitelabel/links/{id}:
+    delete:
+      '204':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /access_settings/activity:
+    get: IpAccessManagement_getRecentAccessAttempts
+  /access_settings/whitelist:
+    delete: IpAccessManagement_removeIpAddresses
+    get: IpAccessManagement_getAllowedIPs
+    post: IpAccessManagement_addAllowedIps
+  /access_settings/whitelist/{rule_id}:
+    delete: IpAccessManagement_removeSpecificIpFromAllowedList
+    get: IpAccessManagement_getAllowedIp
+  /alerts/{alert_id}:
+    delete: Alerts_deleteAlertById
+    get: Alerts_getSpecificAlert
+    patch: Alerts_updateAlert
+  /api_keys:
+    get: ApiKeys_getAll
+    post: ApiKeys_createKey
+  /api_keys/{api_key_id}:
+    delete: ApiKeys_revokeKey
+    get: ApiKeys_getByKeyId
+    patch: ApiKeys_updateKeyName
+    put: ApiKeys_updateNameAndScopes
+  /asm/groups:
+    get: SuppressionsUnsubscribeGroups_getAll
+    post: SuppressionsUnsubscribeGroups_createNewGroup
+  /asm/groups/{group_id}:
+    delete: SuppressionsUnsubscribeGroups_deleteGroup
+    get: SuppressionsUnsubscribeGroups_getSingleGroup
+    patch: SuppressionsUnsubscribeGroups_updateGroup
+  /asm/groups/{group_id}/suppressions:
+    get: SuppressionsSuppressions_getAllSuppressedEmails
+    post: SuppressionsSuppressions_addToGroup
+  /asm/groups/{group_id}/suppressions/search:
+    post: SuppressionsSuppressions_searchWithinGroup
+  /asm/groups/{group_id}/suppressions/{email}:
+    delete: SuppressionsSuppressions_removeSuppressionFromGroup
+  /asm/suppressions:
+    get: SuppressionsSuppressions_getAllSuppressions
+  /asm/suppressions/global:
+    post: SuppressionsGlobalSuppressions_addRecipientAddresses
+  /asm/suppressions/global/{email}:
+    delete: SuppressionsGlobalSuppressions_removeEmail
+    get: SuppressionsGlobalSuppressions_getGlobalSuppression
+  /asm/suppressions/{email}:
+    get: SuppressionsSuppressions_getUnsubscribeGroupsByEmail
+  /browsers/stats:
+    get: Stats_getEmailStatisticsByBrowser
+  /campaigns/{campaign_id}:
+    delete: CampaignsApi_deleteCampaignById
+    get: CampaignsApi_getSingleCampaign
+    patch: CampaignsApi_updateSpecificCampaign
+  /campaigns/{campaign_id}/schedules:
+    delete: CampaignsApi_unscheduleCampaign
+    get: CampaignsApi_getScheduledTime
+    patch: CampaignsApi_updateScheduledTime
+    post: CampaignsApi_scheduleCampaign
+  /campaigns/{campaign_id}/schedules/now:
+    post: CampaignsApi_sendCampaignNow
+  /campaigns/{campaign_id}/schedules/test:
+    post: CampaignsApi_sendTestCampaign
+  /categories/stats:
+    get: Categories_getEmailStatisticsFor
+  /categories/stats/sums:
+    get: Categories_getSums
+  /clients/stats:
+    get: Stats_getEmailStatisticsByClientType
+  /clients/{client_type}/stats:
+    get: Stats_getStatsByClientType
+  /contactdb/custom_fields:
+    get: ContactsApiCustomFields_getAll
+    post: ContactsApiCustomFields_createNewField
+  /contactdb/custom_fields/{custom_field_id}:
+    delete: ContactsApiCustomFields_deleteById
+    get: ContactsApiCustomFields_getById
+  /contactdb/lists:
+    delete: ContactsApiLists_deleteMultipleLists
+    get: ContactsApiLists_getAllLists
+    post: ContactsApiLists_createNewList
+  /contactdb/lists/{list_id}:
+    delete: ContactsApiLists_deleteListById
+    get: ContactsApiLists_getSingleList
+    patch: ContactsApiLists_updateListName
+  /contactdb/lists/{list_id}/recipients:
+    get: ContactsApiLists_getAllRecipients
+    post: ContactsApiLists_addMultipleRecipientsToList
+  /contactdb/lists/{list_id}/recipients/{recipient_id}:
+    delete: ContactsApiLists_deleteRecipient
+    post: ContactsApiLists_addSingleRecipient
+  /contactdb/recipients:
+    delete: ContactsApiRecipients_deleteMultipleRecipients
+    get: ContactsApiRecipients_getAllRecipients
+    patch: ContactsApiRecipients_updateMultipleRecipients
+    post: ContactsApiRecipients_addRecipient
+  /contactdb/recipients/billable_count:
+    get: ContactsApiRecipients_getBillableCount
+  /contactdb/recipients/count:
+    get: ContactsApiRecipients_getCountOfRecipients
+  /contactdb/recipients/search:
+    get: ContactsApiRecipients_searchRecipientByField
+    post: ContactsApiRecipients_searchBySegmentConditions
+  /contactdb/recipients/{recipient_id}:
+    delete: ContactsApiRecipients_deleteRecipientById
+    get: ContactsApiRecipients_getSingleRecipient
+  /contactdb/recipients/{recipient_id}/lists:
+    get: ContactsApiRecipients_getRecipientLists
+  /contactdb/reserved_fields:
+    get: ContactsApiCustomFields_getReservedFields
+  /contactdb/segments:
+    get: ContactsApiSegments_getAllSegments
+    post: ContactsApiSegments_createSegment
+  /contactdb/segments/{segment_id}:
+    delete: ContactsApiSegments_deleteSegment
+    get: ContactsApiSegments_getSegmentById
+    patch: ContactsApiSegments_updateSegment
+  /contactdb/segments/{segment_id}/recipients:
+    get: ContactsApiSegments_getSegmentRecipients
+  /contactdb/status:
+    get: ContactsApiRecipients_getUploadStatus
+  /designs:
+    get: DesignsApi_getList
+    post: DesignsApi_createDesign
+  /designs/pre-builts:
+    get: DesignsApi_listPreBuiltDesigns
+  /designs/pre-builts/{id}:
+    get: DesignsApi_getSinglePreBuiltDesign
+    post: DesignsApi_duplicatePreBuiltDesign
+  /designs/{id}:
+    delete: DesignsApi_deleteDesignById
+    get: DesignsApi_getSingleDesign
+    patch: DesignsApi_updateDesignById
+    post: DesignsApi_duplicateDesign
+  /devices/stats:
+    get: Stats_getEmailStatisticsByDeviceType
+  /geo/stats:
+    get: Stats_getEmailStatisticsByCountryAndStateProvince
+  /ips/assigned:
+    get: IpAddresses_getAssignedIps
+  /ips/pools:
+    get: IpPools_getAll
+    post: IpPools_createPool
+  /ips/pools/{pool_name}:
+    delete: IpPools_deletePool
+    get: IpPools_getPoolIps
+    put: IpPools_updateName
+  /ips/pools/{pool_name}/ips:
+    post: IpPools_addIpAddressToPool
+  /ips/pools/{pool_name}/ips/{ip}:
+    delete: IpPools_removeIpAddressFromPool
+  /ips/remaining:
+    get: IpAddresses_getRemainingIPsCount
+  /ips/warmup:
+    get: IpWarmup_getAllIpsWarmup
+    post: IpWarmup_startIpAddressWarmup
+  /ips/warmup/{ip_address}:
+    delete: IpWarmup_stopIpAddressWarmup
+    get: IpWarmup_getWarmupStatusForIpAddress
+  /ips/{ip_address}:
+    get: IpAddresses_getIpPoolsByAddress
+  /mail/batch:
+    post: CancelScheduledSends_request
+  /mail/batch/{batch_id}:
+    get: CancelScheduledSends_validateBatchId
+  /mail/send:
+    post: MailSend_v3EmailSend
+  /mail_settings:
+    get: SettingsMail_getAllMailSettings
+  /mail_settings/address_whitelist:
+    get: SettingsMail_getAddressWhitelistMailSettings
+    patch: SettingsMail_updateAddressWhitelistMailSettings
+  /mail_settings/bounce_purge:
+    get: SettingsMail_getBouncePurgeSettings
+    patch: SettingsMail_updateBouncePurgeSettings
+  /mail_settings/footer:
+    get: SettingsMail_getFooterMailSettings
+    patch: SettingsMail_updateFooterMailSettings
+  /mail_settings/forward_bounce:
+    get: SettingsMail_getForwardBounceMailSettings
+    patch: SettingsMail_updateForwardBounceSettings
+  /mail_settings/forward_spam:
+    get: SettingsMail_getForwardSpamMailSettings
+    patch: SettingsMail_updateForwardSpamSettings
+  /mail_settings/template:
+    get: SettingsMail_getLegacyTemplateSettings
+    patch: SettingsMail_updateLegacyTemplateSettings
+  /mailbox_providers/stats:
+    get: Stats_getEmailStatisticsByMailboxProvider
+  /marketing/contacts:
+    delete: Contacts_deleteBulkContacts
+    get: Contacts_getRecentContacts
+    put: Contacts_upsertBatchContacts
+  /marketing/contacts/batch:
+    post: Contacts_getBatchedByIds
+  /marketing/contacts/count:
+    get: Contacts_getTotalCount
+  /marketing/contacts/exports:
+    get: Contacts_getAllExports
+    post: Contacts_exportListsSegments
+  /marketing/contacts/exports/{id}:
+    get: Contacts_checkExportStatus
+  /marketing/contacts/imports:
+    put: Contacts_importCsv
+  /marketing/contacts/imports/{id}:
+    get: Contacts_checkImportStatus
+  /marketing/contacts/search:
+    post: Contacts_searchContactsByQuery
+  /marketing/contacts/search/emails:
+    post: Contacts_searchByEmails
+  /marketing/contacts/{id}:
+    get: Contacts_getByIdDetails
+  /marketing/field_definitions:
+    get: CustomFields_getAllFieldDefinitions
+    post: CustomFields_createDefinition
+  /marketing/field_definitions/{custom_field_id}:
+    delete: CustomFields_deleteDefinition
+    patch: CustomFields_updateDefinition
+  /marketing/lists:
+    get: Lists_getAll
+    post: Lists_createNewList
+  /marketing/lists/{id}:
+    delete: Lists_deleteList
+    get: Lists_getListById
+    patch: Lists_updateName
+  /marketing/lists/{id}/contacts:
+    delete: Lists_removeContactsFromList
+  /marketing/lists/{id}/contacts/count:
+    get: Lists_contactCountGet
+  /marketing/segments:
+    get: SegmentingContacts_listSegments
+    post: SegmentingContacts_createNewSegment
+  /marketing/segments/2.0/{segment_id}:
+    delete: SegmentingContactsV2Beta_deleteSegmentById
+    get: SegmentingContactsV2Beta_getById
+    patch: SegmentingContactsV2Beta_updateSegmentById
+  /marketing/segments/delete:
+    post: SegmentingContacts_bulkDeleteSegments
+  /marketing/segments/{segment_id}:
+    delete: SegmentingContacts_deleteById
+    get: SegmentingContacts_getById
+    patch: SegmentingContacts_updateSegmentById
+  /marketing/senders:
+    post: Senders_createIdentity
+  /marketing/singlesends:
+    delete: SingleSends_bulkDelete
+    get: SingleSends_getAllSinglesends
+    post: SingleSends_createNewSingleSend
+  /marketing/singlesends/categories:
+    get: SingleSends_getAllCategories
+  /marketing/singlesends/search:
+    post: SingleSends_searchByCriteria
+  /marketing/singlesends/{id}:
+    delete: SingleSends_deleteById
+    get: SingleSends_getDetailsById
+    patch: SingleSends_updateById
+    post: SingleSends_duplicateSingleSend
+  /marketing/singlesends/{id}/schedule:
+    delete: SingleSends_cancelScheduledSend
+    put: SingleSends_schedulePut
+  /marketing/stats/automations:
+    get: MarketingCampaignsStats_getAllAutomationStats
+  /marketing/stats/automations/export:
+    get: MarketingCampaignsStats_exportAutomationStats
+  /marketing/stats/automations/{id}:
+    get: MarketingCampaignsStats_getStatsById
+  /marketing/stats/automations/{id}/links:
+    get: MarketingCampaignsStats_getAutomationLinkStat
+  /marketing/stats/singlesends:
+    get: MarketingCampaignsStats_getAllSingleSendsStats
+  /marketing/stats/singlesends/export:
+    get: MarketingCampaignsStats_exportSingleSendStats
+  /marketing/stats/singlesends/{id}:
+    get: MarketingCampaignsStats_getSingleSendStatsById
+  /marketing/stats/singlesends/{id}/links:
+    get: MarketingCampaignsStats_getSingleSendLinkStatById
+  /marketing/test/send_email:
+    post: SendTestEmail_toContacts
+  /messages:
+    get: Query_filterMessages
+  /messages/download:
+    post: CsvUiOnly_requestCsvDownload
+  /messages/download/{download_uuid}:
+    get: CsvUiOnly_generateCsvDownloadUrl
+  /messages/{msg_id}:
+    get: Query_messageDetails
+  /partner_settings:
+    get: SettingsPartner_listPartnerSettings
+  /partner_settings/new_relic:
+    get: SettingsPartner_getAllNewRelicPartnerSettings
+    patch: SettingsPartner_updateNewRelicPartnerSettings
+  /scopes/requests:
+    get: Teammates_getAccessRequests
+  /scopes/requests/{request_id}:
+    delete: Teammates_denyAccessRequest
+  /scopes/requests/{request_id}/approve:
+    patch: Teammates_approveAccessRequest
+  /senders:
+    get: SenderIdentitiesApi_getAll
+  /senders/{sender_id}:
+    delete: SenderIdentitiesApi_deleteSenderIdentity
+    get: SenderIdentitiesApi_viewSenderIdentity
+    patch: SenderIdentitiesApi_updateSenderIdentity
+  /senders/{sender_id}/resend_verification:
+    post: SenderIdentitiesApi_resendVerificationEmail
+  /sso/certificates:
+    post: Certificates_createSSOCertificate
+  /sso/certificates/{cert_id}:
+    delete: Certificates_deleteSsoCertificate
+    get: Certificates_getIndividual
+    patch: Certificates_updateById
+  /sso/integrations:
+    get: SingleSignOnSettings_getAllSsoIntegrations
+    post: SingleSignOnSettings_createIntegration
+  /sso/integrations/{id}:
+    delete: SingleSignOnSettings_deleteIntegrationById
+    get: SingleSignOnSettings_getSsoIntegrationById
+    patch: SingleSignOnSettings_updateIntegration
+  /sso/integrations/{integration_id}/certificates:
+    get: Certificates_getByIdpConfigurations
+  /sso/teammates:
+    post: SingleSignOnTeammates_createTeammate
+  /sso/teammates/{username}:
+    patch: SingleSignOnTeammates_editTeammate
+  /subusers/reputations:
+    get: SubusersApi_getSubuserReputations
+  /subusers/stats:
+    get: SubuserStatistics_getEmailStatsForSubusers
+  /subusers/stats/monthly:
+    get: SubuserStatistics_getMonthlyStatsForAllSubusers
+  /subusers/stats/sums:
+    get: SubuserStatistics_getEmailStatsForSubusers
+  /subusers/{subuser_name}:
+    delete: SubusersApi_deleteSubuser
+    patch: SubusersApi_updateSubuserEnableState
+  /subusers/{subuser_name}/ips:
+    put: SubusersApi_updateSubuserIps
+  /subusers/{subuser_name}/monitor:
+    delete: SubuserMonitorSettings_deleteMonitorSettings
+    get: SubuserMonitorSettings_getSettings
+    post: SubuserMonitorSettings_createSettings
+    put: SubuserMonitorSettings_updateForSubuserNameMonitor
+  /subusers/{subuser_name}/stats/monthly:
+    get: SubuserStatistics_getMonthlyEmailStatsForSingleSubuser
+  /suppression/blocks:
+    delete: BlocksApi_deleteAllBlockedEmails
+    get: BlocksApi_getAllEmailAddresses
+  /suppression/blocks/{email}:
+    delete: BlocksApi_deleteSpecificBlock
+    get: BlocksApi_getSpecificBlock
+  /suppression/bounces:
+    delete: BouncesApi_deleteBounces
+    get: BouncesApi_getAllBounces
+  /suppression/bounces/{email}:
+    delete: BouncesApi_removeBounce
+    get: BouncesApi_getByEmailAddress
+  /suppression/invalid_emails:
+    delete: InvalidEmailsApi_deleteInvalidEmails
+    get: InvalidEmailsApi_getAllInvalidEmails
+  /suppression/invalid_emails/{email}:
+    delete: InvalidEmailsApi_removeSpecificEmail
+    get: InvalidEmailsApi_getSpecificInvalidEmail
+  /suppression/spam_reports:
+    delete: SpamReportsApi_deleteReports
+    get: SpamReportsApi_getAllReports
+  /suppression/spam_reports/{email}:
+    delete: SpamReportsApi_deleteSpecificReportByEmailAddress
+    get: SpamReportsApi_getSpecificReportByEmail
+  /suppression/unsubscribes:
+    get: SuppressionsGlobalSuppressions_getAllAddresses
+  /teammates:
+    get: Teammates_getAllTeammates
+    post: Teammates_inviteTeammate
+  /teammates/pending:
+    get: Teammates_getAllPending
+  /teammates/pending/{token}:
+    delete: Teammates_deletePendingTeammate
+  /teammates/pending/{token}/resend:
+    post: Teammates_resendTeammateInvite
+  /teammates/{username}:
+    delete: Teammates_removeTeammate
+    get: Teammates_getByUsername
+    patch: Teammates_updatePermissions
+  /templates/{template_id}:
+    delete: TransactionalTemplates_deleteTemplate
+    get: TransactionalTemplates_getSingleTemplate
+    patch: TransactionalTemplates_editTemplateName
+    post: TransactionalTemplates_duplicateTemplate
+  /templates/{template_id}/versions:
+    post: TransactionalTemplatesVersions_createNewVersion
+  /templates/{template_id}/versions/{version_id}:
+    delete: TransactionalTemplatesVersions_deleteTemplateVersion
+    get: TransactionalTemplatesVersions_getSpecificVersion
+    patch: TransactionalTemplatesVersions_editContent
+  /templates/{template_id}/versions/{version_id}/activate:
+    post: TransactionalTemplatesVersions_activateVersion
+  /tracking_settings:
+    get: SettingsTracking_getAllTracking
+  /tracking_settings/click:
+    get: SettingsTracking_getClickTrackingSetting
+    patch: SettingsTracking_updateClickTrackingSetting
+  /tracking_settings/google_analytics:
+    get: SettingsTracking_getGoogleAnalyticsSettings
+    patch: SettingsTracking_updateGoogleAnalyticsSettings
+  /tracking_settings/open:
+    get: SettingsTracking_getOpenSettings
+    patch: SettingsTracking_updateOpenTrackingSettings
+  /tracking_settings/subscription:
+    get: SettingsTracking_getSubscriptionTrackingSettings
+    patch: SettingsTracking_updateSubscriptionTrackingSettings
+  /user/account:
+    get: UsersApi_getUserAccountInformation
+  /user/credits:
+    get: UsersApi_getCreditBalance
+  /user/email:
+    get: UsersApi_getAccountEmailAddress
+    put: UsersApi_updateEmail
+  /user/password:
+    put: UsersApi_updatePassword
+  /user/profile:
+    get: UsersApi_getUserProfile
+    patch: UsersApi_updateUserProfile
+  /user/scheduled_sends:
+    get: CancelScheduledSends_allScheduledSends
+    post: CancelScheduledSends_byBatchIdStatus
+  /user/scheduled_sends/{batch_id}:
+    delete: CancelScheduledSends_cancellationPause
+    get: CancelScheduledSends_byBatchId
+    patch: CancelScheduledSends_updateStatus
+  /user/settings/enforced_tls:
+    get: SettingsEnforcedTls_getCurrentEnforcedTlsSettings
+    patch: SettingsEnforcedTls_updateEnforcedTlsSettings
+  /user/username:
+    get: UsersApi_getUsername
+    put: UsersApi_updateUsername
+  /user/webhooks/event/settings:
+    get: Webhooks_getEventSettings
+    patch: Webhooks_updateEventNotificationSettings
+  /user/webhooks/event/settings/signed:
+    get: Webhooks_getSignedWebhookPublicKey
+    patch: Webhooks_enableSignedWebhook
+  /user/webhooks/event/test:
+    post: Webhooks_testEventNotificationSettings
+  /user/webhooks/parse/settings:
+    get: Webhooks_getParseSettings
+    post: SettingsInboundParse_createSetting
+  /user/webhooks/parse/settings/{hostname}:
+    delete: SettingsInboundParse_deleteSettingByHostname
+    get: SettingsInboundParse_getSpecificParseSettingByHostname
+    patch: SettingsInboundParse_updateHostnameSetting
+  /user/webhooks/parse/stats:
+    get: Webhooks_getParseStats
+  /validations/email:
+    post: EmailAddressValidation_checkValidity
+  /verified_senders:
+    get: SenderVerification_getAllSenderIdentities
+    post: SenderVerification_createVerifiedSenderRequest
+  /verified_senders/domains:
+    get: SenderVerification_listDomainWarn
+  /verified_senders/resend/{id}:
+    post: SenderVerification_resendVerificationEmail
+  /verified_senders/steps_completed:
+    get: SenderVerification_determineVerificationStatus
+  /verified_senders/verify/{token}:
+    get: SenderVerification_requestVerificationToken
+  /verified_senders/{id}:
+    delete: SenderVerification_deleteVerifiedSender
+    patch: SenderVerification_updateSenderIdentity
+  /whitelabel/dns/email:
+    post: EmailCnameRecords_sendDnsEmail
+  /whitelabel/domains:
+    get: DomainAuthentication_getAllDomains
+    post: DomainAuthentication_postAuthenticateDomain
+  /whitelabel/domains/default:
+    get: DomainAuthentication_getDefaultAuthentication
+  /whitelabel/domains/subuser:
+    delete: DomainAuthentication_disassociateDomainFromSubuser
+    get: DomainAuthentication_listSubuserDomains
+  /whitelabel/domains/{domain_id}:
+    delete: DomainAuthentication_deleteAuthenticatedDomain
+    get: DomainAuthentication_getSpecificDomain
+    patch: DomainAuthentication_updateDomainSettings
+  /whitelabel/domains/{domain_id}/subuser:
+    post: DomainAuthentication_associateSubuserWithDomain
+  /whitelabel/domains/{id}/ips:
+    post: DomainAuthentication_addIpToDomain
+  /whitelabel/domains/{id}/ips/{ip}:
+    delete: DomainAuthentication_removeIp
+  /whitelabel/domains/{id}/validate:
+    post: DomainAuthentication_validateDomain
+  /whitelabel/ips:
+    get: ReverseDns_getAllReverseDnsRecords
+    post: ReverseDns_setUpReverseDns
+  /whitelabel/ips/{id}:
+    delete: ReverseDns_deleteReverseDnsRecord
+    get: ReverseDns_getRecord
+  /whitelabel/ips/{id}/validate:
+    post: ReverseDns_validateRecord
+  /whitelabel/links:
+    get: LinkBranding_getBrandedLinks
+    post: LinkBranding_createBrandedLink
+  /whitelabel/links/default:
+    get: LinkBranding_getDefaultBrandedLink
+  /whitelabel/links/subuser:
+    delete: LinkBranding_disassociateBrandedLinkFromSubuser
+    get: LinkBranding_getSubuserBrandedLink
+  /whitelabel/links/{id}:
+    delete: LinkBranding_deleteBrandedLink
+    get: LinkBranding_getBrandedLinkById
+    patch: LinkBranding_updateBrandedLink
+  /whitelabel/links/{id}/validate:
+    post: LinkBranding_validateBrandedLink
+  /whitelabel/links/{link_id}/subuser:
+    post: LinkBranding_associateBrandedLinkWithSubuser
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /access_settings/whitelist:
+    delete:
+      application/json: IpAccessManagementRemoveIpAddressesRequest
+    post:
+      application/json: IpAccessManagementAddAllowedIpsRequest
+  /alerts:
+    post:
+      application/json: PostAlertsRequest
+  /alerts/{alert_id}:
+    patch:
+      application/json: AlertsUpdateAlertRequest
+  /api_keys:
+    post:
+      application/json: ApiKeysCreateKeyRequest
+  /api_keys/{api_key_id}:
+    patch:
+      application/json: ApiKeysUpdateKeyNameRequest
+    put:
+      application/json: ApiKeysUpdateNameAndScopesRequest
+  /campaigns/{campaign_id}:
+    patch:
+      application/json: CampaignsApiUpdateSpecificCampaignRequest
+  /campaigns/{campaign_id}/schedules:
+    patch:
+      application/json: CampaignsApiUpdateScheduledTimeRequest
+    post:
+      application/json: CampaignsApiScheduleCampaignRequest
+  /campaigns/{campaign_id}/schedules/test:
+    post:
+      application/json: CampaignsApiSendTestCampaignRequest
+  /contactdb/custom_fields:
+    post:
+      application/json: ContactsApiCustomFieldsCreateNewFieldRequest
+  /contactdb/lists:
+    delete:
+      application/json: ContactsApiListsDeleteMultipleListsRequest
+    post:
+      application/json: ContactsApiListsCreateNewListRequest
+  /contactdb/lists/{list_id}:
+    delete:
+      application/json: ContactsApiListsDeleteListByIdRequest
+    patch:
+      application/json: ContactsApiListsUpdateListNameRequest
+  /contactdb/lists/{list_id}/recipients:
+    post:
+      application/json: ContactsApiListsAddMultipleRecipientsToListRequest
+  /contactdb/recipients:
+    delete:
+      application/json: ContactsApiRecipientsDeleteMultipleRecipientsRequest
+    patch:
+      application/json: ContactsApiRecipientsUpdateMultipleRecipientsRequest
+    post:
+      application/json: ContactsApiRecipientsAddRecipientRequest
+  /contactdb/recipients/search:
+    post:
+      application/json: ContactsApiRecipientsSearchBySegmentConditionsRequest
+  /contactdb/segments/{segment_id}:
+    patch:
+      application/json: ContactsApiSegmentsUpdateSegmentRequest
+  /designs/{id}:
+    patch:
+      application/json: DesignsApiUpdateDesignByIdRequest
+  /ips:
+    post:
+      application/json: PostIpsRequest
+  /ips/pools:
+    post:
+      application/json: IpPoolsCreatePoolRequest
+  /ips/pools/{pool_name}:
+    put:
+      application/json: IpPoolsUpdateNameRequest
+  /ips/pools/{pool_name}/ips:
+    post:
+      application/json: IpPoolsAddIpAddressToPoolRequest
+  /ips/warmup:
+    post:
+      application/json: IpWarmupStartIpAddressWarmupRequest
+  /mail/send:
+    post:
+      application/json: MailSendV3EmailSendRequest
+  /mail_settings/address_whitelist:
+    patch:
+      application/json: SettingsMailUpdateAddressWhitelistMailSettingsRequest
+  /mail_settings/template:
+    patch:
+      application/json: SettingsMailUpdateLegacyTemplateSettingsRequest
+  /marketing/contacts:
+    put:
+      application/json: ContactsUpsertBatchContactsRequest
+  /marketing/contacts/batch:
+    post:
+      application/json: ContactsGetBatchedByIdsRequest
+  /marketing/contacts/exports:
+    post:
+      application/json: ContactsExportListsSegmentsRequest
+  /marketing/contacts/imports:
+    put:
+      application/json: ContactsImportCsvRequest
+  /marketing/contacts/search:
+    post:
+      application/json: ContactsSearchContactsByQueryRequest
+  /marketing/contacts/search/emails:
+    post:
+      application/json: ContactsSearchByEmailsRequest
+  /marketing/field_definitions:
+    post:
+      application/json: CustomFieldsCreateDefinitionRequest
+  /marketing/field_definitions/{custom_field_id}:
+    patch:
+      application/json: CustomFieldsUpdateDefinitionRequest
+  /marketing/lists:
+    post:
+      application/json: ListsCreateNewListRequest
+  /marketing/lists/{id}:
+    patch:
+      application/json: ListsUpdateNameRequest
+  /marketing/segments:
+    post:
+      application/json: SegmentingContactsCreateNewSegmentRequest
+  /marketing/segments/delete:
+    post:
+      application/json: SegmentingContactsBulkDeleteSegmentsRequest
+  /marketing/senders:
+    post:
+      application/json: SendersCreateIdentityRequest
+  /marketing/singlesends/{id}:
+    post:
+      application/json: SingleSendsDuplicateSingleSendRequest
+  /marketing/singlesends/{id}/schedule:
+    put:
+      application/json: SingleSendsSchedulePutRequest
+  /marketing/test/send_email:
+    post:
+      application/json: SendTestEmailToContactsRequest
+  /partner_settings/new_relic:
+    patch:
+      application/json: SettingsPartnerUpdateNewRelicPartnerSettingsRequest
+  /senders:
+    post:
+      application/json: PostSendersRequest
+  /sso/certificates:
+    post:
+      application/json: CertificatesCreateSsoCertificateRequest
+  /sso/certificates/{cert_id}:
+    patch:
+      application/json: CertificatesUpdateByIdRequest
+  /sso/teammates/{username}:
+    patch:
+      application/json: SingleSignOnTeammatesEditTeammateRequest
+  /subusers:
+    post:
+      application/json: PostSubusersRequest
+  /subusers/{subuser_name}:
+    patch:
+      application/json: SubusersApiUpdateSubuserEnableStateRequest
+  /subusers/{subuser_name}/ips:
+    put:
+      application/json: SubusersApiUpdateSubuserIpsRequest
+  /suppression/blocks:
+    delete:
+      application/json: BlocksApiDeleteAllBlockedEmailsRequest
+  /suppression/bounces:
+    delete:
+      application/json: BouncesApiDeleteBouncesRequest
+  /suppression/invalid_emails:
+    delete:
+      application/json: InvalidEmailsApiDeleteInvalidEmailsRequest
+  /suppression/spam_reports:
+    delete:
+      application/json: SpamReportsApiDeleteReportsRequest
+  /teammates:
+    post:
+      application/json: TeammatesInviteTeammateRequest
+  /teammates/{username}:
+    patch:
+      application/json: TeammatesUpdatePermissionsRequest
+  /templates:
+    post:
+      application/json: PostTemplatesRequest
+  /templates/{template_id}:
+    patch:
+      application/json: TransactionalTemplatesEditTemplateNameRequest
+    post:
+      application/json: TransactionalTemplatesDuplicateTemplateRequest
+  /tracking_settings/click:
+    patch:
+      application/json: SettingsTrackingUpdateClickTrackingSettingRequest
+  /tracking_settings/open:
+    patch:
+      application/json: SettingsTrackingUpdateOpenTrackingSettingsRequest
+  /user/email:
+    put:
+      application/json: UsersApiUpdateEmailRequest
+  /user/password:
+    put:
+      application/json: UsersApiUpdatePasswordRequest
+  /user/scheduled_sends:
+    post:
+      application/json: CancelScheduledSendsByBatchIdStatusRequest
+  /user/scheduled_sends/{batch_id}:
+    patch:
+      application/json: CancelScheduledSendsUpdateStatusRequest
+  /user/username:
+    put:
+      application/json: UsersApiUpdateUsernameRequest
+  /user/webhooks/event/settings/signed:
+    patch:
+      application/json: WebhooksEnableSignedWebhookRequest
+  /user/webhooks/event/test:
+    post:
+      application/json: WebhooksTestEventNotificationSettingsRequest
+  /validations/email:
+    post:
+      application/json: EmailAddressValidationCheckValidityRequest
+  /whitelabel/dns/email:
+    post:
+      application/json: EmailCnameRecordsSendDnsEmailRequest
+  /whitelabel/domains:
+    post:
+      application/json: DomainAuthenticationPostAuthenticateDomainRequest
+  /whitelabel/domains/{domain_id}:
+    patch:
+      application/json: DomainAuthenticationUpdateDomainSettingsRequest
+  /whitelabel/domains/{domain_id}/subuser:
+    post:
+      application/json: DomainAuthenticationAssociateSubuserWithDomainRequest
+  /whitelabel/domains/{id}/ips:
+    post:
+      application/json: DomainAuthenticationAddIpToDomainRequest
+  /whitelabel/ips:
+    post:
+      application/json: ReverseDnsSetUpReverseDnsRequest
+  /whitelabel/links:
+    post:
+      application/json: LinkBrandingCreateBrandedLinkRequest
+  /whitelabel/links/{id}:
+    patch:
+      application/json: LinkBrandingUpdateBrandedLinkRequest
+  /whitelabel/links/{link_id}/subuser:
+    post:
+      application/json: LinkBrandingAssociateBrandedLinkWithSubuserRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /access_settings/activity:
+    get:
+      '200':
+        application/json: IpAccessManagementGetRecentAccessAttemptsResponse
+      '500':
+        application/json: IpAccessManagementGetRecentAccessAttempts500Response
+  /access_settings/whitelist:
+    delete:
+      '204':
+        application/json: IpAccessManagementRemoveIpAddressesResponse
+  /access_settings/whitelist/{rule_id}:
+    delete:
+      '204':
+        application/json: IpAccessManagementRemoveSpecificIpFromAllowedListResponse
+  /alerts:
+    get:
+      '200':
+        application/json: GetAlertsResponse
+    post:
+      '201':
+        application/json: PostAlertsResponse
+      '400':
+        application/json: PostAlerts400Response
+  /alerts/{alert_id}:
+    delete:
+      '204':
+        application/json: AlertsDeleteAlertByIdResponse
+    get:
+      '200':
+        application/json: AlertsGetSpecificAlertResponse
+    patch:
+      '200':
+        application/json: AlertsUpdateAlertResponse
+  /api_keys:
+    get:
+      '200':
+        application/json: ApiKeysGetAllResponse
+    post:
+      '201':
+        application/json: ApiKeysCreateKeyResponse
+  /api_keys/{api_key_id}:
+    get:
+      '200':
+        application/json: ApiKeysGetByKeyIdResponse
+  /asm/groups:
+    get:
+      '200':
+        application/json: SuppressionsUnsubscribeGroupsGetAllResponse
+    post:
+      '201':
+        application/json: SuppressionsUnsubscribeGroupsCreateNewGroupResponse
+  /asm/groups/{group_id}:
+    delete:
+      '204':
+        application/json: SuppressionsUnsubscribeGroupsDeleteGroupResponse
+    get:
+      '200':
+        application/json: SuppressionsUnsubscribeGroupsGetSingleGroupResponse
+  /asm/groups/{group_id}/suppressions:
+    get:
+      '200':
+        application/json: SuppressionsSuppressionsGetAllSuppressedEmailsResponse
+    post:
+      '201':
+        application/json: SuppressionsSuppressionsAddToGroupResponse
+  /asm/groups/{group_id}/suppressions/search:
+    post:
+      '200':
+        application/json: SuppressionsSuppressionsSearchWithinGroupResponse
+  /asm/groups/{group_id}/suppressions/{email}:
+    delete:
+      '204':
+        application/json: SuppressionsSuppressionsRemoveSuppressionFromGroupResponse
+  /asm/suppressions:
+    get:
+      '200':
+        application/json: SuppressionsSuppressionsGetAllSuppressionsResponse
+  /asm/suppressions/global:
+    post:
+      '201':
+        application/json: SuppressionsGlobalSuppressionsAddRecipientAddressesResponse
+  /asm/suppressions/global/{email}:
+    delete:
+      '204':
+        application/json: SuppressionsGlobalSuppressionsRemoveEmailResponse
+    get:
+      '200':
+        application/json: SuppressionsGlobalSuppressionsGetGlobalSuppressionResponse
+  /asm/suppressions/{email}:
+    get:
+      '200':
+        application/json: SuppressionsSuppressionsGetUnsubscribeGroupsByEmailResponse
+  /browsers/stats:
+    get:
+      '200':
+        application/json: StatsGetEmailStatisticsByBrowserResponse
+  /campaigns:
+    get:
+      '200':
+        application/json: GetCampaignsResponse
+    post:
+      '401':
+        application/json: PostCampaignsResponse
+  /campaigns/{campaign_id}:
+    delete:
+      '204':
+        application/json: CampaignsApiDeleteCampaignByIdResponse
+      '401':
+        application/json: CampaignsApiDeleteCampaignById401Response
+      '404':
+        application/json: CampaignsApiDeleteCampaignById404Response
+    get:
+      '200':
+        application/json: CampaignsApiGetSingleCampaignResponse
+      '401':
+        application/json: CampaignsApiGetSingleCampaign401Response
+      '404':
+        application/json: CampaignsApiGetSingleCampaign404Response
+    patch:
+      '400':
+        application/json: CampaignsApiUpdateSpecificCampaignResponse
+      '403':
+        application/json: CampaignsApiUpdateSpecificCampaign403Response
+  /campaigns/{campaign_id}/schedules:
+    delete:
+      '204':
+        application/json: CampaignsApiUnscheduleCampaignResponse
+    get:
+      '200':
+        application/json: CampaignsApiGetScheduledTimeResponse
+    patch:
+      '200':
+        application/json: CampaignsApiUpdateScheduledTimeResponse
+    post:
+      '201':
+        application/json: CampaignsApiScheduleCampaignResponse
+  /campaigns/{campaign_id}/schedules/now:
+    post:
+      '201':
+        application/json: CampaignsApiSendCampaignNowResponse
+  /campaigns/{campaign_id}/schedules/test:
+    post:
+      '204':
+        application/json: CampaignsApiSendTestCampaignResponse
+  /categories:
+    get:
+      '200':
+        application/json: GetCategoriesResponse
+      '400':
+        application/json: GetCategories400Response
+  /categories/stats:
+    get:
+      '200':
+        application/json: CategoriesGetEmailStatisticsForResponse
+  /clients/stats:
+    get:
+      '200':
+        application/json: StatsGetEmailStatisticsByClientTypeResponse
+  /clients/{client_type}/stats:
+    get:
+      '200':
+        application/json: StatsGetStatsByClientTypeResponse
+  /contactdb/custom_fields:
+    get:
+      '200':
+        application/json: ContactsApiCustomFieldsGetAllResponse
+  /contactdb/lists:
+    delete:
+      '204':
+        application/json: ContactsApiListsDeleteMultipleListsResponse
+    get:
+      '200':
+        application/json: ContactsApiListsGetAllListsResponse
+  /contactdb/lists/{list_id}:
+    delete:
+      '202':
+        application/json: ContactsApiListsDeleteListByIdResponse
+    patch:
+      '200':
+        application/json: ContactsApiListsUpdateListNameResponse
+  /contactdb/lists/{list_id}/recipients:
+    get:
+      '200':
+        application/json: ContactsApiListsGetAllRecipientsResponse
+      '404':
+        application/json: ContactsApiListsGetAllRecipients404Response
+    post:
+      '201':
+        application/json: ContactsApiListsAddMultipleRecipientsToListResponse
+  /contactdb/lists/{list_id}/recipients/{recipient_id}:
+    delete:
+      '204':
+        application/json: ContactsApiListsDeleteRecipientResponse
+    post:
+      '201':
+        application/json: ContactsApiListsAddSingleRecipientResponse
+  /contactdb/recipients:
+    delete:
+      '200':
+        application/json: ContactsApiRecipientsDeleteMultipleRecipientsResponse
+    get:
+      '200':
+        application/json: ContactsApiRecipientsGetAllRecipientsResponse
+      '400':
+        application/json: ContactsApiRecipientsGetAllRecipients400Response
+  /contactdb/recipients/search:
+    get:
+      '200':
+        application/json: ContactsApiRecipientsSearchRecipientByFieldResponse
+    post:
+      '200':
+        application/json: ContactsApiRecipientsSearchBySegmentConditionsResponse
+  /contactdb/recipients/{recipient_id}:
+    delete:
+      '204':
+        application/json: ContactsApiRecipientsDeleteRecipientByIdResponse
+    get:
+      '400':
+        application/json: ContactsApiRecipientsGetSingleRecipientResponse
+      '404':
+        application/json: ContactsApiRecipientsGetSingleRecipient404Response
+  /contactdb/recipients/{recipient_id}/lists:
+    get:
+      '200':
+        application/json: ContactsApiRecipientsGetRecipientListsResponse
+  /contactdb/reserved_fields:
+    get:
+      '200':
+        application/json: ContactsApiCustomFieldsGetReservedFieldsResponse
+  /contactdb/segments:
+    get:
+      '200':
+        application/json: ContactsApiSegmentsGetAllSegmentsResponse
+  /contactdb/segments/{segment_id}:
+    delete:
+      '204':
+        application/json: ContactsApiSegmentsDeleteSegmentResponse
+  /contactdb/segments/{segment_id}/recipients:
+    get:
+      '200':
+        application/json: ContactsApiSegmentsGetSegmentRecipientsResponse
+      '400':
+        application/json: ContactsApiSegmentsGetSegmentRecipients400Response
+      '404':
+        application/json: ContactsApiSegmentsGetSegmentRecipients404Response
+  /contactdb/status:
+    get:
+      '200':
+        application/json: ContactsApiRecipientsGetUploadStatusResponse
+  /designs:
+    get:
+      '200':
+        application/json: DesignsApiGetListResponse
+  /designs/pre-builts:
+    get:
+      '200':
+        application/json: DesignsApiListPreBuiltDesignsResponse
+  /designs/{id}:
+    delete:
+      '204':
+        application/json: DesignsApiDeleteDesignByIdResponse
+  /devices/stats:
+    get:
+      '200':
+        application/json: StatsGetEmailStatisticsByDeviceTypeResponse
+  /geo/stats:
+    get:
+      '200':
+        application/json: StatsGetEmailStatisticsByCountryAndStateProvinceResponse
+  /ips:
+    get:
+      '200':
+        application/json: GetIpsResponse
+    post:
+      '201':
+        application/json: PostIpsResponse
+  /ips/assigned:
+    get:
+      '200':
+        application/json: IpAddressesGetAssignedIpsResponse
+  /ips/pools:
+    get:
+      '200':
+        application/json: IpPoolsGetAllResponse
+  /ips/pools/{pool_name}:
+    delete:
+      '204':
+        application/json: IpPoolsDeletePoolResponse
+      '404':
+        application/json: IpPoolsDeletePool404Response
+    get:
+      '200':
+        application/json: IpPoolsGetPoolIpsResponse
+      '404':
+        application/json: IpPoolsGetPoolIps404Response
+    put:
+      '404':
+        application/json: IpPoolsUpdateNameResponse
+  /ips/pools/{pool_name}/ips:
+    post:
+      '201':
+        application/json: IpPoolsAddIpAddressToPoolResponse
+      '404':
+        application/json: IpPoolsAddIpAddressToPool404Response
+  /ips/pools/{pool_name}/ips/{ip}:
+    delete:
+      '204':
+        application/json: IpPoolsRemoveIpAddressFromPoolResponse
+      '404':
+        application/json: IpPoolsRemoveIpAddressFromPool404Response
+  /ips/remaining:
+    get:
+      '200':
+        application/json: IpAddressesGetRemainingIPsCountResponse
+  /ips/warmup:
+    post:
+      '404':
+        application/json: IpWarmupStartIpAddressWarmupResponse
+  /ips/warmup/{ip_address}:
+    delete:
+      '204':
+        application/json: IpWarmupStopIpAddressWarmupResponse
+      '404':
+        application/json: IpWarmupStopIpAddressWarmup404Response
+    get:
+      '404':
+        application/json: IpWarmupGetWarmupStatusForIpAddressResponse
+  /ips/{ip_address}:
+    get:
+      '200':
+        application/json: IpAddressesGetIpPoolsByAddressResponse
+  /mail/batch:
+    post:
+      '400':
+        application/json: CancelScheduledSendsRequestResponse
+  /mail_settings:
+    get:
+      '200':
+        application/json: SettingsMailGetAllMailSettingsResponse
+      '400':
+        application/json: SettingsMailGetAllMailSettings400Response
+      '401':
+        application/json: SettingsMailGetAllMailSettings401Response
+      '403':
+        application/json: SettingsMailGetAllMailSettings403Response
+      '404':
+        application/json: SettingsMailGetAllMailSettings404Response
+      '500':
+        application/json: SettingsMailGetAllMailSettings500Response
+  /mail_settings/template:
+    patch:
+      '200':
+        application/json: SettingsMailUpdateLegacyTemplateSettingsResponse
+  /mailbox_providers/stats:
+    get:
+      '200':
+        application/json: StatsGetEmailStatisticsByMailboxProviderResponse
+  /marketing/contacts:
+    delete:
+      '202':
+        application/json: ContactsDeleteBulkContactsResponse
+      '400':
+        application/json: ContactsDeleteBulkContacts400Response
+    get:
+      '200':
+        application/json: ContactsGetRecentContactsResponse
+      '400':
+        application/json: ContactsGetRecentContacts400Response
+      '404':
+        application/json: ContactsGetRecentContacts404Response
+    put:
+      '202':
+        application/json: ContactsUpsertBatchContactsResponse
+      '400':
+        application/json: ContactsUpsertBatchContacts400Response
+  /marketing/contacts/batch:
+    post:
+      '200':
+        application/json: ContactsGetBatchedByIdsResponse
+      '404':
+        application/json: ContactsGetBatchedByIds404Response
+  /marketing/contacts/count:
+    get:
+      '200':
+        application/json: ContactsGetTotalCountResponse
+  /marketing/contacts/exports:
+    get:
+      '200':
+        application/json: ContactsGetAllExportsResponse
+      '400':
+        application/json: ContactsGetAllExports400Response
+    post:
+      '202':
+        application/json: ContactsExportListsSegmentsResponse
+      '400':
+        application/json: ContactsExportListsSegments400Response
+  /marketing/contacts/exports/{id}:
+    get:
+      '400':
+        application/json: ContactsCheckExportStatusResponse
+  /marketing/contacts/imports:
+    put:
+      '200':
+        application/json: ContactsImportCsvResponse
+      '400':
+        application/json: ContactsImportCsv400Response
+      '404':
+        application/json: ContactsImportCsv404Response
+  /marketing/contacts/imports/{id}:
+    get:
+      '400':
+        application/json: ContactsCheckImportStatusResponse
+  /marketing/contacts/search:
+    post:
+      '200':
+        application/json: ContactsSearchContactsByQueryResponse
+      '400':
+        application/json: ContactsSearchContactsByQuery400Response
+      '500':
+        application/json: ContactsSearchContactsByQuery500Response
+  /marketing/contacts/search/emails:
+    post:
+      '200':
+        application/json: ContactsSearchByEmailsResponse
+      '500':
+        application/json: ContactsSearchByEmails500Response
+  /marketing/field_definitions:
+    get:
+      '200':
+        application/json: CustomFieldsGetAllFieldDefinitionsResponse
+    post:
+      '200':
+        application/json: CustomFieldsCreateDefinitionResponse
+      '400':
+        application/json: CustomFieldsCreateDefinition400Response
+  /marketing/field_definitions/{custom_field_id}:
+    delete:
+      '404':
+        application/json: CustomFieldsDeleteDefinitionResponse
+    patch:
+      '200':
+        application/json: CustomFieldsUpdateDefinitionResponse
+      '400':
+        application/json: CustomFieldsUpdateDefinition400Response
+      '404':
+        application/json: CustomFieldsUpdateDefinition404Response
+  /marketing/lists:
+    get:
+      '200':
+        application/json: ListsGetAllResponse
+    post:
+      '400':
+        application/json: ListsCreateNewListResponse
+  /marketing/lists/{id}:
+    delete:
+      '200':
+        application/json: ListsDeleteListResponse
+      '204':
+        application/json: ListsDeleteList204Response
+      '404':
+        application/json: ListsDeleteList404Response
+    get:
+      '200':
+        application/json: ListsGetListByIdResponse
+      '404':
+        application/json: ListsGetListById404Response
+    patch:
+      '400':
+        application/json: ListsUpdateNameResponse
+      '404':
+        application/json: ListsUpdateName404Response
+  /marketing/lists/{id}/contacts:
+    delete:
+      '202':
+        application/json: ListsRemoveContactsFromListResponse
+      '404':
+        application/json: ListsRemoveContactsFromList404Response
+  /marketing/lists/{id}/contacts/count:
+    get:
+      '200':
+        application/json: ListsContactCountGetResponse
+      '404':
+        application/json: ListsContactCountGet404Response
+  /marketing/segments:
+    get:
+      '200':
+        application/json: SegmentingContactsListSegmentsResponse
+      '500':
+        application/json: SegmentingContactsListSegments500Response
+    post:
+      '500':
+        application/json: SegmentingContactsCreateNewSegmentResponse
+  /marketing/segments/delete:
+    post:
+      '200':
+        application/json: SegmentingContactsBulkDeleteSegmentsResponse
+      '202':
+        application/json: SegmentingContactsBulkDeleteSegments202Response
+      '400':
+        application/json: SegmentingContactsBulkDeleteSegments400Response
+  /marketing/segments/{segment_id}:
+    delete:
+      '202':
+        application/json: SegmentingContactsDeleteByIdResponse
+      '404':
+        application/json: SegmentingContactsDeleteById404Response
+      '500':
+        application/json: SegmentingContactsDeleteById500Response
+    get:
+      '404':
+        application/json: SegmentingContactsGetByIdResponse
+      '500':
+        application/json: SegmentingContactsGetById500Response
+    patch:
+      '404':
+        application/json: SegmentingContactsUpdateSegmentByIdResponse
+      '500':
+        application/json: SegmentingContactsUpdateSegmentById500Response
+  /marketing/singlesends:
+    delete:
+      '404':
+        application/json: SingleSendsBulkDeleteResponse
+      '500':
+        application/json: SingleSendsBulkDelete500Response
+    get:
+      '200':
+        application/json: SingleSendsGetAllSinglesendsResponse
+      '500':
+        application/json: SingleSendsGetAllSinglesends500Response
+    post:
+      '400':
+        application/json: SingleSendsCreateNewSingleSendResponse
+      '500':
+        application/json: SingleSendsCreateNewSingleSend500Response
+  /marketing/singlesends/categories:
+    get:
+      '200':
+        application/json: SingleSendsGetAllCategoriesResponse
+      '500':
+        application/json: SingleSendsGetAllCategories500Response
+  /marketing/singlesends/search:
+    post:
+      '200':
+        application/json: SingleSendsSearchByCriteriaResponse
+      '404':
+        application/json: SingleSendsSearchByCriteria404Response
+  /marketing/singlesends/{id}:
+    delete:
+      '404':
+        application/json: SingleSendsDeleteByIdResponse
+      '500':
+        application/json: SingleSendsDeleteById500Response
+    get:
+      '404':
+        application/json: SingleSendsGetDetailsByIdResponse
+      '500':
+        application/json: SingleSendsGetDetailsById500Response
+    patch:
+      '400':
+        application/json: SingleSendsUpdateByIdResponse
+      '404':
+        application/json: SingleSendsUpdateById404Response
+      '500':
+        application/json: SingleSendsUpdateById500Response
+    post:
+      '404':
+        application/json: SingleSendsDuplicateSingleSendResponse
+      '500':
+        application/json: SingleSendsDuplicateSingleSend500Response
+  /marketing/singlesends/{id}/schedule:
+    delete:
+      '404':
+        application/json: SingleSendsCancelScheduledSendResponse
+      '500':
+        application/json: SingleSendsCancelScheduledSend500Response
+    put:
+      '201':
+        application/json: SingleSendsSchedulePutResponse
+      '404':
+        application/json: SingleSendsSchedulePut404Response
+      '500':
+        application/json: SingleSendsSchedulePut500Response
+  /marketing/stats/automations/export:
+    get:
+      '200':
+        application/json: MarketingCampaignsStatsExportAutomationStatsResponse
+  /marketing/stats/singlesends/export:
+    get:
+      '200':
+        application/json: MarketingCampaignsStatsExportSingleSendStatsResponse
+  /marketing/stats/singlesends/{id}/links:
+    get:
+      '404':
+        application/json: MarketingCampaignsStatsGetSingleSendLinkStatByIdResponse
+  /marketing/test/send_email:
+    post:
+      '202':
+        application/json: SendTestEmailToContactsResponse
+  /messages:
+    get:
+      '200':
+        application/json: QueryFilterMessagesResponse
+      '400':
+        application/json: QueryFilterMessages400Response
+      '429':
+        application/json: QueryFilterMessages429Response
+  /messages/download:
+    post:
+      '202':
+        application/json: CsvUiOnlyRequestCsvDownloadResponse
+      '400':
+        application/json: CsvUiOnlyRequestCsvDownload400Response
+      '429':
+        application/json: CsvUiOnlyRequestCsvDownload429Response
+      '500':
+        application/json: CsvUiOnlyRequestCsvDownload500Response
+  /messages/download/{download_uuid}:
+    get:
+      '200':
+        application/json: CsvUiOnlyGenerateCsvDownloadUrlResponse
+      '404':
+        application/json: CsvUiOnlyGenerateCsvDownloadUrl404Response
+      '500':
+        application/json: CsvUiOnlyGenerateCsvDownloadUrl500Response
+  /messages/{msg_id}:
+    get:
+      '200':
+        application/json: QueryMessageDetailsResponse
+      '400':
+        application/json: QueryMessageDetails400Response
+      '404':
+        application/json: QueryMessageDetails404Response
+      '429':
+        application/json: QueryMessageDetails429Response
+  /partner_settings:
+    get:
+      '200':
+        application/json: SettingsPartnerListPartnerSettingsResponse
+  /scopes:
+    get:
+      '200':
+        application/json: GetScopesResponse
+      '401':
+        application/json: GetScopes401Response
+  /scopes/requests:
+    get:
+      '200':
+        application/json: TeammatesGetAccessRequestsResponse
+  /scopes/requests/{request_id}:
+    delete:
+      '404':
+        application/json: TeammatesDenyAccessRequestResponse
+  /scopes/requests/{request_id}/approve:
+    patch:
+      '200':
+        application/json: TeammatesApproveAccessRequestResponse
+      '401':
+        application/json: TeammatesApproveAccessRequest401Response
+      '404':
+        application/json: TeammatesApproveAccessRequest404Response
+  /senders:
+    get:
+      '200':
+        application/json: SenderIdentitiesApiGetAllResponse
+    post:
+      '400':
+        application/json: PostSendersResponse
+  /senders/{sender_id}:
+    delete:
+      '204':
+        application/json: SenderIdentitiesApiDeleteSenderIdentityResponse
+      '403':
+        application/json: SenderIdentitiesApiDeleteSenderIdentity403Response
+      '404':
+        application/json: SenderIdentitiesApiDeleteSenderIdentity404Response
+    get:
+      '404':
+        application/json: SenderIdentitiesApiViewSenderIdentityResponse
+    patch:
+      '400':
+        application/json: SenderIdentitiesApiUpdateSenderIdentityResponse
+      '403':
+        application/json: SenderIdentitiesApiUpdateSenderIdentity403Response
+      '404':
+        application/json: SenderIdentitiesApiUpdateSenderIdentity404Response
+  /senders/{sender_id}/resend_verification:
+    post:
+      '204':
+        application/json: SenderIdentitiesApiResendVerificationEmailResponse
+      '400':
+        application/json: SenderIdentitiesApiResendVerificationEmail400Response
+      '404':
+        application/json: SenderIdentitiesApiResendVerificationEmail404Response
+  /sso/integrations:
+    get:
+      '200':
+        application/json: SingleSignOnSettingsGetAllSsoIntegrationsResponse
+  /sso/integrations/{integration_id}/certificates:
+    get:
+      '200':
+        application/json: CertificatesGetByIdpConfigurationsResponse
+  /stats:
+    get:
+      '200':
+        application/json: GetStatsResponse
+  /subusers:
+    get:
+      '200':
+        application/json: GetSubusersResponse
+    post:
+      '500':
+        application/json: PostSubusersResponse
+  /subusers/reputations:
+    get:
+      '200':
+        application/json: SubusersApiGetSubuserReputationsResponse
+  /subusers/{subuser_name}:
+    delete:
+      '204':
+        application/json: SubusersApiDeleteSubuserResponse
+    patch:
+      '204':
+        application/json: SubusersApiUpdateSubuserEnableStateResponse
+  /subusers/{subuser_name}/ips:
+    put:
+      '200':
+        application/json: SubusersApiUpdateSubuserIpsResponse
+  /subusers/{subuser_name}/monitor:
+    delete:
+      '204':
+        application/json: SubuserMonitorSettingsDeleteMonitorSettingsResponse
+  /suppression/blocks:
+    delete:
+      '204':
+        application/json: BlocksApiDeleteAllBlockedEmailsResponse
+  /suppression/blocks/{email}:
+    delete:
+      '204':
+        application/json: BlocksApiDeleteSpecificBlockResponse
+  /suppression/bounces:
+    delete:
+      '204':
+        application/json: BouncesApiDeleteBouncesResponse
+    get:
+      '200':
+        application/json: BouncesApiGetAllBouncesResponse
+  /suppression/bounces/{email}:
+    delete:
+      '204':
+        application/json: BouncesApiRemoveBounceResponse
+    get:
+      '200':
+        application/json: BouncesApiGetByEmailAddressResponse
+  /suppression/invalid_emails:
+    delete:
+      '204':
+        application/json: InvalidEmailsApiDeleteInvalidEmailsResponse
+    get:
+      '200':
+        application/json: InvalidEmailsApiGetAllInvalidEmailsResponse
+  /suppression/invalid_emails/{email}:
+    delete:
+      '204':
+        application/json: InvalidEmailsApiRemoveSpecificEmailResponse
+    get:
+      '200':
+        application/json: InvalidEmailsApiGetSpecificInvalidEmailResponse
+  /suppression/spam_reports:
+    delete:
+      '204':
+        application/json: SpamReportsApiDeleteReportsResponse
+  /suppression/spam_reports/{email}:
+    delete:
+      '204':
+        application/json: SpamReportsApiDeleteSpecificReportByEmailAddressResponse
+  /suppression/unsubscribes:
+    get:
+      '200':
+        application/json: SuppressionsGlobalSuppressionsGetAllAddressesResponse
+  /teammates:
+    get:
+      '200':
+        application/json: TeammatesGetAllTeammatesResponse
+    post:
+      '201':
+        application/json: TeammatesInviteTeammateResponse
+      '400':
+        application/json: TeammatesInviteTeammate400Response
+  /teammates/pending:
+    get:
+      '200':
+        application/json: TeammatesGetAllPendingResponse
+  /teammates/pending/{token}:
+    delete:
+      '404':
+        application/json: TeammatesDeletePendingTeammateResponse
+  /teammates/pending/{token}/resend:
+    post:
+      '200':
+        application/json: TeammatesResendTeammateInviteResponse
+      '404':
+        application/json: TeammatesResendTeammateInvite404Response
+  /teammates/{username}:
+    delete:
+      '204':
+        application/json: TeammatesRemoveTeammateResponse
+      '404':
+        application/json: TeammatesRemoveTeammate404Response
+    get:
+      '200':
+        application/json: TeammatesGetByUsernameResponse
+    patch:
+      '200':
+        application/json: TeammatesUpdatePermissionsResponse
+      '400':
+        application/json: TeammatesUpdatePermissions400Response
+      '404':
+        application/json: TeammatesUpdatePermissions404Response
+  /templates:
+    get:
+      '200':
+        application/json: GetTemplatesResponse
+      '400':
+        application/json: GetTemplates400Response
+  /templates/{template_id}:
+    delete:
+      '204':
+        application/json: TransactionalTemplatesDeleteTemplateResponse
+  /tracking_settings:
+    get:
+      '200':
+        application/json: SettingsTrackingGetAllTrackingResponse
+  /tracking_settings/open:
+    get:
+      '200':
+        application/json: SettingsTrackingGetOpenSettingsResponse
+    patch:
+      '200':
+        application/json: SettingsTrackingUpdateOpenTrackingSettingsResponse
+  /user/account:
+    get:
+      '200':
+        application/json: UsersApiGetUserAccountInformationResponse
+  /user/credits:
+    get:
+      '200':
+        application/json: UsersApiGetCreditBalanceResponse
+  /user/email:
+    get:
+      '200':
+        application/json: UsersApiGetAccountEmailAddressResponse
+    put:
+      '200':
+        application/json: UsersApiUpdateEmailResponse
+  /user/password:
+    put:
+      '200':
+        application/json: UsersApiUpdatePasswordResponse
+  /user/profile:
+    get:
+      '200':
+        application/json: UsersApiGetUserProfileResponse
+  /user/scheduled_sends:
+    get:
+      '200':
+        application/json: CancelScheduledSendsAllScheduledSendsResponse
+  /user/scheduled_sends/{batch_id}:
+    get:
+      '200':
+        application/json: CancelScheduledSendsByBatchIdResponse
+    patch:
+      '204':
+        application/json: CancelScheduledSendsUpdateStatusResponse
+  /user/username:
+    get:
+      '200':
+        application/json: UsersApiGetUsernameResponse
+    put:
+      '200':
+        application/json: UsersApiUpdateUsernameResponse
+  /user/webhooks/event/settings/signed:
+    get:
+      '200':
+        application/json: WebhooksGetSignedWebhookPublicKeyResponse
+    patch:
+      '200':
+        application/json: WebhooksEnableSignedWebhookResponse
+      '400':
+        application/json: WebhooksEnableSignedWebhook400Response
+      '401':
+        application/json: WebhooksEnableSignedWebhook401Response
+      '500':
+        application/json: WebhooksEnableSignedWebhook500Response
+  /user/webhooks/parse/settings:
+    get:
+      '200':
+        application/json: WebhooksGetParseSettingsResponse
+  /user/webhooks/parse/settings/{hostname}:
+    delete:
+      '204':
+        application/json: SettingsInboundParseDeleteSettingByHostnameResponse
+  /user/webhooks/parse/stats:
+    get:
+      '200':
+        application/json: WebhooksGetParseStatsResponse
+  /validations/email:
+    post:
+      '200':
+        application/json: EmailAddressValidationCheckValidityResponse
+  /verified_senders:
+    get:
+      '200':
+        application/json: SenderVerificationGetAllSenderIdentitiesResponse
+    post:
+      '400':
+        application/json: SenderVerificationCreateVerifiedSenderRequestResponse
+  /verified_senders/domains:
+    get:
+      '200':
+        application/json: SenderVerificationListDomainWarnResponse
+  /verified_senders/resend/{id}:
+    post:
+      '204':
+        application/json: SenderVerificationResendVerificationEmailResponse
+      '400':
+        application/json: SenderVerificationResendVerificationEmail400Response
+      '404':
+        application/json: SenderVerificationResendVerificationEmail404Response
+  /verified_senders/steps_completed:
+    get:
+      '200':
+        application/json: SenderVerificationDetermineVerificationStatusResponse
+  /verified_senders/verify/{token}:
+    get:
+      '404':
+        application/json: SenderVerificationRequestVerificationTokenResponse
+  /verified_senders/{id}:
+    delete:
+      '204':
+        application/json: SenderVerificationDeleteVerifiedSenderResponse
+      '403':
+        application/json: SenderVerificationDeleteVerifiedSender403Response
+      '404':
+        application/json: SenderVerificationDeleteVerifiedSender404Response
+    patch:
+      '400':
+        application/json: SenderVerificationUpdateSenderIdentityResponse
+      '403':
+        application/json: SenderVerificationUpdateSenderIdentity403Response
+      '404':
+        application/json: SenderVerificationUpdateSenderIdentity404Response
+  /whitelabel/dns/email:
+    post:
+      '400':
+        application/json: EmailCnameRecordsSendDnsEmailResponse
+  /whitelabel/domains/subuser:
+    delete:
+      '204':
+        application/json: DomainAuthenticationDisassociateDomainFromSubuserResponse
+  /whitelabel/domains/{domain_id}:
+    delete:
+      '204':
+        application/json: DomainAuthenticationDeleteAuthenticatedDomainResponse
+  /whitelabel/domains/{id}/validate:
+    post:
+      '200':
+        application/json: DomainAuthenticationValidateDomainResponse
+      '500':
+        application/json: DomainAuthenticationValidateDomain500Response
+  /whitelabel/ips:
+    get:
+      '200':
+        application/json: ReverseDnsGetAllReverseDnsRecordsResponse
+  /whitelabel/ips/{id}:
+    delete:
+      '204':
+        application/json: ReverseDnsDeleteReverseDnsRecordResponse
+  /whitelabel/ips/{id}/validate:
+    post:
+      '200':
+        application/json: ReverseDnsValidateRecordResponse
+      '404':
+        application/json: ReverseDnsValidateRecord404Response
+      '500':
+        application/json: ReverseDnsValidateRecord500Response
+  /whitelabel/links:
+    get:
+      '200':
+        application/json: LinkBrandingGetBrandedLinksResponse
+  /whitelabel/links/subuser:
+    delete:
+      '204':
+        application/json: LinkBrandingDisassociateBrandedLinkFromSubuserResponse
+  /whitelabel/links/{id}:
+    delete:
+      '204':
+        application/json: LinkBrandingDeleteBrandedLinkResponse
+  /whitelabel/links/{id}/validate:
+    post:
+      '200':
+        application/json: LinkBrandingValidateBrandedLinkResponse
+      '500':
+        application/json: LinkBrandingValidateBrandedLink500Response
+securityParameters:
+  X-Cursor:
+    header: false
+  X-Query-Id:
+    header: false
+  ab_phase_id:
+    query: false
+  ab_variation_id:
+    query: false
+  aggregated_by:
+    query: false
+  automation_ids:
+    query: false
+  browsers:
+    query: false
+  categories:
+    query: false
+  category:
+    query: false
+  contact_ids:
+    query: false
+  contact_sample:
+    query: false
+  contacts_sample:
+    query: false
+  country:
+    query: false
+  date:
+    query: false
+  delete_all_contacts:
+    query: false
+  delete_contacts:
+    query: false
+  domain:
+    query: false
+  email_address:
+    query: false
+  end_date:
+    query: false
+  end_time:
+    query: false
+  exclude_subusers:
+    query: false
+  exclude_whitelabels:
+    query: false
+  generations:
+    query: false
+  group_by:
+    query: false
+  id:
+    query: false
+  ids:
+    query: false
+  ip:
+    query: false
+  lastSeenID:
+    query: false
+  limit:
+    query: false
+  list_id:
+    query: false
+  mailbox_providers:
+    query: false
+  no_parent_list_id:
+    query: false
+  offset:
+    query: false
+  on-behalf-of:
+    header: false
+  page:
+    query: false
+  page_size:
+    query: false
+  page_token:
+    query: false
+  parent_list_ids:
+    query: false
+  query:
+    query: false
+  query_json:
+    query: false
+  recipient_id:
+    query: false
+  segment_id:
+    query: false
+  si:
+    query: false
+  singlesend_ids:
+    query: false
+  sort_by_direction:
+    query: false
+  sort_by_metric:
+    query: false
+  start_date:
+    query: false
+  start_time:
+    query: false
+  step_ids:
+    query: false
+  subuser:
+    query: false
+  subusers:
+    query: false
+  summary:
+    query: false
+  timezone:
+    query: false
+  username:
+    query: false
+  usernames:
+    query: false
+  '{field_name}':
+    query: false
+validServerUrls: {}

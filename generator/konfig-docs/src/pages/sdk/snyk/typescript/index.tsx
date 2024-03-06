@@ -17,7 +17,7 @@ export default function SnykTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-03-05T22:46:10.886Z")}
+      lastUpdated={new Date("2024-03-05T23:20:55.483Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
@@ -828,7 +828,7 @@ export default function SnykTypeScriptSdk() {
   },
   {
     "url": "/groups/{group_id}/orgs",
-    "method": "listGroupOrganizations",
+    "method": "listGroupOrgs",
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Orgs",
     "typeScriptTag": "orgs",
