@@ -249,6 +249,7 @@ paths:
             application/vnd.vimeo.endpoint+json:
               schema:
                 $ref: '#/components/schemas/endpoint'
+      x-mill-path-template: /
   /albums/{album_id}/available_videos:
     get:
       summary: >-
@@ -351,6 +352,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /albums/!album_id/available_videos
   /categories:
     get:
       summary: Get all categories
@@ -408,6 +410,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/category'
+      x-mill-path-template: /categories
   /categories/{category}:
     get:
       summary: Get a specific category
@@ -436,6 +439,7 @@ paths:
             application/vnd.vimeo.category+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /categories/+category
   /categories/{category}/channels:
     get:
       summary: Get all the channels in a category
@@ -524,6 +528,7 @@ paths:
             application/vnd.vimeo.channel+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /categories/+category/channels
   /categories/{category}/groups:
     get:
       summary: Get all the groups in a category
@@ -610,6 +615,7 @@ paths:
             application/vnd.vimeo.group+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /categories/+category/groups
   /categories/{category}/videos:
     get:
       summary: Get all the videos in a category
@@ -728,6 +734,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /categories/+category/videos
   /categories/{category}/videos/{video_id}:
     get:
       summary: Get a specific video in a category
@@ -765,6 +772,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /categories/+category/videos/!video_id
   /channels:
     get:
       summary: Get all channels
@@ -860,6 +868,7 @@ paths:
             application/vnd.vimeo.channel+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels
     post:
       summary: Create a channel
       description: This method creates a new channel.
@@ -928,6 +937,7 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-template: /channels
   /channels/{channel_id}:
     delete:
       summary: Delete a channel
@@ -955,6 +965,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /channels/+channel_id
     get:
       summary: Get a specific channel
       description: This method returns a single channel.
@@ -976,6 +987,7 @@ paths:
             application/vnd.vimeo.channel+json:
               schema:
                 $ref: '#/components/schemas/channel'
+      x-mill-path-template: /channels/+channel_id
     patch:
       summary: Edit a channel
       description: This method edits the specified channel.
@@ -1044,6 +1056,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id
   /channels/{channel_id}/categories:
     get:
       summary: Get all the categories to which a channel belongs
@@ -1076,6 +1089,7 @@ paths:
             application/vnd.vimeo.category+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels/+channel_id/categories
     put:
       summary: Add a channel to a list of categories
       description: This method adds the specified channel to multiple categories.
@@ -1138,6 +1152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels/+channel_id/categories
   /channels/{channel_id}/categories/{category}:
     delete:
       summary: Remove a channel from a category
@@ -1188,6 +1203,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/categories/+category
     put:
       summary: Add a channel to a specific category
       description: >-
@@ -1245,6 +1261,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/categories/+category
   /channels/{channel_id}/moderators:
     delete:
       summary: Remove a list of moderators from a channel
@@ -1296,6 +1313,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/moderators
     get:
       summary: Get all the moderators of a channel
       description: This method returns every moderator of the specified channel.
@@ -1371,6 +1389,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-template: /channels/+channel_id/moderators
     patch:
       summary: Replace the moderators of a channel
       description: >-
@@ -1431,6 +1450,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/moderators
     put:
       summary: Add a list of moderators to a channel
       description: >-
@@ -1480,6 +1500,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/moderators
   /channels/{channel_id}/moderators/{user_id}:
     get:
       summary: Get a specific moderator of a channel
@@ -1509,6 +1530,7 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/user'
+      x-mill-path-template: /channels/+channel_id/moderators/!user_id
     delete:
       summary: Remove a specific moderator from a channel
       description: >-
@@ -1553,6 +1575,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/moderators/+user_id
     put:
       summary: Add a specific moderator to a channel
       description: >-
@@ -1596,6 +1619,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/moderators/+user_id
   /channels/{channel_id}/privacy/users:
     get:
       summary: Get all the users who can access a private channel
@@ -1666,6 +1690,7 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /channels/+channel_id/privacy/users
     put:
       summary: Permit a list of users to access a private channel
       description: >-
@@ -1738,6 +1763,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/privacy/users
   /channels/{channel_id}/privacy/users/{user_id}:
     delete:
       summary: Restrict a user from accessing a private channel
@@ -1781,6 +1807,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/privacy/users/+user_id
     put:
       summary: Permit a specific user to access a private channel
       description: >-
@@ -1822,6 +1849,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/privacy/users/+user_id
   /channels/{channel_id}/tags:
     get:
       summary: Get all the tags that have been added to a channel
@@ -1854,6 +1882,7 @@ paths:
             application/vnd.vimeo.tag+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels/+channel_id/tags
     put:
       summary: Add a list of tags to a channel
       description: >-
@@ -1927,6 +1956,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/tags
   /channels/{channel_id}/tags/{word}:
     delete:
       summary: Remove a tag from a channel
@@ -1977,6 +2007,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/tags/*word
     get:
       summary: Check if a tag has been added to a channel
       description: >-
@@ -2015,6 +2046,7 @@ paths:
             application/vnd.vimeo.tag+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /channels/+channel_id/tags/*word
     put:
       summary: Add a specific tag to a channel
       description: >-
@@ -2066,6 +2098,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/tags/*word
   /channels/{channel_id}/users:
     get:
       summary: Get all the followers of a channel
@@ -2160,6 +2193,7 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels/+channel_id/users
   /channels/{channel_id}/videos:
     delete:
       summary: Remove a list of videos from a channel
@@ -2215,6 +2249,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/videos
     get:
       summary: Get all the videos in a channel
       description: This method returns every video in the specified channel.
@@ -2353,6 +2388,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels/+channel_id/videos
     put:
       summary: Add a list of videos to a channel
       description: >-
@@ -2408,6 +2444,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/videos
   /channels/{channel_id}/videos/{video_id}:
     delete:
       summary: Remove a specific video from a channel
@@ -2452,6 +2489,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/videos/!video_id
     get:
       summary: Get a specific video in a channel
       description: >-
@@ -2488,6 +2526,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /channels/+channel_id/videos/!video_id
     put:
       summary: Add a specific video to a channel
       description: >-
@@ -2531,6 +2570,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /channels/+channel_id/videos/!video_id
   /channels/{channel_id}/videos/{video_id}/comments:
     get:
       summary: Get all the video comments on a video
@@ -2593,6 +2633,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/comment'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/comments
     post:
       summary: Add a video comment to a video
       description: This method adds a video comment to the specified video.
@@ -2659,6 +2701,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/comments
   /channels/{channel_id}/videos/{video_id}/credits:
     get:
       summary: Get all the credited users in a video
@@ -2742,6 +2786,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/credit'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/credits
     post:
       summary: Credit a user in a video
       description: This method adds a user credit to the specified video.
@@ -2816,6 +2862,8 @@ paths:
             application/vnd.vimeo.credit+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/credits
   /channels/{channel_id}/videos/{video_id}/likes:
     get:
       summary: Get all the users who have liked a video
@@ -2892,6 +2940,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/likes
   /channels/{channel_id}/videos/{video_id}/pictures:
     get:
       summary: Get all the thumbnails of a video
@@ -2941,6 +2991,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/picture'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/pictures
     post:
       summary: Add a video thumbnail
       description: >-
@@ -2993,6 +3045,8 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/pictures
   /channels/{channel_id}/videos/{video_id}/privacy/users:
     get:
       summary: Get the users who can access an unlisted video
@@ -3048,6 +3102,8 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/privacy/users
     put:
       summary: Permit a list of users to access an unlisted video
       description: >-
@@ -3087,6 +3143,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/privacy/users
   /channels/{channel_id}/videos/{video_id}/texttracks:
     get:
       summary: Get all the text tracks of a video
@@ -3142,6 +3200,8 @@ paths:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/texttracks
     post:
       summary: Add a text track to a video
       description: >-
@@ -3242,6 +3302,8 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/texttracks
   /channels/{channel_id}/videos/{video_id}/versions:
     get:
       summary: Get all the versions of a video
@@ -3303,6 +3365,8 @@ paths:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /channels/+channel_id/videos/!video_id/versions
   /contentratings:
     get:
       summary: Get all content ratings
@@ -3319,6 +3383,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/content-rating'
+      x-mill-path-template: /contentratings
   /creativecommons:
     get:
       summary: Get all Creative Commons licenses
@@ -3352,6 +3417,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/creative-commons'
+      x-mill-path-template: /creativecommons
   /destination/{destination_id}:
     delete:
       summary: Delete a live event destination
@@ -3395,6 +3461,7 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-template: /destination/#destination_id
     get:
       summary: Get a live event destination
       description: >-
@@ -3441,6 +3508,7 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-template: /destination/#destination_id
     patch:
       summary: Update a live event destination
       description: >-
@@ -3590,6 +3658,7 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-template: /destination/#destination_id
   /groups:
     get:
       summary: Get all groups
@@ -3677,6 +3746,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/group'
+      x-mill-path-template: /groups
     post:
       summary: Create a group
       description: This method creates a new group.
@@ -3724,6 +3794,7 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-template: /groups
   /groups/{group_id}:
     delete:
       summary: Delete a group
@@ -3753,6 +3824,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /groups/+group_id
     get:
       summary: Get a specific group
       description: This method returns the specified group.
@@ -3774,6 +3846,7 @@ paths:
             application/vnd.vimeo.group+json:
               schema:
                 $ref: '#/components/schemas/group'
+      x-mill-path-template: /groups/+group_id
   /groups/{group_id}/users:
     get:
       summary: Get all the members of a group
@@ -3868,6 +3941,7 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /groups/+group_id/users
   /groups/{group_id}/videos:
     get:
       summary: Get all the videos in a group
@@ -3984,6 +4058,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /groups/+group_id/videos
   /groups/{group_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a group
@@ -4020,6 +4095,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /groups/+group_id/videos/#video_id
     get:
       summary: Get a specific video in a group
       description: >-
@@ -4056,6 +4132,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /groups/+group_id/videos/#video_id
     put:
       summary: Add a video to a group
       description: >-
@@ -4099,6 +4176,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /groups/+group_id/videos/#video_id
   /languages:
     get:
       summary: Get all languages
@@ -4146,6 +4224,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/language'
+      x-mill-path-template: /languages
   /live_events:
     delete:
       summary: Delete a list of live events
@@ -4170,6 +4249,10 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get all the live events that belong to the user
       description: The method returns every event belonging to the authenticated user.
@@ -4271,6 +4354,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/live-event'
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event
       description: This method creates a new event for the authenticated user.
@@ -4342,6 +4429,7 @@ paths:
                   description: Whether the DVR feature is enabled.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 embed:
                   description: >-
                     The embed settings of the event and the videos generated by
@@ -4428,13 +4516,16 @@ paths:
                         interaction tools settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                     is_qna_moderated:
                       description: >-
                         Whether the Q&A is moderated for the interaction tools
                         settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                   type: object
+                  x-mill-visibility-private: true
                 low_latency:
                   description: Whether the event has low-latency streaming enabled.
                   type: boolean
@@ -4509,6 +4600,7 @@ paths:
                   description: Whether the scheduled playback feature is enabled.
                   example: false
                   type: boolean
+                  x-mill-visibility-private: true
                 stream_description:
                   description: >-
                     The description of the next video to be streamed to the
@@ -4620,6 +4712,10 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}:
     delete:
       summary: Delete a specific live event
@@ -4657,6 +4753,10 @@ paths:
         - oauth2:
             - delete
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get a specific live event
       description: This method returns a single event belonging to the authenticated user.
@@ -4677,6 +4777,7 @@ paths:
           required: false
           schema:
             type: string
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The event was returned.
@@ -4707,6 +4808,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     patch:
       summary: Update a live event
       description: This method updates an event belonging to the authenticated user.
@@ -4782,6 +4887,7 @@ paths:
                   description: Whether the DVR feature is enabled.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 embed:
                   description: >-
                     The embed settings of the event and the videos generated by
@@ -4858,13 +4964,16 @@ paths:
                         interaction tools settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                     is_qna_moderated:
                       description: >-
                         Whether the Q&A is moderated for the interaction tools
                         settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                   type: object
+                  x-mill-visibility-private: true
                 playlist_sort:
                   description: >
                     The order in which the videos of the event appear within the
@@ -4933,6 +5042,7 @@ paths:
                   description: Whether the scheduled playback feature is enabled.
                   example: false
                   type: boolean
+                  x-mill-visibility-private: true
                 stream_description:
                   description: >-
                     The description of the next video to be streamed to the
@@ -4970,6 +5080,7 @@ paths:
                     - simulive
                   example: live
                   type: string
+                  x-mill-visibility-private: true
                 stream_password:
                   description: >-
                     The password when **stream_privacy.view** is `password`.
@@ -5055,6 +5166,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/activate:
     post:
       summary: Activate a live event
@@ -5086,10 +5201,12 @@ paths:
                     field is deprecated._
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 streaming_start_requested:
                   description: Whether the stream activates from the cloud composer.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
       responses:
         '200':
           description: The event was activated.
@@ -5145,6 +5262,10 @@ paths:
         - oauth2:
             - create
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/activate
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/auto_cc:
     patch:
       summary: Edit the automated closed captions preference of a live event
@@ -5173,12 +5294,14 @@ paths:
                   description: Whether automated closed captions are enabled for the event.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 auto_cc_keywords:
                   description: >-
                     A comma-separated list of keywords that improve the quality
                     of the automated closed captions.
                   example: commonly-used words,phrases,technical terms
                   type: string
+                  x-mill-visibility-private: true
                 auto_cc_lang:
                   description: |
                     The language in which the automated closed captions appear.
@@ -5197,6 +5320,7 @@ paths:
                     - pt-BR
                   example: en-US
                   type: string
+                  x-mill-visibility-private: true
               required:
                 - auto_cc_enabled
       responses:
@@ -5236,6 +5360,11 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/auto_cc
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
+      x-mill-visibility-private: true
   /live_events/{live_event_id}/end:
     post:
       summary: End a live event
@@ -5260,6 +5389,7 @@ paths:
           schema:
             type: number
             example: 12345
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The event was ended.
@@ -5297,6 +5427,10 @@ paths:
         - oauth2:
             - create
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/end
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/low_latency:
     patch:
       summary: Toggle the low-latency option of a live event
@@ -5346,6 +5480,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/low_latency
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/pictures:
     get:
       summary: Get all the thumbnails of a live event
@@ -5379,6 +5517,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/pictures
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event thumbnail
       description: This method creates a thumbnail image for the specified event.
@@ -5432,6 +5574,10 @@ paths:
         - oauth2:
             - upload
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/pictures
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/pictures/{thumbnail_id}:
     delete:
       summary: Delete a live event thumbnail
@@ -5478,6 +5624,10 @@ paths:
         - oauth2:
             - delete
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get a specific live event thumbnail
       description: This method returns a single thumbnail image of the specified event.
@@ -5521,6 +5671,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     patch:
       summary: Edit a live event thumbnail
       description: This method edits a thumbnail image for the specified event.
@@ -5581,6 +5735,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/privacy/domains:
     get:
       summary: Get all the domains on which a live event can be embedded
@@ -5636,6 +5794,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/privacy/domains
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     put:
       summary: Embed a live event on one or more domains
       description: >-
@@ -5699,6 +5861,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/privacy/domains
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/videos:
     delete:
       summary: Remove a list of videos from a live event
@@ -5764,6 +5930,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get all the videos in a live event
       description: This method returns every video in the specified event.
@@ -5903,6 +6073,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Add a list of videos to a live event
       description: This method adds multiple videos to the specified event.
@@ -5967,6 +6141,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /live_events/{live_event_id}/videos/{video_id}:
     get:
       summary: Get a specific video in a live event
@@ -6019,6 +6197,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /live_events/#live_event_id/videos/!video_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me:
     get:
       summary: Get the user
@@ -6033,6 +6215,8 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/user'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me
     patch:
       summary: Edit the user
       description: This method edits the Vimeo account of the authenticated user.
@@ -6182,6 +6366,8 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me
   /me/albums:
     get:
       summary: Get all the showcases that belong to the user
@@ -6261,6 +6447,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums
     post:
       summary: Create a showcase
       description: This method creates a new showcase for the specified user.
@@ -6408,6 +6596,8 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums
   /me/albums/{album_id}:
     delete:
       summary: Delete a showcase
@@ -6445,6 +6635,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id
     get:
       summary: Get a specific showcase
       description: >-
@@ -6474,6 +6666,8 @@ paths:
             application/vnd.vimeo.album+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id
     patch:
       summary: Edit a showcase
       description: >-
@@ -6646,6 +6840,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id
   /me/albums/{album_id}/videos:
     get:
       summary: Get all the videos in a showcase
@@ -6790,6 +6986,8 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos
     put:
       summary: Replace all the videos in a showcase
       description: >-
@@ -6840,6 +7038,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos
   /me/albums/{album_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a showcase
@@ -6884,6 +7084,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos/!video_id
     get:
       summary: Get a specific video in a showcase
       description: >-
@@ -6927,6 +7129,8 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos/!video_id
     put:
       summary: Add a specific video to a showcase
       description: >-
@@ -6970,6 +7174,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos/!video_id
   /me/albums/{album_id}/videos/{video_id}/set_album_thumbnail:
     post:
       summary: Create a thumbnail for a showcase from a showcase video
@@ -7038,6 +7244,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos/#video_id/set_album_thumbnail
   /me/albums/{album_id}/videos/{video_id}/set_featured_video:
     patch:
       summary: Set the featured video of a showcase
@@ -7087,6 +7295,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/albums/#album_id/videos/!video_id/set_featured_video
   /me/analytics:
     get:
       summary: Get analytics for the user
@@ -7113,6 +7323,7 @@ paths:
               - embed_domain
               - total
               - video
+          x-mill-visibility-private: true
         - description: |
             The sort direction of the results.
 
@@ -7128,6 +7339,7 @@ paths:
             enum:
               - asc
               - desc
+          x-mill-visibility-private: true
         - description: A comma-separated list of video, folder, or event URIs to filter.
           in: query
           name: filter_content
@@ -7135,6 +7347,7 @@ paths:
           schema:
             type: string
             example: /folder/1233456,/video/7890123,/folder/123
+          x-mill-visibility-private: true
         - description: >-
             A comma-separated list of country codes in ISO-3166 format to filter
             on.
@@ -7146,6 +7359,7 @@ paths:
             example: UK,US,IN
             items:
               type: string
+          x-mill-visibility-private: true
         - description: A comma-separated list of device types to filter on.
           in: query
           name: filter_device_types
@@ -7155,6 +7369,7 @@ paths:
             example: android,ios
             items:
               type: string
+          x-mill-visibility-private: true
         - description: A comma-separated list of domain names to filter on.
           in: query
           name: filter_embed_domains
@@ -7164,6 +7379,7 @@ paths:
             example: abc.com,xyz.com
             items:
               type: string
+          x-mill-visibility-private: true
         - description: A comma-separated list of streaming types to filter on.
           in: query
           name: filter_streaming_types
@@ -7173,6 +7389,7 @@ paths:
             example: live,video
             items:
               type: string
+          x-mill-visibility-private: true
         - description: The start date of the range of results in ISO 8601 format.
           in: query
           name: from
@@ -7180,6 +7397,7 @@ paths:
           schema:
             type: string
             example: '2021-05-30T00:00:00+00:00'
+          x-mill-visibility-private: true
         - description: The page number of the results to show.
           in: query
           name: page
@@ -7187,6 +7405,7 @@ paths:
           schema:
             type: number
             example: 1
+          x-mill-visibility-private: true
         - description: >-
             The maximum number of items returned from the request, up to a limit
             of 1000 items. The default value is `50`.
@@ -7196,6 +7415,7 @@ paths:
           schema:
             type: number
             example: 50
+          x-mill-visibility-private: true
         - description: |
             The way to sort the results.
 
@@ -7238,6 +7458,7 @@ paths:
               - unique_viewers
               - video
               - views
+          x-mill-visibility-private: true
         - description: >
             The interval by which to aggregate the data according to the
             specified data dimension. The default value is `none`.
@@ -7260,6 +7481,7 @@ paths:
               - none
               - week
               - year
+          x-mill-visibility-private: true
         - description: The end date of the range of results in ISO 8601 format.
           in: query
           name: to
@@ -7267,6 +7489,7 @@ paths:
           schema:
             type: string
             example: '2021-06-30T23:59:59+00:00'
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The analytics were returned.
@@ -7279,6 +7502,11 @@ paths:
       security:
         - oauth2:
             - stats
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/analytics
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_ANALYTICS_API
+      x-mill-visibility-private: true
   /me/appearances:
     get:
       summary: Get all the videos in which the user appears
@@ -7380,6 +7608,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/appearances
   /me/categories:
     get:
       summary: Get all the categories that the user follows
@@ -7455,6 +7685,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/categories
   /me/categories/{category}:
     delete:
       summary: Cause the user to stop following a category
@@ -7478,6 +7710,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/categories/+category
     get:
       summary: Check if the user follows a category
       description: >-
@@ -7500,6 +7734,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/categories/+category
     put:
       summary: Cause the user to follow a specific category
       description: >-
@@ -7522,6 +7758,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/categories/+category
   /me/channels:
     get:
       summary: Get all the channels to which a user subscribes
@@ -7613,6 +7851,8 @@ paths:
           description: >-
             No channel has been followed since the given `If-Modified-Since`
             header.
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/channels
   /me/channels/{channel_id}:
     delete:
       summary: Unsubscribe the user from a specific channel
@@ -7642,6 +7882,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/channels/+channel_id
     get:
       summary: Check if a user follows a channel
       description: >-
@@ -7667,6 +7909,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/channels/+channel_id
     put:
       summary: Subscribe the user to a specific channel
       description: This method subscribes the authenticated user to the specified channel.
@@ -7693,6 +7937,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/channels/+channel_id
   /me/customlogos:
     get:
       summary: Get all the custom logos that belong to the user
@@ -7717,6 +7963,8 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/customlogos
     post:
       summary: Add a custom user logo
       description: >-
@@ -7745,6 +7993,8 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/customlogos
   /me/customlogos/{logo_id}:
     delete:
       summary: Delete a custom user logo
@@ -7774,6 +8024,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/customlogos/#logo_id
     get:
       summary: Get a specific custom user logo
       description: >-
@@ -7803,6 +8055,8 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/customlogos/#logo_id
   /me/destinations:
     get:
       summary: Get all available live event destinations for the user to stream to
@@ -7834,6 +8088,8 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/destinations
   /me/feed:
     get:
       summary: Get all the videos in the user's feed
@@ -7915,6 +8171,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/feed
   /me/followers:
     get:
       summary: Get all the followers of the user
@@ -7984,6 +8242,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/followers
   /me/following:
     get:
       summary: Get all the users that the user is following
@@ -8065,6 +8325,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/following
     post:
       summary: Follow a list of users
       description: >-
@@ -8152,6 +8414,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/following
   /me/following/{follow_user_id}:
     delete:
       summary: Unfollow a user
@@ -8175,6 +8439,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/following/+follow_user_id
     get:
       summary: Check if the user is following another user
       description: >-
@@ -8200,6 +8466,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/following/+follow_user_id
     put:
       summary: Follow a specific user
       description: >-
@@ -8232,6 +8500,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/following/+follow_user_id
   /me/groups:
     get:
       summary: Get all the groups that the user has joined
@@ -8317,6 +8587,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/group'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/groups
   /me/groups/{group_id}:
     delete:
       summary: Remove the user from a group
@@ -8347,6 +8619,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/groups/+group_id
     put:
       summary: Add the user to a group
       description: This method adds the authenticated user to the specified group.
@@ -8376,6 +8650,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/groups/+group_id
     get:
       summary: Check if a user has joined a group
       description: >-
@@ -8403,6 +8679,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/groups/+group_id
   /me/likes:
     get:
       summary: Get all the videos that a user has liked
@@ -8487,6 +8765,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/likes
   /me/likes/{video_id}:
     delete:
       summary: Cause a user to unlike a video
@@ -8514,6 +8794,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/likes/!video_id
     get:
       summary: Check if the user has liked a video
       description: >-
@@ -8539,6 +8821,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/likes/!video_id
     put:
       summary: Cause the user to like a video
       description: >-
@@ -8573,6 +8857,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/likes/!video_id
   /me/live_events:
     delete:
       summary: Delete a list of live events
@@ -8597,6 +8883,10 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get all the live events that belong to the user
       description: The method returns every event belonging to the authenticated user.
@@ -8698,6 +8988,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/live-event'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event
       description: This method creates a new event for the authenticated user.
@@ -8769,6 +9063,7 @@ paths:
                   description: Whether the DVR feature is enabled.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 embed:
                   description: >-
                     The embed settings of the event and the videos generated by
@@ -8855,13 +9150,16 @@ paths:
                         interaction tools settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                     is_qna_moderated:
                       description: >-
                         Whether the Q&A is moderated for the interaction tools
                         settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                   type: object
+                  x-mill-visibility-private: true
                 low_latency:
                   description: Whether the event has low-latency streaming enabled.
                   type: boolean
@@ -8936,6 +9234,7 @@ paths:
                   description: Whether the scheduled playback feature is enabled.
                   example: false
                   type: boolean
+                  x-mill-visibility-private: true
                 stream_description:
                   description: >-
                     The description of the next video to be streamed to the
@@ -9047,6 +9346,10 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}:
     delete:
       summary: Delete a specific live event
@@ -9084,6 +9387,10 @@ paths:
         - oauth2:
             - delete
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get a specific live event
       description: This method returns a single event belonging to the authenticated user.
@@ -9104,6 +9411,7 @@ paths:
           required: false
           schema:
             type: string
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The event was returned.
@@ -9134,6 +9442,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     patch:
       summary: Update a live event
       description: This method updates an event belonging to the authenticated user.
@@ -9209,6 +9521,7 @@ paths:
                   description: Whether the DVR feature is enabled.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 embed:
                   description: >-
                     The embed settings of the event and the videos generated by
@@ -9285,13 +9598,16 @@ paths:
                         interaction tools settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                     is_qna_moderated:
                       description: >-
                         Whether the Q&A is moderated for the interaction tools
                         settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                   type: object
+                  x-mill-visibility-private: true
                 playlist_sort:
                   description: >
                     The order in which the videos of the event appear within the
@@ -9360,6 +9676,7 @@ paths:
                   description: Whether the scheduled playback feature is enabled.
                   example: false
                   type: boolean
+                  x-mill-visibility-private: true
                 stream_description:
                   description: >-
                     The description of the next video to be streamed to the
@@ -9397,6 +9714,7 @@ paths:
                     - simulive
                   example: live
                   type: string
+                  x-mill-visibility-private: true
                 stream_password:
                   description: >-
                     The password when **stream_privacy.view** is `password`.
@@ -9482,6 +9800,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/activate:
     post:
       summary: Activate a live event
@@ -9513,10 +9835,12 @@ paths:
                     field is deprecated._
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 streaming_start_requested:
                   description: Whether the stream activates from the cloud composer.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
       responses:
         '200':
           description: The event was activated.
@@ -9572,6 +9896,10 @@ paths:
         - oauth2:
             - create
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/activate
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/auto_cc:
     patch:
       summary: Edit the automated closed captions preference of a live event
@@ -9600,12 +9928,14 @@ paths:
                   description: Whether automated closed captions are enabled for the event.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 auto_cc_keywords:
                   description: >-
                     A comma-separated list of keywords that improve the quality
                     of the automated closed captions.
                   example: commonly-used words,phrases,technical terms
                   type: string
+                  x-mill-visibility-private: true
                 auto_cc_lang:
                   description: |
                     The language in which the automated closed captions appear.
@@ -9624,6 +9954,7 @@ paths:
                     - pt-BR
                   example: en-US
                   type: string
+                  x-mill-visibility-private: true
               required:
                 - auto_cc_enabled
       responses:
@@ -9663,6 +9994,11 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/auto_cc
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
+      x-mill-visibility-private: true
   /me/live_events/{live_event_id}/destinations:
     get:
       summary: Get all the destinations of a recurring live event
@@ -9720,6 +10056,11 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliases:
+        - /users/{user_id}/live_events/{live_event_id}/destinations
+      x-mill-path-template: /me/live_events/#live_event_id/destinations
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event destination
       description: >-
@@ -9884,6 +10225,11 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliases:
+        - /users/{user_id}/live_events/{live_event_id}/destinations
+      x-mill-path-template: /me/live_events/#live_event_id/destinations
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/end:
     post:
       summary: End a live event
@@ -9908,6 +10254,7 @@ paths:
           schema:
             type: number
             example: 12345
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The event was ended.
@@ -9945,6 +10292,10 @@ paths:
         - oauth2:
             - create
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/end
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/low_latency:
     patch:
       summary: Toggle the low-latency option of a live event
@@ -9994,6 +10345,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/low_latency
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/m3u8_playback:
     get:
       summary: Get an M3U8 playback URL for a live event
@@ -10020,6 +10375,7 @@ paths:
           schema:
             type: number
             example: 30
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The M3U8 playback URL was returned.
@@ -10068,6 +10424,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/m3u8_playback
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/pictures:
     get:
       summary: Get all the thumbnails of a live event
@@ -10101,6 +10461,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/pictures
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event thumbnail
       description: This method creates a thumbnail image for the specified event.
@@ -10154,6 +10518,10 @@ paths:
         - oauth2:
             - upload
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/pictures
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/pictures/{thumbnail_id}:
     delete:
       summary: Delete a live event thumbnail
@@ -10200,6 +10568,10 @@ paths:
         - oauth2:
             - delete
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get a specific live event thumbnail
       description: This method returns a single thumbnail image of the specified event.
@@ -10243,6 +10615,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     patch:
       summary: Edit a live event thumbnail
       description: This method edits a thumbnail image for the specified event.
@@ -10303,6 +10679,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/privacy/domains:
     get:
       summary: Get all the domains on which a live event can be embedded
@@ -10358,6 +10738,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/privacy/domains
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     put:
       summary: Embed a live event on one or more domains
       description: >-
@@ -10421,6 +10805,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/privacy/domains
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/videos:
     delete:
       summary: Remove a list of videos from a live event
@@ -10486,6 +10874,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get all the videos in a live event
       description: This method returns every video in the specified event.
@@ -10625,6 +11017,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Add a list of videos to a live event
       description: This method adds multiple videos to the specified event.
@@ -10689,6 +11085,10 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/live_events/{live_event_id}/videos/{video_id}:
     get:
       summary: Get a specific video in a live event
@@ -10741,6 +11141,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/live_events/#live_event_id/videos/!video_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /me/ondemand/pages:
     get:
       summary: Get all the On Demand pages of the user
@@ -10835,6 +11239,8 @@ paths:
             application/vnd.vimeo.ondemand.page+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/ondemand/pages
     post:
       summary: Create an On Demand page
       description: >-
@@ -11197,6 +11603,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/on-demand-page'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/ondemand/pages
   /me/ondemand/purchases:
     get:
       summary: Get all of the user's On Demand purchases and rentals
@@ -11312,6 +11720,8 @@ paths:
       security:
         - oauth2:
             - purchased
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/ondemand/purchases
   /me/ondemand/purchases/{ondemand_id}:
     get:
       summary: Check if a user has made a purchase or rental from an On Demand page
@@ -11353,6 +11763,8 @@ paths:
       security:
         - oauth2:
             - purchased
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/ondemand/purchases/*ondemand_id
   /me/payment_methods:
     get:
       summary: Get a list of all payments service payment methods
@@ -11445,6 +11857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /me/payment_methods
   /me/payment_methods/{payment_method_id}:
     get:
       summary: Get information about a payments service payment method
@@ -11478,6 +11891,7 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-template: /me/payment_methods/+payment_method_id
   /me/pictures:
     get:
       summary: Get all the pictures that belong to the user
@@ -11513,6 +11927,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/picture'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/pictures
     post:
       summary: Add a picture to the user's account
       description: >-
@@ -11538,6 +11954,8 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/pictures
   /me/pictures/{portraitset_id}:
     delete:
       summary: Delete a picture from the user's account
@@ -11561,6 +11979,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/pictures/#portraitset_id
     get:
       summary: Get a specific picture that belongs to the user
       description: >-
@@ -11584,6 +12004,8 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/picture'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/pictures/#portraitset_id
     patch:
       summary: Edit a picture in the user's account
       description: >-
@@ -11623,6 +12045,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/pictures/#portraitset_id
   /me/portfolios:
     get:
       summary: Get all the portfolios that belong to the user
@@ -11692,6 +12116,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/portfolio'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/portfolios
   /me/portfolios/{portfolio_id}:
     get:
       summary: Get a specific portfolio
@@ -11716,6 +12142,8 @@ paths:
             application/vnd.vimeo.portfolio+json:
               schema:
                 $ref: '#/components/schemas/portfolio'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/portfolios/*portfolio_id
   /me/portfolios/{portfolio_id}/videos:
     get:
       summary: Get all the videos in a portfolio
@@ -11811,6 +12239,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/portfolios/*portfolio_id/videos
   /me/portfolios/{portfolio_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a portfolio
@@ -11847,6 +12277,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/portfolios/*portfolio_id/videos/!video_id
     get:
       summary: Get a specific video in a portfolio
       description: >-
@@ -11877,6 +12309,8 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/video'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/portfolios/*portfolio_id/videos/!video_id
     put:
       summary: Add a video to a portfolio
       description: >-
@@ -11912,6 +12346,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/portfolios/*portfolio_id/videos/!video_id
   /me/presets:
     get:
       summary: Get all the embed presets that a user has created
@@ -11947,6 +12383,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/preset'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/presets
     post:
       summary: Create an embed preset
       description: This method creates an embed preset.
@@ -12206,6 +12644,8 @@ paths:
             application/vnd.vimeo.preset+json:
               schema:
                 $ref: '#/components/schemas/preset'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/presets
   /me/presets/{preset_id}:
     get:
       summary: Get a specific embed preset
@@ -12230,6 +12670,8 @@ paths:
             application/vnd.vimeo.preset+json:
               schema:
                 $ref: '#/components/schemas/preset'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/presets/+preset_id
     patch:
       summary: Edit an embed preset
       description: >-
@@ -12283,6 +12725,8 @@ paths:
             application/vnd.vimeo.preset+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/presets/+preset_id
   /me/presets/{preset_id}/videos:
     get:
       summary: Get all the videos that have a specific embed preset
@@ -12325,6 +12769,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/presets/+preset_id/videos
   /me/projects:
     get:
       summary: Get all the folders that belong to the user
@@ -12409,6 +12855,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects
     post:
       summary: Create a folder
       description: >-
@@ -12469,6 +12917,8 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects
   /me/projects/{project_id}:
     delete:
       summary: Delete a folder
@@ -12520,6 +12970,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id
     get:
       summary: Get a specific folder
       description: This method returns a single folder belonging to the authenticated user.
@@ -12553,6 +13005,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id
     patch:
       summary: Edit a folder
       description: >-
@@ -12624,6 +13078,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id
   /me/projects/{project_id}/items:
     delete:
       summary: Remove items from a folder
@@ -12681,6 +13137,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id/items
     get:
       summary: Get all the items in a folder
       description: This method returns every item that belongs to the specified folder.
@@ -12763,6 +13221,7 @@ paths:
               - duration
               - last_user_action_event_date
       responses: []
+      x-mill-path-template: /me/projects/+project_id/items
   /me/projects/{project_id}/videos:
     delete:
       summary: Remove a list of videos from a folder
@@ -12818,6 +13277,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id/videos
     get:
       summary: Get all the videos in a folder
       description: This method returns all the videos that belong to the specified folder.
@@ -12956,6 +13417,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id/videos
     put:
       summary: Add a list of videos to a folder
       description: >-
@@ -13003,6 +13466,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id/videos
   /me/projects/{project_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a folder
@@ -13051,6 +13516,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id/videos/#video_id
     put:
       summary: Add a video to a folder
       description: >-
@@ -13086,6 +13553,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/projects/+project_id/videos/#video_id
   /me/videos:
     delete:
       summary: Delete a user's videos
@@ -13135,6 +13604,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos
     get:
       summary: Get all the videos that the user has uploaded
       description: >-
@@ -13343,6 +13814,8 @@ paths:
           description: >-
             The authenticated user hasn't uploaded any videos since the given
             **If-Modified-Since** header.
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos
     post:
       summary: Upload a video
       description: >-
@@ -13835,6 +14308,8 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos
   /me/videos/{video_id}:
     get:
       summary: Check if the user owns a video
@@ -13865,6 +14340,8 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos/!video_id
   /me/videos/{video_id}/destinations:
     get:
       summary: Get all the destinations of a one-time live event
@@ -13914,6 +14391,8 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos/!video_id/destinations
     post:
       summary: Create a one-time live event destination
       description: >-
@@ -14072,6 +14551,8 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos/!video_id/destinations
   /me/videos/{video_id}/m3u8_playback:
     get:
       summary: Get an M3U8 playback URL for a one-time live event
@@ -14117,6 +14598,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/videos/!video_id/m3u8_playback
   /me/watched/videos:
     delete:
       summary: Delete the user's watch history
@@ -14130,6 +14613,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /me/watched/videos
     get:
       summary: Get all the videos that a user has watched
       description: >-
@@ -14174,6 +14658,7 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-template: /me/watched/videos
   /me/watched/videos/{video_id}:
     delete:
       summary: Delete a specific video from the user's watch history
@@ -14197,6 +14682,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /me/watched/videos/!video_id
   /me/watchlater:
     get:
       summary: Get all the videos in the user's Watch Later queue
@@ -14305,6 +14791,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/watchlater
   /me/watchlater/{video_id}:
     delete:
       summary: Remove a video from the user's Watch Later queue
@@ -14328,6 +14816,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/watchlater/!video_id
     get:
       summary: Check if the user has added a video to their Watch Later queue
       description: >-
@@ -14360,6 +14850,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/watchlater/!video_id
     put:
       summary: Add a video to the user's Watch Later queue
       description: >-
@@ -14382,6 +14874,8 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/watchlater/!video_id
   /me/webinars:
     post:
       summary: Create a webinar
@@ -14652,6 +15146,8 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars
   /me/webinars/{webinar_id}:
     get:
       deprecated: true
@@ -14683,6 +15179,8 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id
     patch:
       deprecated: true
       summary: Update a webinar
@@ -14976,6 +15474,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id
   /me/webinars/{webinar_id}/email_settings:
     get:
       deprecated: true
@@ -15013,6 +15513,8 @@ paths:
             application/vnd.vimeo.webinar.email.settings+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id/email_settings
     patch:
       deprecated: true
       summary: Customize the email preferences of a webinar
@@ -15163,6 +15665,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id/email_settings
   /me/webinars/{webinar_id}/registrants:
     get:
       deprecated: true
@@ -15254,6 +15758,8 @@ paths:
         - oauth2:
             - stats
             - private
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id/registrants
     put:
       deprecated: true
       summary: Capture the user registration list associated with a webinar
@@ -15325,6 +15831,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id/registrants
   /me/webinars/{webinar_id}/registrants/{registrant_id}:
     delete:
       deprecated: true
@@ -15388,6 +15896,8 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id/registrants/*registrant_id
     patch:
       deprecated: true
       summary: Update user registration data associated with a webinar
@@ -15453,6 +15963,8 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliased: true
+      x-mill-path-template: /me/webinars/*webinar_id/registrants/*registrant_id
   /oauth/access_token:
     post:
       summary: Exchange an authorization code for an access token
@@ -15511,6 +16023,7 @@ paths:
             application/vnd.vimeo.auth+json:
               schema:
                 $ref: '#/components/schemas/auth-error'
+      x-mill-path-template: /oauth/access_token
   /oauth/authorize/client:
     post:
       summary: Authorize a client with OAuth
@@ -15558,6 +16071,7 @@ paths:
             application/vnd.vimeo.auth+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /oauth/authorize/client
   /oauth/authorize/vimeo_oauth1:
     post:
       summary: Convert an OAuth 1 access token to an OAuth 2 access token
@@ -15608,6 +16122,7 @@ paths:
             application/vnd.vimeo.auth+json:
               schema:
                 $ref: '#/components/schemas/auth-error'
+      x-mill-path-template: /oauth/authorize/vimeo_oauth1
   /oauth/verify:
     get:
       summary: Verify an OAuth 2 access token
@@ -15628,6 +16143,7 @@ paths:
             application/vnd.vimeo.auth+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /oauth/verify
   /ondemand/genres:
     get:
       summary: Get all On Demand genres
@@ -15644,6 +16160,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/on-demand-genre'
+      x-mill-path-template: /ondemand/genres
   /ondemand/genres/{genre_id}:
     get:
       summary: Get a specific On Demand genre
@@ -15672,6 +16189,7 @@ paths:
             application/vnd.vimeo.ondemand.genre+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/genres/*genre_id
   /ondemand/genres/{genre_id}/pages:
     get:
       summary: Get all the On Demand pages in a genre
@@ -15770,6 +16288,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/on-demand-page'
+      x-mill-path-template: /ondemand/genres/*genre_id/pages
   /ondemand/genres/{genre_id}/pages/{ondemand_id}:
     get:
       summary: Get a specific On Demand page in a genre
@@ -15807,6 +16326,7 @@ paths:
             application/vnd.vimeo.ondemand.page+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/genres/*genre_id/pages/+ondemand_id
   /ondemand/pages/{ondemand_id}:
     delete:
       summary: Delete an On Demand page
@@ -15840,6 +16360,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /ondemand/pages/+ondemand_id
     get:
       summary: Get a specific On Demand page
       description: This method returns the specified On Demand page.
@@ -15867,6 +16388,7 @@ paths:
             application/vnd.vimeo.ondemand.page+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id
     patch:
       summary: Edit an On Demand page
       description: >-
@@ -15945,6 +16467,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id
   /ondemand/pages/{ondemand_id}/backgrounds:
     get:
       summary: Get all the backgrounds on an On Demand page
@@ -15993,6 +16516,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/backgrounds
     post:
       summary: Add a background to an On Demand page
       description: >-
@@ -16033,6 +16557,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /ondemand/pages/+ondemand_id/backgrounds
   /ondemand/pages/{ondemand_id}/backgrounds/{background_id}:
     delete:
       summary: Delete a background on an On Demand page
@@ -16075,6 +16600,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/backgrounds/#background_id
     get:
       summary: Get a specific background on an On Demand page
       description: >-
@@ -16117,6 +16643,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/backgrounds/#background_id
     patch:
       summary: Edit a background on an On Demand page
       description: >-
@@ -16175,6 +16702,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/backgrounds/#background_id
   /ondemand/pages/{ondemand_id}/genres:
     get:
       summary: Get all the genres of an On Demand page
@@ -16207,6 +16735,7 @@ paths:
             application/vnd.vimeo.ondemand.genre+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/genres
   /ondemand/pages/{ondemand_id}/genres/{genre_id}:
     delete:
       summary: Remove a genre from an On Demand page
@@ -16257,6 +16786,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/genres/*genre_id
     get:
       summary: Check whether an On Demand page belongs to a specific genre
       description: >-
@@ -16293,6 +16823,7 @@ paths:
             application/vnd.vimeo.ondemand.genre+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/genres/*genre_id
     put:
       summary: Add a genre to an On Demand page
       description: >-
@@ -16345,6 +16876,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/genres/*genre_id
   /ondemand/pages/{ondemand_id}/likes:
     get:
       summary: Get all the users who have liked a video on an On Demand page
@@ -16432,6 +16964,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/likes
   /ondemand/pages/{ondemand_id}/pictures:
     get:
       summary: Get all the posters on an On Demand page
@@ -16478,6 +17011,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/pictures
     post:
       summary: Add a poster to an On Demand page
       description: >-
@@ -16510,6 +17044,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /ondemand/pages/+ondemand_id/pictures
   /ondemand/pages/{ondemand_id}/pictures/{poster_id}:
     get:
       summary: Get a specific poster on an On Demand page
@@ -16539,6 +17074,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/picture'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/pictures/#poster_id
     patch:
       summary: Edit a poster on an On Demand page
       description: >-
@@ -16585,6 +17121,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/pictures/#poster_id
   /ondemand/pages/{ondemand_id}/promotions:
     get:
       summary: Get all the promotions on an On Demand page
@@ -16664,6 +17201,7 @@ paths:
       security:
         - oauth2:
             - promo_codes
+      x-mill-path-template: /ondemand/pages/+ondemand_id/promotions
     post:
       summary: Add a promotion to an On Demand page
       description: >-
@@ -16863,6 +17401,7 @@ paths:
         - oauth2:
             - promo_codes
             - create
+      x-mill-path-template: /ondemand/pages/+ondemand_id/promotions
   /ondemand/pages/{ondemand_id}/promotions/{promotion_id}:
     delete:
       summary: Delete a promotion on an On Demand page
@@ -16908,6 +17447,7 @@ paths:
         - oauth2:
             - promo_codes
             - delete
+      x-mill-path-template: /ondemand/pages/+ondemand_id/promotions/#promotion_id
     get:
       summary: Get a specific promotion on an On Demand page
       description: >-
@@ -16953,6 +17493,7 @@ paths:
       security:
         - oauth2:
             - promo_codes
+      x-mill-path-template: /ondemand/pages/+ondemand_id/promotions/#promotion_id
   /ondemand/pages/{ondemand_id}/promotions/{promotion_id}/codes:
     get:
       summary: Get all the codes of a promotion on an On Demand page
@@ -17015,6 +17556,7 @@ paths:
       security:
         - oauth2:
             - promo_codes
+      x-mill-path-template: /ondemand/pages/+ondemand_id/promotions/#promotion_id/codes
   /ondemand/pages/{ondemand_id}/regions:
     delete:
       summary: Remove a list of regions from an On Demand page
@@ -17070,6 +17612,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/regions
     get:
       summary: Get all the regions on an On Demand page
       description: >-
@@ -17101,6 +17644,7 @@ paths:
             application/vnd.vimeo.ondemand.region+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/regions
     put:
       summary: Add a list of regions to an On Demand page
       description: >-
@@ -17153,6 +17697,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/regions
   /ondemand/pages/{ondemand_id}/regions/{country}:
     delete:
       summary: Remove a specific region from an On Demand page
@@ -17197,6 +17742,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/regions/*country
     get:
       summary: Get a specific region on an On Demand page
       description: >-
@@ -17233,6 +17779,7 @@ paths:
             application/vnd.vimeo.ondemand.region+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/regions/*country
     put:
       summary: Add a specific region to an On Demand page
       description: >-
@@ -17278,6 +17825,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/regions/*country
   /ondemand/pages/{ondemand_id}/seasons:
     get:
       summary: Get all the seasons on an On Demand page
@@ -17365,6 +17913,7 @@ paths:
             application/vnd.vimeo.ondemand.season+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/seasons
   /ondemand/pages/{ondemand_id}/seasons/{season_id}:
     get:
       summary: Get a specific season on an On Demand page
@@ -17400,6 +17949,7 @@ paths:
             application/vnd.vimeo.ondemand.season+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/seasons/+season_id
   /ondemand/pages/{ondemand_id}/seasons/{season_id}/videos:
     get:
       summary: Get all the videos in a season on an On Demand page
@@ -17483,6 +18033,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/seasons/+season_id/videos
   /ondemand/pages/{ondemand_id}/videos:
     get:
       summary: Get all the videos on an On Demand page
@@ -17594,6 +18145,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/on-demand-video'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/videos
   /ondemand/pages/{ondemand_id}/videos/{video_id}:
     delete:
       summary: Remove a video from an On Demand page
@@ -17630,6 +18182,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/videos/+video_id
     get:
       summary: Get a specific video on an On Demand page
       description: >-
@@ -17660,6 +18213,7 @@ paths:
             application/vnd.vimeo.ondemand.video+json:
               schema:
                 $ref: '#/components/schemas/video'
+      x-mill-path-template: /ondemand/pages/+ondemand_id/videos/+video_id
     put:
       summary: Add a video to an On Demand page
       description: >-
@@ -17851,6 +18405,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /ondemand/pages/+ondemand_id/videos/+video_id
   /ondemand/regions:
     get:
       summary: Get all the On Demand regions
@@ -17867,6 +18422,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/on-demand-region'
+      x-mill-path-template: /ondemand/regions
   /ondemand/regions/{country}:
     get:
       summary: Get a specific On Demand region
@@ -17895,6 +18451,7 @@ paths:
             application/vnd.vimeo.ondemand.region+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /ondemand/regions/@country
   /subscription_plans/{tier}:
     get:
       summary: Get a single subscription plan
@@ -17933,6 +18490,7 @@ paths:
               - standard
               - starter
       responses: []
+      x-mill-path-template: /subscription_plans/+tier
   /tags/{word}:
     get:
       summary: Get a tag
@@ -17955,6 +18513,7 @@ paths:
             application/vnd.vimeo.tag+json:
               schema:
                 $ref: '#/components/schemas/tag'
+      x-mill-path-template: /tags/*word
   /tags/{word}/videos:
     get:
       summary: Get all the videos with a specific tag
@@ -18034,6 +18593,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /tags/*word/videos
   /teammembers/{code}:
     get:
       summary: Get membership information about a team
@@ -18054,6 +18614,7 @@ paths:
             type: string
             example: q3u4mrqoc3u4hcnqo34
       responses: []
+      x-mill-path-template: /teammembers/+code
   /tokens:
     delete:
       summary: Revoke the current access token
@@ -18072,6 +18633,7 @@ paths:
             application/vnd.vimeo.auth+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /tokens
   /tutorial:
     get:
       summary: Get started with the Vimeo API
@@ -18083,6 +18645,7 @@ paths:
       tags:
         - Tutorial\Essentials
       responses: []
+      x-mill-path-template: /tutorial
   /users:
     get:
       summary: Search for users
@@ -18170,6 +18733,7 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /users
   /users/{owner_id}/folders/private_to_me:
     get:
       summary: Get a user's private-to-me folder
@@ -18204,6 +18768,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /users/+owner_id/folders/private_to_me
   /users/{user_id}:
     get:
       summary: Get the user
@@ -18226,6 +18791,9 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/user'
+      x-mill-path-aliases:
+        - /me
+      x-mill-path-template: /users/+user_id
     patch:
       summary: Edit the user
       description: This method edits the Vimeo account of the authenticated user.
@@ -18383,6 +18951,9 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliases:
+        - /me
+      x-mill-path-template: /users/+user_id
   /users/{user_id}/albums:
     get:
       summary: Get all the showcases that belong to the user
@@ -18469,6 +19040,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/albums
+      x-mill-path-template: /users/+user_id/albums
     patch:
       summary: Add videos and live events to showcases
       description: >-
@@ -18509,6 +19083,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /users/+user_id/albums
     post:
       summary: Create a showcase
       description: This method creates a new showcase for the specified user.
@@ -18664,6 +19239,9 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliases:
+        - /me/albums
+      x-mill-path-template: /users/+user_id/albums
   /users/{user_id}/albums/{album_id}:
     delete:
       summary: Delete a showcase
@@ -18708,6 +19286,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}
+      x-mill-path-template: /users/+user_id/albums/#album_id
     get:
       summary: Get a specific showcase
       description: >-
@@ -18744,6 +19325,9 @@ paths:
             application/vnd.vimeo.album+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}
+      x-mill-path-template: /users/+user_id/albums/#album_id
     patch:
       summary: Edit a showcase
       description: >-
@@ -18923,6 +19507,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}
+      x-mill-path-template: /users/+user_id/albums/#album_id
   /users/{user_id}/albums/{album_id}/custom_thumbnails:
     get:
       summary: Get all the custom thumbnails of a showcase
@@ -18986,6 +19573,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /users/+user_id/albums/#album_id/custom_thumbnails
     post:
       summary: Add a custom thumbnail to a showcase
       description: >-
@@ -19039,6 +19627,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /users/+user_id/albums/+album_id/custom_thumbnails
   /users/{user_id}/albums/{album_id}/custom_thumbnails/{thumbnail_id}:
     delete:
       summary: Delete a custom showcase thumbnail
@@ -19090,6 +19679,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /users/+user_id/albums/#album_id/custom_thumbnails/!thumbnail_id
     get:
       summary: Get a specific custom showcase thumbnail
       description: >-
@@ -19141,6 +19731,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /users/+user_id/albums/#album_id/custom_thumbnails/!thumbnail_id
     patch:
       summary: Replace a custom showcase thumbnail
       description: >-
@@ -19213,6 +19804,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /users/+user_id/albums/#album_id/custom_thumbnails/!thumbnail_id
   /users/{user_id}/albums/{album_id}/logos:
     get:
       summary: Get all the custom logos of a showcase
@@ -19268,6 +19860,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /users/+user_id/albums/#album_id/logos
     post:
       summary: Add a custom logo to a showcase
       description: >-
@@ -19318,6 +19911,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /users/+user_id/albums/+album_id/logos
   /users/{user_id}/albums/{album_id}/logos/{logo_id}:
     delete:
       summary: Delete a custom showcase logo
@@ -19369,6 +19963,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /users/+user_id/albums/#album_id/logos/!logo_id
     get:
       summary: Get a specific custom showcase logo
       description: >-
@@ -19420,6 +20015,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /users/+user_id/albums/#album_id/logos/!logo_id
     patch:
       summary: Replace a custom showcase logo
       description: >-
@@ -19490,6 +20086,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /users/+user_id/albums/#album_id/logos/!logo_id
   /users/{user_id}/albums/{album_id}/videos:
     get:
       summary: Get all the videos in a showcase
@@ -19641,6 +20238,9 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos
     put:
       summary: Replace all the videos in a showcase
       description: >-
@@ -19698,6 +20298,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos
   /users/{user_id}/albums/{album_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a showcase
@@ -19749,6 +20352,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos/!video_id
     get:
       summary: Get a specific video in a showcase
       description: >-
@@ -19799,6 +20405,9 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos/!video_id
     put:
       summary: Add a specific video to a showcase
       description: >-
@@ -19849,6 +20458,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos/!video_id
   /users/{user_id}/albums/{album_id}/videos/{video_id}/set_album_thumbnail:
     post:
       summary: Create a thumbnail for a showcase from a showcase video
@@ -19924,6 +20536,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos/{video_id}/set_album_thumbnail
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos/!video_id/set_album_thumbnail
   /users/{user_id}/albums/{album_id}/videos/{video_id}/set_featured_video:
     patch:
       summary: Set the featured video of a showcase
@@ -19980,6 +20595,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        '1': /me/albums/{album_id}/videos/{video_id}/set_featured_video
+      x-mill-path-template: /users/+user_id/albums/#album_id/videos/!video_id/set_featured_video
   /users/{user_id}/analytics:
     get:
       summary: Get analytics for the user
@@ -20013,6 +20631,7 @@ paths:
               - embed_domain
               - total
               - video
+          x-mill-visibility-private: true
         - description: |
             The sort direction of the results.
 
@@ -20028,6 +20647,7 @@ paths:
             enum:
               - asc
               - desc
+          x-mill-visibility-private: true
         - description: A comma-separated list of video, folder, or event URIs to filter.
           in: query
           name: filter_content
@@ -20035,6 +20655,7 @@ paths:
           schema:
             type: string
             example: /folder/1233456,/video/7890123,/folder/123
+          x-mill-visibility-private: true
         - description: >-
             A comma-separated list of country codes in ISO-3166 format to filter
             on.
@@ -20046,6 +20667,7 @@ paths:
             example: UK,US,IN
             items:
               type: string
+          x-mill-visibility-private: true
         - description: A comma-separated list of device types to filter on.
           in: query
           name: filter_device_types
@@ -20055,6 +20677,7 @@ paths:
             example: android,ios
             items:
               type: string
+          x-mill-visibility-private: true
         - description: A comma-separated list of domain names to filter on.
           in: query
           name: filter_embed_domains
@@ -20064,6 +20687,7 @@ paths:
             example: abc.com,xyz.com
             items:
               type: string
+          x-mill-visibility-private: true
         - description: A comma-separated list of streaming types to filter on.
           in: query
           name: filter_streaming_types
@@ -20073,6 +20697,7 @@ paths:
             example: live,video
             items:
               type: string
+          x-mill-visibility-private: true
         - description: The start date of the range of results in ISO 8601 format.
           in: query
           name: from
@@ -20080,6 +20705,7 @@ paths:
           schema:
             type: string
             example: '2021-05-30T00:00:00+00:00'
+          x-mill-visibility-private: true
         - description: The page number of the results to show.
           in: query
           name: page
@@ -20087,6 +20713,7 @@ paths:
           schema:
             type: number
             example: 1
+          x-mill-visibility-private: true
         - description: >-
             The maximum number of items returned from the request, up to a limit
             of 1000 items. The default value is `50`.
@@ -20096,6 +20723,7 @@ paths:
           schema:
             type: number
             example: 50
+          x-mill-visibility-private: true
         - description: |
             The way to sort the results.
 
@@ -20138,6 +20766,7 @@ paths:
               - unique_viewers
               - video
               - views
+          x-mill-visibility-private: true
         - description: >
             The interval by which to aggregate the data according to the
             specified data dimension. The default value is `none`.
@@ -20160,6 +20789,7 @@ paths:
               - none
               - week
               - year
+          x-mill-visibility-private: true
         - description: The end date of the range of results in ISO 8601 format.
           in: query
           name: to
@@ -20167,6 +20797,7 @@ paths:
           schema:
             type: string
             example: '2021-06-30T23:59:59+00:00'
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The analytics were returned.
@@ -20179,6 +20810,10 @@ paths:
       security:
         - oauth2:
             - stats
+      x-mill-path-template: /users/+user_id/analytics
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_ANALYTICS_API
+      x-mill-visibility-private: true
   /users/{user_id}/appearances:
     get:
       summary: Get all the videos in which the user appears
@@ -20287,6 +20922,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliases:
+        - /me/appearances
+      x-mill-path-template: /users/+user_id/appearances
   /users/{user_id}/categories:
     get:
       summary: Get all the categories that the user follows
@@ -20369,6 +21007,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/categories
+      x-mill-path-template: /users/+user_id/categories
   /users/{user_id}/categories/{category}:
     delete:
       summary: Cause the user to stop following a category
@@ -20399,6 +21040,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/categories/{category}
+      x-mill-path-template: /users/+user_id/categories/+category
     get:
       summary: Check if the user follows a category
       description: >-
@@ -20428,6 +21072,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/categories/{category}
+      x-mill-path-template: /users/+user_id/categories/+category
     put:
       summary: Cause the user to follow a specific category
       description: >-
@@ -20457,6 +21104,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/categories/{category}
+      x-mill-path-template: /users/+user_id/categories/+category
   /users/{user_id}/channels:
     get:
       summary: Get all the channels to which a user subscribes
@@ -20555,6 +21205,9 @@ paths:
           description: >-
             No channel has been followed since the given `If-Modified-Since`
             header.
+      x-mill-path-aliases:
+        - /me/channels
+      x-mill-path-template: /users/+user_id/channels
   /users/{user_id}/channels/{channel_id}:
     delete:
       summary: Unsubscribe the user from a specific channel
@@ -20591,6 +21244,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/channels/{channel_id}
+      x-mill-path-template: /users/+user_id/channels/+channel_id
     get:
       summary: Check if a user follows a channel
       description: >-
@@ -20623,6 +21279,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/channels/{channel_id}
+      x-mill-path-template: /users/+user_id/channels/+channel_id
     put:
       summary: Subscribe the user to a specific channel
       description: This method subscribes the authenticated user to the specified channel.
@@ -20656,6 +21315,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/channels/{channel_id}
+      x-mill-path-template: /users/+user_id/channels/+channel_id
   /users/{user_id}/customlogos:
     get:
       summary: Get all the custom logos that belong to the user
@@ -20688,6 +21350,9 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/customlogos
+      x-mill-path-template: /users/+user_id/customlogos
     post:
       summary: Add a custom user logo
       description: >-
@@ -20724,6 +21389,9 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliases:
+        - /me/customlogos
+      x-mill-path-template: /users/+user_id/customlogos
   /users/{user_id}/customlogos/{logo_id}:
     delete:
       summary: Delete a custom user logo
@@ -20760,6 +21428,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /me/customlogos/{logo_id}
+      x-mill-path-template: /users/+user_id/customlogos/#logo_id
     get:
       summary: Get a specific custom user logo
       description: >-
@@ -20796,6 +21467,9 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/customlogos/{logo_id}
+      x-mill-path-template: /users/+user_id/customlogos/#logo_id
   /users/{user_id}/destinations:
     get:
       summary: Get all available live event destinations for the user to stream to
@@ -20835,6 +21509,9 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliases:
+        - /me/destinations
+      x-mill-path-template: /users/+user_id/destinations
   /users/{user_id}/feed:
     get:
       summary: Get all the videos in the user's feed
@@ -20923,6 +21600,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/feed
+      x-mill-path-template: /users/+user_id/feed
   /users/{user_id}/followers:
     get:
       summary: Get all the followers of the user
@@ -20999,6 +21679,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-aliases:
+        - /me/followers
+      x-mill-path-template: /users/+user_id/followers
   /users/{user_id}/following:
     get:
       summary: Get all the users that the user is following
@@ -21087,6 +21770,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-aliases:
+        - /me/following
+      x-mill-path-template: /users/+user_id/following
     post:
       summary: Follow a list of users
       description: >-
@@ -21182,6 +21868,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/following
+      x-mill-path-template: /users/+user_id/following
   /users/{user_id}/following/{follow_user_id}:
     delete:
       summary: Unfollow a user
@@ -21212,6 +21901,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/following/{follow_user_id}
+      x-mill-path-template: /users/+user_id/following/+follow_user_id
     get:
       summary: Check if the user is following another user
       description: >-
@@ -21244,6 +21936,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/following/{follow_user_id}
+      x-mill-path-template: /users/+user_id/following/+follow_user_id
     put:
       summary: Follow a specific user
       description: >-
@@ -21283,6 +21978,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/following/{follow_user_id}
+      x-mill-path-template: /users/+user_id/following/+follow_user_id
   /users/{user_id}/groups:
     get:
       summary: Get all the groups that the user has joined
@@ -21375,6 +22073,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/group'
+      x-mill-path-aliases:
+        - /me/groups
+      x-mill-path-template: /users/+user_id/groups
   /users/{user_id}/groups/{group_id}:
     delete:
       summary: Remove the user from a group
@@ -21412,6 +22113,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/groups/{group_id}
+      x-mill-path-template: /users/+user_id/groups/+group_id
     put:
       summary: Add the user to a group
       description: This method adds the authenticated user to the specified group.
@@ -21448,6 +22152,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/groups/{group_id}
+      x-mill-path-template: /users/+user_id/groups/+group_id
     get:
       summary: Check if a user has joined a group
       description: >-
@@ -21482,6 +22189,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/groups/{group_id}
+      x-mill-path-template: /users/+user_id/groups/+group_id
   /users/{user_id}/likes:
     get:
       summary: Get all the videos that a user has liked
@@ -21573,6 +22283,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliases:
+        - /me/likes
+      x-mill-path-template: /users/+user_id/likes
   /users/{user_id}/likes/{video_id}:
     delete:
       summary: Cause a user to unlike a video
@@ -21607,6 +22320,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/likes/{video_id}
+      x-mill-path-template: /users/+user_id/likes/!video_id
     get:
       summary: Check if the user has liked a video
       description: >-
@@ -21639,6 +22355,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/likes/{video_id}
+      x-mill-path-template: /users/+user_id/likes/!video_id
     put:
       summary: Cause the user to like a video
       description: >-
@@ -21680,6 +22399,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/likes/{video_id}
+      x-mill-path-template: /users/+user_id/likes/!video_id
   /users/{user_id}/live_events:
     delete:
       summary: Delete a list of live events
@@ -21712,6 +22434,12 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /live_events
+        - /me/live_events
+      x-mill-path-template: /users/+user_id/live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get all the live events that belong to the user
       description: The method returns every event belonging to the authenticated user.
@@ -21820,6 +22548,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/live-event'
+      x-mill-path-aliases:
+        - /live_events
+        - /me/live_events
+      x-mill-path-template: /users/+user_id/live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event
       description: This method creates a new event for the authenticated user.
@@ -21899,6 +22633,7 @@ paths:
                   description: Whether the DVR feature is enabled.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 embed:
                   description: >-
                     The embed settings of the event and the videos generated by
@@ -21985,13 +22720,16 @@ paths:
                         interaction tools settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                     is_qna_moderated:
                       description: >-
                         Whether the Q&A is moderated for the interaction tools
                         settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                   type: object
+                  x-mill-visibility-private: true
                 low_latency:
                   description: Whether the event has low-latency streaming enabled.
                   type: boolean
@@ -22066,6 +22804,7 @@ paths:
                   description: Whether the scheduled playback feature is enabled.
                   example: false
                   type: boolean
+                  x-mill-visibility-private: true
                 stream_description:
                   description: >-
                     The description of the next video to be streamed to the
@@ -22177,6 +22916,12 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliases:
+        - /live_events
+        - /me/live_events
+      x-mill-path-template: /users/+user_id/live_events
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}:
     delete:
       summary: Delete a specific live event
@@ -22220,6 +22965,12 @@ paths:
         - oauth2:
             - delete
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}
+        - /me/live_events/{live_event_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get a specific live event
       description: This method returns a single event belonging to the authenticated user.
@@ -22247,6 +22998,7 @@ paths:
           required: false
           schema:
             type: string
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The event was returned.
@@ -22277,6 +23029,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}
+        - /me/live_events/{live_event_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     patch:
       summary: Update a live event
       description: This method updates an event belonging to the authenticated user.
@@ -22359,6 +23117,7 @@ paths:
                   description: Whether the DVR feature is enabled.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 embed:
                   description: >-
                     The embed settings of the event and the videos generated by
@@ -22435,13 +23194,16 @@ paths:
                         interaction tools settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                     is_qna_moderated:
                       description: >-
                         Whether the Q&A is moderated for the interaction tools
                         settings.
                       example: true
                       type: boolean
+                      x-mill-visibility-private: true
                   type: object
+                  x-mill-visibility-private: true
                 playlist_sort:
                   description: >
                     The order in which the videos of the event appear within the
@@ -22510,6 +23272,7 @@ paths:
                   description: Whether the scheduled playback feature is enabled.
                   example: false
                   type: boolean
+                  x-mill-visibility-private: true
                 stream_description:
                   description: >-
                     The description of the next video to be streamed to the
@@ -22547,6 +23310,7 @@ paths:
                     - simulive
                   example: live
                   type: string
+                  x-mill-visibility-private: true
                 stream_password:
                   description: >-
                     The password when **stream_privacy.view** is `password`.
@@ -22632,6 +23396,12 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}
+        - /me/live_events/{live_event_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/activate:
     post:
       summary: Activate a live event
@@ -22670,10 +23440,12 @@ paths:
                     field is deprecated._
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 streaming_start_requested:
                   description: Whether the stream activates from the cloud composer.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
       responses:
         '200':
           description: The event was activated.
@@ -22729,6 +23501,12 @@ paths:
         - oauth2:
             - create
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/activate
+        - /me/live_events/{live_event_id}/activate
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/activate
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/auto_cc:
     patch:
       summary: Edit the automated closed captions preference of a live event
@@ -22764,12 +23542,14 @@ paths:
                   description: Whether automated closed captions are enabled for the event.
                   example: true
                   type: boolean
+                  x-mill-visibility-private: true
                 auto_cc_keywords:
                   description: >-
                     A comma-separated list of keywords that improve the quality
                     of the automated closed captions.
                   example: commonly-used words,phrases,technical terms
                   type: string
+                  x-mill-visibility-private: true
                 auto_cc_lang:
                   description: |
                     The language in which the automated closed captions appear.
@@ -22788,6 +23568,7 @@ paths:
                     - pt-BR
                   example: en-US
                   type: string
+                  x-mill-visibility-private: true
               required:
                 - auto_cc_enabled
       responses:
@@ -22827,6 +23608,10 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/auto_cc
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
+      x-mill-visibility-private: true
   /users/{user_id}/live_events/{live_event_id}/destinations:
     get:
       summary: Get all the destinations of a recurring live event
@@ -22891,6 +23676,10 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliased: true
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/destinations
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event destination
       description: >-
@@ -23062,6 +23851,10 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliased: true
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/destinations
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/end:
     post:
       summary: End a live event
@@ -23086,6 +23879,7 @@ paths:
           schema:
             type: number
             example: 12345
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The event was ended.
@@ -23123,6 +23917,12 @@ paths:
         - oauth2:
             - create
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/end
+        - /me/live_events/{live_event_id}/end
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/end
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/low_latency:
     patch:
       summary: Toggle the low-latency option of a live event
@@ -23179,6 +23979,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/low_latency
+        - /me/live_events/{live_event_id}/low_latency
+      x-mill-path-template: /users/#user_id/live_events/#live_event_id/low_latency
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/m3u8_playback:
     get:
       summary: Get an M3U8 playback URL for a live event
@@ -23212,6 +24018,7 @@ paths:
           schema:
             type: number
             example: 30
+          x-mill-visibility-private: true
       responses:
         '200':
           description: The M3U8 playback URL was returned.
@@ -23260,6 +24067,11 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/live_events/{live_event_id}/m3u8_playback
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/m3u8_playback
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/ott_destination/{destination_id}:
     delete:
       summary: Delete a live event OTT destination
@@ -23320,6 +24132,8 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-template: >-
+        /users/+user_id/live_events/#live_event_id/ott_destination/#destination_id
   /users/{user_id}/live_events/{live_event_id}/ott_destinations:
     get:
       summary: Get all the OTT destinations of a recurring live event
@@ -23376,6 +24190,7 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/ott_destinations
     post:
       summary: Create a live event OTT destination
       description: >-
@@ -23439,6 +24254,7 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/ott_destinations
   /users/{user_id}/live_events/{live_event_id}/pictures:
     get:
       summary: Get all the thumbnails of a live event
@@ -23479,6 +24295,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/pictures
+        - /me/live_events/{live_event_id}/pictures
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/pictures
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Create a live event thumbnail
       description: This method creates a thumbnail image for the specified event.
@@ -23539,6 +24361,12 @@ paths:
         - oauth2:
             - upload
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/pictures
+        - /me/live_events/{live_event_id}/pictures
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/pictures
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/pictures/{thumbnail_id}:
     delete:
       summary: Delete a live event thumbnail
@@ -23592,6 +24420,12 @@ paths:
         - oauth2:
             - delete
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/pictures/{thumbnail_id}
+        - /me/live_events/{live_event_id}/pictures/{thumbnail_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get a specific live event thumbnail
       description: This method returns a single thumbnail image of the specified event.
@@ -23642,6 +24476,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/pictures/{thumbnail_id}
+        - /me/live_events/{live_event_id}/pictures/{thumbnail_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     patch:
       summary: Edit a live event thumbnail
       description: This method edits a thumbnail image for the specified event.
@@ -23709,6 +24549,12 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/pictures/{thumbnail_id}
+        - /me/live_events/{live_event_id}/pictures/{thumbnail_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/pictures/#thumbnail_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/privacy/domains:
     get:
       summary: Get all the domains on which a live event can be embedded
@@ -23771,6 +24617,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/privacy/domains
+        - /me/live_events/{live_event_id}/privacy/domains
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/privacy/domains
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     put:
       summary: Embed a live event on one or more domains
       description: >-
@@ -23841,6 +24693,12 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/privacy/domains
+        - /me/live_events/{live_event_id}/privacy/domains
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/privacy/domains
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/videos:
     delete:
       summary: Remove a list of videos from a live event
@@ -23913,6 +24771,12 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/videos
+        - /me/live_events/{live_event_id}/videos
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     get:
       summary: Get all the videos in a live event
       description: This method returns every video in the specified event.
@@ -24059,6 +24923,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/videos
+        - /me/live_events/{live_event_id}/videos
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
     post:
       summary: Add a list of videos to a live event
       description: This method adds multiple videos to the specified event.
@@ -24130,6 +25000,12 @@ paths:
         - oauth2:
             - edit
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/videos
+        - /me/live_events/{live_event_id}/videos
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/videos
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/live_events/{live_event_id}/videos/{video_id}:
     get:
       summary: Get a specific video in a live event
@@ -24189,6 +25065,12 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /live_events/{live_event_id}/videos/{video_id}
+        - /me/live_events/{live_event_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/live_events/#live_event_id/videos/!video_id
+      x-mill-vendor-tags:
+        - capability:CAPABILITY_RECURRING_LIVE_EVENTS
   /users/{user_id}/ondemand/pages:
     get:
       summary: Get all the On Demand pages of the user
@@ -24290,6 +25172,9 @@ paths:
             application/vnd.vimeo.ondemand.page+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/ondemand/pages
+      x-mill-path-template: /users/+user_id/ondemand/pages
     post:
       summary: Create an On Demand page
       description: >-
@@ -24660,6 +25545,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/on-demand-page'
+      x-mill-path-aliases:
+        - /me/ondemand/pages
+      x-mill-path-template: /users/+user_id/ondemand/pages
   /users/{user_id}/ondemand/purchases:
     get:
       summary: Get all of the user's On Demand purchases and rentals
@@ -24782,6 +25670,9 @@ paths:
       security:
         - oauth2:
             - purchased
+      x-mill-path-aliases:
+        - /me/ondemand/purchases
+      x-mill-path-template: /users/+user_id/ondemand/purchases
   /users/{user_id}/pictures:
     get:
       summary: Get all the pictures that belong to the user
@@ -24824,6 +25715,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/picture'
+      x-mill-path-aliases:
+        - /me/pictures
+      x-mill-path-template: /users/+user_id/pictures
     post:
       summary: Add a picture to the user's account
       description: >-
@@ -24857,6 +25751,9 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliases:
+        - /me/pictures
+      x-mill-path-template: /users/+user_id/pictures
   /users/{user_id}/pictures/{portraitset_id}:
     delete:
       summary: Delete a picture from the user's account
@@ -24887,6 +25784,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /me/pictures/{portraitset_id}
+      x-mill-path-template: /users/+user_id/pictures/#portraitset_id
     get:
       summary: Get a specific picture that belongs to the user
       description: >-
@@ -24917,6 +25817,9 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/picture'
+      x-mill-path-aliases:
+        - /me/pictures/{portraitset_id}
+      x-mill-path-template: /users/+user_id/pictures/#portraitset_id
     patch:
       summary: Edit a picture in the user's account
       description: >-
@@ -24963,6 +25866,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/pictures/{portraitset_id}
+      x-mill-path-template: /users/+user_id/pictures/#portraitset_id
   /users/{user_id}/portfolios:
     get:
       summary: Get all the portfolios that belong to the user
@@ -25039,6 +25945,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/portfolio'
+      x-mill-path-aliases:
+        - /me/portfolios
+      x-mill-path-template: /users/+user_id/portfolios
   /users/{user_id}/portfolios/{portfolio_id}:
     get:
       summary: Get a specific portfolio
@@ -25070,6 +25979,9 @@ paths:
             application/vnd.vimeo.portfolio+json:
               schema:
                 $ref: '#/components/schemas/portfolio'
+      x-mill-path-aliases:
+        - /me/portfolios/{portfolio_id}
+      x-mill-path-template: /users/+user_id/portfolios/*portfolio_id
   /users/{user_id}/portfolios/{portfolio_id}/videos:
     get:
       summary: Get all the videos in a portfolio
@@ -25172,6 +26084,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliases:
+        - /me/portfolios/{portfolio_id}/videos
+      x-mill-path-template: /users/+user_id/portfolios/*portfolio_id/videos
   /users/{user_id}/portfolios/{portfolio_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a portfolio
@@ -25215,6 +26130,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/portfolios/{portfolio_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/portfolios/*portfolio_id/videos/!video_id
     get:
       summary: Get a specific video in a portfolio
       description: >-
@@ -25252,6 +26170,9 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/video'
+      x-mill-path-aliases:
+        - /me/portfolios/{portfolio_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/portfolios/*portfolio_id/videos/!video_id
     put:
       summary: Add a video to a portfolio
       description: >-
@@ -25294,6 +26215,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/portfolios/{portfolio_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/portfolios/*portfolio_id/videos/!video_id
   /users/{user_id}/presets:
     get:
       summary: Get all the embed presets that a user has created
@@ -25336,6 +26260,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/preset'
+      x-mill-path-aliases:
+        - /me/presets
+      x-mill-path-template: /users/+user_id/presets
     post:
       summary: Create an embed preset
       description: This method creates an embed preset.
@@ -25603,6 +26530,9 @@ paths:
             application/vnd.vimeo.preset+json:
               schema:
                 $ref: '#/components/schemas/preset'
+      x-mill-path-aliases:
+        - /me/presets
+      x-mill-path-template: /users/+user_id/presets
   /users/{user_id}/presets/{preset_id}:
     get:
       summary: Get a specific embed preset
@@ -25634,6 +26564,9 @@ paths:
             application/vnd.vimeo.preset+json:
               schema:
                 $ref: '#/components/schemas/preset'
+      x-mill-path-aliases:
+        - /me/presets/{preset_id}
+      x-mill-path-template: /users/+user_id/presets/+preset_id
     patch:
       summary: Edit an embed preset
       description: >-
@@ -25694,6 +26627,9 @@ paths:
             application/vnd.vimeo.preset+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/presets/{preset_id}
+      x-mill-path-template: /users/+user_id/presets/+preset_id
   /users/{user_id}/presets/{preset_id}/videos:
     get:
       summary: Get all the videos that have a specific embed preset
@@ -25743,6 +26679,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/video'
+      x-mill-path-aliases:
+        - /me/presets/{preset_id}/videos
+      x-mill-path-template: /users/+user_id/presets/+preset_id/videos
   /users/{user_id}/projects:
     get:
       summary: Get all the folders that belong to the user
@@ -25834,6 +26773,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/projects
+      x-mill-path-template: /users/+user_id/projects
     post:
       summary: Create a folder
       description: >-
@@ -25902,6 +26844,9 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliases:
+        - /me/projects
+      x-mill-path-template: /users/+user_id/projects
   /users/{user_id}/projects/{project_id}:
     delete:
       summary: Delete a folder
@@ -25960,6 +26905,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /me/projects/{project_id}
+      x-mill-path-template: /users/+user_id/projects/+project_id
     get:
       summary: Get a specific folder
       description: This method returns a single folder belonging to the authenticated user.
@@ -26000,6 +26948,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliases:
+        - /me/projects/{project_id}
+      x-mill-path-template: /users/+user_id/projects/+project_id
     patch:
       summary: Edit a folder
       description: >-
@@ -26078,6 +27029,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/projects/{project_id}
+      x-mill-path-template: /users/+user_id/projects/+project_id
   /users/{user_id}/projects/{project_id}/items:
     get:
       summary: Get all the items in a folder
@@ -26168,6 +27122,7 @@ paths:
               - duration
               - last_user_action_event_date
       responses: []
+      x-mill-path-template: /users/+user_id/projects/+project_id/items
   /users/{user_id}/projects/{project_id}/videos:
     delete:
       summary: Remove a list of videos from a folder
@@ -26230,6 +27185,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/projects/{project_id}/videos
+      x-mill-path-template: /users/+user_id/projects/+project_id/videos
     get:
       summary: Get all the videos in a folder
       description: This method returns all the videos that belong to the specified folder.
@@ -26375,6 +27333,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliases:
+        - /me/projects/{project_id}/videos
+      x-mill-path-template: /users/+user_id/projects/+project_id/videos
     put:
       summary: Add a list of videos to a folder
       description: >-
@@ -26429,6 +27390,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/projects/{project_id}/videos
+      x-mill-path-template: /users/+user_id/projects/+project_id/videos
   /users/{user_id}/projects/{project_id}/videos/{video_id}:
     delete:
       summary: Remove a video from a folder
@@ -26484,6 +27448,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /me/projects/{project_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/projects/+project_id/videos/#video_id
     put:
       summary: Add a video to a folder
       description: >-
@@ -26526,6 +27493,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/projects/{project_id}/videos/{video_id}
+      x-mill-path-template: /users/+user_id/projects/+project_id/videos/#video_id
   /users/{user_id}/team/role:
     get:
       summary: Get information about the user's role on a team
@@ -26544,6 +27514,7 @@ paths:
             type: number
             example: 152184
       responses: []
+      x-mill-path-template: /users/+user_id/team/role
   /users/{user_id}/team_users/{team_user_id}:
     get:
       summary: Get membership information about a team
@@ -26567,6 +27538,7 @@ paths:
           schema:
             type: number
       responses: []
+      x-mill-path-template: /users/+user_id/team_users/+team_user_id
   /users/{user_id}/uploads/{upload_id}:
     delete:
       summary: Complete a streaming upload
@@ -26634,6 +27606,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /users/+user_id/uploads/+upload_id
     get:
       summary: Get an upload attempt
       description: >-
@@ -26669,6 +27642,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /users/+user_id/uploads/+upload_id
   /users/{user_id}/videos:
     delete:
       summary: Delete a user's videos
@@ -26725,6 +27699,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /me/videos
+      x-mill-path-template: /users/+user_id/videos
     get:
       summary: Get all the videos that the user has uploaded
       description: >-
@@ -26940,6 +27917,9 @@ paths:
           description: >-
             The authenticated user hasn't uploaded any videos since the given
             **If-Modified-Since** header.
+      x-mill-path-aliases:
+        - /me/videos
+      x-mill-path-template: /users/+user_id/videos
     post:
       summary: Upload a video
       description: >-
@@ -27440,6 +28420,9 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliases:
+        - /me/videos
+      x-mill-path-template: /users/+user_id/videos
   /users/{user_id}/videos/{video_id}:
     get:
       summary: Check if the user owns a video
@@ -27477,6 +28460,9 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /me/videos/{video_id}
+      x-mill-path-template: /users/+user_id/videos/!video_id
   /users/{user_id}/videos/{video_id}/destinations:
     get:
       summary: Get all the destinations of a one-time live event
@@ -27533,6 +28519,9 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliases:
+        - /me/videos/{video_id}/destinations
+      x-mill-path-template: /users/+user_id/videos/!video_id/destinations
     post:
       summary: Create a one-time live event destination
       description: >-
@@ -27698,6 +28687,9 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-aliases:
+        - /me/videos/{video_id}/destinations
+      x-mill-path-template: /users/+user_id/videos/!video_id/destinations
   /users/{user_id}/videos/{video_id}/m3u8_playback:
     get:
       summary: Get an M3U8 playback URL for a one-time live event
@@ -27750,6 +28742,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/videos/{video_id}/m3u8_playback
+      x-mill-path-template: /users/+user_id/videos/!video_id/m3u8_playback
   /users/{user_id}/watchlater:
     get:
       summary: Get all the videos in the user's Watch Later queue
@@ -27865,6 +28860,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/watchlater
+      x-mill-path-template: /users/+user_id/watchlater
   /users/{user_id}/watchlater/{video_id}:
     delete:
       summary: Remove a video from the user's Watch Later queue
@@ -27895,6 +28893,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/watchlater/{video_id}
+      x-mill-path-template: /users/+user_id/watchlater/!video_id
     get:
       summary: Check if the user has added a video to their Watch Later queue
       description: >-
@@ -27934,6 +28935,9 @@ paths:
       security:
         - oauth2:
             - private
+      x-mill-path-aliases:
+        - /me/watchlater/{video_id}
+      x-mill-path-template: /users/+user_id/watchlater/!video_id
     put:
       summary: Add a video to the user's Watch Later queue
       description: >-
@@ -27963,6 +28967,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /me/watchlater/{video_id}
+      x-mill-path-template: /users/+user_id/watchlater/!video_id
   /users/{user_id}/webinars:
     post:
       summary: Create a webinar
@@ -28241,6 +29248,9 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-aliases:
+        - /me/webinars
+      x-mill-path-template: /users/+user_id/webinars
   /users/{user_id}/webinars/{webinar_id}:
     get:
       deprecated: true
@@ -28279,6 +29289,10 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliases:
+        - /webinars/{webinar_id}
+        - /me/webinars/{webinar_id}
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id
     patch:
       deprecated: true
       summary: Update a webinar
@@ -28579,6 +29593,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id
   /users/{user_id}/webinars/{webinar_id}/email_settings:
     get:
       deprecated: true
@@ -28623,6 +29640,9 @@ paths:
             application/vnd.vimeo.webinar.email.settings+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}/email_settings
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id/email_settings
     patch:
       deprecated: true
       summary: Customize the email preferences of a webinar
@@ -28780,6 +29800,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}/email_settings
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id/email_settings
   /users/{user_id}/webinars/{webinar_id}/registrants:
     get:
       deprecated: true
@@ -28878,6 +29901,9 @@ paths:
         - oauth2:
             - stats
             - private
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}/registrants
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id/registrants
     put:
       deprecated: true
       summary: Capture the user registration list associated with a webinar
@@ -28956,6 +29982,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}/registrants
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id/registrants
   /users/{user_id}/webinars/{webinar_id}/registrants/{registrant_id}:
     delete:
       deprecated: true
@@ -29026,6 +30055,9 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}/registrants/{registrant_id}
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id/registrants/*registrant_id
     patch:
       deprecated: true
       summary: Update user registration data associated with a webinar
@@ -29098,6 +30130,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /me/webinars/{webinar_id}/registrants/{registrant_id}
+      x-mill-path-template: /users/+user_id/webinars/*webinar_id/registrants/*registrant_id
   /videos:
     get:
       summary: Search for videos
@@ -29255,6 +30290,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos
   /videos/{video_id}:
     delete:
       summary: Delete a video
@@ -29284,6 +30320,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /videos/!video_id
     get:
       summary: Get a specific video
       description: This method returns a single video.
@@ -29311,6 +30348,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id
     patch:
       summary: Edit a video
       description: This method edits the specified video.
@@ -29869,6 +30907,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id
   /videos/{video_id}/albums:
     get:
       summary: Get all the showcases that contain a video
@@ -29915,6 +30954,7 @@ paths:
             application/vnd.vimeo.album+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/albums
     patch:
       summary: Add or remove a video from a list of showcases
       description: >-
@@ -29980,6 +31020,7 @@ paths:
             application/vnd.vimeo.album+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/albums
   /videos/{video_id}/animated_thumbsets:
     get:
       summary: Get all the animated thumbnails of a video
@@ -30031,6 +31072,7 @@ paths:
             application/vnd.vimeo.animatedthumbnails+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/animated_thumbsets
     post:
       summary: Create a set of animated thumbnails for a video
       description: >-
@@ -30105,6 +31147,7 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-template: /videos/!video_id/animated_thumbsets
   /videos/{video_id}/animated_thumbsets/{picture_id}:
     delete:
       summary: Delete a set of animated thumbnails for a video
@@ -30143,6 +31186,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /videos/!video_id/animated_thumbsets/*picture_id
     get:
       summary: Get a specific set of animated thumbnails
       description: >-
@@ -30182,6 +31226,7 @@ paths:
             application/vnd.vimeo.animatedthumbnails+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/animated_thumbsets/*picture_id
   /videos/{video_id}/animated_thumbsets/{picture_id}/status:
     get:
       summary: Get the status of a set of animated thumbnails
@@ -30223,6 +31268,7 @@ paths:
             application/vnd.vimeo.animatedthumbnails+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/animated_thumbsets/*picture_id/status
   /videos/{video_id}/available_albums:
     get:
       summary: >-
@@ -30276,6 +31322,7 @@ paths:
             application/vnd.vimeo.album+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/available_albums
   /videos/{video_id}/available_channels:
     get:
       summary: >-
@@ -30319,6 +31366,7 @@ paths:
             application/vnd.vimeo.channel+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/available_channels
   /videos/{video_id}/categories:
     get:
       summary: Get all the categories to which a video belongs
@@ -30365,6 +31413,7 @@ paths:
             application/vnd.vimeo.category+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/categories
     put:
       summary: Suggest categories for a video
       description: >-
@@ -30422,6 +31471,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/categories
   /videos/{video_id}/chapters:
     get:
       summary: Get all the chapters of a video
@@ -30468,6 +31518,7 @@ paths:
             application/vnd.vimeo.video.chapter+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/chapters
     post:
       summary: Add a chapter to a video
       description: This method adds a chapter to the specified video.
@@ -30531,6 +31582,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /videos/!video_id/chapters
   /videos/{video_id}/chapters/temporary/pictures:
     post:
       summary: >-
@@ -30586,6 +31638,7 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-template: /videos/!video_id/chapters/temporary/pictures
   /videos/{video_id}/chapters/temporary/pictures/{uid}:
     get:
       summary: Get a single chapter thumbnail associated with an unsaved video chapter
@@ -30622,6 +31675,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/chapters/temporary/pictures/+uid
   /videos/{video_id}/chapters/{chapter_id}:
     delete:
       summary: Delete a chapter
@@ -30664,6 +31718,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id
     get:
       summary: Get a specific chapter
       description: This method returns a single chapter of the specified video.
@@ -30704,6 +31759,7 @@ paths:
             application/vnd.vimeo.video.chapter+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id
     patch:
       summary: Edit a chapter
       description: >-
@@ -30779,6 +31835,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id
   /videos/{video_id}/chapters/{chapter_id}/pictures:
     get:
       summary: Get all the thumbnails associated with a saved video chapter
@@ -30821,6 +31878,7 @@ paths:
       security:
         - oauth2:
             - public
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id/pictures
     post:
       summary: >-
         Generate an upload link or timecode-based thumbnail for a saved video
@@ -30882,6 +31940,7 @@ paths:
       security:
         - oauth2:
             - create
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id/pictures
   /videos/{video_id}/chapters/{chapter_id}/pictures/{uid}:
     delete:
       summary: Delete a chapter thumbnail
@@ -30937,6 +31996,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id/pictures/+uid
     get:
       summary: Get a single chapter thumbnail associated with a saved video chapter
       description: >-
@@ -30979,6 +32039,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id/pictures/+uid
     patch:
       summary: Set a chapter thumbnail as active
       description: This method sets the specified chapter thumbnail for a video as active.
@@ -31033,6 +32094,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/chapters/+chapter_id/pictures/+uid
   /videos/{video_id}/comments:
     get:
       summary: Get all the video comments on a video
@@ -31088,6 +32150,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/comment'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/comments
+      x-mill-path-template: /videos/!video_id/comments
     post:
       summary: Add a video comment to a video
       description: This method adds a video comment to the specified video.
@@ -31147,6 +32212,9 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/comments
+      x-mill-path-template: /videos/!video_id/comments
   /videos/{video_id}/comments/{comment_id}:
     delete:
       summary: Delete a video comment
@@ -31191,6 +32259,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /videos/!video_id/comments/+comment_id
     get:
       summary: Get a specific video comment
       description: This method returns the specified video comment.
@@ -31225,6 +32294,7 @@ paths:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/comments/+comment_id
     patch:
       summary: Edit a video comment
       description: >-
@@ -31287,6 +32357,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/comments/+comment_id
   /videos/{video_id}/comments/{comment_id}/replies:
     get:
       summary: Get all the replies to a video comment
@@ -31340,6 +32411,7 @@ paths:
             application/vnd.vimeo.comment+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/comments/+comment_id/replies
     post:
       summary: Add a reply to a video comment
       description: This method adds a reply to the specified video comment.
@@ -31400,6 +32472,7 @@ paths:
       security:
         - oauth2:
             - interact
+      x-mill-path-template: /videos/!video_id/comments/+comment_id/replies
   /videos/{video_id}/credits:
     get:
       summary: Get all the credited users in a video
@@ -31476,6 +32549,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/credit'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/credits
+      x-mill-path-template: /videos/!video_id/credits
     post:
       summary: Credit a user in a video
       description: This method adds a user credit to the specified video.
@@ -31543,6 +32619,9 @@ paths:
             application/vnd.vimeo.credit+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/credits
+      x-mill-path-template: /videos/!video_id/credits
   /videos/{video_id}/credits/available_users:
     get:
       summary: Get users who can be credited on a video
@@ -31621,6 +32700,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-template: /videos/!video_id/credits/available_users
   /videos/{video_id}/credits/{credit_id}:
     delete:
       summary: Delete the credit for a user in a video
@@ -31660,6 +32740,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/credits/+credit_id
     get:
       summary: Get a specific credited user in a video
       description: This method returns a single credited user in a video.
@@ -31694,6 +32775,7 @@ paths:
             application/vnd.vimeo.credit+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/credits/+credit_id
     patch:
       summary: Edit the credit for a user in a video
       description: This method edits the specified user credit in a video.
@@ -31752,6 +32834,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/credits/+credit_id
   /videos/{video_id}/fragments:
     delete:
       summary: Delete a video's fragments
@@ -31770,6 +32853,7 @@ paths:
       responses:
         '204':
           description: The fragments were deleted.
+      x-mill-path-template: /videos/!video_id/fragments
     get:
       summary: Get all the fragments for a video
       description: >-
@@ -31793,6 +32877,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/fragments'
+      x-mill-path-template: /videos/!video_id/fragments
     put:
       summary: Update a video's fragments
       description: This method updates the specified video with new fragments.
@@ -31810,6 +32895,7 @@ paths:
       responses:
         '204':
           description: The fragments were updated.
+      x-mill-path-template: /videos/!video_id/fragments
   /videos/{video_id}/likes:
     get:
       summary: Get all the users who have liked a video
@@ -31879,6 +32965,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/user'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/likes
+      x-mill-path-template: /videos/!video_id/likes
   /videos/{video_id}/pictures:
     get:
       summary: Get all the thumbnails of a video
@@ -31921,6 +33010,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/picture'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/pictures
+      x-mill-path-template: /videos/!video_id/pictures
     post:
       summary: Add a video thumbnail
       description: >-
@@ -31966,6 +33058,9 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/pictures
+      x-mill-path-template: /videos/!video_id/pictures
   /videos/{video_id}/pictures/{picture_id}:
     delete:
       summary: Delete a video thumbnail
@@ -31996,6 +33091,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/pictures/+picture_id
     get:
       summary: Get a specific video thumbnail
       description: >-
@@ -32026,6 +33122,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/picture'
+      x-mill-path-template: /videos/!video_id/pictures/+picture_id
     patch:
       summary: Edit a video thumbnail
       description: >-
@@ -32070,6 +33167,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/pictures/+picture_id
   /videos/{video_id}/presets/{preset_id}:
     delete:
       summary: Remove an embed preset from a video
@@ -32107,6 +33205,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/presets/+preset_id
     get:
       summary: Check if an embed preset has been added to a video
       description: This method determines whether a video has the specified embed preset.
@@ -32137,6 +33236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/presets/+preset_id
     put:
       summary: Add an embed preset to a video
       description: >-
@@ -32167,6 +33267,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/presets/+preset_id
   /videos/{video_id}/privacy/domains:
     get:
       summary: Get all the domains on a video's whitelist
@@ -32213,6 +33314,7 @@ paths:
             application/vnd.vimeo.domain+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/privacy/domains
   /videos/{video_id}/privacy/domains/{domain}:
     delete:
       summary: Remove a domain from a video's whitelist
@@ -32253,6 +33355,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/privacy/domains/*domain
     put:
       summary: Add a domain to a video's whitelist
       description: This method adds the specified domain to a video's whitelist.
@@ -32286,6 +33389,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/privacy/domains/*domain
   /videos/{video_id}/privacy/users:
     get:
       summary: Get the users who can access an unlisted video
@@ -32334,6 +33438,9 @@ paths:
             application/vnd.vimeo.user+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/privacy/users
+      x-mill-path-template: /videos/!video_id/privacy/users
     put:
       summary: Permit a list of users to access an unlisted video
       description: >-
@@ -32366,6 +33473,9 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/privacy/users
+      x-mill-path-template: /videos/!video_id/privacy/users
   /videos/{video_id}/privacy/users/{user_id}:
     delete:
       summary: Restrict a user from viewing an unlisted video
@@ -32408,6 +33518,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/privacy/users/+user_id
     put:
       summary: Permit a single user to access an unlisted video
       description: >-
@@ -32449,6 +33560,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/privacy/users/+user_id
   /videos/{video_id}/sessions/status:
     get:
       summary: Get the ingest status of a one-time live event
@@ -32471,6 +33583,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/live-event-session-status'
+      x-mill-path-template: /videos/!video_id/sessions/status
   /videos/{video_id}/tags:
     get:
       summary: Get all the tags of a video
@@ -32513,6 +33626,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/tag'
+      x-mill-path-template: /videos/!video_id/tags
     put:
       summary: Add a list of tags to a video
       description: >-
@@ -32579,6 +33693,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/tags
   /videos/{video_id}/tags/{word}:
     delete:
       summary: Remove a tag from a video
@@ -32617,6 +33732,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/tags/*word
     get:
       summary: Check if a tag has been added to a video
       description: >-
@@ -32661,6 +33777,7 @@ paths:
             application/vnd.vimeo.tag+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/tags/*word
     put:
       summary: Add a specific tag to a video
       description: >-
@@ -32708,6 +33825,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/tags/*word
   /videos/{video_id}/texttracks:
     get:
       summary: Get all the text tracks of a video
@@ -32756,6 +33874,9 @@ paths:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/texttracks
+      x-mill-path-template: /videos/!video_id/texttracks
     post:
       summary: Add a text track to a video
       description: >-
@@ -32849,6 +33970,9 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/texttracks
+      x-mill-path-template: /videos/!video_id/texttracks
   /videos/{video_id}/texttracks/{texttrack_id}:
     delete:
       summary: Delete a text track
@@ -32903,6 +34027,7 @@ paths:
       security:
         - oauth2:
             - delete
+      x-mill-path-template: /videos/!video_id/texttracks/+texttrack_id
     get:
       summary: Get a specific text track
       description: >-
@@ -32955,6 +34080,7 @@ paths:
             application/vnd.vimeo.video.texttrack+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/texttracks/+texttrack_id
     patch:
       summary: Edit a text track
       description: >-
@@ -33057,6 +34183,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/texttracks/+texttrack_id
   /videos/{video_id}/timelinethumbnails:
     post:
       summary: Add a timeline event thumbnail to a video
@@ -33098,6 +34225,7 @@ paths:
       security:
         - oauth2:
             - upload
+      x-mill-path-template: /videos/!video_id/timelinethumbnails
   /videos/{video_id}/timelinethumbnails/{thumbnail_id}:
     get:
       summary: Get a timeline event thumbnail
@@ -33135,6 +34263,7 @@ paths:
             application/vnd.vimeo.picture+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/timelinethumbnails/+thumbnail_id
   /videos/{video_id}/transcripts/{texttrack_id}:
     get:
       summary: Get transcript segments
@@ -33175,6 +34304,7 @@ paths:
             application/vnd.vimeo.video.segment:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/transcripts/+texttrack_id
   /videos/{video_id}/trim:
     get:
       summary: Get the status of a video's trim operation
@@ -33211,6 +34341,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/trim
     post:
       summary: Start a trim operation for a video
       description: This method starts a trim operation for the specified video.
@@ -33259,6 +34390,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/trim
   /videos/{video_id}/versions:
     get:
       summary: Get all the versions of a video
@@ -33313,6 +34445,9 @@ paths:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-aliases:
+        - /channels/{channel_id}/videos/{video_id}/versions
+      x-mill-path-template: /videos/!video_id/versions
     post:
       summary: Add a version to a video
       description: >-
@@ -33414,6 +34549,7 @@ paths:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-template: /videos/!video_id/versions
   /videos/{video_id}/versions/{version_id}:
     delete:
       summary: Delete a video version
@@ -33461,6 +34597,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/versions/!version_id
     get:
       summary: Get a specific video version
       description: >-
@@ -33503,6 +34640,7 @@ paths:
             application/vnd.vimeo.video.version+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/versions/!version_id
     patch:
       summary: Edit a video version
       description: >-
@@ -33571,6 +34709,7 @@ paths:
       security:
         - oauth2:
             - edit
+      x-mill-path-template: /videos/!video_id/versions/!version_id
   /videos/{video_id}/videos:
     get:
       summary: Get all the related videos of a video
@@ -33629,6 +34768,7 @@ paths:
             application/vnd.vimeo.video+json:
               schema:
                 $ref: '#/components/schemas/legacy-error'
+      x-mill-path-template: /videos/!video_id/videos
   /webinars/{webinar_id}:
     get:
       deprecated: true
@@ -33660,6 +34800,8 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      x-mill-path-aliased: true
+      x-mill-path-template: /webinars/*webinar_id
 components:
   securitySchemes:
     bearer:
