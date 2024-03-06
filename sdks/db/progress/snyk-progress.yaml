@@ -29,6 +29,8 @@ operationIds:
     get: Issues_byGroupId
   /groups/{group_id}/issues/{issue_id}:
     get: Issues_getByIssueId
+  /groups/{group_id}/orgs:
+    get: Orgs_listGroupOrgs
   /groups/{group_id}/service_accounts:
     get: ServiceAccounts_listGroupServiceAccounts
     post: ServiceAccounts_createGroup
@@ -314,6 +316,10 @@ responseSchemaNames:
         application/vnd.api+json: IssuesGetByIssueId409Response
       '500':
         application/vnd.api+json: IssuesGetByIssueId500Response
+  /groups/{group_id}/orgs:
+    get:
+      '200':
+        application/vnd.api+json: OrgsListGroupOrgsResponse
   /groups/{group_id}/service_accounts:
     get:
       '200':
@@ -923,6 +929,8 @@ securityParameters:
   name:
     query: false
   names:
+    query: false
+  names_start_with:
     query: false
   offset:
     query: false

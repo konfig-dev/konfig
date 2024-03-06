@@ -444,12 +444,14 @@ components:
         type: array
       style: form
     OrgId:
-      description: Org ID
+      description: Unique identifier for org
       in: path
       name: org_id
       required: true
       schema:
-        $ref: '#/components/schemas/Uuid'
+        example: b667f176-df52-4b0a-9954-117af6b05ab7
+        format: uuid
+        type: string
     PackageUrl:
       description: >-
         A URI-encoded Package URL (purl). Supported purl types are apk, cargo,
@@ -460,6 +462,15 @@ components:
       name: purl
       required: true
       schema:
+        type: string
+    PathGroupId:
+      description: Unique identifier for group
+      in: path
+      name: group_id
+      required: true
+      schema:
+        example: b667f176-df52-4b0a-9954-117af6b05ab7
+        format: uuid
         type: string
     PathIssueId:
       description: Issue ID
@@ -485,6 +496,22 @@ components:
       name: project_id
       schema:
         format: uuid
+        type: string
+    QueryNameFilter:
+      description: >-
+        Only return organizations whose name contains this value. Case
+        insensitive.
+      in: query
+      name: name
+      schema:
+        type: string
+    QuerySlugFilter:
+      description: >-
+        Only return organizations whose slug exactly matches this value. Case
+        sensitive.
+      in: query
+      name: slug
+      schema:
         type: string
     Repository:
       description: The image repository
@@ -2983,6 +3010,12 @@ components:
     OrgAttributes:
       additionalProperties: false
       properties:
+        access_requests_enabled:
+          description: >-
+            Whether the organization permits access requests from users who are
+            not members of the organization.
+          example: false
+          type: boolean
         created_at:
           description: The time the organization was created.
           example: '2022-03-16T00:00:00Z'
@@ -11949,6 +11982,75 @@ paths:
         - '2024-01-23'
       x-snyk-api-version: '2024-01-23'
     x-snyk-api-resource: issues
+  /groups/{group_id}/orgs:
+    get:
+      description: >-
+        Get a paginated list of all the organizations belonging to the group.
+
+        By default, this endpoint returns the organizations in alphabetical
+        order of their name.
+      operationId: listOrgsInGroup
+      parameters:
+        - $ref: '#/components/parameters/Version'
+        - $ref: '#/components/parameters/StartingAfter'
+        - $ref: '#/components/parameters/EndingBefore'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/PathGroupId'
+        - $ref: '#/components/parameters/QueryNameFilter'
+        - $ref: '#/components/parameters/QuerySlugFilter'
+      responses:
+        '200':
+          content:
+            application/vnd.api+json:
+              schema:
+                additionalProperties: false
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/Org'
+                    type: array
+                  jsonapi:
+                    $ref: '#/components/schemas/JsonApi'
+                  links:
+                    $ref: '#/components/schemas/PaginatedLinks'
+                required:
+                  - jsonapi
+                  - data
+                  - links
+                type: object
+          description: A list of organizations in the group.
+          headers:
+            deprecation:
+              $ref: '#/components/headers/DeprecationHeader'
+            snyk-request-id:
+              $ref: '#/components/headers/RequestIdResponseHeader'
+            snyk-version-lifecycle-stage:
+              $ref: '#/components/headers/VersionStageResponseHeader'
+            snyk-version-requested:
+              $ref: '#/components/headers/VersionRequestedResponseHeader'
+            snyk-version-served:
+              $ref: '#/components/headers/VersionServedResponseHeader'
+            sunset:
+              $ref: '#/components/headers/SunsetHeader'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+      summary: List all organizations in group
+      tags:
+        - Orgs
+      x-snyk-api-releases:
+        - 2023-10-24~experimental
+        - 2023-12-14~beta
+        - '2024-02-28'
+      x-snyk-api-version: '2024-02-28'
+    x-snyk-api-resource: orgs
   /groups/{group_id}/service_accounts:
     get:
       description: Get all service accounts for a group.
@@ -14033,11 +14135,14 @@ paths:
           in: query
           name: slug
           schema:
+            maxLength: 100
+            pattern: ^[\w.-]+$
             type: string
         - description: Only return orgs whose name contains this value.
           in: query
           name: name
           schema:
+            maxLength: 100
             type: string
         - description: >-
             Expand the specified related resources in the response to include
@@ -14101,7 +14206,8 @@ paths:
         - 2022-04-06~experimental
         - 2022-12-15~beta
         - '2023-05-29'
-      x-snyk-api-version: '2023-05-29'
+        - '2024-02-28'
+      x-snyk-api-version: '2024-02-28'
     x-snyk-api-resource: orgs
   /orgs/{org_id}:
     get:
@@ -14109,14 +14215,7 @@ paths:
       operationId: getOrg
       parameters:
         - $ref: '#/components/parameters/Version'
-        - description: Unique identifier for org
-          in: path
-          name: org_id
-          required: true
-          schema:
-            example: b667f176-df52-4b0a-9954-117af6b05ab7
-            format: uuid
-            type: string
+        - $ref: '#/components/parameters/OrgId'
       responses:
         '200':
           content:
@@ -14169,14 +14268,7 @@ paths:
       operationId: updateOrg
       parameters:
         - $ref: '#/components/parameters/Version'
-        - description: Unique identifier for org
-          in: path
-          name: org_id
-          required: true
-          schema:
-            example: b667f176-df52-4b0a-9954-117af6b05ab7
-            format: uuid
-            type: string
+        - $ref: '#/components/parameters/OrgId'
       requestBody:
         content:
           application/vnd.api+json:
@@ -14281,7 +14373,13 @@ paths:
               type: string
             type: array
           style: form
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/Version'
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
@@ -15380,7 +15478,13 @@ paths:
             format: uuid
             type: string
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
       responses:
         '204':
           description: The app bot has been deauthorized
@@ -16452,7 +16556,13 @@ paths:
         /orgs/{org_id}/apps/creations instead.
       operationId: getApps
       parameters:
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/Version'
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
@@ -17542,7 +17652,13 @@ paths:
       operationId: createApp
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
       requestBody:
         content:
           application/vnd.api+json:
@@ -18621,7 +18737,13 @@ paths:
       description: Get a list of apps created by an organization.
       operationId: getOrgApps
       parameters:
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/Version'
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
@@ -19708,7 +19830,13 @@ paths:
       operationId: createOrgApp
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
       requestBody:
         content:
           application/vnd.api+json:
@@ -20787,7 +20915,13 @@ paths:
       description: Delete an app by its App ID.
       operationId: deleteAppByID
       parameters:
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/AppId'
         - $ref: '#/components/parameters/Version'
       responses:
@@ -21856,7 +21990,13 @@ paths:
       description: Get a Snyk App by its App ID.
       operationId: getAppByID
       parameters:
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/AppId'
         - $ref: '#/components/parameters/Version'
       responses:
@@ -22935,7 +23075,13 @@ paths:
       operationId: updateAppCreationByID
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/AppId'
       requestBody:
         content:
@@ -24022,7 +24168,13 @@ paths:
       operationId: manageAppCreationSecret
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/AppId'
       requestBody:
         content:
@@ -25153,7 +25305,13 @@ paths:
               type: string
             type: array
           style: form
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/Version'
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
@@ -26242,7 +26400,13 @@ paths:
       operationId: createOrgAppInstall
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
       requestBody:
         content:
           application/vnd.api+json:
@@ -27373,7 +27537,13 @@ paths:
       operationId: deleteAppOrgInstallByID
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/InstallId'
       responses:
         '204':
@@ -28444,7 +28614,13 @@ paths:
       operationId: updateOrgAppInstallSecret
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/InstallId'
       requestBody:
         content:
@@ -29571,7 +29747,13 @@ paths:
       operationId: deleteApp
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/ClientId'
       responses:
         '204':
@@ -30642,7 +30824,13 @@ paths:
         /orgs/{org_id}/apps/creations/{app_id} instead.
       operationId: getApp
       parameters:
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/ClientId'
         - $ref: '#/components/parameters/Version'
       responses:
@@ -31724,7 +31912,13 @@ paths:
       operationId: updateApp
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/ClientId'
       requestBody:
         content:
@@ -32814,7 +33008,13 @@ paths:
       operationId: manageSecrets
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/ClientId'
       requestBody:
         content:
@@ -34130,7 +34330,13 @@ paths:
       operationId: getCollections
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
         - $ref: '#/components/parameters/Limit'
@@ -34216,7 +34422,13 @@ paths:
       operationId: createCollection
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
       requestBody:
         content:
           application/vnd.api+json:
@@ -34293,7 +34505,13 @@ paths:
       operationId: deleteCollection
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/CollectionId'
       responses:
         '204':
@@ -34337,7 +34555,13 @@ paths:
       operationId: getCollection
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/CollectionId'
       responses:
         '200':
@@ -34408,7 +34632,13 @@ paths:
       operationId: updateCollection
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/CollectionId'
       requestBody:
         content:
@@ -34489,7 +34719,13 @@ paths:
       operationId: deleteProjectsCollection
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/CollectionId'
       requestBody:
         content:
@@ -34540,7 +34776,13 @@ paths:
       operationId: getProjectsOfCollection
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/CollectionId'
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
@@ -34664,7 +34906,13 @@ paths:
       operationId: updateCollectionWithProjects
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/CollectionId'
       requestBody:
         content:
@@ -37079,6 +37327,15 @@ paths:
           explode: false
           in: query
           name: names
+          schema:
+            items:
+              type: string
+            type: array
+          style: form
+        - description: Return projects with names starting with the specified prefix.
+          explode: false
+          in: query
+          name: names_start_with
           schema:
             items:
               type: string
@@ -41102,7 +41359,13 @@ paths:
       operationId: deleteSlackDefaultNotificationSettings
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/BotId'
       responses:
         '204':
@@ -41146,7 +41409,13 @@ paths:
       operationId: getSlackDefaultNotificationSettings
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/BotId'
       responses:
         '200':
@@ -41200,7 +41469,13 @@ paths:
       operationId: createSlackDefaultNotificationSettings
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/BotId'
       requestBody:
         content:
@@ -41269,7 +41544,13 @@ paths:
         - $ref: '#/components/parameters/StartingAfter'
         - $ref: '#/components/parameters/EndingBefore'
         - $ref: '#/components/parameters/Limit'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/BotId'
       responses:
         '200':
@@ -41317,7 +41598,13 @@ paths:
       operationId: deleteSlackProjectNotificationSettings
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - description: Project ID
           in: path
           name: project_id
@@ -41366,7 +41653,13 @@ paths:
       operationId: updateSlackProjectNotificationSettings
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/BotId'
         - description: Project ID
           in: path
@@ -41433,7 +41726,13 @@ paths:
       operationId: createSlackProjectNotificationSettings
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - description: Project ID
           in: path
           name: project_id
@@ -41512,7 +41811,13 @@ paths:
         - $ref: '#/components/parameters/EndingBefore'
         - $ref: '#/components/parameters/ChannelLimit'
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/TenantId'
       responses:
         '200':
@@ -41575,7 +41880,13 @@ paths:
       operationId: getChannelNameById
       parameters:
         - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/OrgId'
+        - description: Org ID
+          in: path
+          name: org_id
+          required: true
+          schema:
+            format: uuid
+            type: string
         - $ref: '#/components/parameters/ChannelId'
         - $ref: '#/components/parameters/TenantId'
       responses:
@@ -48468,4 +48779,4 @@ tags:
 x-optic-url: >-
   https://app.useoptic.com/organizations/390ef489-882c-48ba-acb3-4e0b73e48767/apis/5Tz5UMTNEIuz5-FZ6J2ki
 x-snyk-api-lifecycle: released
-x-snyk-api-version: '2024-02-21'
+x-snyk-api-version: '2024-02-28'

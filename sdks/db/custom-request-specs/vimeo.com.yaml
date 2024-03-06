@@ -11363,13 +11363,6 @@ paths:
       tags:
         - Payments\Essentials
       parameters:
-        - description: The ID associated with the account.
-          in: query
-          name: account_id
-          required: false
-          schema:
-            type: string
-            example: abc12345
         - description: The name of the card member.
           in: query
           name: cardmember_name
@@ -11400,6 +11393,13 @@ paths:
           schema:
             type: boolean
             example: false
+        - description: The ID of the user.
+          in: query
+          name: user_id
+          required: true
+          schema:
+            type: number
+            example: 12345
       requestBody:
         required: false
         content:
@@ -14654,6 +14654,7 @@ paths:
             - create
   /me/webinars/{webinar_id}:
     get:
+      deprecated: true
       summary: Get a specific webinar
       description: >-
         This method returns a single webinar belonging to the authenticated
@@ -14683,6 +14684,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
     patch:
+      deprecated: true
       summary: Update a webinar
       description: This method updates a webinar belonging to the authenticated user.
       operationId: update_webinar_alt1
@@ -14976,6 +14978,7 @@ paths:
             - edit
   /me/webinars/{webinar_id}/email_settings:
     get:
+      deprecated: true
       summary: Get customization email data for a webinar
       description: >-
         This method returns customized email data for the specified webinar. The
@@ -15011,6 +15014,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
     patch:
+      deprecated: true
       summary: Customize the email preferences of a webinar
       description: >-
         This method causes the authenticated user to customize the email
@@ -15161,6 +15165,7 @@ paths:
             - edit
   /me/webinars/{webinar_id}/registrants:
     get:
+      deprecated: true
       summary: Get user registration data associated with a webinar
       description: >-
         This method returns the list of user registrations that is associated
@@ -15250,6 +15255,7 @@ paths:
             - stats
             - private
     put:
+      deprecated: true
       summary: Capture the user registration list associated with a webinar
       description: >-
         This method captures the user registration list associated with the
@@ -15321,6 +15327,7 @@ paths:
                 $ref: '#/components/schemas/error'
   /me/webinars/{webinar_id}/registrants/{registrant_id}:
     delete:
+      deprecated: true
       summary: Delete a registrant record associated with a webinar
       description: >-
         This method deletes the specified registrant associated with a webinar
@@ -15382,6 +15389,7 @@ paths:
         - oauth2:
             - delete
     patch:
+      deprecated: true
       summary: Update user registration data associated with a webinar
       description: >-
         This method updates the specified user registration data associated with
@@ -28235,6 +28243,7 @@ paths:
             - create
   /users/{user_id}/webinars/{webinar_id}:
     get:
+      deprecated: true
       summary: Get a specific webinar
       description: >-
         This method returns a single webinar belonging to the authenticated
@@ -28271,6 +28280,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
     patch:
+      deprecated: true
       summary: Update a webinar
       description: This method updates a webinar belonging to the authenticated user.
       operationId: update_webinar
@@ -28571,6 +28581,7 @@ paths:
             - edit
   /users/{user_id}/webinars/{webinar_id}/email_settings:
     get:
+      deprecated: true
       summary: Get customization email data for a webinar
       description: >-
         This method returns customized email data for the specified webinar. The
@@ -28613,6 +28624,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
     patch:
+      deprecated: true
       summary: Customize the email preferences of a webinar
       description: >-
         This method causes the authenticated user to customize the email
@@ -28770,6 +28782,7 @@ paths:
             - edit
   /users/{user_id}/webinars/{webinar_id}/registrants:
     get:
+      deprecated: true
       summary: Get user registration data associated with a webinar
       description: >-
         This method returns the list of user registrations that is associated
@@ -28866,6 +28879,7 @@ paths:
             - stats
             - private
     put:
+      deprecated: true
       summary: Capture the user registration list associated with a webinar
       description: >-
         This method captures the user registration list associated with the
@@ -28944,6 +28958,7 @@ paths:
                 $ref: '#/components/schemas/error'
   /users/{user_id}/webinars/{webinar_id}/registrants/{registrant_id}:
     delete:
+      deprecated: true
       summary: Delete a registrant record associated with a webinar
       description: >-
         This method deletes the specified registrant associated with a webinar
@@ -29012,6 +29027,7 @@ paths:
         - oauth2:
             - delete
     patch:
+      deprecated: true
       summary: Update user registration data associated with a webinar
       description: >-
         This method updates the specified user registration data associated with
@@ -33615,6 +33631,7 @@ paths:
                 $ref: '#/components/schemas/legacy-error'
   /webinars/{webinar_id}:
     get:
+      deprecated: true
       summary: Get a specific webinar
       description: >-
         This method returns a single webinar belonging to the authenticated
@@ -43244,6 +43261,12 @@ components:
           description: The total number of team members with this role.
           example: 3
           type: number
+        display_description:
+          description: The translated display description of the role.
+          example: >-
+            Can view and manage all videos, folders, people, and analytics on
+            the account.
+          type: string
         display_name:
           description: The translated display name of the role.
           example: Admin
@@ -45413,6 +45436,24 @@ components:
                     - options
                     - uri
                   type: object
+                ask_ai_viewer:
+                  description: >-
+                    Information about where and how to submit questions by
+                    viewers to the AI service for this video.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
                 buy:
                   description: The Buy interaction for the On Demand video.
                   nullable: true
@@ -46194,6 +46235,7 @@ components:
               required:
                 - album
                 - ask_ai
+                - ask_ai_viewer
                 - buy
                 - can_request_team_role_upgrade
                 - can_update_privacy_to_public

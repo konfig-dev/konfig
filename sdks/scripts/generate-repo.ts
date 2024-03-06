@@ -111,7 +111,7 @@ function generateSdkRepository(
 
   // Run konfig generate. If any errors occur, delete the repository and abort.
   try {
-    execa.sync("konfig", ["generate"], { cwd: tmpSdkDir });
+    execa.sync("konfig", ["generate", "-d"], { cwd: tmpSdkDir });
   } catch (error: any) {
     if (!debug) deleteRepository(sdkName);
     result.reason = `Error occurred during generate: ${error.message}`;

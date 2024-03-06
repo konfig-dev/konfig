@@ -347,7 +347,9 @@ const customRequests: Record<string, CustomRequest> = {
         "https://developer.spotify.com/_data/documentation/web-api/reference/open-api-schema.yml"
       );
       let rawSpecString = await response.text();
-      rawSpecString = rawSpecString.replaceAll("$ref: '../policies.yaml'", "");
+      rawSpecString = rawSpecString
+        .replaceAll("policies:", "")
+        .replaceAll("$ref: '../policies.yaml'", "");
       return rawSpecString;
     },
   },

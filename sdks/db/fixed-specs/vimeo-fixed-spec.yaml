@@ -8784,13 +8784,6 @@ paths:
         This method returns a list of all Vimeo payments service payment methods
         that are available to the authenticated user.
       parameters:
-        - description: The ID associated with the account.
-          in: query
-          name: account_id
-          required: false
-          schema:
-            type: string
-            example: abc12345
         - description: The name of the card member.
           in: query
           name: cardmember_name
@@ -8821,6 +8814,13 @@ paths:
           schema:
             type: boolean
             example: false
+        - description: The ID of the user.
+          in: query
+          name: user_id
+          required: true
+          schema:
+            type: number
+            example: 12345
       requestBody:
         required: false
         content:
@@ -11048,6 +11048,7 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     patch:
       tags:
         - Webinar\Essentials
@@ -11105,6 +11106,7 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /me/webinars/{webinar_id}/email_settings:
     get:
       tags:
@@ -11141,6 +11143,7 @@ paths:
             application/vnd.vimeo.webinar.email.settings+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     patch:
       tags:
         - Webinar\Emails
@@ -11186,6 +11189,7 @@ paths:
             application/vnd.vimeo.webinar.email.settings+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /me/webinars/{webinar_id}/registrants:
     get:
       tags:
@@ -11276,6 +11280,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     put:
       tags:
         - Webinar\Registrations
@@ -11325,6 +11330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /me/webinars/{webinar_id}/registrants/{registrant_id}:
     delete:
       tags:
@@ -11387,6 +11393,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     patch:
       tags:
         - Webinar\Registrations
@@ -11447,6 +11454,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /oauth/access_token:
     post:
       tags:
@@ -21271,6 +21279,7 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     patch:
       tags:
         - Webinar\Essentials
@@ -21334,6 +21343,7 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /users/{user_id}/webinars/{webinar_id}/email_settings:
     get:
       tags:
@@ -21377,6 +21387,7 @@ paths:
             application/vnd.vimeo.webinar.email.settings+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     patch:
       tags:
         - Webinar\Emails
@@ -21429,6 +21440,7 @@ paths:
             application/vnd.vimeo.webinar.email.settings+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /users/{user_id}/webinars/{webinar_id}/registrants:
     get:
       tags:
@@ -21526,6 +21538,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     put:
       tags:
         - Webinar\Registrations
@@ -21582,6 +21595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /users/{user_id}/webinars/{webinar_id}/registrants/{registrant_id}:
     delete:
       tags:
@@ -21651,6 +21665,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
     patch:
       tags:
         - Webinar\Registrations
@@ -21718,6 +21733,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
   /videos:
     get:
       tags:
@@ -25408,6 +25424,7 @@ paths:
             application/vnd.vimeo.webinars+json:
               schema:
                 $ref: '#/components/schemas/error'
+      deprecated: true
 components:
   securitySchemes:
     bearer:
@@ -35031,6 +35048,12 @@ components:
           description: The total number of team members with this role.
           example: 3
           type: number
+        display_description:
+          description: The translated display description of the role.
+          example: >-
+            Can view and manage all videos, folders, people, and analytics on
+            the account.
+          type: string
         display_name:
           description: The translated display name of the role.
           example: Admin
@@ -37251,6 +37274,24 @@ components:
                     - options
                     - uri
                   type: object
+                ask_ai_viewer:
+                  description: >-
+                    Information about where and how to submit questions by
+                    viewers to the AI service for this video.
+                  nullable: true
+                  properties:
+                    options:
+                      description: An array of HTTP methods permitted on this URI.
+                      items:
+                        type: string
+                      type: array
+                    uri:
+                      description: The API URI that resolves to the connection data.
+                      type: string
+                  required:
+                    - options
+                    - uri
+                  type: object
                 buy:
                   description: The Buy interaction for the On Demand video.
                   nullable: true
@@ -37978,6 +38019,7 @@ components:
               required:
                 - album
                 - ask_ai
+                - ask_ai_viewer
                 - buy
                 - can_request_team_role_upgrade
                 - can_update_privacy_to_public
