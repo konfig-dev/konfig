@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: python-nested-array-items-ref-in-any-of API
+  description: A simple API based for testing python-nested-array-items-ref-in-any-of.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - description: Live API server
+    url: https://python-nested-array-items-ref-in-any-of.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    post:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      description: Provide an input parameter to receive a JSON value with properties.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestFetchRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    SimpleSchema:
+      type: object
+      properties:
+        value:
+          type: string
+    TestFetchRequest:
+      type: object
+      properties:
+        problematicProperty:
+          anyOf:
+            - type: array
+              items:
+                $ref: '#/components/schemas/SimpleSchema'
+            - type: array
+              items:
+                type: string
+security:
+  - ApiKey: []
