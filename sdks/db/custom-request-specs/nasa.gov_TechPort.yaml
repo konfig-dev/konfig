@@ -1,0 +1,871 @@
+openapi: 3.0.0
+info:
+  version: 3.13.2
+  title: TechPort
+  description: TechPort RESTful API
+  contact:
+    name: TechPort Team
+    email: hq-techport@mail.nasa.gov
+    url: https://techport.nasa.gov
+servers:
+  - url: https://techport.nasa.gov
+paths:
+  /api:
+    get:
+      description: Returns the swagger specification for the API.
+      responses:
+        '200':
+          description: Successful response
+        default:
+          description: Object not found.
+  /api/projects:
+    get:
+      description: Returns a list of available technology project IDs.
+      parameters:
+        - name: updatedSince
+          in: query
+          description: >-
+            ISO 8601 full-date in the format YYYY-MM-DD. Filters the list of
+            available ID values by their lastUpdated parameter.
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                  lastUpdated:
+                    type: string
+        default:
+          description: Object not found.
+  /api/projects/search:
+    get:
+      description: Returns a list of projects matching the search term.
+      parameters:
+        - name: projectId
+          in: query
+          description: The specific ID of the project requested.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: searchQuery
+          in: query
+          description: >-
+            The term on which to search. Will check all project fields for the
+            this term.
+          required: false
+          schema:
+            type: string
+        - name: missionDirectorate
+          in: query
+          description: The mission directorate acronym of the projects. Used to filter.
+          required: false
+          schema:
+            type: string
+        - name: program
+          in: query
+          description: The program acronym of the projects. Used to filter.
+          required: false
+          schema:
+            type: string
+        - name: titleSearch
+          in: query
+          description: >-
+            The term on which to search. Will check only project titles for the
+            this term.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of projects that match the criteria.
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    title:
+                      type: string
+                    description:
+                      type: string
+        default:
+          description: Object not found.
+  /api/projects/{projectId}:
+    get:
+      description: Returns information about a specific technology project.
+      parameters:
+        - name: projectId
+          in: path
+          description: ID of project to fetch
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/project'
+        default:
+          description: Object not found.
+  /api/organizations:
+    get:
+      description: Returns a list of organizations that match a given name.
+      parameters:
+        - name: name
+          in: query
+          description: Organization Name to filter on.
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/organization'
+        default:
+          description: Object not found.
+  /api/organizations/types:
+    get:
+      description: >-
+        Returns a list of available organization types, including set-aside and
+        MSI types.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/organizationType'
+        default:
+          description: Object not found.
+  /api/organizations/{organizationId}:
+    get:
+      description: Get an organization and its information.
+      parameters:
+        - name: organizationId
+          in: path
+          description: Organization Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success. Organization detailed data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/organization'
+        default:
+          description: Error.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    destination:
+      type: string
+      description: >-
+        Represents a destination towards which the technology on this project
+        helps advance the Agency goals.
+    closeoutDocument:
+      type: string
+      description: >-
+        Represents a file hyperlink or external hyperlink to a project closeout
+        final report artifact.
+    technologyArea:
+      type: object
+      description: >-
+        The Technology Area for a given technology that corresponds to the NASA
+        Technology Roadmap.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique identifier for the Technology Area.
+        code:
+          type: string
+          description: The code identifier for the Technology Area.
+        title:
+          type: string
+          description: The title of the Technology Area.
+    workLocation:
+      type: string
+      description: A state/territory where work on this project is performed.
+    programDirector:
+      type: string
+      description: The name of a Program Director responsible for management of an project.
+    programManager:
+      type: string
+      description: The name of a Program Manager responsible for management of an project.
+    projectManager:
+      type: string
+      description: The name of a Project Manager responsible for management of an project.
+    principalInvestigator:
+      type: string
+      description: >-
+        The name of the Principal Investigator who is a lead scientist or
+        engineer for an project.
+    coInvestigator:
+      type: string
+      description: >-
+        The name of an investigator who is a scientist or engineer for an
+        project.
+    program:
+      type: object
+      description: Represents a NASA program.
+      properties:
+        programId:
+          type: integer
+          format: int64
+          description: Unique ID for this program
+        acronym:
+          type: string
+          description: Acronym for this program
+        active:
+          type: boolean
+          description: True if the program is still active
+        description:
+          type: string
+          description: Description for the program
+        parentProgram:
+          $ref: '#/components/schemas/program'
+          description: Program object representing the parent program
+        parentProgramId:
+          type: integer
+          format: int64
+          description: Unique ID for the parent program
+        responsibleMd:
+          $ref: '#/components/schemas/organization'
+          description: Responsible Mission Directorate for this program
+        responsibleMdId:
+          type: integer
+          format: int64
+          description: Unique ID for the parent responsible mission directorate
+        title:
+          type: string
+          description: Title for the program
+    taxonomy:
+      type: object
+      description: Represents data associated with a single taxonomy root entity.
+      properties:
+        taxonomyRootId:
+          type: integer
+          format: int64
+          description: Unique ID for this taxonomy
+        releaseStatusId:
+          type: integer
+          format: int64
+          description: ID for this taxonomy roots release status
+        title:
+          type: string
+          description: Title for this taxonomy
+        definition:
+          type: string
+          description: Definition for this taxonomy
+        modifiedBy:
+          type: string
+          description: The last user to modify this taxonomy
+        modifiedDate:
+          type: string
+          format: date
+          description: The date this taxonomy was last modified
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/treeNode'
+        releaseStatus:
+          type: string
+          description: The release status of this taxonomy
+    treeNode:
+      type: object
+      description: Represents a taxonomy node in a tree.
+      properties:
+        content:
+          $ref: '#/components/schemas/taxonomyNode'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/treeNode'
+    taxonomyNode:
+      type: object
+      description: Represents data associated with a single taxonomy node entity.
+      properties:
+        taxonomyNodeId:
+          type: integer
+          format: int64
+          description: Unique identifier for the taxonomy node
+        taxonomyRootId:
+          type: integer
+          format: int64
+          description: Unique identifier for the root of this taxonomy node
+        parentNodeId:
+          type: integer
+          format: int64
+          description: >-
+            Unique identifier for the taxonomy node/root that is the direct
+            parent of this taxonomy node
+        level:
+          type: integer
+          format: int64
+          description: The level of this node on the tree (0 being the root)
+        code:
+          type: string
+          description: Code of the taxonomy node
+        title:
+          type: string
+          description: Title of the taxonomy node
+        definition:
+          type: string
+          description: Definition of the taxonomy node
+        hasChildren:
+          type: boolean
+          description: Defines whether this node has children
+        publishedUrl:
+          type: string
+          description: Published URL of the taxonomy node
+    contact:
+      type: object
+      description: Represents an individual and their details.
+      properties:
+        contactId:
+          type: integer
+          format: int64
+          description: Unique ID for this contact
+        displayOrder:
+          type: integer
+          format: int64
+          description: Display order
+        fax:
+          type: string
+          description: Fax number for the contact
+        firstName:
+          type: string
+          description: First name for the contact
+        lastName:
+          type: string
+          description: Last name for the contact
+        fullName:
+          type: string
+          description: Full name for the contact, first middle initial last
+        fullNameInverted:
+          type: string
+          description: Full name for the contact but inverted, last first middle initial
+        location:
+          $ref: '#/components/schemas/location'
+          description: Location for the contact
+        locationId:
+          type: integer
+          format: int64
+          description: Unique ID representing the contacts location
+        middleInitial:
+          type: string
+          description: Middle initial for the contact
+        organization:
+          $ref: '#/components/schemas/organization'
+          description: Organization that the contact works for
+        prefix:
+          type: string
+          description: Prefix for the contact
+        primaryEmail:
+          type: string
+          description: Primary email for the contact
+        secondaryEmail:
+          type: string
+          description: Secondary email for the contact
+        suffix:
+          type: string
+          description: Suffix for the contact
+        title:
+          type: string
+          description: Title for the contact
+        workPhoneExtension:
+          type: string
+          description: Extension for contacts work phone number
+        workPhone:
+          type: string
+          description: Phone number for the contact
+        receiveEmail:
+          type: integer
+          format: int64
+          description: 1 if the contact is signed up to receive TechPort emails
+        isPublicEmail:
+          type: boolean
+          description: True if the contacts email is available to be shown to the public
+    organization:
+      type: object
+      description: A NASA center/facility associated with an project
+      properties:
+        organizationId:
+          type: integer
+          format: int64
+          description: Unique ID for this organization
+        acronym:
+          type: string
+          description: The acronym of the organization
+        fax:
+          type: string
+          description: Fax number of the organization
+        isActive:
+          type: boolean
+          description: True if the organization is an active organization
+        location:
+          $ref: '#/components/schemas/location'
+          description: Location object for the organization
+        locationId:
+          type: integer
+          format: int64
+          description: Unique ID representing the organizations location
+        organizationName:
+          type: string
+          description: The name of the organization
+        organizationType:
+          $ref: '#/components/schemas/lkuCode'
+          description: Lookup code representing the type of organization
+        organizationTypeId:
+          type: integer
+          format: int64
+          description: Unique ID for the lookup code representing the organization type
+        parentOrganizationId:
+          type: integer
+          format: int64
+          description: Unique ID for the parent organization
+        phone:
+          type: string
+          description: The phone number for the organization
+        replacementOrganizationId:
+          type: integer
+          format: int64
+          description: Unique ID for the replacement organization
+        url:
+          type: string
+          description: The URL for the organization
+        NAOrganization:
+          type: boolean
+          description: True if the organization is in North America
+        external:
+          type: boolean
+          description: True if the organization is external to NASA
+        linkCount:
+          type: integer
+          format: int64
+          description: Amount of links this organization has
+        murepUnitId:
+          type: integer
+          format: int64
+          description: Unique identifier assigned to U.S. academic institutions by MUREP.
+        ein:
+          type: string
+          description: The employer identification number (EIN) of the entity.
+        uei:
+          type: string
+          description: The unique entity identifier (UEI) of the entity.
+        dunsNumber:
+          type: string
+          description: The DUNS number assigned to the organization.
+        msiData:
+          description: >-
+            A key/value pair of strings describing the organization MSI status
+            by fiscal year.
+          type: object
+          additionalProperties:
+            type: array
+            description: The organization MSI status types for a given fiscal year.
+            items:
+              type: string
+        setAsideData:
+          description: The organization set-aside types.
+          type: array
+          items:
+            type: string
+    organizationType:
+      type: object
+      description: >-
+        A heirarchical representation of an organization type. Similar to the
+        LkuCode type returned for organization.organizationType, but formatted
+        in a parent/child relationship.
+      properties:
+        organizationTypeId:
+          type: integer
+          format: int64
+          description: Unique ID for this organization type.
+        name:
+          type: string
+          description: The name of the organization type.
+        hasChildren:
+          type: boolean
+          description: Whether or not the type has child types.
+        level:
+          type: string
+          description: The relative level of the organization type in the heirarchy.
+        parentId:
+          type: integer
+          format: int64
+          description: Unique ID for the parent type in the heriarchy.
+    location:
+      type: object
+      description: Represents a physical location.
+      properties:
+        locationId:
+          type: integer
+          format: int64
+          description: Unique ID for this location
+        addressLine1:
+          type: string
+          description: First line of address for location
+        addressLine2:
+          type: string
+          description: Second line of address for location
+        city:
+          type: string
+          description: City for location
+        locationType:
+          $ref: '#/components/schemas/lkuCode'
+          description: Lookup code representing the location type
+        locationTypeId:
+          type: integer
+          format: int64
+          description: Unique ID for the lookup code representing the location type
+        state:
+          type: string
+          description: State for location
+        stateTerritoryName:
+          type: string
+          description: State Territory name for location
+        zip:
+          type: string
+          description: ZIP code for location
+        zip2:
+          type: string
+          description: Secondary ZIP code for location
+        NALocation:
+          type: string
+          description: True if this location is located in North America
+        country:
+          $ref: '#/components/schemas/lkuCode'
+          description: Lookup code representing the location country
+        countryId:
+          type: integer
+          format: int64
+          description: Unique ID for the lookup code representing the location country
+        shortLocationString:
+          type: string
+          description: A string representing the full location
+    lkuCode:
+      type: object
+      description: >-
+        Lookup code representing more data about an object usually stored in our
+        database.
+      properties:
+        lkuCodeId:
+          type: integer
+          format: int64
+          description: Unique ID for this LKU Code
+        code:
+          type: string
+          description: Unique text code that represents this LKU Code
+        description:
+          type: string
+          description: Description of the LKU Code
+        lkuCodeTypeId:
+          type: integer
+          format: int64
+          description: Unique ID for the LKU Code Type
+        lkuCodeType:
+          $ref: '#/components/schemas/lkuCodeType'
+          description: >-
+            Lookup code type representing this LKU code, further classifying it
+            into a group indicating how the code will be used
+        displayOrder:
+          type: integer
+          format: int64
+          description: Display order
+    lkuCodeType:
+      type: object
+      description: >-
+        Lookup code type further showing how the lookup codes within this type
+        will be used.
+      properties:
+        lkuCodeTypeId:
+          type: integer
+          format: int64
+          description: Unique ID for this LKU Code Type
+        codeType:
+          type: string
+          description: Unique text code type that represents this LKU Code
+        description:
+          type: string
+          description: Description of the LKU Code Type
+    project:
+      type: object
+      description: >-
+        Top-level TechPort object representing a NASA technology project and its
+        associated data.
+      properties:
+        projectId:
+          type: integer
+          format: int64
+          description: Unique identifier for the project.
+        lastUpdated:
+          type: string
+          format: date
+          description: >-
+            ISO 8601 full-date in the format YYYY-MM-DD describing the last time
+            this project was updated.
+        title:
+          type: string
+          description: Title of the project.
+        acronym:
+          type: string
+          description: Abbreviated name of the project.
+        statusDescription:
+          type: string
+          description: >-
+            Indicates whether the project is currently active, completed, or
+            canceled.
+        description:
+          type: string
+          description: A detailed description of the project.
+        benefits:
+          type: string
+          description: >-
+            Describes the benefits offered to NASA funded and planned missions,
+            unfunded or planned missions, commercial space industry, and to the
+            nation.
+        startDateString:
+          type: string
+          description: The month and year the project was authorized to proceed.
+        endDateString:
+          type: string
+          description: The month and year the project is expected to complete its work.
+        startTrl:
+          type: integer
+          format: int64
+          description: >-
+            The technology maturity (technology readiness level) of the project
+            at its beginning.
+        currentTrl:
+          type: integer
+          format: int64
+          description: >-
+            The current technology maturity (technology readiness level) of the
+            project.
+        endTrl:
+          type: integer
+          format: int64
+          description: >-
+            The estimated technology maturity (technology readiness level) of
+            the project at its end.
+        primaryTaxonomyNodes:
+          type: array
+          description: >-
+            List of primary taxonomy nodes (from the NASA Technology Roadmap)
+            associated with the project.
+          items:
+            $ref: '#/components/schemas/taxonomyNode'
+        additionalTaxonomyNodes:
+          type: array
+          description: >-
+            List of additional and cross-cutting taxonomy nodes associated with
+            the project.
+          items:
+            $ref: '#/components/schemas/taxonomyNode'
+        destinations:
+          type: array
+          description: >-
+            List of the NASA destinations the technology on this project helps
+            achieve.
+          items:
+            $ref: '#/components/schemas/lkuCode'
+        program:
+          type: object
+          description: >-
+            The NASA program that is the primary funding source for this
+            project.
+          $ref: '#/components/schemas/program'
+        responsibleMd:
+          type: object
+          description: >-
+            The NASA Mission Directorate or Office that is the primary funding
+            source for this project.
+          $ref: '#/components/schemas/program'
+        leadOrganization:
+          type: object
+          description: >-
+            The lead NASA Center / Facility or external organization that is
+            conducting the majority of the work.
+          $ref: '#/components/schemas/organization'
+        supportingOrganizations:
+          type: array
+          description: >-
+            The supporting organizations for this project that are conducting
+            work on the project.
+          items:
+            $ref: '#/components/schemas/organization'
+        coFundingPartners:
+          type: array
+          description: >-
+            Other government agencies, NASA Mission Directoratres, universities,
+            or commercial entities performing contributing resources to this
+            project.
+          items:
+            $ref: '#/components/schemas/organization'
+        statesWithWork:
+          type: array
+          description: States and territories with people performing work on this project.
+          items:
+            $ref: '#/components/schemas/location'
+        programDirectors:
+          type: array
+          description: >-
+            Names of the Program Directors responsible for the management of
+            this project.
+          items:
+            $ref: '#/components/schemas/contact'
+        programManagers:
+          type: array
+          description: >-
+            Names of the Program Managers responsible for the management of this
+            project.
+          items:
+            $ref: '#/components/schemas/contact'
+        projectManagers:
+          type: array
+          description: >-
+            Names of the Project Managers responsible for the management of this
+            project.
+          items:
+            $ref: '#/components/schemas/contact'
+        principalInvestigators:
+          type: array
+          description: >-
+            Names of the Principal Investigators who are the lead scientists or
+            engineers for this project.
+          items:
+            $ref: '#/components/schemas/contact'
+        coInvestigators:
+          type: array
+          description: >-
+            Names of the additional investigators who are scientists or
+            engineers for this project.
+          items:
+            $ref: '#/components/schemas/contact'
+        website:
+          type: string
+          description: The URL for the associated website.
+        libraryItems:
+          type: array
+          description: List of library items in the project library.
+          items:
+            $ref: '#/components/schemas/libraryItem'
+        stiDaas:
+          type: array
+          description: List of STI DAAs in the project library.
+          items:
+            $ref: '#/components/schemas/libraryItem'
+        closeoutSummary:
+          type: string
+          description: The project closeout summary excerpt.
+        closeoutDocuments:
+          type: array
+          description: >-
+            List of document files or links to the project final report closeout
+            documentation.
+          items:
+            $ref: '#/components/schemas/libraryItem'
+        primaryImage:
+          type: object
+          description: Primary Image for the project.
+          $ref: '#/components/schemas/libraryItem'
+        viewCount:
+          type: integer
+          format: int64
+          description: The number of views for the project.
+    libraryItem:
+      type: object
+      description: Represents a specific library item.
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique identifier for the library item.
+        title:
+          type: string
+          description: Title of the library item
+        contentType:
+          type: object
+          description: Identifies the type of library item, e.g. Image
+          $ref: '#/components/schemas/lkuCode'
+        files:
+          type: array
+          description: List of files associated with the library item.
+          items:
+            $ref: '#/components/schemas/file'
+        description:
+          type: string
+          description: Description of the library item.
+        url:
+          type: string
+          description: External URL for the library item.
+        publishedDateString:
+          type: string
+          description: Date the library item was published.
+        publishedBy:
+          type: string
+          description: Publisher of the library item.
+    file:
+      type: object
+      description: Represents a file associated with a library item.
+      properties:
+        fileId:
+          type: integer
+          format: int64
+          description: Unique identifier for the file.
+        url:
+          type: string
+          description: The TechPort URL at which the file is accessible for download.
+        fileSize:
+          type: integer
+          format: int64
+          description: The size of the file in bytes.
+        fileExtension:
+          type: string
+          description: The file extension for the file.
+        fileName:
+          type: string
+          description: The file name.

@@ -98,6 +98,12 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "nasa.gov_TechPort": {
+    lambda: async () => {
+      const url = "https://techport.nasa.gov/api/specification";
+      return fetch(url).then((res) => res.text());
+    },
+  },
   "lob.com": {
     lambda: async () => {
       const response = await fetch(
