@@ -25,11 +25,18 @@ export async function ignoreObjectsWithNoProperties({
     return 0
   const objectTypeSchemas = findMediaObjects({ spec }).filter((object) => {
     if (object.media.schema === undefined) return false
-    const schema = resolveRef({
-      refOrObject: object.media.schema,
-      $ref: spec.$ref,
-    })
-    return isObjectTypeSchemaWithNoProperties({ schema })
+    try {
+      const schema = resolveRef({
+        refOrObject: object.media.schema,
+        $ref: spec.$ref,
+      })
+      return isObjectTypeSchemaWithNoProperties({ schema })
+    } catch (e) {
+      if (e instanceof Error && process.env.ALLOW_INVALID_REF !== undefined) {
+        if (e.name === 'MissingPointerError') return false
+      }
+      throw e
+    }
   })
   if (objectTypeSchemas.length === 0) return 0
   console.log(

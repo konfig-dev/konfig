@@ -50,28 +50,38 @@ export async function fixEmptyResponseBodySchema({
         // If this is a "well formed" schema object
         // e.g. object with properties or primitive type
         if (mediaObject.schema !== undefined) {
-          const schemaObject = resolveRef({
-            refOrObject: mediaObject.schema,
-            $ref: spec.$ref,
-          })
-
-          // If this is an object with properties or polymorphic, move on
-          if (
-            Object.keys(schemaObject).length > 1 ||
-            // in case of polymorphism we don't need to generate a schema object
-            'allOf' in schemaObject ||
-            'oneOf' in schemaObject ||
-            'anyOf' in schemaObject
-          )
-            continue
-          if (
-            schemaObject.type === 'boolean' ||
-            schemaObject.type === 'integer' ||
-            schemaObject.type === 'null' ||
-            schemaObject.type === 'number' ||
-            schemaObject.type === 'string'
-          )
-            continue
+          try {
+            const schemaObject = resolveRef({
+              refOrObject: mediaObject.schema,
+              $ref: spec.$ref,
+            })
+            // If this is an object with properties or polymorphic, move on
+            if (
+              Object.keys(schemaObject).length > 1 ||
+              // in case of polymorphism we don't need to generate a schema object
+              'allOf' in schemaObject ||
+              'oneOf' in schemaObject ||
+              'anyOf' in schemaObject
+            )
+              continue
+            if (
+              schemaObject.type === 'boolean' ||
+              schemaObject.type === 'integer' ||
+              schemaObject.type === 'null' ||
+              schemaObject.type === 'number' ||
+              schemaObject.type === 'string'
+            )
+              continue
+          } catch (e) {
+            if (e instanceof Error) {
+              if (
+                e.name === 'MissingPointerError' &&
+                process.env.ALLOW_INVALID_REF !== undefined
+              )
+                continue
+            }
+            throw e
+          }
         }
 
         // Detected non-descriptive response body schema object, its likely we should add a schema

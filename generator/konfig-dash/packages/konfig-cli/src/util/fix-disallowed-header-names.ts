@@ -21,13 +21,24 @@ export async function fixDisallowedHeaderNames({
     if (operation.parameters === undefined) continue
     const newParameters: (ReferenceObject | ParameterObject)[] = []
     for (const parameter of operation.parameters) {
-      const resolvedParameter = resolveRef({
-        refOrObject: parameter,
-        $ref: spec.$ref,
-      })
-      if (await isParameterDisallowed({ parameter: resolvedParameter }))
-        numberOfDisallowedHeaderNamesRemoved++
-      else newParameters.push(parameter)
+      try {
+        const resolvedParameter = resolveRef({
+          refOrObject: parameter,
+          $ref: spec.$ref,
+        })
+        if (await isParameterDisallowed({ parameter: resolvedParameter }))
+          numberOfDisallowedHeaderNamesRemoved++
+        else newParameters.push(parameter)
+      } catch (e) {
+        if (e instanceof Error) {
+          if (
+            e.name === 'MissingPointerError' &&
+            process.env.ALLOW_INVALID_REF !== undefined
+          )
+            continue
+        }
+        throw e
+      }
     }
     operation.parameters = newParameters
   }

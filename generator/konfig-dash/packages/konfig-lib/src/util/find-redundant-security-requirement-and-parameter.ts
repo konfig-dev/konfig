@@ -29,10 +29,22 @@ export async function findRedundantSecurityRequirementAndParameter({
   if (securityRequirements === undefined) return { found: false }
   const securitySchemes = await getSecuritySchemes({ spec, $ref })
   if (securitySchemes === undefined) return { found: false }
-  const parameters = await getOperationParametersDeprecated({
-    operation: operation,
-    $ref,
-  })
+  let parameters: OperationParameter[] | undefined = undefined
+  try {
+    parameters = await getOperationParametersDeprecated({
+      operation: operation,
+      $ref,
+    })
+  } catch (e) {
+    if (e instanceof Error) {
+      if (
+        e.name === 'MissingPointerError' &&
+        process.env.ALLOW_INVALID_REF !== undefined
+      )
+        return { found: false }
+    }
+    throw e
+  }
   if (parameters === undefined) return { found: false }
 
   // filter security schemes based on required security
