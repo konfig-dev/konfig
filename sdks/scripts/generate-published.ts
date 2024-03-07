@@ -363,7 +363,7 @@ async function fixSpec(
     console.debug(`🟢 Running "${cliName} ${args.join(" ")}"`);
   }
   try {
-    await execa(cliName, args);
+    await execa(cliName, args, { env: { ALLOW_INVALID_REF: "1" } });
   } catch (err) {
     console.log(`❌ ERROR: ${err}`);
   }

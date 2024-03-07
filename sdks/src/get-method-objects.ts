@@ -110,15 +110,22 @@ export function getMethodObjects(spec: Spec): Method[] {
         $ref: spec.$ref,
       });
       const schemaOrRef = responseObject.schema;
-      const schema =
-        schemaOrRef !== undefined
-          ? resolveRef({ refOrObject: schemaOrRef, $ref: spec.$ref })
-          : undefined;
-      const description = schema?.description ?? "";
-      responses.push({
-        statusCode,
-        description,
-      });
+      try {
+        const schema =
+          schemaOrRef !== undefined
+            ? resolveRef({ refOrObject: schemaOrRef, $ref: spec.$ref })
+            : undefined;
+        const description = schema?.description ?? "";
+        responses.push({
+          statusCode,
+          description,
+        });
+      } catch (e) {
+        if (e instanceof Error) {
+          if (e.name === "MissingPointerError") continue;
+        }
+        throw e;
+      }
     }
 
     const method = getMethodName({

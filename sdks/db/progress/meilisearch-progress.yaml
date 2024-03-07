@@ -1,0 +1,264 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /dumps:
+    post: Dumps_triggerDumpCreation
+  /experimental-features:
+    get: Experimental_runtimeFeaturesGet
+    patch: Experimental_setRuntimeExperimentalFeatures
+  /health:
+    get: Health_checkMeilisearchInstance
+  /indexes:
+    get: Indexes_list
+    post: Indexes_createIndex
+  /indexes/{indexUid}:
+    delete: Indexes_deleteIndex
+    get: Indexes_getIndex
+    patch: Indexes_updateIndexPrimaryKey
+  /indexes/{indexUid}/documents:
+    delete: Documents_deleteAll
+    get: Documents_getByBatch
+    post: Documents_addOrUpdateBatch
+    put: Documents_addOrUpdateBatch
+  /indexes/{indexUid}/documents/delete:
+    post: Documents_deleteSelectionBasedFilter
+  /indexes/{indexUid}/documents/delete-batch:
+    post: Documents_deleteSelectionByFilter
+  /indexes/{indexUid}/documents/fetch:
+    post: Documents_getByBatch
+  /indexes/{indexUid}/documents/{documentId}:
+    delete: Documents_deleteDocumentById
+    get: Documents_getById
+  /indexes/{indexUid}/facet-search:
+    post: Search_facetValuesQuery
+  /indexes/{indexUid}/search:
+    get: Search_documents
+    post: Search_documentsSearch
+  /indexes/{indexUid}/settings:
+    delete: Settings_resetSettings
+    get: Settings_getSettings
+    patch: Settings_updateSettings
+  /indexes/{indexUid}/settings/displayed-attributes:
+    delete: Settings_resetDisplayedAttributes
+    get: Settings_getDisplayedAttributes
+    put: Settings_updateDisplayedAttributes
+  /indexes/{indexUid}/settings/distinct-attribute:
+    delete: Settings_resetDistinctAttribute
+    get: Settings_getDistinctAttribute
+    put: Settings_updateDistinctAttribute
+  /indexes/{indexUid}/settings/faceting:
+    delete: Settings_resetFacetingSettings
+    get: Settings_getFacetingConfiguration
+    patch: Settings_updateFacetingSettings
+  /indexes/{indexUid}/settings/filterable-attributes:
+    delete: Settings_resetFilterableAttributes
+    get: Settings_getFilterableAttributes
+    put: Settings_updateFilterableAttributes
+  /indexes/{indexUid}/settings/pagination:
+    delete: Settings_resetPaginationSettings
+    get: Settings_getPaginationConfiguration
+    patch: Settings_updatePaginationSettings
+  /indexes/{indexUid}/settings/ranking-rules:
+    delete: Settings_resetRankingRules
+    get: Settings_getRankingRules
+    put: Settings_updateRankingRules
+  /indexes/{indexUid}/settings/searchable-attributes:
+    delete: Settings_resetSearchableAttributes
+    get: Settings_getSearchableAttributes
+    put: Settings_updateSearchableAttributes
+  /indexes/{indexUid}/settings/sortable-attributes:
+    delete: Settings_resetSortableAttributes
+    get: Settings_getSortableAttributes
+    put: Settings_updateSortableAttributes
+  /indexes/{indexUid}/settings/stop-words:
+    delete: Settings_resetStopWords
+    get: Settings_getStopWords
+    put: Settings_updateStopWords
+  /indexes/{indexUid}/settings/synonyms:
+    delete: Settings_resetSynonyms
+    get: Settings_getSynonyms
+    put: Settings_updateSynonyms
+  /indexes/{indexUid}/settings/typo-tolerance:
+    delete: Settings_resetTypoTolerance
+    get: Settings_getTypoToleranceConfiguration
+    patch: Settings_updateTypoToleranceConfiguration
+  /indexes/{indexUid}/stats:
+    get: Stats_getIndexStats
+  /keys:
+    get: Keys_get
+    post: Keys_createApiKey
+  /keys/{uid_or_key}:
+    delete: Keys_deleteKeyByUidOrKey
+    get: Keys_getApiKey
+    patch: Keys_updateApiKey
+  /metrics:
+    get: Stats_getPrometheusMetrics
+  /snapshots:
+    post: Snapshots_createSnapshotProcess
+  /stats:
+    get: Stats_getAllIndexesStats
+  /swap-indexes:
+    post: Indexes_swapIndexes
+  /tasks:
+    delete: Tasks_deleteOperation
+    get: Tasks_getAll
+  /tasks/:taskUid:
+    get: Tasks_getTask
+  /tasks/cancel:
+    post: Tasks_cancelOperation
+  /version:
+    get: Version_getMeilisearchVersion
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /experimental-features:
+    patch:
+      application/json: ExperimentalSetRuntimeExperimentalFeaturesRequest
+  /indexes:
+    post:
+      application/json: IndexesCreateIndexRequest
+  /indexes/{indexUid}:
+    patch:
+      application/json: IndexesUpdateIndexPrimaryKeyRequest
+  /indexes/{indexUid}/documents:
+    post:
+      application/json: DocumentsAddOrUpdateBatchRequest
+    put:
+      application/json: DocumentsAddOrUpdateBatchRequest1
+  /indexes/{indexUid}/documents/delete:
+    post:
+      application/json: DocumentsDeleteSelectionBasedFilterRequest
+  /indexes/{indexUid}/documents/delete-batch:
+    post:
+      application/json: DocumentsDeleteSelectionByFilterRequest
+  /indexes/{indexUid}/documents/fetch:
+    post:
+      application/json: DocumentsGetByBatchRequest
+  /indexes/{indexUid}/settings:
+    patch:
+      application/json: SettingsUpdateSettingsRequest
+  /keys/{uid_or_key}:
+    patch:
+      application/json: KeysUpdateApiKeyRequest
+  /multi-search:
+    post:
+      application/json: MultiSearchRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /experimental-features:
+    get:
+      '200':
+        application/json: ExperimentalRuntimeFeaturesGetResponse
+    patch:
+      '200':
+        application/json: ExperimentalSetRuntimeExperimentalFeaturesResponse
+  /health:
+    get:
+      '200':
+        application/json: HealthCheckMeilisearchInstanceResponse
+  /indexes:
+    get:
+      '200':
+        application/json: IndexesListResponse
+  /indexes/{indexUid}/documents:
+    get:
+      '200':
+        application/json: DocumentsGetByBatchResponse
+  /indexes/{indexUid}/documents/fetch:
+    post:
+      '200':
+        application/json: DocumentsGetByBatch200Response
+  /indexes/{indexUid}/settings:
+    get:
+      '200':
+        application/json: SettingsGetSettingsResponse
+  /keys:
+    get:
+      '200':
+        application/json: KeysGetResponse
+  /multi-search:
+    post:
+      '200':
+        application/json: MultiSearchResponse
+  /stats:
+    get:
+      '200':
+        application/json: StatsGetAllIndexesStatsResponse
+  /tasks:
+    get:
+      '200':
+        application/json: TasksGetAllResponse
+  /version:
+    get:
+      '200':
+        application/json: VersionGetMeilisearchVersionResponse
+securityParameters:
+  afterEnqueuedAt:
+    query: false
+  afterFinishedAt:
+    query: false
+  afterStartedAt:
+    query: false
+  attributesToCrop:
+    query: false
+  attributesToHighlight:
+    query: false
+  attributesToRetrieve:
+    query: false
+  beforeEnqueuedAt:
+    query: false
+  beforeFinishedAt:
+    query: false
+  beforeStartedAt:
+    query: false
+  canceledBy:
+    query: false
+  cropLength:
+    query: false
+  cropMarker:
+    query: false
+  csvDelimiter:
+    query: false
+  facets:
+    query: false
+  fields:
+    query: false
+  filter:
+    query: false
+  from:
+    query: false
+  highlightPostTag:
+    query: false
+  highlightPreTag:
+    query: false
+  hitsPerPage:
+    query: false
+  indexUids:
+    query: false
+  limit:
+    query: false
+  matchingStrategy:
+    query: false
+  offset:
+    query: false
+  page:
+    query: false
+  primaryKey:
+    query: false
+  q:
+    query: false
+  showMatchesPosition:
+    query: false
+  sort:
+    query: false
+  statuses:
+    query: false
+  types:
+    query: false
+  uids:
+    query: false
+validServerUrls:
+  '{protocol}://{domain}:{port}':
+    url: '{protocol}://{domain}:{port}'
