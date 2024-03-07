@@ -253,6 +253,9 @@ async function main() {
     const fixedSpecFileName = fixedSpecFileNames[spec];
     const fixedSpecPath = path.join(fixedSpecsOutputPath, fixedSpecFileName);
     const fixedSpecString = fs.readFileSync(fixedSpecPath, "utf-8");
+    if (fixedSpecString === "") {
+      throw Error(`❌ ERROR: ${fixedSpecPath} is empty`);
+    }
     const oas = await parseSpec(fixedSpecString);
     fs.writeFileSync(
       path.join(openapiExamplesDirPath, "openapi.yaml"),

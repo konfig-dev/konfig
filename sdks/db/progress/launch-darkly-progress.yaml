@@ -1,0 +1,500 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /api/v2:
+    get: Other_getResourceCategories
+  /api/v2/account/relay-auto-configs:
+    get: RelayProxyConfigurations_list
+    post: RelayProxyConfigurations_createNewConfig
+  /api/v2/account/relay-auto-configs/{id}:
+    delete: RelayProxyConfigurations_deleteById
+    get: RelayProxyConfigurations_getSingleById
+    patch: RelayProxyConfigurations_updateConfigPatch
+  /api/v2/account/relay-auto-configs/{id}/reset:
+    post: RelayProxyConfigurations_resetSecretKeyWithExpiry
+  /api/v2/applications:
+    get: ApplicationsBeta_listApplications
+  /api/v2/applications/{applicationKey}:
+    delete: ApplicationsBeta_removeApplication
+    get: ApplicationsBeta_getApplicationByKey
+    patch: ApplicationsBeta_updateApplicationPatch
+  /api/v2/applications/{applicationKey}/versions:
+    get: ApplicationsBeta_getApplicationVersions
+  /api/v2/applications/{applicationKey}/versions/{versionKey}:
+    delete: ApplicationsBeta_removeVersion
+    patch: ApplicationsBeta_updateVersionPatch
+  /api/v2/approval-requests:
+    get: Approvals_list
+    post: Approvals_createRequestFlag
+  /api/v2/approval-requests/{id}:
+    delete: Approvals_deleteRequest
+    get: Approvals_getRequestById
+  /api/v2/approval-requests/{id}/apply:
+    post: Approvals_applyRequestFlag
+  /api/v2/approval-requests/{id}/reviews:
+    post: Approvals_reviewRequest
+  /api/v2/auditlog:
+    get: AuditLog_listAuditLogEntries
+  /api/v2/auditlog/{id}:
+    get: AuditLog_detailEntry
+  /api/v2/code-refs/extinctions:
+    get: CodeReferences_listExtinctions
+  /api/v2/code-refs/repositories:
+    get: CodeReferences_listRepositories
+    post: CodeReferences_createRepository
+  /api/v2/code-refs/repositories/{repo}:
+    delete: CodeReferences_deleteRepository
+    get: CodeReferences_getRepositoryByRepo
+    patch: CodeReferences_updateRepositorySettings
+  /api/v2/code-refs/repositories/{repo}/branch-delete-tasks:
+    post: CodeReferences_asynchronouslyDeleteBranches
+  /api/v2/code-refs/repositories/{repo}/branches:
+    get: CodeReferences_listBranches
+  /api/v2/code-refs/repositories/{repo}/branches/{branch}:
+    get: CodeReferences_getBranch
+    put: CodeReferences_upsertBranch
+  /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events:
+    post: CodeReferences_createExtinction
+  /api/v2/code-refs/statistics:
+    get: CodeReferences_getStatistics
+  /api/v2/code-refs/statistics/{projectKey}:
+    get: CodeReferences_getStatistics
+  /api/v2/destinations:
+    get: DataExportDestinations_getAll
+  /api/v2/destinations/{projectKey}/{environmentKey}:
+    post: DataExportDestinations_createDestination
+  /api/v2/destinations/{projectKey}/{environmentKey}/{id}:
+    delete: DataExportDestinations_deleteById
+    get: DataExportDestinations_getSingleById
+    patch: DataExportDestinations_updateDestinationPatch
+  /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}:
+    get: FlagLinksBeta_listLinks
+    post: FlagLinksBeta_createFlagLink
+  /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}:
+    delete: FlagLinksBeta_deleteFlagLink
+    patch: FlagLinksBeta_updateFlagLink
+  /api/v2/flag-status/{projectKey}/{featureFlagKey}:
+    get: FeatureFlags_acrossEnvironments
+  /api/v2/flag-statuses/{projectKey}/{environmentKey}:
+    get: FeatureFlags_listFlagStatuses
+  /api/v2/flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey}:
+    get: FeatureFlags_getStatus
+  /api/v2/flags/{projectKey}:
+    get: FeatureFlags_list
+    post: FeatureFlags_createFeatureFlag
+  /api/v2/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags:
+    get: FeatureFlagsBeta_listDependentFlagsByEnv
+  /api/v2/flags/{projectKey}/{featureFlagKey}:
+    delete: FeatureFlags_deleteFlag
+    get: FeatureFlags_singleFlagByKey
+    patch: FeatureFlags_updateFeatureFlag
+  /api/v2/flags/{projectKey}/{featureFlagKey}/copy:
+    post: FeatureFlags_copyFlagSettings
+  /api/v2/flags/{projectKey}/{featureFlagKey}/dependent-flags:
+    get: FeatureFlagsBeta_listDependentFlags
+  /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}:
+    get: ExperimentsBeta_getLegacyExperimentResults
+  /api/v2/flags/{projectKey}/{featureFlagKey}/expiring-targets/{environmentKey}:
+    get: FeatureFlags_getContextInstanceSegmentsMembershipByEnv
+    patch: FeatureFlags_updateExpiringContextTargets
+  /api/v2/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey}:
+    get: FeatureFlags_listExpiringUserTargets
+    patch: FeatureFlags_updateExpiringUserTargets
+  /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}:
+    get: FlagTriggers_listTriggerWorkflows
+    post: FlagTriggers_createTriggerWorkflow
+  /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id}:
+    delete: FlagTriggers_deleteById
+    get: FlagTriggers_getTriggerById
+    patch: FlagTriggers_updateTriggerWorkflowPatch
+  /api/v2/flags/{projectKey}/{flagKey}/release:
+    get: ReleasesBeta_getCurrentRelease
+    patch: ReleasesBeta_updateActiveReleasePatch
+  /api/v2/integration-capabilities/big-segment-store:
+    get: IntegrationsBeta_listBigSegmentStoreIntegrations
+  /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}:
+    post: IntegrationsBeta_createPersistentStoreIntegration
+  /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}:
+    delete: IntegrationsBeta_deleteBigSegmentStoreIntegration
+    get: IntegrationsBeta_getBigSegmentStoreIntegrationById
+    patch: IntegrationsBeta_updateBigSegmentStore
+  /api/v2/integration-capabilities/featureStore:
+    get: IntegrationDeliveryConfigurationsBeta_listDeliveryConfigurations
+  /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}:
+    get: >-
+      IntegrationDeliveryConfigurationsBeta_getDeliveryConfigurationsByEnvironment
+  /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}:
+    post: IntegrationDeliveryConfigurationsBeta_createDeliveryConfiguration
+  /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}:
+    delete: IntegrationDeliveryConfigurationsBeta_deleteDeliveryConfiguration
+    get: IntegrationDeliveryConfigurationsBeta_getById
+    patch: IntegrationDeliveryConfigurationsBeta_updateDeliveryConfiguration
+  /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}/validate:
+    post: IntegrationDeliveryConfigurationsBeta_validateDeliveryConfiguration
+  /api/v2/integrations/{integrationKey}:
+    get: IntegrationAuditLogSubscriptions_listByIntegration
+    post: IntegrationAuditLogSubscriptions_createSubscription
+  /api/v2/integrations/{integrationKey}/{id}:
+    delete: IntegrationAuditLogSubscriptions_deleteSubscription
+    get: IntegrationAuditLogSubscriptions_getById
+    patch: IntegrationAuditLogSubscriptions_updateSubscription
+  /api/v2/members:
+    get: AccountMembers_listMembers
+    patch: AccountMembersBeta_modifyMembersRoles
+    post: AccountMembers_inviteNewMembers
+  /api/v2/members/{id}:
+    delete: AccountMembers_deleteById
+    get: AccountMembers_getById
+    patch: AccountMembers_updateMemberPatch
+  /api/v2/members/{id}/teams:
+    post: AccountMembers_addToTeams
+  /api/v2/metrics/{projectKey}:
+    get: Metrics_listForProject
+    post: Metrics_createNewMetric
+  /api/v2/metrics/{projectKey}/{metricKey}:
+    delete: Metrics_deleteByProjectAndMetricKey
+    get: Metrics_getSingleMetric
+    patch: Metrics_updateByJsonPatch
+  /api/v2/oauth/clients:
+    get: OAuth2Clients_list
+    post: OAuth2Clients_createClient
+  /api/v2/oauth/clients/{clientId}:
+    delete: OAuth2Clients_deleteClientById
+    get: OAuth2Clients_getClientById
+    patch: OAuth2Clients_updateClientById
+  /api/v2/openapi.json:
+    get: Other_getOpenapiSpec
+  /api/v2/projects:
+    get: Projects_listProjectsDefault
+    post: Projects_createNewProject
+  /api/v2/projects/{projectKey}:
+    delete: Projects_deleteByProjectKey
+    get: Projects_singleByProjectKey
+    patch: Projects_updateProjectPatch
+  /api/v2/projects/{projectKey}/context-kinds:
+    get: Contexts_listContextKindsByProject
+  /api/v2/projects/{projectKey}/context-kinds/{key}:
+    put: Contexts_createOrUpdateKind
+  /api/v2/projects/{projectKey}/environments:
+    get: Environments_listEnvironments
+    post: Environments_createNewEnvironment
+  /api/v2/projects/{projectKey}/environments/{environmentKey}:
+    delete: Environments_removeByEnvironmentKey
+    get: Environments_getByProjectAndKey
+    patch: Environments_updateEnvironmentPatch
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/apiKey:
+    post: Environments_resetSdkKey
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes:
+    get: Contexts_getAttributeNames
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes/{attributeName}:
+    get: Contexts_getContextAttributeValues
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/search:
+    post: Contexts_searchContextInstances
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id}:
+    delete: Contexts_deleteContextInstance
+    get: Contexts_getContextInstances
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/search:
+    post: Contexts_searchContexts
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey}:
+    put: ContextSettings_updateSettingsForContext
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{kind}/{key}:
+    get: Contexts_getByKindAndKey
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments:
+    get: ExperimentsBeta_listExperimentsInEnvironment
+    post: ExperimentsBeta_createNew
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}:
+    get: ExperimentsBeta_getDetails
+    patch: ExperimentsBeta_updateSemanticPatch
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations:
+    post: ExperimentsBeta_createIteration
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results:
+    get: ExperimentsBeta_getResultsForMetricGroup
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results:
+    get: ExperimentsBeta_getExperimentMetricResults
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate:
+    post: Contexts_evaluateFlagsForContextInstance
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/followers:
+    get: FollowFlags_getAllFlagFollowers
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey:
+    post: Environments_resetMobileSdkKey
+  /api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate:
+    post: Segments_evaluateSegmentMemberships
+  /api/v2/projects/{projectKey}/experimentation-settings:
+    get: ExperimentsBeta_getExperimentationSettings
+    put: ExperimentsBeta_updateExperimentationSettings
+  /api/v2/projects/{projectKey}/flag-defaults:
+    get: Projects_getFlagDefaults
+    patch: Projects_updateFlagDefault
+    put: Projects_updateFlagDefaultsForProject
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests:
+    get: Approvals_listRequestsForFlag
+    post: Approvals_createRequestFlag
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy:
+    post: Approvals_createFlagCopyRequest
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}:
+    delete: Approvals_deleteApprovalRequestFlag
+    get: Approvals_singleRequest
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply:
+    post: Approvals_applyRequestFlag
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews:
+    post: Approvals_reviewFlagRequest
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers:
+    get: FollowFlags_flagFollowersList
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId}:
+    delete: FollowFlags_removeFollower
+    put: FollowFlags_memberFollower
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes:
+    get: ScheduledChanges_listChanges
+    post: ScheduledChanges_createWorkflow
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id}:
+    delete: ScheduledChanges_deleteWorkflow
+    get: ScheduledChanges_getById
+    patch: ScheduledChanges_updateWorkflow
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows:
+    get: Workflows_getFeatureFlagEnvironmentsWorkflows
+    post: Workflows_createWorkflow
+  /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId}:
+    delete: Workflows_deleteFromFeatureFlag
+    get: Workflows_getCustomWorkflowById
+  /api/v2/projects/{projectKey}/flags/{flagKey}/environments/{environmentKey}/migration-safety-issues:
+    post: FeatureFlagsBeta_getMigrationSafetyIssues
+  /api/v2/projects/{projectKey}/metric-groups:
+    get: MetricsBeta_listMetricGroups
+    post: MetricsBeta_createMetricGroup
+  /api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}:
+    delete: MetricsBeta_deleteMetricGroup
+    get: MetricsBeta_getMetricGroupDetails
+    patch: MetricsBeta_updateMetricGroupByKey
+  /api/v2/projects/{projectKey}/release-pipelines:
+    get: ReleasePipelinesBeta_getAllReleasePipelines
+    post: ReleasePipelinesBeta_createNewPipeline
+  /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}:
+    delete: ReleasePipelinesBeta_deletePipeline
+    get: ReleasePipelinesBeta_getByPipeKey
+    patch: ReleasePipelinesBeta_updatePipelinePatch
+  /api/v2/public-ip-list:
+    get: Other_getIpList
+  /api/v2/roles:
+    get: CustomRoles_listCustomRoles
+    post: CustomRoles_createNewRole
+  /api/v2/roles/{customRoleKey}:
+    delete: CustomRoles_deleteRoleByCustomKey
+    get: CustomRoles_getByCustomKey
+    patch: CustomRoles_updateSingleCustomRole
+  /api/v2/segments/{projectKey}/{environmentKey}:
+    get: Segments_getSegmentList
+    post: Segments_createSegment
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}:
+    delete: Segments_removeSegment
+    get: Segments_singleSegmentByKey
+    patch: Segments_updateSemanticPatch
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/contexts:
+    post: Segments_updateContextTargets
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/contexts/{contextKey}:
+    get: Segments_getContextMembership
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports:
+    post: SegmentsBeta_startBigSegmentExport
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID}:
+    get: SegmentsBeta_getBigSegmentExportInfo
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports:
+    post: SegmentsBeta_startBigSegmentImport
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID}:
+    get: SegmentsBeta_getImportInfo
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users:
+    post: Segments_updateUserContextTargets
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users/{userKey}:
+    get: Segments_getUserMembershipStatus
+  /api/v2/segments/{projectKey}/{segmentKey}/expiring-targets/{environmentKey}:
+    get: Segments_getExpiringTargets
+    patch: Segments_updateExpiringTargetsForSegment
+  /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey}:
+    get: Segments_getExpiringUserTargets
+    patch: Segments_updateExpiringTargetsForSegment
+  /api/v2/tags:
+    get: Tags_list
+  /api/v2/teams:
+    get: Teams_listTeams
+    patch: TeamsBeta_updateMultipleTeamsSemanticPatch
+    post: Teams_createTeam
+  /api/v2/teams/{teamKey}:
+    delete: Teams_removeByTeamKey
+    get: Teams_getByTeamKey
+    patch: Teams_updateSemanticPatch
+  /api/v2/teams/{teamKey}/maintainers:
+    get: Teams_getMaintainers
+  /api/v2/teams/{teamKey}/members:
+    post: Teams_addMultipleMembersToTeam
+  /api/v2/teams/{teamKey}/roles:
+    get: Teams_getCustomRoles
+  /api/v2/templates:
+    get: WorkflowTemplates_list
+    post: WorkflowTemplates_createFeatureFlagTemplate
+  /api/v2/templates/{templateKey}:
+    delete: WorkflowTemplates_deleteTemplate
+  /api/v2/tokens:
+    get: AccessTokens_list
+    post: AccessTokens_createNewToken
+  /api/v2/tokens/{id}:
+    delete: AccessTokens_deleteById
+    get: AccessTokens_getById
+    patch: AccessTokens_updateSettings
+  /api/v2/tokens/{id}/reset:
+    post: AccessTokens_resetSecretKey
+  /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey}:
+    get: AccountUsageBeta_getEvaluationsUsage
+  /api/v2/usage/events/{type}:
+    get: AccountUsageBeta_getEventsUsageData
+  /api/v2/usage/experimentation-keys:
+    get: AccountUsageBeta_getExperimentationKeysUsage
+  /api/v2/usage/experimentation-units:
+    get: AccountUsageBeta_getExperimentationUnitsUsage
+  /api/v2/usage/mau:
+    get: AccountUsageBeta_getMauUsageData
+  /api/v2/usage/mau/bycategory:
+    get: AccountUsageBeta_getMauUsageByCategory
+  /api/v2/usage/mau/sdks:
+    get: AccountUsageBeta_listMauSdksByType
+  /api/v2/usage/streams/{source}:
+    get: AccountUsageBeta_getStreamUsage
+  /api/v2/usage/streams/{source}/bysdkversion:
+    get: AccountUsageBeta_getStreamUsageBySdkVersionData
+  /api/v2/usage/streams/{source}/sdkversions:
+    get: AccountUsageBeta_listSdkVersions
+  /api/v2/user-attributes/{projectKey}/{environmentKey}:
+    get: UsersBeta_getAllInUseUserAttributes
+  /api/v2/user-search/{projectKey}/{environmentKey}:
+    get: Users_searchUsers
+  /api/v2/users/{projectKey}/{environmentKey}:
+    get: Users_listEnvironmentUsers
+  /api/v2/users/{projectKey}/{environmentKey}/{userKey}:
+    delete: Users_deleteByProjectEnvironmentKey
+    get: Users_getUserByKey
+  /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags:
+    get: UserSettings_listFlagSettingsForUser
+  /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey}:
+    get: UserSettings_singleFlagSetting
+    put: UserSettings_updateFlagSettingsForUser
+  /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey}:
+    get: UserSettings_getUserExpiringFlagTargets
+    patch: UserSettings_updateExpiringUserTarget
+  /api/v2/versions:
+    get: Other_getVersionInformation
+  /api/v2/webhooks:
+    get: Webhooks_listWebhooks
+    post: Webhooks_createNewWebhook
+  /api/v2/webhooks/{id}:
+    delete: Webhooks_deleteById
+    get: Webhooks_getSingleById
+    patch: Webhooks_updateSettingsPatch
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /api/v2/code-refs/repositories/{repo}/branch-delete-tasks:
+    post:
+      application/json: CodeReferencesAsynchronouslyDeleteBranchesRequest
+  /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports:
+    post:
+      multipart/form-data: SegmentsBetaStartBigSegmentImportRequest
+  /api/v2/teams/{teamKey}/members:
+    post:
+      multipart/form-data: TeamsAddMultipleMembersToTeamRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /api/v2/projects/{projectKey}/flags/{flagKey}/environments/{environmentKey}/migration-safety-issues:
+    post:
+      '200':
+        application/json: FeatureFlagsBetaGetMigrationSafetyIssuesResponse
+securityParameters:
+  after:
+    query: false
+  anonymous:
+    query: false
+  archived:
+    query: false
+  before:
+    query: false
+  branchName:
+    query: false
+  clone:
+    query: false
+  compare:
+    query: false
+  continuationToken:
+    query: false
+  dryRun:
+    query: false
+  env:
+    query: false
+  environment:
+    query: false
+  expand:
+    query: false
+  expiry:
+    query: false
+  filter:
+    query: false
+  flagKey:
+    query: false
+  from:
+    query: false
+  groupby:
+    query: false
+  ignoreConflicts:
+    query: false
+  includeTotalCount:
+    query: false
+  iterationId:
+    query: false
+  kind:
+    query: false
+  lifecycleState:
+    query: false
+  limit:
+    query: false
+  offset:
+    query: false
+  pre:
+    query: false
+  projKey:
+    query: false
+  project:
+    query: false
+  q:
+    query: false
+  repoName:
+    query: false
+  sdk:
+    query: false
+  sdktype:
+    query: false
+  search:
+    query: false
+  searchAfter:
+    query: false
+  showAll:
+    query: false
+  sort:
+    query: false
+  spec:
+    query: false
+  status:
+    query: false
+  summary:
+    query: false
+  tag:
+    query: false
+  templateKey:
+    query: false
+  to:
+    query: false
+  tz:
+    query: false
+  version:
+    query: false
+  withBranches:
+    query: false
+  withReferencesForDefaultBranch:
+    query: false
+validServerUrls: {}

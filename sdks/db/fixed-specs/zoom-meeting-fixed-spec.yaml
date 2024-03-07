@@ -6013,7 +6013,7 @@ paths:
 
         **[Rate Limit
         Label](https://marketplace.zoom.us/docs/api-reference/rate-limits#rate-limits):**
-        `Medium`
+        `MEDIUM`
       parameters:
         - description: >-
             The meeting's ID or universally unique ID (UUID). 
@@ -6063,7 +6063,7 @@ paths:
         '400':
           description: |
             **HTTP Status Code:** `400` <br>
-             Bad Request 
+             Bad Request  
 
              **Error Code:** `1010` <br>
              User {userId} not exist or not belong to this account.<br><br> <br>
@@ -6076,7 +6076,7 @@ paths:
         '404':
           description: |
             **HTTP Status Code:** `404` <br>
-             Not Found 
+             Not Found  
 
              **Error Code:** `1001` <br>
              User {userId} not exist or not belong to this account.<br>
@@ -6085,9 +6085,14 @@ paths:
              This meeting is not available or ID is not valid.<br>
             Meeting ID is invalid or not end. <br>
       extensions:
+        x-permissions:
+          - User:Read
         x-macro-scopes:
           - meeting:read:admin
           - meeting:read
+        x-granular-scopes:
+          - meeting:read:list_past_participants
+          - meeting:read:list_past_participants:admin
   /past_meetings/{meetingId}/polls:
     get:
       tags:
@@ -27661,7 +27666,14 @@ components:
                 format: date-time
                 example: '2022-03-23T07:02:28Z'
               duration:
-                description: Participant duration.
+                description: >-
+                  Participant duration. Duration, in seconds, calculated by
+                  subtracting the `leave_time` from the `join_time` for the
+                  `user_id`. If the participant leaves and rejoins the same
+                  meeting, they will be assigned a different `user_id` and Zoom
+                  displays their new duration in a separate object. Note that
+                  because of this, the duration may not reflect the total time
+                  the user was in the meeting.
                 type: integer
                 example: 259
               failover:
