@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.11
+
+### Patch Changes
+
+- [#623](https://github.com/konfig-dev/konfig/pull/623) [`4d6be701`](https://github.com/konfig-dev/konfig/commit/4d6be70166cf6605d1e9ea1a67bad88caae580d4) Thanks [@dphuang2](https://github.com/dphuang2)! - ALLOW_INVALID_REF environment variable
+
 ## 1.36.10
 
 ### Patch Changes
