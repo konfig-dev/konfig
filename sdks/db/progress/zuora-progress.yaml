@@ -50,6 +50,8 @@ operationIds:
     post: Invoices_createTaxationItems
   /v1/prepaid-balance-funds/deplete:
     post: PrepaidWithDrawdown_depleteFunds
+  /v1/subscriptions/{subscription-key}/preview:
+    post: Subscriptions_previewSubscriptionBySubscriptionKey
   /workflows/workflow_runs/{workflow_run_id}:
     get: Workflows_getWorkflowRun
   /workflows/{workflow_id}/run:
@@ -306,6 +308,8 @@ securityParameters:
     query: false
   appliedAmount:
     query: false
+  asOfDay:
+    query: false
   associatedObjectKey:
     query: false
   associatedObjectType:
@@ -387,6 +391,8 @@ securityParameters:
   fulfillment:
     query: false
   fulfillment-items:
+    query: false
+  getDetailedMetrics:
     query: false
   hide-inherited-values:
     query: false

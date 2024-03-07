@@ -1,0 +1,276 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /aggregation/v1/customers:
+    get: Customers_findEnrolledUsers
+  /aggregation/v1/customers/{customerId}:
+    delete: Customers_removeById
+    get: Customers_getById
+    put: Customers_modifyById
+  /aggregation/v1/customers/{customerId}/accounts:
+    get: Accounts_getCustomerAccounts
+    post: Accounts_refreshCustomerAggregation
+  /aggregation/v1/customers/{customerId}/accounts/simple:
+    get: AccountsSimple_getBasicInfo
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}:
+    delete: Accounts_removeByCustomerIdAndAccountId
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/availableBalance:
+    get: Payments_getLatestCachedBalance
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/availableBalance/live:
+    get: Payments_getAvailableBalanceLive
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/details:
+    get: Payments_getAchDetails
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/owner:
+    get: Payments_getAccountOwnerDetails
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/simple:
+    get: AccountsSimple_getBasicInfo
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/statement:
+    get: BankStatements_getCustomerStatementInPdf
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/transactions:
+    post: TxPush_injectTestTransaction
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/transactions/historic:
+    post: Transactions_loadHistoricTransactionsForCustomerAccount
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/txpush:
+    delete: TxPush_disableNotifications
+    post: TxPush_subscribeNotifications
+  /aggregation/v1/customers/{customerId}/application:
+    get: Customers_getWithAppDataById
+  /aggregation/v1/customers/{customerId}/applications/{applicationId}:
+    put: AppRegistration_assignApplications
+  /aggregation/v1/customers/{customerId}/assets/{assetId}:
+    get: Assets_getBinaryFile
+  /aggregation/v1/customers/{customerId}/institutionLogins/{institutionLoginId}:
+    delete: Accounts_removeByInstitutionLogin
+  /aggregation/v1/customers/{customerId}/institutionLogins/{institutionLoginId}/accounts:
+    get: Accounts_getByInstitutionLogin
+    post: Accounts_refreshCustomerByInstitutionLogin
+  /aggregation/v1/customers/{customerId}/institutionLogins/{institutionLoginId}/accounts/simple:
+    get: AccountsSimple_getBasicInfo
+  /aggregation/v1/customers/{customerId}/institutions/{institutionId}/accounts:
+    get: Accounts_getCustomerInstitutionAccounts
+  /aggregation/v1/customers/{customerId}/institutions/{institutionId}/accounts/simple:
+    get: AccountsSimple_getBasicInfo
+  /aggregation/v1/customers/{customerId}/payStatements:
+    post: PayStatements_uploadForCustomer
+  /aggregation/v1/customers/{customerId}/subscriptions/{subscriptionId}:
+    delete: TxPush_deleteSubscription
+  /aggregation/v1/partners/accessKey:
+    post: ThirdPartyAccess_generateKey
+  /aggregation/v1/partners/accessKey/{consentReceiptId}:
+    delete: ThirdPartyAccess_revokePartnersAccess
+    put: ThirdPartyAccess_updateAccess
+  /aggregation/v1/partners/applications:
+    post: AppRegistration_createNewApplication
+  /aggregation/v1/partners/applications/{preAppId}:
+    put: AppRegistration_updateRegistration
+  /aggregation/v2/customers/active:
+    post: Customers_enrollActiveCustomer
+  /aggregation/v2/customers/testing:
+    post: Customers_enrollTestingCustomer
+  /aggregation/v2/customers/{customerId}/accounts:
+    post: Accounts_refreshCustomerData
+  /aggregation/v2/customers/{customerId}/accounts/{accountId}:
+    get: Accounts_getById
+  /aggregation/v2/customers/{customerId}/accounts/{accountId}/loanDetails:
+    get: Payments_getLoanPaymentDetails
+  /aggregation/v2/customers/{customerId}/institutionLogins/{institutionLoginId}/accounts:
+    post: Accounts_refreshCustomerAccountByInstitutionLogin
+  /aggregation/v2/customers/{customerId}/institutionLogins/{institutionLoginId}/migration:
+    put: AppRegistration_migrateInstitutionLoginAccounts
+  /aggregation/v2/customers/{customerId}/transactions/{transactionId}:
+    get: Transactions_getById
+  /aggregation/v2/partners/applications:
+    get: AppRegistration_getApplicationStatus
+  /aggregation/v2/partners/authentication:
+    post: Authentication_createAccessToken
+    put: Authentication_modifyPartnerSecret
+  /aggregation/v3/customers/{customerId}/accounts/{accountId}/owner:
+    get: Payments_getAccountOwnerDetails
+  /aggregation/v3/customers/{customerId}/accounts/{accountId}/statement:
+    get: BankStatements_getMultipleStatements
+  /aggregation/v3/customers/{customerId}/transactions:
+    get: Transactions_getAllCustomerTransactions
+  /aggregation/v4/customers/{customerId}/accounts/{accountId}/transactions:
+    get: Transactions_getCustomerAccountTransactions
+  /analytics/balance/v1/customer/{customerId}:
+    post: BalanceAnalytics_generateAnalyticsReport
+  /analytics/balance/v1/customer/{customerId}/fcra:
+    post: BalanceAnalytics_generateFcraAnalyticsReport
+  /analytics/cashflow/v1/customer/{customerId}:
+    post: CashFlowAnalytics_generateAnalytics
+  /analytics/cashflow/v1/customer/{customerId}/fcra:
+    post: CashFlowAnalytics_generateFcraAnalyticsReport
+  /analytics/data/v1/{obb_report_id}:
+    get: BalanceAnalytics_getReportData
+  /analytics/data/v1/{obb_report_id}/fcra:
+    get: BalanceAnalytics_getReportDataFcra
+  /analytics/payment-history/v1/customer/{customerId}:
+    post: PaymentHistory_generateCustomerPaymentReport
+  /analytics/payment-history/v1/customer/{customerId}/fcra:
+    post: PaymentHistory_generateFcraPaymentReport
+  /business-services/businesses/{business_id}:
+    get: BusinessesApi_getDetailsById
+    put: BusinessesApi_updateById
+  /business-services/customers/{customer_id}/businesses:
+    get: BusinessesApi_getDetailsByCustomerId
+    post: BusinessesApi_createNewBusiness
+  /connect/v2/generate:
+    post: Connect_generateUrl
+  /connect/v2/generate/fix:
+    post: Connect_fixUrlGeneration
+  /connect/v2/generate/jointBorrower:
+    post: Connect_generateJointBorrowerUrl
+  /connect/v2/generate/lite:
+    post: Connect_generateLiteUrl
+  /connect/v2/generate/microentry/verify:
+    post: Connect_verifyMicroEntryMicrodeposits
+  /connect/v2/send/email:
+    post: Connect_sendConnectEmail
+  /connect/v2/send/email/jointBorrower:
+    post: Connect_sendEmailJointBorrower
+  /customers/institution-logins/{institution_login_id}/authorization-details:
+    get: CustomerAuthorizationDetails_getAuthorizationDetails
+  /decisioning/v1/consumers/{consumerId}:
+    get: Consumers_getById
+    put: Consumers_modifyById
+  /decisioning/v1/consumers/{consumerId}/portfolios/{portfolioId}:
+    get: Portfolios_getPortfolioByConsumer
+  /decisioning/v1/consumers/{consumerId}/reports:
+    get: Reports_byConsumerId
+  /decisioning/v1/customers/{customerId}/consumer:
+    get: Consumers_getByCustomerId
+    post: Consumers_createConsumerRecord
+  /decisioning/v1/customers/{customerId}/portfolios/{portfolioId}:
+    get: Portfolios_getMostRecentReports
+  /decisioning/v1/customers/{customerId}/reports:
+    get: Reports_byCustomerId
+  /decisioning/v2/customers/{customerId}/assetSummary:
+    post: VerifyAssets_getAssetSummary
+  /decisioning/v2/customers/{customerId}/cashFlowBusiness:
+    post: CashFlow_generateReportBusiness
+  /decisioning/v2/customers/{customerId}/cashFlowPersonal:
+    post: CashFlow_generatePersonalReport
+  /decisioning/v2/customers/{customerId}/payStatement:
+    post: VerifyIncomeAndEmployment_generatePayStatementReport
+  /decisioning/v2/customers/{customerId}/preQualVoa:
+    post: VerifyAssets_getCheckingSavingsInvestmentAccounts
+  /decisioning/v2/customers/{customerId}/reports/balance-analytics/userTypes/{userType}:
+    post: BalanceAnalytics_generateReport
+  /decisioning/v2/customers/{customerId}/reports/cashflow-analytics/userTypes/{userType}:
+    post: CashFlowAnalytics_generateReport
+  /decisioning/v2/customers/{customerId}/statement:
+    post: BankStatements_generateReport
+  /decisioning/v2/customers/{customerId}/transactions:
+    post: Transactions_get24MonthsHistoryAndGenerateReport
+  /decisioning/v2/customers/{customerId}/voa:
+    post: VerifyAssets_customerVOAReport
+  /decisioning/v2/customers/{customerId}/voaHistory:
+    post: VerifyAssets_generateVOAWithIncomeReport
+  /decisioning/v2/customers/{customerId}/voePayroll:
+    post: VerifyIncomeAndEmployment_generateVoePayrollReport
+  /decisioning/v2/customers/{customerId}/voeTransactions:
+    post: VerifyIncomeAndEmployment_generateVOETransactionsReport
+  /decisioning/v2/customers/{customerId}/voi:
+    post: VerifyIncomeAndEmployment_createVOIReport
+  /decisioning/v2/customers/{customerId}/voiePayroll:
+    post: VerifyIncomeAndEmployment_refreshVOIEPayrollReport
+  /decisioning/v2/customers/{customerId}/voieTxVerify/withInterview:
+    post: VerifyIncomeAndEmployment_generateVOIEPaystubWithTxVerifyReport
+  /decisioning/v2/customers/{customerId}/voieTxVerify/withStatement:
+    post: VerifyIncomeAndEmployment_generateVoiePaystubReport
+  /decisioning/v3/consumers/{consumerId}/reports/{reportId}:
+    get: Reports_getByConsumerAndId
+  /decisioning/v3/customers/{customerId}/reports/{reportId}:
+    get: Reports_getStatus
+  /institution/v2/certifiedInstitutions:
+    get: Institutions_listCertifiedInstitutions
+  /institution/v2/certifiedInstitutions/rssd:
+    get: Institutions_getCertifiedInstitutionsWithRssd
+  /institution/v2/institutions:
+    get: Institutions_searchFinancialInstitutions
+  /institution/v2/institutions/{institutionId}:
+    get: Institutions_getByIdDetails
+  /institution/v2/institutions/{institutionId}/branding:
+    get: Institutions_getBrandingById
+  /microentry/v1/customers/{customerId}:
+    post: AccountValidationAssistance_initiateMicroEntries
+  /microentry/v1/customers/{customerId}/accounts/{accountId}:
+    get: AccountValidationAssistance_getMicroEntriesDetails
+  /microentry/v1/customers/{customerId}/accounts/{accountId}/amounts:
+    post: AccountValidationAssistance_verifyMicroEntries
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /aggregation/v1/customers/{customerId}/accounts/{accountId}/statement:
+    get:
+      '200':
+        application/octet-stream: BankStatementsGetCustomerStatementInPdfResponse
+  /aggregation/v1/customers/{customerId}/assets/{assetId}:
+    get:
+      '200':
+        application/octet-stream: AssetsGetBinaryFileResponse
+  /analytics/data/v1/{obb_report_id}:
+    get:
+      '200':
+        application/pdf: BalanceAnalyticsGetReportDataResponse
+  /analytics/data/v1/{obb_report_id}/fcra:
+    get:
+      '200':
+        application/pdf: BalanceAnalyticsGetReportDataFcraResponse
+securityParameters:
+  account_type:
+    query: false
+  appName:
+    query: false
+  applicationId:
+    query: false
+  callbackUrl:
+    query: false
+  fromDate:
+    query: false
+  includePending:
+    query: false
+  index:
+    query: false
+  limit:
+    query: false
+  modifiedDate:
+    query: false
+  onBehalfOf:
+    query: false
+  page:
+    query: false
+  pageSize:
+    query: false
+  preAppId:
+    query: false
+  purpose:
+    query: false
+  reference-number:
+    query: false
+  search:
+    query: false
+  sort:
+    query: false
+  start:
+    query: false
+  status:
+    query: false
+  submittedDate:
+    query: false
+  supportedCountries:
+    query: false
+  toDate:
+    query: false
+  type:
+    query: false
+  username:
+    query: false
+  withInsights:
+    query: false
+validServerUrls: {}
