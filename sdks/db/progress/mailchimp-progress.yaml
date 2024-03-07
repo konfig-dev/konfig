@@ -1,0 +1,2707 @@
+description: Missing description placeholder
+examples: {}
+examples_2: {}
+examples_3:
+  /customer-journeys/journeys/{journey_id}/steps/{step_id}/actions/trigger:
+    post:
+      '204':
+        application/json: {}
+  /ecommerce/stores/{store_id}:
+    delete:
+      '204':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /:
+    get: Root_listResources
+  /account-exports:
+    get: AccountExports_listForGivenAccount
+    post: AccountExports_createNewExport
+  /account-exports/{export_id}:
+    get: AccountExport_info
+  /activity-feed/chimp-chatter:
+    get: ActivityFeed_getLatestChimpChatter
+  /authorized-apps:
+    get: AuthorizedApps_listConnectedApplications
+  /authorized-apps/{app_id}:
+    get: AuthorizedApps_getInfo
+  /automations:
+    get: Automations_listSummary
+    post: Automations_createClassic
+  /automations/{workflow_id}:
+    get: Automations_getClassicWorkflowInfo
+  /automations/{workflow_id}/actions/archive:
+    post: Automations_archiveAction
+  /automations/{workflow_id}/actions/pause-all-emails:
+    post: Automations_pauseWorkflowEmails
+  /automations/{workflow_id}/actions/start-all-emails:
+    post: Automations_startAllEmails
+  /automations/{workflow_id}/emails:
+    get: Automations_getClassicWorkflowEmails
+  /automations/{workflow_id}/emails/{workflow_email_id}:
+    delete: Automations_deleteWorkflowEmail
+    get: Automations_getEmailInfo
+    patch: Automations_updateWorkflowEmail
+  /automations/{workflow_id}/emails/{workflow_email_id}/actions/pause:
+    post: Automations_pauseAutomatedEmail
+  /automations/{workflow_id}/emails/{workflow_email_id}/actions/start:
+    post: Automations_startAutomatedEmail
+  /automations/{workflow_id}/emails/{workflow_email_id}/queue:
+    get: Automations_listQueueEmails
+    post: Automations_addSubscriberToWorkflowEmail
+  /automations/{workflow_id}/emails/{workflow_email_id}/queue/{subscriber_hash}:
+    get: Automations_classicAutomationSubscriberInfo
+  /automations/{workflow_id}/removed-subscribers:
+    get: Automations_getRemovedSubscribers
+    post: Automations_removeSubscriberFromWorkflow
+  /automations/{workflow_id}/removed-subscribers/{subscriber_hash}:
+    get: Automations_getRemovedSubscriberInfo
+  /batch-webhooks:
+    get: BatchWebhooks_listWebhooks
+    post: BatchWebhooks_addWebhook
+  /batch-webhooks/{batch_webhook_id}:
+    delete: BatchWebhooks_removeWebhook
+    get: BatchWebhooks_getInfo
+    patch: BatchWebhooks_updateWebhook
+  /batches:
+    get: Batches_listRequestsSummary
+    post: Batches_startOperationProcess
+  /batches/{batch_id}:
+    delete: Batches_stopRequest
+    get: Batches_getOperationStatus
+  /campaign-folders:
+    get: CampaignFolders_listCampaignFolders
+    post: CampaignFolders_addNewFolder
+  /campaign-folders/{folder_id}:
+    delete: CampaignFolders_deleteFolder
+    get: CampaignFolders_getFolderInfo
+    patch: CampaignFolders_updateSpecificFolder
+  /campaigns:
+    get: Campaigns_getAll
+    post: Campaigns_createNewMailchimpCampaign
+  /campaigns/{campaign_id}:
+    delete: Campaigns_removeCampaign
+    get: Campaigns_getInfo
+    patch: Campaigns_updateSettings
+  /campaigns/{campaign_id}/actions/cancel-send:
+    post: Campaigns_cancelSendAction
+  /campaigns/{campaign_id}/actions/create-resend:
+    post: Campaigns_resendAction
+  /campaigns/{campaign_id}/actions/pause:
+    post: Campaigns_pauseRssCampaign
+  /campaigns/{campaign_id}/actions/replicate:
+    post: Campaigns_replicateAction
+  /campaigns/{campaign_id}/actions/resume:
+    post: Campaigns_resumeRssCampaign
+  /campaigns/{campaign_id}/actions/schedule:
+    post: Campaigns_scheduleDelivery
+  /campaigns/{campaign_id}/actions/send:
+    post: Campaigns_sendAction
+  /campaigns/{campaign_id}/actions/test:
+    post: Campaigns_sendTestEmail
+  /campaigns/{campaign_id}/actions/unschedule:
+    post: Campaigns_unscheduleAction
+  /campaigns/{campaign_id}/content:
+    get: Campaigns_getContent
+    put: Campaigns_setContent
+  /campaigns/{campaign_id}/feedback:
+    get: Campaigns_listFeedback
+    post: Campaigns_addFeedback
+  /campaigns/{campaign_id}/feedback/{feedback_id}:
+    delete: Campaigns_removeFeedbackMessage
+    get: Campaigns_getFeedbackMessage
+    patch: Campaigns_updateFeedbackMessage
+  /campaigns/{campaign_id}/send-checklist:
+    get: Campaigns_getSendChecklist
+  /connected-sites:
+    get: ConnectedSites_listAll
+    post: ConnectedSites_createNewMailchimpSite
+  /connected-sites/{connected_site_id}:
+    delete: ConnectedSites_removeSite
+    get: ConnectedSites_getInfo
+  /connected-sites/{connected_site_id}/actions/verify-script-installation:
+    post: ConnectedSites_verifyScriptInstallation
+  /conversations:
+    get: Conversations_getAllConversations
+  /conversations/{conversation_id}:
+    get: Conversations_getById
+  /conversations/{conversation_id}/messages:
+    get: Conversations_listMessagesFromConversation
+  /conversations/{conversation_id}/messages/{message_id}:
+    get: Conversations_getMessageById
+  /customer-journeys/journeys/{journey_id}/steps/{step_id}/actions/trigger:
+    post: CustomerJourneys_triggerStepAction
+  /ecommerce/orders:
+    get: Ecommerce_listAccountOrders
+  /ecommerce/stores:
+    get: Ecommerce_listStores
+    post: Ecommerce_addStoreToMailchimpAccount
+  /ecommerce/stores/{store_id}:
+    delete: Ecommerce_deleteStore
+    get: Ecommerce_getStoreInfo
+    patch: Ecommerce_updateStore
+  /ecommerce/stores/{store_id}/carts:
+    get: Ecommerce_getStoreCarts
+    post: Ecommerce_addCartToStore
+  /ecommerce/stores/{store_id}/carts/{cart_id}:
+    delete: Ecommerce_removeCart
+    get: Ecommerce_getCartInfo
+    patch: Ecommerce_updateCartById
+  /ecommerce/stores/{store_id}/carts/{cart_id}/lines:
+    get: Ecommerce_listCartLines
+    post: Ecommerce_addCartLineItem
+  /ecommerce/stores/{store_id}/carts/{cart_id}/lines/{line_id}:
+    delete: Ecommerce_deleteCartLineItem
+    get: Ecommerce_getCartLineItem
+    patch: Ecommerce_updateCartLineItem
+  /ecommerce/stores/{store_id}/customers:
+    get: Ecommerce_getStoreCustomers
+    post: Ecommerce_addCustomerToStore
+  /ecommerce/stores/{store_id}/customers/{customer_id}:
+    delete: Ecommerce_removeCustomer
+    get: Ecommerce_getCustomerInfo
+    patch: Ecommerce_updateCustomer
+    put: Ecommerce_addOrUpdateCustomer
+  /ecommerce/stores/{store_id}/orders:
+    get: Ecommerce_listStoreOrders
+    post: Ecommerce_addOrderToStore
+  /ecommerce/stores/{store_id}/orders/{order_id}:
+    delete: Ecommerce_deleteOrder
+    get: Ecommerce_getStoreOrderInfo
+    patch: Ecommerce_updateSpecificOrder
+  /ecommerce/stores/{store_id}/orders/{order_id}/lines:
+    get: Ecommerce_getStoreOrderLines
+    post: Ecommerce_addOrderLineItem
+  /ecommerce/stores/{store_id}/orders/{order_id}/lines/{line_id}:
+    delete: Ecommerce_deleteOrderLine
+    get: Ecommerce_getOrderLineItem
+    patch: Ecommerce_updateOrderLine
+  /ecommerce/stores/{store_id}/products:
+    get: Ecommerce_getStoreProducts
+    post: Ecommerce_addProductToStore
+  /ecommerce/stores/{store_id}/products/{product_id}:
+    delete: Ecommerce_deleteProduct
+    get: Ecommerce_getStoreProductInfo
+    patch: Ecommerce_updateProduct
+  /ecommerce/stores/{store_id}/products/{product_id}/images:
+    get: Ecommerce_getProductImages
+    post: Ecommerce_addProductImage
+  /ecommerce/stores/{store_id}/products/{product_id}/images/{image_id}:
+    delete: Ecommerce_deleteProductImage
+    get: Ecommerce_getProductImageInfo
+    patch: Ecommerce_updateProductImage
+  /ecommerce/stores/{store_id}/products/{product_id}/variants:
+    get: Ecommerce_listProductVariants
+    post: Ecommerce_addProductVariant
+  /ecommerce/stores/{store_id}/products/{product_id}/variants/{variant_id}:
+    delete: Ecommerce_deleteProductVariant
+    get: Ecommerce_getProductVariantInfo
+    patch: Ecommerce_updateProductVariant
+    put: Ecommerce_addOrUpdateProductVariant
+  /ecommerce/stores/{store_id}/promo-rules:
+    get: Ecommerce_getStorePromoRules
+    post: Ecommerce_addPromoRule
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}:
+    delete: Ecommerce_deletePromoRule
+    get: Ecommerce_getStorePromoRule
+    patch: Ecommerce_updatePromoRule
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes:
+    get: Ecommerce_getStorePromoCodes
+    post: Ecommerce_addPromoCode
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes/{promo_code_id}:
+    delete: Ecommerce_deletePromoCode
+    get: Ecommerce_getPromoCode
+    patch: Ecommerce_updatePromoCode
+  /facebook-ads:
+    get: FacebookAds_listAds
+  /facebook-ads/{outreach_id}:
+    get: FacebookAds_getInfo
+  /file-manager/files:
+    get: FileManager_listStoredFiles
+    post: FileManager_uploadFile
+  /file-manager/files/{file_id}:
+    delete: FileManager_removeFileById
+    get: FileManager_getFile
+    patch: FileManager_updateFile
+  /file-manager/folders:
+    get: FileManager_getFolderList
+    post: FileManager_addNewFolder
+  /file-manager/folders/{folder_id}:
+    delete: FileManager_deleteFolderById
+    get: FileManager_getFolderInfo
+    patch: FileManager_updateSpecificFolder
+  /file-manager/folders/{folder_id}/files:
+    get: FileManager_listStoredFiles
+  /landing-pages:
+    get: LandingPages_list
+    post: LandingPages_createNewMailchimpLandingPage
+  /landing-pages/{page_id}:
+    delete: LandingPages_deletePage
+    get: LandingPages_getPageInfo
+    patch: LandingPages_updatePageById
+  /landing-pages/{page_id}/actions/publish:
+    post: LandingPages_publishAction
+  /landing-pages/{page_id}/actions/unpublish:
+    post: LandingPages_unpublishAction
+  /landing-pages/{page_id}/content:
+    get: LandingPages_getContent
+  /lists:
+    get: Lists_getAllInfo
+    post: Lists_createNewList
+  /lists/{list_id}:
+    delete: Lists_deleteList
+    get: Lists_getListInfo
+    patch: Lists_updateSettings
+    post: Lists_batchSubscribeOrUnsubscribe
+  /lists/{list_id}/abuse-reports:
+    get: Lists_getAllAbuseReports
+  /lists/{list_id}/abuse-reports/{report_id}:
+    get: Lists_getAbuseReport
+  /lists/{list_id}/activity:
+    get: Lists_getRecentActivityStats
+  /lists/{list_id}/clients:
+    get: Lists_listTopEmailClients
+  /lists/{list_id}/growth-history:
+    get: Lists_getGrowthHistoryData
+  /lists/{list_id}/growth-history/{month}:
+    get: Lists_getGrowthHistoryByMonth
+  /lists/{list_id}/interest-categories:
+    get: Lists_listInterestCategories
+    post: Lists_addInterestCategory
+  /lists/{list_id}/interest-categories/{interest_category_id}:
+    delete: Lists_deleteInterestCategory
+    get: Lists_getInterestCategoryInfo
+    patch: Lists_updateInterestCategory
+  /lists/{list_id}/interest-categories/{interest_category_id}/interests:
+    get: Lists_listCategoryInterests
+    post: Lists_addInterestInCategory
+  /lists/{list_id}/interest-categories/{interest_category_id}/interests/{interest_id}:
+    delete: Lists_deleteInterestInCategory
+    get: Lists_getInterestInCategory
+    patch: Lists_updateInterestCategoryInterest
+  /lists/{list_id}/locations:
+    get: Lists_getLocations
+  /lists/{list_id}/members:
+    get: Lists_getMembersInfo
+    post: Lists_addMemberToList
+  /lists/{list_id}/members/{subscriber_hash}:
+    delete: Lists_archiveMember
+    get: Lists_getMemberInfo
+    patch: Lists_updateMember
+    put: Lists_addOrUpdateMember
+  /lists/{list_id}/members/{subscriber_hash}/actions/delete-permanent:
+    post: Lists_removeMemberPermanent
+  /lists/{list_id}/members/{subscriber_hash}/activity:
+    get: Lists_viewRecentActivityEvents
+  /lists/{list_id}/members/{subscriber_hash}/activity-feed:
+    get: Lists_viewRecentActivity
+  /lists/{list_id}/members/{subscriber_hash}/events:
+    get: Lists_getMemberEvents
+    post: Lists_addMemberEvent
+  /lists/{list_id}/members/{subscriber_hash}/goals:
+    get: Lists_getMemberGoals
+  /lists/{list_id}/members/{subscriber_hash}/notes:
+    get: Lists_getMemberNotes
+    post: Lists_addMemberNote
+  /lists/{list_id}/members/{subscriber_hash}/notes/{note_id}:
+    delete: Lists_deleteNote
+    get: Lists_getMemberNote
+    patch: Lists_updateNoteSpecificListMember
+  /lists/{list_id}/members/{subscriber_hash}/tags:
+    get: Lists_getMemberTags
+    post: Lists_addMemberTags
+  /lists/{list_id}/merge-fields:
+    get: Lists_listMergeFields
+    post: Lists_addMergeField
+  /lists/{list_id}/merge-fields/{merge_id}:
+    delete: Lists_deleteMergeField
+    get: Lists_getMergeFieldInfo
+    patch: Lists_updateMergeField
+  /lists/{list_id}/segments:
+    get: Lists_getSegmentsInfo
+    post: Lists_addNewSegment
+  /lists/{list_id}/segments/{segment_id}:
+    delete: Lists_deleteSegment
+    get: Lists_getSegmentInfo
+    patch: Lists_updateSegmentById
+    post: Lists_batchAddRemoveMembers
+  /lists/{list_id}/segments/{segment_id}/members:
+    get: Lists_getSegmentMembers
+    post: Lists_addMemberToSegment
+  /lists/{list_id}/segments/{segment_id}/members/{subscriber_hash}:
+    delete: Lists_removeMemberFromSegment
+  /lists/{list_id}/signup-forms:
+    get: Lists_getSignupForms
+    post: Lists_customizeSignupForm
+  /lists/{list_id}/surveys:
+    get: Lists_getSurveysInfo
+  /lists/{list_id}/surveys/{survey_id}:
+    get: Lists_getSurveyDetails
+  /lists/{list_id}/surveys/{survey_id}/actions/create-email:
+    post: Surveys_generateCampaign
+  /lists/{list_id}/surveys/{survey_id}/actions/publish:
+    post: Surveys_publishSurveyAction
+  /lists/{list_id}/surveys/{survey_id}/actions/unpublish:
+    post: Surveys_unpublishSurveyAction
+  /lists/{list_id}/tag-search:
+    get: Lists_searchTagsByName
+  /lists/{list_id}/webhooks:
+    get: Lists_getWebhooksInfo
+    post: Lists_createWebhook
+  /lists/{list_id}/webhooks/{webhook_id}:
+    delete: Lists_deleteWebhook
+    get: Lists_getWebhookInfo
+    patch: Lists_updateWebhookSettings
+  /ping:
+    get: Ping_healthCheck
+  /reporting/facebook-ads:
+    get: Reporting_listFacebookAdsReports
+  /reporting/facebook-ads/{outreach_id}:
+    get: Reporting_facebookAdReport
+  /reporting/facebook-ads/{outreach_id}/ecommerce-product-activity:
+    get: Reporting_listFacebookEcommerceReport
+  /reporting/landing-pages:
+    get: Reporting_listLandingPagesReports
+  /reporting/landing-pages/{outreach_id}:
+    get: Reporting_getLandingPageReport
+  /reporting/surveys:
+    get: Reporting_listSurveyReports
+  /reporting/surveys/{survey_id}:
+    get: Reporting_getSurveyReport
+  /reporting/surveys/{survey_id}/questions:
+    get: Reporting_listSurveyQuestionsReports
+  /reporting/surveys/{survey_id}/questions/{question_id}:
+    get: Reporting_surveyQuestionReport
+  /reporting/surveys/{survey_id}/questions/{question_id}/answers:
+    get: Reporting_surveyQuestionAnswersList
+  /reporting/surveys/{survey_id}/responses:
+    get: Reporting_surveyResponsesList
+  /reporting/surveys/{survey_id}/responses/{response_id}:
+    get: Reporting_singleSurveyResponse
+  /reports:
+    get: Reports_listCampaignReports
+  /reports/{campaign_id}:
+    get: Reports_specificCampaignReport
+  /reports/{campaign_id}/abuse-reports:
+    get: Reports_listAbuseReports
+  /reports/{campaign_id}/abuse-reports/{report_id}:
+    get: Reports_getAbuseReport
+  /reports/{campaign_id}/advice:
+    get: Reports_listCampaignFeedback
+  /reports/{campaign_id}/click-details:
+    get: Reports_getCampaignClickDetails
+  /reports/{campaign_id}/click-details/{link_id}:
+    get: Reports_specificLinkDetails
+  /reports/{campaign_id}/click-details/{link_id}/members:
+    get: Reports_listClickedLinkSubscribers
+  /reports/{campaign_id}/click-details/{link_id}/members/{subscriber_hash}:
+    get: Reports_specificLinkSubscriber
+  /reports/{campaign_id}/domain-performance:
+    get: Reports_listDomainPerformanceStats
+  /reports/{campaign_id}/ecommerce-product-activity:
+    get: Reports_getCampaignProductActivity
+  /reports/{campaign_id}/eepurl:
+    get: Reports_listEepurlActivity
+  /reports/{campaign_id}/email-activity:
+    get: Reports_listEmailActivity
+  /reports/{campaign_id}/email-activity/{subscriber_hash}:
+    get: Reports_getSubscriberActivity
+  /reports/{campaign_id}/locations:
+    get: Reports_listTopOpenLocations
+  /reports/{campaign_id}/open-details:
+    get: Reports_listCampaignOpenDetails
+  /reports/{campaign_id}/open-details/{subscriber_hash}:
+    get: Reports_openSubscriberDetails
+  /reports/{campaign_id}/sent-to:
+    get: Reports_listCampaignRecipients
+  /reports/{campaign_id}/sent-to/{subscriber_hash}:
+    get: Reports_campaignRecipientInfo
+  /reports/{campaign_id}/sub-reports:
+    get: Reports_listChildCampaignReports
+  /reports/{campaign_id}/unsubscribed:
+    get: Reports_listUnsubscribedMembers
+  /reports/{campaign_id}/unsubscribed/{subscriber_hash}:
+    get: Reports_getUnsubscribedMemberInfo
+  /search-campaigns:
+    get: SearchCampaigns_byQueryTerms
+  /search-members:
+    get: SearchMembers_listMembers
+  /template-folders:
+    get: TemplateFolders_listFolders
+    post: TemplateFolders_addNewFolder
+  /template-folders/{folder_id}:
+    delete: TemplateFolders_deleteSpecificFolder
+    get: TemplateFolders_getInfo
+    patch: TemplateFolders_updateSpecificFolder
+  /templates:
+    get: Templates_listAvailableTemplates
+    post: Templates_createNewTemplate
+  /templates/{template_id}:
+    delete: Templates_deleteSpecificTemplate
+    get: Templates_getInfo
+    patch: Templates_updateTemplateById
+  /templates/{template_id}/default-content:
+    get: Templates_viewDefaultContent
+  /verified-domains:
+    get: VerifiedDomains_listSendingDomains
+    post: VerifiedDomains_addDomainToAccount
+  /verified-domains/{domain_name}:
+    delete: VerifiedDomains_deleteDomain
+    get: VerifiedDomains_getInfo
+  /verified-domains/{domain_name}/actions/verify:
+    post: VerifiedDomains_verifyDomainForSending
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /account-exports:
+    post:
+      application/json: AccountExportsCreateNewExportRequest
+  /automations:
+    post:
+      application/json: AutomationsCreateClassicRequest
+  /automations/{workflow_id}/emails/{workflow_email_id}:
+    patch:
+      application/json: AutomationsUpdateWorkflowEmailRequest
+  /automations/{workflow_id}/emails/{workflow_email_id}/queue:
+    post:
+      application/json: AutomationsAddSubscriberToWorkflowEmailRequest
+  /batch-webhooks:
+    post:
+      application/json: BatchWebhooksAddWebhookRequest
+  /batch-webhooks/{batch_webhook_id}:
+    patch:
+      application/json: BatchWebhooksUpdateWebhookRequest
+  /batches:
+    post:
+      application/json: BatchesStartOperationProcessRequest
+  /campaign-folders:
+    post:
+      application/json: CampaignFoldersAddNewFolderRequest
+  /campaigns:
+    post:
+      application/json: CampaignsCreateNewMailchimpCampaignRequest
+  /campaigns/{campaign_id}:
+    patch:
+      application/json: CampaignsUpdateSettingsRequest
+  /campaigns/{campaign_id}/actions/create-resend:
+    post:
+      application/json: CampaignsResendActionRequest
+  /campaigns/{campaign_id}/actions/schedule:
+    post:
+      application/json: CampaignsScheduleDeliveryRequest
+  /campaigns/{campaign_id}/actions/test:
+    post:
+      application/json: CampaignsSendTestEmailRequest
+  /campaigns/{campaign_id}/content:
+    put:
+      application/json: CampaignsSetContentRequest
+  /campaigns/{campaign_id}/feedback:
+    post:
+      application/json: CampaignsAddFeedbackRequest
+  /campaigns/{campaign_id}/feedback/{feedback_id}:
+    patch:
+      application/json: CampaignsUpdateFeedbackMessageRequest
+  /connected-sites:
+    post:
+      application/json: ConnectedSitesCreateNewMailchimpSiteRequest
+  /customer-journeys/journeys/{journey_id}/steps/{step_id}/actions/trigger:
+    post:
+      application/json: CustomerJourneysTriggerStepActionRequest
+  /ecommerce/stores:
+    post:
+      application/json: EcommerceAddStoreToMailchimpAccountRequest
+  /ecommerce/stores/{store_id}:
+    patch:
+      application/json: EcommerceUpdateStoreRequest
+  /ecommerce/stores/{store_id}/carts:
+    post:
+      application/json: EcommerceAddCartToStoreRequest
+  /ecommerce/stores/{store_id}/carts/{cart_id}:
+    patch:
+      application/json: EcommerceUpdateCartByIdRequest
+  /ecommerce/stores/{store_id}/carts/{cart_id}/lines:
+    post:
+      application/json: EcommerceAddCartLineItemRequest
+  /ecommerce/stores/{store_id}/carts/{cart_id}/lines/{line_id}:
+    patch:
+      application/json: EcommerceUpdateCartLineItemRequest
+  /ecommerce/stores/{store_id}/customers:
+    post:
+      application/json: EcommerceAddCustomerToStoreRequest
+  /ecommerce/stores/{store_id}/customers/{customer_id}:
+    patch:
+      application/json: EcommerceUpdateCustomerRequest
+    put:
+      application/json: EcommerceAddOrUpdateCustomerRequest
+  /ecommerce/stores/{store_id}/orders:
+    post:
+      application/json: EcommerceAddOrderToStoreRequest
+  /ecommerce/stores/{store_id}/orders/{order_id}:
+    patch:
+      application/json: EcommerceUpdateSpecificOrderRequest
+  /ecommerce/stores/{store_id}/orders/{order_id}/lines:
+    post:
+      application/json: EcommerceAddOrderLineItemRequest
+  /ecommerce/stores/{store_id}/orders/{order_id}/lines/{line_id}:
+    patch:
+      application/json: EcommerceUpdateOrderLineRequest
+  /ecommerce/stores/{store_id}/products:
+    post:
+      application/json: EcommerceAddProductToStoreRequest
+  /ecommerce/stores/{store_id}/products/{product_id}:
+    patch:
+      application/json: EcommerceUpdateProductRequest
+  /ecommerce/stores/{store_id}/products/{product_id}/images:
+    post:
+      application/json: EcommerceAddProductImageRequest
+  /ecommerce/stores/{store_id}/products/{product_id}/images/{image_id}:
+    patch:
+      application/json: EcommerceUpdateProductImageRequest
+  /ecommerce/stores/{store_id}/products/{product_id}/variants:
+    post:
+      application/json: EcommerceAddProductVariantRequest
+  /ecommerce/stores/{store_id}/products/{product_id}/variants/{variant_id}:
+    patch:
+      application/json: EcommerceUpdateProductVariantRequest
+  /ecommerce/stores/{store_id}/promo-rules:
+    post:
+      application/json: EcommerceAddPromoRuleRequest
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}:
+    patch:
+      application/json: EcommerceUpdatePromoRuleRequest
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes:
+    post:
+      application/json: EcommerceAddPromoCodeRequest
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes/{promo_code_id}:
+    patch:
+      application/json: EcommerceUpdatePromoCodeRequest
+  /file-manager/files:
+    post:
+      application/json: FileManagerUploadFileRequest
+  /file-manager/files/{file_id}:
+    patch:
+      application/json: FileManagerUpdateFileRequest
+  /file-manager/folders:
+    post:
+      application/json: FileManagerAddNewFolderRequest
+  /landing-pages:
+    post:
+      application/json: LandingPagesCreateNewMailchimpLandingPageRequest
+  /landing-pages/{page_id}:
+    patch:
+      application/json: LandingPagesUpdatePageByIdRequest
+  /lists:
+    post:
+      application/json: ListsCreateNewListRequest
+  /lists/{list_id}:
+    patch:
+      application/json: ListsUpdateSettingsRequest
+    post:
+      application/json: ListsBatchSubscribeOrUnsubscribeRequest
+  /lists/{list_id}/interest-categories:
+    post:
+      application/json: ListsAddInterestCategoryRequest
+  /lists/{list_id}/interest-categories/{interest_category_id}/interests:
+    post:
+      application/json: ListsAddInterestInCategoryRequest
+  /lists/{list_id}/members:
+    post:
+      application/json: ListsAddMemberToListRequest
+  /lists/{list_id}/members/{subscriber_hash}:
+    patch:
+      application/json: ListsUpdateMemberRequest
+    put:
+      application/json: ListsAddOrUpdateMemberRequest
+  /lists/{list_id}/members/{subscriber_hash}/events:
+    post:
+      application/json: ListsAddMemberEventRequest
+  /lists/{list_id}/members/{subscriber_hash}/notes:
+    post:
+      application/json: ListsAddMemberNoteRequest
+  /lists/{list_id}/members/{subscriber_hash}/tags:
+    post:
+      application/json: ListsAddMemberTagsRequest
+  /lists/{list_id}/merge-fields:
+    post:
+      application/json: ListsAddMergeFieldRequest
+  /lists/{list_id}/merge-fields/{merge_id}:
+    patch:
+      application/json: ListsUpdateMergeFieldRequest
+  /lists/{list_id}/segments:
+    post:
+      application/json: ListsAddNewSegmentRequest
+  /lists/{list_id}/segments/{segment_id}:
+    patch:
+      application/json: ListsUpdateSegmentByIdRequest
+    post:
+      application/json: ListsBatchAddRemoveMembersRequest
+  /lists/{list_id}/segments/{segment_id}/members:
+    post:
+      application/json: ListsAddMemberToSegmentRequest
+  /lists/{list_id}/signup-forms:
+    post:
+      application/json: ListsCustomizeSignupFormRequest
+  /lists/{list_id}/webhooks:
+    post:
+      application/json: ListsCreateWebhookRequest
+  /template-folders:
+    post:
+      application/json: TemplateFoldersAddNewFolderRequest
+  /templates:
+    post:
+      application/json: TemplatesCreateNewTemplateRequest
+  /verified-domains:
+    post:
+      application/json: VerifiedDomainsAddDomainToAccountRequest
+  /verified-domains/{domain_name}/actions/verify:
+    post:
+      application/json: VerifiedDomainsVerifyDomainForSendingRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /:
+    get:
+      '200':
+        application/json: RootListResourcesResponse
+        application/problem+json: RootListResources200Response
+      default:
+        application/json: RootListResourcesdefaultResponse
+        application/problem+json: RootListResourcesdefaultResponse
+  /account-exports:
+    get:
+      '200':
+        application/json: AccountExportsListForGivenAccountResponse
+        application/problem+json: AccountExportsListForGivenAccount200Response
+      default:
+        application/json: AccountExportsListForGivenAccountdefaultResponse
+        application/problem+json: AccountExportsListForGivenAccountdefaultResponse
+    post:
+      '200':
+        application/json: AccountExportsCreateNewExportResponse
+        application/problem+json: AccountExportsCreateNewExport200Response
+      default:
+        application/json: AccountExportsCreateNewExportdefaultResponse
+        application/problem+json: AccountExportsCreateNewExportdefaultResponse
+  /account-exports/{export_id}:
+    get:
+      '200':
+        application/json: AccountExportInfoResponse
+        application/problem+json: AccountExportInfo200Response
+      default:
+        application/json: AccountExportInfodefaultResponse
+        application/problem+json: AccountExportInfodefaultResponse
+  /activity-feed/chimp-chatter:
+    get:
+      '200':
+        application/json: ActivityFeedGetLatestChimpChatterResponse
+        application/problem+json: ActivityFeedGetLatestChimpChatter200Response
+      default:
+        application/json: ActivityFeedGetLatestChimpChatterdefaultResponse
+        application/problem+json: ActivityFeedGetLatestChimpChatterdefaultResponse
+  /authorized-apps:
+    get:
+      '200':
+        application/json: AuthorizedAppsListConnectedApplicationsResponse
+        application/problem+json: AuthorizedAppsListConnectedApplications200Response
+      default:
+        application/json: AuthorizedAppsListConnectedApplicationsdefaultResponse
+        application/problem+json: AuthorizedAppsListConnectedApplicationsdefaultResponse
+  /authorized-apps/{app_id}:
+    get:
+      '200':
+        application/json: AuthorizedAppsGetInfoResponse
+        application/problem+json: AuthorizedAppsGetInfo200Response
+      default:
+        application/json: AuthorizedAppsGetInfodefaultResponse
+        application/problem+json: AuthorizedAppsGetInfodefaultResponse
+  /automations:
+    get:
+      '200':
+        application/json: AutomationsListSummaryResponse
+        application/problem+json: AutomationsListSummary200Response
+      default:
+        application/json: AutomationsListSummarydefaultResponse
+        application/problem+json: AutomationsListSummarydefaultResponse
+    post:
+      '200':
+        application/json: AutomationsCreateClassicResponse
+        application/problem+json: AutomationsCreateClassic200Response
+      default:
+        application/json: AutomationsCreateClassicdefaultResponse
+        application/problem+json: AutomationsCreateClassicdefaultResponse
+  /automations/{workflow_id}:
+    get:
+      '200':
+        application/json: AutomationsGetClassicWorkflowInfoResponse
+        application/problem+json: AutomationsGetClassicWorkflowInfo200Response
+      default:
+        application/json: AutomationsGetClassicWorkflowInfodefaultResponse
+        application/problem+json: AutomationsGetClassicWorkflowInfodefaultResponse
+  /automations/{workflow_id}/actions/archive:
+    post:
+      default:
+        application/json: AutomationsArchiveActionResponse
+        application/problem+json: AutomationsArchiveActiondefaultResponse
+  /automations/{workflow_id}/actions/pause-all-emails:
+    post:
+      default:
+        application/json: AutomationsPauseWorkflowEmailsResponse
+        application/problem+json: AutomationsPauseWorkflowEmailsdefaultResponse
+  /automations/{workflow_id}/actions/start-all-emails:
+    post:
+      default:
+        application/json: AutomationsStartAllEmailsResponse
+        application/problem+json: AutomationsStartAllEmailsdefaultResponse
+  /automations/{workflow_id}/emails:
+    get:
+      '200':
+        application/json: AutomationsGetClassicWorkflowEmailsResponse
+        application/problem+json: AutomationsGetClassicWorkflowEmails200Response
+      default:
+        application/json: AutomationsGetClassicWorkflowEmailsdefaultResponse
+        application/problem+json: AutomationsGetClassicWorkflowEmailsdefaultResponse
+  /automations/{workflow_id}/emails/{workflow_email_id}:
+    delete:
+      default:
+        application/json: AutomationsDeleteWorkflowEmailResponse
+        application/problem+json: AutomationsDeleteWorkflowEmaildefaultResponse
+    get:
+      '200':
+        application/json: AutomationsGetEmailInfoResponse
+        application/problem+json: AutomationsGetEmailInfo200Response
+      default:
+        application/json: AutomationsGetEmailInfodefaultResponse
+        application/problem+json: AutomationsGetEmailInfodefaultResponse
+    patch:
+      '200':
+        application/json: AutomationsUpdateWorkflowEmailResponse
+        application/problem+json: AutomationsUpdateWorkflowEmail200Response
+      default:
+        application/json: AutomationsUpdateWorkflowEmaildefaultResponse
+        application/problem+json: AutomationsUpdateWorkflowEmaildefaultResponse
+  /automations/{workflow_id}/emails/{workflow_email_id}/actions/pause:
+    post:
+      default:
+        application/json: AutomationsPauseAutomatedEmailResponse
+        application/problem+json: AutomationsPauseAutomatedEmaildefaultResponse
+  /automations/{workflow_id}/emails/{workflow_email_id}/actions/start:
+    post:
+      default:
+        application/json: AutomationsStartAutomatedEmailResponse
+        application/problem+json: AutomationsStartAutomatedEmaildefaultResponse
+  /automations/{workflow_id}/emails/{workflow_email_id}/queue:
+    get:
+      '200':
+        application/json: AutomationsListQueueEmailsResponse
+        application/problem+json: AutomationsListQueueEmails200Response
+      default:
+        application/json: AutomationsListQueueEmailsdefaultResponse
+        application/problem+json: AutomationsListQueueEmailsdefaultResponse
+    post:
+      '200':
+        application/json: AutomationsAddSubscriberToWorkflowEmailResponse
+        application/problem+json: AutomationsAddSubscriberToWorkflowEmail200Response
+      default:
+        application/json: AutomationsAddSubscriberToWorkflowEmaildefaultResponse
+        application/problem+json: AutomationsAddSubscriberToWorkflowEmaildefaultResponse
+  /automations/{workflow_id}/emails/{workflow_email_id}/queue/{subscriber_hash}:
+    get:
+      '200':
+        application/json: AutomationsClassicAutomationSubscriberInfoResponse
+        application/problem+json: AutomationsClassicAutomationSubscriberInfo200Response
+      default:
+        application/json: AutomationsClassicAutomationSubscriberInfodefaultResponse
+        application/problem+json: AutomationsClassicAutomationSubscriberInfodefaultResponse
+  /automations/{workflow_id}/removed-subscribers:
+    get:
+      '200':
+        application/json: AutomationsGetRemovedSubscribersResponse
+        application/problem+json: AutomationsGetRemovedSubscribers200Response
+      default:
+        application/json: AutomationsGetRemovedSubscribersdefaultResponse
+        application/problem+json: AutomationsGetRemovedSubscribersdefaultResponse
+    post:
+      '200':
+        application/json: AutomationsRemoveSubscriberFromWorkflowResponse
+        application/problem+json: AutomationsRemoveSubscriberFromWorkflow200Response
+      default:
+        application/json: AutomationsRemoveSubscriberFromWorkflowdefaultResponse
+        application/problem+json: AutomationsRemoveSubscriberFromWorkflowdefaultResponse
+  /automations/{workflow_id}/removed-subscribers/{subscriber_hash}:
+    get:
+      '200':
+        application/json: AutomationsGetRemovedSubscriberInfoResponse
+        application/problem+json: AutomationsGetRemovedSubscriberInfo200Response
+      default:
+        application/json: AutomationsGetRemovedSubscriberInfodefaultResponse
+        application/problem+json: AutomationsGetRemovedSubscriberInfodefaultResponse
+  /batch-webhooks:
+    get:
+      '200':
+        application/json: BatchWebhooksListWebhooksResponse
+        application/problem+json: BatchWebhooksListWebhooks200Response
+      default:
+        application/json: BatchWebhooksListWebhooksdefaultResponse
+        application/problem+json: BatchWebhooksListWebhooksdefaultResponse
+    post:
+      '200':
+        application/json: BatchWebhooksAddWebhookResponse
+        application/problem+json: BatchWebhooksAddWebhook200Response
+      default:
+        application/json: BatchWebhooksAddWebhookdefaultResponse
+        application/problem+json: BatchWebhooksAddWebhookdefaultResponse
+  /batch-webhooks/{batch_webhook_id}:
+    delete:
+      default:
+        application/json: BatchWebhooksRemoveWebhookResponse
+        application/problem+json: BatchWebhooksRemoveWebhookdefaultResponse
+    get:
+      '200':
+        application/json: BatchWebhooksGetInfoResponse
+        application/problem+json: BatchWebhooksGetInfo200Response
+      default:
+        application/json: BatchWebhooksGetInfodefaultResponse
+        application/problem+json: BatchWebhooksGetInfodefaultResponse
+    patch:
+      '200':
+        application/json: BatchWebhooksUpdateWebhookResponse
+        application/problem+json: BatchWebhooksUpdateWebhook200Response
+      default:
+        application/json: BatchWebhooksUpdateWebhookdefaultResponse
+        application/problem+json: BatchWebhooksUpdateWebhookdefaultResponse
+  /batches:
+    get:
+      '200':
+        application/json: BatchesListRequestsSummaryResponse
+        application/problem+json: BatchesListRequestsSummary200Response
+      default:
+        application/json: BatchesListRequestsSummarydefaultResponse
+        application/problem+json: BatchesListRequestsSummarydefaultResponse
+    post:
+      '200':
+        application/json: BatchesStartOperationProcessResponse
+        application/problem+json: BatchesStartOperationProcess200Response
+      default:
+        application/json: BatchesStartOperationProcessdefaultResponse
+        application/problem+json: BatchesStartOperationProcessdefaultResponse
+  /batches/{batch_id}:
+    delete:
+      default:
+        application/json: BatchesStopRequestResponse
+        application/problem+json: BatchesStopRequestdefaultResponse
+    get:
+      '200':
+        application/json: BatchesGetOperationStatusResponse
+        application/problem+json: BatchesGetOperationStatus200Response
+      default:
+        application/json: BatchesGetOperationStatusdefaultResponse
+        application/problem+json: BatchesGetOperationStatusdefaultResponse
+  /campaign-folders:
+    get:
+      '200':
+        application/json: CampaignFoldersListCampaignFoldersResponse
+        application/problem+json: CampaignFoldersListCampaignFolders200Response
+      default:
+        application/json: CampaignFoldersListCampaignFoldersdefaultResponse
+        application/problem+json: CampaignFoldersListCampaignFoldersdefaultResponse
+    post:
+      '200':
+        application/json: CampaignFoldersAddNewFolderResponse
+        application/problem+json: CampaignFoldersAddNewFolder200Response
+      default:
+        application/json: CampaignFoldersAddNewFolderdefaultResponse
+        application/problem+json: CampaignFoldersAddNewFolderdefaultResponse
+  /campaign-folders/{folder_id}:
+    delete:
+      default:
+        application/json: CampaignFoldersDeleteFolderResponse
+        application/problem+json: CampaignFoldersDeleteFolderdefaultResponse
+    get:
+      '200':
+        application/json: CampaignFoldersGetFolderInfoResponse
+        application/problem+json: CampaignFoldersGetFolderInfo200Response
+      default:
+        application/json: CampaignFoldersGetFolderInfodefaultResponse
+        application/problem+json: CampaignFoldersGetFolderInfodefaultResponse
+    patch:
+      '200':
+        application/json: CampaignFoldersUpdateSpecificFolderResponse
+        application/problem+json: CampaignFoldersUpdateSpecificFolder200Response
+      default:
+        application/json: CampaignFoldersUpdateSpecificFolderdefaultResponse
+        application/problem+json: CampaignFoldersUpdateSpecificFolderdefaultResponse
+  /campaigns:
+    get:
+      '200':
+        application/json: CampaignsGetAllResponse
+        application/problem+json: CampaignsGetAll200Response
+      default:
+        application/json: CampaignsGetAlldefaultResponse
+        application/problem+json: CampaignsGetAlldefaultResponse
+    post:
+      '200':
+        application/json: CampaignsCreateNewMailchimpCampaignResponse
+        application/problem+json: CampaignsCreateNewMailchimpCampaign200Response
+      default:
+        application/json: CampaignsCreateNewMailchimpCampaigndefaultResponse
+        application/problem+json: CampaignsCreateNewMailchimpCampaigndefaultResponse
+  /campaigns/{campaign_id}:
+    delete:
+      default:
+        application/json: CampaignsRemoveCampaignResponse
+        application/problem+json: CampaignsRemoveCampaigndefaultResponse
+    get:
+      '200':
+        application/json: CampaignsGetInfoResponse
+        application/problem+json: CampaignsGetInfo200Response
+      default:
+        application/json: CampaignsGetInfodefaultResponse
+        application/problem+json: CampaignsGetInfodefaultResponse
+    patch:
+      '200':
+        application/json: CampaignsUpdateSettingsResponse
+        application/problem+json: CampaignsUpdateSettings200Response
+      default:
+        application/json: CampaignsUpdateSettingsdefaultResponse
+        application/problem+json: CampaignsUpdateSettingsdefaultResponse
+  /campaigns/{campaign_id}/actions/cancel-send:
+    post:
+      default:
+        application/json: CampaignsCancelSendActionResponse
+        application/problem+json: CampaignsCancelSendActiondefaultResponse
+  /campaigns/{campaign_id}/actions/create-resend:
+    post:
+      '200':
+        application/json: CampaignsResendActionResponse
+        application/problem+json: CampaignsResendAction200Response
+      default:
+        application/json: CampaignsResendActiondefaultResponse
+        application/problem+json: CampaignsResendActiondefaultResponse
+  /campaigns/{campaign_id}/actions/pause:
+    post:
+      default:
+        application/json: CampaignsPauseRssCampaignResponse
+        application/problem+json: CampaignsPauseRssCampaigndefaultResponse
+  /campaigns/{campaign_id}/actions/replicate:
+    post:
+      '200':
+        application/json: CampaignsReplicateActionResponse
+        application/problem+json: CampaignsReplicateAction200Response
+      default:
+        application/json: CampaignsReplicateActiondefaultResponse
+        application/problem+json: CampaignsReplicateActiondefaultResponse
+  /campaigns/{campaign_id}/actions/resume:
+    post:
+      default:
+        application/json: CampaignsResumeRssCampaignResponse
+        application/problem+json: CampaignsResumeRssCampaigndefaultResponse
+  /campaigns/{campaign_id}/actions/schedule:
+    post:
+      default:
+        application/json: CampaignsScheduleDeliveryResponse
+        application/problem+json: CampaignsScheduleDeliverydefaultResponse
+  /campaigns/{campaign_id}/actions/send:
+    post:
+      default:
+        application/json: CampaignsSendActionResponse
+        application/problem+json: CampaignsSendActiondefaultResponse
+  /campaigns/{campaign_id}/actions/test:
+    post:
+      default:
+        application/json: CampaignsSendTestEmailResponse
+        application/problem+json: CampaignsSendTestEmaildefaultResponse
+  /campaigns/{campaign_id}/actions/unschedule:
+    post:
+      default:
+        application/json: CampaignsUnscheduleActionResponse
+        application/problem+json: CampaignsUnscheduleActiondefaultResponse
+  /campaigns/{campaign_id}/content:
+    get:
+      '200':
+        application/json: CampaignsGetContentResponse
+        application/problem+json: CampaignsGetContent200Response
+      default:
+        application/json: CampaignsGetContentdefaultResponse
+        application/problem+json: CampaignsGetContentdefaultResponse
+    put:
+      '200':
+        application/json: CampaignsSetContentResponse
+        application/problem+json: CampaignsSetContent200Response
+      default:
+        application/json: CampaignsSetContentdefaultResponse
+        application/problem+json: CampaignsSetContentdefaultResponse
+  /campaigns/{campaign_id}/feedback:
+    get:
+      '200':
+        application/json: CampaignsListFeedbackResponse
+        application/problem+json: CampaignsListFeedback200Response
+      default:
+        application/json: CampaignsListFeedbackdefaultResponse
+        application/problem+json: CampaignsListFeedbackdefaultResponse
+    post:
+      '200':
+        application/json: CampaignsAddFeedbackResponse
+        application/problem+json: CampaignsAddFeedback200Response
+      default:
+        application/json: CampaignsAddFeedbackdefaultResponse
+        application/problem+json: CampaignsAddFeedbackdefaultResponse
+  /campaigns/{campaign_id}/feedback/{feedback_id}:
+    delete:
+      default:
+        application/json: CampaignsRemoveFeedbackMessageResponse
+        application/problem+json: CampaignsRemoveFeedbackMessagedefaultResponse
+    get:
+      '200':
+        application/json: CampaignsGetFeedbackMessageResponse
+        application/problem+json: CampaignsGetFeedbackMessage200Response
+      default:
+        application/json: CampaignsGetFeedbackMessagedefaultResponse
+        application/problem+json: CampaignsGetFeedbackMessagedefaultResponse
+    patch:
+      '200':
+        application/json: CampaignsUpdateFeedbackMessageResponse
+        application/problem+json: CampaignsUpdateFeedbackMessage200Response
+      default:
+        application/json: CampaignsUpdateFeedbackMessagedefaultResponse
+        application/problem+json: CampaignsUpdateFeedbackMessagedefaultResponse
+  /campaigns/{campaign_id}/send-checklist:
+    get:
+      '200':
+        application/json: CampaignsGetSendChecklistResponse
+        application/problem+json: CampaignsGetSendChecklist200Response
+      default:
+        application/json: CampaignsGetSendChecklistdefaultResponse
+        application/problem+json: CampaignsGetSendChecklistdefaultResponse
+  /connected-sites:
+    get:
+      '200':
+        application/json: ConnectedSitesListAllResponse
+        application/problem+json: ConnectedSitesListAll200Response
+      default:
+        application/json: ConnectedSitesListAlldefaultResponse
+        application/problem+json: ConnectedSitesListAlldefaultResponse
+    post:
+      '200':
+        application/json: ConnectedSitesCreateNewMailchimpSiteResponse
+        application/problem+json: ConnectedSitesCreateNewMailchimpSite200Response
+      default:
+        application/json: ConnectedSitesCreateNewMailchimpSitedefaultResponse
+        application/problem+json: ConnectedSitesCreateNewMailchimpSitedefaultResponse
+  /connected-sites/{connected_site_id}:
+    delete:
+      default:
+        application/json: ConnectedSitesRemoveSiteResponse
+        application/problem+json: ConnectedSitesRemoveSitedefaultResponse
+    get:
+      '200':
+        application/json: ConnectedSitesGetInfoResponse
+        application/problem+json: ConnectedSitesGetInfo200Response
+      default:
+        application/json: ConnectedSitesGetInfodefaultResponse
+        application/problem+json: ConnectedSitesGetInfodefaultResponse
+  /connected-sites/{connected_site_id}/actions/verify-script-installation:
+    post:
+      default:
+        application/json: ConnectedSitesVerifyScriptInstallationResponse
+        application/problem+json: ConnectedSitesVerifyScriptInstallationdefaultResponse
+  /conversations:
+    get:
+      '200':
+        application/json: ConversationsGetAllConversationsResponse
+        application/problem+json: ConversationsGetAllConversations200Response
+      default:
+        application/json: ConversationsGetAllConversationsdefaultResponse
+        application/problem+json: ConversationsGetAllConversationsdefaultResponse
+  /conversations/{conversation_id}:
+    get:
+      '200':
+        application/json: ConversationsGetByIdResponse
+        application/problem+json: ConversationsGetById200Response
+      default:
+        application/json: ConversationsGetByIddefaultResponse
+        application/problem+json: ConversationsGetByIddefaultResponse
+  /conversations/{conversation_id}/messages:
+    get:
+      '200':
+        application/json: ConversationsListMessagesFromConversationResponse
+        application/problem+json: ConversationsListMessagesFromConversation200Response
+      default:
+        application/json: ConversationsListMessagesFromConversationdefaultResponse
+        application/problem+json: ConversationsListMessagesFromConversationdefaultResponse
+  /conversations/{conversation_id}/messages/{message_id}:
+    get:
+      '200':
+        application/json: ConversationsGetMessageByIdResponse
+        application/problem+json: ConversationsGetMessageById200Response
+      default:
+        application/json: ConversationsGetMessageByIddefaultResponse
+        application/problem+json: ConversationsGetMessageByIddefaultResponse
+  /customer-journeys/journeys/{journey_id}/steps/{step_id}/actions/trigger:
+    post:
+      '204':
+        application/json: CustomerJourneysTriggerStepActionResponse
+        application/problem+json: CustomerJourneysTriggerStepAction204Response
+      default:
+        application/json: CustomerJourneysTriggerStepActiondefaultResponse
+        application/problem+json: CustomerJourneysTriggerStepActiondefaultResponse
+  /ecommerce/orders:
+    get:
+      '200':
+        application/json: EcommerceListAccountOrdersResponse
+        application/problem+json: EcommerceListAccountOrders200Response
+      default:
+        application/json: EcommerceListAccountOrdersdefaultResponse
+        application/problem+json: EcommerceListAccountOrdersdefaultResponse
+  /ecommerce/stores:
+    get:
+      '200':
+        application/json: EcommerceListStoresResponse
+        application/problem+json: EcommerceListStores200Response
+      default:
+        application/json: EcommerceListStoresdefaultResponse
+        application/problem+json: EcommerceListStoresdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddStoreToMailchimpAccountResponse
+        application/problem+json: EcommerceAddStoreToMailchimpAccount200Response
+      default:
+        application/json: EcommerceAddStoreToMailchimpAccountdefaultResponse
+        application/problem+json: EcommerceAddStoreToMailchimpAccountdefaultResponse
+  /ecommerce/stores/{store_id}:
+    delete:
+      '204':
+        application/json: EcommerceDeleteStoreResponse
+        application/problem+json: EcommerceDeleteStore204Response
+      default:
+        application/json: EcommerceDeleteStoredefaultResponse
+        application/problem+json: EcommerceDeleteStoredefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetStoreInfoResponse
+        application/problem+json: EcommerceGetStoreInfo200Response
+      default:
+        application/json: EcommerceGetStoreInfodefaultResponse
+        application/problem+json: EcommerceGetStoreInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateStoreResponse
+        application/problem+json: EcommerceUpdateStore200Response
+      default:
+        application/json: EcommerceUpdateStoredefaultResponse
+        application/problem+json: EcommerceUpdateStoredefaultResponse
+  /ecommerce/stores/{store_id}/carts:
+    get:
+      '200':
+        application/json: EcommerceGetStoreCartsResponse
+        application/problem+json: EcommerceGetStoreCarts200Response
+      default:
+        application/json: EcommerceGetStoreCartsdefaultResponse
+        application/problem+json: EcommerceGetStoreCartsdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddCartToStoreResponse
+        application/problem+json: EcommerceAddCartToStore200Response
+      default:
+        application/json: EcommerceAddCartToStoredefaultResponse
+        application/problem+json: EcommerceAddCartToStoredefaultResponse
+  /ecommerce/stores/{store_id}/carts/{cart_id}:
+    delete:
+      default:
+        application/json: EcommerceRemoveCartResponse
+        application/problem+json: EcommerceRemoveCartdefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetCartInfoResponse
+        application/problem+json: EcommerceGetCartInfo200Response
+      default:
+        application/json: EcommerceGetCartInfodefaultResponse
+        application/problem+json: EcommerceGetCartInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateCartByIdResponse
+        application/problem+json: EcommerceUpdateCartById200Response
+      default:
+        application/json: EcommerceUpdateCartByIddefaultResponse
+        application/problem+json: EcommerceUpdateCartByIddefaultResponse
+  /ecommerce/stores/{store_id}/carts/{cart_id}/lines:
+    get:
+      '200':
+        application/json: EcommerceListCartLinesResponse
+        application/problem+json: EcommerceListCartLines200Response
+      default:
+        application/json: EcommerceListCartLinesdefaultResponse
+        application/problem+json: EcommerceListCartLinesdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddCartLineItemResponse
+        application/problem+json: EcommerceAddCartLineItem200Response
+      default:
+        application/json: EcommerceAddCartLineItemdefaultResponse
+        application/problem+json: EcommerceAddCartLineItemdefaultResponse
+  /ecommerce/stores/{store_id}/carts/{cart_id}/lines/{line_id}:
+    delete:
+      default:
+        application/json: EcommerceDeleteCartLineItemResponse
+        application/problem+json: EcommerceDeleteCartLineItemdefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetCartLineItemResponse
+        application/problem+json: EcommerceGetCartLineItem200Response
+      default:
+        application/json: EcommerceGetCartLineItemdefaultResponse
+        application/problem+json: EcommerceGetCartLineItemdefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateCartLineItemResponse
+        application/problem+json: EcommerceUpdateCartLineItem200Response
+      default:
+        application/json: EcommerceUpdateCartLineItemdefaultResponse
+        application/problem+json: EcommerceUpdateCartLineItemdefaultResponse
+  /ecommerce/stores/{store_id}/customers:
+    get:
+      '200':
+        application/json: EcommerceGetStoreCustomersResponse
+        application/problem+json: EcommerceGetStoreCustomers200Response
+      default:
+        application/json: EcommerceGetStoreCustomersdefaultResponse
+        application/problem+json: EcommerceGetStoreCustomersdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddCustomerToStoreResponse
+        application/problem+json: EcommerceAddCustomerToStore200Response
+      default:
+        application/json: EcommerceAddCustomerToStoredefaultResponse
+        application/problem+json: EcommerceAddCustomerToStoredefaultResponse
+  /ecommerce/stores/{store_id}/customers/{customer_id}:
+    delete:
+      default:
+        application/json: EcommerceRemoveCustomerResponse
+        application/problem+json: EcommerceRemoveCustomerdefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetCustomerInfoResponse
+        application/problem+json: EcommerceGetCustomerInfo200Response
+      default:
+        application/json: EcommerceGetCustomerInfodefaultResponse
+        application/problem+json: EcommerceGetCustomerInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateCustomerResponse
+        application/problem+json: EcommerceUpdateCustomer200Response
+      default:
+        application/json: EcommerceUpdateCustomerdefaultResponse
+        application/problem+json: EcommerceUpdateCustomerdefaultResponse
+    put:
+      '200':
+        application/json: EcommerceAddOrUpdateCustomerResponse
+        application/problem+json: EcommerceAddOrUpdateCustomer200Response
+      default:
+        application/json: EcommerceAddOrUpdateCustomerdefaultResponse
+        application/problem+json: EcommerceAddOrUpdateCustomerdefaultResponse
+  /ecommerce/stores/{store_id}/orders:
+    get:
+      '200':
+        application/json: EcommerceListStoreOrdersResponse
+        application/problem+json: EcommerceListStoreOrders200Response
+      default:
+        application/json: EcommerceListStoreOrdersdefaultResponse
+        application/problem+json: EcommerceListStoreOrdersdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddOrderToStoreResponse
+        application/problem+json: EcommerceAddOrderToStore200Response
+      default:
+        application/json: EcommerceAddOrderToStoredefaultResponse
+        application/problem+json: EcommerceAddOrderToStoredefaultResponse
+  /ecommerce/stores/{store_id}/orders/{order_id}:
+    delete:
+      default:
+        application/json: EcommerceDeleteOrderResponse
+        application/problem+json: EcommerceDeleteOrderdefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetStoreOrderInfoResponse
+        application/problem+json: EcommerceGetStoreOrderInfo200Response
+      default:
+        application/json: EcommerceGetStoreOrderInfodefaultResponse
+        application/problem+json: EcommerceGetStoreOrderInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateSpecificOrderResponse
+        application/problem+json: EcommerceUpdateSpecificOrder200Response
+      default:
+        application/json: EcommerceUpdateSpecificOrderdefaultResponse
+        application/problem+json: EcommerceUpdateSpecificOrderdefaultResponse
+  /ecommerce/stores/{store_id}/orders/{order_id}/lines:
+    get:
+      '200':
+        application/json: EcommerceGetStoreOrderLinesResponse
+        application/problem+json: EcommerceGetStoreOrderLines200Response
+      default:
+        application/json: EcommerceGetStoreOrderLinesdefaultResponse
+        application/problem+json: EcommerceGetStoreOrderLinesdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddOrderLineItemResponse
+        application/problem+json: EcommerceAddOrderLineItem200Response
+      default:
+        application/json: EcommerceAddOrderLineItemdefaultResponse
+        application/problem+json: EcommerceAddOrderLineItemdefaultResponse
+  /ecommerce/stores/{store_id}/orders/{order_id}/lines/{line_id}:
+    delete:
+      default:
+        application/json: EcommerceDeleteOrderLineResponse
+        application/problem+json: EcommerceDeleteOrderLinedefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetOrderLineItemResponse
+        application/problem+json: EcommerceGetOrderLineItem200Response
+      default:
+        application/json: EcommerceGetOrderLineItemdefaultResponse
+        application/problem+json: EcommerceGetOrderLineItemdefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateOrderLineResponse
+        application/problem+json: EcommerceUpdateOrderLine200Response
+      default:
+        application/json: EcommerceUpdateOrderLinedefaultResponse
+        application/problem+json: EcommerceUpdateOrderLinedefaultResponse
+  /ecommerce/stores/{store_id}/products:
+    get:
+      '200':
+        application/json: EcommerceGetStoreProductsResponse
+        application/problem+json: EcommerceGetStoreProducts200Response
+      default:
+        application/json: EcommerceGetStoreProductsdefaultResponse
+        application/problem+json: EcommerceGetStoreProductsdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddProductToStoreResponse
+        application/problem+json: EcommerceAddProductToStore200Response
+      default:
+        application/json: EcommerceAddProductToStoredefaultResponse
+        application/problem+json: EcommerceAddProductToStoredefaultResponse
+  /ecommerce/stores/{store_id}/products/{product_id}:
+    delete:
+      default:
+        application/json: EcommerceDeleteProductResponse
+        application/problem+json: EcommerceDeleteProductdefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetStoreProductInfoResponse
+        application/problem+json: EcommerceGetStoreProductInfo200Response
+      default:
+        application/json: EcommerceGetStoreProductInfodefaultResponse
+        application/problem+json: EcommerceGetStoreProductInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateProductResponse
+        application/problem+json: EcommerceUpdateProduct200Response
+      default:
+        application/json: EcommerceUpdateProductdefaultResponse
+        application/problem+json: EcommerceUpdateProductdefaultResponse
+  /ecommerce/stores/{store_id}/products/{product_id}/images:
+    get:
+      '200':
+        application/json: EcommerceGetProductImagesResponse
+        application/problem+json: EcommerceGetProductImages200Response
+      default:
+        application/json: EcommerceGetProductImagesdefaultResponse
+        application/problem+json: EcommerceGetProductImagesdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddProductImageResponse
+        application/problem+json: EcommerceAddProductImage200Response
+      default:
+        application/json: EcommerceAddProductImagedefaultResponse
+        application/problem+json: EcommerceAddProductImagedefaultResponse
+  /ecommerce/stores/{store_id}/products/{product_id}/images/{image_id}:
+    delete:
+      default:
+        application/json: EcommerceDeleteProductImageResponse
+        application/problem+json: EcommerceDeleteProductImagedefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetProductImageInfoResponse
+        application/problem+json: EcommerceGetProductImageInfo200Response
+      default:
+        application/json: EcommerceGetProductImageInfodefaultResponse
+        application/problem+json: EcommerceGetProductImageInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateProductImageResponse
+        application/problem+json: EcommerceUpdateProductImage200Response
+      default:
+        application/json: EcommerceUpdateProductImagedefaultResponse
+        application/problem+json: EcommerceUpdateProductImagedefaultResponse
+  /ecommerce/stores/{store_id}/products/{product_id}/variants:
+    get:
+      '200':
+        application/json: EcommerceListProductVariantsResponse
+        application/problem+json: EcommerceListProductVariants200Response
+      default:
+        application/json: EcommerceListProductVariantsdefaultResponse
+        application/problem+json: EcommerceListProductVariantsdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddProductVariantResponse
+        application/problem+json: EcommerceAddProductVariant200Response
+      default:
+        application/json: EcommerceAddProductVariantdefaultResponse
+        application/problem+json: EcommerceAddProductVariantdefaultResponse
+  /ecommerce/stores/{store_id}/products/{product_id}/variants/{variant_id}:
+    delete:
+      default:
+        application/json: EcommerceDeleteProductVariantResponse
+        application/problem+json: EcommerceDeleteProductVariantdefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetProductVariantInfoResponse
+        application/problem+json: EcommerceGetProductVariantInfo200Response
+      default:
+        application/json: EcommerceGetProductVariantInfodefaultResponse
+        application/problem+json: EcommerceGetProductVariantInfodefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdateProductVariantResponse
+        application/problem+json: EcommerceUpdateProductVariant200Response
+      default:
+        application/json: EcommerceUpdateProductVariantdefaultResponse
+        application/problem+json: EcommerceUpdateProductVariantdefaultResponse
+    put:
+      '200':
+        application/json: EcommerceAddOrUpdateProductVariantResponse
+        application/problem+json: EcommerceAddOrUpdateProductVariant200Response
+      default:
+        application/json: EcommerceAddOrUpdateProductVariantdefaultResponse
+        application/problem+json: EcommerceAddOrUpdateProductVariantdefaultResponse
+  /ecommerce/stores/{store_id}/promo-rules:
+    get:
+      '200':
+        application/json: EcommerceGetStorePromoRulesResponse
+        application/problem+json: EcommerceGetStorePromoRules200Response
+      default:
+        application/json: EcommerceGetStorePromoRulesdefaultResponse
+        application/problem+json: EcommerceGetStorePromoRulesdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddPromoRuleResponse
+        application/problem+json: EcommerceAddPromoRule200Response
+      default:
+        application/json: EcommerceAddPromoRuledefaultResponse
+        application/problem+json: EcommerceAddPromoRuledefaultResponse
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}:
+    delete:
+      default:
+        application/json: EcommerceDeletePromoRuleResponse
+        application/problem+json: EcommerceDeletePromoRuledefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetStorePromoRuleResponse
+        application/problem+json: EcommerceGetStorePromoRule200Response
+      default:
+        application/json: EcommerceGetStorePromoRuledefaultResponse
+        application/problem+json: EcommerceGetStorePromoRuledefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdatePromoRuleResponse
+        application/problem+json: EcommerceUpdatePromoRule200Response
+      default:
+        application/json: EcommerceUpdatePromoRuledefaultResponse
+        application/problem+json: EcommerceUpdatePromoRuledefaultResponse
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes:
+    get:
+      '200':
+        application/json: EcommerceGetStorePromoCodesResponse
+        application/problem+json: EcommerceGetStorePromoCodes200Response
+      default:
+        application/json: EcommerceGetStorePromoCodesdefaultResponse
+        application/problem+json: EcommerceGetStorePromoCodesdefaultResponse
+    post:
+      '200':
+        application/json: EcommerceAddPromoCodeResponse
+        application/problem+json: EcommerceAddPromoCode200Response
+      default:
+        application/json: EcommerceAddPromoCodedefaultResponse
+        application/problem+json: EcommerceAddPromoCodedefaultResponse
+  /ecommerce/stores/{store_id}/promo-rules/{promo_rule_id}/promo-codes/{promo_code_id}:
+    delete:
+      default:
+        application/json: EcommerceDeletePromoCodeResponse
+        application/problem+json: EcommerceDeletePromoCodedefaultResponse
+    get:
+      '200':
+        application/json: EcommerceGetPromoCodeResponse
+        application/problem+json: EcommerceGetPromoCode200Response
+      default:
+        application/json: EcommerceGetPromoCodedefaultResponse
+        application/problem+json: EcommerceGetPromoCodedefaultResponse
+    patch:
+      '200':
+        application/json: EcommerceUpdatePromoCodeResponse
+        application/problem+json: EcommerceUpdatePromoCode200Response
+      default:
+        application/json: EcommerceUpdatePromoCodedefaultResponse
+        application/problem+json: EcommerceUpdatePromoCodedefaultResponse
+  /facebook-ads:
+    get:
+      '200':
+        application/json: FacebookAdsListAdsResponse
+        application/problem+json: FacebookAdsListAds200Response
+      default:
+        application/json: FacebookAdsListAdsdefaultResponse
+        application/problem+json: FacebookAdsListAdsdefaultResponse
+  /facebook-ads/{outreach_id}:
+    get:
+      '200':
+        application/json: FacebookAdsGetInfoResponse
+        application/problem+json: FacebookAdsGetInfo200Response
+      default:
+        application/json: FacebookAdsGetInfodefaultResponse
+        application/problem+json: FacebookAdsGetInfodefaultResponse
+  /file-manager/files:
+    get:
+      '200':
+        application/json: FileManagerListStoredFilesResponse
+        application/problem+json: FileManagerListStoredFiles200Response
+      default:
+        application/json: FileManagerListStoredFilesdefaultResponse
+        application/problem+json: FileManagerListStoredFilesdefaultResponse
+    post:
+      '200':
+        application/json: FileManagerUploadFileResponse
+        application/problem+json: FileManagerUploadFile200Response
+      default:
+        application/json: FileManagerUploadFiledefaultResponse
+        application/problem+json: FileManagerUploadFiledefaultResponse
+  /file-manager/files/{file_id}:
+    delete:
+      default:
+        application/json: FileManagerRemoveFileByIdResponse
+        application/problem+json: FileManagerRemoveFileByIddefaultResponse
+    get:
+      '200':
+        application/json: FileManagerGetFileResponse
+        application/problem+json: FileManagerGetFile200Response
+      default:
+        application/json: FileManagerGetFiledefaultResponse
+        application/problem+json: FileManagerGetFiledefaultResponse
+    patch:
+      '200':
+        application/json: FileManagerUpdateFileResponse
+        application/problem+json: FileManagerUpdateFile200Response
+      default:
+        application/json: FileManagerUpdateFiledefaultResponse
+        application/problem+json: FileManagerUpdateFiledefaultResponse
+  /file-manager/folders:
+    get:
+      '200':
+        application/json: FileManagerGetFolderListResponse
+        application/problem+json: FileManagerGetFolderList200Response
+      default:
+        application/json: FileManagerGetFolderListdefaultResponse
+        application/problem+json: FileManagerGetFolderListdefaultResponse
+    post:
+      '200':
+        application/json: FileManagerAddNewFolderResponse
+        application/problem+json: FileManagerAddNewFolder200Response
+      default:
+        application/json: FileManagerAddNewFolderdefaultResponse
+        application/problem+json: FileManagerAddNewFolderdefaultResponse
+  /file-manager/folders/{folder_id}:
+    delete:
+      default:
+        application/json: FileManagerDeleteFolderByIdResponse
+        application/problem+json: FileManagerDeleteFolderByIddefaultResponse
+    get:
+      '200':
+        application/json: FileManagerGetFolderInfoResponse
+        application/problem+json: FileManagerGetFolderInfo200Response
+      default:
+        application/json: FileManagerGetFolderInfodefaultResponse
+        application/problem+json: FileManagerGetFolderInfodefaultResponse
+    patch:
+      '200':
+        application/json: FileManagerUpdateSpecificFolderResponse
+        application/problem+json: FileManagerUpdateSpecificFolder200Response
+      default:
+        application/json: FileManagerUpdateSpecificFolderdefaultResponse
+        application/problem+json: FileManagerUpdateSpecificFolderdefaultResponse
+  /file-manager/folders/{folder_id}/files:
+    get:
+      '200':
+        application/json: FileManagerListStoredFiles200Response
+        application/problem+json: FileManagerListStoredFiles200Response
+      default:
+        application/json: FileManagerListStoredFilesdefaultResponse
+        application/problem+json: FileManagerListStoredFilesdefaultResponse
+  /landing-pages:
+    get:
+      '200':
+        application/json: LandingPagesListResponse
+        application/problem+json: LandingPagesList200Response
+      default:
+        application/json: LandingPagesListdefaultResponse
+        application/problem+json: LandingPagesListdefaultResponse
+    post:
+      '200':
+        application/json: LandingPagesCreateNewMailchimpLandingPageResponse
+        application/problem+json: LandingPagesCreateNewMailchimpLandingPage200Response
+      default:
+        application/json: LandingPagesCreateNewMailchimpLandingPagedefaultResponse
+        application/problem+json: LandingPagesCreateNewMailchimpLandingPagedefaultResponse
+  /landing-pages/{page_id}:
+    delete:
+      default:
+        application/json: LandingPagesDeletePageResponse
+        application/problem+json: LandingPagesDeletePagedefaultResponse
+    get:
+      '200':
+        application/json: LandingPagesGetPageInfoResponse
+        application/problem+json: LandingPagesGetPageInfo200Response
+      default:
+        application/json: LandingPagesGetPageInfodefaultResponse
+        application/problem+json: LandingPagesGetPageInfodefaultResponse
+    patch:
+      '200':
+        application/json: LandingPagesUpdatePageByIdResponse
+        application/problem+json: LandingPagesUpdatePageById200Response
+      default:
+        application/json: LandingPagesUpdatePageByIddefaultResponse
+        application/problem+json: LandingPagesUpdatePageByIddefaultResponse
+  /landing-pages/{page_id}/actions/publish:
+    post:
+      default:
+        application/json: LandingPagesPublishActionResponse
+        application/problem+json: LandingPagesPublishActiondefaultResponse
+  /landing-pages/{page_id}/actions/unpublish:
+    post:
+      default:
+        application/json: LandingPagesUnpublishActionResponse
+        application/problem+json: LandingPagesUnpublishActiondefaultResponse
+  /landing-pages/{page_id}/content:
+    get:
+      '200':
+        application/json: LandingPagesGetContentResponse
+        application/problem+json: LandingPagesGetContent200Response
+      default:
+        application/json: LandingPagesGetContentdefaultResponse
+        application/problem+json: LandingPagesGetContentdefaultResponse
+  /lists:
+    get:
+      '200':
+        application/json: ListsGetAllInfoResponse
+        application/problem+json: ListsGetAllInfo200Response
+      default:
+        application/json: ListsGetAllInfodefaultResponse
+        application/problem+json: ListsGetAllInfodefaultResponse
+    post:
+      '200':
+        application/json: ListsCreateNewListResponse
+        application/problem+json: ListsCreateNewList200Response
+      default:
+        application/json: ListsCreateNewListdefaultResponse
+        application/problem+json: ListsCreateNewListdefaultResponse
+  /lists/{list_id}:
+    delete:
+      default:
+        application/json: ListsDeleteListResponse
+        application/problem+json: ListsDeleteListdefaultResponse
+    get:
+      '200':
+        application/json: ListsGetListInfoResponse
+        application/problem+json: ListsGetListInfo200Response
+      default:
+        application/json: ListsGetListInfodefaultResponse
+        application/problem+json: ListsGetListInfodefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateSettingsResponse
+        application/problem+json: ListsUpdateSettings200Response
+      default:
+        application/json: ListsUpdateSettingsdefaultResponse
+        application/problem+json: ListsUpdateSettingsdefaultResponse
+    post:
+      '200':
+        application/json: ListsBatchSubscribeOrUnsubscribeResponse
+        application/problem+json: ListsBatchSubscribeOrUnsubscribe200Response
+      default:
+        application/json: ListsBatchSubscribeOrUnsubscribedefaultResponse
+        application/problem+json: ListsBatchSubscribeOrUnsubscribedefaultResponse
+  /lists/{list_id}/abuse-reports:
+    get:
+      '200':
+        application/json: ListsGetAllAbuseReportsResponse
+        application/problem+json: ListsGetAllAbuseReports200Response
+      default:
+        application/json: ListsGetAllAbuseReportsdefaultResponse
+        application/problem+json: ListsGetAllAbuseReportsdefaultResponse
+  /lists/{list_id}/abuse-reports/{report_id}:
+    get:
+      '200':
+        application/json: ListsGetAbuseReportResponse
+        application/problem+json: ListsGetAbuseReport200Response
+      default:
+        application/json: ListsGetAbuseReportdefaultResponse
+        application/problem+json: ListsGetAbuseReportdefaultResponse
+  /lists/{list_id}/activity:
+    get:
+      '200':
+        application/json: ListsGetRecentActivityStatsResponse
+        application/problem+json: ListsGetRecentActivityStats200Response
+      default:
+        application/json: ListsGetRecentActivityStatsdefaultResponse
+        application/problem+json: ListsGetRecentActivityStatsdefaultResponse
+  /lists/{list_id}/clients:
+    get:
+      '200':
+        application/json: ListsListTopEmailClientsResponse
+        application/problem+json: ListsListTopEmailClients200Response
+      default:
+        application/json: ListsListTopEmailClientsdefaultResponse
+        application/problem+json: ListsListTopEmailClientsdefaultResponse
+  /lists/{list_id}/growth-history:
+    get:
+      '200':
+        application/json: ListsGetGrowthHistoryDataResponse
+        application/problem+json: ListsGetGrowthHistoryData200Response
+      default:
+        application/json: ListsGetGrowthHistoryDatadefaultResponse
+        application/problem+json: ListsGetGrowthHistoryDatadefaultResponse
+  /lists/{list_id}/growth-history/{month}:
+    get:
+      '200':
+        application/json: ListsGetGrowthHistoryByMonthResponse
+        application/problem+json: ListsGetGrowthHistoryByMonth200Response
+      default:
+        application/json: ListsGetGrowthHistoryByMonthdefaultResponse
+        application/problem+json: ListsGetGrowthHistoryByMonthdefaultResponse
+  /lists/{list_id}/interest-categories:
+    get:
+      '200':
+        application/json: ListsListInterestCategoriesResponse
+        application/problem+json: ListsListInterestCategories200Response
+      default:
+        application/json: ListsListInterestCategoriesdefaultResponse
+        application/problem+json: ListsListInterestCategoriesdefaultResponse
+    post:
+      '200':
+        application/json: ListsAddInterestCategoryResponse
+        application/problem+json: ListsAddInterestCategory200Response
+      default:
+        application/json: ListsAddInterestCategorydefaultResponse
+        application/problem+json: ListsAddInterestCategorydefaultResponse
+  /lists/{list_id}/interest-categories/{interest_category_id}:
+    delete:
+      default:
+        application/json: ListsDeleteInterestCategoryResponse
+        application/problem+json: ListsDeleteInterestCategorydefaultResponse
+    get:
+      '200':
+        application/json: ListsGetInterestCategoryInfoResponse
+        application/problem+json: ListsGetInterestCategoryInfo200Response
+      default:
+        application/json: ListsGetInterestCategoryInfodefaultResponse
+        application/problem+json: ListsGetInterestCategoryInfodefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateInterestCategoryResponse
+        application/problem+json: ListsUpdateInterestCategory200Response
+      default:
+        application/json: ListsUpdateInterestCategorydefaultResponse
+        application/problem+json: ListsUpdateInterestCategorydefaultResponse
+  /lists/{list_id}/interest-categories/{interest_category_id}/interests:
+    get:
+      '200':
+        application/json: ListsListCategoryInterestsResponse
+        application/problem+json: ListsListCategoryInterests200Response
+      default:
+        application/json: ListsListCategoryInterestsdefaultResponse
+        application/problem+json: ListsListCategoryInterestsdefaultResponse
+    post:
+      '200':
+        application/json: ListsAddInterestInCategoryResponse
+        application/problem+json: ListsAddInterestInCategory200Response
+      default:
+        application/json: ListsAddInterestInCategorydefaultResponse
+        application/problem+json: ListsAddInterestInCategorydefaultResponse
+  /lists/{list_id}/interest-categories/{interest_category_id}/interests/{interest_id}:
+    delete:
+      default:
+        application/json: ListsDeleteInterestInCategoryResponse
+        application/problem+json: ListsDeleteInterestInCategorydefaultResponse
+    get:
+      '200':
+        application/json: ListsGetInterestInCategoryResponse
+        application/problem+json: ListsGetInterestInCategory200Response
+      default:
+        application/json: ListsGetInterestInCategorydefaultResponse
+        application/problem+json: ListsGetInterestInCategorydefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateInterestCategoryInterestResponse
+        application/problem+json: ListsUpdateInterestCategoryInterest200Response
+      default:
+        application/json: ListsUpdateInterestCategoryInterestdefaultResponse
+        application/problem+json: ListsUpdateInterestCategoryInterestdefaultResponse
+  /lists/{list_id}/locations:
+    get:
+      '200':
+        application/json: ListsGetLocationsResponse
+        application/problem+json: ListsGetLocations200Response
+      default:
+        application/json: ListsGetLocationsdefaultResponse
+        application/problem+json: ListsGetLocationsdefaultResponse
+  /lists/{list_id}/members:
+    get:
+      '200':
+        application/json: ListsGetMembersInfoResponse
+        application/problem+json: ListsGetMembersInfo200Response
+      default:
+        application/json: ListsGetMembersInfodefaultResponse
+        application/problem+json: ListsGetMembersInfodefaultResponse
+    post:
+      '200':
+        application/json: ListsAddMemberToListResponse
+        application/problem+json: ListsAddMemberToList200Response
+      default:
+        application/json: ListsAddMemberToListdefaultResponse
+        application/problem+json: ListsAddMemberToListdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}:
+    delete:
+      default:
+        application/json: ListsArchiveMemberResponse
+        application/problem+json: ListsArchiveMemberdefaultResponse
+    get:
+      '200':
+        application/json: ListsGetMemberInfoResponse
+        application/problem+json: ListsGetMemberInfo200Response
+      default:
+        application/json: ListsGetMemberInfodefaultResponse
+        application/problem+json: ListsGetMemberInfodefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateMemberResponse
+        application/problem+json: ListsUpdateMember200Response
+      default:
+        application/json: ListsUpdateMemberdefaultResponse
+        application/problem+json: ListsUpdateMemberdefaultResponse
+    put:
+      '200':
+        application/json: ListsAddOrUpdateMemberResponse
+        application/problem+json: ListsAddOrUpdateMember200Response
+      default:
+        application/json: ListsAddOrUpdateMemberdefaultResponse
+        application/problem+json: ListsAddOrUpdateMemberdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/actions/delete-permanent:
+    post:
+      default:
+        application/json: ListsRemoveMemberPermanentResponse
+        application/problem+json: ListsRemoveMemberPermanentdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/activity:
+    get:
+      '200':
+        application/json: ListsViewRecentActivityEventsResponse
+        application/problem+json: ListsViewRecentActivityEvents200Response
+      default:
+        application/json: ListsViewRecentActivityEventsdefaultResponse
+        application/problem+json: ListsViewRecentActivityEventsdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/activity-feed:
+    get:
+      '200':
+        application/json: ListsViewRecentActivityResponse
+        application/problem+json: ListsViewRecentActivity200Response
+      default:
+        application/json: ListsViewRecentActivitydefaultResponse
+        application/problem+json: ListsViewRecentActivitydefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/events:
+    get:
+      '200':
+        application/json: ListsGetMemberEventsResponse
+        application/problem+json: ListsGetMemberEvents200Response
+      default:
+        application/json: ListsGetMemberEventsdefaultResponse
+        application/problem+json: ListsGetMemberEventsdefaultResponse
+    post:
+      default:
+        application/json: ListsAddMemberEventResponse
+        application/problem+json: ListsAddMemberEventdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/goals:
+    get:
+      '200':
+        application/json: ListsGetMemberGoalsResponse
+        application/problem+json: ListsGetMemberGoals200Response
+      default:
+        application/json: ListsGetMemberGoalsdefaultResponse
+        application/problem+json: ListsGetMemberGoalsdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/notes:
+    get:
+      '200':
+        application/json: ListsGetMemberNotesResponse
+        application/problem+json: ListsGetMemberNotes200Response
+      default:
+        application/json: ListsGetMemberNotesdefaultResponse
+        application/problem+json: ListsGetMemberNotesdefaultResponse
+    post:
+      '200':
+        application/json: ListsAddMemberNoteResponse
+        application/problem+json: ListsAddMemberNote200Response
+      default:
+        application/json: ListsAddMemberNotedefaultResponse
+        application/problem+json: ListsAddMemberNotedefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/notes/{note_id}:
+    delete:
+      default:
+        application/json: ListsDeleteNoteResponse
+        application/problem+json: ListsDeleteNotedefaultResponse
+    get:
+      '200':
+        application/json: ListsGetMemberNoteResponse
+        application/problem+json: ListsGetMemberNote200Response
+      default:
+        application/json: ListsGetMemberNotedefaultResponse
+        application/problem+json: ListsGetMemberNotedefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateNoteSpecificListMemberResponse
+        application/problem+json: ListsUpdateNoteSpecificListMember200Response
+      default:
+        application/json: ListsUpdateNoteSpecificListMemberdefaultResponse
+        application/problem+json: ListsUpdateNoteSpecificListMemberdefaultResponse
+  /lists/{list_id}/members/{subscriber_hash}/tags:
+    get:
+      '200':
+        application/json: ListsGetMemberTagsResponse
+        application/problem+json: ListsGetMemberTags200Response
+      default:
+        application/json: ListsGetMemberTagsdefaultResponse
+        application/problem+json: ListsGetMemberTagsdefaultResponse
+    post:
+      default:
+        application/json: ListsAddMemberTagsResponse
+        application/problem+json: ListsAddMemberTagsdefaultResponse
+  /lists/{list_id}/merge-fields:
+    get:
+      '200':
+        application/json: ListsListMergeFieldsResponse
+        application/problem+json: ListsListMergeFields200Response
+      default:
+        application/json: ListsListMergeFieldsdefaultResponse
+        application/problem+json: ListsListMergeFieldsdefaultResponse
+    post:
+      '200':
+        application/json: ListsAddMergeFieldResponse
+        application/problem+json: ListsAddMergeField200Response
+      default:
+        application/json: ListsAddMergeFielddefaultResponse
+        application/problem+json: ListsAddMergeFielddefaultResponse
+  /lists/{list_id}/merge-fields/{merge_id}:
+    delete:
+      default:
+        application/json: ListsDeleteMergeFieldResponse
+        application/problem+json: ListsDeleteMergeFielddefaultResponse
+    get:
+      '200':
+        application/json: ListsGetMergeFieldInfoResponse
+        application/problem+json: ListsGetMergeFieldInfo200Response
+      default:
+        application/json: ListsGetMergeFieldInfodefaultResponse
+        application/problem+json: ListsGetMergeFieldInfodefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateMergeFieldResponse
+        application/problem+json: ListsUpdateMergeField200Response
+      default:
+        application/json: ListsUpdateMergeFielddefaultResponse
+        application/problem+json: ListsUpdateMergeFielddefaultResponse
+  /lists/{list_id}/segments:
+    get:
+      '200':
+        application/json: ListsGetSegmentsInfoResponse
+        application/problem+json: ListsGetSegmentsInfo200Response
+      default:
+        application/json: ListsGetSegmentsInfodefaultResponse
+        application/problem+json: ListsGetSegmentsInfodefaultResponse
+    post:
+      '200':
+        application/json: ListsAddNewSegmentResponse
+        application/problem+json: ListsAddNewSegment200Response
+      default:
+        application/json: ListsAddNewSegmentdefaultResponse
+        application/problem+json: ListsAddNewSegmentdefaultResponse
+  /lists/{list_id}/segments/{segment_id}:
+    delete:
+      default:
+        application/json: ListsDeleteSegmentResponse
+        application/problem+json: ListsDeleteSegmentdefaultResponse
+    get:
+      '200':
+        application/json: ListsGetSegmentInfoResponse
+        application/problem+json: ListsGetSegmentInfo200Response
+      default:
+        application/json: ListsGetSegmentInfodefaultResponse
+        application/problem+json: ListsGetSegmentInfodefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateSegmentByIdResponse
+        application/problem+json: ListsUpdateSegmentById200Response
+      default:
+        application/json: ListsUpdateSegmentByIddefaultResponse
+        application/problem+json: ListsUpdateSegmentByIddefaultResponse
+    post:
+      '200':
+        application/json: ListsBatchAddRemoveMembersResponse
+        application/problem+json: ListsBatchAddRemoveMembers200Response
+      default:
+        application/json: ListsBatchAddRemoveMembersdefaultResponse
+        application/problem+json: ListsBatchAddRemoveMembersdefaultResponse
+  /lists/{list_id}/segments/{segment_id}/members:
+    get:
+      '200':
+        application/json: ListsGetSegmentMembersResponse
+        application/problem+json: ListsGetSegmentMembers200Response
+      default:
+        application/json: ListsGetSegmentMembersdefaultResponse
+        application/problem+json: ListsGetSegmentMembersdefaultResponse
+    post:
+      '200':
+        application/json: ListsAddMemberToSegmentResponse
+        application/problem+json: ListsAddMemberToSegment200Response
+      default:
+        application/json: ListsAddMemberToSegmentdefaultResponse
+        application/problem+json: ListsAddMemberToSegmentdefaultResponse
+  /lists/{list_id}/segments/{segment_id}/members/{subscriber_hash}:
+    delete:
+      default:
+        application/json: ListsRemoveMemberFromSegmentResponse
+        application/problem+json: ListsRemoveMemberFromSegmentdefaultResponse
+  /lists/{list_id}/signup-forms:
+    get:
+      '200':
+        application/json: ListsGetSignupFormsResponse
+        application/problem+json: ListsGetSignupForms200Response
+      default:
+        application/json: ListsGetSignupFormsdefaultResponse
+        application/problem+json: ListsGetSignupFormsdefaultResponse
+    post:
+      '200':
+        application/json: ListsCustomizeSignupFormResponse
+        application/problem+json: ListsCustomizeSignupForm200Response
+      default:
+        application/json: ListsCustomizeSignupFormdefaultResponse
+        application/problem+json: ListsCustomizeSignupFormdefaultResponse
+  /lists/{list_id}/surveys:
+    get:
+      default:
+        application/json: ListsGetSurveysInfoResponse
+        application/problem+json: ListsGetSurveysInfodefaultResponse
+  /lists/{list_id}/surveys/{survey_id}:
+    get:
+      default:
+        application/json: ListsGetSurveyDetailsResponse
+        application/problem+json: ListsGetSurveyDetailsdefaultResponse
+  /lists/{list_id}/surveys/{survey_id}/actions/create-email:
+    post:
+      '200':
+        application/json: SurveysGenerateCampaignResponse
+        application/problem+json: SurveysGenerateCampaign200Response
+      default:
+        application/json: SurveysGenerateCampaigndefaultResponse
+        application/problem+json: SurveysGenerateCampaigndefaultResponse
+  /lists/{list_id}/surveys/{survey_id}/actions/publish:
+    post:
+      default:
+        application/json: SurveysPublishSurveyActionResponse
+        application/problem+json: SurveysPublishSurveyActiondefaultResponse
+  /lists/{list_id}/surveys/{survey_id}/actions/unpublish:
+    post:
+      default:
+        application/json: SurveysUnpublishSurveyActionResponse
+        application/problem+json: SurveysUnpublishSurveyActiondefaultResponse
+  /lists/{list_id}/tag-search:
+    get:
+      '200':
+        application/json: ListsSearchTagsByNameResponse
+        application/problem+json: ListsSearchTagsByName200Response
+      default:
+        application/json: ListsSearchTagsByNamedefaultResponse
+        application/problem+json: ListsSearchTagsByNamedefaultResponse
+  /lists/{list_id}/webhooks:
+    get:
+      '200':
+        application/json: ListsGetWebhooksInfoResponse
+        application/problem+json: ListsGetWebhooksInfo200Response
+      default:
+        application/json: ListsGetWebhooksInfodefaultResponse
+        application/problem+json: ListsGetWebhooksInfodefaultResponse
+    post:
+      '200':
+        application/json: ListsCreateWebhookResponse
+        application/problem+json: ListsCreateWebhook200Response
+      default:
+        application/json: ListsCreateWebhookdefaultResponse
+        application/problem+json: ListsCreateWebhookdefaultResponse
+  /lists/{list_id}/webhooks/{webhook_id}:
+    delete:
+      default:
+        application/json: ListsDeleteWebhookResponse
+        application/problem+json: ListsDeleteWebhookdefaultResponse
+    get:
+      '200':
+        application/json: ListsGetWebhookInfoResponse
+        application/problem+json: ListsGetWebhookInfo200Response
+      default:
+        application/json: ListsGetWebhookInfodefaultResponse
+        application/problem+json: ListsGetWebhookInfodefaultResponse
+    patch:
+      '200':
+        application/json: ListsUpdateWebhookSettingsResponse
+        application/problem+json: ListsUpdateWebhookSettings200Response
+      default:
+        application/json: ListsUpdateWebhookSettingsdefaultResponse
+        application/problem+json: ListsUpdateWebhookSettingsdefaultResponse
+  /ping:
+    get:
+      '200':
+        application/json: PingHealthCheckResponse
+        application/problem+json: PingHealthCheck200Response
+      default:
+        application/json: PingHealthCheckdefaultResponse
+        application/problem+json: PingHealthCheckdefaultResponse
+  /reporting/facebook-ads:
+    get:
+      '200':
+        application/json: ReportingListFacebookAdsReportsResponse
+        application/problem+json: ReportingListFacebookAdsReports200Response
+      default:
+        application/json: ReportingListFacebookAdsReportsdefaultResponse
+        application/problem+json: ReportingListFacebookAdsReportsdefaultResponse
+  /reporting/facebook-ads/{outreach_id}:
+    get:
+      '200':
+        application/json: ReportingFacebookAdReportResponse
+        application/problem+json: ReportingFacebookAdReport200Response
+      default:
+        application/json: ReportingFacebookAdReportdefaultResponse
+        application/problem+json: ReportingFacebookAdReportdefaultResponse
+  /reporting/facebook-ads/{outreach_id}/ecommerce-product-activity:
+    get:
+      '200':
+        application/json: ReportingListFacebookEcommerceReportResponse
+        application/problem+json: ReportingListFacebookEcommerceReport200Response
+      default:
+        application/json: ReportingListFacebookEcommerceReportdefaultResponse
+        application/problem+json: ReportingListFacebookEcommerceReportdefaultResponse
+  /reporting/landing-pages:
+    get:
+      '200':
+        application/json: ReportingListLandingPagesReportsResponse
+        application/problem+json: ReportingListLandingPagesReports200Response
+      default:
+        application/json: ReportingListLandingPagesReportsdefaultResponse
+        application/problem+json: ReportingListLandingPagesReportsdefaultResponse
+  /reporting/landing-pages/{outreach_id}:
+    get:
+      '200':
+        application/json: ReportingGetLandingPageReportResponse
+        application/problem+json: ReportingGetLandingPageReport200Response
+      default:
+        application/json: ReportingGetLandingPageReportdefaultResponse
+        application/problem+json: ReportingGetLandingPageReportdefaultResponse
+  /reporting/surveys:
+    get:
+      '200':
+        application/json: ReportingListSurveyReportsResponse
+        application/problem+json: ReportingListSurveyReports200Response
+      default:
+        application/json: ReportingListSurveyReportsdefaultResponse
+        application/problem+json: ReportingListSurveyReportsdefaultResponse
+  /reporting/surveys/{survey_id}:
+    get:
+      '200':
+        application/json: ReportingGetSurveyReportResponse
+        application/problem+json: ReportingGetSurveyReport200Response
+      default:
+        application/json: ReportingGetSurveyReportdefaultResponse
+        application/problem+json: ReportingGetSurveyReportdefaultResponse
+  /reporting/surveys/{survey_id}/questions:
+    get:
+      '200':
+        application/json: ReportingListSurveyQuestionsReportsResponse
+        application/problem+json: ReportingListSurveyQuestionsReports200Response
+      default:
+        application/json: ReportingListSurveyQuestionsReportsdefaultResponse
+        application/problem+json: ReportingListSurveyQuestionsReportsdefaultResponse
+  /reporting/surveys/{survey_id}/questions/{question_id}:
+    get:
+      '200':
+        application/json: ReportingSurveyQuestionReportResponse
+        application/problem+json: ReportingSurveyQuestionReport200Response
+      default:
+        application/json: ReportingSurveyQuestionReportdefaultResponse
+        application/problem+json: ReportingSurveyQuestionReportdefaultResponse
+  /reporting/surveys/{survey_id}/questions/{question_id}/answers:
+    get:
+      '200':
+        application/json: ReportingSurveyQuestionAnswersListResponse
+        application/problem+json: ReportingSurveyQuestionAnswersList200Response
+      default:
+        application/json: ReportingSurveyQuestionAnswersListdefaultResponse
+        application/problem+json: ReportingSurveyQuestionAnswersListdefaultResponse
+  /reporting/surveys/{survey_id}/responses:
+    get:
+      '200':
+        application/json: ReportingSurveyResponsesListResponse
+        application/problem+json: ReportingSurveyResponsesList200Response
+      default:
+        application/json: ReportingSurveyResponsesListdefaultResponse
+        application/problem+json: ReportingSurveyResponsesListdefaultResponse
+  /reporting/surveys/{survey_id}/responses/{response_id}:
+    get:
+      '200':
+        application/json: ReportingSingleSurveyResponseResponse
+        application/problem+json: ReportingSingleSurveyResponse200Response
+      default:
+        application/json: ReportingSingleSurveyResponsedefaultResponse
+        application/problem+json: ReportingSingleSurveyResponsedefaultResponse
+  /reports:
+    get:
+      '200':
+        application/json: ReportsListCampaignReportsResponse
+        application/problem+json: ReportsListCampaignReports200Response
+      default:
+        application/json: ReportsListCampaignReportsdefaultResponse
+        application/problem+json: ReportsListCampaignReportsdefaultResponse
+  /reports/{campaign_id}:
+    get:
+      '200':
+        application/json: ReportsSpecificCampaignReportResponse
+        application/problem+json: ReportsSpecificCampaignReport200Response
+      default:
+        application/json: ReportsSpecificCampaignReportdefaultResponse
+        application/problem+json: ReportsSpecificCampaignReportdefaultResponse
+  /reports/{campaign_id}/abuse-reports:
+    get:
+      '200':
+        application/json: ReportsListAbuseReportsResponse
+        application/problem+json: ReportsListAbuseReports200Response
+      default:
+        application/json: ReportsListAbuseReportsdefaultResponse
+        application/problem+json: ReportsListAbuseReportsdefaultResponse
+  /reports/{campaign_id}/abuse-reports/{report_id}:
+    get:
+      '200':
+        application/json: ReportsGetAbuseReportResponse
+        application/problem+json: ReportsGetAbuseReport200Response
+      default:
+        application/json: ReportsGetAbuseReportdefaultResponse
+        application/problem+json: ReportsGetAbuseReportdefaultResponse
+  /reports/{campaign_id}/advice:
+    get:
+      '200':
+        application/json: ReportsListCampaignFeedbackResponse
+        application/problem+json: ReportsListCampaignFeedback200Response
+      default:
+        application/json: ReportsListCampaignFeedbackdefaultResponse
+        application/problem+json: ReportsListCampaignFeedbackdefaultResponse
+  /reports/{campaign_id}/click-details:
+    get:
+      '200':
+        application/json: ReportsGetCampaignClickDetailsResponse
+        application/problem+json: ReportsGetCampaignClickDetails200Response
+      default:
+        application/json: ReportsGetCampaignClickDetailsdefaultResponse
+        application/problem+json: ReportsGetCampaignClickDetailsdefaultResponse
+  /reports/{campaign_id}/click-details/{link_id}:
+    get:
+      '200':
+        application/json: ReportsSpecificLinkDetailsResponse
+        application/problem+json: ReportsSpecificLinkDetails200Response
+      default:
+        application/json: ReportsSpecificLinkDetailsdefaultResponse
+        application/problem+json: ReportsSpecificLinkDetailsdefaultResponse
+  /reports/{campaign_id}/click-details/{link_id}/members:
+    get:
+      '200':
+        application/json: ReportsListClickedLinkSubscribersResponse
+        application/problem+json: ReportsListClickedLinkSubscribers200Response
+      default:
+        application/json: ReportsListClickedLinkSubscribersdefaultResponse
+        application/problem+json: ReportsListClickedLinkSubscribersdefaultResponse
+  /reports/{campaign_id}/click-details/{link_id}/members/{subscriber_hash}:
+    get:
+      '200':
+        application/json: ReportsSpecificLinkSubscriberResponse
+        application/problem+json: ReportsSpecificLinkSubscriber200Response
+      default:
+        application/json: ReportsSpecificLinkSubscriberdefaultResponse
+        application/problem+json: ReportsSpecificLinkSubscriberdefaultResponse
+  /reports/{campaign_id}/domain-performance:
+    get:
+      '200':
+        application/json: ReportsListDomainPerformanceStatsResponse
+        application/problem+json: ReportsListDomainPerformanceStats200Response
+      default:
+        application/json: ReportsListDomainPerformanceStatsdefaultResponse
+        application/problem+json: ReportsListDomainPerformanceStatsdefaultResponse
+  /reports/{campaign_id}/ecommerce-product-activity:
+    get:
+      '200':
+        application/json: ReportsGetCampaignProductActivityResponse
+        application/problem+json: ReportsGetCampaignProductActivity200Response
+      default:
+        application/json: ReportsGetCampaignProductActivitydefaultResponse
+        application/problem+json: ReportsGetCampaignProductActivitydefaultResponse
+  /reports/{campaign_id}/eepurl:
+    get:
+      '200':
+        application/json: ReportsListEepurlActivityResponse
+        application/problem+json: ReportsListEepurlActivity200Response
+      default:
+        application/json: ReportsListEepurlActivitydefaultResponse
+        application/problem+json: ReportsListEepurlActivitydefaultResponse
+  /reports/{campaign_id}/email-activity:
+    get:
+      '200':
+        application/json: ReportsListEmailActivityResponse
+        application/problem+json: ReportsListEmailActivity200Response
+      default:
+        application/json: ReportsListEmailActivitydefaultResponse
+        application/problem+json: ReportsListEmailActivitydefaultResponse
+  /reports/{campaign_id}/email-activity/{subscriber_hash}:
+    get:
+      '200':
+        application/json: ReportsGetSubscriberActivityResponse
+        application/problem+json: ReportsGetSubscriberActivity200Response
+      default:
+        application/json: ReportsGetSubscriberActivitydefaultResponse
+        application/problem+json: ReportsGetSubscriberActivitydefaultResponse
+  /reports/{campaign_id}/locations:
+    get:
+      '200':
+        application/json: ReportsListTopOpenLocationsResponse
+        application/problem+json: ReportsListTopOpenLocations200Response
+      default:
+        application/json: ReportsListTopOpenLocationsdefaultResponse
+        application/problem+json: ReportsListTopOpenLocationsdefaultResponse
+  /reports/{campaign_id}/open-details:
+    get:
+      '200':
+        application/json: ReportsListCampaignOpenDetailsResponse
+        application/problem+json: ReportsListCampaignOpenDetails200Response
+      default:
+        application/json: ReportsListCampaignOpenDetailsdefaultResponse
+        application/problem+json: ReportsListCampaignOpenDetailsdefaultResponse
+  /reports/{campaign_id}/open-details/{subscriber_hash}:
+    get:
+      '200':
+        application/json: ReportsOpenSubscriberDetailsResponse
+        application/problem+json: ReportsOpenSubscriberDetails200Response
+      default:
+        application/json: ReportsOpenSubscriberDetailsdefaultResponse
+        application/problem+json: ReportsOpenSubscriberDetailsdefaultResponse
+  /reports/{campaign_id}/sent-to:
+    get:
+      '200':
+        application/json: ReportsListCampaignRecipientsResponse
+        application/problem+json: ReportsListCampaignRecipients200Response
+      default:
+        application/json: ReportsListCampaignRecipientsdefaultResponse
+        application/problem+json: ReportsListCampaignRecipientsdefaultResponse
+  /reports/{campaign_id}/sent-to/{subscriber_hash}:
+    get:
+      '200':
+        application/json: ReportsCampaignRecipientInfoResponse
+        application/problem+json: ReportsCampaignRecipientInfo200Response
+      default:
+        application/json: ReportsCampaignRecipientInfodefaultResponse
+        application/problem+json: ReportsCampaignRecipientInfodefaultResponse
+  /reports/{campaign_id}/sub-reports:
+    get:
+      '200':
+        application/json: ReportsListChildCampaignReportsResponse
+        application/problem+json: ReportsListChildCampaignReports200Response
+      default:
+        application/json: ReportsListChildCampaignReportsdefaultResponse
+        application/problem+json: ReportsListChildCampaignReportsdefaultResponse
+  /reports/{campaign_id}/unsubscribed:
+    get:
+      '200':
+        application/json: ReportsListUnsubscribedMembersResponse
+        application/problem+json: ReportsListUnsubscribedMembers200Response
+      default:
+        application/json: ReportsListUnsubscribedMembersdefaultResponse
+        application/problem+json: ReportsListUnsubscribedMembersdefaultResponse
+  /reports/{campaign_id}/unsubscribed/{subscriber_hash}:
+    get:
+      '200':
+        application/json: ReportsGetUnsubscribedMemberInfoResponse
+        application/problem+json: ReportsGetUnsubscribedMemberInfo200Response
+      default:
+        application/json: ReportsGetUnsubscribedMemberInfodefaultResponse
+        application/problem+json: ReportsGetUnsubscribedMemberInfodefaultResponse
+  /search-campaigns:
+    get:
+      '200':
+        application/json: SearchCampaignsByQueryTermsResponse
+        application/problem+json: SearchCampaignsByQueryTerms200Response
+      default:
+        application/json: SearchCampaignsByQueryTermsdefaultResponse
+        application/problem+json: SearchCampaignsByQueryTermsdefaultResponse
+  /search-members:
+    get:
+      '200':
+        application/json: SearchMembersListMembersResponse
+        application/problem+json: SearchMembersListMembers200Response
+      default:
+        application/json: SearchMembersListMembersdefaultResponse
+        application/problem+json: SearchMembersListMembersdefaultResponse
+  /template-folders:
+    get:
+      '200':
+        application/json: TemplateFoldersListFoldersResponse
+        application/problem+json: TemplateFoldersListFolders200Response
+      default:
+        application/json: TemplateFoldersListFoldersdefaultResponse
+        application/problem+json: TemplateFoldersListFoldersdefaultResponse
+    post:
+      '200':
+        application/json: TemplateFoldersAddNewFolderResponse
+        application/problem+json: TemplateFoldersAddNewFolder200Response
+      default:
+        application/json: TemplateFoldersAddNewFolderdefaultResponse
+        application/problem+json: TemplateFoldersAddNewFolderdefaultResponse
+  /template-folders/{folder_id}:
+    delete:
+      default:
+        application/json: TemplateFoldersDeleteSpecificFolderResponse
+        application/problem+json: TemplateFoldersDeleteSpecificFolderdefaultResponse
+    get:
+      '200':
+        application/json: TemplateFoldersGetInfoResponse
+        application/problem+json: TemplateFoldersGetInfo200Response
+      default:
+        application/json: TemplateFoldersGetInfodefaultResponse
+        application/problem+json: TemplateFoldersGetInfodefaultResponse
+    patch:
+      '200':
+        application/json: TemplateFoldersUpdateSpecificFolderResponse
+        application/problem+json: TemplateFoldersUpdateSpecificFolder200Response
+      default:
+        application/json: TemplateFoldersUpdateSpecificFolderdefaultResponse
+        application/problem+json: TemplateFoldersUpdateSpecificFolderdefaultResponse
+  /templates:
+    get:
+      '200':
+        application/json: TemplatesListAvailableTemplatesResponse
+        application/problem+json: TemplatesListAvailableTemplates200Response
+      default:
+        application/json: TemplatesListAvailableTemplatesdefaultResponse
+        application/problem+json: TemplatesListAvailableTemplatesdefaultResponse
+    post:
+      '200':
+        application/json: TemplatesCreateNewTemplateResponse
+        application/problem+json: TemplatesCreateNewTemplate200Response
+      default:
+        application/json: TemplatesCreateNewTemplatedefaultResponse
+        application/problem+json: TemplatesCreateNewTemplatedefaultResponse
+  /templates/{template_id}:
+    delete:
+      default:
+        application/json: TemplatesDeleteSpecificTemplateResponse
+        application/problem+json: TemplatesDeleteSpecificTemplatedefaultResponse
+    get:
+      '200':
+        application/json: TemplatesGetInfoResponse
+        application/problem+json: TemplatesGetInfo200Response
+      default:
+        application/json: TemplatesGetInfodefaultResponse
+        application/problem+json: TemplatesGetInfodefaultResponse
+    patch:
+      '200':
+        application/json: TemplatesUpdateTemplateByIdResponse
+        application/problem+json: TemplatesUpdateTemplateById200Response
+      default:
+        application/json: TemplatesUpdateTemplateByIddefaultResponse
+        application/problem+json: TemplatesUpdateTemplateByIddefaultResponse
+  /templates/{template_id}/default-content:
+    get:
+      '200':
+        application/json: TemplatesViewDefaultContentResponse
+        application/problem+json: TemplatesViewDefaultContent200Response
+      default:
+        application/json: TemplatesViewDefaultContentdefaultResponse
+        application/problem+json: TemplatesViewDefaultContentdefaultResponse
+  /verified-domains:
+    get:
+      '200':
+        application/json: VerifiedDomainsListSendingDomainsResponse
+        application/problem+json: VerifiedDomainsListSendingDomains200Response
+      default:
+        application/json: VerifiedDomainsListSendingDomainsdefaultResponse
+        application/problem+json: VerifiedDomainsListSendingDomainsdefaultResponse
+    post:
+      '200':
+        application/json: VerifiedDomainsAddDomainToAccountResponse
+        application/problem+json: VerifiedDomainsAddDomainToAccount200Response
+      default:
+        application/json: VerifiedDomainsAddDomainToAccountdefaultResponse
+        application/problem+json: VerifiedDomainsAddDomainToAccountdefaultResponse
+  /verified-domains/{domain_name}:
+    delete:
+      default:
+        application/json: VerifiedDomainsDeleteDomainResponse
+        application/problem+json: VerifiedDomainsDeleteDomaindefaultResponse
+    get:
+      '200':
+        application/json: VerifiedDomainsGetInfoResponse
+        application/problem+json: VerifiedDomainsGetInfo200Response
+      default:
+        application/json: VerifiedDomainsGetInfodefaultResponse
+        application/problem+json: VerifiedDomainsGetInfodefaultResponse
+  /verified-domains/{domain_name}/actions/verify:
+    post:
+      '200':
+        application/json: VerifiedDomainsVerifyDomainForSendingResponse
+        application/problem+json: VerifiedDomainsVerifyDomainForSending200Response
+      default:
+        application/json: VerifiedDomainsVerifyDomainForSendingdefaultResponse
+        application/problem+json: VerifiedDomainsVerifyDomainForSendingdefaultResponse
+securityParameters:
+  action:
+    query: false
+  activity_filters:
+    query: false
+  answered_question:
+    query: false
+  before_campaign_last_sent:
+    query: false
+  before_create_time:
+    query: false
+  before_created_at:
+    query: false
+  before_date_created:
+    query: false
+  before_last_changed:
+    query: false
+  before_send_time:
+    query: false
+  before_start_time:
+    query: false
+  before_timestamp:
+    query: false
+  before_timestamp_opt:
+    query: false
+  before_updated_at:
+    query: false
+  campaign_id:
+    query: false
+  category:
+    query: false
+  chose_answer:
+    query: false
+  content_type:
+    query: false
+  count:
+    query: false
+  created_by:
+    query: false
+  customer_id:
+    query: false
+  email:
+    query: false
+  email_address:
+    query: false
+  email_type:
+    query: false
+  exclude_fields:
+    query: false
+  fields:
+    query: false
+  folder_id:
+    query: false
+  has_ecommerce_store:
+    query: false
+  has_outreach:
+    query: false
+  has_unread_messages:
+    query: false
+  include_cleaned:
+    query: false
+  include_resend_shortcut_eligibility:
+    query: false
+  include_total_contacts:
+    query: false
+  include_transactional:
+    query: false
+  include_unsubscribed:
+    query: false
+  interest_category_id:
+    query: false
+  interest_ids:
+    query: false
+  interest_match:
+    query: false
+  is_read:
+    query: false
+  list_id:
+    query: false
+  member_id:
+    query: false
+  name:
+    query: false
+  offset:
+    query: false
+  outreach_id:
+    query: false
+  query:
+    query: false
+  required:
+    query: false
+  respondent_familiarity_is:
+    query: false
+  since:
+    query: false
+  since_campaign_last_sent:
+    query: false
+  since_create_time:
+    query: false
+  since_created_at:
+    query: false
+  since_date_created:
+    query: false
+  since_last_campaign:
+    query: false
+  since_last_changed:
+    query: false
+  since_send_time:
+    query: false
+  since_start_time:
+    query: false
+  since_timestamp:
+    query: false
+  since_timestamp_opt:
+    query: false
+  since_updated_at:
+    query: false
+  skip_duplicate_check:
+    query: false
+  skip_merge_validation:
+    query: false
+  sort_dir:
+    query: false
+  sort_field:
+    query: false
+  status:
+    query: false
+  type:
+    query: false
+  unique_email_id:
+    query: false
+  unsubscribed_since:
+    query: false
+  use_default_list:
+    query: false
+  vip_only:
+    query: false
+validServerUrls: {}

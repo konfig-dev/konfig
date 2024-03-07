@@ -98,6 +98,18 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "mailchimp.com": {
+    lambda: async () => {
+      const url = "https://api.mailchimp.com/schema/3.0/Swagger.json?expand";
+      const rawSpecString = await fetch(url).then((res) => res.text());
+      // replace every markdown link (e.g. "(URL)"") that starts with "(/" or "(#" with "(https://mailchimp.com/developer/)"
+      const regex = /(\((\/|#).*?\))/g;
+      return rawSpecString.replaceAll(
+        regex,
+        `(https://mailchimp.com/developer/)`
+      );
+    },
+  },
   "finicity.com": {
     type: "GET",
     url: "https://static.developer.mastercard.com/content/open-banking-us/swagger/openbanking-us.yaml",

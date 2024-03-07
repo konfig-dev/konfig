@@ -65,18 +65,6 @@ async function addApiToPublish() {
   PublishJson.saveHomepage({ homepage }, api);
   console.log(`✅ Homepage: ${PublishJson.getHomepage(api)}`);
 
-  // (3)
-  const categories =
-    PublishJson.getCategories(api) ?? (await getCategories(api, company));
-  PublishJson.saveCategories({ categories }, api);
-  console.log(`✅ Categories: ${PublishJson.getCategories(api)}`);
-
-  // (4) & (5)
-  const serviceName =
-    PublishJson.getServiceName(api) ?? (await getServiceName(api));
-  PublishJson.saveServiceName({ serviceName }, api);
-  console.log(`✅ Service Name: ${PublishJson.getServiceName(api)}`);
-
   // (6) & (7)
   const metaDescription =
     PublishJson.getMetaDescription(api) ??
@@ -87,6 +75,19 @@ async function addApiToPublish() {
   } else {
     console.log("✅ Meta Description: (skipped)");
   }
+
+  // (3)
+  const categories =
+    PublishJson.getCategories(api) ??
+    (await getCategories(api, company, metaDescription));
+  PublishJson.saveCategories({ categories }, api);
+  console.log(`✅ Categories: ${PublishJson.getCategories(api)}`);
+
+  // (4) & (5)
+  const serviceName =
+    PublishJson.getServiceName(api) ?? (await getServiceName(api));
+  PublishJson.saveServiceName({ serviceName }, api);
+  console.log(`✅ Service Name: ${PublishJson.getServiceName(api)}`);
 
   // (8)
   const companyServicePath = createDirectoryUnderOpenApiExamples(
@@ -351,7 +352,8 @@ async function getServiceName(api: string): Promise<string | false> {
 
 async function getCategories(
   api: string,
-  companyName: string
+  companyName: string,
+  metaDescription: string | null
 ): Promise<string[]> {
   const specData = getSpecData(api);
   if (specData.categories) {
@@ -390,23 +392,31 @@ async function getCategories(
   const oai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   const client = Instructor({ client: oai, mode: "FUNCTIONS" });
 
+  const prompt = `
+
+${
+  metaDescription != null
+    ? `Here is a description of the company: "${metaDescription}".`
+    : ""
+}
+
+Here are existing categories: ${allCategories.join(", ")}.
+
+  What are the categories for the company "${companyName}"? Try to match "${companyName}" to existing categories or if there are new categories then please list them.`;
+
   const { matchingCategories, newCategories } =
     await client.chat.completions.create({
       messages: [
         {
           role: "user",
-          content: `What are the categories for the company "${companyName}"?
-
-        Here are existing categories: ${allCategories.join(
-          ", "
-        )}. Try to match "${companyName}" to existing categories or if there are new categories then please list them.`,
+          content: prompt,
         },
       ],
       model: "gpt-3.5-turbo",
       response_model: { schema: categoriesSchema, name: "Categories" },
     });
 
-  if (newCategories.length > 0) {
+  if (matchingCategories.length > 0) {
     console.log(
       boxen(matchingCategories.join("\n"), { title: "Matching (✨ AI)" })
     );
