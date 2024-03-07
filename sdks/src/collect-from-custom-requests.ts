@@ -98,6 +98,10 @@ async function executeCustomRequest(key: string, customRequest: CustomRequest) {
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "finicity.com": {
+    type: "GET",
+    url: "https://static.developer.mastercard.com/content/open-banking-us/swagger/openbanking-us.yaml",
+  },
   "meilisearch.com": {
     type: "GET",
     url: "https://bump.sh/meilisearch/doc/meilisearch.yaml",
