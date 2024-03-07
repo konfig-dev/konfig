@@ -353,79 +353,18 @@ const customRequests: Record<string, CustomRequest> = {
   },
   "launchdarkly.com": {
     lambda: async () => {
-      const browser = await puppeteer.launch({ headless: "new" });
-      const page = await browser.newPage();
-
-      // Set the download options
-      const client = await page.target().createCDPSession();
-      const downloadPath = path.join(
-        browserDownloadsFolder,
-        "launchdarkly.com"
+      return downloadOpenApiSpecFromRedocly(
+        "https://apidocs.launchdarkly.com",
+        "swagger.json"
       );
-      fs.rmdirSync(downloadPath, { recursive: true });
-      fs.ensureDirSync(downloadPath);
-      await client.send("Page.setDownloadBehavior", {
-        behavior: "allow",
-        downloadPath,
-      });
-
-      // Navigate to the page
-      console.log("Navigating to https://apidocs.launchdarkly.com/");
-      await page.goto("https://apidocs.launchdarkly.com/", {
-        waitUntil: "networkidle0",
-      });
-      console.log("Finished navigating to https://apidocs.launchdarkly.com/");
-
-      // Click the download button
-      const downloadButtonSelector = 'a[download="swagger.json"]';
-      await page.waitForSelector(downloadButtonSelector);
-      await page.click(downloadButtonSelector);
-
-      // wait until download finishes by checking if the size of files the
-      // download folder have stopped increasing after the file appears
-      console.log("Waiting for download to finish");
-      // wait for the file to appear
-      while (true) {
-        const files = fs.readdirSync(downloadPath);
-        if (files.length > 0) {
-          break;
-        }
-      }
-      // wait for the file to stop increasing in size by checking if the size hasn't increased in size for a duration
-      let previousSize = 0;
-      let tick = 0;
-      while (true) {
-        const files = fs.readdirSync(downloadPath);
-        if (files.length === 0) {
-          throw Error("Expecting files to be present");
-        }
-        const file = files[0];
-        const stats = fs.statSync(path.join(downloadPath, file));
-        if (stats.size === previousSize) {
-          tick++;
-          if (tick > 2) {
-            break;
-          }
-        } else {
-          tick = 0;
-        }
-        previousSize = stats.size;
-        await new Promise((resolve) => setTimeout(resolve, 500));
-      }
-
-      console.log("Download finished");
-
-      await browser.close();
-      let rawSpecString = fs.readFileSync(
-        path.join(downloadPath, "swagger.json"),
-        "utf-8"
+    },
+  },
+  "klarna.com_payments": {
+    lambda: async () => {
+      return downloadOpenApiSpecFromRedocly(
+        "https://docs.klarna.com/api/payments/",
+        "swagger.json"
       );
-      const regex = /(\((\/|#).*?\))/g;
-      rawSpecString = rawSpecString.replaceAll(
-        regex,
-        `(https://apidocs.launchdarkly.com)`
-      );
-      return rawSpecString;
     },
   },
   "zoom.us_meeting": {
@@ -503,6 +442,91 @@ const customRequests: Record<string, CustomRequest> = {
     },
   },
 };
+
+/**
+ * Downloads the OpenAPI spec from the Redocly URL and saves it to the specified filename
+ */
+async function downloadOpenApiSpecFromRedocly(url: string, filename: string) {
+  const browser = await puppeteer.launch({ headless: "new" });
+  const page = await browser.newPage();
+
+  // Set the download options
+  const client = await page.target().createCDPSession();
+
+  // extract root domain from url (e.g. https://apidocs.launchdarkly.com -> launchdarkly.com)
+  const rootDomain = new URL(url).hostname;
+
+  const downloadPath = path.join(browserDownloadsFolder, rootDomain);
+
+  // need to clear directory so we can properly wait for download to finish
+  fs.rmdirSync(downloadPath, { recursive: true });
+
+  fs.ensureDirSync(downloadPath);
+  await client.send("Page.setDownloadBehavior", {
+    behavior: "allow",
+    downloadPath,
+  });
+
+  // Navigate to the page
+  console.log(`Navigating to ${url}`);
+  await page.goto(url, {
+    waitUntil: "networkidle0",
+  });
+  console.log(`Finished navigating to ${url}`);
+
+  // Click the download button
+  const downloadButtonSelector = `a[download="${filename}"]`;
+  await page.waitForSelector(downloadButtonSelector);
+  await page.click(downloadButtonSelector);
+
+  // wait until download finishes by checking if the size of files the
+  // download folder have stopped increasing after the file appears
+  console.log(`Waiting for download to finish for ${url}...`);
+  await waitForDownloadToFinishByFileSize(downloadPath);
+  console.log(`Finished waiting for download to finish for ${url}`);
+
+  await browser.close();
+  let rawSpecString = fs.readFileSync(
+    path.join(downloadPath, filename),
+    "utf-8"
+  );
+  const regex = /(\((\/|#).*?\))/g;
+  rawSpecString = rawSpecString.replaceAll(regex, `(${url})`);
+  return rawSpecString;
+}
+
+async function waitForDownloadToFinishByFileSize(downloadPath: string) {
+  console.log(`Waiting for file to appear under ${downloadPath}...`);
+  // wait for the file to appear
+  while (true) {
+    const files = fs.readdirSync(downloadPath);
+    if (files.length > 0) {
+      break;
+    }
+  }
+  console.log(`File appeared under ${downloadPath}`);
+  // wait for the file to stop increasing in size by checking if the size hasn't increased in size for a duration
+  let previousSize = 0;
+  let tick = 0;
+  while (true) {
+    const files = fs.readdirSync(downloadPath);
+    if (files.length === 0) {
+      throw Error("Expecting files to be present");
+    }
+    const file = files[0];
+    const stats = fs.statSync(path.join(downloadPath, file));
+    if (stats.size === previousSize) {
+      tick++;
+      if (tick > 2) {
+        break;
+      }
+    } else {
+      tick = 0;
+    }
+    previousSize = stats.size;
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+}
 
 export async function collectFromCustomRequests(): Promise<Db> {
   const db: Db = { specifications: {} };
