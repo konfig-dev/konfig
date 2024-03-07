@@ -175,6 +175,22 @@ function generateDescriptionMdx({ apiDescription }: Published): string {
   }
   // replace any strings wrapped in curly braces with brackets (e.g. {foo} -> [foo])
   apiDescription = apiDescription.replace(/{/g, "[").replace(/}/g, "]");
+
+  // replace any usage of html style attributes with JSX style attributes
+  // e.g. `style="width: 75px"` --> `style={{ width: "75px" }}`
+  // find all style attributes using html style
+  const styleRegex = /style="([^"]+)"/g;
+  apiDescription = apiDescription.replace(styleRegex, (match, style) => {
+    // replace the style attribute with JSX style
+    return `style={{ ${style
+      .split(";")
+      .map((style: string) => {
+        const [key, value] = style.split(":");
+        return `${key.trim()}: "${value.trim()}"`;
+      })
+      .join(", ")} }}`;
+  });
+
   return apiDescription;
 }
 
