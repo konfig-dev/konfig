@@ -354,7 +354,6 @@ public class JavaClientCodegen extends AbstractJavaCodegen implements BeanValida
         this.supportingFiles.add(new SupportingFile("ApiClient.mustache", invokerFolder, "ApiClient.java"));
         this.supportingFiles.add(new SupportingFile("ServerConfiguration.mustache", invokerFolder, "ServerConfiguration.java"));
         this.supportingFiles.add(new SupportingFile("ServerVariable.mustache", invokerFolder, "ServerVariable.java"));
-        this.supportingFiles.add(new SupportingFile("maven.yml.mustache", ".github/workflows", "maven.yml"));
         if (this.dynamicOperations) {
             this.supportingFiles.add(new SupportingFile("openapi.mustache", this.projectFolder + "/resources/openapi", "openapi.yaml"));
             this.supportingFiles.add(new SupportingFile("apiOperation.mustache", invokerFolder, "ApiOperation.java"));
