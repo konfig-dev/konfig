@@ -1,7 +1,7 @@
 import { SecuritySchemes, parseSpec, recurseObject } from "konfig-lib";
 import path from "path";
 import { Db } from "../scripts/collect";
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import deepmerge from "deepmerge";
 import yaml from "js-yaml";
 import puppeteer from "puppeteer";
@@ -20,6 +20,7 @@ import {
   getProviderName,
   getServiceName,
   getVersion,
+  browserDownloadsFolder,
 } from "../scripts/util";
 
 /**
@@ -350,6 +351,83 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://developer.zuora.com/yaml/zuora_openapi.yaml",
   },
+  "launchdarkly.com": {
+    lambda: async () => {
+      const browser = await puppeteer.launch({ headless: "new" });
+      const page = await browser.newPage();
+
+      // Set the download options
+      const client = await page.target().createCDPSession();
+      const downloadPath = path.join(
+        browserDownloadsFolder,
+        "launchdarkly.com"
+      );
+      fs.rmdirSync(downloadPath, { recursive: true });
+      fs.ensureDirSync(downloadPath);
+      await client.send("Page.setDownloadBehavior", {
+        behavior: "allow",
+        downloadPath,
+      });
+
+      // Navigate to the page
+      console.log("Navigating to https://apidocs.launchdarkly.com/");
+      await page.goto("https://apidocs.launchdarkly.com/", {
+        waitUntil: "networkidle0",
+      });
+      console.log("Finished navigating to https://apidocs.launchdarkly.com/");
+
+      // Click the download button
+      const downloadButtonSelector = 'a[download="swagger.json"]';
+      await page.waitForSelector(downloadButtonSelector);
+      await page.click(downloadButtonSelector);
+
+      // wait until download finishes by checking if the size of files the
+      // download folder have stopped increasing after the file appears
+      console.log("Waiting for download to finish");
+      // wait for the file to appear
+      while (true) {
+        const files = fs.readdirSync(downloadPath);
+        if (files.length > 0) {
+          break;
+        }
+      }
+      // wait for the file to stop increasing in size by checking if the size hasn't increased in size for a duration
+      let previousSize = 0;
+      let tick = 0;
+      while (true) {
+        const files = fs.readdirSync(downloadPath);
+        if (files.length === 0) {
+          throw Error("Expecting files to be present");
+        }
+        const file = files[0];
+        const stats = fs.statSync(path.join(downloadPath, file));
+        if (stats.size === previousSize) {
+          tick++;
+          if (tick > 2) {
+            break;
+          }
+        } else {
+          tick = 0;
+        }
+        previousSize = stats.size;
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
+
+      console.log("Download finished");
+
+      await browser.close();
+      let rawSpecString = fs.readFileSync(
+        path.join(downloadPath, "swagger.json"),
+        "utf-8"
+      );
+      const regex = /(\((\/|#).*?\))/g;
+      rawSpecString = rawSpecString.replaceAll(
+        regex,
+        `(https://apidocs.launchdarkly.com)`
+      );
+      return rawSpecString;
+    },
+  },
   "zoom.us_meeting": {
     lambda: async () => {
       const url =
@@ -430,6 +508,11 @@ export async function collectFromCustomRequests(): Promise<Db> {
   const db: Db = { specifications: {} };
 
   for (const key in customRequests) {
+    if (process.env.FILTER_CUSTOM !== undefined) {
+      if (!key.includes(process.env.FILTER_CUSTOM)) {
+        continue;
+      }
+    }
     const customRequest = customRequests[key];
     if (customRequest === undefined)
       throw Error("Expect customRequest to be defined");

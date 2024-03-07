@@ -6,6 +6,7 @@ import kebabcase from "lodash.kebabcase";
 
 export const dbFolder = path.join(path.dirname(__dirname), "db");
 export const specFolder = path.join(dbFolder, "spec-data");
+export const browserDownloadsFolder = path.join(dbFolder, "browser-downloads");
 export const customRequestSpecsDir = path.join(
   dbFolder,
   "custom-request-specs"
