@@ -17,14 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.openapitools.codegen.CliOption;
-import org.openapitools.codegen.CodegenModel;
-import org.openapitools.codegen.CodegenOperation;
-import org.openapitools.codegen.CodegenParameter;
-import org.openapitools.codegen.CodegenProperty;
-import org.openapitools.codegen.CodegenType;
-import org.openapitools.codegen.SupportingFile;
-import org.openapitools.codegen.VendorExtension;
+import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.features.BeanValidationFeatures;
 import org.openapitools.codegen.languages.features.GzipFeatures;
 import org.openapitools.codegen.languages.features.PerformBeanValidationFeatures;
@@ -197,7 +190,12 @@ public class JavaClientCodegen extends AbstractJavaCodegen implements BeanValida
     }
 
     public void addOperationToGroup(String tag, String resourcePath, Operation operation, CodegenOperation co, Map<String, List<CodegenOperation>> operations) {
-        super.addOperationToGroup(tag, resourcePath, operation, co, operations);
+        Map<DefaultGenerator.PathKey, List<CodegenOperation>> operationsWithPathKey = new HashMap<>();
+        for (Map.Entry<String, List<CodegenOperation>> entry : operations.entrySet()) {
+            DefaultGenerator.PathKey pathKey = new DefaultGenerator.PathKey(entry.getKey(), entry.getKey());
+            operationsWithPathKey.put(pathKey, entry.getValue());
+        }
+        super.addOperationToGroup(tag, tag, resourcePath, operation, co, operationsWithPathKey);
         if ("microprofile".equals(this.getLibrary())) {
             co.subresourceOperation = !co.path.isEmpty();
         }
