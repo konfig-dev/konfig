@@ -429,6 +429,7 @@ Here are existing categories: ${allCategories.join(", ")}.
     type: "input",
     name: "categories",
     message: "What are the categories?",
+    default: [...matchingCategories, ...newCategories].join(","),
   });
   return categories.categories.split(",").map(snakeCase);
 }
