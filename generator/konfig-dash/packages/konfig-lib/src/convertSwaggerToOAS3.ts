@@ -6,6 +6,6 @@ export const convertSwaggerToOAS3 = async ({
 }: {
   spec: OpenAPIV2.Document
 }): Promise<OpenAPIV3.Document | OpenAPIV3_1.Document> => {
-  const { openapi } = await convertObj(spec, {})
+  const { openapi } = await convertObj(spec, { patch: true })
   return openapi
 }
