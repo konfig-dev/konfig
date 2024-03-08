@@ -1,0 +1,46 @@
+{
+  "securitySchemes": {
+    "BearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "Authorization scheme used to authenticate & authorize access to a protected resource on a web server. It is used in conjunction with the OAuth 2.0 protocol for securing API endpoints."
+    },
+    "TPPOAuth2Security": {
+      "type": "oauth2",
+      "description": "TPP client credential authorisation flow with the ASPSP. Token URL to be used by TPP to obtain a token. Check the well-known configuration endpoint, the 'token_endpoint' property.",
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "/obie/open-banking/v1.1/oauth2/token",
+          "scopes": {
+            "accounts": "Ability to read Accounts information"
+          }
+        }
+      }
+    },
+    "PSUOAuth2Security": {
+      "type": "oauth2",
+      "description": "OAuth flow, it is required when the PSU needs to perform SCA with the ASPSP when a TPP wants to access an ASPSP resource owned by the PSU. Authorization URL to be used by TPP to redirect the PSU in order to start consent authorization journey. Check the well-known configuration endpoint, the 'authorization_endpoint' property. Token URL to be used by TPP to obtain a token. Check the well-known configuration endpoint, the 'token_endpoint' property.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/obie/open-banking/v1.1/oauth2/authorize",
+          "tokenUrl": "/obie/open-banking/v1.1/oauth2/token",
+          "scopes": {
+            "accounts": "Ability to read Accounts information"
+          }
+        }
+      }
+    }
+  },
+  "apiBaseUrl": "https://sandbox.ob.hsbcnet.com/mock/ce/obie/open-banking/v3.1/aisp",
+  "apiVersion": "3.1.11",
+  "apiDescription": "In this document, you'll find the steps your organization needs to take to use our API services. Included in this guide are details of request and response messages used to support your organization’s integration. The intended audience for this document are **Technical Architects**, **Development Engineers**, **Test Engineers**, and **Operation & Maintenance Engineers** involved in development and support of your organization’s integration. Setting up our API Services is best completed with the assistance of your organization’s IT team, or someone with experience and knowledge of application programming interfaces. This should include experience with **JSON payloads**, **security** and **public key infrastructure (PKI)**. This Document describes the following request and response structure of HSBCnet - Account Information API. For detail implementation guidelines, please refer to the respective section from [develop.hsbc.com](https://develop.hsbc.com/ob-api-documentation/account-information-uk-personal-v319)\n",
+  "apiTitle": "Account Information API",
+  "endpoints": 12,
+  "sdkMethods": 13,
+  "schemas": 205,
+  "parameters": 80,
+  "originalCustomRequest": {},
+  "customRequestSpecFilename": "hsbc.com_AccountInformationCE.yaml",
+  "difficultyScore": 135.5,
+  "difficulty": "Medium"
+}

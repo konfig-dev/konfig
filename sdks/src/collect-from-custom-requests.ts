@@ -413,6 +413,26 @@ const customRequests: Record<string, CustomRequest> = {
     url: "https://uk.api.just-eat.io/docs/openapi.yaml",
     defaultUrlForBrokenLinks: "https://uk.api.just-eat.io/docs/",
   },
+  "hsbc.com_AccountInformationCE": {
+    lambda: async (browser) => {
+      const url =
+        "https://develop.hsbc.com/ob-api-documentation/account-information-ce-hsbcnet/endpoints";
+      const anchorSelector = "a.apidownloadlink";
+
+      // open page to url and grab "href" attribute from anchorSelector
+      // then fetch the file
+      const page = await browser.newPage();
+      await page.goto(url);
+      const href = await page.$eval(anchorSelector, (el) =>
+        el.getAttribute("href")
+      );
+      if (href === null) throw Error("Expecting href to be defined");
+      const rawSpecString = await fetch(`https://develop.hsbc.com${href}`).then(
+        (res) => res.text()
+      );
+      return rawSpecString;
+    },
+  },
   "zoom.us_meeting": {
     lambda: async () => {
       const url =
