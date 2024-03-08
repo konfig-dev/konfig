@@ -87,11 +87,13 @@ async function executeCustomRequest(
 
     let rawSpecString = JSON.stringify(rawSpec);
 
-    const regexForBrokenLinks = /(\((\/|#).*?\))/g;
-    rawSpecString = rawSpecString.replaceAll(
-      regexForBrokenLinks,
-      `(${defaultUrlForBrokenLinks})`
-    );
+    if (defaultUrlForBrokenLinks !== undefined) {
+      const regexForBrokenLinks = /(\((\/|#).*?\))/g;
+      rawSpecString = rawSpecString.replaceAll(
+        regexForBrokenLinks,
+        `(${defaultUrlForBrokenLinks})`
+      );
+    }
 
     return rawSpecString;
   } else if ("body" in customRequest) {
