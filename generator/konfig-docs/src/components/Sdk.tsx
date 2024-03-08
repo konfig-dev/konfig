@@ -63,6 +63,10 @@ export function Sdk({
   doesNotHaveApiDescription,
 }: Omit<SdkPageProps, "difficultyScore" | "providerName"> & ReactProps) {
   const description = `Explore the ${company} TypeScript SDK. Dive into comprehensive documentation and utilize ${methods.length} methods to integrate ${company}'s API into your application.`;
+  const homepageWithHttpScheme =
+    homepage.startsWith("https://") || homepage.startsWith("http://")
+      ? homepage
+      : `https://${homepage}`;
   return (
     <Layout
       title={`${company} API - ${language} SDK, Documentation, and OpenAPI Specification`}
@@ -108,14 +112,7 @@ export function Sdk({
                 </div>
                 <Dot />
                 <div className="font-mono">
-                  <a
-                    href={
-                      homepage.startsWith("http")
-                        ? homepage
-                        : `https://${homepage}`
-                    }
-                    target="_blank"
-                  >
+                  <a href={homepageWithHttpScheme} target="_blank">
                     {homepage}
                   </a>
                 </div>
@@ -216,7 +213,7 @@ export function Sdk({
               </AboutSection>
             </div>
             <Sidebar
-              homepage={homepage}
+              homepage={homepageWithHttpScheme}
               serviceName={serviceName}
               apiTitle={apiTitle}
               apiBaseUrl={apiBaseUrl}
@@ -639,13 +636,8 @@ function Sidebar({
         <SidebarSection>
           <SidebarSectionTitle>Homepage</SidebarSectionTitle>
           <SidebarSectionContent>
-            <a
-              href={
-                homepage.startsWith("http") ? homepage : `https://${homepage}`
-              }
-              target="_blank"
-            >
-              {homepage}
+            <a href={homepage} target="_blank">
+              {homepage.replace("https://", "").replace("http://", "")}
             </a>
           </SidebarSectionContent>
         </SidebarSection>
@@ -654,7 +646,7 @@ function Sidebar({
             <SidebarSectionTitle>Contact URL</SidebarSectionTitle>
             <SidebarSectionContent>
               <a href={contactUrl} target="_blank">
-                {contactUrl}
+                {contactUrl.replace("https://", "").replace("http://", "")}
               </a>
             </SidebarSectionContent>
           </SidebarSection>

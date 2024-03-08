@@ -240,14 +240,25 @@ async function ensureLogoExists(homepage: string, companyServicePath: string) {
   // get logo image, determine file type, and save to file
   const response = await axios.get(logoUrl.logoUrl, {
     responseType: "arraybuffer",
+    headers: {
+      "Accept-Encoding": "gzip",
+    },
   });
   const buffer = Buffer.from(response.data, "binary");
+  const ext = await getFileTypeFromBuffer(buffer);
+  const logoPath = path.join(companyServicePath, `logo.${ext}`);
+  fs.writeFileSync(logoPath, buffer);
+}
+
+async function getFileTypeFromBuffer(buffer: Buffer): Promise<string> {
   const fileType = await fileTypeFromBuffer(buffer);
   if (!fileType) {
     throw new Error("Could not determine file type");
   }
-  const logoPath = path.join(companyServicePath, `logo.${fileType.ext}`);
-  fs.writeFileSync(logoPath, buffer);
+  if (fileType.ext === "xml") {
+    return "svg";
+  }
+  return fileType.ext;
 }
 
 async function getMetaDescription(

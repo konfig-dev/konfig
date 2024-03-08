@@ -10,13 +10,13 @@ export default function ZuoraTypeScriptSdk() {
   return (
     <Sdk
       sdkName="zuora-typescript-sdk"
-      metaDescription="Zuora is a leading subscription management platform that helps businesses manage their subscription-based services efficiently. It provides tools for subscription billing, revenue recognition, subscription analytics, and more. Zuora empowers companies to launch and scale subscription models, optimize pricing strategies, and enhance customer relationships."
+      metaDescription="Zuora is a subscription management platform that helps businesses manage their subscription-based services efficiently. It provides tools for billing, revenue recognition, subscription analytics, and more. Zuora empowers companies to launch and scale subscription models, optimize pricing strategies, and enhance customer relationships."
       company="Zuora"
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/logo.png"
       clientNameCamelCase="zuora"
       homepage="zuora.com"
-      lastUpdated={new Date("2024-03-07T07:54:46.633Z")}
+      lastUpdated={new Date("2024-03-08T21:26:41.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png"
       // Missing contactUrl
       contactEmail="docs@zuora.com"

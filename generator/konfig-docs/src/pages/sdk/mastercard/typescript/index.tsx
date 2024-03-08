@@ -10,13 +10,13 @@ export default function MastercardTypeScriptSdk() {
   return (
     <Sdk
       sdkName="mastercard-typescript-sdk"
-      metaDescription="Mastercard is a global payment technology company that connects billions of consumers, financial institutions, merchants, governments, and businesses worldwide, enabling them to use electronic forms of payment securely and efficiently. With a focus on innovation and digital solutions, Mastercard offers a wide range of payment products and services to facilitate seamless transactions and enhance the overall payment experience for all stakeholders."
+      metaDescription="Mastercard is a global payment technology company that connects billions of consumers, financial institutions, merchants, governments, and businesses worldwide, enabling them to use electronic forms of payment securely and efficiently."
       company="Mastercard"
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/logo.png"
       clientNameCamelCase="mastercard"
       homepage="finicity.com"
-      lastUpdated={new Date("2024-03-07T07:54:46.633Z")}
+      lastUpdated={new Date("2024-03-08T21:26:41.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/favicon.png"
       contactUrl="https://developer.mastercard.com/open-banking-us/documentation/support/"
       contactEmail="apisupport@mastercard.com"

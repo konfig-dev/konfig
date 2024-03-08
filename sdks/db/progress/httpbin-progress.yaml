@@ -1,0 +1,166 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /absolute-redirect/{n}:
+    get: Redirects_absolutelyRedirectsN
+  /anything:
+    delete: Anything_getData
+    get: Anything_getData
+    patch: Anything_getData
+    post: Anything_postRequestData
+    put: Anything_putRequestData
+    trace: Anything_getPassedData
+  /anything/{anything}:
+    delete: Anything_getAnything
+    get: Anything_getData
+    patch: Anything_updateAnythingData
+    post: Anything_returnRequestData
+    put: Anything_returnData
+    trace: Anything_getPassedData
+  /base64/{value}:
+    get: DynamicData_decodeBase64urlString
+  /basic-auth/{user}/{passwd}:
+    get: Auth_promptAuthorizationUsingHttpGet
+  /bearer:
+    get: Auth_promptAuthorization
+  /brotli:
+    get: ResponseFormats_brotliGetData
+  /bytes/{n}:
+    get: DynamicData_getRandomBytes
+  /cache:
+    get: ResponseInspection_notModifiedGet
+  /cache/{value}:
+    get: ResponseInspection_cacheControlSet
+  /cookies:
+    get: Cookies_getData
+  /cookies/delete:
+    get: Cookies_deleteRedirectToCookieList
+  /cookies/set:
+    get: Cookies_setRedirect
+  /cookies/set/{name}/{value}:
+    get: Cookies_setCookieRedirect
+  /deflate:
+    get: ResponseFormats_deflateDataGet
+  /delay/{delay}:
+    delete: DynamicData_delayedResponseDelete
+    get: DynamicData_delayedResponseGet
+    patch: DynamicData_returnDelayedResponse
+    post: DynamicData_returnDelayedResponse
+    put: DynamicData_returnDelayedResponse
+    trace: DynamicData_returnDelayedResponseTrace
+  /delete:
+    delete: HttpMethods_deleteRequestParameters
+  /deny:
+    get: ResponseFormats_deniedPageGet
+  /digest-auth/{qop}/{user}/{passwd}:
+    get: Auth_digestAuthPrompt
+  /digest-auth/{qop}/{user}/{passwd}/{algorithm}:
+    get: Auth_userAuthorizationDigest
+  /digest-auth/{qop}/{user}/{passwd}/{algorithm}/{stale_after}:
+    get: Auth_promptAuthorizationUsingDigest
+  /drip:
+    get: DynamicData_dripDataOverDuration
+  /encoding/utf8:
+    get: ResponseFormats_utf8BodyGet
+  /etag/{etag}:
+    get: ResponseInspection_resourceInspectionGet
+  /get:
+    get: HttpMethods_requestQueryParametersGet
+  /gzip:
+    get: ResponseFormats_gzipDataGet
+  /headers:
+    get: RequestInspection_incomingHeadersGet
+  /hidden-basic-auth/{user}/{passwd}:
+    get: Auth_promptUserAuthorization
+  /html:
+    get: ResponseFormats_simpleHtmlGet
+  /image:
+    get: Images_getByAcceptHeader
+  /image/jpeg:
+    get: Images_getJpegImage
+  /image/png:
+    get: Images_getPngImage
+  /image/svg:
+    get: Images_getSvgImage
+  /image/webp:
+    get: Images_getWebpImage
+  /ip:
+    get: RequestInspection_ipAddressGet
+  /json:
+    get: ResponseFormats_simpleJsonGet
+  /links/{n}/{offset}:
+    get: DynamicData_generatePageContainingLinks
+  /patch:
+    patch: HttpMethods_updateRequestParameters
+  /post:
+    post: HttpMethods_postRequestParameters
+  /put:
+    put: HttpMethods_putRequestParameters
+  /range/{numbytes}:
+    get: DynamicData_streamRandomBytes
+  /redirect-to:
+    delete: Redirects_toGivenUrlDelete
+    get: Redirects_toGivenUrlGet
+    patch: Redirects_toGivenUrlPatch
+    post: Redirects_toGivenUrlPost
+    put: Redirects_givenUrlPutRedirect
+    trace: Redirects_toGivenUrlTrace
+  /redirect/{n}:
+    get: Redirects_302RedirectsN
+  /relative-redirect/{n}:
+    get: Redirects_relatively302RedirectsN
+  /response-headers:
+    get: ResponseInspection_queryHeadersGet
+    post: ResponseInspection_getResponseHeaders
+  /robots.txt:
+    get: ResponseFormats_getRobotsRules
+  /status/{codes}:
+    delete: StatusCodes_returnRandomCode
+    get: StatusCodes_returnRandomCode
+    patch: StatusCodes_returnRandomCode
+    post: StatusCodes_returnRandomCode
+    put: StatusCodes_returnRandomCode
+    trace: StatusCodes_returnRandomCode
+  /stream-bytes/{n}:
+    get: DynamicData_streamRandomBytes
+  /stream/{n}:
+    get: DynamicData_streamJsonResponses
+  /user-agent:
+    get: RequestInspection_userAgentGet
+  /uuid:
+    get: DynamicData_generateUuid
+  /xml:
+    get: ResponseFormats_simpleXmlGet
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /redirect-to:
+    post:
+      application/x-www-form-urlencoded: RedirectsToGivenUrlPostRequest
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  Authorization:
+    header: false
+  If-Match:
+    header: false
+  If-Modified-Since:
+    header: false
+  If-None-Match:
+    header: false
+  code:
+    query: false
+  delay:
+    query: false
+  duration:
+    query: false
+  freeform:
+    query: false
+  numbytes:
+    query: false
+  status_code:
+    query: false
+  url:
+    query: false
+validServerUrls: {}

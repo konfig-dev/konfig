@@ -10,13 +10,13 @@ export default function MeilisearchTypeScriptSdk() {
   return (
     <Sdk
       sdkName="meilisearch-typescript-sdk"
-      metaDescription="Meilisearch is a powerful, fast, open-source, and easy-to-use search engine that provides instant search results for large datasets. It offers features like typo-tolerance, faceting, filters, and customizable ranking to enhance search experiences for developers and users alike. Meilisearch can be seamlessly integrated into various applications and websites to improve search functionality and user satisfaction."
+      metaDescription="Meilisearch is a powerful, fast, open-source, and easy-to-use search engine that provides instant search results for large datasets. It offers features like typo-tolerance, faceting, filters, and customizable ranking to enhance search experiences for developers and users alike."
       company="Meilisearch"
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/meilisearch/logo.png"
       clientNameCamelCase="meilisearch"
       homepage="www.meilisearch.com/"
-      lastUpdated={new Date("2024-03-07T01:19:29.547Z")}
+      lastUpdated={new Date("2024-03-08T21:26:41.741Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/meilisearch/favicon.png"
       // Missing contactUrl
       contactEmail="bonjour@Meilisearch.com"

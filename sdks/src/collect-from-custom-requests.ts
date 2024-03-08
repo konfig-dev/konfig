@@ -1,4 +1,8 @@
-import { SecuritySchemes, parseSpec, recurseObject } from "konfig-lib";
+import {
+  SecuritySchemes,
+  parseSpec,
+  recurseObject,
+} from "../../generator/konfig-dash/packages/konfig-lib/dist";
 import path from "path";
 import { Db } from "../scripts/collect";
 import * as fs from "fs-extra";
@@ -283,6 +287,10 @@ const customRequests: Record<string, CustomRequest> = {
   "zapier.com_actions": {
     type: "GET",
     url: "https://actions.zapier.com/api/v1/openapi.json",
+  },
+  "httpbin.org": {
+    type: "GET",
+    url: "https://httpbin.org/spec.json",
   },
   "paylocity.com_weblink": {
     lambda: async () => {
