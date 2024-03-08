@@ -1,0 +1,5059 @@
+openapi: 3.0.3
+info:
+  title: ElevenLabs API Documentation
+  description: >-
+    This is the documentation for the ElevenLabs API. You can use this API to
+    use our service programmatically, this is done by using your xi-api-key.
+    <br/> You can view your xi-api-key using the 'Profile' tab on
+    https://elevenlabs.io. Our API is experimental so all endpoints are subject
+    to change.
+  version: '1.0'
+  x-konfig-ignore:
+    object-with-no-properties: true
+servers:
+  - url: https://api.elevenlabs.io
+tags:
+  - description: >-
+      Access, create and convert Projects programmatically, only specifically
+      whitelisted accounts can access the Projects API. If you need access
+      please contact our sales team.
+    name: projects
+  - description: Access to voices created either by you or us.
+    name: voices
+  - description: >-
+      Accesses your speech history. Your speech history is a list of all your
+      created audio including its metadata using our text-to-speech and
+      speech-to-speech models.
+    name: speech-history
+  - name: dubbing
+  - name: voice-generation
+  - description: Convert text into lifelike speech using a voice of your choice.
+    name: text-to-speech
+  - description: >-
+      Create speech by combining the style and content of an audio file you
+      upload with a voice of your choice.
+    name: speech-to-speech
+  - description: >-
+      Access to your samples. A sample is any audio file you attached to a
+      voice. A voice can have one or more samples.
+    name: samples
+  - name: user
+  - name: Pronunciation Dictionary
+  - description: Access the different models of the platform.
+    name: models
+  - name: workspace
+  - name: audio-native
+  - name: redirect
+paths:
+  /v1/history:
+    get:
+      tags:
+        - speech-history
+      summary: Get Generated Items
+      operationId: Speechhistory_getGeneratedAudioMetadata
+      description: Returns metadata about all your generated audio.
+      parameters:
+        - description: >-
+            How many history items to return at maximum. Can not exceed 1000,
+            defaults to 100.
+          required: false
+          schema:
+            title: Page Size
+            description: >-
+              How many history items to return at maximum. Can not exceed 1000,
+              defaults to 100.
+            type: integer
+            default: 100
+          name: page_size
+          in: query
+        - description: >-
+            After which ID to start fetching, use this parameter to paginate
+            across a large collection of history items. In case this parameter
+            is not provided history items will be fetched starting from the most
+            recently created one ordered descending by their creation date.
+          required: false
+          schema:
+            title: Start After History Item Id
+            description: >-
+              After which ID to start fetching, use this parameter to paginate
+              across a large collection of history items. In case this parameter
+              is not provided history items will be fetched starting from the
+              most recently created one ordered descending by their creation
+              date.
+            type: string
+          name: start_after_history_item_id
+          in: query
+        - description: >-
+            Voice ID to be filtered for, you can use GET
+            https://api.elevenlabs.io/v1/voices to receive a list of voices and
+            their IDs.
+          required: false
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be filtered for, you can use GET
+              https://api.elevenlabs.io/v1/voices to receive a list of voices
+              and their IDs.
+            type: string
+          name: voice_id
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSpeechHistoryResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/history/{history_item_id}:
+    get:
+      tags:
+        - speech-history
+      summary: Get History Item By Id
+      operationId: Speechhistory_getHistoryItemById
+      description: Returns information about an history item by its ID.
+      parameters:
+        - description: >-
+            History item ID to be used, you can use GET
+            https://api.elevenlabs.io/v1/history to receive a list of history
+            items and their IDs.
+          required: true
+          schema:
+            title: History Item Id
+            description: >-
+              History item ID to be used, you can use GET
+              https://api.elevenlabs.io/v1/history to receive a list of history
+              items and their IDs.
+            type: string
+          example: VW7YKqPnjY4h39yTbx2L
+          name: history_item_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpeechHistoryItemResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - speech-history
+      summary: Delete History Item
+      operationId: Speechhistory_deleteHistoryItemById
+      description: Delete a history item by its ID
+      parameters:
+        - description: >-
+            History item ID to be used, you can use GET
+            https://api.elevenlabs.io/v1/history to receive a list of history
+            items and their IDs.
+          required: true
+          schema:
+            title: History Item Id
+            description: >-
+              History item ID to be used, you can use GET
+              https://api.elevenlabs.io/v1/history to receive a list of history
+              items and their IDs.
+            type: string
+          example: VW7YKqPnjY4h39yTbx2L
+          name: history_item_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/SpeechhistoryDeleteHistoryItemByIdResponse
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/history/{history_item_id}/audio:
+    get:
+      tags:
+        - speech-history
+      summary: Get Audio From History Item
+      operationId: Speechhistory_getHistoryItemAudio
+      description: Returns the audio of an history item.
+      parameters:
+        - description: >-
+            History item ID to be used, you can use GET
+            https://api.elevenlabs.io/v1/history to receive a list of history
+            items and their IDs.
+          required: true
+          schema:
+            title: History Item Id
+            description: >-
+              History item ID to be used, you can use GET
+              https://api.elevenlabs.io/v1/history to receive a list of history
+              items and their IDs.
+            type: string
+          example: VW7YKqPnjY4h39yTbx2L
+          name: history_item_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/history/download:
+    post:
+      tags:
+        - speech-history
+      summary: Download History Items
+      operationId: Speechhistory_downloadHistoryItems
+      description: >-
+        Download one or more history items. If one history item ID is provided,
+        we will return a single audio file. If more than one history item IDs
+        are provided, we will provide the history items packed into a .zip file.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Download_history_items_v1_history_download_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/{voice_id}/samples/{sample_id}:
+    delete:
+      tags:
+        - samples
+      summary: Delete Sample
+      operationId: Samples_removeById
+      description: Removes a sample by its ID.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Sample ID to be used, you can use GET
+            https://api.elevenlabs.io/v1/voices/{voice_id} to list all the
+            available samples for a voice.
+          required: true
+          schema:
+            title: Sample Id
+            description: >-
+              Sample ID to be used, you can use GET
+              https://api.elevenlabs.io/v1/voices/{voice_id} to list all the
+              available samples for a voice.
+            type: string
+          example: VW7YKqPnjY4h39yTbx2L
+          name: sample_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SamplesRemoveByIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/{voice_id}/samples/{sample_id}/audio:
+    get:
+      tags:
+        - samples
+      summary: Get Audio From Sample
+      operationId: Samples_getAudioFromSample
+      description: Returns the audio corresponding to a sample attached to a voice.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Sample ID to be used, you can use GET
+            https://api.elevenlabs.io/v1/voices/{voice_id} to list all the
+            available samples for a voice.
+          required: true
+          schema:
+            title: Sample Id
+            description: >-
+              Sample ID to be used, you can use GET
+              https://api.elevenlabs.io/v1/voices/{voice_id} to list all the
+              available samples for a voice.
+            type: string
+          example: VW7YKqPnjY4h39yTbx2L
+          name: sample_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/*: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/text-to-speech/{voice_id}:
+    post:
+      tags:
+        - text-to-speech
+      summary: Text To Speech
+      operationId: Texttospeech_convertTextToSpeech
+      description: >-
+        Converts text into speech using a voice of your choice and returns
+        audio.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >
+            You can turn on latency optimizations at some cost of quality. The
+            best possible final latency varies by model. Possible values:
+
+            0 - default mode (no latency optimizations)
+
+            1 - normal latency optimizations (about 50% of possible latency
+            improvement of option 3)
+
+            2 - strong latency optimizations (about 75% of possible latency
+            improvement of option 3)
+
+            3 - max latency optimizations
+
+            4 - max latency optimizations, but also with text normalizer turned
+            off for even more latency savings (best latency, but can
+            mispronounce eg numbers and dates).
+
+
+            Defaults to 0.
+          required: false
+          schema:
+            title: >-
+              How much we should optimize streaming request latency (time to
+              first audio byte).
+            description: >
+              You can turn on latency optimizations at some cost of quality. The
+              best possible final latency varies by model. Possible values:
+
+              0 - default mode (no latency optimizations)
+
+              1 - normal latency optimizations (about 50% of possible latency
+              improvement of option 3)
+
+              2 - strong latency optimizations (about 75% of possible latency
+              improvement of option 3)
+
+              3 - max latency optimizations
+
+              4 - max latency optimizations, but also with text normalizer
+              turned off for even more latency savings (best latency, but can
+              mispronounce eg numbers and dates).
+
+
+              Defaults to 0.
+            type: integer
+            default: 0
+          name: optimize_streaming_latency
+          in: query
+        - description: >
+            Output format of the generated audio. Must be one of:
+
+            mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+            32kbps.
+
+            mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+            32kbps.
+
+            mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+            64kbps.
+
+            mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+            96kbps.
+
+            mp3_44100_128 - default output format, mp3 with 44.1kHz sample rate
+            at 128kbps.
+
+            mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+            192kbps. Requires you to be subscribed to Creator tier or above.
+
+            pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+            pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+            pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+            pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+            you to be subscribed to Independent Publisher tier or above.
+
+            ulaw_8000 - μ-law format (sometimes written mu-law, often
+            approximated as u-law) with 8kHz sample rate. Note that this format
+            is commonly used for Twilio audio inputs.
+          required: false
+          schema:
+            title: Output format of the generated audio.
+            description: >
+              Output format of the generated audio. Must be one of:
+
+              mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+              32kbps.
+
+              mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+              32kbps.
+
+              mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+              64kbps.
+
+              mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+              96kbps.
+
+              mp3_44100_128 - default output format, mp3 with 44.1kHz sample
+              rate at 128kbps.
+
+              mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+              192kbps. Requires you to be subscribed to Creator tier or above.
+
+              pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+              pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+              pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+              pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+              you to be subscribed to Independent Publisher tier or above.
+
+              ulaw_8000 - μ-law format (sometimes written mu-law, often
+              approximated as u-law) with 8kHz sample rate. Note that this
+              format is commonly used for Twilio audio inputs.
+            type: string
+            default: mp3_44100_128
+          name: output_format
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Text_to_speech_v1_text_to_speech__voice_id__post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/text-to-speech/{voice_id}/stream:
+    post:
+      tags:
+        - text-to-speech
+      summary: Text To Speech
+      operationId: Texttospeech_convertTextToSpeechStream
+      description: >-
+        Converts text into speech using a voice of your choice and returns audio
+        as an audio stream.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >
+            You can turn on latency optimizations at some cost of quality. The
+            best possible final latency varies by model. Possible values:
+
+            0 - default mode (no latency optimizations)
+
+            1 - normal latency optimizations (about 50% of possible latency
+            improvement of option 3)
+
+            2 - strong latency optimizations (about 75% of possible latency
+            improvement of option 3)
+
+            3 - max latency optimizations
+
+            4 - max latency optimizations, but also with text normalizer turned
+            off for even more latency savings (best latency, but can
+            mispronounce eg numbers and dates).
+
+
+            Defaults to 0.
+          required: false
+          schema:
+            title: >-
+              How much we should optimize streaming request latency (time to
+              first audio byte).
+            description: >
+              You can turn on latency optimizations at some cost of quality. The
+              best possible final latency varies by model. Possible values:
+
+              0 - default mode (no latency optimizations)
+
+              1 - normal latency optimizations (about 50% of possible latency
+              improvement of option 3)
+
+              2 - strong latency optimizations (about 75% of possible latency
+              improvement of option 3)
+
+              3 - max latency optimizations
+
+              4 - max latency optimizations, but also with text normalizer
+              turned off for even more latency savings (best latency, but can
+              mispronounce eg numbers and dates).
+
+
+              Defaults to 0.
+            type: integer
+            default: 0
+          name: optimize_streaming_latency
+          in: query
+        - description: >
+            Output format of the generated audio. Must be one of:
+
+            mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+            32kbps.
+
+            mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+            32kbps.
+
+            mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+            64kbps.
+
+            mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+            96kbps.
+
+            mp3_44100_128 - default output format, mp3 with 44.1kHz sample rate
+            at 128kbps.
+
+            mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+            192kbps. Requires you to be subscribed to Creator tier or above.
+
+            pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+            pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+            pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+            pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+            you to be subscribed to Independent Publisher tier or above.
+
+            ulaw_8000 - μ-law format (sometimes written mu-law, often
+            approximated as u-law) with 8kHz sample rate. Note that this format
+            is commonly used for Twilio audio inputs.
+          required: false
+          schema:
+            title: Output format of the generated audio.
+            description: >
+              Output format of the generated audio. Must be one of:
+
+              mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+              32kbps.
+
+              mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+              32kbps.
+
+              mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+              64kbps.
+
+              mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+              96kbps.
+
+              mp3_44100_128 - default output format, mp3 with 44.1kHz sample
+              rate at 128kbps.
+
+              mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+              192kbps. Requires you to be subscribed to Creator tier or above.
+
+              pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+              pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+              pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+              pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+              you to be subscribed to Independent Publisher tier or above.
+
+              ulaw_8000 - μ-law format (sometimes written mu-law, often
+              approximated as u-law) with 8kHz sample rate. Note that this
+              format is commonly used for Twilio audio inputs.
+            type: string
+            default: mp3_44100_128
+          name: output_format
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Text_to_speech_v1_text_to_speech__voice_id__stream_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/speech-to-speech/{voice_id}:
+    post:
+      tags:
+        - speech-to-speech
+      summary: Speech To Speech
+      operationId: Speechtospeech_createWithVoice
+      description: >-
+        Create speech by combining the content and emotion of the uploaded audio
+        with a voice of your choice.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >
+            You can turn on latency optimizations at some cost of quality. The
+            best possible final latency varies by model. Possible values:
+
+            0 - default mode (no latency optimizations)
+
+            1 - normal latency optimizations (about 50% of possible latency
+            improvement of option 3)
+
+            2 - strong latency optimizations (about 75% of possible latency
+            improvement of option 3)
+
+            3 - max latency optimizations
+
+            4 - max latency optimizations, but also with text normalizer turned
+            off for even more latency savings (best latency, but can
+            mispronounce eg numbers and dates).
+
+
+            Defaults to 0.
+          required: false
+          schema:
+            title: >-
+              How much we should optimize streaming request latency (time to
+              first audio byte).
+            description: >
+              You can turn on latency optimizations at some cost of quality. The
+              best possible final latency varies by model. Possible values:
+
+              0 - default mode (no latency optimizations)
+
+              1 - normal latency optimizations (about 50% of possible latency
+              improvement of option 3)
+
+              2 - strong latency optimizations (about 75% of possible latency
+              improvement of option 3)
+
+              3 - max latency optimizations
+
+              4 - max latency optimizations, but also with text normalizer
+              turned off for even more latency savings (best latency, but can
+              mispronounce eg numbers and dates).
+
+
+              Defaults to 0.
+            type: integer
+            default: 0
+          name: optimize_streaming_latency
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Speech_to_Speech_v1_speech_to_speech__voice_id__post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/speech-to-speech/{voice_id}/stream:
+    post:
+      tags:
+        - speech-to-speech
+      summary: Speech To Speech Streaming
+      operationId: Speechtospeech_createWithVoice
+      description: >-
+        Create speech by combining the content and emotion of the uploaded audio
+        with a voice of your choice and returns an audio stream.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >
+            You can turn on latency optimizations at some cost of quality. The
+            best possible final latency varies by model. Possible values:
+
+            0 - default mode (no latency optimizations)
+
+            1 - normal latency optimizations (about 50% of possible latency
+            improvement of option 3)
+
+            2 - strong latency optimizations (about 75% of possible latency
+            improvement of option 3)
+
+            3 - max latency optimizations
+
+            4 - max latency optimizations, but also with text normalizer turned
+            off for even more latency savings (best latency, but can
+            mispronounce eg numbers and dates).
+
+
+            Defaults to 0.
+          required: false
+          schema:
+            title: >-
+              How much we should optimize streaming request latency (time to
+              first audio byte).
+            description: >
+              You can turn on latency optimizations at some cost of quality. The
+              best possible final latency varies by model. Possible values:
+
+              0 - default mode (no latency optimizations)
+
+              1 - normal latency optimizations (about 50% of possible latency
+              improvement of option 3)
+
+              2 - strong latency optimizations (about 75% of possible latency
+              improvement of option 3)
+
+              3 - max latency optimizations
+
+              4 - max latency optimizations, but also with text normalizer
+              turned off for even more latency savings (best latency, but can
+              mispronounce eg numbers and dates).
+
+
+              Defaults to 0.
+            type: integer
+            default: 0
+          name: optimize_streaming_latency
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Speech_to_Speech_Streaming_v1_speech_to_speech__voice_id__stream_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voice-generation/generate-voice/parameters:
+    get:
+      tags:
+        - voice-generation
+      summary: Voice Generation Parameters
+      operationId: Voicegeneration_getVoiceGenerationParameters
+      description: >-
+        Get possible parameters for the /v1/voice-generation/generate-voice
+        endpoint.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceGenerationParameterResponseModel'
+  /v1/voice-generation/generate-voice:
+    post:
+      tags:
+        - voice-generation
+      summary: Generate A Random Voice
+      operationId: Voicegeneration_generateRandomVoice
+      description: >-
+        Generate a random voice based on parameters. This method returns a
+        generated_voice_id in the response header, and a sample of the voice in
+        the body. If you like the generated voice call
+        /v1/voice-generation/create-voice with the generated_voice_id to create
+        the voice.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Generate_a_random_voice_v1_voice_generation_generate_voice_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voice-generation/create-voice:
+    post:
+      tags:
+        - voice-generation
+      summary: Create A Previously Generated Voice
+      operationId: Voicegeneration_createVoice
+      description: >-
+        Create a previously generated voice. This endpoint should be called
+        after you fetched a generated_voice_id using
+        /v1/voice-generation/generate-voice.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Create_a_previously_generated_voice_v1_voice_generation_create_voice_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/user/subscription:
+    get:
+      tags:
+        - user
+      summary: Get User Subscription Info
+      operationId: User_getSubscriptionInfo
+      description: Gets extended information about the users subscription
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedSubscriptionResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/user:
+    get:
+      tags:
+        - user
+      summary: Get User Info
+      operationId: User_getInfo
+      description: Gets information about the user
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices:
+    get:
+      tags:
+        - voices
+      summary: Get Voices
+      operationId: Voices_listAllVoices
+      description: Gets a list of all available voices for a user.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetVoicesResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/settings/default:
+    get:
+      tags:
+        - voices
+      summary: Get Default Voice Settings.
+      operationId: Voices_getDefaultVoiceSettings
+      description: >-
+        Gets the default settings for voices. "similarity_boost" corresponds
+        to"Clarity + Similarity Enhancement" in the web app and "stability"
+        corresponds to "Stability" slider in the web app.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceSettingsResponseModel'
+  /v1/voices/{voice_id}/settings:
+    get:
+      tags:
+        - voices
+      summary: Get Voice Settings
+      operationId: Voices_getSettings
+      description: >-
+        Returns the settings for a specific voice. "similarity_boost"
+        corresponds to"Clarity + Similarity Enhancement" in the web app and
+        "stability" corresponds to "Stability" slider in the web app.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceSettingsResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/{voice_id}:
+    get:
+      tags:
+        - voices
+      summary: Get Voice
+      operationId: Voices_getVoiceMetadata
+      description: Returns metadata about a specific voice.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            If set will return settings information corresponding to the voice,
+            requires authorization.
+          required: false
+          schema:
+            title: With Settings
+            description: >-
+              If set will return settings information corresponding to the
+              voice, requires authorization.
+            type: boolean
+            default: false
+          name: with_settings
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - voices
+      summary: Delete Voice
+      operationId: Voices_deleteById
+      description: Deletes a voice by its ID.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicesDeleteByIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/{voice_id}/settings/edit:
+    post:
+      tags:
+        - voices
+      summary: Edit Voice Settings
+      operationId: Voices_editSettingsPost
+      description: >-
+        Edit your settings for a specific voice. "similarity_boost" corresponds
+        to"Clarity + Similarity Enhancement" in the web app and "stability"
+        corresponds to "Stability" slider in the web app.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceSettingsResponseModel'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicesEditSettingsPostResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/add:
+    post:
+      tags:
+        - voices
+      summary: Add Voice
+      operationId: Voices_addVoiceToCollection
+      description: Add a new voice to your collection of voices in VoiceLab.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_Add_voice_v1_voices_add_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddVoiceResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/{voice_id}/edit:
+    post:
+      tags:
+        - voices
+      summary: Edit Voice
+      operationId: Voices_updateVoiceById
+      description: Edit a voice created by you.
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Edit_voice_v1_voices__voice_id__edit_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicesUpdateVoiceByIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/voices/add/{public_user_id}/{voice_id}:
+    post:
+      tags:
+        - voices
+      summary: Add Sharing Voice
+      operationId: Voices_addToCollection
+      description: Add a sharing voice to your collection of voices in VoiceLab.
+      parameters:
+        - description: Public user ID used to publicly identify ElevenLabs users.
+          required: true
+          schema:
+            title: Public User Id
+            description: Public user ID used to publicly identify ElevenLabs users.
+            type: string
+          example: 63e06b7e7cafdc46be4d2e0b3f045940231ae058d508589653d74d1265a574ca
+          name: public_user_id
+          in: path
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Add_sharing_voice_v1_voices_add__public_user_id___voice_id__post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddVoiceResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects:
+    get:
+      tags:
+        - projects
+      summary: Get Projects
+      operationId: Projects_getAllProjects
+      description: Returns a list of your projects together and its metadata.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProjectsResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/add:
+    post:
+      tags:
+        - projects
+      summary: Add Project
+      operationId: Projects_createNewProject
+      description: >-
+        Creates a new project, it can be either initialized as blank, from a
+        document or from a URL.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_Add_project_v1_projects_add_post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddProjectResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}:
+    get:
+      tags:
+        - projects
+      summary: Get Project By Id
+      operationId: Projects_getById
+      description: >-
+        Returns information about a specific project. This endpoint returns more
+        detailed information about a project than GET
+        api.elevenlabs.io/v1/projects.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectExtendedResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - projects
+      summary: Delete Project
+      operationId: Projects_deleteById
+      description: Delete a project by its project_id.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsDeleteByIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/convert:
+    post:
+      tags:
+        - projects
+      summary: Convert Project
+      operationId: Projects_startConversion
+      description: Starts conversion of a project and all of its chapters.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsStartConversionResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/snapshots:
+    get:
+      tags:
+        - projects
+      summary: Get Project Snapshots
+      operationId: Projects_listSnapshots
+      description: Gets the snapshots of a project.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSnapshotsResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/snapshots/{project_snapshot_id}/stream:
+    post:
+      tags:
+        - projects
+      summary: Stream Project Audio
+      operationId: Projects_streamAudioFromSnapshot
+      description: Stream the audio from a project snapshot.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The project_snapshot_id of the project snapshot. You can query GET
+            /v1/projects/{project_id}/snapshots to list all available snapshots
+            for a project.
+          required: true
+          schema:
+            title: Project Snapshot Id
+            description: >-
+              The project_snapshot_id of the project snapshot. You can query GET
+              /v1/projects/{project_id}/snapshots to list all available
+              snapshots for a project.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_snapshot_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/chapters:
+    get:
+      tags:
+        - projects
+      summary: Get Chapters
+      operationId: Projects_listChapters
+      description: Returns a list of your chapters for a project together and its metadata.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetChaptersResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/chapters/{chapter_id}:
+    get:
+      tags:
+        - projects
+      summary: Get Chapter By Id
+      operationId: Projects_getChapterById
+      description: Returns information about a specific chapter.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The chapter_id of the chapter. You can query GET
+            https://api.elevenlabs.io/v1/projects/{project_id}/chapters to list
+            all available chapters for a project.
+          required: true
+          schema:
+            title: Chapter Id
+            description: >-
+              The chapter_id of the chapter. You can query GET
+              https://api.elevenlabs.io/v1/projects/{project_id}/chapters to
+              list all available chapters for a project.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: chapter_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChapterResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - projects
+      summary: Delete Chapter
+      operationId: Projects_deleteChapterById
+      description: Delete a chapter by its chapter_id.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The chapter_id of the chapter. You can query GET
+            https://api.elevenlabs.io/v1/projects/{project_id}/chapters to list
+            all available chapters for a project.
+          required: true
+          schema:
+            title: Chapter Id
+            description: >-
+              The chapter_id of the chapter. You can query GET
+              https://api.elevenlabs.io/v1/projects/{project_id}/chapters to
+              list all available chapters for a project.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: chapter_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsDeleteChapterByIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/chapters/{chapter_id}/convert:
+    post:
+      tags:
+        - projects
+      summary: Convert Chapter
+      operationId: Projects_startChapterConversion
+      description: Starts conversion of a specific chapter.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The chapter_id of the chapter. You can query GET
+            https://api.elevenlabs.io/v1/projects/{project_id}/chapters to list
+            all available chapters for a project.
+          required: true
+          schema:
+            title: Chapter Id
+            description: >-
+              The chapter_id of the chapter. You can query GET
+              https://api.elevenlabs.io/v1/projects/{project_id}/chapters to
+              list all available chapters for a project.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: chapter_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectsStartChapterConversionResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/chapters/{chapter_id}/snapshots:
+    get:
+      tags:
+        - projects
+      summary: Get Chapter Snapshots
+      operationId: Projects_getChapterSnapshots
+      description: >-
+        Gets information about all the snapshots of a chapter, each snapshot
+        corresponds can be downloaded as audio. Whenever a chapter is converted
+        a snapshot will be automatically created.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The chapter_id of the chapter. You can query GET
+            https://api.elevenlabs.io/v1/projects/{project_id}/chapters to list
+            all available chapters for a project.
+          required: true
+          schema:
+            title: Chapter Id
+            description: >-
+              The chapter_id of the chapter. You can query GET
+              https://api.elevenlabs.io/v1/projects/{project_id}/chapters to
+              list all available chapters for a project.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: chapter_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChapterSnapshotsResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/chapters/{chapter_id}/snapshots/{chapter_snapshot_id}/stream:
+    post:
+      tags:
+        - projects
+      summary: Stream Chapter Audio
+      operationId: Projects_streamAudioFromSnapshotPost
+      description: >-
+        Stream the audio from a chapter snapshot. Use GET
+        /v1/projects/{project_id}/chapters/{chapter_id}/snapshots to return the
+        chapter snapshots of a chapter.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The chapter_id of the chapter. You can query GET
+            https://api.elevenlabs.io/v1/projects/{project_id}/chapters to list
+            all available chapters for a project.
+          required: true
+          schema:
+            title: Chapter Id
+            description: >-
+              The chapter_id of the chapter. You can query GET
+              https://api.elevenlabs.io/v1/projects/{project_id}/chapters to
+              list all available chapters for a project.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: chapter_id
+          in: path
+        - description: >-
+            The chapter_snapshot_id of the chapter snapshot. You can query GET
+            /v1/projects/{project_id}/chapters/{chapter_id}/snapshots to the all
+            available snapshots for a chapter.
+          required: true
+          schema:
+            title: Chapter Snapshot Id
+            description: >-
+              The chapter_snapshot_id of the chapter snapshot. You can query GET
+              /v1/projects/{project_id}/chapters/{chapter_id}/snapshots to the
+              all available snapshots for a chapter.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: chapter_snapshot_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/update-pronunciation-dictionaries:
+    post:
+      tags:
+        - projects
+      summary: Update Pronunciation Dictionaries
+      operationId: Projects_updatePronunciationDictionaries
+      description: >-
+        Updates the set of pronunciation dictionaries acting on a project. This
+        will automatically mark text within this project as requiring
+        reconverting where the new dictionary would apply or the old one no
+        longer does.
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Update_Pronunciation_Dictionaries_v1_projects__project_id__update_pronunciation_dictionaries_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ProjectsUpdatePronunciationDictionariesResponse
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/dubbing:
+    post:
+      tags:
+        - dubbing
+      summary: Dub A Video Or An Audio File
+      operationId: Dubbing_fileInLanguage
+      description: Dubs provided audio or video file into given language.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Dub_a_video_or_an_audio_file_v1_dubbing_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DoDubbingResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/dubbing/{dubbing_id}:
+    get:
+      tags:
+        - dubbing
+      summary: Get Dubbing Project Metadata
+      operationId: Dubbing_getProjectMetadata
+      description: >-
+        Returns metadata about a dubbing project, including whether it's still
+        in progress or not
+      parameters:
+        - description: ID of the dubbing project.
+          required: true
+          schema:
+            title: Dubbing Id
+            description: ID of the dubbing project.
+            type: string
+          name: dubbing_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DubbingGetProjectMetadataResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - dubbing
+      summary: Delete Dubbing Project
+      operationId: Dubbing_deleteProject
+      description: Deletes a dubbing project.
+      parameters:
+        - description: ID of the dubbing project.
+          required: true
+          schema:
+            title: Dubbing Id
+            description: ID of the dubbing project.
+            type: string
+          name: dubbing_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DubbingDeleteProjectResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/dubbing/{dubbing_id}/audio/{language_code}:
+    get:
+      tags:
+        - dubbing
+      summary: Get Dubbed File
+      operationId: Dubbing_getFile
+      description: Returns dubbed file.
+      parameters:
+        - description: ID of the dubbing project.
+          required: true
+          schema:
+            title: Dubbing Id
+            description: ID of the dubbing project.
+            type: string
+          name: dubbing_id
+          in: path
+        - description: ID of the language.
+          required: true
+          schema:
+            title: Language Code
+            description: ID of the language.
+            type: string
+          name: language_code
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DubbingGetFileResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /admin/{admin_url_prefix}/sso-provider:
+    get:
+      tags:
+        - workspace
+      summary: Get Sso Provider Admin
+      operationId: Workspace_getSsoProviderAdmin
+      parameters:
+        - required: true
+          schema:
+            title: Workspace Id
+            type: string
+          name: workspace_id
+          in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SsoProviderDBModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/models:
+    get:
+      tags:
+        - models
+      summary: Get Models
+      operationId: Models_listAvailableModels
+      description: Gets a list of available models.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelsListAvailableModelsResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/audio-native:
+    post:
+      tags:
+        - audio-native
+      summary: Creates Audionative Enabled Project.
+      operationId: Audionative_createProjectWithEmbeddableHtml
+      description: >-
+        Creates AudioNative enabled project, optionally starts conversion and
+        returns project id and embeddable html snippet.
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Creates_AudioNative_enabled_project__v1_audio_native_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioNativeCreateProjectResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/shared-voices:
+    get:
+      tags:
+        - voices
+      summary: Get Voices
+      operationId: Voices_getSharedVoices
+      description: Gets a list of shared voices.
+      parameters:
+        - description: >-
+            How many shared voices to return at maximum. Can not exceed 500,
+            defaults to 30.
+          required: false
+          schema:
+            title: Page Size
+            description: >-
+              How many shared voices to return at maximum. Can not exceed 500,
+              defaults to 30.
+            type: integer
+            default: 30
+          name: page_size
+          in: query
+        - description: voice category used for filtering
+          required: false
+          schema:
+            title: Category
+            description: voice category used for filtering
+            type: string
+          example: professional
+          name: category
+          in: query
+        - description: gender used for filtering
+          required: false
+          schema:
+            title: Gender
+            description: gender used for filtering
+            type: string
+          example: male
+          name: gender
+          in: query
+        - description: age used for filtering
+          required: false
+          schema:
+            title: Age
+            description: age used for filtering
+            type: string
+          example: young
+          name: age
+          in: query
+        - description: accent used for filtering
+          required: false
+          schema:
+            title: Accent
+            description: accent used for filtering
+            type: string
+          example: american
+          name: accent
+          in: query
+        - description: search term used for filtering
+          required: false
+          schema:
+            title: Search
+            description: search term used for filtering
+            type: string
+          example: tiktok
+          name: search
+          in: query
+        - description: use-case used for filtering
+          required: false
+          schema:
+            title: Use Cases
+            description: use-case used for filtering
+            items:
+              type: string
+            type: array
+          example: audiobook
+          name: use_cases
+          in: query
+        - description: search term used for filtering
+          required: false
+          schema:
+            title: Descriptives
+            description: search term used for filtering
+            items:
+              type: string
+            type: array
+          example: tiktok
+          name: descriptives
+          in: query
+        - description: sort criteria
+          required: false
+          schema:
+            title: Sort
+            description: sort criteria
+            type: string
+          example: created_date
+          name: sort
+          in: query
+        - description: Filter featured voices
+          required: false
+          schema:
+            title: Featured
+            description: Filter featured voices
+            type: boolean
+            default: false
+          example: true
+          name: featured
+          in: query
+        - required: false
+          schema:
+            title: Page
+            type: integer
+            default: 0
+          name: page
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLibraryVoicesResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/pronunciation-dictionaries/add-from-file:
+    post:
+      tags:
+        - Pronunciation Dictionary
+      summary: Add A Pronunciation Dictionary
+      operationId: PronunciationDictionary_createFromFile
+      description: Creates a new pronunciation dictionary from a lexicon .PLS file
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Add_a_pronunciation_dictionary_v1_pronunciation_dictionaries_add_from_file_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddPronunciationDictionaryResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /docs:
+    get:
+      tags:
+        - redirect
+      summary: Redirect To Mintlify
+      operationId: Redirect_toMintlifyDocsGet
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectToMintlifyDocsGetResponse'
+  /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}:
+    get:
+      tags:
+        - Pronunciation Dictionary
+      summary: Get Metadata For A Pronunciation Dictionary
+      operationId: PronunciationDictionary_getMetadata
+      description: Get metadata for a pronunciation dictionary
+      parameters:
+        - description: The id of the pronunciation dictionary
+          required: true
+          schema:
+            title: Pronunciation Dictionary Id
+            description: The id of the pronunciation dictionary
+            type: string
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: pronunciation_dictionary_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+            type: string
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/GetPronunciationDictionaryMetadataResponseModel
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    AddProjectResponseModel:
+      title: AddProjectResponseModel
+      properties:
+        project:
+          $ref: '#/components/schemas/ProjectResponseModel'
+      type: object
+      required:
+        - project
+    AddPronunciationDictionaryResponseModel:
+      title: AddPronunciationDictionaryResponseModel
+      properties:
+        description:
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+        created_by:
+          title: Created By
+          type: string
+        creation_time_unix:
+          title: Creation Time Unix
+          type: integer
+        version_id:
+          title: Version Id
+          type: string
+      type: object
+      required:
+        - id
+        - name
+        - created_by
+        - creation_time_unix
+        - version_id
+    AddVoiceResponseModel:
+      title: AddVoiceResponseModel
+      properties:
+        voice_id:
+          title: Voice Id
+          type: string
+      type: object
+      required:
+        - voice_id
+    AudioNativeCreateProjectResponseModel:
+      title: AudioNativeCreateProjectResponseModel
+      properties:
+        project_id:
+          title: Project Id
+          type: string
+        converting:
+          title: Converting
+          type: boolean
+        html_snippet:
+          title: Html Snippet
+          type: string
+      type: object
+      required:
+        - project_id
+        - converting
+        - html_snippet
+    Body_Add_a_pronunciation_dictionary_v1_pronunciation_dictionaries_add_from_file_post:
+      title: >-
+        Body_Add_a_pronunciation_dictionary_v1_pronunciation_dictionaries_add_from_file_post
+      properties:
+        description:
+          title: Description
+          description: >-
+            A description of the pronunciation dictionary, used for
+            identification only.
+          type: string
+        file:
+          title: File
+          description: >-
+            A lexicon .pls file which we will use to initialize the project
+            with.
+          type: string
+          format: binary
+        name:
+          title: Name
+          description: >-
+            The name of the pronunciation dictionary, used for identification
+            only.
+          type: string
+      type: object
+      required:
+        - name
+    Body_Add_project_v1_projects_add_post:
+      title: Body_Add_project_v1_projects_add_post
+      properties:
+        title:
+          title: Title
+          description: >-
+            An optional name of the author of the project, this will be added as
+            metadata to the mp3 file on project / chapter download.
+          type: string
+        name:
+          title: Name
+          description: The name of the project, used for identification only.
+          type: string
+        from_url:
+          title: From Url
+          description: >-
+            An optional URL from which we will extract content to initialize the
+            project. If this is set, 'from_url' must be null. If neither
+            'from_url' or 'from_document' are provided we will initialize the
+            project as blank.
+          type: string
+        from_document:
+          title: From Document
+          description: >-
+            An optional .epub, .pdf, .txt or similar file can be provided. If
+            provided, we will initialize the project with its content. If this
+            is set, 'from_url' must be null.  If neither 'from_url' or
+            'from_document' are provided we will initialize the project as
+            blank.
+          type: string
+          format: binary
+        default_title_voice_id:
+          title: Default Title Voice Id
+          description: >-
+            The voice_id that corresponds to the default voice used for new
+            titles.
+          type: string
+        default_paragraph_voice_id:
+          title: Default Paragraph Voice Id
+          description: >-
+            The voice_id that corresponds to the default voice used for new
+            paragraphs.
+          type: string
+        default_model_id:
+          title: Default Model Id
+          description: >-
+            The model_id of the model to be used for this project, you can query
+            GET https://api.elevenlabs.io/v1/models to list all available
+            models.
+          type: string
+        quality_preset:
+          title: Quality of the generated audio.
+          description: >
+            Output quality of the generated audio. Must be one of:
+
+            standard - standard output format, 128kbps with 44.1kHz sample rate.
+
+            high - high quality output format, 192kbps with 44.1kHz sample rate
+            and major improvements on our side. Using this setting increases the
+            character cost by 20%.
+
+            ultra - ultra quality output format, 192kbps with 44.1kHz sample
+            rate and highest improvements on our side. Using this setting
+            increases the character cost by 50%.
+          type: string
+          default: standard
+          include_in_schema: true
+        author:
+          title: Author
+          description: >-
+            An optional name of the author of the project, this will be added as
+            metadata to the mp3 file on project / chapter download.
+          type: string
+        isbn_number:
+          title: Isbn Number
+          description: >-
+            An optional ISBN number of the project you want to create, this will
+            be added as metadata to the mp3 file on project / chapter download.
+          type: string
+        acx_volume_normalization:
+          title: Acx Volume Normalization
+          description: >-
+            [Deprecated] When the project is downloaded, should the returned
+            audio have postprocessing in order to make it compliant with
+            audiobook normalized volume requirements
+          type: boolean
+          default: false
+          include_in_schema: false
+        volume_normalization:
+          title: Volume Normalization
+          description: >-
+            When the project is downloaded, should the returned audio have
+            postprocessing in order to make it compliant with audiobook
+            normalized volume requirements
+          type: boolean
+          default: false
+        pronunciation_dictionary_locators:
+          title: Pronunciation Dictionary Locators
+          description: >-
+            A list of pronunciation dictionary locators (id, version_id) encoded
+            as a list of JSON strings for pronunciation dictionaries to be
+            applied to the text.  A list of json encoded strings is required as
+            adding projects may occur through formData as opposed to jsonBody
+          items:
+            type: string
+          type: array
+        callback_url:
+          title: Callback Url
+          description: >-
+            A url that will be called by our service when the project is
+            converted with a json containing the status of the conversion
+          type: string
+          include_in_schema: false
+      type: object
+      required:
+        - name
+        - default_title_voice_id
+        - default_paragraph_voice_id
+        - default_model_id
+        - pronunciation_dictionary_locators
+    Body_Add_sharing_voice_v1_voices_add__public_user_id___voice_id__post:
+      title: Body_Add_sharing_voice_v1_voices_add__public_user_id___voice_id__post
+      properties:
+        new_name:
+          title: New Name
+          description: >-
+            The name that identifies this voice. This will be displayed in the
+            dropdown of the website.
+          type: string
+      type: object
+      required:
+        - new_name
+    Body_Add_voice_v1_voices_add_post:
+      title: Body_Add_voice_v1_voices_add_post
+      properties:
+        description:
+          title: Description
+          description: How would you describe the voice?
+          type: string
+        name:
+          title: Name
+          description: >-
+            The name that identifies this voice. This will be displayed in the
+            dropdown of the website.
+          type: string
+        files:
+          title: Files
+          description: One or more audio files to clone the voice from
+          items:
+            type: string
+            format: binary
+          type: array
+        labels:
+          title: Labels
+          description: Serialized labels dictionary for the voice.
+          type: string
+      type: object
+      required:
+        - name
+        - files
+    Body_Create_a_previously_generated_voice_v1_voice_generation_create_voice_post:
+      title: >-
+        Body_Create_a_previously_generated_voice_v1_voice_generation_create_voice_post
+      properties:
+        voice_name:
+          title: Voice Name
+          description: Name to use for the created voice.
+          type: string
+        voice_description:
+          title: Voice Description
+          description: Description to use for the created voice.
+          type: string
+        generated_voice_id:
+          title: Generated Voice Id
+          description: >-
+            The generated_voice_id to create, call POST
+            /v1/voice-generation/generate-voice and fetch the generated_voice_id
+            from the response header if don't have one yet.
+          type: string
+        labels:
+          title: Labels
+          description: Optional, metadata to add to the created voice. Defaults to None.
+          additionalProperties:
+            type: string
+          type: object
+          name: Voice metadata
+      type: object
+      required:
+        - voice_name
+        - voice_description
+        - generated_voice_id
+    Body_Creates_AudioNative_enabled_project__v1_audio_native_post:
+      title: Body_Creates_AudioNative_enabled_project__v1_audio_native_post
+      properties:
+        title:
+          title: Title
+          description: >-
+            Title used in the player and inserted at the top of the uploaded
+            article. If not provided, the default title set in the Player
+            settings is used.
+          type: string
+        name:
+          title: Name
+          description: Project name.
+          type: string
+        image:
+          title: Image
+          description: >-
+            Image URL used in the player. If not provided, default image set in
+            the Player settings is used.
+          type: string
+        author:
+          title: Author
+          description: >-
+            Author used in the player and inserted at the start of the uploaded
+            article. If not provided, the default author set in the Player
+            settings is used.
+          type: string
+        small:
+          title: Small
+          description: >-
+            Whether to use small player or not. If not provided, default value
+            set in the Player settings is used.
+          type: boolean
+          default: false
+        text_color:
+          title: Text Color
+          description: >-
+            Text color used in the player. If not provided, default text color
+            set in the Player settings is used.
+          type: string
+        background_color:
+          title: Background Color
+          description: >-
+            Background color used in the player. If not provided, default
+            background color set in the Player settings is used.
+          type: string
+        sessionization:
+          title: Sessionization
+          description: >-
+            Specifies for how many minutes to persist the session across page
+            reloads. If not provided, default sessionization set in the Player
+            settings is used.
+          type: integer
+          default: 0
+        voice_id:
+          title: Voice Id
+          description: >-
+            Voice ID used to voice the content. If not provided, default voice
+            ID set in the Player settings is used.
+          type: string
+        model_id:
+          title: Model Id
+          description: >-
+            TTS Model ID used in the player. If not provided, default model ID
+            set in the Player settings is used.
+          type: string
+        file:
+          title: File
+          description: >-
+            Either txt or HTML input file containing the article content. HTML
+            should be formatted as follows
+            '&lt;html&gt;&lt;body&gt;&lt;div&gt;&lt;p&gt;Your
+            content&lt;/p&gt;&lt;h5&gt;More of your
+            content&lt;/h5&gt;&lt;p&gt;Some more of your
+            content&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;'
+          type: string
+          format: binary
+        auto_convert:
+          title: Auto Convert
+          description: Whether to auto convert the project to audio or not.
+          type: boolean
+          default: false
+      type: object
+      required:
+        - name
+        - file
+    Body_Download_history_items_v1_history_download_post:
+      title: Body_Download_history_items_v1_history_download_post
+      properties:
+        history_item_ids:
+          title: History Item Ids
+          description: >-
+            A list of history items to download, you can get IDs of history
+            items and other metadata using the GET
+            https://api.elevenlabs.io/v1/history endpoint.
+          items:
+            type: string
+          type: array
+      type: object
+      required:
+        - history_item_ids
+    Body_Dub_a_video_or_an_audio_file_v1_dubbing_post:
+      title: Body_Dub_a_video_or_an_audio_file_v1_dubbing_post
+      properties:
+        mode:
+          title: Mode
+          description: automatic or manual.
+          type: string
+        file:
+          title: File
+          description: One or more audio files to clone the voice from
+          type: string
+          format: binary
+        csv_file:
+          title: Csv File
+          description: CSV file containing transcription/translation metadata
+          type: string
+          format: binary
+        foreground_audio_file:
+          title: Foreground Audio File
+          description: For use only with csv input
+          type: string
+          format: binary
+        background_audio_file:
+          title: Background Audio File
+          description: For use only with csv input
+          type: string
+          format: binary
+        name:
+          title: Name
+          description: Name of the dubbing project.
+          type: string
+        source_url:
+          title: Source Url
+          description: URL of the source video/audio file.
+          type: string
+        source_lang:
+          title: Source Lang
+          description: Source language.
+          type: string
+          default: auto
+        target_lang:
+          title: Target Lang
+          description: Target language.
+          type: string
+        num_speakers:
+          title: Num Speakers
+          description: Number of speakers to use for the dubbing.
+          type: integer
+          default: 0
+        watermark:
+          title: Watermark
+          description: Whether to apply watermark to the output video.
+          type: boolean
+          default: false
+        start_time:
+          title: Start Time
+          description: Start time of the source video/audio file.
+          type: integer
+        end_time:
+          title: End Time
+          description: End time of the source video/audio file.
+          type: integer
+        highest_resolution:
+          title: Highest Resolution
+          description: Whether to use the highest resolution available.
+          type: boolean
+          default: false
+        dubbing_studio:
+          title: Dubbing Studio
+          description: Whether to prepare dub for edits in dubbing studio.
+          type: boolean
+          default: false
+      type: object
+      required:
+        - target_lang
+    Body_Edit_voice_v1_voices__voice_id__edit_post:
+      title: Body_Edit_voice_v1_voices__voice_id__edit_post
+      properties:
+        description:
+          title: Description
+          description: How would you describe the voice?
+          type: string
+        name:
+          title: Name
+          description: >-
+            The name that identifies this voice. This will be displayed in the
+            dropdown of the website.
+          type: string
+        files:
+          title: Files
+          description: Audio files to add to the voice
+          items:
+            type: string
+            format: binary
+          type: array
+        labels:
+          title: Labels
+          description: Serialized labels dictionary for the voice.
+          type: string
+      type: object
+      required:
+        - name
+    Body_Generate_a_random_voice_v1_voice_generation_generate_voice_post:
+      title: Body_Generate_a_random_voice_v1_voice_generation_generate_voice_post
+      properties:
+        gender:
+          title: Gender
+          description: >-
+            Category code corresponding to the gender of the generated voice.
+            Possible values: female, male.
+          type: string
+          enum:
+            - female
+            - male
+        accent:
+          title: Accent
+          description: >-
+            Category code corresponding to the accent of the generated voice.
+            Possible values: american, british, african, australian, indian.
+          type: string
+        age:
+          title: Age
+          description: >-
+            Category code corresponding to the age of the generated voice.
+            Possible values: young, middle_aged, old.
+          type: string
+          enum:
+            - young
+            - middle_aged
+            - old
+        accent_strength:
+          title: Accent Strength
+          description: >-
+            The strength of the accent of the generated voice. Has to be between
+            0.3 and 2.0.
+          type: number
+        text:
+          title: Text
+          description: Text to generate, text length has to be between 100 and 1000.
+          type: string
+      type: object
+      required:
+        - gender
+        - accent
+        - age
+        - accent_strength
+        - text
+    Body_Speech_to_Speech_Streaming_v1_speech_to_speech__voice_id__stream_post:
+      title: >-
+        Body_Speech_to_Speech_Streaming_v1_speech_to_speech__voice_id__stream_post
+      properties:
+        audio:
+          title: Audio
+          description: >-
+            The audio file which holds the content and emotion that will control
+            the generated speech.
+          type: string
+          format: binary
+        model_id:
+          title: Model Id
+          description: >-
+            Identifier of the model that will be used, you can query them using
+            GET /v1/models. The model needs to have support for speech to
+            speech, you can check this using the can_do_voice_conversion
+            property.
+          type: string
+          default: eleven_english_sts_v2
+        voice_settings:
+          title: Voice Settings
+          description: >-
+            Voice settings overriding stored setttings for the given voice. They
+            are applied only on the given request. Needs to be send as a JSON
+            encoded string.
+          type: string
+      type: object
+      required:
+        - audio
+    Body_Speech_to_Speech_v1_speech_to_speech__voice_id__post:
+      title: Body_Speech_to_Speech_v1_speech_to_speech__voice_id__post
+      properties:
+        audio:
+          title: Audio
+          description: >-
+            The audio file which holds the content and emotion that will control
+            the generated speech.
+          type: string
+          format: binary
+        model_id:
+          title: Model Id
+          description: >-
+            Identifier of the model that will be used, you can query them using
+            GET /v1/models. The model needs to have support for speech to
+            speech, you can check this using the can_do_voice_conversion
+            property.
+          type: string
+          default: eleven_english_sts_v2
+        voice_settings:
+          title: Voice Settings
+          description: >-
+            Voice settings overriding stored setttings for the given voice. They
+            are applied only on the given request. Needs to be send as a JSON
+            encoded string.
+          type: string
+      type: object
+      required:
+        - audio
+    Body_Text_to_speech_v1_text_to_speech__voice_id__post:
+      title: Body_Text_to_speech_v1_text_to_speech__voice_id__post
+      properties:
+        text:
+          title: Text
+          description: The text that will get converted into speech.
+          type: string
+        model_id:
+          title: Model Id
+          description: >-
+            Identifier of the model that will be used, you can query them using
+            GET /v1/models. The model needs to have support for text to speech,
+            you can check this using the can_do_text_to_speech property.
+          type: string
+          default: eleven_monolingual_v1
+        voice_settings:
+          $ref: '#/components/schemas/VoiceSettingsResponseModel'
+        pronunciation_dictionary_locators:
+          title: Pronunciation Dictionary Locators
+          description: >-
+            A list of pronunciation dictionary locators (id, version_id) to be
+            applied to the text. They will be applied in order. You may have up
+            to 3 locators per request
+          items:
+            $ref: '#/components/schemas/PronunciationDictionaryVersionLocatorDBModel'
+          type: array
+          default: []
+      type: object
+      required:
+        - text
+      x-konfig-properties:
+        voice_settings:
+          title: Voice Settings
+          description: >-
+            Voice settings overriding stored setttings for the given voice. They
+            are applied only on the given request.
+    Body_Text_to_speech_v1_text_to_speech__voice_id__stream_post:
+      title: Body_Text_to_speech_v1_text_to_speech__voice_id__stream_post
+      properties:
+        text:
+          title: Text
+          description: The text that will get converted into speech.
+          type: string
+        model_id:
+          title: Model Id
+          description: >-
+            Identifier of the model that will be used, you can query them using
+            GET /v1/models. The model needs to have support for text to speech,
+            you can check this using the can_do_text_to_speech property.
+          type: string
+          default: eleven_monolingual_v1
+        voice_settings:
+          $ref: '#/components/schemas/VoiceSettingsResponseModel'
+        pronunciation_dictionary_locators:
+          title: Pronunciation Dictionary Locators
+          description: >-
+            A list of pronunciation dictionary locators (id, version_id) to be
+            applied to the text. They will be applied in order. You may have up
+            to 3 locators per request
+          items:
+            $ref: '#/components/schemas/PronunciationDictionaryVersionLocatorDBModel'
+          type: array
+          default: []
+      type: object
+      required:
+        - text
+      x-konfig-properties:
+        voice_settings:
+          title: Voice Settings
+          description: >-
+            Voice settings overriding stored setttings for the given voice. They
+            are applied only on the given request.
+    Body_Update_Pronunciation_Dictionaries_v1_projects__project_id__update_pronunciation_dictionaries_post:
+      title: >-
+        Body_Update_Pronunciation_Dictionaries_v1_projects__project_id__update_pronunciation_dictionaries_post
+      properties:
+        pronunciation_dictionary_locators:
+          title: Pronunciation Dictionary Locators
+          description: >-
+            A list of pronunciation dictionary locators (id, version_id) encoded
+            as a list of JSON strings for pronunciation dictionaries to be
+            applied to the text.  A list of json encoded strings is required as
+            adding projects may occur through formData as opposed to jsonBody
+          items:
+            $ref: '#/components/schemas/PronunciationDictionaryVersionLocatorDBModel'
+          type: array
+      type: object
+      required:
+        - pronunciation_dictionary_locators
+    ChapterResponseModel:
+      title: ChapterResponseModel
+      properties:
+        chapter_id:
+          title: Chapter Id
+          type: string
+        name:
+          title: Name
+          type: string
+        last_conversion_date_unix:
+          title: Last Conversion Date Unix
+          type: integer
+        conversion_progress:
+          title: Conversion Progress
+          type: number
+        can_be_downloaded:
+          title: Can Be Downloaded
+          type: boolean
+        state:
+          title: State
+          type: string
+          enum:
+            - default
+            - converting
+        statistics:
+          $ref: '#/components/schemas/ChapterStatisticsResponseModel'
+      type: object
+      required:
+        - chapter_id
+        - name
+        - last_conversion_date_unix
+        - conversion_progress
+        - can_be_downloaded
+        - state
+        - statistics
+    ChapterSnapshotResponseModel:
+      title: ChapterSnapshotResponseModel
+      properties:
+        chapter_snapshot_id:
+          title: Chapter Snapshot Id
+          type: string
+        project_id:
+          title: Project Id
+          type: string
+        chapter_id:
+          title: Chapter Id
+          type: string
+        created_at_unix:
+          title: Created At Unix
+          type: integer
+        name:
+          title: Name
+          type: string
+      type: object
+      required:
+        - chapter_snapshot_id
+        - project_id
+        - chapter_id
+        - created_at_unix
+        - name
+    ChapterSnapshotsResponseModel:
+      title: ChapterSnapshotsResponseModel
+      properties:
+        snapshots:
+          title: Snapshots
+          items:
+            $ref: '#/components/schemas/ChapterSnapshotResponseModel'
+          type: array
+      type: object
+      required:
+        - snapshots
+    ChapterStatisticsResponseModel:
+      title: ChapterStatisticsResponseModel
+      properties:
+        characters_unconverted:
+          title: Characters Unconverted
+          type: integer
+        characters_converted:
+          title: Characters Converted
+          type: integer
+        paragraphs_converted:
+          title: Paragraphs Converted
+          type: integer
+        paragraphs_unconverted:
+          title: Paragraphs Unconverted
+          type: integer
+      type: object
+      required:
+        - characters_unconverted
+        - characters_converted
+        - paragraphs_converted
+        - paragraphs_unconverted
+    DoDubbingResponseModel:
+      title: DoDubbingResponseModel
+      properties:
+        dubbing_id:
+          title: Dubbing Id
+          type: string
+        expected_duration_sec:
+          title: Expected Duration Sec
+          type: number
+      type: object
+      required:
+        - dubbing_id
+        - expected_duration_sec
+    ExtendedSubscriptionResponseModel:
+      title: ExtendedSubscriptionResponseModel
+      properties:
+        tier:
+          title: Tier
+          type: string
+        character_count:
+          title: Character Count
+          type: integer
+        character_limit:
+          title: Character Limit
+          type: integer
+        can_extend_character_limit:
+          title: Can Extend Character Limit
+          type: boolean
+        allowed_to_extend_character_limit:
+          title: Allowed To Extend Character Limit
+          type: boolean
+        next_character_count_reset_unix:
+          title: Next Character Count Reset Unix
+          type: integer
+        voice_limit:
+          title: Voice Limit
+          type: integer
+        max_voice_add_edits:
+          title: Max Voice Add Edits
+          type: integer
+        voice_add_edit_counter:
+          title: Voice Add Edit Counter
+          type: integer
+        professional_voice_limit:
+          title: Professional Voice Limit
+          type: integer
+        can_extend_voice_limit:
+          title: Can Extend Voice Limit
+          type: boolean
+        can_use_instant_voice_cloning:
+          title: Can Use Instant Voice Cloning
+          type: boolean
+        can_use_professional_voice_cloning:
+          title: Can Use Professional Voice Cloning
+          type: boolean
+        currency:
+          title: Currency
+          type: string
+          enum:
+            - usd
+            - eur
+        status:
+          title: Status
+          type: string
+          enum:
+            - trialing
+            - active
+            - incomplete
+            - incomplete_expired
+            - past_due
+            - canceled
+            - unpaid
+            - free
+        next_invoice:
+          $ref: '#/components/schemas/InvoiceResponseModel'
+        has_open_invoices:
+          title: Has Open Invoices
+          type: boolean
+      type: object
+      required:
+        - tier
+        - character_count
+        - character_limit
+        - can_extend_character_limit
+        - allowed_to_extend_character_limit
+        - next_character_count_reset_unix
+        - voice_limit
+        - max_voice_add_edits
+        - voice_add_edit_counter
+        - professional_voice_limit
+        - can_extend_voice_limit
+        - can_use_instant_voice_cloning
+        - can_use_professional_voice_cloning
+        - currency
+        - status
+        - next_invoice
+        - has_open_invoices
+    FeedbackResponseModel:
+      title: FeedbackResponseModel
+      properties:
+        thumbs_up:
+          title: Thumbs Up
+          type: boolean
+        feedback:
+          title: Feedback
+          type: string
+        emotions:
+          title: Emotions
+          type: boolean
+        inaccurate_clone:
+          title: Inaccurate Clone
+          type: boolean
+        glitches:
+          title: Glitches
+          type: boolean
+        audio_quality:
+          title: Audio Quality
+          type: boolean
+        other:
+          title: Other
+          type: boolean
+        review_status:
+          title: Review Status
+          type: string
+          default: not_reviewed
+      type: object
+      required:
+        - thumbs_up
+        - feedback
+        - emotions
+        - inaccurate_clone
+        - glitches
+        - audio_quality
+        - other
+    FineTuningResponseModel:
+      title: FineTuningResponseModel
+      properties:
+        is_allowed_to_fine_tune:
+          title: Is Allowed To Fine Tune
+          type: boolean
+        finetuning_state:
+          title: Finetuning State
+          type: string
+          enum:
+            - not_started
+            - queued
+            - fine_tuning
+            - fine_tuned
+            - failed
+            - delayed
+        verification_failures:
+          title: Verification Failures
+          items:
+            type: string
+          type: array
+        verification_attempts_count:
+          title: Verification Attempts Count
+          type: integer
+        manual_verification_requested:
+          title: Manual Verification Requested
+          type: boolean
+        language:
+          title: Language
+          type: string
+        finetuning_progress:
+          title: Finetuning Progress
+          additionalProperties:
+            type: number
+          type: object
+        message:
+          title: Message
+          type: string
+        dataset_duration_seconds:
+          title: Dataset Duration Seconds
+          type: number
+        verification_attempts:
+          title: Verification Attempts
+          items:
+            $ref: '#/components/schemas/VerificationAttemptResponseModel'
+          type: array
+        slice_ids:
+          title: Slice Ids
+          items:
+            type: string
+          type: array
+        manual_verification:
+          $ref: '#/components/schemas/ManualVerificationResponseModel'
+      type: object
+      required:
+        - is_allowed_to_fine_tune
+        - finetuning_state
+        - verification_failures
+        - verification_attempts_count
+        - manual_verification_requested
+    GetChaptersResponseModel:
+      title: GetChaptersResponseModel
+      properties:
+        chapters:
+          title: Chapters
+          items:
+            $ref: '#/components/schemas/ChapterResponseModel'
+          type: array
+      type: object
+      required:
+        - chapters
+    GetLibraryVoicesResponseModel:
+      title: GetLibraryVoicesResponseModel
+      properties:
+        voices:
+          title: Voices
+          items:
+            $ref: '#/components/schemas/LibraryVoiceResponseModel'
+          type: array
+        last_sort_id:
+          title: Last Sort Id
+          type: string
+        has_more:
+          title: Has More
+          type: boolean
+      type: object
+      required:
+        - voices
+        - last_sort_id
+        - has_more
+    GetProjectsResponseModel:
+      title: GetProjectsResponseModel
+      properties:
+        projects:
+          title: Projects
+          items:
+            $ref: '#/components/schemas/ProjectResponseModel'
+          type: array
+      type: object
+      required:
+        - projects
+    GetPronunciationDictionaryMetadataResponseModel:
+      title: GetPronunciationDictionaryMetadataResponseModel
+      properties:
+        description:
+          title: Description
+          type: string
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+        created_by:
+          title: Created By
+          type: string
+        creation_time_unix:
+          title: Creation Time Unix
+          type: integer
+      type: object
+      required:
+        - id
+        - name
+        - created_by
+        - creation_time_unix
+    GetSpeechHistoryResponseModel:
+      title: GetSpeechHistoryResponseModel
+      properties:
+        history:
+          title: History
+          items:
+            $ref: '#/components/schemas/SpeechHistoryItemResponseModel'
+          type: array
+        last_history_item_id:
+          title: Last History Item Id
+          type: string
+        has_more:
+          title: Has More
+          type: boolean
+      type: object
+      required:
+        - history
+        - last_history_item_id
+        - has_more
+    GetVoicesResponseModel:
+      title: GetVoicesResponseModel
+      properties:
+        voices:
+          title: Voices
+          items:
+            $ref: '#/components/schemas/VoiceResponseModel'
+          type: array
+      type: object
+      required:
+        - voices
+    HTTPValidationError:
+      title: HTTPValidationError
+      properties:
+        detail:
+          title: Detail
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+      type: object
+    InvoiceResponseModel:
+      title: InvoiceResponseModel
+      properties:
+        amount_due_cents:
+          title: Amount Due Cents
+          type: integer
+        next_payment_attempt_unix:
+          title: Next Payment Attempt Unix
+          type: integer
+      type: object
+      required:
+        - amount_due_cents
+        - next_payment_attempt_unix
+    LanguageResponseModel:
+      title: LanguageResponseModel
+      properties:
+        language_id:
+          title: Language Id
+          type: string
+        name:
+          title: Name
+          type: string
+      type: object
+      required:
+        - language_id
+        - name
+    LibraryVoiceResponseModel:
+      title: LibraryVoiceResponseModel
+      properties:
+        description:
+          title: Description
+          type: string
+        public_owner_id:
+          title: Public Owner Id
+          type: string
+        voice_id:
+          title: Voice Id
+          type: string
+        date_unix:
+          title: Date Unix
+          type: integer
+        name:
+          title: Name
+          type: string
+        accent:
+          title: Accent
+          type: string
+        gender:
+          title: Gender
+          type: string
+        age:
+          title: Age
+          type: string
+        descriptive:
+          title: Descriptive
+          type: string
+        use_case:
+          title: Use Case
+          type: string
+        category:
+          title: Category
+          type: string
+        language:
+          title: Language
+          type: string
+        preview_url:
+          title: Preview Url
+          type: string
+        usage_character_count_1y:
+          title: Usage Character Count 1Y
+          type: integer
+        usage_character_count_7d:
+          title: Usage Character Count 7D
+          type: integer
+        cloned_by_count:
+          title: Cloned By Count
+          type: integer
+        rate:
+          title: Rate
+          type: number
+        free_users_allowed:
+          title: Free Users Allowed
+          type: boolean
+        live_moderation_enabled:
+          title: Live Moderation Enabled
+          type: boolean
+        notice_period:
+          title: Notice Period
+          type: integer
+        instagram_username:
+          title: Instagram Username
+          type: string
+        twitter_username:
+          title: Twitter Username
+          type: string
+        youtube_username:
+          title: Youtube Username
+          type: string
+        tiktok_username:
+          title: Tiktok Username
+          type: string
+        featured:
+          title: Featured
+          type: boolean
+      type: object
+      required:
+        - public_owner_id
+        - voice_id
+        - date_unix
+        - name
+        - accent
+        - gender
+        - age
+        - descriptive
+        - use_case
+        - category
+        - language
+        - description
+        - preview_url
+        - usage_character_count_1y
+        - usage_character_count_7d
+        - cloned_by_count
+        - rate
+        - free_users_allowed
+        - live_moderation_enabled
+        - notice_period
+        - instagram_username
+        - twitter_username
+        - youtube_username
+        - tiktok_username
+        - featured
+    ManualVerificationFileResponseModel:
+      title: ManualVerificationFileResponseModel
+      properties:
+        file_id:
+          title: File Id
+          type: string
+        file_name:
+          title: File Name
+          type: string
+        mime_type:
+          title: Mime Type
+          type: string
+        size_bytes:
+          title: Size Bytes
+          type: integer
+        upload_date_unix:
+          title: Upload Date Unix
+          type: integer
+      type: object
+      required:
+        - file_id
+        - file_name
+        - mime_type
+        - size_bytes
+        - upload_date_unix
+    ManualVerificationResponseModel:
+      title: ManualVerificationResponseModel
+      properties:
+        extra_text:
+          title: Extra Text
+          type: string
+        request_time_unix:
+          title: Request Time Unix
+          type: integer
+        files:
+          title: Files
+          items:
+            $ref: '#/components/schemas/ManualVerificationFileResponseModel'
+          type: array
+      type: object
+      required:
+        - extra_text
+        - request_time_unix
+        - files
+    ModelResponseModel:
+      title: ModelResponseModel
+      properties:
+        description:
+          title: Description
+          type: string
+        model_id:
+          title: Model Id
+          type: string
+        name:
+          title: Name
+          type: string
+        can_be_finetuned:
+          title: Can Be Finetuned
+          type: boolean
+        can_do_text_to_speech:
+          title: Can Do Text To Speech
+          type: boolean
+        can_do_voice_conversion:
+          title: Can Do Voice Conversion
+          type: boolean
+        can_use_style:
+          title: Can Use Style
+          type: boolean
+        can_use_speaker_boost:
+          title: Can Use Speaker Boost
+          type: boolean
+        serves_pro_voices:
+          title: Serves Pro Voices
+          type: boolean
+        token_cost_factor:
+          title: Token Cost Factor
+          type: number
+        requires_alpha_access:
+          title: Requires Alpha Access
+          type: boolean
+        max_characters_request_free_user:
+          title: Max Characters Request Free User
+          type: integer
+        max_characters_request_subscribed_user:
+          title: Max Characters Request Subscribed User
+          type: integer
+        languages:
+          title: Languages
+          items:
+            $ref: '#/components/schemas/LanguageResponseModel'
+          type: array
+      type: object
+      required:
+        - model_id
+        - name
+        - can_be_finetuned
+        - can_do_text_to_speech
+        - can_do_voice_conversion
+        - can_use_style
+        - can_use_speaker_boost
+        - serves_pro_voices
+        - token_cost_factor
+        - description
+        - requires_alpha_access
+        - max_characters_request_free_user
+        - max_characters_request_subscribed_user
+        - languages
+    ProjectExtendedResponseModel:
+      title: ProjectExtendedResponseModel
+      properties:
+        project_id:
+          title: Project Id
+          type: string
+        name:
+          title: Name
+          type: string
+        create_date_unix:
+          title: Create Date Unix
+          type: integer
+        default_title_voice_id:
+          title: Default Title Voice Id
+          type: string
+        default_paragraph_voice_id:
+          title: Default Paragraph Voice Id
+          type: string
+        default_model_id:
+          title: Default Model Id
+          type: string
+        last_conversion_date_unix:
+          title: Last Conversion Date Unix
+          type: integer
+        can_be_downloaded:
+          title: Can Be Downloaded
+          type: boolean
+        state:
+          title: State
+          type: string
+          enum:
+            - default
+            - converting
+            - in_queue
+        chapters:
+          title: Chapters
+          items:
+            $ref: '#/components/schemas/ChapterResponseModel'
+          type: array
+      type: object
+      required:
+        - project_id
+        - name
+        - create_date_unix
+        - default_title_voice_id
+        - default_paragraph_voice_id
+        - default_model_id
+        - last_conversion_date_unix
+        - can_be_downloaded
+        - state
+        - chapters
+    ProjectResponseModel:
+      title: ProjectResponseModel
+      properties:
+        title:
+          title: Title
+          type: string
+        project_id:
+          title: Project Id
+          type: string
+        name:
+          title: Name
+          type: string
+        create_date_unix:
+          title: Create Date Unix
+          type: integer
+        default_title_voice_id:
+          title: Default Title Voice Id
+          type: string
+        default_paragraph_voice_id:
+          title: Default Paragraph Voice Id
+          type: string
+        default_model_id:
+          title: Default Model Id
+          type: string
+        last_conversion_date_unix:
+          title: Last Conversion Date Unix
+          type: integer
+        can_be_downloaded:
+          title: Can Be Downloaded
+          type: boolean
+        author:
+          title: Author
+          type: string
+        isbn_number:
+          title: Isbn Number
+          type: string
+        volume_normalization:
+          title: Volume Normalization
+          type: boolean
+        state:
+          title: State
+          type: string
+          enum:
+            - default
+            - converting
+      type: object
+      required:
+        - project_id
+        - name
+        - create_date_unix
+        - default_title_voice_id
+        - default_paragraph_voice_id
+        - default_model_id
+        - last_conversion_date_unix
+        - can_be_downloaded
+        - title
+        - author
+        - isbn_number
+        - volume_normalization
+        - state
+    ProjectSnapshotResponseModel:
+      title: ProjectSnapshotResponseModel
+      properties:
+        project_snapshot_id:
+          title: Project Snapshot Id
+          type: string
+        project_id:
+          title: Project Id
+          type: string
+        created_at_unix:
+          title: Created At Unix
+          type: integer
+        name:
+          title: Name
+          type: string
+      type: object
+      required:
+        - project_snapshot_id
+        - project_id
+        - created_at_unix
+        - name
+    ProjectSnapshotsResponseModel:
+      title: ProjectSnapshotsResponseModel
+      properties:
+        snapshots:
+          title: Snapshots
+          items:
+            $ref: '#/components/schemas/ProjectSnapshotResponseModel'
+          type: array
+      type: object
+      required:
+        - snapshots
+    PronunciationDictionaryVersionLocatorDBModel:
+      title: PronunciationDictionaryVersionLocatorDBModel
+      properties:
+        pronunciation_dictionary_id:
+          title: Pronunciation Dictionary Id
+          type: string
+        version_id:
+          title: Version Id
+          type: string
+      type: object
+      required:
+        - pronunciation_dictionary_id
+        - version_id
+    RecordingResponseModel:
+      title: RecordingResponseModel
+      properties:
+        recording_id:
+          title: Recording Id
+          type: string
+        mime_type:
+          title: Mime Type
+          type: string
+        size_bytes:
+          title: Size Bytes
+          type: integer
+        upload_date_unix:
+          title: Upload Date Unix
+          type: integer
+        transcription:
+          title: Transcription
+          type: string
+      type: object
+      required:
+        - recording_id
+        - mime_type
+        - size_bytes
+        - upload_date_unix
+        - transcription
+    SampleResponseModel:
+      title: SampleResponseModel
+      properties:
+        sample_id:
+          title: Sample Id
+          type: string
+        file_name:
+          title: File Name
+          type: string
+        mime_type:
+          title: Mime Type
+          type: string
+        size_bytes:
+          title: Size Bytes
+          type: integer
+        hash:
+          title: Hash
+          type: string
+      type: object
+      required:
+        - sample_id
+        - file_name
+        - mime_type
+        - size_bytes
+        - hash
+    SpeechHistoryItemResponseModel:
+      title: SpeechHistoryItemResponseModel
+      properties:
+        history_item_id:
+          title: History Item Id
+          type: string
+        request_id:
+          title: Request Id
+          type: string
+        voice_id:
+          title: Voice Id
+          type: string
+        model_id:
+          title: Model Id
+          type: string
+        voice_name:
+          title: Voice Name
+          type: string
+        voice_category:
+          title: Voice Category
+          type: string
+          enum:
+            - premade
+            - cloned
+            - generated
+            - professional
+        text:
+          title: Text
+          type: string
+        date_unix:
+          title: Date Unix
+          type: integer
+        character_count_change_from:
+          title: Character Count Change From
+          type: integer
+        character_count_change_to:
+          title: Character Count Change To
+          type: integer
+        content_type:
+          title: Content Type
+          type: string
+        state:
+          title: State
+          type: string
+          enum:
+            - created
+            - deleted
+            - processing
+        settings:
+          title: Settings
+          type: object
+        feedback:
+          $ref: '#/components/schemas/FeedbackResponseModel'
+        share_link_id:
+          title: Share Link Id
+          type: string
+        source:
+          title: Source
+          type: string
+          enum:
+            - TTS
+            - STS
+      type: object
+      required:
+        - history_item_id
+        - request_id
+        - voice_id
+        - model_id
+        - voice_name
+        - voice_category
+        - text
+        - date_unix
+        - character_count_change_from
+        - character_count_change_to
+        - content_type
+        - state
+        - settings
+        - feedback
+        - share_link_id
+        - source
+    SsoProviderDBModel:
+      title: SsoProviderDBModel
+      properties:
+        provider_type:
+          title: Provider Type
+          type: string
+          enum:
+            - saml
+            - oidc
+        provider_id:
+          title: Provider Id
+          type: string
+        domains:
+          title: Domains
+          items:
+            type: string
+          type: array
+      type: object
+      required:
+        - provider_type
+        - provider_id
+        - domains
+    SubscriptionResponseModel:
+      title: SubscriptionResponseModel
+      properties:
+        tier:
+          title: Tier
+          type: string
+        character_count:
+          title: Character Count
+          type: integer
+        character_limit:
+          title: Character Limit
+          type: integer
+        can_extend_character_limit:
+          title: Can Extend Character Limit
+          type: boolean
+        allowed_to_extend_character_limit:
+          title: Allowed To Extend Character Limit
+          type: boolean
+        next_character_count_reset_unix:
+          title: Next Character Count Reset Unix
+          type: integer
+        voice_limit:
+          title: Voice Limit
+          type: integer
+        max_voice_add_edits:
+          title: Max Voice Add Edits
+          type: integer
+        voice_add_edit_counter:
+          title: Voice Add Edit Counter
+          type: integer
+        professional_voice_limit:
+          title: Professional Voice Limit
+          type: integer
+        can_extend_voice_limit:
+          title: Can Extend Voice Limit
+          type: boolean
+        can_use_instant_voice_cloning:
+          title: Can Use Instant Voice Cloning
+          type: boolean
+        can_use_professional_voice_cloning:
+          title: Can Use Professional Voice Cloning
+          type: boolean
+        currency:
+          title: Currency
+          type: string
+          enum:
+            - usd
+            - eur
+        status:
+          title: Status
+          type: string
+          enum:
+            - trialing
+            - active
+            - incomplete
+            - incomplete_expired
+            - past_due
+            - canceled
+            - unpaid
+            - free
+      type: object
+      required:
+        - tier
+        - character_count
+        - character_limit
+        - can_extend_character_limit
+        - allowed_to_extend_character_limit
+        - next_character_count_reset_unix
+        - voice_limit
+        - max_voice_add_edits
+        - voice_add_edit_counter
+        - professional_voice_limit
+        - can_extend_voice_limit
+        - can_use_instant_voice_cloning
+        - can_use_professional_voice_cloning
+        - currency
+        - status
+    UserResponseModel:
+      title: UserResponseModel
+      properties:
+        subscription:
+          $ref: '#/components/schemas/SubscriptionResponseModel'
+        is_new_user:
+          title: Is New User
+          type: boolean
+        xi_api_key:
+          title: Xi Api Key
+          type: string
+        can_use_delayed_payment_methods:
+          title: Can Use Delayed Payment Methods
+          type: boolean
+        is_onboarding_completed:
+          title: Is Onboarding Completed
+          type: boolean
+        first_name:
+          title: First Name
+          type: string
+      type: object
+      required:
+        - subscription
+        - is_new_user
+        - xi_api_key
+        - can_use_delayed_payment_methods
+        - is_onboarding_completed
+    ValidationError:
+      title: ValidationError
+      properties:
+        loc:
+          title: Location
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+    VerificationAttemptResponseModel:
+      title: VerificationAttemptResponseModel
+      properties:
+        text:
+          title: Text
+          type: string
+        date_unix:
+          title: Date Unix
+          type: integer
+        accepted:
+          title: Accepted
+          type: boolean
+        similarity:
+          title: Similarity
+          type: number
+        levenshtein_distance:
+          title: Levenshtein Distance
+          type: number
+        recording:
+          $ref: '#/components/schemas/RecordingResponseModel'
+      type: object
+      required:
+        - text
+        - date_unix
+        - accepted
+        - similarity
+        - levenshtein_distance
+    VoiceGenerationParameterOptionResponseModel:
+      title: VoiceGenerationParameterOptionResponseModel
+      properties:
+        name:
+          title: Name
+          type: string
+        code:
+          title: Code
+          type: string
+      type: object
+      required:
+        - name
+        - code
+    VoiceGenerationParameterResponseModel:
+      title: VoiceGenerationParameterResponseModel
+      properties:
+        genders:
+          title: Genders
+          items:
+            $ref: '#/components/schemas/VoiceGenerationParameterOptionResponseModel'
+          type: array
+        accents:
+          title: Accents
+          items:
+            $ref: '#/components/schemas/VoiceGenerationParameterOptionResponseModel'
+          type: array
+        ages:
+          title: Ages
+          items:
+            $ref: '#/components/schemas/VoiceGenerationParameterOptionResponseModel'
+          type: array
+        minimum_characters:
+          title: Minimum Characters
+          type: integer
+        maximum_characters:
+          title: Maximum Characters
+          type: integer
+        minimum_accent_strength:
+          title: Minimum Accent Strength
+          type: number
+        maximum_accent_strength:
+          title: Maximum Accent Strength
+          type: number
+      type: object
+      required:
+        - genders
+        - accents
+        - ages
+        - minimum_characters
+        - maximum_characters
+        - minimum_accent_strength
+        - maximum_accent_strength
+    VoiceResponseModel:
+      title: VoiceResponseModel
+      properties:
+        description:
+          title: Description
+          type: string
+        voice_id:
+          title: Voice Id
+          type: string
+        name:
+          title: Name
+          type: string
+        samples:
+          title: Samples
+          items:
+            $ref: '#/components/schemas/SampleResponseModel'
+          type: array
+        category:
+          title: Category
+          type: string
+        fine_tuning:
+          $ref: '#/components/schemas/FineTuningResponseModel'
+        labels:
+          title: Labels
+          additionalProperties:
+            type: string
+          type: object
+        preview_url:
+          title: Preview Url
+          type: string
+        available_for_tiers:
+          title: Available For Tiers
+          items:
+            type: string
+          type: array
+        settings:
+          $ref: '#/components/schemas/VoiceSettingsResponseModel'
+        sharing:
+          $ref: '#/components/schemas/VoiceSharingResponseModel'
+        high_quality_base_model_ids:
+          title: High Quality Base Model Ids
+          items:
+            type: string
+          type: array
+        safety_control:
+          title: Safety Control
+          type: string
+          enum:
+            - NONE
+            - BAN
+            - CAPTCHA
+            - CAPTCHA_AND_MODERATION
+        voice_verification:
+          $ref: '#/components/schemas/VoiceVerificationResponseModel'
+      type: object
+      required:
+        - voice_id
+        - name
+        - samples
+        - category
+        - fine_tuning
+        - labels
+        - description
+        - preview_url
+        - available_for_tiers
+        - settings
+        - sharing
+        - high_quality_base_model_ids
+    VoiceSettingsResponseModel:
+      title: VoiceSettingsResponseModel
+      properties:
+        stability:
+          title: Stability
+          type: number
+        similarity_boost:
+          title: Similarity Boost
+          type: number
+        style:
+          title: Style
+          type: number
+          default: 0
+        use_speaker_boost:
+          title: Use Speaker Boost
+          type: boolean
+          default: true
+      type: object
+      required:
+        - stability
+        - similarity_boost
+    VoiceSharingResponseModel:
+      title: VoiceSharingResponseModel
+      properties:
+        description:
+          title: Description
+          type: string
+        status:
+          title: Status
+          type: string
+          enum:
+            - enabled
+            - disabled
+            - copied
+            - copied_disabled
+        history_item_sample_id:
+          title: History Item Sample Id
+          type: string
+        date_unix:
+          title: Date Unix
+          type: integer
+        whitelisted_emails:
+          title: Whitelisted Emails
+          items:
+            type: string
+          type: array
+        public_owner_id:
+          title: Public Owner Id
+          type: string
+        original_voice_id:
+          title: Original Voice Id
+          type: string
+        financial_rewards_enabled:
+          title: Financial Rewards Enabled
+          type: boolean
+        free_users_allowed:
+          title: Free Users Allowed
+          type: boolean
+        live_moderation_enabled:
+          title: Live Moderation Enabled
+          type: boolean
+        rate:
+          title: Rate
+          type: number
+        notice_period:
+          title: Notice Period
+          type: integer
+        disable_at_unix:
+          title: Disable At Unix
+          type: integer
+        voice_mixing_allowed:
+          title: Voice Mixing Allowed
+          type: boolean
+        instagram_username:
+          title: Instagram Username
+          type: string
+        twitter_username:
+          title: Twitter Username
+          type: string
+        youtube_username:
+          title: Youtube Username
+          type: string
+        tiktok_username:
+          title: Tiktok Username
+          type: string
+        featured:
+          title: Featured
+          type: boolean
+        ban_reason:
+          title: Ban Reason
+          type: string
+        liked_by_count:
+          title: Liked By Count
+          type: integer
+        cloned_by_count:
+          title: Cloned By Count
+          type: integer
+        name:
+          title: Name
+          type: string
+        labels:
+          title: Labels
+          additionalProperties:
+            type: string
+          type: object
+        review_status:
+          title: Review Status
+          type: string
+          enum:
+            - not_requested
+            - pending
+            - declined
+            - allowed
+            - allowed_with_changes
+        review_message:
+          title: Review Message
+          type: string
+        enabled_in_library:
+          title: Enabled In Library
+          type: boolean
+      type: object
+      required:
+        - status
+        - history_item_sample_id
+        - date_unix
+        - whitelisted_emails
+        - public_owner_id
+        - original_voice_id
+        - financial_rewards_enabled
+        - free_users_allowed
+        - live_moderation_enabled
+        - rate
+        - notice_period
+        - disable_at_unix
+        - voice_mixing_allowed
+        - instagram_username
+        - twitter_username
+        - youtube_username
+        - tiktok_username
+        - featured
+        - ban_reason
+        - liked_by_count
+        - cloned_by_count
+        - name
+        - description
+        - labels
+        - review_status
+        - review_message
+        - enabled_in_library
+    VoiceVerificationResponseModel:
+      title: VoiceVerificationResponseModel
+      properties:
+        requires_verification:
+          title: Requires Verification
+          type: boolean
+        is_verified:
+          title: Is Verified
+          type: boolean
+        verification_failures:
+          title: Verification Failures
+          items:
+            type: string
+          type: array
+        verification_attempts_count:
+          title: Verification Attempts Count
+          type: integer
+        language:
+          title: Language
+          type: string
+        verification_attempts:
+          title: Verification Attempts
+          items:
+            $ref: '#/components/schemas/VerificationAttemptResponseModel'
+          type: array
+      type: object
+      required:
+        - requires_verification
+        - is_verified
+        - verification_failures
+        - verification_attempts_count
+    SpeechhistoryDeleteHistoryItemByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    SamplesRemoveByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    VoicesDeleteByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    VoicesEditSettingsPostResponse:
+      type: object
+      properties: {}
+      example: {}
+    VoicesUpdateVoiceByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    ProjectsDeleteByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    ProjectsStartConversionResponse:
+      type: object
+      properties: {}
+      example: {}
+    ProjectsDeleteChapterByIdResponse:
+      type: object
+      properties: {}
+      example: {}
+    ProjectsStartChapterConversionResponse:
+      type: object
+      properties: {}
+      example: {}
+    ProjectsUpdatePronunciationDictionariesResponse:
+      type: object
+      properties: {}
+      example: {}
+    DubbingDeleteProjectResponse:
+      type: object
+      properties: {}
+      example: {}
+    DubbingGetProjectMetadataResponse:
+      type: object
+      properties: {}
+      example: {}
+    DubbingGetFileResponse:
+      type: object
+      properties: {}
+      example: {}
+    ModelsListAvailableModelsResponse:
+      title: Response Get Models V1 Models Get
+      items:
+        $ref: '#/components/schemas/ModelResponseModel'
+      type: array
+    RedirectToMintlifyDocsGetResponse:
+      type: object
+      properties: {}
+      example: {}

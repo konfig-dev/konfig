@@ -140,6 +140,16 @@ const customRequests: Record<string, CustomRequest> = {
       );
     },
   },
+  "elevenlabs.com": {
+    lambda: async () => {
+      const url = "https://api.elevenlabs.io/openapi.json";
+      const rawSpecString = await fetch(url).then((res) => res.text());
+      const parsed = JSON.parse(rawSpecString);
+      // add "https://api.elevenlabs.io" to servers
+      parsed.servers = [{ url: "https://api.elevenlabs.io" }];
+      return JSON.stringify(parsed);
+    },
+  },
   "finicity.com": {
     type: "GET",
     url: "https://static.developer.mastercard.com/content/open-banking-us/swagger/openbanking-us.yaml",

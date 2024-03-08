@@ -1,0 +1,259 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /docs:
+    get:
+      '200':
+        application/json: {}
+  /v1/dubbing/{dubbing_id}:
+    delete:
+      '200':
+        application/json: {}
+    get:
+      '200':
+        application/json: {}
+  /v1/dubbing/{dubbing_id}/audio/{language_code}:
+    get:
+      '200':
+        application/json: {}
+  /v1/history/{history_item_id}:
+    delete:
+      '200':
+        application/json: {}
+  /v1/projects/{project_id}:
+    delete:
+      '200':
+        application/json: {}
+  /v1/projects/{project_id}/chapters/{chapter_id}:
+    delete:
+      '200':
+        application/json: {}
+  /v1/projects/{project_id}/chapters/{chapter_id}/convert:
+    post:
+      '200':
+        application/json: {}
+  /v1/projects/{project_id}/convert:
+    post:
+      '200':
+        application/json: {}
+  /v1/projects/{project_id}/update-pronunciation-dictionaries:
+    post:
+      '200':
+        application/json: {}
+  /v1/voices/{voice_id}:
+    delete:
+      '200':
+        application/json: {}
+  /v1/voices/{voice_id}/edit:
+    post:
+      '200':
+        application/json: {}
+  /v1/voices/{voice_id}/samples/{sample_id}:
+    delete:
+      '200':
+        application/json: {}
+  /v1/voices/{voice_id}/settings/edit:
+    post:
+      '200':
+        application/json: {}
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /admin/{admin_url_prefix}/sso-provider:
+    get: Workspace_getSsoProviderAdmin
+  /docs:
+    get: Redirect_toMintlifyDocsGet
+  /v1/audio-native:
+    post: Audionative_createProjectWithEmbeddableHtml
+  /v1/dubbing:
+    post: Dubbing_fileInLanguage
+  /v1/dubbing/{dubbing_id}:
+    delete: Dubbing_deleteProject
+    get: Dubbing_getProjectMetadata
+  /v1/dubbing/{dubbing_id}/audio/{language_code}:
+    get: Dubbing_getFile
+  /v1/history:
+    get: Speechhistory_getGeneratedAudioMetadata
+  /v1/history/download:
+    post: Speechhistory_downloadHistoryItems
+  /v1/history/{history_item_id}:
+    delete: Speechhistory_deleteHistoryItemById
+    get: Speechhistory_getHistoryItemById
+  /v1/history/{history_item_id}/audio:
+    get: Speechhistory_getHistoryItemAudio
+  /v1/models:
+    get: Models_listAvailableModels
+  /v1/projects:
+    get: Projects_getAllProjects
+  /v1/projects/add:
+    post: Projects_createNewProject
+  /v1/projects/{project_id}:
+    delete: Projects_deleteById
+    get: Projects_getById
+  /v1/projects/{project_id}/chapters:
+    get: Projects_listChapters
+  /v1/projects/{project_id}/chapters/{chapter_id}:
+    delete: Projects_deleteChapterById
+    get: Projects_getChapterById
+  /v1/projects/{project_id}/chapters/{chapter_id}/convert:
+    post: Projects_startChapterConversion
+  /v1/projects/{project_id}/chapters/{chapter_id}/snapshots:
+    get: Projects_getChapterSnapshots
+  /v1/projects/{project_id}/chapters/{chapter_id}/snapshots/{chapter_snapshot_id}/stream:
+    post: Projects_streamAudioFromSnapshotPost
+  /v1/projects/{project_id}/convert:
+    post: Projects_startConversion
+  /v1/projects/{project_id}/snapshots:
+    get: Projects_listSnapshots
+  /v1/projects/{project_id}/snapshots/{project_snapshot_id}/stream:
+    post: Projects_streamAudioFromSnapshot
+  /v1/projects/{project_id}/update-pronunciation-dictionaries:
+    post: Projects_updatePronunciationDictionaries
+  /v1/pronunciation-dictionaries/add-from-file:
+    post: PronunciationDictionary_createFromFile
+  /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/:
+    get: PronunciationDictionary_getMetadata
+  /v1/shared-voices:
+    get: Voices_getSharedVoices
+  /v1/speech-to-speech/{voice_id}:
+    post: Speechtospeech_createWithVoice
+  /v1/speech-to-speech/{voice_id}/stream:
+    post: Speechtospeech_createWithVoice
+  /v1/text-to-speech/{voice_id}:
+    post: Texttospeech_convertTextToSpeech
+  /v1/text-to-speech/{voice_id}/stream:
+    post: Texttospeech_convertTextToSpeechStream
+  /v1/user:
+    get: User_getInfo
+  /v1/user/subscription:
+    get: User_getSubscriptionInfo
+  /v1/voice-generation/create-voice:
+    post: Voicegeneration_createVoice
+  /v1/voice-generation/generate-voice:
+    post: Voicegeneration_generateRandomVoice
+  /v1/voice-generation/generate-voice/parameters:
+    get: Voicegeneration_getVoiceGenerationParameters
+  /v1/voices:
+    get: Voices_listAllVoices
+  /v1/voices/add:
+    post: Voices_addVoiceToCollection
+  /v1/voices/add/{public_user_id}/{voice_id}:
+    post: Voices_addToCollection
+  /v1/voices/settings/default:
+    get: Voices_getDefaultVoiceSettings
+  /v1/voices/{voice_id}:
+    delete: Voices_deleteById
+    get: Voices_getVoiceMetadata
+  /v1/voices/{voice_id}/edit:
+    post: Voices_updateVoiceById
+  /v1/voices/{voice_id}/samples/{sample_id}:
+    delete: Samples_removeById
+  /v1/voices/{voice_id}/samples/{sample_id}/audio:
+    get: Samples_getAudioFromSample
+  /v1/voices/{voice_id}/settings:
+    get: Voices_getSettings
+  /v1/voices/{voice_id}/settings/edit:
+    post: Voices_editSettingsPost
+operationTags:
+  /docs:
+    get: redirect
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames:
+  /docs:
+    get:
+      '200':
+        application/json: RedirectToMintlifyDocsGetResponse
+  /v1/dubbing/{dubbing_id}:
+    delete:
+      '200':
+        application/json: DubbingDeleteProjectResponse
+    get:
+      '200':
+        application/json: DubbingGetProjectMetadataResponse
+  /v1/dubbing/{dubbing_id}/audio/{language_code}:
+    get:
+      '200':
+        application/json: DubbingGetFileResponse
+  /v1/history/{history_item_id}:
+    delete:
+      '200':
+        application/json: SpeechhistoryDeleteHistoryItemByIdResponse
+  /v1/models:
+    get:
+      '200':
+        application/json: ModelsListAvailableModelsResponse
+  /v1/projects/{project_id}:
+    delete:
+      '200':
+        application/json: ProjectsDeleteByIdResponse
+  /v1/projects/{project_id}/chapters/{chapter_id}:
+    delete:
+      '200':
+        application/json: ProjectsDeleteChapterByIdResponse
+  /v1/projects/{project_id}/chapters/{chapter_id}/convert:
+    post:
+      '200':
+        application/json: ProjectsStartChapterConversionResponse
+  /v1/projects/{project_id}/convert:
+    post:
+      '200':
+        application/json: ProjectsStartConversionResponse
+  /v1/projects/{project_id}/update-pronunciation-dictionaries:
+    post:
+      '200':
+        application/json: ProjectsUpdatePronunciationDictionariesResponse
+  /v1/voices/{voice_id}:
+    delete:
+      '200':
+        application/json: VoicesDeleteByIdResponse
+  /v1/voices/{voice_id}/edit:
+    post:
+      '200':
+        application/json: VoicesUpdateVoiceByIdResponse
+  /v1/voices/{voice_id}/samples/{sample_id}:
+    delete:
+      '200':
+        application/json: SamplesRemoveByIdResponse
+  /v1/voices/{voice_id}/settings/edit:
+    post:
+      '200':
+        application/json: VoicesEditSettingsPostResponse
+securityParameters:
+  accent:
+    query: false
+  age:
+    query: false
+  category:
+    query: false
+  descriptives:
+    query: false
+  featured:
+    query: false
+  gender:
+    query: false
+  optimize_streaming_latency:
+    query: false
+  output_format:
+    query: false
+  page:
+    query: false
+  page_size:
+    query: false
+  search:
+    query: false
+  sort:
+    query: false
+  start_after_history_item_id:
+    query: false
+  use_cases:
+    query: false
+  voice_id:
+    query: false
+  with_settings:
+    query: false
+  workspace_id:
+    query: false
+  xi-api-key:
+    header: false
+validServerUrls: {}
