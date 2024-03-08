@@ -63,9 +63,9 @@ export async function fixParametersThatShouldBeSecurityRequirements({
         // securityName and add it to that securityRequirement object. If
         // all security requirements have matching "name" and "in", then
         // create a new SecurityRequirement object.
-        let foundMatch = false
+        let foundNonConflictingSecurityRequirementObject = false
         for (const securityRequirement of securityRequirements) {
-          if (foundMatch) break
+          if (foundNonConflictingSecurityRequirementObject) break
           const securitySchemeNames = Object.keys(securityRequirement)
           for (const securitySchemeName of securitySchemeNames) {
             const securitySchemeOrRef =
@@ -90,16 +90,15 @@ export async function fixParametersThatShouldBeSecurityRequirements({
               existingParameterName !== securityParameterName ||
               existingParameterIn !== parameterIn
             ) {
-              foundMatch = true
+              foundNonConflictingSecurityRequirementObject = true
               // add to existing securityRequirement object
               securityRequirement[securityName] = []
               break
             }
           }
         }
-        if (!foundMatch) {
+        if (!foundNonConflictingSecurityRequirementObject) {
           securityRequirements.push({ [securityName]: [] })
-          break
         }
       }
       operation.security = securityRequirements
