@@ -191,6 +191,14 @@ function generateDescriptionMdx({ apiDescription }: Published): string {
       .join(", ")} }}`;
   });
 
+  // convert "<https://docs.gitlab.com/ee/api/>" to
+  // "[docs.gitlab.com/ee/api](https://docs.gitlab.com/ee/api/)"
+  // Specifically only match links that start with "http" or "https" inside angle brackets
+  const linkRegex = /<(https?:\/\/[^>]+)>/g;
+  apiDescription = apiDescription.replace(linkRegex, (match, link) => {
+    return `[${link}](${link})`;
+  });
+
   return apiDescription;
 }
 

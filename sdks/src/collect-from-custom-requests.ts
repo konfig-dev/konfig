@@ -124,6 +124,10 @@ async function executeCustomRequest(
 }
 
 const customRequests: Record<string, CustomRequest> = {
+  "gitlab.com": {
+    type: "GET",
+    url: "https://gitlab.com/gitlab-org/gitlab/-/raw/master/doc/api/openapi/openapi.yaml",
+  },
   "mailchimp.com": {
     lambda: async () => {
       const url = "https://api.mailchimp.com/schema/3.0/Swagger.json?expand";

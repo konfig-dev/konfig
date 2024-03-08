@@ -1,0 +1,3881 @@
+openapi: 3.0.1
+info:
+  title: GitLab API
+  description: >
+    An OpenAPI definition for the GitLab REST API.
+
+    Few API resources or endpoints are currently included.
+
+    The intent is to expand this to match the entire Markdown documentation of
+    the API:
+
+    <https://docs.gitlab.com/ee/api/>. Contributions are welcome.
+
+
+    When viewing this on gitlab.com, you can test API calls directly from the
+    browser
+
+    against the `gitlab.com` instance, if you are logged in.
+
+    The feature uses the current [GitLab session
+    cookie](https://docs.gitlab.com/ee/api/index.html#session-cookie),
+
+    so each request is made using your account.
+
+
+    Instructions for using this tool can be found in [Interactive API
+    Documentation](https://docs.gitlab.com/ee/api/openapi/openapi_interactive.html)
+  version: v4
+  termsOfService: https://about.gitlab.com/terms/
+  license:
+    name: CC BY-SA 4.0
+    url: https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE
+  x-konfig-ignore:
+    potential-incorrect-type: true
+servers:
+  - url: https://www.gitlab.com/api
+tags:
+  - description: Operations about badges
+    name: badges
+  - description: Operations about branches
+    name: branches
+  - description: Operations related to access requests
+    name: access_requests
+  - description: Operations about bulk_imports
+    name: bulk_imports
+  - description: Operations about alert_managements
+    name: alert_management
+  - description: Operations about broadcast_messages
+    name: broadcast_messages
+  - description: Operations related to CI/CD variables
+    name: ci_variables
+  - description: Operations related to clusters
+    name: clusters
+  - description: Operations about batched_background_migrations
+    name: batched_background_migrations
+  - description: Operations about applications
+    name: applications
+  - description: Operations related to CI Jobs
+    name: jobs
+  - description: Operations about applications
+    name: application
+  - description: Operations related to metadata of the GitLab instance
+    name: metadata
+  - description: Operations related to plan limits
+    name: plan_limits
+  - description: Operations about admins
+    name: admin
+  - description: Operations about migrations
+    name: migrations
+  - description: Operations about avatars
+    name: avatar
+  - description: Operations related to linting a CI config file
+    name: ci_lint
+  - description: Operations to manage job concurrency with resource groups
+    name: ci_resource_groups
+  - description: Operations related to the GitLab agent for Kubernetes
+    name: cluster_agents
+  - description: Operations related to Composer packages
+    name: composer_packages
+  - description: Operations related to Conan packages
+    name: conan_packages
+  - description: Operations related to container registry
+    name: container_registry
+  - description: Operations related to container registry events
+    name: container_registry_event
+  - description: Operations related to dashboard annotations
+    name: dashboard_annotations
+  - description: Operations related to Debian Linux distributions
+    name: debian_distribution
+  - description: Operations related to Debian Linux packages
+    name: debian_packages
+  - description: Operations to manage dependency proxy for a groups
+    name: dependency_proxy
+  - description: Operations related to deploy keys
+    name: deploy_keys
+  - description: Operations related to deploy tokens
+    name: deploy_tokens
+  - description: Operations related to deployments
+    name: deployments
+  - description: Operations related to DevOps Research and Assessment (DORA) key metrics
+    name: dora_metrics
+  - description: Operations related to environments
+    name: environments
+  - description: Operations related to error tracking client keys
+    name: error_tracking_client_keys
+  - description: Operations related to error tracking project settings
+    name: error_tracking_project_settings
+  - description: Operations related to accessing GitLab feature flag user lists
+    name: feature_flags_user_lists
+  - description: Operations related to feature flags
+    name: feature_flags
+  - description: Operations related to managing Flipper-based feature flags
+    name: features
+  - description: Operations related to deploy freeze periods
+    name: freeze_periods
+  - description: Operations related to Generic packages
+    name: generic_packages
+  - description: Operations related to Geo
+    name: geo
+  - description: Operations related Geo Nodes
+    name: geo_nodes
+  - description: Operations related to Go Proxy
+    name: go_proxy
+  - description: Operations related to exporting groups
+    name: group_export
+  - description: Operations related to importing groups
+    name: group_import
+  - description: Operations related to group packages
+    name: group_packages
+  - description: Operations related to Helm packages
+    name: helm_packages
+  - description: Operations related to integrations
+    name: integrations
+  - description: Operations related to issue links
+    name: issue_links
+  - description: Operations related to JiraConnect subscriptions
+    name: jira_connect_subscriptions
+  - description: Operations related to Maven packages
+    name: maven_packages
+  - description: Operations related to merge requests
+    name: merge_requests
+  - description: Operations related to User-starred metrics dashboards
+    name: metrics_user_starred_dashboards
+  - description: Operations related to Model registry
+    name: ml_model_registry
+  - description: Operations related to NPM packages
+    name: npm_packages
+  - description: Operations related to Nuget packages
+    name: nuget_packages
+  - description: Operations about package files
+    name: package_files
+  - description: Operations related to exporting projects
+    name: project_export
+  - description: Operations related to project hooks
+    name: project_hooks
+  - description: Operations related to importing projects
+    name: project_import
+  - description: Operations related to importing BitBucket projects
+    name: project_import_bitbucket
+  - description: Operations related to importing GitHub projects
+    name: project_import_github
+  - description: Operations related to project packages
+    name: project_packages
+  - description: Operations related to projects
+    name: projects
+  - description: Operations related to protected environments
+    name: protected environments
+  - description: Operations related to PyPI packages
+    name: pypi_packages
+  - description: Operations related to release assets (links)
+    name: release_links
+  - description: Operations related to releases
+    name: releases
+  - description: Operations about resource milestone events
+    name: resource_milestone_events
+  - description: Operations related to RPM packages
+    name: rpm_packages
+  - description: Operations related to RubyGems
+    name: rubygem_packages
+  - description: Operations related to suggestions
+    name: suggestions
+  - description: Operations related to system hooks
+    name: system_hooks
+  - description: Operations related to Terraform state files
+    name: terraform_state
+  - description: Operations related to the Terraform module registry
+    name: terraform_registry
+  - description: Operations related to Unleash API
+    name: unleash_api
+paths:
+  /api/v4/groups/{id}/badges/{badge_id}:
+    get:
+      tags:
+        - badges
+      summary: Gets a badge of a group.
+      operationId: Badges_getGroupBadge
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The badge ID
+          name: badge_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Gets a badge of a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Badge'
+    put:
+      tags:
+        - badges
+      summary: Updates a badge of a group.
+      operationId: Badges_updateGroupBadge
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: badge_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgesUpdateGroupBadgeRequest'
+      responses:
+        '200':
+          description: Updates a badge of a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Badge'
+    delete:
+      tags:
+        - badges
+      summary: Removes a badge from the group.
+      operationId: Badges_removeFromGroup
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The badge ID
+          name: badge_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Removes a badge from the group.
+          content: {}
+  /api/v4/groups/{id}/badges:
+    get:
+      tags:
+        - badges
+      summary: Gets a list of group badges viewable by the authenticated user.
+      operationId: Badges_getList
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - description: Name for the badge
+          name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Gets a list of group badges viewable by the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgesGetListResponse'
+    post:
+      tags:
+        - badges
+      summary: Adds a badge to a group.
+      operationId: Badges_addBadgeToGroup
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgesAddBadgeToGroupRequest'
+        required: true
+      responses:
+        '201':
+          description: Adds a badge to a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Badge'
+  /api/v4/groups/{id}/badges/render:
+    get:
+      tags:
+        - badges
+      summary: Preview a badge from a group.
+      operationId: Badges_previewBadgeFromGroup
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: URL of the badge link
+          name: link_url
+          in: query
+          required: true
+          schema:
+            type: string
+        - description: URL of the badge image
+          name: image_url
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Preview a badge from a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BasicBadgeDetails'
+  /api/v4/groups/{id}/access_requests/{user_id}:
+    delete:
+      tags:
+        - access_requests
+      summary: Denies an access request for the given user.
+      operationId: Accessrequests_denyAccessToUser
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The user ID of the access requester
+          name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Denies an access request for the given user.
+          content: {}
+  /api/v4/groups/{id}/access_requests/{user_id}/approve:
+    put:
+      tags:
+        - access_requests
+      summary: Approves an access request for the given user.
+      operationId: Accessrequests_approveForUser
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The user ID of the access requester
+          name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessrequestsApproveForUserRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_AccessRequester'
+            successfull_response:
+              example:
+                id: 1
+                username: raymond_smith
+                name: Raymond Smith
+                state: active
+                created_at: '2012-10-22T14:13:35.000Z'
+                access_level: 20
+  /api/v4/groups/{id}/access_requests:
+    get:
+      tags:
+        - access_requests
+      summary: Gets a list of access requests for a group.
+      operationId: Accessrequests_getList
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+      responses:
+        '200':
+          description: Gets a list of access requests for a group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_AccessRequester'
+    post:
+      tags:
+        - access_requests
+      summary: Requests access for the authenticated user to a group.
+      operationId: Accessrequests_requestAccessToGroup
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the group owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_AccessRequester'
+            successfull_response:
+              example:
+                id: 1
+                username: raymond_smith
+                name: Raymond Smith
+                state: active
+                created_at: '2012-10-22T14:13:35.000Z'
+                access_level: 20
+  /api/v4/projects/{id}/repository/merged_branches:
+    delete:
+      tags:
+        - branches
+      operationId: Branches_deleteMerged
+      description: Delete all merged branches
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: 202 Accepted
+          content: {}
+        '404':
+          description: 404 Project Not Found
+          content: {}
+  /api/v4/projects/{id}/repository/branches/{branch}:
+    get:
+      tags:
+        - branches
+      operationId: Branches_getSingleBranch
+      description: Get a single repository branch
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: branch
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Get a single repository branch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Branch'
+        '404':
+          description: Branch Not Found
+          content: {}
+    delete:
+      tags:
+        - branches
+      operationId: Branches_deleteBranch
+      description: Delete a branch
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The name of the branch
+          name: branch
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Delete a branch
+          content: {}
+        '404':
+          description: Branch Not Found
+          content: {}
+    head:
+      tags:
+        - branches
+      operationId: Branches_checkIfExists
+      description: Check if a branch exists
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The name of the branch
+          name: branch
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+          content: {}
+        '404':
+          description: Not Found
+          content: {}
+  /api/v4/projects/{id}/repository/branches:
+    get:
+      tags:
+        - branches
+      operationId: Branches_getAll
+      description: Get a project repository branches
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - description: Return list of branches matching the search criteria
+          name: search
+          in: query
+          schema:
+            type: string
+        - description: Return list of branches matching the regex
+          name: regex
+          in: query
+          schema:
+            type: string
+        - description: Return list of branches sorted by the given field
+          name: sort
+          in: query
+          schema:
+            type: string
+            enum:
+              - name_asc
+              - updated_asc
+              - updated_desc
+        - description: Name of branch to start the pagination from
+          name: page_token
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get a project repository branches
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BranchesGetAllResponse'
+        '404':
+          description: 404 Project Not Found
+          content: {}
+    post:
+      tags:
+        - branches
+      operationId: Branches_createBranch
+      description: Create branch
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The name of the branch
+          name: branch
+          in: query
+          required: true
+          schema:
+            type: string
+        - description: Create branch from commit sha or existing branch
+          name: ref
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Create branch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Branch'
+        '400':
+          description: Failed to create branch
+          content: {}
+  /api/v4/projects/{id}/repository/branches/{branch}/unprotect:
+    put:
+      tags:
+        - branches
+      operationId: Branches_unprotectBranch
+      description: Unprotect a single branch
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The name of the branch
+          name: branch
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Unprotect a single branch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Branch'
+        '404':
+          description: 404 Project Not Found
+          content: {}
+  /api/v4/projects/{id}/repository/branches/{branch}/protect:
+    put:
+      tags:
+        - branches
+      operationId: Branches_protectBranch
+      description: Protect a single branch
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The name of the branch
+          name: branch
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BranchesProtectBranchRequest'
+      responses:
+        '200':
+          description: Protect a single branch
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Branch'
+        '404':
+          description: 404 Branch Not Found
+          content: {}
+  /api/v4/projects/{id}/badges/{badge_id}:
+    get:
+      tags:
+        - badges
+      summary: Gets a badge of a project.
+      operationId: Badges_getProjectBadge
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The badge ID
+          name: badge_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Gets a badge of a project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Badge'
+    put:
+      tags:
+        - badges
+      summary: Updates a badge of a project.
+      operationId: Badges_updateProjectBadge
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: badge_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgesUpdateProjectBadgeRequest'
+      responses:
+        '200':
+          description: Updates a badge of a project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Badge'
+    delete:
+      tags:
+        - badges
+      summary: Removes a badge from the project.
+      operationId: Badges_removeFromProject
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The badge ID
+          name: badge_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Removes a badge from the project.
+          content: {}
+  /api/v4/projects/{id}/badges:
+    get:
+      tags:
+        - badges
+      summary: Gets a list of project badges viewable by the authenticated user.
+      operationId: Badges_listViewableByAuthenticatedUser
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - description: Name for the badge
+          name: name
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Gets a list of project badges viewable by the authenticated user.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/BadgesListViewableByAuthenticatedUserResponse
+    post:
+      tags:
+        - badges
+      summary: Adds a badge to a project.
+      operationId: Badges_addProjectBadge
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgesAddProjectBadgeRequest'
+        required: true
+      responses:
+        '201':
+          description: Adds a badge to a project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Badge'
+  /api/v4/projects/{id}/badges/render:
+    get:
+      tags:
+        - badges
+      summary: Preview a badge from a project.
+      operationId: Badges_renderPreviewFromProject
+      description: This feature was introduced in GitLab 10.6.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user.
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: URL of the badge link
+          name: link_url
+          in: query
+          required: true
+          schema:
+            type: string
+        - description: URL of the badge image
+          name: image_url
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Preview a badge from a project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BasicBadgeDetails'
+  /api/v4/projects/{id}/access_requests/{user_id}:
+    delete:
+      tags:
+        - access_requests
+      summary: Denies an access request for the given user.
+      operationId: Accessrequests_denyAccessToUser
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The user ID of the access requester
+          name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Denies an access request for the given user.
+          content: {}
+  /api/v4/projects/{id}/access_requests/{user_id}/approve:
+    put:
+      tags:
+        - access_requests
+      summary: Approves an access request for the given user.
+      operationId: Accessrequests_approveForUser
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The user ID of the access requester
+          name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessrequestsApproveForUserRequest1'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_AccessRequester'
+            successfull_response:
+              example:
+                id: 1
+                username: raymond_smith
+                name: Raymond Smith
+                state: active
+                created_at: '2012-10-22T14:13:35.000Z'
+                access_level: 20
+  /api/v4/projects/{id}/access_requests:
+    get:
+      tags:
+        - access_requests
+      summary: Gets a list of access requests for a project.
+      operationId: Accessrequests_getList
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+      responses:
+        '200':
+          description: Gets a list of access requests for a project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_AccessRequester'
+    post:
+      tags:
+        - access_requests
+      summary: Requests access for the authenticated user to a project.
+      operationId: Accessrequests_requestAccessToProject
+      description: This feature was introduced in GitLab 8.11.
+      parameters:
+        - description: >-
+            The ID or URL-encoded path of the project owned by the authenticated
+            user
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_AccessRequester'
+            successfull_response:
+              example:
+                id: 1
+                username: raymond_smith
+                name: Raymond Smith
+                state: active
+                created_at: '2012-10-22T14:13:35.000Z'
+                access_level: 20
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}:
+    put:
+      tags:
+        - alert_management
+      operationId: Alertmanagement_updateMetricImage
+      description: Update a metric image for an alert
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The IID of the Alert
+          name: alert_iid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - description: The ID of metric image
+          name: metric_image_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AlertmanagementUpdateMetricImageRequest'
+      responses:
+        '200':
+          description: Update a metric image for an alert
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_MetricImage'
+        '403':
+          description: Forbidden
+          content: {}
+        '422':
+          description: Unprocessable entity
+          content: {}
+    delete:
+      tags:
+        - alert_management
+      operationId: Alertmanagement_removeMetricImage
+      description: Remove a metric image for an alert
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The IID of the Alert
+          name: alert_iid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - description: The ID of metric image
+          name: metric_image_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Remove a metric image for an alert
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_MetricImage'
+        '403':
+          description: Forbidden
+          content: {}
+        '422':
+          description: Unprocessable entity
+          content: {}
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images:
+    get:
+      tags:
+        - alert_management
+      operationId: Alertmanagement_getMetricImagesForAlert
+      description: Metric Images for alert
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The IID of the Alert
+          name: alert_iid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Metric Images for alert
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/AlertmanagementGetMetricImagesForAlertResponse
+        '404':
+          description: Not found
+          content: {}
+    post:
+      tags:
+        - alert_management
+      operationId: Alertmanagement_uploadMetricImage
+      description: Upload a metric image for an alert
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The IID of the Alert
+          name: alert_iid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AlertmanagementUploadMetricImageRequest'
+        required: true
+      responses:
+        '200':
+          description: Upload a metric image for an alert
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_MetricImage'
+        '403':
+          description: Forbidden
+          content: {}
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/authorize:
+    post:
+      tags:
+        - alert_management
+      operationId: Alertmanagement_authorizeMetricImageUpload
+      description: Workhorse authorize metric image file upload
+      parameters:
+        - description: The ID or URL-encoded path of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - description: The IID of the Alert
+          name: alert_iid
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Workhorse authorize metric image file upload
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+  /api/v4/admin/batched_background_migrations/{id}:
+    get:
+      tags:
+        - batched_background_migrations
+      operationId: Batchedbackgroundmigrations_getMigration
+      description: Retrieve a batched background migration
+      parameters:
+        - description: The name of the database
+          name: database
+          in: query
+          schema:
+            type: string
+            default: main
+            enum:
+              - main
+              - ci
+              - embedding
+              - main_clusterwide
+              - geo
+        - description: The batched background migration id
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Retrieve a batched background migration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BatchedBackgroundMigration'
+        '401':
+          description: 401 Unauthorized
+          content: {}
+        '403':
+          description: 403 Forbidden
+          content: {}
+        '404':
+          description: 404 Not found
+          content: {}
+  /api/v4/admin/batched_background_migrations:
+    get:
+      tags:
+        - batched_background_migrations
+      operationId: Batchedbackgroundmigrations_list
+      description: Get the list of batched background migrations
+      parameters:
+        - description: The name of the database, the default `main`
+          name: database
+          in: query
+          schema:
+            type: string
+            default: main
+            enum:
+              - main
+              - ci
+              - embedding
+              - main_clusterwide
+              - geo
+      responses:
+        '200':
+          description: Get the list of batched background migrations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchedbackgroundmigrationsListResponse'
+        '401':
+          description: 401 Unauthorized
+          content: {}
+        '403':
+          description: 403 Forbidden
+          content: {}
+  /api/v4/admin/batched_background_migrations/{id}/resume:
+    put:
+      tags:
+        - batched_background_migrations
+      operationId: Batchedbackgroundmigrations_resumeMigration
+      description: Resume a batched background migration
+      parameters:
+        - description: The batched background migration id
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/BatchedbackgroundmigrationsResumeMigrationRequest
+      responses:
+        '200':
+          description: Resume a batched background migration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BatchedBackgroundMigration'
+        '401':
+          description: 401 Unauthorized
+          content: {}
+        '403':
+          description: 403 Forbidden
+          content: {}
+        '404':
+          description: 404 Not found
+          content: {}
+        '422':
+          description: You can resume only `paused` batched background migrations.
+          content: {}
+  /api/v4/admin/batched_background_migrations/{id}/pause:
+    put:
+      tags:
+        - batched_background_migrations
+      operationId: Batchedbackgroundmigrations_pauseMigration
+      description: Pause a batched background migration
+      parameters:
+        - description: The batched background migration id
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/BatchedbackgroundmigrationsPauseMigrationRequest
+      responses:
+        '200':
+          description: Pause a batched background migration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BatchedBackgroundMigration'
+        '401':
+          description: 401 Unauthorized
+          content: {}
+        '403':
+          description: 403 Forbidden
+          content: {}
+        '404':
+          description: 404 Not found
+          content: {}
+        '422':
+          description: You can pause only `active` batched background migrations.
+          content: {}
+  /api/v4/admin/ci/variables/{key}:
+    get:
+      tags:
+        - ci_variables
+      operationId: Civariables_getSpecificInstanceVariable
+      description: Get the details of a specific instance-level variable
+      parameters:
+        - description: The key of a variable
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Get the details of a specific instance-level variable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Ci_Variable'
+        '404':
+          description: Instance Variable Not Found
+          content: {}
+    put:
+      tags:
+        - ci_variables
+      operationId: Civariables_updateInstanceVariable
+      description: Update an instance-level variable
+      parameters:
+        - description: The key of a variable
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CivariablesUpdateInstanceVariableRequest'
+      responses:
+        '200':
+          description: Update an instance-level variable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Ci_Variable'
+        '404':
+          description: Instance Variable Not Found
+          content: {}
+    delete:
+      tags:
+        - ci_variables
+      operationId: Civariables_deleteInstanceVariable
+      description: Delete an existing instance-level variable
+      parameters:
+        - description: The key of a variable
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Delete an existing instance-level variable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Ci_Variable'
+        '404':
+          description: Instance Variable Not Found
+          content: {}
+  /api/v4/admin/ci/variables:
+    get:
+      tags:
+        - ci_variables
+      operationId: Civariables_listInstanceVariables
+      description: List all instance-level variables
+      parameters:
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+      responses:
+        '200':
+          description: List all instance-level variables
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Ci_Variable'
+    post:
+      tags:
+        - ci_variables
+      operationId: Civariables_createNewInstanceVariable
+      description: Create a new instance-level variable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CivariablesCreateNewInstanceVariableRequest'
+        required: true
+      responses:
+        '201':
+          description: Create a new instance-level variable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Ci_Variable'
+        '400':
+          description: 400 Bad Request
+          content: {}
+  /api/v4/admin/databases/{database_name}/dictionary/tables/{table_name}:
+    get:
+      tags:
+        - admin
+      operationId: Admin_getDictionaryDetails
+      description: Retrieve dictionary details
+      parameters:
+        - description: The database name
+          name: database_name
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - main
+              - ci
+        - description: The table name
+          name: table_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Retrieve dictionary details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Dictionary_Table'
+        '401':
+          description: 401 Unauthorized
+          content: {}
+        '403':
+          description: 403 Forbidden
+          content: {}
+        '404':
+          description: 404 Not found
+          content: {}
+  /api/v4/admin/clusters/{cluster_id}:
+    get:
+      tags:
+        - clusters
+      summary: Get a single instance cluster
+      operationId: Clusters_getSingleInstanceCluster
+      description: >-
+        This feature was introduced in GitLab 13.2. Returns a single instance
+        cluster.
+      parameters:
+        - description: The cluster ID
+          name: cluster_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Get a single instance cluster
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Cluster'
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+    put:
+      tags:
+        - clusters
+      summary: Edit instance cluster
+      operationId: Clusters_updateInstanceCluster
+      description: >-
+        This feature was introduced in GitLab 13.2. Updates an existing instance
+        cluster.
+      parameters:
+        - description: The cluster ID
+          name: cluster_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClustersUpdateInstanceClusterRequest'
+      responses:
+        '200':
+          description: Edit instance cluster
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Cluster'
+        '400':
+          description: Validation error
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+    delete:
+      tags:
+        - clusters
+      summary: Delete instance cluster
+      operationId: Clusters_deleteInstanceCluster
+      description: >-
+        This feature was introduced in GitLab 13.2. Deletes an existing instance
+        cluster. Does not remove existing resources within the connected
+        Kubernetes cluster.
+      parameters:
+        - description: The cluster ID
+          name: cluster_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Delete instance cluster
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Cluster'
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+  /api/v4/admin/clusters/add:
+    post:
+      tags:
+        - clusters
+      summary: Add existing instance cluster
+      operationId: Clusters_addExistingKubernetesInstanceCluster
+      description: >-
+        This feature was introduced in GitLab 13.2. Adds an existing Kubernetes
+        instance cluster.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/ClustersAddExistingKubernetesInstanceClusterRequest
+        required: true
+      responses:
+        '201':
+          description: Add existing instance cluster
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Cluster'
+        '400':
+          description: Validation error
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+  /api/v4/admin/clusters:
+    get:
+      tags:
+        - clusters
+      summary: List instance clusters
+      operationId: Clusters_listInstanceClusters
+      description: >-
+        This feature was introduced in GitLab 13.2. Returns a list of instance
+        clusters.
+      responses:
+        '200':
+          description: List instance clusters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClustersListInstanceClustersResponse'
+        '403':
+          description: Forbidden
+          content: {}
+  /api/v4/admin/migrations/{timestamp}/mark:
+    post:
+      tags:
+        - migrations
+      operationId: Migrations_markAsExecuted
+      description: Mark the migration as successfully executed
+      parameters:
+        - description: The migration version timestamp
+          name: timestamp
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MigrationsMarkAsExecutedRequest'
+      responses:
+        '201':
+          description: 201 Created
+          content: {}
+        '401':
+          description: 401 Unauthorized
+          content: {}
+        '403':
+          description: 403 Forbidden
+          content: {}
+        '404':
+          description: 404 Not found
+          content: {}
+        '422':
+          description: You can mark only pending migrations
+          content: {}
+  /api/v4/applications/{id}:
+    delete:
+      tags:
+        - applications
+      summary: Delete an application
+      operationId: Applications_deleteSpecificApplication
+      description: Delete a specific application
+      parameters:
+        - description: The ID of the application (not the application_id)
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '204':
+          description: Delete an application
+          content: {}
+  /api/v4/applications:
+    get:
+      tags:
+        - applications
+      summary: Get applications
+      operationId: Applications_listAllRegistered
+      description: List all registered applications
+      responses:
+        '200':
+          description: Get applications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationsListAllRegisteredResponse'
+    post:
+      tags:
+        - applications
+      summary: Create a new application
+      operationId: Applications_createNewApplication
+      description: This feature was introduced in GitLab 10.5
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationsCreateNewApplicationRequest'
+        required: true
+      responses:
+        '200':
+          description: Create a new application
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_ApplicationWithSecret'
+  /api/v4/avatar:
+    get:
+      tags:
+        - avatar
+      operationId: Avatar_getUrlForUser
+      description: Return avatar url for a user
+      parameters:
+        - description: Public email address of the user
+          name: email
+          in: query
+          required: true
+          schema:
+            type: string
+        - description: Single pixel dimension for Gravatar images
+          name: size
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Return avatar url for a user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Avatar'
+  /api/v4/broadcast_messages/{id}:
+    get:
+      tags:
+        - broadcast_messages
+      summary: Get a specific broadcast message
+      operationId: Broadcastmessages_getSpecificMessage
+      description: This feature was introduced in GitLab 8.12.
+      parameters:
+        - description: Broadcast message ID
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Get a specific broadcast message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BroadcastMessage'
+    put:
+      tags:
+        - broadcast_messages
+      summary: Update a broadcast message
+      operationId: Broadcastmessages_updateMessage
+      description: This feature was introduced in GitLab 8.12.
+      parameters:
+        - description: Broadcast message ID
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BroadcastmessagesUpdateMessageRequest'
+      responses:
+        '200':
+          description: Update a broadcast message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BroadcastMessage'
+    delete:
+      tags:
+        - broadcast_messages
+      summary: Delete a broadcast message
+      operationId: Broadcastmessages_deleteMessage
+      description: This feature was introduced in GitLab 8.12.
+      parameters:
+        - description: Broadcast message ID
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Delete a broadcast message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BroadcastMessage'
+  /api/v4/broadcast_messages:
+    get:
+      tags:
+        - broadcast_messages
+      summary: Get all broadcast messages
+      operationId: Broadcastmessages_listAll
+      description: This feature was introduced in GitLab 8.12.
+      parameters:
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+      responses:
+        '200':
+          description: Get all broadcast messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BroadcastMessage'
+    post:
+      tags:
+        - broadcast_messages
+      summary: Create a broadcast message
+      operationId: Broadcastmessages_createMessage
+      description: This feature was introduced in GitLab 8.12.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BroadcastmessagesCreateMessageRequest'
+        required: true
+      responses:
+        '201':
+          description: Create a broadcast message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BroadcastMessage'
+  /api/v4/bulk_imports/{import_id}/entities/{entity_id}:
+    get:
+      tags:
+        - bulk_imports
+      summary: Get GitLab Migration entity details
+      operationId: Bulkimports_getEntityDetails
+      description: This feature was introduced in GitLab 14.1.
+      parameters:
+        - description: The ID of user's GitLab Migration
+          name: import_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - description: The ID of GitLab Migration entity
+          name: entity_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Get GitLab Migration entity details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BulkImports'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+        '503':
+          description: Service unavailable
+          content: {}
+  /api/v4/bulk_imports/{import_id}/entities:
+    get:
+      tags:
+        - bulk_imports
+      summary: List GitLab Migration entities
+      operationId: Bulkimports_listEntities
+      description: This feature was introduced in GitLab 14.1.
+      parameters:
+        - description: The ID of user's GitLab Migration
+          name: import_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - description: Return import entities with specified status
+          name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - created
+              - started
+              - finished
+              - timeout
+              - failed
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+      responses:
+        '200':
+          description: List GitLab Migration entities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkimportsListEntitiesResponse'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+        '503':
+          description: Service unavailable
+          content: {}
+  /api/v4/bulk_imports/{import_id}:
+    get:
+      tags:
+        - bulk_imports
+      summary: Get GitLab Migration details
+      operationId: Bulkimports_getMigrationDetails
+      description: This feature was introduced in GitLab 14.1.
+      parameters:
+        - description: The ID of user's GitLab Migration
+          name: import_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Get GitLab Migration details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BulkImport'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+        '503':
+          description: Service unavailable
+          content: {}
+  /api/v4/bulk_imports/entities:
+    get:
+      tags:
+        - bulk_imports
+      summary: List all GitLab Migrations' entities
+      operationId: Bulkimports_listEntities
+      description: This feature was introduced in GitLab 14.1.
+      parameters:
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - description: Return GitLab Migrations sorted in created by `asc` or `desc` order.
+          name: sort
+          in: query
+          schema:
+            type: string
+            default: desc
+            enum:
+              - asc
+              - desc
+        - description: Return all GitLab Migrations' entities with specified status
+          name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - created
+              - started
+              - finished
+              - timeout
+              - failed
+      responses:
+        '200':
+          description: List all GitLab Migrations' entities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkimportsListEntities200Response'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+        '503':
+          description: Service unavailable
+          content: {}
+  /api/v4/bulk_imports:
+    get:
+      tags:
+        - bulk_imports
+      summary: List all GitLab Migrations
+      operationId: Bulkimports_listMigrations
+      description: This feature was introduced in GitLab 14.1.
+      parameters:
+        - description: Current page number
+          name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: Number of items per page
+          name: per_page
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - description: Return GitLab Migrations sorted in created by `asc` or `desc` order.
+          name: sort
+          in: query
+          schema:
+            type: string
+            default: desc
+            enum:
+              - asc
+              - desc
+        - description: Return GitLab Migrations with specified status
+          name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - created
+              - started
+              - finished
+              - timeout
+              - failed
+      responses:
+        '200':
+          description: List all GitLab Migrations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkimportsListMigrationsResponse'
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+        '503':
+          description: Service unavailable
+          content: {}
+    post:
+      tags:
+        - bulk_imports
+      summary: Start a new GitLab Migration
+      operationId: Bulkimports_startNewMigration
+      description: This feature was introduced in GitLab 14.2.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BulkimportsStartNewMigrationRequest'
+        required: true
+      responses:
+        '200':
+          description: Start a new GitLab Migration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_BulkImport'
+        '400':
+          description: Bad request
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '404':
+          description: Not found
+          content: {}
+        '422':
+          description: Unprocessable entity
+          content: {}
+        '503':
+          description: Service unavailable
+          content: {}
+  /api/v4/application/appearance:
+    get:
+      tags:
+        - application
+      operationId: Application_getCurrentAppearance
+      description: Get the current appearance
+      responses:
+        '200':
+          description: Get the current appearance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Appearance'
+    put:
+      tags:
+        - application
+      operationId: Application_modifyAppearance
+      description: Modify appearance
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationModifyAppearanceRequest'
+      responses:
+        '200':
+          description: Modify appearance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Appearance'
+  /api/v4/application/plan_limits:
+    get:
+      tags:
+        - plan_limits
+      summary: Get current plan limits
+      operationId: Planlimits_getCurrentLimits
+      description: List the current limits of a plan on the GitLab instance.
+      parameters:
+        - description: 'Name of the plan to get the limits from. Default: default.'
+          name: plan_name
+          in: query
+          schema:
+            type: string
+            default: default
+            enum:
+              - default
+              - free
+              - bronze
+              - silver
+              - premium
+              - gold
+              - ultimate
+              - ultimate_trial
+              - premium_trial
+              - opensource
+      responses:
+        '200':
+          description: Get current plan limits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_PlanLimit'
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+    put:
+      tags:
+        - plan_limits
+      summary: Change plan limits
+      operationId: Planlimits_modifyLimits
+      description: Modify the limits of a plan on the GitLab instance.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanlimitsModifyLimitsRequest'
+        required: true
+      responses:
+        '200':
+          description: Change plan limits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_PlanLimit'
+        '400':
+          description: Bad request
+          content: {}
+        '401':
+          description: Unauthorized
+          content: {}
+        '403':
+          description: Forbidden
+          content: {}
+  /api/v4/metadata:
+    get:
+      tags:
+        - metadata
+      summary: Retrieve metadata information for this GitLab instance
+      operationId: Metadata_getInformation
+      description: This feature was introduced in GitLab 15.2.
+      responses:
+        '200':
+          description: Retrieve metadata information for this GitLab instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Metadata'
+        '401':
+          description: Unauthorized
+          content: {}
+  /api/v4/version:
+    get:
+      tags:
+        - metadata
+      summary: Retrieves version information for the GitLab instance
+      operationId: Metadata_getVersionInformation
+      description: >-
+        This feature was introduced in GitLab 8.13 and deprecated in 15.5. We
+        recommend you instead use the Metadata API.
+      responses:
+        '200':
+          description: Retrieves version information for the GitLab instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Metadata'
+        '401':
+          description: Unauthorized
+          content: {}
+  /api/v4/projects/{id}/jobs:
+    get:
+      tags:
+        - jobs
+      summary: List jobs for a project
+      operationId: Jobs_listForProject
+      parameters:
+        - description: The ID of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - description: Return all jobs with the specified statuses
+          name: scope
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: An array of jobs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsListForProjectResponse'
+  /api/v4/projects/{id}/jobs/{job_id}:
+    get:
+      tags:
+        - jobs
+      summary: Get a single job by ID
+      operationId: Jobs_getSingleById
+      parameters:
+        - description: The ID of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - description: The ID of the job
+          name: job_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single job object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API_Entities_Job'
+  /api/v4/projects/{id}/jobs/{job_id}/play:
+    post:
+      tags:
+        - jobs
+      summary: Run a manual job
+      operationId: Jobs_runManualJob
+      parameters:
+        - description: The ID of the project
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - description: The ID of the manual job to run
+          name: job_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - description: An array containing the custom variables available to the job
+          name: job_variables_attributes
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Job started successfully
+components:
+  schemas:
+    API_Entities_Badge:
+      description: API_Entities_Badge model
+      type: object
+      properties:
+        name:
+          type: string
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+        id:
+          type: string
+        kind:
+          type: string
+    API_Entities_BasicBadgeDetails:
+      description: API_Entities_BasicBadgeDetails model
+      type: object
+      properties:
+        name:
+          type: string
+        link_url:
+          type: string
+        image_url:
+          type: string
+        rendered_link_url:
+          type: string
+        rendered_image_url:
+          type: string
+    API_Entities_AccessRequester:
+      description: API_Entities_AccessRequester model
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        username:
+          type: string
+          example: admin
+        name:
+          type: string
+          example: Administrator
+        state:
+          type: string
+          example: active
+        avatar_url:
+          type: string
+          example: https://gravatar.com/avatar/1
+        avatar_path:
+          type: string
+          example: /user/avatar/28/The-Big-Lebowski-400-400.png
+        custom_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/API_Entities_CustomAttribute'
+        web_url:
+          type: string
+          example: https://gitlab.example.com/root
+        email:
+          type: string
+        requested_at:
+          type: string
+    API_Entities_CustomAttribute:
+      type: object
+      properties:
+        key:
+          type: string
+          example: foo
+        value:
+          type: string
+          example: bar
+    API_Entities_Branch:
+      description: API_Entities_Branch model
+      type: object
+      properties:
+        name:
+          type: string
+          example: master
+        commit:
+          $ref: '#/components/schemas/API_Entities_Commit'
+        merged:
+          type: boolean
+          example: true
+        protected:
+          type: boolean
+          example: true
+        developers_can_push:
+          type: boolean
+          example: true
+        developers_can_merge:
+          type: boolean
+          example: true
+        can_push:
+          type: boolean
+          example: true
+        default:
+          type: boolean
+          example: true
+        web_url:
+          type: string
+          example: https://gitlab.example.com/Commit921/the-dude/-/tree/master
+    API_Entities_Commit:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Initial commit
+        id:
+          type: string
+          example: 2695effb5807a22ff3d138d593fd856244e155e7
+        short_id:
+          type: string
+          example: 2695effb
+        created_at:
+          type: string
+          format: date-time
+          example: '2017-07-26T09:08:53.000Z'
+        parent_ids:
+          type: array
+          items:
+            type: string
+            example: 2a4b78934375d7f53875269ffd4f45fd83a84ebe
+        message:
+          type: string
+          example: Initial commit
+        author_name:
+          type: string
+          example: John Smith
+        author_email:
+          type: string
+          example: john@example.com
+        authored_date:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+        committer_name:
+          type: string
+          example: Jack Smith
+        committer_email:
+          type: string
+          example: jack@example.com
+        committed_date:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+        trailers:
+          type: object
+          properties: {}
+          example: '{ "Merged-By": "Jane Doe janedoe@gitlab.com" }'
+        web_url:
+          type: string
+          example: >-
+            https://gitlab.example.com/janedoe/gitlab-foss/-/commit/ed899a2f4b50b4370feeea94676502b42383c746
+    API_Entities_MetricImage:
+      description: API_Entities_MetricImage model
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 23
+        created_at:
+          type: string
+          format: date-time
+          example: '2020-11-13T00:06:18.084Z'
+        filename:
+          type: string
+          example: file.png
+        file_path:
+          type: string
+          example: /uploads/-/system/alert_metric_image/file/23/file.png
+        url:
+          type: string
+          example: https://example.com/metric
+        url_text:
+          type: string
+          example: An example metric
+    API_Entities_BatchedBackgroundMigration:
+      description: API_Entities_BatchedBackgroundMigration model
+      type: object
+      properties:
+        id:
+          type: string
+          example: '1234'
+        job_class_name:
+          type: string
+          example: CopyColumnUsingBackgroundMigrationJob
+        table_name:
+          type: string
+          example: events
+        status:
+          type: string
+          example: active
+        progress:
+          type: number
+          format: float
+          example: 50
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-28T14:26:39.000Z'
+    API_Entities_Ci_Variable:
+      description: API_Entities_Ci_Variable model
+      type: object
+      properties:
+        variable_type:
+          type: string
+          example: env_var
+        key:
+          type: string
+          example: TEST_VARIABLE_1
+        value:
+          type: string
+          example: TEST_1
+        protected:
+          type: boolean
+        masked:
+          type: boolean
+        raw:
+          type: boolean
+        environment_scope:
+          type: string
+          example: '*'
+    API_Entities_Dictionary_Table:
+      description: API_Entities_Dictionary_Table model
+      type: object
+      properties:
+        table_name:
+          type: string
+          example: users
+        feature_categories:
+          type: array
+          items:
+            type: string
+            example: database
+    API_Entities_Cluster:
+      description: API_Entities_Cluster model
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+        domain:
+          type: string
+        enabled:
+          type: string
+        managed:
+          type: string
+        provider_type:
+          type: string
+        platform_type:
+          type: string
+        environment_scope:
+          type: string
+        cluster_type:
+          type: string
+        namespace_per_environment:
+          type: string
+        user:
+          $ref: '#/components/schemas/API_Entities_UserBasic'
+        platform_kubernetes:
+          $ref: '#/components/schemas/API_Entities_Platform_Kubernetes'
+        provider_gcp:
+          $ref: '#/components/schemas/API_Entities_Provider_Gcp'
+        management_project:
+          $ref: '#/components/schemas/API_Entities_ProjectIdentity'
+    API_Entities_UserBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        username:
+          type: string
+          example: admin
+        name:
+          type: string
+          example: Administrator
+        state:
+          type: string
+          example: active
+        avatar_url:
+          type: string
+          example: https://gravatar.com/avatar/1
+        avatar_path:
+          type: string
+          example: /user/avatar/28/The-Big-Lebowski-400-400.png
+        custom_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/API_Entities_CustomAttribute'
+        web_url:
+          type: string
+          example: https://gitlab.example.com/root
+        email:
+          type: string
+    API_Entities_Platform_Kubernetes:
+      type: object
+      properties:
+        api_url:
+          type: string
+        namespace:
+          type: string
+        authorization_type:
+          type: string
+        ca_cert:
+          type: string
+    API_Entities_Provider_Gcp:
+      type: object
+      properties:
+        cluster_id:
+          type: string
+        status_name:
+          type: string
+        gcp_project_id:
+          type: string
+        zone:
+          type: string
+        machine_type:
+          type: string
+        num_nodes:
+          type: string
+        endpoint:
+          type: string
+    API_Entities_ProjectIdentity:
+      type: object
+      properties:
+        description:
+          type: string
+          example: desc
+        id:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: project1
+        name_with_namespace:
+          type: string
+          example: John Doe / project1
+        path:
+          type: string
+          example: project1
+        path_with_namespace:
+          type: string
+          example: namespace1/project1
+        created_at:
+          type: string
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+    API_Entities_Application:
+      description: API_Entities_Application model
+      type: object
+      properties:
+        id:
+          type: string
+        application_id:
+          type: string
+          example: 5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737
+        application_name:
+          type: string
+          example: MyApplication
+        callback_url:
+          type: string
+          example: https://redirect.uri
+        confidential:
+          type: boolean
+          example: true
+    API_Entities_ApplicationWithSecret:
+      description: API_Entities_ApplicationWithSecret model
+      type: object
+      properties:
+        id:
+          type: string
+        application_id:
+          type: string
+          example: 5832fc6e14300a0d962240a8144466eef4ee93ef0d218477e55f11cf12fc3737
+        application_name:
+          type: string
+          example: MyApplication
+        callback_url:
+          type: string
+          example: https://redirect.uri
+        confidential:
+          type: boolean
+          example: true
+        secret:
+          type: string
+          example: ee1dd64b6adc89cf7e2c23099301ccc2c61b441064e9324d963c46902a85ec34
+    API_Entities_Avatar:
+      description: API_Entities_Avatar model
+      type: object
+      properties:
+        avatar_url:
+          type: string
+    API_Entities_BroadcastMessage:
+      description: API_Entities_BroadcastMessage model
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+        starts_at:
+          type: string
+        ends_at:
+          type: string
+        color:
+          type: string
+        font:
+          type: string
+        target_access_levels:
+          type: string
+        target_path:
+          type: string
+        broadcast_type:
+          type: string
+        dismissable:
+          type: string
+        active:
+          type: string
+    API_Entities_BulkImports:
+      description: API_Entities_BulkImports model
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        bulk_import_id:
+          type: integer
+          format: int32
+          example: 1
+        status:
+          type: string
+          example: created
+          enum:
+            - created
+            - started
+            - finished
+            - timeout
+            - failed
+        entity_type:
+          type: string
+          enum:
+            - group
+            - project
+        source_full_path:
+          type: string
+          example: source_group
+        destination_full_path:
+          type: string
+          example: some_group/source_project
+        destination_name:
+          type: string
+          example: destination_slug
+        destination_slug:
+          type: string
+          example: destination_slug
+        destination_namespace:
+          type: string
+          example: destination_path
+        parent_id:
+          type: integer
+          format: int32
+          example: 1
+        namespace_id:
+          type: integer
+          format: int32
+          example: 1
+        project_id:
+          type: integer
+          format: int32
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/API_Entities_BulkImports_EntityFailure'
+        migrate_projects:
+          type: boolean
+          example: true
+    API_Entities_BulkImports_EntityFailure:
+      type: object
+      properties:
+        relation:
+          type: string
+          example: group
+        step:
+          type: string
+          example: extractor
+        exception_message:
+          type: string
+          example: error message
+        exception_class:
+          type: string
+          example: Exception
+        correlation_id_value:
+          type: string
+          example: dfcf583058ed4508e4c7c617bd7f0edd
+        created_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+        pipeline_class:
+          type: string
+          example: BulkImports::Groups::Pipelines::GroupPipeline
+        pipeline_step:
+          type: string
+          example: extractor
+    API_Entities_BulkImport:
+      description: API_Entities_BulkImport model
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        status:
+          type: string
+          example: finished
+          enum:
+            - created
+            - started
+            - finished
+            - timeout
+            - failed
+        source_type:
+          type: string
+          example: gitlab
+        created_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2012-05-28T11:42:42.000Z'
+    API_Entities_Appearance:
+      description: API_Entities_Appearance model
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        pwa_name:
+          type: string
+        pwa_short_name:
+          type: string
+        pwa_description:
+          type: string
+        logo:
+          type: string
+        pwa_icon:
+          type: string
+        header_logo:
+          type: string
+        favicon:
+          type: string
+        new_project_guidelines:
+          type: string
+        profile_image_guidelines:
+          type: string
+        header_message:
+          type: string
+        footer_message:
+          type: string
+        message_background_color:
+          type: string
+        message_font_color:
+          type: string
+        email_header_and_footer_enabled:
+          type: string
+    API_Entities_PlanLimit:
+      description: API_Entities_PlanLimit model
+      type: object
+      properties:
+        ci_pipeline_size:
+          type: integer
+          format: int32
+          example: 0
+        ci_active_jobs:
+          type: integer
+          format: int32
+          example: 0
+        ci_project_subscriptions:
+          type: integer
+          format: int32
+          example: 2
+        ci_pipeline_schedules:
+          type: integer
+          format: int32
+          example: 10
+        ci_needs_size_limit:
+          type: integer
+          format: int32
+          example: 50
+        ci_registered_group_runners:
+          type: integer
+          format: int32
+          example: 1000
+        ci_registered_project_runners:
+          type: integer
+          format: int32
+          example: 1000
+        conan_max_file_size:
+          type: integer
+          format: int32
+          example: 3221225472
+        enforcement_limit:
+          type: integer
+          format: int32
+          example: 15000
+        generic_packages_max_file_size:
+          type: integer
+          format: int32
+          example: 5368709120
+        helm_max_file_size:
+          type: integer
+          format: int32
+          example: 5242880
+        limits_history:
+          type: object
+          properties: {}
+          example: >-
+            {"enforcement_limit"=>[{"timestamp"=>1686909124, "user_id"=>1,
+            "username"=>"x", "value"=>5}],
+                               "notification_limit"=>[{"timestamp"=>1686909124, "user_id"=>2, "username"=>"y", "value"=>7}]}
+        maven_max_file_size:
+          type: integer
+          format: int32
+          example: 3221225472
+        notification_limit:
+          type: integer
+          format: int32
+          example: 15000
+        npm_max_file_size:
+          type: integer
+          format: int32
+          example: 524288000
+        nuget_max_file_size:
+          type: integer
+          format: int32
+          example: 524288000
+        pipeline_hierarchy_size:
+          type: integer
+          format: int32
+          example: 1000
+        pypi_max_file_size:
+          type: integer
+          format: int32
+          example: 3221225472
+        terraform_module_max_file_size:
+          type: integer
+          format: int32
+          example: 1073741824
+        storage_size_limit:
+          type: integer
+          format: int32
+          example: 15000
+    API_Entities_Metadata:
+      description: API_Entities_Metadata model
+      type: object
+      properties:
+        version:
+          type: string
+          example: 15.2-pre
+        revision:
+          type: string
+          example: c401a659d0c
+        kas:
+          type: object
+          properties:
+            version:
+              type: string
+              example: 15.0.0
+            enabled:
+              type: boolean
+            externalUrl:
+              type: string
+              example: grpc://gitlab.example.com:8150
+        enterprise:
+          type: boolean
+    API_Entities_Job:
+      description: API_Entities_Job model
+      type: object
+      properties:
+        id:
+          description: The ID of the job
+          type: integer
+        name:
+          description: The name of the job
+          type: string
+        status:
+          description: The current status of the job
+          type: string
+        stage:
+          description: The stage of the job in the CI/CD pipeline
+          type: string
+        created_at:
+          description: The creation time of the job
+          type: string
+          format: date-time
+          example: '2016-01-11T10:13:33.506Z'
+        started_at:
+          description: The start time of the job
+          type: string
+          format: date-time
+          example: '2016-01-11T10:13:33.506Z'
+        finished_at:
+          description: The finish time of the job
+          type: string
+          format: date-time
+          example: '2016-01-11T10:13:33.506Z'
+        commit:
+          $ref: '#/components/schemas/API_Entities_Commit'
+        archived:
+          description: Indicates if the job is archived
+          type: boolean
+        allow_failure:
+          description: Indicates if the job is allowed to fail
+          type: boolean
+        erased_at:
+          description: The time when the job was erased, if applicable
+          type: string
+          format: date-time
+          example: '2016-01-11T10:13:33.506Z'
+        duration:
+          description: The duration of the job in seconds
+          type: integer
+        queued_duration:
+          description: The duration the job was queued before execution, in seconds
+          type: number
+        ref:
+          description: The reference for the job
+          type: string
+        artifacts:
+          description: The artifacts produced by the job
+          type: array
+        tag:
+          description: Indicates if the job is tagged
+          type: boolean
+        web_url:
+          description: The URL for accessing the job in the web interface
+          type: string
+        project:
+          type: object
+          properties:
+            ci_job_token_scope_enabled:
+              description: >-
+                Indicates if the CI/CD job token scope setting is enabled for
+                the project
+              type: boolean
+        user:
+          description: The user that started the job
+          $ref: '#/components/schemas/API_Entities_UserBasic'
+    BadgesUpdateGroupBadgeRequest:
+      properties:
+        link_url:
+          description: URL of the badge link
+          type: string
+        image_url:
+          description: URL of the badge image
+          type: string
+        name:
+          description: Name for the badge
+          type: string
+    BadgesAddBadgeToGroupRequest:
+      required:
+        - image_url
+        - link_url
+      properties:
+        link_url:
+          description: URL of the badge link
+          type: string
+        image_url:
+          description: URL of the badge image
+          type: string
+        name:
+          description: Name for the badge
+          type: string
+    AccessrequestsApproveForUserRequest:
+      properties:
+        access_level:
+          description: 'A valid access level (defaults: `30`, the Developer role)'
+          type: integer
+          format: int32
+          default: 30
+    BranchesProtectBranchRequest:
+      properties:
+        developers_can_push:
+          description: Flag if developers can push to that branch
+          type: boolean
+        developers_can_merge:
+          description: Flag if developers can merge to that branch
+          type: boolean
+    BadgesUpdateProjectBadgeRequest:
+      properties:
+        link_url:
+          description: URL of the badge link
+          type: string
+        image_url:
+          description: URL of the badge image
+          type: string
+        name:
+          description: Name for the badge
+          type: string
+    BadgesAddProjectBadgeRequest:
+      required:
+        - image_url
+        - link_url
+      properties:
+        link_url:
+          description: URL of the badge link
+          type: string
+        image_url:
+          description: URL of the badge image
+          type: string
+        name:
+          description: Name for the badge
+          type: string
+    AccessrequestsApproveForUserRequest1:
+      properties:
+        access_level:
+          description: 'A valid access level (defaults: `30`, the Developer role)'
+          type: integer
+          format: int32
+          default: 30
+    AlertmanagementUpdateMetricImageRequest:
+      properties:
+        url:
+          description: The url to view more metric info
+          type: string
+        url_text:
+          description: A description of the image or URL
+          type: string
+    AlertmanagementUploadMetricImageRequest:
+      required:
+        - file
+      properties:
+        file:
+          description: The image file to be uploaded
+          type: string
+          format: binary
+        url:
+          description: The url to view more metric info
+          type: string
+        url_text:
+          description: A description of the image or URL
+          type: string
+    BatchedbackgroundmigrationsResumeMigrationRequest:
+      properties:
+        database:
+          description: The name of the database
+          type: string
+          default: main
+          enum:
+            - main
+            - ci
+            - embedding
+            - main_clusterwide
+            - geo
+    BatchedbackgroundmigrationsPauseMigrationRequest:
+      properties:
+        database:
+          description: The name of the database
+          type: string
+          default: main
+          enum:
+            - main
+            - ci
+            - embedding
+            - main_clusterwide
+            - geo
+    CivariablesUpdateInstanceVariableRequest:
+      properties:
+        value:
+          description: The value of a variable
+          type: string
+        protected:
+          description: Whether the variable is protected
+          type: boolean
+        masked:
+          description: Whether the variable is masked
+          type: boolean
+        raw:
+          description: Whether the variable will be expanded
+          type: boolean
+        variable_type:
+          description: >-
+            The type of a variable. Available types are: env_var (default) and
+            file
+          type: string
+          enum:
+            - env_var
+            - file
+    CivariablesCreateNewInstanceVariableRequest:
+      required:
+        - key
+        - value
+      properties:
+        key:
+          description: The key of the variable. Max 255 characters
+          type: string
+        value:
+          description: The value of a variable
+          type: string
+        protected:
+          description: Whether the variable is protected
+          type: boolean
+        masked:
+          description: Whether the variable is masked
+          type: boolean
+        raw:
+          description: Whether the variable will be expanded
+          type: boolean
+        variable_type:
+          description: >-
+            The type of a variable. Available types are: env_var (default) and
+            file
+          type: string
+          enum:
+            - env_var
+            - file
+    ClustersUpdateInstanceClusterRequest:
+      properties:
+        name:
+          description: Cluster name
+          type: string
+        enabled:
+          description: Enable or disable Gitlab's connection to your Kubernetes cluster
+          type: boolean
+        environment_scope:
+          description: The associated environment to the cluster
+          type: string
+        namespace_per_environment:
+          description: Deploy each environment to a separate Kubernetes namespace
+          type: boolean
+          default: true
+        domain:
+          description: Cluster base domain
+          type: string
+        management_project_id:
+          description: The ID of the management project
+          type: integer
+          format: int32
+        managed:
+          description: >-
+            Determines if GitLab will manage namespaces and service accounts for
+            this cluster
+          type: boolean
+        platform_kubernetes_attributes[api_url]:
+          description: URL to access the Kubernetes API
+          type: string
+        platform_kubernetes_attributes[token]:
+          description: Token to authenticate against Kubernetes
+          type: string
+        platform_kubernetes_attributes[ca_cert]:
+          description: >-
+            TLS certificate (needed if API is using a self-signed TLS
+            certificate)
+          type: string
+        platform_kubernetes_attributes[namespace]:
+          description: Unique namespace related to Project
+          type: string
+    ClustersAddExistingKubernetesInstanceClusterRequest:
+      required:
+        - name
+        - platform_kubernetes_attributes[api_url]
+        - platform_kubernetes_attributes[token]
+      properties:
+        name:
+          description: Cluster name
+          type: string
+        enabled:
+          description: Determines if cluster is active or not, defaults to true
+          type: boolean
+          default: true
+        environment_scope:
+          description: The associated environment to the cluster
+          type: string
+          default: '*'
+        namespace_per_environment:
+          description: Deploy each environment to a separate Kubernetes namespace
+          type: boolean
+          default: true
+        domain:
+          description: Cluster base domain
+          type: string
+        management_project_id:
+          description: The ID of the management project
+          type: integer
+          format: int32
+        managed:
+          description: >-
+            Determines if GitLab will manage namespaces and service accounts for
+            this cluster, defaults to true
+          type: boolean
+          default: true
+        platform_kubernetes_attributes[api_url]:
+          description: URL to access the Kubernetes API
+          type: string
+        platform_kubernetes_attributes[token]:
+          description: Token to authenticate against Kubernetes
+          type: string
+        platform_kubernetes_attributes[ca_cert]:
+          description: >-
+            TLS certificate (needed if API is using a self-signed TLS
+            certificate)
+          type: string
+        platform_kubernetes_attributes[namespace]:
+          description: Unique namespace related to Project
+          type: string
+        platform_kubernetes_attributes[authorization_type]:
+          description: Cluster authorization type, defaults to RBAC
+          type: string
+          default: rbac
+          enum:
+            - unknown_authorization
+            - rbac
+            - abac
+    MigrationsMarkAsExecutedRequest:
+      properties:
+        database:
+          description: The name of the database
+          type: string
+          default: main
+          enum:
+            - main
+            - ci
+            - embedding
+            - main_clusterwide
+            - geo
+    ApplicationsCreateNewApplicationRequest:
+      required:
+        - name
+        - redirect_uri
+        - scopes
+      properties:
+        name:
+          description: Name of the application.
+          type: string
+        redirect_uri:
+          description: Redirect URI of the application.
+          type: string
+        scopes:
+          description: >-
+            Scopes of the application. You can specify multiple scopes by
+            separating\
+                                             each scope using a space
+          type: string
+        confidential:
+          description: >-
+            The application is used where the client secret can be kept
+            confidential. Native mobile apps \
+                                    and Single Page Apps are considered non-confidential. Defaults to true if not supplied
+          type: boolean
+          default: true
+    BroadcastmessagesUpdateMessageRequest:
+      properties:
+        message:
+          description: Message to display
+          type: string
+        starts_at:
+          description: Starting time
+          type: string
+          format: date-time
+        ends_at:
+          description: Ending time
+          type: string
+          format: date-time
+        color:
+          description: Background color
+          type: string
+        font:
+          description: Foreground color
+          type: string
+        target_access_levels:
+          description: Target user roles
+          type: array
+          items:
+            type: integer
+            format: int32
+            enum:
+              - 10
+              - 20
+              - 30
+              - 40
+              - 50
+        target_path:
+          description: Target path
+          type: string
+        broadcast_type:
+          description: Broadcast Type
+          type: string
+          enum:
+            - banner
+            - notification
+        dismissable:
+          description: Is dismissable
+          type: boolean
+    BroadcastmessagesCreateMessageRequest:
+      required:
+        - message
+      properties:
+        message:
+          description: Message to display
+          type: string
+        starts_at:
+          description: Starting time
+          type: string
+          format: date-time
+        ends_at:
+          description: Ending time
+          type: string
+          format: date-time
+        color:
+          description: Background color
+          type: string
+        font:
+          description: Foreground color
+          type: string
+        target_access_levels:
+          description: Target user roles
+          type: array
+          items:
+            type: integer
+            format: int32
+            enum:
+              - 10
+              - 20
+              - 30
+              - 40
+              - 50
+        target_path:
+          description: Target path
+          type: string
+        broadcast_type:
+          description: Broadcast type. Defaults to banner
+          type: string
+          enum:
+            - banner
+            - notification
+        dismissable:
+          description: Is dismissable
+          type: boolean
+    BulkimportsStartNewMigrationRequest:
+      required:
+        - configuration[access_token]
+        - configuration[url]
+        - entities[destination_namespace]
+        - entities[source_full_path]
+        - entities[source_type]
+      properties:
+        configuration[url]:
+          description: Source GitLab instance URL
+          type: string
+        configuration[access_token]:
+          description: Access token to the source GitLab instance
+          type: string
+        entities[source_type]:
+          description: Source entity type
+          type: array
+          items:
+            type: string
+            enum:
+              - group_entity
+              - project_entity
+        entities[source_full_path]:
+          description: Relative path of the source entity to import
+          type: array
+          items:
+            type: string
+        entities[destination_namespace]:
+          description: Destination namespace for the entity
+          type: array
+          items:
+            type: string
+        entities[destination_slug]:
+          description: Destination slug for the entity
+          type: array
+          items:
+            type: string
+        entities[destination_name]:
+          description: >-
+            Deprecated: Use :destination_slug instead. Destination slug for the
+            entity
+          type: array
+          items:
+            type: string
+        entities[migrate_projects]:
+          description: Indicates group migration should include nested projects
+          type: array
+          items:
+            type: boolean
+    ApplicationModifyAppearanceRequest:
+      properties:
+        title:
+          description: Instance title on the sign in / sign up page
+          type: string
+        description:
+          description: Markdown text shown on the sign in / sign up page
+          type: string
+        pwa_name:
+          description: Name of the Progressive Web App
+          type: string
+        pwa_short_name:
+          description: Optional, short name for Progressive Web App
+          type: string
+        pwa_description:
+          description: An explanation of what the Progressive Web App does
+          type: string
+        logo:
+          description: Instance image used on the sign in / sign up page
+          type: string
+          format: binary
+        pwa_icon:
+          description: Icon used for Progressive Web App
+          type: string
+          format: binary
+        header_logo:
+          description: Instance image used for the main navigation bar
+          type: string
+          format: binary
+        favicon:
+          description: Instance favicon in .ico/.png format
+          type: string
+          format: binary
+        new_project_guidelines:
+          description: Markdown text shown on the new project page
+          type: string
+        profile_image_guidelines:
+          description: Markdown text shown on the profile page below Public Avatar
+          type: string
+        header_message:
+          description: Message within the system header bar
+          type: string
+        footer_message:
+          description: Message within the system footer bar
+          type: string
+        message_background_color:
+          description: Background color for the system header / footer bar
+          type: string
+        message_font_color:
+          description: Font color for the system header / footer bar
+          type: string
+        email_header_and_footer_enabled:
+          description: Add header and footer to all outgoing emails if enabled
+          type: boolean
+    PlanlimitsModifyLimitsRequest:
+      required:
+        - plan_name
+      properties:
+        plan_name:
+          description: Name of the plan to update
+          type: string
+          enum:
+            - default
+            - free
+            - bronze
+            - silver
+            - premium
+            - gold
+            - ultimate
+            - ultimate_trial
+            - premium_trial
+            - opensource
+        ci_pipeline_size:
+          description: Maximum number of jobs in a single pipeline
+          type: integer
+          format: int32
+        ci_active_jobs:
+          description: Total number of jobs in currently active pipelines
+          type: integer
+          format: int32
+        ci_project_subscriptions:
+          description: Maximum number of pipeline subscriptions to and from a project
+          type: integer
+          format: int32
+        ci_pipeline_schedules:
+          description: Maximum number of pipeline schedules
+          type: integer
+          format: int32
+        ci_needs_size_limit:
+          description: Maximum number of DAG dependencies that a job can have
+          type: integer
+          format: int32
+        ci_registered_group_runners:
+          description: Maximum number of runners registered per group
+          type: integer
+          format: int32
+        ci_registered_project_runners:
+          description: Maximum number of runners registered per project
+          type: integer
+          format: int32
+        conan_max_file_size:
+          description: Maximum Conan package file size in bytes
+          type: integer
+          format: int32
+        enforcement_limit:
+          description: Maximum storage size for the root namespace enforcement in MiB
+          type: integer
+          format: int32
+        generic_packages_max_file_size:
+          description: Maximum generic package file size in bytes
+          type: integer
+          format: int32
+        helm_max_file_size:
+          description: Maximum Helm chart file size in bytes
+          type: integer
+          format: int32
+        maven_max_file_size:
+          description: Maximum Maven package file size in bytes
+          type: integer
+          format: int32
+        notification_limit:
+          description: Maximum storage size for the root namespace notifications in MiB
+          type: integer
+          format: int32
+        npm_max_file_size:
+          description: Maximum NPM package file size in bytes
+          type: integer
+          format: int32
+        nuget_max_file_size:
+          description: Maximum NuGet package file size in bytes
+          type: integer
+          format: int32
+        pypi_max_file_size:
+          description: Maximum PyPI package file size in bytes
+          type: integer
+          format: int32
+        terraform_module_max_file_size:
+          description: Maximum Terraform Module package file size in bytes
+          type: integer
+          format: int32
+        storage_size_limit:
+          description: Maximum storage size for the root namespace in MiB
+          type: integer
+          format: int32
+        pipeline_hierarchy_size:
+          description: >-
+            Maximum number of downstream pipelines in a pipeline's hierarchy
+            tree
+          type: integer
+          format: int32
+    BadgesGetListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_Badge'
+    BranchesGetAllResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_Branch'
+    BadgesListViewableByAuthenticatedUserResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_Badge'
+    AlertmanagementGetMetricImagesForAlertResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_MetricImage'
+    BatchedbackgroundmigrationsListResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_BatchedBackgroundMigration'
+    ClustersListInstanceClustersResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_Cluster'
+    ApplicationsListAllRegisteredResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_Application'
+    BulkimportsListEntitiesResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_BulkImports'
+    BulkimportsListEntities200Response:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_BulkImports'
+    BulkimportsListMigrationsResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_BulkImport'
+    JobsListForProjectResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/API_Entities_Job'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Private-Token
+security:
+  - ApiKeyAuth: []

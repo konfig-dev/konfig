@@ -1,0 +1,279 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /api/v4/admin/batched_background_migrations:
+    get: Batchedbackgroundmigrations_list
+  /api/v4/admin/batched_background_migrations/{id}:
+    get: Batchedbackgroundmigrations_getMigration
+  /api/v4/admin/batched_background_migrations/{id}/pause:
+    put: Batchedbackgroundmigrations_pauseMigration
+  /api/v4/admin/batched_background_migrations/{id}/resume:
+    put: Batchedbackgroundmigrations_resumeMigration
+  /api/v4/admin/ci/variables:
+    get: Civariables_listInstanceVariables
+    post: Civariables_createNewInstanceVariable
+  /api/v4/admin/ci/variables/{key}:
+    delete: Civariables_deleteInstanceVariable
+    get: Civariables_getSpecificInstanceVariable
+    put: Civariables_updateInstanceVariable
+  /api/v4/admin/clusters:
+    get: Clusters_listInstanceClusters
+  /api/v4/admin/clusters/add:
+    post: Clusters_addExistingKubernetesInstanceCluster
+  /api/v4/admin/clusters/{cluster_id}:
+    delete: Clusters_deleteInstanceCluster
+    get: Clusters_getSingleInstanceCluster
+    put: Clusters_updateInstanceCluster
+  /api/v4/admin/databases/{database_name}/dictionary/tables/{table_name}:
+    get: Admin_getDictionaryDetails
+  /api/v4/admin/migrations/{timestamp}/mark:
+    post: Migrations_markAsExecuted
+  /api/v4/application/appearance:
+    get: Application_getCurrentAppearance
+    put: Application_modifyAppearance
+  /api/v4/application/plan_limits:
+    get: Planlimits_getCurrentLimits
+    put: Planlimits_modifyLimits
+  /api/v4/applications:
+    get: Applications_listAllRegistered
+    post: Applications_createNewApplication
+  /api/v4/applications/{id}:
+    delete: Applications_deleteSpecificApplication
+  /api/v4/avatar:
+    get: Avatar_getUrlForUser
+  /api/v4/broadcast_messages:
+    get: Broadcastmessages_listAll
+    post: Broadcastmessages_createMessage
+  /api/v4/broadcast_messages/{id}:
+    delete: Broadcastmessages_deleteMessage
+    get: Broadcastmessages_getSpecificMessage
+    put: Broadcastmessages_updateMessage
+  /api/v4/bulk_imports:
+    get: Bulkimports_listMigrations
+    post: Bulkimports_startNewMigration
+  /api/v4/bulk_imports/entities:
+    get: Bulkimports_listEntities
+  /api/v4/bulk_imports/{import_id}:
+    get: Bulkimports_getMigrationDetails
+  /api/v4/bulk_imports/{import_id}/entities:
+    get: Bulkimports_listEntities
+  /api/v4/bulk_imports/{import_id}/entities/{entity_id}:
+    get: Bulkimports_getEntityDetails
+  /api/v4/groups/{id}/access_requests:
+    get: Accessrequests_getList
+    post: Accessrequests_requestAccessToGroup
+  /api/v4/groups/{id}/access_requests/{user_id}:
+    delete: Accessrequests_denyAccessToUser
+  /api/v4/groups/{id}/access_requests/{user_id}/approve:
+    put: Accessrequests_approveForUser
+  /api/v4/groups/{id}/badges:
+    get: Badges_getList
+    post: Badges_addBadgeToGroup
+  /api/v4/groups/{id}/badges/render:
+    get: Badges_previewBadgeFromGroup
+  /api/v4/groups/{id}/badges/{badge_id}:
+    delete: Badges_removeFromGroup
+    get: Badges_getGroupBadge
+    put: Badges_updateGroupBadge
+  /api/v4/metadata:
+    get: Metadata_getInformation
+  /api/v4/projects/{id}/access_requests:
+    get: Accessrequests_getList
+    post: Accessrequests_requestAccessToProject
+  /api/v4/projects/{id}/access_requests/{user_id}:
+    delete: Accessrequests_denyAccessToUser
+  /api/v4/projects/{id}/access_requests/{user_id}/approve:
+    put: Accessrequests_approveForUser
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images:
+    get: Alertmanagement_getMetricImagesForAlert
+    post: Alertmanagement_uploadMetricImage
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/authorize:
+    post: Alertmanagement_authorizeMetricImageUpload
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}:
+    delete: Alertmanagement_removeMetricImage
+    put: Alertmanagement_updateMetricImage
+  /api/v4/projects/{id}/badges:
+    get: Badges_listViewableByAuthenticatedUser
+    post: Badges_addProjectBadge
+  /api/v4/projects/{id}/badges/render:
+    get: Badges_renderPreviewFromProject
+  /api/v4/projects/{id}/badges/{badge_id}:
+    delete: Badges_removeFromProject
+    get: Badges_getProjectBadge
+    put: Badges_updateProjectBadge
+  /api/v4/projects/{id}/jobs:
+    get: Jobs_listForProject
+  /api/v4/projects/{id}/jobs/{job_id}:
+    get: Jobs_getSingleById
+  /api/v4/projects/{id}/jobs/{job_id}/play:
+    post: Jobs_runManualJob
+  /api/v4/projects/{id}/repository/branches:
+    get: Branches_getAll
+    post: Branches_createBranch
+  /api/v4/projects/{id}/repository/branches/{branch}:
+    delete: Branches_deleteBranch
+    get: Branches_getSingleBranch
+    head: Branches_checkIfExists
+  /api/v4/projects/{id}/repository/branches/{branch}/protect:
+    put: Branches_protectBranch
+  /api/v4/projects/{id}/repository/branches/{branch}/unprotect:
+    put: Branches_unprotectBranch
+  /api/v4/projects/{id}/repository/merged_branches:
+    delete: Branches_deleteMerged
+  /api/v4/version:
+    get: Metadata_getVersionInformation
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /api/v4/admin/batched_background_migrations/{id}/pause:
+    put:
+      application/json: BatchedbackgroundmigrationsPauseMigrationRequest
+  /api/v4/admin/batched_background_migrations/{id}/resume:
+    put:
+      application/json: BatchedbackgroundmigrationsResumeMigrationRequest
+  /api/v4/admin/ci/variables:
+    post:
+      application/json: CivariablesCreateNewInstanceVariableRequest
+  /api/v4/admin/ci/variables/{key}:
+    put:
+      application/json: CivariablesUpdateInstanceVariableRequest
+  /api/v4/admin/clusters/add:
+    post:
+      application/json: ClustersAddExistingKubernetesInstanceClusterRequest
+  /api/v4/admin/clusters/{cluster_id}:
+    put:
+      application/json: ClustersUpdateInstanceClusterRequest
+  /api/v4/admin/migrations/{timestamp}/mark:
+    post:
+      application/json: MigrationsMarkAsExecutedRequest
+  /api/v4/application/appearance:
+    put:
+      multipart/form-data: ApplicationModifyAppearanceRequest
+  /api/v4/application/plan_limits:
+    put:
+      application/json: PlanlimitsModifyLimitsRequest
+  /api/v4/applications:
+    post:
+      application/json: ApplicationsCreateNewApplicationRequest
+  /api/v4/broadcast_messages:
+    post:
+      application/json: BroadcastmessagesCreateMessageRequest
+  /api/v4/broadcast_messages/{id}:
+    put:
+      application/json: BroadcastmessagesUpdateMessageRequest
+  /api/v4/bulk_imports:
+    post:
+      application/x-www-form-urlencoded: BulkimportsStartNewMigrationRequest
+  /api/v4/groups/{id}/access_requests/{user_id}/approve:
+    put:
+      application/json: AccessrequestsApproveForUserRequest
+  /api/v4/groups/{id}/badges:
+    post:
+      application/json: BadgesAddBadgeToGroupRequest
+  /api/v4/groups/{id}/badges/{badge_id}:
+    put:
+      application/json: BadgesUpdateGroupBadgeRequest
+  /api/v4/projects/{id}/access_requests/{user_id}/approve:
+    put:
+      application/json: AccessrequestsApproveForUserRequest1
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images:
+    post:
+      multipart/form-data: AlertmanagementUploadMetricImageRequest
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images/{metric_image_id}:
+    put:
+      multipart/form-data: AlertmanagementUpdateMetricImageRequest
+  /api/v4/projects/{id}/badges:
+    post:
+      application/json: BadgesAddProjectBadgeRequest
+  /api/v4/projects/{id}/badges/{badge_id}:
+    put:
+      application/json: BadgesUpdateProjectBadgeRequest
+  /api/v4/projects/{id}/repository/branches/{branch}/protect:
+    put:
+      application/json: BranchesProtectBranchRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /api/v4/admin/batched_background_migrations:
+    get:
+      '200':
+        application/json: BatchedbackgroundmigrationsListResponse
+  /api/v4/admin/clusters:
+    get:
+      '200':
+        application/json: ClustersListInstanceClustersResponse
+  /api/v4/applications:
+    get:
+      '200':
+        application/json: ApplicationsListAllRegisteredResponse
+  /api/v4/bulk_imports:
+    get:
+      '200':
+        application/json: BulkimportsListMigrationsResponse
+  /api/v4/bulk_imports/entities:
+    get:
+      '200':
+        application/json: BulkimportsListEntities200Response
+  /api/v4/bulk_imports/{import_id}/entities:
+    get:
+      '200':
+        application/json: BulkimportsListEntitiesResponse
+  /api/v4/groups/{id}/badges:
+    get:
+      '200':
+        application/json: BadgesGetListResponse
+  /api/v4/projects/{id}/alert_management_alerts/{alert_iid}/metric_images:
+    get:
+      '200':
+        application/json: AlertmanagementGetMetricImagesForAlertResponse
+  /api/v4/projects/{id}/badges:
+    get:
+      '200':
+        application/json: BadgesListViewableByAuthenticatedUserResponse
+  /api/v4/projects/{id}/jobs:
+    get:
+      '200':
+        application/json: JobsListForProjectResponse
+  /api/v4/projects/{id}/repository/branches:
+    get:
+      '200':
+        application/json: BranchesGetAllResponse
+securityParameters:
+  branch:
+    query: false
+  database:
+    query: false
+  email:
+    query: false
+  image_url:
+    query: false
+  job_variables_attributes:
+    query: false
+  link_url:
+    query: false
+  name:
+    query: false
+  page:
+    query: false
+  page_token:
+    query: false
+  per_page:
+    query: false
+  plan_name:
+    query: false
+  ref:
+    query: false
+  regex:
+    query: false
+  scope:
+    query: false
+  search:
+    query: false
+  size:
+    query: false
+  sort:
+    query: false
+  status:
+    query: false
+validServerUrls: {}
