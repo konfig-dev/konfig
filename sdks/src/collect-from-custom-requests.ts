@@ -413,6 +413,10 @@ const customRequests: Record<string, CustomRequest> = {
     url: "https://uk.api.just-eat.io/docs/openapi.yaml",
     defaultUrlForBrokenLinks: "https://uk.api.just-eat.io/docs/",
   },
+  "hetzner.com": {
+    type: "GET",
+    url: "https://docs.hetzner.cloud/spec.json",
+  },
   "hsbc.com_AccountInformationCE": {
     lambda: async (browser) => {
       const url =
