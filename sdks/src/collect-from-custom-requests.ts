@@ -29,7 +29,12 @@ import fetch from "cross-fetch"; // required 'fetch'
  * For describing a custom request to get an OAS
  */
 export type CustomRequest = (
-  | { url: string; regex?: string; type: "GET" }
+  | {
+      url: string;
+      defaultUrlForBrokenLinks?: string;
+      regex?: string;
+      type: "GET";
+    }
   | { url: string; body: string }
   | { lambda: (browser: PuppeteerBrowser) => Promise<string> }
 ) & {
@@ -64,7 +69,7 @@ async function executeCustomRequest(
 ) {
   if ("type" in customRequest && customRequest.type === "GET") {
     const getRequest = customRequest;
-    const { url, regex } = getRequest;
+    const { url, regex, defaultUrlForBrokenLinks } = getRequest;
     console.log(`Processing get request for ${key}`);
 
     const rawString = await fetch(url, {
@@ -80,7 +85,14 @@ async function executeCustomRequest(
       rawSpec.openapi = getRequest.openapi;
     }
 
-    const rawSpecString = JSON.stringify(rawSpec);
+    let rawSpecString = JSON.stringify(rawSpec);
+
+    const regexForBrokenLinks = /(\((\/|#).*?\))/g;
+    rawSpecString = rawSpecString.replaceAll(
+      regexForBrokenLinks,
+      `(${defaultUrlForBrokenLinks})`
+    );
+
     return rawSpecString;
   } else if ("body" in customRequest) {
     const postRequest = customRequest;
@@ -389,6 +401,7 @@ const customRequests: Record<string, CustomRequest> = {
   "justeattakeaway.com": {
     type: "GET",
     url: "https://uk.api.just-eat.io/docs/openapi.yaml",
+    defaultUrlForBrokenLinks: "https://uk.api.just-eat.io/docs/",
   },
   "zoom.us_meeting": {
     lambda: async () => {

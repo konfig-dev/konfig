@@ -756,6 +756,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: Creates or update an exclusion for a given product type.
       parameters:
         - description: Request tenant.
@@ -2501,6 +2505,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: >-
         Final picked order is for brands that may make amendments to an order
         and want to receive a copy of the order in its final state i.e. after
@@ -4538,7 +4546,7 @@ paths:
         **NOTE:** This version of the webhook is asynchronous, and we expect a
         response in two parts:
           1. We expect an immediate `202` response from this webhook to denote that you have received the request;
-          2. Following that, we expect an [async callback](#section/Async-Webhooks) - indicating either success or failure of the operation. The body for the async callbacks are as below:
+          2. Following that, we expect an [async callback](https://uk.api.just-eat.io/docs/) - indicating either success or failure of the operation. The body for the async callbacks are as below:
           
           **Success callback**
           ```
@@ -4575,7 +4583,7 @@ paths:
             Upon successful receipt of this event, a `202` status code should be
             returned, indicating the request has been accepted. You should then
             later respond with the result of processing this request, via the
-            [callback URL](#section/Async-Webhooks) endpoint.
+            [callback URL](https://uk.api.just-eat.io/docs/) endpoint.
         '400':
           description: >-
             Should the initial validation of the order fail, return a `400`
@@ -6031,8 +6039,8 @@ paths:
       description: >
         Use this to update the estimated time of arrival for an order (i.e. when
         you expect the customer to receive the food). NOTE: An initial estimate
-        is given [upon acceptance](#/paths/~1orders~1{orderId}~1accept/put).
-        This endpoint can be used to update that estimate.
+        is given [upon acceptance](https://uk.api.just-eat.io/docs/). This
+        endpoint can be used to update that estimate.
       parameters:
         - description: The order id
           name: orderId
@@ -6372,6 +6380,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: >-
         Provides details of all restaurants that deliver to the specified
         location
@@ -6502,6 +6514,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: Provides details of restaurants that deliver to the specified postcode
       parameters:
         - description: >-
@@ -7666,7 +7682,7 @@ paths:
         POS). NOTE: This message contains the `OrderId`, but not the full order.
         It is assumed that you have stored/cached the full order details earlier
         in the flow - e.g. via the
-        [/order-ready-for-preparation](#/paths/~1order-ready-for-preparation-sync/post)
+        [/order-ready-for-preparation](https://uk.api.just-eat.io/docs/)
         webhook.
       parameters:
         - description: Descriptor of client or internal application
@@ -7716,6 +7732,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: >-
         When an order for your integrated restaurant has been cancelled, the JET
         Connect Platform will notify the endpoint you provided via a `POST`
@@ -7828,6 +7848,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: >-
         JET Connect Platform will notify the endpoint you provided via a `POST`
         request with updates related to the driver status. Your endpoint must be
@@ -7940,6 +7964,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: >-
         JET Connect Platform will notify the endpoint you provided via a `POST`
         request with information related to an order that failed validation on
@@ -8039,6 +8067,10 @@ paths:
       security:
         - Bearer: []
         - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
       description: >-
         JET Connect Platform will notify the endpoint you provided via a `POST`
         request with updates related to restaurant service type being set
@@ -19628,8 +19660,7 @@ components:
         requestId:
           description: >-
             The ID of the request. This is generated from the [Estimate
-            delivery](#tag/Delivery-as-a-Service/paths/~1delivery~1estimate/post)
-            endpoint
+            delivery](https://uk.api.just-eat.io/docs/) endpoint
           type: string
           nullable: false
         collectId:
@@ -19637,8 +19668,7 @@ components:
             Collect point used to identify the pick-up address. Represents a
             restaurant, a grocery store, or any other collect point. The
             available collect points can be retrieved using the [Get Collect
-            Points](#tag/Delivery-as-a-Service/paths/~1delivery~1collect-points/get)
-            endpoint.
+            Points](https://uk.api.just-eat.io/docs/) endpoint.
           nullable: false
           type: string
           properties:
@@ -19686,8 +19716,7 @@ components:
         requestId:
           description: >-
             The ID of the request. This is generated from the [Estimate
-            delivery](#tag/Delivery-as-a-Service/paths/~1delivery~1estimate/post)
-            endpoint
+            delivery](https://uk.api.just-eat.io/docs/) endpoint
           type: string
           nullable: false
       example:
@@ -20086,8 +20115,7 @@ components:
         requestId:
           description: >-
             The ID of the request. This is generated from the [Estimate
-            delivery](#tag/Delivery-as-a-Service/paths/~1delivery~1estimate/post)
-            endpoint
+            delivery](https://uk.api.just-eat.io/docs/) endpoint
           type: string
           nullable: false
         specialInstructions:
@@ -20239,8 +20267,7 @@ components:
             Collect point used to identify the pick-up address. Represents a
             restaurant, a grocery store, or any other collect point. The
             available collect points can be retrieved using the [Get Collect
-            Points](#tag/Delivery-as-a-Service/paths/~1delivery~1collect-points/get)
-            endpoint.
+            Points](https://uk.api.just-eat.io/docs/) endpoint.
           nullable: false
           type: object
           properties:
@@ -33883,6 +33910,190 @@ components:
           cursors:
             before: KHt67IUVSDJDVLa
             after: NDMyNzQyODI3OTQw
+    PartnerLoyaltyChangeStampcardSubscriptionStatusRequestYaml:
+      title: Change stampcard subscription status request
+      description: Change partner stampcard subscription status request
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          nullable: false
+          $ref: '#/components/schemas/PartnerLoyaltySubscriptionStatusYaml'
+        reason:
+          description: >-
+            The reason to change subscription status. The reason is required if
+            status is 'optOutRequested'.
+          type: string
+      example:
+        status: optOutRequested
+        reason: I already have enough loyal customers
+    PartnerLoyaltySubscriptionYaml:
+      title: Subscription
+      description: Partner stampcard subscription details
+      type: object
+      required:
+        - partnerId
+        - tenant
+        - status
+        - eligibleStatusChanges
+      properties:
+        partnerId:
+          description: The ID of the partner.
+          nullable: false
+          type: string
+        tenant:
+          description: The tenant of the partner.
+          nullable: false
+          type: string
+        status:
+          description: Subscription status
+          nullable: false
+          $ref: '#/components/schemas/PartnerLoyaltySubscriptionStatusYaml'
+        changedBy:
+          description: >-
+            Agent or partner who changed status. Null if the status is
+            'Inactive'
+          nullable: true
+          type: string
+        changedAt:
+          description: The last status change timestamp. Null if the status is 'Inactive'
+          nullable: true
+          format: date-time
+          type: string
+        eligibleStatusChanges:
+          description: Eligible subscription statuses for the partner.
+          nullable: false
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/PartnerLoyaltySubscriptionEligibleStatusChangeYaml
+        statusChangeLogs:
+          description: Logs of the subscription status changes.
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/PartnerLoyaltySubscriptionStatusChangeLogsYaml
+      example:
+        partnerId: '324567'
+        tenant: uk
+        status: optOutRequested
+        changedBy: InternalUser
+        changedAt: '2023-01-12T00:00:00.0000000Z'
+        statusChangeLogs:
+          - status: optedIn
+            changedAt: '2022-01-12T00:00:00.0000000Z'
+            changedBy: InternalUser
+            reason: null
+          - status: optOutRequested
+            changedAt: '2023-01-12T00:00:00.0000000Z'
+            changedBy: InternalUser
+            reason: I already have enough loyal customers
+        eligibleStatusChanges:
+          - status: optOutCancelled
+            from: null
+            to: '2023-01-19T00:00:00.0000000Z'
+            manualAction: true
+          - status: optOutConfirmed
+            from: '2023-01-19T00:00:00.0000000Z'
+            to: null
+            manualAction: false
+    PartnerLoyaltySubscriptionEligibleStatusChangeYaml:
+      description: Eligible status changes for the subscription
+      type: object
+      properties:
+        from:
+          description: Date and time when status change become eligible
+          nullable: true
+          type: string
+        to:
+          description: Date and time when status change become non-eligible
+          nullable: true
+          type: string
+        status:
+          description: Eligible status.
+          $ref: '#/components/schemas/PartnerLoyaltySubscriptionStatusYaml'
+        manualAction:
+          description: >-
+            If manual action is true then a partner/agent can change status by
+            himself otherwise it is automatic change based on 'from' property
+          nullable: false
+          type: boolean
+      example:
+        from: '2021-01-12T00:00:00.0000000Z'
+        to: '2021-02-12T00:00:00.0000000Z'
+        status: optOutRequested
+        manualAction: true
+    PartnerLoyaltySubscriptionEnvelopeYaml:
+      title: SubscriptionEnvelope
+      description: Partner stampcard subscription response.
+      type: object
+      properties:
+        data:
+          description: Partner stampcard subscription details
+          nullable: false
+          $ref: '#/components/schemas/PartnerLoyaltySubscriptionYaml'
+      example:
+        data:
+          partnerId: '324567'
+          tenant: uk
+          status: optOutRequested
+          changedBy: InternalUser
+          changedAt: '2023-01-12T00:00:00.0000000Z'
+          statusChangeLogs:
+            - status: optedIn
+              changedAt: '2022-01-12T00:00:00.0000000Z'
+              changedBy: InternalUser
+              reason: null
+            - status: optOutRequested
+              changedAt: '2023-01-12T00:00:00.0000000Z'
+              changedBy: InternalUser
+              reason: I already have enough loyal customers
+          eligibleStatusChanges:
+            - status: optOutCancelled
+              from: null
+              to: '2023-01-19T00:00:00.0000000Z'
+              manualAction: true
+            - status: optOutConfirmed
+              from: '2023-01-19T00:00:00.0000000Z'
+              to: null
+              manualAction: false
+    PartnerLoyaltySubscriptionStatusYaml:
+      description: Status of the subscription
+      enum:
+        - inactive
+        - optedIn
+        - optOutRequested
+        - optOutCancelled
+        - optOutConfirmed
+        - optedOut
+      type: string
+    PartnerLoyaltySubscriptionStatusChangeLogsYaml:
+      title: SubscriptionStatusChangeLogs
+      description: Logs of the subscription status changes.
+      type: object
+      properties:
+        changedAt:
+          description: Subscription status change timestamp.
+          nullable: false
+          format: date-time
+          type: string
+        changedBy:
+          description: Agent or partner who changed status.
+          nullable: false
+          type: string
+        reason:
+          description: Reason why the status changed.
+          nullable: true
+          type: string
+        status:
+          description: Subscription status
+          $ref: '#/components/schemas/PartnerLoyaltySubscriptionStatusYaml'
+      example:
+        changedAt: '2022-01-12T00:00:00.0000000Z'
+        changedBy: InternalUser
+        reason: I already have enough loyal customers
+        status: optOutRequested
     PartnerProductInformationPartnerProductInformationResponseYaml:
       description: Partner product information response
       properties:
@@ -38251,7 +38462,7 @@ components:
           description: >-
             Client needs to use a native SDK to get a token representing the
             customer's authorized payment, then send to the
-            [Authorize](#operation/paymentTenantAuthorizePost) endpoint.
+            [Authorize](https://uk.api.just-eat.io/docs/) endpoint.
           type: string
         data:
           description: Details for completing payment natively.
@@ -38376,8 +38587,7 @@ components:
 
             This corresponds to the `availablePaymentTypes`->`paymentType` in
             the OK response of the [Payment
-            Options](#operation/paymentTenantPartnersPartnerIdOptionsGet)
-            endpoint.
+            Options](https://uk.api.just-eat.io/docs/) endpoint.
           type: string
           minLength: 1
           maxLength: 100
@@ -43781,7 +43991,7 @@ components:
               Start time of the slot in hh:mm:ss format. Times are in the
               restaurant's time zone which can be obtained by converting
               `location.geoPosition` value from [the restaurant's
-              details](#operation/GetRestaurantDetails) using a lookup API such
+              details](https://uk.api.just-eat.io/docs/) using a lookup API such
               as `timezonedb.com`.
             pattern: ^([0-1]\d|2[0-3]):[0-5]\d$:[0-5]\d$
             type: string
@@ -43791,7 +44001,7 @@ components:
               on the next day if less than or equal to the start time. Times are
               in the restaurant's time zone which can be obtained by converting
               `location.geoPosition` value from [the restaurant's
-              details](#operation/GetRestaurantDetails) using a lookup API such
+              details](https://uk.api.just-eat.io/docs/) using a lookup API such
               as `timezonedb.com`.
             pattern: ^([0-1]\d|2[0-3]):[0-5]\d$:[0-5]\d$
             type: string
