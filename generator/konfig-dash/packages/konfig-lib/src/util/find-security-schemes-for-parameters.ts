@@ -1,4 +1,3 @@
-import { OpenAPI } from 'openapi-types'
 import { Operation } from '../forEachOperation'
 import { getOperationParametersDeprecated } from './get-operation-parameters-deprecated'
 import { getSecurityIn } from './get-security-in'
@@ -6,6 +5,10 @@ import { getSecurityParameterName } from './get-security-parameter-name'
 import { getSecuritySchemes, SecurityScheme } from './get-security-schemes'
 import type { Spec } from '../parseSpec'
 
+/**
+ * Find security schemes for parameters by matching the parameter name and in to
+ * the security scheme name and in.
+ */
 export async function findSecuritySchemesForParameters({
   spec,
   operation,
@@ -36,7 +39,10 @@ export async function findSecuritySchemesForParameters({
           (parameter) =>
             parameter.name.toLowerCase() === securityName.toLowerCase()
         )
-      return !!filteredByIn.find((parameter) => parameter.name === securityName)
+      const found = !!filteredByIn.find(
+        (parameter) => parameter.name === securityName
+      )
+      return found
     }
   )
   if (matchingSecuritySchemes.length === 0) return
