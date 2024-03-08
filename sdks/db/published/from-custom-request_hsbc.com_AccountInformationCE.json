@@ -1,0 +1,1078 @@
+{
+  "securitySchemes": {
+    "BearerAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "Authorization scheme used to authenticate & authorize access to a protected resource on a web server. It is used in conjunction with the OAuth 2.0 protocol for securing API endpoints."
+    },
+    "TPPOAuth2Security": {
+      "type": "oauth2",
+      "description": "TPP client credential authorisation flow with the ASPSP. Token URL to be used by TPP to obtain a token. Check the well-known configuration endpoint, the 'token_endpoint' property.",
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "/obie/open-banking/v1.1/oauth2/token",
+          "scopes": {
+            "accounts": "Ability to read Accounts information"
+          }
+        }
+      }
+    },
+    "PSUOAuth2Security": {
+      "type": "oauth2",
+      "description": "OAuth flow, it is required when the PSU needs to perform SCA with the ASPSP when a TPP wants to access an ASPSP resource owned by the PSU. Authorization URL to be used by TPP to redirect the PSU in order to start consent authorization journey. Check the well-known configuration endpoint, the 'authorization_endpoint' property. Token URL to be used by TPP to obtain a token. Check the well-known configuration endpoint, the 'token_endpoint' property.",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "/obie/open-banking/v1.1/oauth2/authorize",
+          "tokenUrl": "/obie/open-banking/v1.1/oauth2/token",
+          "scopes": {
+            "accounts": "Ability to read Accounts information"
+          }
+        }
+      }
+    }
+  },
+  "apiBaseUrl": "https://sandbox.ob.hsbcnet.com/mock/ce/obie/open-banking/v3.1/aisp",
+  "apiVersion": "3.1.11",
+  "apiDescription": "In this document, you'll find the steps your organization needs to take to use our API services. Included in this guide are details of request and response messages used to support your organization’s integration. The intended audience for this document are **Technical Architects**, **Development Engineers**, **Test Engineers**, and **Operation & Maintenance Engineers** involved in development and support of your organization’s integration. Setting up our API Services is best completed with the assistance of your organization’s IT team, or someone with experience and knowledge of application programming interfaces. This should include experience with **JSON payloads**, **security** and **public key infrastructure (PKI)**. This Document describes the following request and response structure of HSBCnet - Account Information API. For detail implementation guidelines, please refer to the respective section from [develop.hsbc.com](https://develop.hsbc.com/ob-api-documentation/account-information-uk-personal-v319)\n",
+  "apiTitle": "Account Information API",
+  "endpoints": 12,
+  "sdkMethods": 13,
+  "schemas": 205,
+  "parameters": 80,
+  "originalCustomRequest": {},
+  "customRequestSpecFilename": "hsbc.com_AccountInformationCE.yaml",
+  "difficultyScore": 135.5,
+  "difficulty": "Medium",
+  "company": "HSBC",
+  "serviceName": "AccountInformationCE",
+  "sdkName": "hsbc-account-information-ce-{language}-sdk",
+  "clientName": "HsbcAccountInformationCe",
+  "metaDescription": "HSBC, also known as The Hongkong and Shanghai Banking Corporation, is a multinational banking and financial services organization. It offers a wide range of services including retail banking, wealth management, commercial banking, and global banking and markets. HSBC operates in numerous countries and territories, serving millions of customers worldwide with its comprehensive banking solutions.",
+  "homepage": "hsbc.com",
+  "developerDocumentation": "develop.hsbc.com/ob-api-documentation/account-information-ce-hsbcnet/endpoints",
+  "categories": [
+    "finance",
+    "banking",
+    "payments",
+    "online_payments",
+    "fintech",
+    "checkout_experience",
+    "multinational",
+    "financial_services",
+    "wealth_management",
+    "global_banking",
+    "retail_banking",
+    "commercial_banking",
+    "open_banking"
+  ],
+  "methods": [
+    {
+      "url": "/account-access-consents",
+      "method": "createConsent",
+      "httpMethod": "post",
+      "tag": "Account Access Consents",
+      "typeScriptTag": "accountAccessConsents",
+      "description": "Create Account Access Consents",
+      "parameters": [
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        },
+        {
+          "name": "Data",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "Risk",
+          "schema": "object",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "201",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "415",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/account-access-consents/{ConsentId}",
+      "method": "deleteConsent",
+      "httpMethod": "delete",
+      "tag": "Account Access Consents",
+      "typeScriptTag": "accountAccessConsents",
+      "description": "Delete Account Access Consents",
+      "parameters": [
+        {
+          "name": "consentId",
+          "schema": "string",
+          "required": true,
+          "description": "ConsentId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "204",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/account-access-consents/{ConsentId}",
+      "method": "getByConsentId",
+      "httpMethod": "get",
+      "tag": "Account Access Consents",
+      "typeScriptTag": "accountAccessConsents",
+      "description": "Get Account Access Consents",
+      "parameters": [
+        {
+          "name": "consentId",
+          "schema": "string",
+          "required": true,
+          "description": "ConsentId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts",
+      "method": "getAll",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "typeScriptTag": "accounts",
+      "description": "Get Accounts",
+      "parameters": [
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}",
+      "method": "getBalancesByAccountId",
+      "httpMethod": "get",
+      "tag": "Accounts",
+      "typeScriptTag": "accounts",
+      "description": "Get Accounts by AccountId",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/balances",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Balances",
+      "typeScriptTag": "balances",
+      "description": "Get Account Balances",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/direct-debits",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Direct Debits",
+      "typeScriptTag": "directDebits",
+      "description": "Get Account Direct Debits",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/scheduled-payments",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Scheduled Payments",
+      "typeScriptTag": "scheduledPayments",
+      "description": "Get Account Scheduled Payments",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/standing-orders",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Standing Orders",
+      "typeScriptTag": "standingOrders",
+      "description": "Get Account Standing Orders",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/transactions",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Transactions",
+      "typeScriptTag": "transactions",
+      "description": "Get Account Transactions",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        },
+        {
+          "name": "fromBookingDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter transactions FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        },
+        {
+          "name": "toBookingDateTime",
+          "schema": "string",
+          "description": "The UTC ISO 8601 Date Time to filter transactions TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/beneficiaries",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Beneficiaries",
+      "typeScriptTag": "beneficiaries",
+      "description": "Get Account Beneficiaries",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/parties",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Parties",
+      "typeScriptTag": "parties",
+      "description": "Get Account Parties",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    },
+    {
+      "url": "/accounts/{AccountId}/product",
+      "method": "getByAccountId",
+      "httpMethod": "get",
+      "tag": "Products",
+      "typeScriptTag": "products",
+      "description": "Get Account Products",
+      "parameters": [
+        {
+          "name": "accountId",
+          "schema": "string",
+          "required": true,
+          "description": "AccountId"
+        },
+        {
+          "name": "xFapiAuthDate",
+          "schema": "string",
+          "required": false,
+          "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        },
+        {
+          "name": "xFapiCustomerIpAddress",
+          "schema": "string",
+          "required": false,
+          "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        },
+        {
+          "name": "xFapiInteractionId",
+          "schema": "string",
+          "required": false,
+          "description": "An RFC4122 UID used as a correlation id."
+        },
+        {
+          "name": "xCustomerUserAgent",
+          "schema": "string",
+          "required": false,
+          "description": "Indicates the user-agent that the PSU is using."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": "Product details of Other Product which is not avaiable in the standard list"
+        },
+        {
+          "statusCode": "400",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "401",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "405",
+          "description": ""
+        },
+        {
+          "statusCode": "406",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        },
+        {
+          "statusCode": "500",
+          "description": "An array of detail error codes, and messages, and URLs to documentation to help remediation."
+        }
+      ]
+    }
+  ],
+  "logo": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/logo.png",
+  "openApiRaw": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/openapi.yaml",
+  "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/imagePreview.png",
+  "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/favicon.png",
+  "clientNameCamelCase": "hsbcAccountInformationCe",
+  "lastUpdated": "2024-03-08T22:36:14.922Z",
+  "typescriptSdkUsageCode": "import { HsbcAccountInformationCe } from 'hsbc-account-information-ce-typescript-sdk';\n\nconst hsbcAccountInformationCe = new HsbcAccountInformationCe({\n    // Authorization scheme used to authenticate & authorize access to a protected resource on a web server. It is used in conjunction with the OAuth 2.0 protocol for securing API endpoints.\n    token: \"TOKEN\",\n    // TPP client credential authorisation flow with the ASPSP. Token URL to be used by TPP to obtain a token. Check the well-known configuration endpoint, the 'token_endpoint' property.\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    // OAuth flow, it is required when the PSU needs to perform SCA with the ASPSP when a TPP wants to access an ASPSP resource owned by the PSU. Authorization URL to be used by TPP to redirect the PSU in order to start consent authorization journey. Check the well-known configuration endpoint, the 'authorization_endpoint' property. Token URL to be used by TPP to obtain a token. Check the well-known configuration endpoint, the 'token_endpoint' property.\n    // clientId: \"CLIENT_ID\",\n    // clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n})",
+  "fixedSpecFileName": "hsbc-account-information-ce-fixed-spec.yaml"
+}

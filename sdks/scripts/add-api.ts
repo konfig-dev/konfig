@@ -65,6 +65,15 @@ async function addApiToPublish() {
   PublishJson.saveHomepage({ homepage }, api);
   console.log(`✅ Homepage: ${PublishJson.getHomepage(api)}`);
 
+  // NEW
+  const developerDocumentation =
+    PublishJson.getDeveloperDocumentation(api) ??
+    (await getDeveloperDocumentation());
+  PublishJson.saveDeveloperDocumentation({ developerDocumentation }, api);
+  console.log(
+    `✅ Developer Documentation: ${PublishJson.getDeveloperDocumentation(api)}`
+  );
+
   // (6) & (7)
   const metaDescription =
     PublishJson.getMetaDescription(api) ??
@@ -457,6 +466,18 @@ async function getHomepage(): Promise<string> {
   return homepage.replace(/^(https?:\/\/)/, "");
 }
 
+async function getDeveloperDocumentation(): Promise<string> {
+  const developerDocumentation: string = (
+    await inquirer.prompt({
+      type: "input",
+      name: "developerDocumentation",
+      message: "What is the URL for developer documentation?",
+    })
+  ).developerDocumentation;
+  // remove "https://" or "http://" from the beginning of the string
+  return developerDocumentation.replace(/^(https?:\/\/)/, "");
+}
+
 async function getCompany(): Promise<string> {
   return (
     await inquirer.prompt({
@@ -501,6 +522,11 @@ class PublishJson {
 
   static getHomepage(api: string): string | undefined {
     return PublishJson._currentPublishJson().publish[api]?.homepage;
+  }
+
+  static getDeveloperDocumentation(api: string): string | undefined {
+    return PublishJson._currentPublishJson().publish[api]
+      ?.developerDocumentation;
   }
 
   static getCategories(api: string): string[] | undefined {
@@ -556,6 +582,15 @@ class PublishJson {
   static saveHomepage = this._writeToDiskAfter(
     ({ homepage }: { homepage: string }, progress) => {
       progress.homepage = homepage;
+    }
+  );
+
+  static saveDeveloperDocumentation = this._writeToDiskAfter(
+    (
+      { developerDocumentation }: { developerDocumentation: string },
+      progress
+    ) => {
+      progress.developerDocumentation = developerDocumentation;
     }
   );
 

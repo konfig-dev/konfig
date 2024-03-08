@@ -39,6 +39,14 @@ export const publishJsonSchema = z.object({
             "URL cannot start with https:// or http://"
           )
           .optional(),
+        developerDocumentation: z
+          .string()
+          // ensure it does not start with https:// or http://
+          .refine(
+            (url) => !url.startsWith("https://") && !url.startsWith("http://"),
+            "URL cannot start with https:// or http://"
+          )
+          .optional(),
         categories: z.string().array().optional(),
       })
       .passthrough()
