@@ -91,13 +91,14 @@ async function executeCustomRequest(
 
     let rawSpecString = JSON.stringify(rawSpec);
 
-    if (defaultUrlForBrokenLinks !== undefined) {
-      const regexForBrokenLinks = /(\((\/|#).*?\))/g;
-      rawSpecString = rawSpecString.replaceAll(
-        regexForBrokenLinks,
-        `(${defaultUrlForBrokenLinks})`
-      );
-    }
+    const regexForBrokenLinks = /(\((\/|#).*?\))/g;
+
+    const urlWithoutSubpath = url.split("/").slice(0, 3).join("/");
+
+    rawSpecString = rawSpecString.replaceAll(
+      regexForBrokenLinks,
+      `(${defaultUrlForBrokenLinks ?? urlWithoutSubpath})`
+    );
 
     return rawSpecString;
   } else if ("body" in customRequest) {
