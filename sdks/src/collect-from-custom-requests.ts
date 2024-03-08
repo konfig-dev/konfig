@@ -386,6 +386,10 @@ const customRequests: Record<string, CustomRequest> = {
       });
     },
   },
+  "justeattakeaway.com": {
+    type: "GET",
+    url: "https://uk.api.just-eat.io/docs/openapi.yaml",
+  },
   "zoom.us_meeting": {
     lambda: async () => {
       const url =
