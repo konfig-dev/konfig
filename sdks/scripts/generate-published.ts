@@ -1,5 +1,5 @@
 import * as path from "path";
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import { SdkPagePropsWithPropertiesOmitted } from "./collect";
 import { parseSpec } from "konfig-lib";
 import camelcase from "konfig-lib/dist/util/camelcase";
@@ -34,6 +34,11 @@ const fixedSpecsOutputPath = path.join(
   path.dirname(__dirname),
   "db",
   "fixed-specs"
+);
+const intermediateFixedSpecsOutputPath = path.join(
+  path.dirname(__dirname),
+  "db",
+  "intermediate-fixed-specs"
 );
 
 /**
@@ -184,7 +189,7 @@ async function main() {
   const fixSpecNotWorkingList = ["ably.io_platform_1.1.0"];
   for (const spec in publishDatum) {
     const publishData = publishJson.publish[spec];
-    const { openapiExamplesDirPath, specData } = publishDatum[spec];
+    const { dynamicPath, specData } = publishDatum[spec];
 
     let rawSpecString = getRawSpecString(specData);
     const oas = await parseSpec(rawSpecString);
@@ -201,25 +206,31 @@ async function main() {
     const openapiFilename = "openapi.yaml";
     const fixedSpecFileName = getFixedSpecFileName(publishData.sdkName);
     fixedSpecFileNames[spec] = fixedSpecFileName;
+    const specIntermediatePathDirectory = path.join(
+      intermediateFixedSpecsOutputPath,
+      dynamicPath
+    );
+    fs.ensureDirSync(specIntermediatePathDirectory);
+    const specIntermediatePath = path.join(
+      specIntermediatePathDirectory,
+      openapiFilename
+    );
 
     // write oas to openapiExamples directory to file openapi.yaml
-    fs.writeFileSync(
-      path.join(openapiExamplesDirPath, openapiFilename),
-      yaml.dump(oas.spec)
-    );
+    // Dylan: The reason why we do this is so we can author "securitySchemes" in
+    // the publish.json and then override the securitySchemes in the OAS before
+    // fixing it
+    fs.writeFileSync(specIntermediatePath, yaml.dump(oas.spec));
 
     if (fixSpecNotWorkingList.includes(spec)) {
       console.log(`🟡 Skipping ${spec} because it is in fixSpecNotWorkingList`);
-      fs.writeFileSync(
-        path.join(fixedSpecsOutputPath, fixedSpecFileName),
-        rawSpecString
-      );
+      fs.writeFileSync(specIntermediatePath, rawSpecString);
       continue;
     }
 
     promises.push(
       fixSpec(
-        path.join(openapiExamplesDirPath, openapiFilename),
+        specIntermediatePath,
         path.join(fixedSpecsOutputPath, fixedSpecFileName)
       )
     );
@@ -373,20 +384,21 @@ async function fixSpec(
   console.log(`✅ Fixed spec ${path.dirname(specInputPath)}/openapi.yaml`);
 }
 
-function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
+function getSpecPathFromSpecData(
+  specData: SdkPagePropsWithPropertiesOmitted
+): string {
   if (specData.openapiDirectoryPath) {
-    return fs.readFileSync(
-      path.join(apiDirPath, specData.openapiDirectoryPath),
-      "utf-8"
-    );
+    return path.join(apiDirPath, specData.openapiDirectoryPath);
   } else if (specData.customRequestSpecFilename) {
-    return fs.readFileSync(
-      path.join(customRequestSpecsDir, specData.customRequestSpecFilename),
-      "utf-8"
-    );
+    return path.join(customRequestSpecsDir, specData.customRequestSpecFilename);
   } else {
     throw Error(`❌ ERROR: No spec found for ${specData}`);
   }
+}
+
+function getRawSpecString(specData: SdkPagePropsWithPropertiesOmitted) {
+  const specPath = getSpecPathFromSpecData(specData);
+  return fs.readFileSync(specPath, "utf-8");
 }
 
 main().then(() => console.log("Done"));
