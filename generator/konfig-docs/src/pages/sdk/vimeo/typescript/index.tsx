@@ -16,7 +16,7 @@ export default function VimeoTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/logo.avif"
       clientNameCamelCase="vimeo"
       homepage="developer.vimeo.com"
-      lastUpdated={new Date("2024-03-06T23:24:34.758Z")}
+      lastUpdated={new Date("2024-03-08T00:00:17.623Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg"
       contactUrl="https://developer.vimeo.com/help"
       // Missing contactEmail
@@ -4627,7 +4627,7 @@ export default function VimeoTypeScriptSdk() {
         "name": "dimension",
         "schema": "string",
         "required": true,
-        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n"
+        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `device_type` - Group the results by device type.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n"
       },
       {
         "name": "direction",
@@ -4687,7 +4687,7 @@ export default function VimeoTypeScriptSdk() {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "The way to sort the results.\n\nOption descriptions:\n * `average_percent_watched` - Sort the results by mean seconds played.\n * `average_time_watched` - Sort the results by mean percentage played.\n * `comments` - Sort the results by the number of comments.\n * `country` - Sort the results by country.\n * `default` - Sort the results by the values of both the **dimension** and **time_interval** fields.\n * `downloads` - Sort the results by the number of downloads.\n * `embed_domain` - Sort the results by embed domain.\n * `finishes` - Sort the results by the number of complete plays.\n * `impressions` - Sort the results by the number of impressions.\n * `like` - Sort the results by the number of likes.\n * `time` - Sort the results by the value of the **start_date** field. This option is available only when the value of **time_interval** isn't `none`.\n * `total_time_watched` - Sort the results by total seconds played.\n * `unique_impressions` - Sort the results by unique impressions.\n * `unique_viewers` - Sort the results by unique viewers.\n * `video` - Sort the results by video ID.\n * `views` - Sort the results by the number of views.\n"
+        "description": "The way to sort the results.\n\nOption descriptions:\n * `average_percent_watched` - Sort the results by mean seconds played.\n * `average_time_watched` - Sort the results by mean percentage played.\n * `comments` - Sort the results by the number of comments.\n * `country` - Sort the results by country.\n * `default` - Sort the results by the values of both the **dimension** and **time_interval** fields.\n * `device_type` - Sort the results by device type.\n * `downloads` - Sort the results by the number of downloads.\n * `embed_domain` - Sort the results by embed domain.\n * `finishes` - Sort the results by the number of complete plays.\n * `impressions` - Sort the results by the number of impressions.\n * `like` - Sort the results by the number of likes.\n * `time` - Sort the results by the value of the **start_date** field. This option is available only when the value of **time_interval** isn't `none`.\n * `total_time_watched` - Sort the results by total seconds played.\n * `unique_impressions` - Sort the results by unique impressions.\n * `unique_viewers` - Sort the results by unique viewers.\n * `video` - Sort the results by video ID.\n * `views` - Sort the results by the number of views.\n"
       },
       {
         "name": "timeInterval",
@@ -12581,7 +12581,7 @@ export default function VimeoTypeScriptSdk() {
         "name": "dimension",
         "schema": "string",
         "required": true,
-        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n"
+        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `device_type` - Group the results by device type.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n"
       },
       {
         "name": "direction",
@@ -12641,7 +12641,7 @@ export default function VimeoTypeScriptSdk() {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "The way to sort the results.\n\nOption descriptions:\n * `average_percent_watched` - Sort the results by mean seconds played.\n * `average_time_watched` - Sort the results by mean percentage played.\n * `comments` - Sort the results by the number of comments.\n * `country` - Sort the results by country.\n * `default` - Sort the results by the values of both the **dimension** and **time_interval** fields.\n * `downloads` - Sort the results by the number of downloads.\n * `embed_domain` - Sort the results by embed domain.\n * `finishes` - Sort the results by the number of complete plays.\n * `impressions` - Sort the results by the number of impressions.\n * `like` - Sort the results by the number of likes.\n * `time` - Sort the results by the value of the **start_date** field. This option is available only when the value of **time_interval** isn't `none`.\n * `total_time_watched` - Sort the results by total seconds played.\n * `unique_impressions` - Sort the results by unique impressions.\n * `unique_viewers` - Sort the results by unique viewers.\n * `video` - Sort the results by video ID.\n * `views` - Sort the results by the number of views.\n"
+        "description": "The way to sort the results.\n\nOption descriptions:\n * `average_percent_watched` - Sort the results by mean seconds played.\n * `average_time_watched` - Sort the results by mean percentage played.\n * `comments` - Sort the results by the number of comments.\n * `country` - Sort the results by country.\n * `default` - Sort the results by the values of both the **dimension** and **time_interval** fields.\n * `device_type` - Sort the results by device type.\n * `downloads` - Sort the results by the number of downloads.\n * `embed_domain` - Sort the results by embed domain.\n * `finishes` - Sort the results by the number of complete plays.\n * `impressions` - Sort the results by the number of impressions.\n * `like` - Sort the results by the number of likes.\n * `time` - Sort the results by the value of the **start_date** field. This option is available only when the value of **time_interval** isn't `none`.\n * `total_time_watched` - Sort the results by total seconds played.\n * `unique_impressions` - Sort the results by unique impressions.\n * `unique_viewers` - Sort the results by unique viewers.\n * `video` - Sort the results by video ID.\n * `views` - Sort the results by the number of views.\n"
       },
       {
         "name": "timeInterval",
