@@ -1,0 +1,1469 @@
+openapi: 3.0.0
+info:
+  title: Klarna Checkout API V3
+  description: >-
+    The checkout API is used to create a checkout with Klarna and update the
+    checkout order during the purchase. As soon as the purchase is completed the
+    order should be read and handled using the [`Order Management
+    API`](https://docs.klarna.com/api/ordermanagement).\n\nRead more on [Klarna
+    checkout](https://docs.klarna.com/klarna-checkout/).
+  version: 1.0.0
+  x-document-metadata:
+    copyright: © 2005 - 2024 Klarna Bank AB (publ). All rights reserved.
+    trace-id: 2b18ee7-3849839-docs-portal-api-1706173980684
+    date-created: 2024-01-25T09:13:45+0000
+  x-konfig-ignore:
+    potential-incorrect-type: true
+servers:
+  - url: https://api.klarna.com
+tags:
+  - name: Order
+paths:
+  /checkout/v3/orders:
+    post:
+      tags:
+        - Order
+      summary: Create an order
+      operationId: Order_createNewOrder
+      description: >-
+        To create a new order simply provide a JSON object with the applicable
+        properties.<br>The location of the newly created checkout order can be
+        found in the location header of the response.<br>Please note: This is
+        the url that should be used for future interactions (read and update)
+        with the order, i.e. do not construct the order url based on the order
+        id.
+      parameters:
+        - name: Klarna-Partner
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/order'
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '400':
+          description: >-
+            We were unable to create an order with the provided data. Some field
+            constraint was violated.
+        '401':
+          description: You were not authorized to execute this operation.
+      x-400:
+        error_text: >-
+          array|Bad value: order_amount|Bad value: order_tax_amount|Bad value:
+          locale
+        correlation_id: 1b4c6bfa-f182-43dd-bde0-6bec32as6cf0
+        error_code: BAD_VALUE
+  /checkout/v3/orders/{order_id}:
+    post:
+      tags:
+        - Order
+      summary: Update an order
+      operationId: Order_updateOrder
+      description: >-
+        To update an order simply provide a JSON object with the properties you
+        want to update. Properties not provided in the request will stay the
+        same.<br>Please note: an order can only be updated when the status is
+        checkout_incomplete
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/order'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '400':
+          description: >-
+            We were unable to update an order with the provided data. Some field
+            constraint was violated.
+        '401':
+          description: You were not authorized to execute this operation.
+        '403':
+          description: You tried to modify a read only resource.
+        '404':
+          description: >-
+            We did not find any order with given ID. You need to create a new
+            order.
+      x-403:
+        error_text: array|Resource is read-only
+        correlation_id: 1b4c6bfa-f182-43dd-bde0-6bec32as6cf0
+        error_code: READ_ONLY_ORDER
+      x-400:
+        error_text: >-
+          array|Bad value: order_amount|Bad value: order_tax_amount|Bad value:
+          locale
+        correlation_id: 1b4c6bfa-f182-43dd-bde0-6bec32as6cf0
+        error_code: BAD_VALUE
+    get:
+      tags:
+        - Order
+      summary: Get order details
+      operationId: Order_getOrderDetails
+      description: Get the full details of a Klarna checkout order.
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        '401':
+          description: You were not authorized to execute this operation.
+        '403':
+          description: Merchant was not activated.
+        '404':
+          description: >-
+            We did not find any order with given ID. You need to create a new
+            order.
+  /checkout/v3/orders/{order_id}/abort:
+    post:
+      tags:
+        - Order
+      summary: Abort an order
+      operationId: Order_abortOrder
+      description: Mark an order as aborted.
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/order'
+        '403':
+          description: You tried to modify a read only resource.
+        '404':
+          description: >-
+            We did not find any order with given ID. You need to create a new
+            order.
+components:
+  requestBodies:
+    order:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/order'
+  schemas:
+    DeliveryDetailsV1:
+      type: object
+      properties:
+        carrier:
+          description: Carrier product name
+          type: string
+        product:
+          $ref: '#/components/schemas/ProductV1'
+        timeslot:
+          $ref: '#/components/schemas/TimeslotV1'
+        pickup_location:
+          $ref: '#/components/schemas/PickupLocationV1'
+    PickupLocationV1:
+      type: object
+      properties:
+        id:
+          description: Id
+          type: string
+        name:
+          description: Name of the location
+          type: string
+        address:
+          $ref: '#/components/schemas/address'
+    ProductV1:
+      type: object
+      properties:
+        name:
+          description: Carrier product name
+          type: string
+        identifier:
+          description: Carrier product identifier
+          type: string
+    TimeslotV1:
+      type: object
+      properties:
+        id:
+          description: Id
+          type: string
+        start:
+          description: Start time
+          type: string
+        end:
+          description: End time
+          type: string
+    address:
+      type: object
+      properties:
+        title:
+          description: >-
+            Title.<p>Valid values for
+            UK:</p><ul><li><em>Mr</em></li><li><em>Ms</em></li><li><em>Mrs</em></li><li><em>Miss</em></li></ul><p>Valid
+            values for
+            DACH:</p><ul><li><em>Herr</em></li><li><em>Frau</em></li></ul><p>Valid
+            values for
+            NL:</p><ul><li><em>Dhr.</em></li><li><em>Mevr.</em></li></ul>
+          type: string
+          example: Mr
+        given_name:
+          description: Given name.
+          type: string
+          example: John
+        family_name:
+          description: Family name.
+          type: string
+          example: Doe
+        email:
+          description: E-mail address.
+          type: string
+          example: john@doe.com
+        street_address:
+          description: Street address, first line. (Street name and number)
+          type: string
+          example: Lombard St 10
+        street_address2:
+          description: Street address, second line. (Apartment number, suite, etc.)
+          type: string
+          example: Apt 214
+        street_name:
+          description: >-
+            Street name. Only applicable in DE/AT/NL. Do not combine with
+            street_address. See <b>streetNumber</b>.
+          type: string
+          example: Lombard St
+        street_number:
+          description: >-
+            Street number. Only applicable in DE/AT/NL. Do not combine with
+            street_address. See <b>streetName</b>.
+          type: string
+          example: '10'
+        house_extension:
+          description: House extension. Only applicable in NL
+          type: string
+          example: B
+        postal_code:
+          description: Postal/post code.
+          type: string
+          example: '90210'
+        city:
+          description: City.
+          type: string
+          example: Beverly Hills
+        region:
+          description: State or Region.
+          type: string
+          example: CA
+        phone:
+          description: Phone number.
+          type: string
+          example: '333444555'
+        country:
+          description: ISO 3166 alpha-2. Country.
+          type: string
+          example: US
+        care_of:
+          description: Care of.
+          type: string
+          example: C/O
+    attachment:
+      type: object
+      required:
+        - body
+        - content_type
+      properties:
+        body:
+          description: >-
+            The content of the extra merchant data which should be presented as
+            a string inside this property. The body should be an object
+            containing any of the keys and sub objects described below
+            serialised to JSON. More information on that object can be found
+            [here](https://docs.klarna.com/klarna-checkout/api/checkout-api/#tag/Attachment-Schema).
+          type: string
+          example: >-
+            {"hotel_reservation_details": [{"pnr": "VH67899","hotel_intinerary":
+            [{"hotel_name": "Hotel ltd.","address": {"street_address":
+            "Storgatan 3","postal_code": "113 35","city": "Stockholm","country":
+            "Sweden"},"start_time": "2019-01-31T15:00:00Z","end_time":
+            "2019-01-31T15:30:00Z","number_of_rooms":
+            2,"ticket_delivery_method": "email","ticket_delivery_recipient":
+            "jonas.larlsson@klarna.com","hotel_price": 23050,"class":
+            "Business","passenger_id": [1]}],"passengers": [{"id": 1,"title":
+            "mr","first_name": "Adam","last_name": "Adamson"}],"insurance":
+            [{"insurance_company": "Insurance Company X","insurance_type":
+            "travel","insurance_price": 0}],"affiliate_name": "TradeMaxi
+            AB"}],"air_reservation_details": [{"pnr": "VH67899","intinerary":
+            [{"departure": "ARN","departure_city": "Stockholm","arrival":
+            "NCE","arrival_city": "Nice","carrier": "SK","segment_price":
+            34000,"departure_date":
+            "2019-01-30T15:00:00Z","ticket_delivery_method":
+            "email","ticket_delivery_recipient":
+            "jonas.larlsson@klarna.com","passenger_id": [1]}],"passengers":
+            [{"id": 1,"title": "mr","first_name": "Adam","last_name":
+            "Adamson"}],"insurance": [{"insurance_company": "Insurance Company
+            X","insurance_type": "travel","insurance_price":
+            0}],"affiliate_name": "TradeMaxi AB"}],"customer_account_info":
+            [{"unique_account_identifier": "12345","account_registration_date":
+            "2016-01-24T15:00:00Z","account_last_modified":
+            "2017-01-24T15:00:00Z"}],"payment_history_full": [{"payment_option":
+            "card","number_paid_purchases": 2,"total_amount_paid_purchases":
+            1234,"date_of_last_paid_purchase":
+            "2018-01-24T15:00:00Z","date_of_first_paid_purchase":
+            "2018-01-24T15:00:00Z"}]}
+        content_type:
+          description: >-
+            The content type of the body. It is usually represented as
+            "application/vnd.klarna.internal.emd-v2+json"
+          type: string
+          example: application/vnd.klarna.internal.emd-v2+json
+    checkbox:
+      type: object
+      required:
+        - checked
+        - required
+        - text
+      properties:
+        text:
+          description: >-
+            Text that will be displayed to the consumer aside the checkbox.
+            Links and formatting can be added using Markdown. (max 1000
+            characters)
+          type: string
+          example: >-
+            Please add me to the newsletter list, read more here
+            \[link\](http://www.google.com)
+        checked:
+          description: >-
+            Default state of the additional checkbox. It will use this value
+            when loaded for the first time.
+          type: boolean
+        required:
+          description: >-
+            Whether it is required for the consumer to check the additional
+            checkbox box or not in order to complete the purchase.
+          type: boolean
+    checkbox-v2:
+      type: object
+      required:
+        - checked
+        - id
+        - required
+        - text
+      properties:
+        text:
+          description: >-
+            Text that will be displayed to the consumer aside the checkbox.
+            Links and formatting can be added using Markdown. (max 1000
+            characters)
+          type: string
+          example: >-
+            Please add me to the newsletter list, read more here
+            \[link\](http://www.google.com)
+        checked:
+          description: >-
+            Default state of the additional checkbox. It will use this value
+            when loaded for the first time.
+          type: boolean
+        required:
+          description: >-
+            Whether it is required for the consumer to check the additional
+            checkbox box or not in order to complete the purchase.
+          type: boolean
+        id:
+          description: Identifier used when presenting data back to merchant
+          type: string
+          example: newsletter_opt_in
+    customer:
+      type: object
+      properties:
+        type:
+          description: >-
+            The default supported value is 'person'. If B2B is enabled for the
+            merchant, the value may be "organization".
+          type: string
+          example: person
+        gender:
+          description: Customer’s gender - ‘male’ or ‘female’.
+          type: string
+          example: male
+        date_of_birth:
+          description: Customer’s date of birth. The format is ‘yyyy-mm-dd’. ISO 8601 date.
+          type: string
+          example: '1995-10-20'
+        organization_registration_id:
+          description: |-
+            "The organization's official registration id (organization number).
+
+            Note: Applicable only for B2B orders."
+          type: string
+          example: 556737-0431
+        vat_id:
+          description: Organization VAT ID. Only applies for b2b orders.
+          type: string
+    dimensions:
+      type: object
+      properties:
+        height:
+          description: >-
+            The product's height as used in the merchant's webshop.
+            Non-negative. Measured in millimeters.
+          type: integer
+          format: int64
+          example: 100
+        width:
+          description: >-
+            The product's width as used in the merchant's webshop. Non-negative.
+            Measured in millimeters.
+          type: integer
+          format: int64
+          example: 100
+        length:
+          description: >-
+            The product's length as used in the merchant's webshop.
+            Non-negative. Measured in millimeters.
+          type: integer
+          format: int64
+          example: 100
+    discount_line:
+      type: object
+      required:
+        - name
+        - quantity
+        - tax_rate
+        - total_amount
+        - total_tax_amount
+        - unit_price
+      properties:
+        name:
+          description: Descriptive name of discount
+          type: string
+          example: Super deal
+          minLength: 1
+          maxLength: 255
+        quantity:
+          description: Non-negative number. Quantity of the discount line item.
+          type: integer
+          format: int64
+          example: 5
+          minimum: 0
+        unit_price:
+          description: >-
+            Minor units. Includes tax, excludes discount. (Must be
+            non-positive).
+
+
+            Example: -100 Euros should be -10000.
+          type: integer
+          format: int64
+          example: -10000
+          maximum: 0
+        tax_rate:
+          description: >-
+            Non-negative value. The percentage value is represented with two
+            implicit decimals. (max 10000)
+
+
+            Example: 25% should be 2500.
+          type: integer
+          format: int64
+          example: 1000
+          maximum: 10000
+        total_amount:
+          description: |-
+            Minor units. Includes tax and discount. 
+
+            Example: -25 euros should be -2500
+            Value = (quantity x unit_price).
+            (Must be non-positive)
+          type: integer
+          format: int64
+          example: -2500
+          maximum: 0
+        total_tax_amount:
+          description: >-
+            Must be within ±1 of total_amount - total_amount \* 10000 / (10000 +
+            tax_rate). Should be non-positive
+          type: integer
+          format: int64
+          example: -123
+        reference:
+          description: The CRM reference to the gift-card that was entered by the user
+          type: string
+          example: 645f54bb-dbb7-6e1f-83bd-bc81a2c3a258
+          minLength: 0
+          maxLength: 255
+        merchant_data:
+          description: The gift-card number that was entered by the user
+          type: string
+          example: '{"card_number":"5551234567890"}'
+          minLength: 0
+          maxLength: 1024
+    gui:
+      type: object
+      properties:
+        options:
+          description: >-
+            An array of options to define the checkout behaviour. Supported
+            options: minimal_confirmation.
+
+
+            The gui object is an array of options to modify checkout client ui
+            behaviours. 
+
+
+            Examples: ["minimal_confirmation"]
+          type: array
+          items:
+            type: string
+    merchant_requested:
+      type: object
+      properties:
+        additional_checkbox:
+          description: >-
+            Informs whether the additional_checkbox is checked or not, when
+            applicable.
+          type: boolean
+          readOnly: true
+        additional_checkboxes:
+          description: >-
+            Informs whether the additional_checkboxes is checked or not, when
+            applicable.
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/merchant_requested_checkbox'
+    merchant_requested_checkbox:
+      type: object
+      properties:
+        id:
+          type: string
+        checked:
+          type: boolean
+    merchant_urls:
+      type: object
+      required:
+        - checkout
+        - confirmation
+        - push
+        - terms
+      properties:
+        terms:
+          description: >-
+            URL for the terms and conditions page of the merchant. The URL will
+            be displayed inside the Klarna Checkout iFrame.(max 2000 characters)
+
+            Example: "https://merchant.com/terms"
+          type: string
+          example: https://www.example.com/terms.html
+          minLength: 0
+          maxLength: 2000
+        checkout:
+          description: |-
+            URL for the checkout page of the merchant. (max 2000 characters)
+            Example: "https://merchant.com/checkout"
+          type: string
+          example: https://www.example.com/checkout.html
+          minLength: 0
+          maxLength: 2000
+        confirmation:
+          description: >-
+            URL of the merchant confirmation page. The consumer will be
+            redirected back to the confirmation page if the authorization is
+            successful after the customer clicks on the ‘Place Order’ button
+            inside checkout. The special characters of the confirmation URL
+            should be encoded, e.g. the "space" character should be written as
+            "%20". Then, on top of that, the whole confirmation URL should be
+            encoded. E.g. the "space" character should become "%2520". (max 2000
+            characters)
+
+            Example: "https://merchant.com/confirmation"
+          type: string
+          example: https://www.example.com/confirmation.html
+          minLength: 0
+          maxLength: 2000
+        push:
+          description: >-
+            URL that will be used for push notification when an order is
+            completed. Should be different than checkout and confirmation URLs.
+            (max 2000 characters)
+
+            Example: "https://merchant.com/push"
+          type: string
+          example: https://www.example.com/api/push
+          minLength: 0
+          maxLength: 2000
+        validation:
+          description: >-
+            URL that will be requested for final merchant validation. (must be
+            https, max 2000 characters)
+
+            Example: "https://merchant.com/validation"
+          type: string
+          example: https://www.example.com/api/validation
+          minLength: 0
+          maxLength: 2000
+        notification:
+          description: |-
+            URL for notifications on pending orders. (max 2000 characters)
+            Example: "https://merchant.com/notification/{checkout.order.id}"
+          type: string
+          example: https://www.example.com/api/pending
+          minLength: 0
+          maxLength: 2000
+        cancellation_terms:
+          description: >-
+            URL for the cancellation terms page of the merchant. The URL will be
+            displayed in the email that is sent to the customer after the order
+            is captured.(max 2000 characters)
+
+            Example: "https://merchant.com/terms/cancelation"
+          type: string
+          example: https://www.example.com/terms/cancellation.html
+          minLength: 0
+          maxLength: 2000
+        shipping_option_update:
+          description: |-
+            URL for shipping option update. (must be https, max 2000 characters)
+            Example: "https://merchant.com/shippingoptionupdate"
+          type: string
+          example: https://www.example.com/api/shipment
+          minLength: 0
+          maxLength: 2000
+        address_update:
+          description: >-
+            URL for shipping, tax and purchase currency updates. Will be called
+            on address changes. (must be https, max 2000 characters)
+
+            Example: "https://merchant.com/addressupdate"
+          type: string
+          example: https://www.example.com/api/address
+          minLength: 0
+          maxLength: 2000
+        country_change:
+          description: >-
+            URL for shipping, tax and purchase currency updates. Will be called
+            on billing or shipping country changes. (must be https, max 2000
+            characters)
+
+            Example: "https://merchant.com/countrychange"
+          type: string
+          example: https://www.example.com/api/country
+          minLength: 0
+          maxLength: 2000
+    options:
+      type: object
+      properties:
+        require_validate_callback_success:
+          description: >-
+            If true, validate callback must get a positive response to not stop
+            purchase. Default: false.
+          type: boolean
+        acquiring_channel:
+          description: >-
+            Acquiring channel for the order. The possible values are:
+
+            <ul><li><em>ECOMMERCE for "E-commerce"</em></li><li><em>IN_STORE for
+            "Purchase in boutique"</em></li><li><em>Default :
+            ECOMMERCE</em></li></ul>
+          type: string
+          pattern: ECOMMERCE|MOTO|IN_STORE|TELESALES
+        vat_removed:
+          description: If true, VAT is not displayed in Checkout's Order Summary page.
+          type: boolean
+        allow_separate_shipping_address:
+          description: >-
+            If true, the consumer can enter different billing and shipping
+            addresses. Default: false, except for purchase_country DE where
+            default is: true
+          type: boolean
+        color_button:
+          description: >-
+            Color for the buttons within the iFrame. Value should be a CSS hex
+            color, e.g. "#FF9900"
+          type: string
+          example: '#FF9900'
+          pattern: ^#[A-Fa-f0-9]{6}$
+        color_button_text:
+          description: >-
+            Color for the text inside the buttons within the iFrame. Value
+            should be a CSS hex color, e.g. "#FF9900"
+          type: string
+          example: '#FF9900'
+          pattern: ^#[A-Fa-f0-9]{6}$
+        color_checkbox:
+          description: >-
+            Color for the checkboxes within the iFrame. Value should be a CSS
+            hex color, e.g. "#FF9900"
+          type: string
+          example: '#FF9900'
+          pattern: ^#[A-Fa-f0-9]{6}$
+        color_checkbox_checkmark:
+          description: >-
+            Color for the checkboxes checkmark within the iFrame. Value should
+            be a CSS hex color, e.g. "#FF9900"
+          type: string
+          example: '#FF9900'
+          pattern: ^#[A-Fa-f0-9]{6}$
+        color_header:
+          description: >-
+            Color for the headers within the iFrame. Value should be a CSS hex
+            color, e.g. "#FF9900"
+          type: string
+          example: '#FF9900'
+          pattern: ^#[A-Fa-f0-9]{6}$
+        color_link:
+          description: >-
+            Color for the hyperlinks within the iFrame. Value should be a CSS
+            hex color, e.g. "#FF9900"
+          type: string
+          example: '#FF9900'
+          pattern: ^#[A-Fa-f0-9]{6}$
+        date_of_birth_mandatory:
+          description: 'If true, the consumer cannot skip date of birth. Default: false'
+          type: boolean
+        shipping_details:
+          description: >-
+            A message that will be presented on the confirmation page under the
+            headline "Delivery" (max 255 characters).
+          type: string
+          example: Delivered within 1-3 working days
+        title_mandatory:
+          description: >-
+            If specified to false, title becomes optional. Only available for
+            orders for country GB.
+          type: boolean
+        additional_checkbox:
+          $ref: '#/components/schemas/checkbox'
+        national_identification_number_mandatory:
+          description: >-
+            If true, the user cannot skip national identification number in SE,
+            NO, FI and DK. Default: false. In order to read the national
+            identification number in the validation callback, please contact
+            Klarna’s merchant support.
+          type: boolean
+        additional_merchant_terms:
+          description: >-
+            Additional merchant defined field. e.g. Extra terms and conditions
+            to show.
+
+
+            Example: "ADDITIONAL MERCHANT TERMS! \[terms
+            link\](https://merchant.com/extra_terms)"
+          type: string
+        phone_mandatory:
+          description: >-
+            If false, the consumer can skip the phone. Only available for orders
+            in DACH countries.
+          type: boolean
+        radius_border:
+          description: Radius for the border of elements within the iFrame.
+          type: string
+          example: '5'
+        allowed_customer_types:
+          description: >-
+            A list of allowed customer types. Supported types: <b>person</b> &
+            <b>organization</b>.
+
+            Example: ["person","organization"]
+          type: array
+          items:
+            type: string
+          maxItems: 2
+          minItems: 1
+        show_subtotal_detail:
+          description: >-
+            If true, the Order Detail subtotals view is expanded when the Klarna
+            Checkout iFrame is loaded. Default: false
+          type: boolean
+        additional_checkboxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/checkbox-v2'
+        verify_national_identification_number:
+          description: >-
+            Enable verification of National Identification Numbers only in
+            Sweden, Finland and Norway. This option also make the national
+            identification number mandatory. (Not applicable for countries
+            outside of Sweden, Finland and Norway)
+          type: boolean
+        auto_capture:
+          description: Allow merchant to trigger auto capturing.
+          type: boolean
+        require_client_validation:
+          description: If true, a client side validation is needed to complete the purchase
+          type: boolean
+        enable_discount_module:
+          description: Enables the inline discount module
+          type: boolean
+        show_vat_registration_number_field:
+          description: >-
+            If true, a optional VAT registration number field will be shown in
+            the address form. Only applies for b2b orders.
+          type: boolean
+    order:
+      type: object
+      required:
+        - locale
+        - order_amount
+        - order_lines
+        - order_tax_amount
+        - purchase_country
+        - purchase_currency
+      properties:
+        tags:
+          description: |-
+            Extra information added to the order.
+
+            Example: ["dangerous_goods", "bulky"]
+          type: array
+          items:
+            type: string
+        order_id:
+          description: >-
+            Unique order ID that will be used for the entire lifecycle of the
+            order. (max 255 characters)
+          type: string
+          example: f3392f8b-6116-4073-ab96-e330819e2c07
+          readOnly: true
+        name:
+          description: The merchant name (max 255 characters).
+          type: string
+          example: Women's Fashion
+          readOnly: true
+        purchase_country:
+          description: >-
+            The purchase country of the merchant's store. The format to be used
+            is ISO 3166 alpha-2. Eg: GB, SE, DE, US, etc. 
+
+
+            Note: purchase country and currency need to match the defined
+            merchant configuration. For global configuration read this
+            https://docs.klarna.com/klarna-checkout/popular-use-cases/selling-to-multiple-countries/
+          type: string
+          example: US
+          pattern: ^[A-Za-z]{2,2}$
+        purchase_currency:
+          description: >-
+            The purchase currency of the merchant's store. The format to be used
+            is ISO 4217. Eg: USD, EUR, SEK, GBP, etc.
+
+
+            Note: purchase country and currency need to match the defined
+            merchant configuration. For global configuration read this
+            https://docs.klarna.com/klarna-checkout/popular-use-cases/selling-to-multiple-countries/
+          type: string
+          example: USD
+          pattern: ^[A-Za-z]{3,3}$
+        locale:
+          description: >-
+            Used to define the language and region of the customer. RFC 1766
+            customer's locale.
+          type: string
+          example: en-US
+          pattern: ^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$
+        status:
+          description: >-
+            The current status of the order. The status will be ‘incomplete’
+            until the customer has been successfully authorized.
+          type: string
+          example: CHECKOUT_INCOMPLETE
+        billing_address:
+          $ref: '#/components/schemas/address'
+        shipping_address:
+          $ref: '#/components/schemas/address'
+        order_amount:
+          description: >-
+            Total amount of the order including tax and any available discounts.
+            The value should be in non-negative minor units.
+
+
+            Example: 25 Euros should be 2500.
+          type: integer
+          format: int64
+          example: 50000
+          minimum: 0
+        order_tax_amount:
+          description: >-
+            Total tax amount of the order. The value should be in non-negative
+            minor units.
+
+
+            Example: 25 Euros should be 2500.
+          type: integer
+          format: int64
+          example: 4545
+          minimum: 0
+        order_lines:
+          description: >-
+            An array containing list of line items that are part of this order.
+            Maximum of 1000 line items could be processed in a single order.
+          type: array
+          items:
+            $ref: '#/components/schemas/order_line'
+          maxItems: 1000
+          minItems: 0
+        customer:
+          $ref: '#/components/schemas/customer'
+        merchant_urls:
+          $ref: '#/components/schemas/merchant_urls'
+        html_snippet:
+          description: The HTML snippet that is used to render the checkout in an iframe.
+          type: string
+          example: >-
+            <div id='klarna-checkout-container'><script>alert('Initializing
+            Klarna Checkout');</script></div>
+          readOnly: true
+        merchant_reference1:
+          description: >-
+            Used for storing merchant's internal order number or other
+            reference. If set, will be shown on the confirmation page as "order
+            number" . The value is also available in the settlement files. (max
+            255 characters).
+
+            Example: "45aa52f387871e3a210645d4"
+          type: string
+          example: 45aa52f387871e3a210645d4
+          minLength: 0
+          maxLength: 255
+        merchant_reference2:
+          description: >-
+            Used for storing merchant's internal order number or other
+            reference. The value is available in the settlement files. (max 255
+            characters).
+
+            Example: "45aa52f387871e3a210645d4"
+          type: string
+          example: 45aa52f387871e3a210645d4
+          minLength: 0
+          maxLength: 255
+        started_at:
+          description: >-
+            ISO 8601 datetime. The date and time when the order has been
+            created. The format will be as follows:
+
+            "yyyy-mm-ddThh:mm:ssZ"
+          type: string
+          format: date-time
+          readOnly: true
+        completed_at:
+          description: >-
+            ISO 8601 datetime. The date and time when the order has been
+            completed. The format will be as follows:
+
+            "yyyy-mm-ddThh:mm:ssZ"
+          type: string
+          format: date-time
+          readOnly: true
+        last_modified_at:
+          description: >-
+            ISO 8601 datetime. The date and time when the order was last
+            modified. The format will be as follows:
+
+            "yyyy-mm-ddThh:mm:ssZ"
+          type: string
+          format: date-time
+          readOnly: true
+        options:
+          $ref: '#/components/schemas/options'
+        attachment:
+          $ref: '#/components/schemas/attachment'
+        external_payment_methods:
+          description: >-
+            List of external payment methods that will be displayed as part of
+            payment methods in the checkout.
+          type: array
+          items:
+            $ref: '#/components/schemas/payment_provider'
+        external_checkouts:
+          description: >-
+            List of external checkouts that will be displayed as part of payment
+            methods in the checkout.
+
+            The image_url is required, and the image size has to be 276x48px
+          type: array
+          items:
+            $ref: '#/components/schemas/payment_provider'
+        shipping_countries:
+          description: >-
+            List of allowed shipping countries for this order in ISO-3166
+            alpha-2 format.
+
+
+            If specified, the customer will be able to change the shipping
+            country in the checkout and you will be notified through
+            ‘address_update’ callback or the ‘shipping_address_change’
+            javascript event. 
+
+
+            If not specified then the default value will be the purchase
+            country.
+
+
+            Example: look at billing_countries example.
+          type: array
+          items:
+            type: string
+        shipping_options:
+          description: A list of shipping options available for this order.
+          type: array
+          items:
+            $ref: '#/components/schemas/shipping_option'
+        merchant_data:
+          description: >-
+            Pass through field to send any information about the order to be
+            used later for reference while retrieving the order details (max
+            6000 characters).
+          type: string
+          example: >-
+            {"marketplace_seller_info":[{"product_category":"Women's
+            Fashion","product_name":"Women Sweatshirt"}]}
+          minLength: 0
+          maxLength: 6000
+        gui:
+          $ref: '#/components/schemas/gui'
+        merchant_requested:
+          $ref: '#/components/schemas/merchant_requested'
+        selected_shipping_option:
+          $ref: '#/components/schemas/shipping_option'
+        recurring:
+          description: >-
+            Indicates whether this purchase will create a token that can be used
+            by the merchant to create recurring purchases. This must be enabled
+            for the merchant to use. Default: false
+
+
+            Depending on specified country, recurring could be used for the
+            following payment methods: Pay Later, Direct Debit, Card.
+          type: boolean
+        recurring_token:
+          description: Token to be used when creating recurring orders.
+          type: string
+          readOnly: true
+        recurring_description:
+          description: Description to be added to the recurring order.
+          type: string
+          readOnly: true
+          minLength: 0
+          maxLength: 255
+        billing_countries:
+          description: >-
+            List of allowed billing countries for this order.
+
+            If specified, the customer will be able to change the billing
+            country in the checkout and you will be notified through
+            ‘country_change’ callback or the ‘billing_address_change’ javascript
+            event.
+
+            If not specified but shipping_countries is specified, will use same
+            values as shipping_countries.
+
+            If not specified and shipping_countries is not specified, then the
+            default value will be the purchase country.
+
+
+            Example: ["AD", "AE", "AG", "AI", "AL", "AM", "AQ", "AR", "AS",
+            "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG",
+            "BH", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BW",
+            "BY", "BZ", "CA", "CF", "CH", "CI", "CK", "CL", "CM", "CN", "CO",
+            "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM",
+            "DO", "DZ", "EC", "EE", "EG", "ER", "ES", "ET", "FI", "FJ", "FK",
+            "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI",
+            "GL", "GM", "GN", "GP", "GR", "GS", "GT", "GU", "GY", "HK", "HN",
+            "HR", "HU", "ID", "IE", "IL", "IM", "IN", "IS", "IT", "JE", "JM",
+            "JO", "JP", "KE", "KG", "KI", "KM", "KN", "KR", "KW", "KY", "KZ",
+            "LA", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV",
+            "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "MK", "ML", "MM",
+            "MN", "MO", "MP", "MQ", "MR", "MT", "MU", "MV", "MW", "MX", "MY",
+            "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR",
+            "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM",
+            "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW",
+            "SA", "SB", "SC", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM",
+            "SN", "SR", "ST", "SV", "SX", "SZ", "TC", "TF", "TG", "TH", "TJ",
+            "TK", "TL", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM",
+            "US", "UY", "UZ", "VA", "VC", "VG", "VI", "VN", "VU", "WF", "WS",
+            "XK", "YT", "ZA", "ZM", "ZW"]"
+          type: array
+          items:
+            type: string
+        discount_lines:
+          description: List of discounts applied to this order via the KCO discount-service
+          type: array
+          items:
+            $ref: '#/components/schemas/discount_line'
+    order_line:
+      type: object
+      required:
+        - name
+        - quantity
+        - tax_rate
+        - total_amount
+        - total_tax_amount
+        - unit_price
+      properties:
+        type:
+          description: >-
+            Type of the order line item. The possible values
+            are:<ul><li><em>physical (physical
+            good)</em></li><li><em>discount</em></li><li><em>shipping_fee</em></li><li><em>sales_tax
+            (depends on the country/city, usually called
+            VAT)</em></li><li><em>digital (digital
+            good)</em></li><li><em>gift_card</em></li><li><em>store_credit
+            (credit from the merchant)</em></li><li><em>surcharge (extra
+            charge)</em></li></ul>
+          type: string
+          example: physical
+        reference:
+          description: Article number, SKU or similar. (max 255 characters)
+          type: string
+          example: 19-402-USA
+          minLength: 0
+          maxLength: 255
+        name:
+          description: Descriptive name of the order line item (max 255 characters)
+          type: string
+          example: Red T-Shirt
+          minLength: 1
+          maxLength: 255
+        quantity:
+          description: Non-negative number. Quantity of the order line item.
+          type: integer
+          format: int64
+          example: 5
+          minimum: 0
+        subscription:
+          $ref: '#/components/schemas/subscription'
+        quantity_unit:
+          description: >-
+            Unit used to describe the quantity, e.g. kg, pcs... If defined has
+            to be 1-8 characters
+          type: string
+          example: pcs
+        unit_price:
+          description: >-
+            Minor units. Includes tax, excludes discount. (max value:
+            100000000).
+
+
+            Example: 100 Euros should be 10000.
+          type: integer
+          format: int64
+          example: 10000
+          maximum: 100000000
+        tax_rate:
+          description: >-
+            Non-negative value. The percentage value is represented with two
+            implicit decimals. (max 10000)
+
+
+            Example: 25% should be 2500.
+          type: integer
+          format: int64
+          example: 1000
+          maximum: 10000
+        total_amount:
+          description: |-
+            Minor units. Includes tax and discount. 
+
+            Example: 25 euros should be 2500
+            Value = (quantity x unit_price) - total_discount_amount.
+            (max value: 100000000)
+          type: integer
+          format: int64
+          example: 50000
+          maximum: 100000000
+        total_discount_amount:
+          description: |-
+            Non-negative minor units. Includes tax.
+
+            Example: 25 euros should be 2500
+          type: integer
+          format: int64
+          example: 0
+          minimum: 0
+        total_tax_amount:
+          description: >-
+            Must be within ±1 of total_amount - total_amount \* 10000 / (10000 +
+            tax_rate). Negative when type is discount.
+          type: integer
+          format: int64
+          example: 4545
+        merchant_data:
+          description: >-
+            Property used to store additional metadata per item that will be
+            returned whenever an order is read from Klarna. Pass through field.
+            (max 1024 characters).
+          type: string
+          example: >-
+            {"marketplace_seller_info":[{"product_category":"Women's
+            Fashion","product_name":"Women Sweatshirt"}]}
+          minLength: 0
+          maxLength: 1024
+        product_url:
+          description: >-
+            URL to the product page that can be later embedded in communications
+            between Klarna and the customer. (max 1024 characters)
+          type: string
+          example: https://www.example.com/products/f2a8d7e34
+          minLength: 0
+          maxLength: 1024
+        image_url:
+          description: >-
+            URL to an image that can be later embedded in communications between
+            Klarna and the customer. (max 1024 characters)
+
+
+            Improves post-purchase customer experiences.
+          type: string
+          example: https://www.exampleobjects.com/product-image-1200x1200.jpg
+          minLength: 0
+          maxLength: 1024
+        product_identifiers:
+          $ref: '#/components/schemas/product_identifiers'
+        shipping_attributes:
+          $ref: '#/components/schemas/shipping_attributes'
+    payment_provider:
+      type: object
+      required:
+        - name
+        - redirect_url
+      properties:
+        description:
+          description: >-
+            Short description of the payment method. This is displayed below the
+            selected payment method. (max 500 characters)
+          type: string
+          example: an American company operating a worldwide online payments system
+          minLength: 0
+          maxLength: 500
+        name:
+          description: The name of the payment provider. (max 255 characters)
+          type: string
+          example: PayhereUs
+          minLength: 0
+          maxLength: 255
+        fee:
+          description: Minor units. Includes tax.
+          type: integer
+          format: int64
+        countries:
+          description: >-
+            If specified, limits the method to the listed countries (alpha 2
+            codes).
+          type: array
+          items:
+            type: string
+        label:
+          description: >-
+            Controls label of buy
+            button<ul><li>continue</li><li>complete</li></ul>
+          type: string
+          example: continue
+        redirect_url:
+          description: URL to redirect to. (must be https, min 7, max 2000 characters)
+          type: string
+          example: https://www.example.com/us/start
+          minLength: 7
+          maxLength: 2000
+        image_url:
+          description: URL to an image to display. (must be https, max 2000 characters)
+          type: string
+          example: https://www.exampleobjects.com/product-image-1200x1200.jpg
+          minLength: 0
+          maxLength: 2000
+    product_identifiers:
+      type: object
+      properties:
+        brand:
+          description: >-
+            The product's brand name as generally recognized by consumers. If no
+            brand is available for a product, do not supply any value.
+          type: string
+          example: Intel
+          minLength: 0
+          maxLength: 70
+        color:
+          description: Color to be shown to the end customer (max 64 characters).
+          type: string
+          example: Blue
+          minLength: 0
+          maxLength: 64
+        category_path:
+          description: >-
+            The product's category path as used in the merchant's webshop.
+            Include the full and most detailed category and separate the
+            segments with ' > '. (max 750 characters)
+
+
+            Example: "Electronics Store > Computers & Tablets > Desktops"
+          type: string
+          example: Electronics Store > Computers & Tablets > Desktops
+          minLength: 0
+          maxLength: 750
+        global_trade_item_number:
+          description: >-
+            The product's Global Trade Item Number (GTIN). Common types of GTIN
+            are EAN, ISBN or UPC. Exclude dashes and spaces, where possible
+          type: string
+          example: '735858293167'
+          minLength: 0
+          maxLength: 50
+        manufacturer_part_number:
+          description: >-
+            The product's Manufacturer Part Number (MPN), which - together with
+            the brand - uniquely identifies a product. Only submit MPNs assigned
+            by a manufacturer and use the most specific MPN possible
+          type: string
+          example: BOXNUC5CPYH
+          minLength: 0
+          maxLength: 70
+        size:
+          description: Size to be shown to the end customer (max 64 characters).
+          type: string
+          example: Medium
+          minLength: 0
+          maxLength: 64
+    selected_addon:
+      type: object
+      properties:
+        type:
+          type: string
+        price:
+          type: integer
+          format: int64
+        external_id:
+          type: string
+        user_input:
+          type: string
+    shipping_attributes:
+      type: object
+      properties:
+        tags:
+          description: The product's extra features, example ["dangerous_goods", "bulky"]
+          type: array
+          items:
+            type: string
+        weight:
+          description: >-
+            The product's weight as used in the merchant's webshop.
+            Non-negative. Measured in grams.
+          type: integer
+          format: int64
+          example: 1000
+        dimensions:
+          $ref: '#/components/schemas/dimensions'
+    shipping_option:
+      type: object
+      required:
+        - id
+        - name
+        - price
+        - tax_amount
+        - tax_rate
+      properties:
+        description:
+          description: Description.
+          type: string
+          example: Delivery by 4:30 pm
+        id:
+          description: id
+          type: string
+          example: express_priority
+        name:
+          description: Name.
+          type: string
+          example: EXPRESS 1-2 Days
+          minLength: 1
+          maxLength: 255
+        promo:
+          description: Promotion name. To be used if this shipping option is promotional.
+          type: string
+          example: Christmas Promotion
+        price:
+          description: Price including tax.
+          type: integer
+          format: int64
+        preselected:
+          description: >-
+            If true, this option will be preselected when checkout loads.
+            Default: false
+          type: boolean
+        tax_amount:
+          description: Tax amount.
+          type: integer
+          format: int64
+        tax_rate:
+          description: Non-negative. In percent, two implicit decimals. I.e 2500 = 25%.
+          type: integer
+          format: int64
+        shipping_method:
+          description: >-
+            Shipping method. Possible
+            values:<ul><li>PickUpStore</li><li>Home</li><li>BoxReg</li><li>BoxUnreg</li><li>PickUpPoint</li><li>Own</li><li>Postal</li><li>DHLPackstation</li><li>Digital</li></ul>
+            If DHLPackstation is selected the correct form will be displayed.
+          type: string
+          example: PickUpStore
+        delivery_details:
+          $ref: '#/components/schemas/DeliveryDetailsV1'
+        tms_reference:
+          description: >-
+            TMS reference. Required to map completed orders to shipments
+            reserved in TMS.
+          type: string
+          example: a1b2c3d4-e4f6-g7h8-i9j0-k1l2m3n4o5p6
+        selected_addons:
+          type: array
+          items:
+            $ref: '#/components/schemas/selected_addon'
+    subscription:
+      type: object
+      required:
+        - interval
+        - interval_count
+      properties:
+        name:
+          description: |-
+            The name of the subscription product.
+
+            Example: "Premium Account"
+          type: string
+        interval:
+          description: |-
+            The cadence unit for this.
+
+            Example: "DAY"
+          type: string
+          enum:
+            - DAY
+            - WEEK
+            - MONTH
+            - YEAR
+        interval_count:
+          description: |-
+            The number of intervals.
+
+            Example: 30
+          type: integer
+          format: int32
+          minimum: 1
+externalDocs:
+  description: Find out more about the Klarna REST APIs
+  url: https://docs.klarna.com/api
