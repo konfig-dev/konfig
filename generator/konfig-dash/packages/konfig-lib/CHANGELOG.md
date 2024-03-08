@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.12
+
+### Patch Changes
+
+- [#627](https://github.com/konfig-dev/konfig/pull/627) [`56b8c379`](https://github.com/konfig-dev/konfig/commit/56b8c3791d41b692e4c5ecc0cf478293fadcdb60) Thanks [@dphuang2](https://github.com/dphuang2)! - fix bug when fixing parameters that should be security requirements
+
 ## 1.36.11
 
 ### Patch Changes
