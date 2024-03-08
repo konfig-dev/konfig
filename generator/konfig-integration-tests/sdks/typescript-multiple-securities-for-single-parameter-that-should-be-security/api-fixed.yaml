@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: >-
+    typescript-multiple-securities-for-single-parameter-that-should-be-security
+    API
+  description: >-
+    A simple API based for testing
+    typescript-multiple-securities-for-single-parameter-that-should-be-security.
+  version: 1.0.0
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-konfig-ignore:
+    object-with-no-properties: true
+servers:
+  - description: Live API server
+    url: >-
+      https://typescript-multiple-securities-for-single-parameter-that-should-be-security.konfigthis.com
+tags:
+  - name: Test
+paths:
+  /simple-endpoint:
+    get:
+      tags:
+        - Test
+      summary: Fetches a JSON value based on input parameter
+      operationId: Test_fetch
+      security:
+        - Bearer: []
+        - api_key: []
+        - basic_auth: []
+        - justeat_adfs: []
+        - restaurantsignup_jwt: []
+        - daas_jwt: []
+      description: Provide an input parameter to receive a JSON value with properties.
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestFetch200Response'
+components:
+  securitySchemes:
+    Bearer:
+      description: Bearer token authentication using a JSON Web Token (JWT).
+      type: http
+      bearerFormat: JWT
+      scheme: bearer
+    api_key:
+      description: >-
+        APIs for delivery partners require an API key that will have been issued
+        to you.
+      name: Authorization
+      in: header
+      type: apiKey
+    basic_auth:
+      description: >-
+        A few services allow the use of basic authentication when a partner
+        doesn't support OAuth based authentication.
+      scheme: basic
+      type: http
+    justeat_adfs:
+      description: ADFS authentication provider for internal Just Eat tools.
+      openIdConnectUrl: https://adfs.just-eat.com/adfs/.well-known/openid-configuration
+      type: openIdConnect
+    restaurantsignup_jwt:
+      description: >-
+        Bearer token authentication using a JSON Web Token (JWT), used by the
+        restaurant sign up system
+      type: http
+      bearerFormat: >-
+        JWT token with payload `RestaurantId` and Role `[RestaurantRead |
+        VerifyEmail | RestaurantWrite | FullAccess | DocumentRead]`
+      scheme: bearer
+    daas_jwt:
+      description: >-
+        Bearer token authentication using a JSON Web Token (JWT), used for
+        delivery as a service endpoints.
+      type: http
+      bearerFormat: JWT token.
+      scheme: bearer
+    X-Flyt-Api-Key:
+      description: API Key for services run by JET Connect, formerly known as Flyt.
+      name: X-Flyt-Api-Key
+      in: header
+      type: apiKey
+  schemas:
+    TestFetchResponse:
+      type: object
+    TestFetch200Response:
+      type: object
+      properties: {}
+      example: {}
