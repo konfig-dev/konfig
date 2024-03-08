@@ -283,7 +283,7 @@ async function getMetaDescription(
     const addMetaDescription = await inquirer.prompt({
       type: "confirm",
       name: "addMetaDescription",
-      message: "Would you like to add the meta description?",
+      message: "Would you like to manually add the meta description?",
     });
     if (addMetaDescription.addMetaDescription) return metaDescription;
   }
@@ -375,11 +375,11 @@ async function getCategories(
   companyName: string,
   metaDescription: string | null
 ): Promise<string[]> {
-  const specData = getSpecData(api);
-  if (specData.categories) {
-    console.log("🟢 Found categories in spec data");
-    return specData.categories;
-  }
+  // const specData = getSpecData(api);
+  // if (specData.categories) {
+  //   console.log("🟢 Found categories in spec data");
+  //   return specData.categories;
+  // }
   const publishJson: PublishJsonType = JSON.parse(
     fs.readFileSync(path.join(ROOT_FOLDER_PATH, "publish.json"), "utf-8")
   );

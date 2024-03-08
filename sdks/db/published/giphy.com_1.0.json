@@ -1,0 +1,493 @@
+{
+  "openapiDirectoryPath": "giphy.com/1.0/openapi.yaml",
+  "providerName": "giphy.com",
+  "openApiRaw": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/openapi.yaml",
+  "securitySchemes": {
+    "api_key": {
+      "in": "query",
+      "name": "api_key",
+      "type": "apiKey"
+    }
+  },
+  "homepage": "giphy.com",
+  "apiVersion": "1.0",
+  "apiBaseUrl": "https://api.giphy.com/v1",
+  "apiDescription": "Giphy API",
+  "apiTitle": "Giphy API",
+  "endpoints": 10,
+  "sdkMethods": 10,
+  "schemas": 5,
+  "parameters": 24,
+  "contactEmail": "support@giphy.com",
+  "difficultyScore": 18.5,
+  "difficulty": "Easy",
+  "company": "Giphy",
+  "sdkName": "giphy-{language}-sdk",
+  "clientName": "Giphy",
+  "metaDescription": "Giphy is a platform that provides a vast collection of animated GIFs and stickers for users to express themselves in various online conversations. It offers a wide range of categories and search functionalities to easily find and share engaging visual content across social media, messaging platforms, and more.",
+  "developerDocumentation": "developers.giphy.com/docs/api/",
+  "categories": [
+    "media",
+    "collaboration",
+    "messaging",
+    "social_media",
+    "animated_gifs",
+    "stickers",
+    "visual_content"
+  ],
+  "methods": [
+    {
+      "url": "/gifs",
+      "method": "getByIds",
+      "httpMethod": "get",
+      "tag": "gifs",
+      "typeScriptTag": "gifs",
+      "description": "Get GIFs by ID",
+      "parameters": [
+        {
+          "name": "ids",
+          "schema": "string",
+          "description": "Filters results by specified GIF IDs, separated by commas."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gifs/random",
+      "method": "getRandomGif",
+      "httpMethod": "get",
+      "tag": "gifs",
+      "typeScriptTag": "gifs",
+      "description": "Random GIF",
+      "parameters": [
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filters results by specified tag."
+        },
+        {
+          "name": "rating",
+          "schema": "string",
+          "description": "Filters results by specified rating."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gifs/search",
+      "method": "searchGifs",
+      "httpMethod": "get",
+      "tag": "gifs",
+      "typeScriptTag": "gifs",
+      "description": "Search GIFs",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "Search query term or prhase."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The maximum number of records to return."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "An optional results offset."
+        },
+        {
+          "name": "rating",
+          "schema": "string",
+          "description": "Filters results by specified rating."
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "Specify default language for regional content; use a 2-letter ISO 639-1 language code."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gifs/translate",
+      "method": "translatePhraseGif",
+      "httpMethod": "get",
+      "tag": "gifs",
+      "typeScriptTag": "gifs",
+      "description": "Translate phrase to GIF",
+      "parameters": [
+        {
+          "name": "s",
+          "schema": "string",
+          "required": true,
+          "description": "Search term."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gifs/trending",
+      "method": "getTrendingGifs",
+      "httpMethod": "get",
+      "tag": "gifs",
+      "typeScriptTag": "gifs",
+      "description": "Trending GIFs",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The maximum number of records to return."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "An optional results offset."
+        },
+        {
+          "name": "rating",
+          "schema": "string",
+          "description": "Filters results by specified rating."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/gifs/{gifId}",
+      "method": "getById",
+      "httpMethod": "get",
+      "tag": "gifs",
+      "typeScriptTag": "gifs",
+      "description": "Get GIF by Id",
+      "parameters": [
+        {
+          "name": "gifId",
+          "schema": "integer",
+          "required": true,
+          "description": "Filters results by specified GIF ID."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stickers/random",
+      "method": "getRandom",
+      "httpMethod": "get",
+      "tag": "stickers",
+      "typeScriptTag": "stickers",
+      "description": "Random Sticker",
+      "parameters": [
+        {
+          "name": "tag",
+          "schema": "string",
+          "description": "Filters results by specified tag."
+        },
+        {
+          "name": "rating",
+          "schema": "string",
+          "description": "Filters results by specified rating."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stickers/search",
+      "method": "findAnimatedStickers",
+      "httpMethod": "get",
+      "tag": "stickers",
+      "typeScriptTag": "stickers",
+      "description": "Search Stickers",
+      "parameters": [
+        {
+          "name": "q",
+          "schema": "string",
+          "required": true,
+          "description": "Search query term or prhase."
+        },
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The maximum number of records to return."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "An optional results offset."
+        },
+        {
+          "name": "rating",
+          "schema": "string",
+          "description": "Filters results by specified rating."
+        },
+        {
+          "name": "lang",
+          "schema": "string",
+          "description": "Specify default language for regional content; use a 2-letter ISO 639-1 language code."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stickers/translate",
+      "method": "translatePhraseToSticker",
+      "httpMethod": "get",
+      "tag": "stickers",
+      "typeScriptTag": "stickers",
+      "description": "Translate phrase to Sticker",
+      "parameters": [
+        {
+          "name": "s",
+          "schema": "string",
+          "required": true,
+          "description": "Search term."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "url": "/stickers/trending",
+      "method": "getTrending",
+      "httpMethod": "get",
+      "tag": "stickers",
+      "typeScriptTag": "stickers",
+      "description": "Trending Stickers",
+      "parameters": [
+        {
+          "name": "limit",
+          "schema": "integer",
+          "description": "The maximum number of records to return."
+        },
+        {
+          "name": "offset",
+          "schema": "integer",
+          "description": "An optional results offset."
+        },
+        {
+          "name": "rating",
+          "schema": "string",
+          "description": "Filters results by specified rating."
+        }
+      ],
+      "responses": [
+        {
+          "statusCode": "200",
+          "description": ""
+        },
+        {
+          "statusCode": "400",
+          "description": ""
+        },
+        {
+          "statusCode": "403",
+          "description": ""
+        },
+        {
+          "statusCode": "404",
+          "description": ""
+        },
+        {
+          "statusCode": "429",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "originalSpecUrl": "https://raw.githubusercontent.com/faragorn/open-api-specs/master/specs/giphy_api/1.0/index.yml",
+  "logo": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/logo.png",
+  "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/imagePreview.png",
+  "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/favicon.png",
+  "clientNameCamelCase": "giphy",
+  "lastUpdated": "2024-03-08T23:34:27.917Z",
+  "typescriptSdkUsageCode": "import { Giphy } from 'giphy-typescript-sdk';\n\nconst giphy = new Giphy({\n    apiKey: \"API_KEY\",\n})",
+  "fixedSpecFileName": "giphy-fixed-spec.yaml"
+}
