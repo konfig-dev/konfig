@@ -1,0 +1,1110 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /actions:
+    get: Actions_getAll
+  /actions/{id}:
+    get: Actions_getById
+  /certificates:
+    get: Certificates_getAll
+    post: Certificates_createNewCertificate
+  /certificates/actions:
+    get: CertificateActions_getAllActions
+  /certificates/actions/{id}:
+    get: CertificateActions_getAction
+  /certificates/{id}:
+    delete: Certificates_deleteCertificate
+    get: Certificates_getById
+    put: Certificates_updateById
+  /certificates/{id}/actions:
+    get: CertificateActions_getAllActions
+  /certificates/{id}/actions/retry:
+    post: CertificateActions_retryIssuanceOrRenewal
+  /certificates/{id}/actions/{action_id}:
+    get: CertificateActions_getActionById
+  /datacenters:
+    get: Datacenters_getAll
+  /datacenters/{id}:
+    get: Datacenters_getById
+  /firewalls:
+    get: Firewalls_listAll
+    post: Firewalls_createFirewall
+  /firewalls/actions:
+    get: FirewallActions_getAllActions
+  /firewalls/actions/{id}:
+    get: FirewallActions_getActionById
+  /firewalls/{id}:
+    delete: Firewalls_deleteFirewallById
+    get: Firewalls_getFirewallById
+    put: Firewalls_updateFirewallById
+  /firewalls/{id}/actions:
+    get: FirewallActions_getAllActions
+  /firewalls/{id}/actions/apply_to_resources:
+    post: FirewallActions_applyToResources
+  /firewalls/{id}/actions/remove_from_resources:
+    post: FirewallActions_removeFromResources
+  /firewalls/{id}/actions/set_rules:
+    post: FirewallActions_setRules
+  /firewalls/{id}/actions/{action_id}:
+    get: FirewallActions_getActionById
+  /floating_ips:
+    get: FloatingIPs_getAll
+    post: FloatingIPs_createNewIp
+  /floating_ips/actions:
+    get: FloatingIpActions_getAllActions
+  /floating_ips/actions/{id}:
+    get: FloatingIpActions_getActionById
+  /floating_ips/{id}:
+    delete: FloatingIPs_deleteIp
+    get: FloatingIPs_get
+    put: FloatingIPs_updateDescriptionLabels
+  /floating_ips/{id}/actions:
+    get: FloatingIpActions_getAllActions
+  /floating_ips/{id}/actions/assign:
+    post: FloatingIpActions_assignToServer
+  /floating_ips/{id}/actions/change_dns_ptr:
+    post: FloatingIpActions_changeDnsPtr
+  /floating_ips/{id}/actions/change_protection:
+    post: FloatingIpActions_changeProtection
+  /floating_ips/{id}/actions/unassign:
+    post: FloatingIpActions_unassignIp
+  /floating_ips/{id}/actions/{action_id}:
+    get: FloatingIpActions_getActionById
+  /images:
+    get: Images_getAll
+  /images/actions:
+    get: ImageActions_getAllActions
+  /images/actions/{id}:
+    get: ImageActions_getActionById
+  /images/{id}:
+    delete: Images_deleteImage
+    get: Images_getById
+    put: Images_updateImageById
+  /images/{id}/actions:
+    get: ImageActions_getAllActions
+  /images/{id}/actions/change_protection:
+    post: ImageActions_changeProtection
+  /images/{id}/actions/{action_id}:
+    get: ImageActions_getActionById
+  /isos:
+    get: IsOs_getAll
+  /isos/{id}:
+    get: IsOs_get
+  /load_balancer_types:
+    get: LoadBalancerTypes_getAllTypes
+  /load_balancer_types/{id}:
+    get: LoadBalancerTypes_getById
+  /load_balancers:
+    get: LoadBalancers_getAll
+    post: LoadBalancers_createLoadBalancer
+  /load_balancers/actions:
+    get: LoadBalancerActions_getAllActions
+  /load_balancers/actions/{id}:
+    get: LoadBalancerActions_getSpecificAction
+  /load_balancers/{id}:
+    delete: LoadBalancers_deleteLoadBalancer
+    get: LoadBalancers_getById
+    put: LoadBalancers_updateBalancer
+  /load_balancers/{id}/actions:
+    get: LoadBalancerActions_getAllActions
+  /load_balancers/{id}/actions/add_service:
+    post: LoadBalancerActions_addService
+  /load_balancers/{id}/actions/add_target:
+    post: LoadBalancerActions_addTarget
+  /load_balancers/{id}/actions/attach_to_network:
+    post: LoadBalancerActions_attachToNetwork
+  /load_balancers/{id}/actions/change_algorithm:
+    post: LoadBalancerActions_changeAlgorithm
+  /load_balancers/{id}/actions/change_dns_ptr:
+    post: LoadBalancerActions_changeDnsPtr
+  /load_balancers/{id}/actions/change_protection:
+    post: LoadBalancerActions_changeProtection
+  /load_balancers/{id}/actions/change_type:
+    post: LoadBalancerActions_changeType
+  /load_balancers/{id}/actions/delete_service:
+    post: LoadBalancerActions_deleteService
+  /load_balancers/{id}/actions/detach_from_network:
+    post: LoadBalancerActions_detachFromNetwork
+  /load_balancers/{id}/actions/disable_public_interface:
+    post: LoadBalancerActions_disablePublicInterface
+  /load_balancers/{id}/actions/enable_public_interface:
+    post: LoadBalancerActions_enablePublicInterface
+  /load_balancers/{id}/actions/remove_target:
+    post: LoadBalancerActions_removeTarget
+  /load_balancers/{id}/actions/update_service:
+    post: LoadBalancerActions_updateService
+  /load_balancers/{id}/actions/{action_id}:
+    get: LoadBalancerActions_getSpecificAction
+  /load_balancers/{id}/metrics:
+    get: LoadBalancers_getMetrics
+  /locations:
+    get: Locations_getAllLocations
+  /locations/{id}:
+    get: Locations_getLocationById
+  /networks:
+    get: Networks_getAll
+    post: Networks_createNetwork
+  /networks/actions:
+    get: NetworkActions_getAllActions
+  /networks/actions/{id}:
+    get: NetworkActions_getAction
+  /networks/{id}:
+    delete: Networks_deleteNetwork
+    get: Networks_getById
+    put: Networks_updateProperties
+  /networks/{id}/actions:
+    get: NetworkActions_getAllActions
+  /networks/{id}/actions/add_route:
+    post: NetworkActions_addRoute
+  /networks/{id}/actions/add_subnet:
+    post: NetworkActions_addSubnet
+  /networks/{id}/actions/change_ip_range:
+    post: NetworkActions_changeIpRange
+  /networks/{id}/actions/change_protection:
+    post: NetworkActions_changeProtection
+  /networks/{id}/actions/delete_route:
+    post: NetworkActions_deleteRoute
+  /networks/{id}/actions/delete_subnet:
+    post: NetworkActions_deleteSubnet
+  /networks/{id}/actions/{action_id}:
+    get: NetworkActions_getAction
+  /placement_groups:
+    get: PlacementGroups_getAll
+    post: PlacementGroups_createNewGroup
+  /placement_groups/{id}:
+    delete: PlacementGroups_deleteGroup
+    get: PlacementGroups_getById
+    put: PlacementGroups_updateProperties
+  /pricing:
+    get: Pricing_getAllPrices
+  /primary_ips:
+    get: PrimaryIPs_getAll
+    post: PrimaryIPs_createOrUpdate
+  /primary_ips/actions:
+    get: PrimaryIpActions_getAllActions
+  /primary_ips/actions/{id}:
+    get: PrimaryIpActions_getActionById
+  /primary_ips/{id}:
+    delete: PrimaryIPs_deletePrimaryIp
+    get: PrimaryIPs_getById
+    put: PrimaryIPs_updateIpLabels
+  /primary_ips/{id}/actions/assign:
+    post: PrimaryIpActions_assignPrimaryIpToResource
+  /primary_ips/{id}/actions/change_dns_ptr:
+    post: PrimaryIpActions_changeDnsPtr
+  /primary_ips/{id}/actions/change_protection:
+    post: PrimaryIpActions_changeProtectionPrimaryIp
+  /primary_ips/{id}/actions/unassign:
+    post: PrimaryIpActions_unassignPrimaryIp
+  /server_types:
+    get: ServerTypes_listAllServerTypes
+  /server_types/{id}:
+    get: ServerTypes_getServerType
+  /servers:
+    get: Servers_getAll
+    post: Servers_createServerAction
+  /servers/actions:
+    get: ServerActions_getAll
+  /servers/actions/{id}:
+    get: ServerActions_getActionById
+  /servers/{id}:
+    delete: Servers_deleteServer
+    get: Servers_getServer
+    put: Servers_updateServer
+  /servers/{id}/actions:
+    get: ServerActions_getAllActions
+  /servers/{id}/actions/add_to_placement_group:
+    post: ServerActions_addToPlacementGroup
+  /servers/{id}/actions/attach_iso:
+    post: ServerActions_attachIsoToServer
+  /servers/{id}/actions/attach_to_network:
+    post: ServerActions_attachToNetwork
+  /servers/{id}/actions/change_alias_ips:
+    post: ServerActions_changeAliasIps
+  /servers/{id}/actions/change_dns_ptr:
+    post: ServerActions_changeDnsPtr
+  /servers/{id}/actions/change_protection:
+    post: ServerActions_changeProtection
+  /servers/{id}/actions/change_type:
+    post: ServerActions_changeServerType
+  /servers/{id}/actions/create_image:
+    post: ServerActions_createImage
+  /servers/{id}/actions/detach_from_network:
+    post: ServerActions_detachFromNetwork
+  /servers/{id}/actions/detach_iso:
+    post: ServerActions_detachIsoFromServer
+  /servers/{id}/actions/disable_backup:
+    post: ServerActions_disableBackup
+  /servers/{id}/actions/disable_rescue:
+    post: ServerActions_disableRescueMode
+  /servers/{id}/actions/enable_backup:
+    post: ServerActions_enableBackup
+  /servers/{id}/actions/enable_rescue:
+    post: ServerActions_enableRescueMode
+  /servers/{id}/actions/poweroff:
+    post: ServerActions_powerOffServer
+  /servers/{id}/actions/poweron:
+    post: ServerActions_powerOnServer
+  /servers/{id}/actions/reboot:
+    post: ServerActions_softRebootServer
+  /servers/{id}/actions/rebuild:
+    post: ServerActions_rebuildServerFromImage
+  /servers/{id}/actions/remove_from_placement_group:
+    post: ServerActions_removeFromPlacementGroup
+  /servers/{id}/actions/request_console:
+    post: ServerActions_requestConsole
+  /servers/{id}/actions/reset:
+    post: ServerActions_resetServer
+  /servers/{id}/actions/reset_password:
+    post: ServerActions_resetServerPassword
+  /servers/{id}/actions/shutdown:
+    post: ServerActions_gracefulShutdown
+  /servers/{id}/actions/{action_id}:
+    get: ServerActions_getActionById
+  /servers/{id}/metrics:
+    get: Servers_getMetricsForServer
+  /ssh_keys:
+    get: SshKeys_getAllSshKeys
+    post: SshKeys_createKey
+  /ssh_keys/{id}:
+    delete: SshKeys_deleteKey
+    get: SshKeys_getById
+    put: SshKeys_updateKey
+  /volumes:
+    get: Volumes_getAll
+    post: Volumes_createVolume
+  /volumes/actions:
+    get: VolumeActions_getAllActions
+  /volumes/actions/{id}:
+    get: VolumeActions_getActionById
+  /volumes/{id}:
+    delete: Volumes_deleteVolume
+    get: Volumes_getById
+    put: Volumes_updateVolumeProperties
+  /volumes/{id}/actions:
+    get: VolumeActions_getAllActions
+  /volumes/{id}/actions/attach:
+    post: VolumeActions_attachVolumeToServer
+  /volumes/{id}/actions/change_protection:
+    post: VolumeActions_changeProtectionVolume
+  /volumes/{id}/actions/detach:
+    post: VolumeActions_detachVolumeFromServer
+  /volumes/{id}/actions/resize:
+    post: VolumeActions_changeSize
+  /volumes/{id}/actions/{action_id}:
+    get: VolumeActions_getAction
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /certificates:
+    post:
+      application/json: CertificatesCreateNewCertificateRequest
+  /certificates/{id}:
+    put:
+      application/json: CertificatesUpdateByIdRequest
+  /firewalls:
+    post:
+      application/json: FirewallsCreateFirewallRequest
+  /firewalls/{id}:
+    put:
+      application/json: FirewallsUpdateFirewallByIdRequest
+  /firewalls/{id}/actions/apply_to_resources:
+    post:
+      application/json: FirewallActionsApplyToResourcesRequest
+  /firewalls/{id}/actions/remove_from_resources:
+    post:
+      application/json: FirewallActionsRemoveFromResourcesRequest
+  /firewalls/{id}/actions/set_rules:
+    post:
+      application/json: FirewallActionsSetRulesRequest
+  /floating_ips:
+    post:
+      application/json: FloatingIPsCreateNewIpRequest
+  /floating_ips/{id}:
+    put:
+      application/json: FloatingIPsUpdateDescriptionLabelsRequest
+  /floating_ips/{id}/actions/assign:
+    post:
+      application/json: FloatingIpActionsAssignToServerRequest
+  /floating_ips/{id}/actions/change_dns_ptr:
+    post:
+      application/json: FloatingIpActionsChangeDnsPtrRequest
+  /floating_ips/{id}/actions/change_protection:
+    post:
+      application/json: FloatingIpActionsChangeProtectionRequest
+  /images/{id}:
+    put:
+      application/json: ImagesUpdateImageByIdRequest
+  /images/{id}/actions/change_protection:
+    post:
+      application/json: ImageActionsChangeProtectionRequest
+  /load_balancers:
+    post:
+      application/json: LoadBalancersCreateLoadBalancerRequest
+  /load_balancers/{id}:
+    put:
+      application/json: LoadBalancersUpdateBalancerRequest
+  /load_balancers/{id}/actions/add_service:
+    post:
+      application/json: LoadBalancerActionsAddServiceRequest
+  /load_balancers/{id}/actions/add_target:
+    post:
+      application/json: LoadBalancerActionsAddTargetRequest
+  /load_balancers/{id}/actions/attach_to_network:
+    post:
+      application/json: LoadBalancerActionsAttachToNetworkRequest
+  /load_balancers/{id}/actions/change_algorithm:
+    post:
+      application/json: LoadBalancerActionsChangeAlgorithmRequest
+  /load_balancers/{id}/actions/change_dns_ptr:
+    post:
+      application/json: LoadBalancerActionsChangeDnsPtrRequest
+  /load_balancers/{id}/actions/change_protection:
+    post:
+      application/json: LoadBalancerActionsChangeProtectionRequest
+  /load_balancers/{id}/actions/change_type:
+    post:
+      application/json: LoadBalancerActionsChangeTypeRequest
+  /load_balancers/{id}/actions/delete_service:
+    post:
+      application/json: LoadBalancerActionsDeleteServiceRequest
+  /load_balancers/{id}/actions/detach_from_network:
+    post:
+      application/json: LoadBalancerActionsDetachFromNetworkRequest
+  /load_balancers/{id}/actions/remove_target:
+    post:
+      application/json: LoadBalancerActionsRemoveTargetRequest
+  /load_balancers/{id}/actions/update_service:
+    post:
+      application/json: LoadBalancerActionsUpdateServiceRequest
+  /networks:
+    post:
+      application/json: NetworksCreateNetworkRequest
+  /networks/{id}:
+    put:
+      application/json: NetworksUpdatePropertiesRequest
+  /networks/{id}/actions/add_route:
+    post:
+      application/json: NetworkActionsAddRouteRequest
+  /networks/{id}/actions/add_subnet:
+    post:
+      application/json: NetworkActionsAddSubnetRequest
+  /networks/{id}/actions/change_ip_range:
+    post:
+      application/json: NetworkActionsChangeIpRangeRequest
+  /networks/{id}/actions/change_protection:
+    post:
+      application/json: NetworkActionsChangeProtectionRequest
+  /networks/{id}/actions/delete_route:
+    post:
+      application/json: NetworkActionsDeleteRouteRequest
+  /networks/{id}/actions/delete_subnet:
+    post:
+      application/json: NetworkActionsDeleteSubnetRequest
+  /placement_groups:
+    post:
+      application/json: PlacementGroupsCreateNewGroupRequest
+  /placement_groups/{id}:
+    put:
+      application/json: PlacementGroupsUpdatePropertiesRequest
+  /primary_ips:
+    post:
+      application/json: PrimaryIPsCreateOrUpdateRequest
+  /primary_ips/{id}:
+    put:
+      application/json: PrimaryIPsUpdateIpLabelsRequest
+  /primary_ips/{id}/actions/assign:
+    post:
+      application/json: PrimaryIpActionsAssignPrimaryIpToResourceRequest
+  /primary_ips/{id}/actions/change_dns_ptr:
+    post:
+      application/json: PrimaryIpActionsChangeDnsPtrRequest
+  /primary_ips/{id}/actions/change_protection:
+    post:
+      application/json: PrimaryIpActionsChangeProtectionPrimaryIpRequest
+  /servers:
+    post:
+      application/json: ServersCreateServerActionRequest
+  /servers/{id}:
+    put:
+      application/json: ServersUpdateServerRequest
+  /servers/{id}/actions/add_to_placement_group:
+    post:
+      application/json: ServerActionsAddToPlacementGroupRequest
+  /servers/{id}/actions/attach_iso:
+    post:
+      application/json: ServerActionsAttachIsoToServerRequest
+  /servers/{id}/actions/attach_to_network:
+    post:
+      application/json: ServerActionsAttachToNetworkRequest
+  /servers/{id}/actions/change_alias_ips:
+    post:
+      application/json: ServerActionsChangeAliasIpsRequest
+  /servers/{id}/actions/change_dns_ptr:
+    post:
+      application/json: ServerActionsChangeDnsPtrRequest
+  /servers/{id}/actions/change_protection:
+    post:
+      application/json: ServerActionsChangeProtectionRequest
+  /servers/{id}/actions/change_type:
+    post:
+      application/json: ServerActionsChangeServerTypeRequest
+  /servers/{id}/actions/create_image:
+    post:
+      application/json: ServerActionsCreateImageRequest
+  /servers/{id}/actions/detach_from_network:
+    post:
+      application/json: ServerActionsDetachFromNetworkRequest
+  /servers/{id}/actions/enable_rescue:
+    post:
+      application/json: ServerActionsEnableRescueModeRequest
+  /servers/{id}/actions/rebuild:
+    post:
+      application/json: ServerActionsRebuildServerFromImageRequest
+  /ssh_keys:
+    post:
+      application/json: SshKeysCreateKeyRequest
+  /ssh_keys/{id}:
+    put:
+      application/json: SshKeysUpdateKeyRequest
+  /volumes:
+    post:
+      application/json: VolumesCreateVolumeRequest
+  /volumes/{id}:
+    put:
+      application/json: VolumesUpdateVolumePropertiesRequest
+  /volumes/{id}/actions/attach:
+    post:
+      application/json: VolumeActionsAttachVolumeToServerRequest
+  /volumes/{id}/actions/change_protection:
+    post:
+      application/json: VolumeActionsChangeProtectionVolumeRequest
+  /volumes/{id}/actions/resize:
+    post:
+      application/json: VolumeActionsChangeSizeRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /actions:
+    get:
+      '200':
+        application/json: ActionsGetAllResponse
+  /actions/{id}:
+    get:
+      '200':
+        application/json: ActionsGetByIdResponse
+  /certificates:
+    get:
+      '200':
+        application/json: CertificatesGetAllResponse
+    post:
+      '201':
+        application/json: CertificatesCreateNewCertificateResponse
+  /certificates/actions:
+    get:
+      '200':
+        application/json: CertificateActionsGetAllActionsResponse
+  /certificates/actions/{id}:
+    get:
+      '200':
+        application/json: CertificateActionsGetActionResponse
+  /certificates/{id}:
+    get:
+      '200':
+        application/json: CertificatesGetByIdResponse
+    put:
+      '200':
+        application/json: CertificatesUpdateByIdResponse
+  /certificates/{id}/actions:
+    get:
+      '200':
+        application/json: CertificateActionsGetAllActions200Response
+  /certificates/{id}/actions/retry:
+    post:
+      '201':
+        application/json: CertificateActionsRetryIssuanceOrRenewalResponse
+  /certificates/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: CertificateActionsGetActionByIdResponse
+  /datacenters:
+    get:
+      '200':
+        application/json: DatacentersGetAllResponse
+  /datacenters/{id}:
+    get:
+      '200':
+        application/json: DatacentersGetByIdResponse
+  /firewalls:
+    get:
+      '200':
+        application/json: FirewallsListAllResponse
+    post:
+      '201':
+        application/json: FirewallsCreateFirewallResponse
+  /firewalls/actions:
+    get:
+      '200':
+        application/json: FirewallActionsGetAllActionsResponse
+  /firewalls/actions/{id}:
+    get:
+      '200':
+        application/json: FirewallActionsGetActionByIdResponse
+  /firewalls/{id}:
+    get:
+      '200':
+        application/json: FirewallsGetFirewallByIdResponse
+    put:
+      '200':
+        application/json: FirewallsUpdateFirewallByIdResponse
+  /firewalls/{id}/actions:
+    get:
+      '200':
+        application/json: FirewallActionsGetAllActions200Response
+  /firewalls/{id}/actions/apply_to_resources:
+    post:
+      '201':
+        application/json: FirewallActionsApplyToResourcesResponse
+  /firewalls/{id}/actions/remove_from_resources:
+    post:
+      '201':
+        application/json: FirewallActionsRemoveFromResourcesResponse
+  /firewalls/{id}/actions/set_rules:
+    post:
+      '201':
+        application/json: FirewallActionsSetRulesResponse
+  /firewalls/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: FirewallActionsGetActionById200Response
+  /floating_ips:
+    get:
+      '200':
+        application/json: FloatingIPsGetAllResponse
+    post:
+      '201':
+        application/json: FloatingIPsCreateNewIpResponse
+  /floating_ips/actions:
+    get:
+      '200':
+        application/json: FloatingIpActionsGetAllActionsResponse
+  /floating_ips/actions/{id}:
+    get:
+      '200':
+        application/json: FloatingIpActionsGetActionByIdResponse
+  /floating_ips/{id}:
+    get:
+      '200':
+        application/json: FloatingIPsGetResponse
+    put:
+      '200':
+        application/json: FloatingIPsUpdateDescriptionLabelsResponse
+  /floating_ips/{id}/actions:
+    get:
+      '200':
+        application/json: FloatingIpActionsGetAllActions200Response
+  /floating_ips/{id}/actions/assign:
+    post:
+      '201':
+        application/json: FloatingIpActionsAssignToServerResponse
+  /floating_ips/{id}/actions/change_dns_ptr:
+    post:
+      '201':
+        application/json: FloatingIpActionsChangeDnsPtrResponse
+  /floating_ips/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: FloatingIpActionsChangeProtectionResponse
+  /floating_ips/{id}/actions/unassign:
+    post:
+      '201':
+        application/json: FloatingIpActionsUnassignIpResponse
+  /floating_ips/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: FloatingIpActionsGetActionById200Response
+  /images:
+    get:
+      '200':
+        application/json: ImagesGetAllResponse
+  /images/actions:
+    get:
+      '200':
+        application/json: ImageActionsGetAllActionsResponse
+  /images/actions/{id}:
+    get:
+      '200':
+        application/json: ImageActionsGetActionByIdResponse
+  /images/{id}:
+    get:
+      '200':
+        application/json: ImagesGetByIdResponse
+    put:
+      '200':
+        application/json: ImagesUpdateImageByIdResponse
+  /images/{id}/actions:
+    get:
+      '200':
+        application/json: ImageActionsGetAllActions200Response
+  /images/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: ImageActionsChangeProtectionResponse
+  /images/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: ImageActionsGetActionById200Response
+  /isos:
+    get:
+      '200':
+        application/json: IsOsGetAllResponse
+  /isos/{id}:
+    get:
+      '200':
+        application/json: IsOsGetResponse
+  /load_balancer_types:
+    get:
+      '200':
+        application/json: LoadBalancerTypesGetAllTypesResponse
+  /load_balancer_types/{id}:
+    get:
+      '200':
+        application/json: LoadBalancerTypesGetByIdResponse
+  /load_balancers:
+    get:
+      '200':
+        application/json: LoadBalancersGetAllResponse
+    post:
+      '201':
+        application/json: LoadBalancersCreateLoadBalancerResponse
+  /load_balancers/actions:
+    get:
+      '200':
+        application/json: LoadBalancerActionsGetAllActionsResponse
+  /load_balancers/actions/{id}:
+    get:
+      '200':
+        application/json: LoadBalancerActionsGetSpecificActionResponse
+  /load_balancers/{id}:
+    get:
+      '200':
+        application/json: LoadBalancersGetByIdResponse
+    put:
+      '200':
+        application/json: LoadBalancersUpdateBalancerResponse
+  /load_balancers/{id}/actions:
+    get:
+      '200':
+        application/json: LoadBalancerActionsGetAllActions200Response
+  /load_balancers/{id}/actions/add_service:
+    post:
+      '201':
+        application/json: LoadBalancerActionsAddServiceResponse
+  /load_balancers/{id}/actions/add_target:
+    post:
+      '201':
+        application/json: LoadBalancerActionsAddTargetResponse
+  /load_balancers/{id}/actions/attach_to_network:
+    post:
+      '201':
+        application/json: LoadBalancerActionsAttachToNetworkResponse
+  /load_balancers/{id}/actions/change_algorithm:
+    post:
+      '201':
+        application/json: LoadBalancerActionsChangeAlgorithmResponse
+  /load_balancers/{id}/actions/change_dns_ptr:
+    post:
+      '201':
+        application/json: LoadBalancerActionsChangeDnsPtrResponse
+  /load_balancers/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: LoadBalancerActionsChangeProtectionResponse
+  /load_balancers/{id}/actions/change_type:
+    post:
+      '201':
+        application/json: LoadBalancerActionsChangeTypeResponse
+  /load_balancers/{id}/actions/delete_service:
+    post:
+      '201':
+        application/json: LoadBalancerActionsDeleteServiceResponse
+  /load_balancers/{id}/actions/detach_from_network:
+    post:
+      '201':
+        application/json: LoadBalancerActionsDetachFromNetworkResponse
+  /load_balancers/{id}/actions/disable_public_interface:
+    post:
+      '201':
+        application/json: LoadBalancerActionsDisablePublicInterfaceResponse
+  /load_balancers/{id}/actions/enable_public_interface:
+    post:
+      '201':
+        application/json: LoadBalancerActionsEnablePublicInterfaceResponse
+  /load_balancers/{id}/actions/remove_target:
+    post:
+      '201':
+        application/json: LoadBalancerActionsRemoveTargetResponse
+  /load_balancers/{id}/actions/update_service:
+    post:
+      '201':
+        application/json: LoadBalancerActionsUpdateServiceResponse
+  /load_balancers/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: LoadBalancerActionsGetSpecificAction200Response
+  /load_balancers/{id}/metrics:
+    get:
+      '200':
+        application/json: LoadBalancersGetMetricsResponse
+  /locations:
+    get:
+      '200':
+        application/json: LocationsGetAllLocationsResponse
+  /locations/{id}:
+    get:
+      '200':
+        application/json: LocationsGetLocationByIdResponse
+  /networks:
+    get:
+      '200':
+        application/json: NetworksGetAllResponse
+    post:
+      '201':
+        application/json: NetworksCreateNetworkResponse
+  /networks/actions:
+    get:
+      '200':
+        application/json: NetworkActionsGetAllActionsResponse
+  /networks/actions/{id}:
+    get:
+      '200':
+        application/json: NetworkActionsGetActionResponse
+  /networks/{id}:
+    get:
+      '200':
+        application/json: NetworksGetByIdResponse
+    put:
+      '200':
+        application/json: NetworksUpdatePropertiesResponse
+  /networks/{id}/actions:
+    get:
+      '200':
+        application/json: NetworkActionsGetAllActions200Response
+  /networks/{id}/actions/add_route:
+    post:
+      '201':
+        application/json: NetworkActionsAddRouteResponse
+  /networks/{id}/actions/add_subnet:
+    post:
+      '201':
+        application/json: NetworkActionsAddSubnetResponse
+  /networks/{id}/actions/change_ip_range:
+    post:
+      '201':
+        application/json: NetworkActionsChangeIpRangeResponse
+  /networks/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: NetworkActionsChangeProtectionResponse
+  /networks/{id}/actions/delete_route:
+    post:
+      '201':
+        application/json: NetworkActionsDeleteRouteResponse
+  /networks/{id}/actions/delete_subnet:
+    post:
+      '201':
+        application/json: NetworkActionsDeleteSubnetResponse
+  /networks/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: NetworkActionsGetAction200Response
+  /placement_groups:
+    get:
+      '200':
+        application/json: PlacementGroupsGetAllResponse
+    post:
+      '201':
+        application/json: PlacementGroupsCreateNewGroupResponse
+  /placement_groups/{id}:
+    get:
+      '200':
+        application/json: PlacementGroupsGetByIdResponse
+    put:
+      '200':
+        application/json: PlacementGroupsUpdatePropertiesResponse
+  /pricing:
+    get:
+      '200':
+        application/json: PricingGetAllPricesResponse
+  /primary_ips:
+    get:
+      '200':
+        application/json: PrimaryIPsGetAllResponse
+    post:
+      '201':
+        application/json: PrimaryIPsCreateOrUpdateResponse
+  /primary_ips/actions:
+    get:
+      '200':
+        application/json: PrimaryIpActionsGetAllActionsResponse
+  /primary_ips/actions/{id}:
+    get:
+      '200':
+        application/json: PrimaryIpActionsGetActionByIdResponse
+  /primary_ips/{id}:
+    get:
+      '200':
+        application/json: PrimaryIPsGetByIdResponse
+    put:
+      '200':
+        application/json: PrimaryIPsUpdateIpLabelsResponse
+  /primary_ips/{id}/actions/assign:
+    post:
+      '201':
+        application/json: PrimaryIpActionsAssignPrimaryIpToResourceResponse
+  /primary_ips/{id}/actions/change_dns_ptr:
+    post:
+      '201':
+        application/json: PrimaryIpActionsChangeDnsPtrResponse
+  /primary_ips/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: PrimaryIpActionsChangeProtectionPrimaryIpResponse
+  /primary_ips/{id}/actions/unassign:
+    post:
+      '201':
+        application/json: PrimaryIpActionsUnassignPrimaryIpResponse
+  /server_types:
+    get:
+      '200':
+        application/json: ServerTypesListAllServerTypesResponse
+  /server_types/{id}:
+    get:
+      '200':
+        application/json: ServerTypesGetServerTypeResponse
+  /servers:
+    get:
+      '200':
+        application/json: ServersGetAllResponse
+    post:
+      '201':
+        application/json: ServersCreateServerActionResponse
+  /servers/actions:
+    get:
+      '200':
+        application/json: ServerActionsGetAllResponse
+  /servers/actions/{id}:
+    get:
+      '200':
+        application/json: ServerActionsGetActionByIdResponse
+  /servers/{id}:
+    delete:
+      '200':
+        application/json: ServersDeleteServerResponse
+    get:
+      '200':
+        application/json: ServersGetServerResponse
+    put:
+      '200':
+        application/json: ServersUpdateServerResponse
+  /servers/{id}/actions:
+    get:
+      '200':
+        application/json: ServerActionsGetAllActionsResponse
+  /servers/{id}/actions/add_to_placement_group:
+    post:
+      '201':
+        application/json: ServerActionsAddToPlacementGroupResponse
+  /servers/{id}/actions/attach_iso:
+    post:
+      '201':
+        application/json: ServerActionsAttachIsoToServerResponse
+  /servers/{id}/actions/attach_to_network:
+    post:
+      '201':
+        application/json: ServerActionsAttachToNetworkResponse
+  /servers/{id}/actions/change_alias_ips:
+    post:
+      '201':
+        application/json: ServerActionsChangeAliasIpsResponse
+  /servers/{id}/actions/change_dns_ptr:
+    post:
+      '201':
+        application/json: ServerActionsChangeDnsPtrResponse
+  /servers/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: ServerActionsChangeProtectionResponse
+  /servers/{id}/actions/change_type:
+    post:
+      '201':
+        application/json: ServerActionsChangeServerTypeResponse
+  /servers/{id}/actions/create_image:
+    post:
+      '201':
+        application/json: ServerActionsCreateImageResponse
+  /servers/{id}/actions/detach_from_network:
+    post:
+      '201':
+        application/json: ServerActionsDetachFromNetworkResponse
+  /servers/{id}/actions/detach_iso:
+    post:
+      '201':
+        application/json: ServerActionsDetachIsoFromServerResponse
+  /servers/{id}/actions/disable_backup:
+    post:
+      '201':
+        application/json: ServerActionsDisableBackupResponse
+  /servers/{id}/actions/disable_rescue:
+    post:
+      '201':
+        application/json: ServerActionsDisableRescueModeResponse
+  /servers/{id}/actions/enable_backup:
+    post:
+      '201':
+        application/json: ServerActionsEnableBackupResponse
+  /servers/{id}/actions/enable_rescue:
+    post:
+      '201':
+        application/json: ServerActionsEnableRescueModeResponse
+  /servers/{id}/actions/poweroff:
+    post:
+      '201':
+        application/json: ServerActionsPowerOffServerResponse
+  /servers/{id}/actions/poweron:
+    post:
+      '201':
+        application/json: ServerActionsPowerOnServerResponse
+  /servers/{id}/actions/reboot:
+    post:
+      '201':
+        application/json: ServerActionsSoftRebootServerResponse
+  /servers/{id}/actions/rebuild:
+    post:
+      '201':
+        application/json: ServerActionsRebuildServerFromImageResponse
+  /servers/{id}/actions/remove_from_placement_group:
+    post:
+      '201':
+        application/json: ServerActionsRemoveFromPlacementGroupResponse
+  /servers/{id}/actions/request_console:
+    post:
+      '201':
+        application/json: ServerActionsRequestConsoleResponse
+  /servers/{id}/actions/reset:
+    post:
+      '201':
+        application/json: ServerActionsResetServerResponse
+  /servers/{id}/actions/reset_password:
+    post:
+      '201':
+        application/json: ServerActionsResetServerPasswordResponse
+  /servers/{id}/actions/shutdown:
+    post:
+      '201':
+        application/json: ServerActionsGracefulShutdownResponse
+  /servers/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: ServerActionsGetActionById200Response
+  /servers/{id}/metrics:
+    get:
+      '200':
+        application/json: ServersGetMetricsForServerResponse
+  /ssh_keys:
+    get:
+      '200':
+        application/json: SshKeysGetAllSshKeysResponse
+    post:
+      '201':
+        application/json: SshKeysCreateKeyResponse
+  /ssh_keys/{id}:
+    get:
+      '200':
+        application/json: SshKeysGetByIdResponse
+    put:
+      '200':
+        application/json: SshKeysUpdateKeyResponse
+  /volumes:
+    get:
+      '200':
+        application/json: VolumesGetAllResponse
+    post:
+      '201':
+        application/json: VolumesCreateVolumeResponse
+  /volumes/actions:
+    get:
+      '200':
+        application/json: VolumeActionsGetAllActionsResponse
+  /volumes/actions/{id}:
+    get:
+      '200':
+        application/json: VolumeActionsGetActionByIdResponse
+  /volumes/{id}:
+    get:
+      '200':
+        application/json: VolumesGetByIdResponse
+    put:
+      '200':
+        application/json: VolumesUpdateVolumePropertiesResponse
+  /volumes/{id}/actions:
+    get:
+      '200':
+        application/json: VolumeActionsGetAllActions200Response
+  /volumes/{id}/actions/attach:
+    post:
+      '201':
+        application/json: VolumeActionsAttachVolumeToServerResponse
+  /volumes/{id}/actions/change_protection:
+    post:
+      '201':
+        application/json: VolumeActionsChangeProtectionVolumeResponse
+  /volumes/{id}/actions/detach:
+    post:
+      '201':
+        application/json: VolumeActionsDetachVolumeFromServerResponse
+  /volumes/{id}/actions/resize:
+    post:
+      '201':
+        application/json: VolumeActionsChangeSizeResponse
+  /volumes/{id}/actions/{action_id}:
+    get:
+      '200':
+        application/json: VolumeActionsGetActionResponse
+securityParameters:
+  architecture:
+    query: false
+  bound_to:
+    query: false
+  end:
+    query: false
+  fingerprint:
+    query: false
+  id:
+    query: false
+  include_architecture_wildcard:
+    query: false
+  include_deprecated:
+    query: false
+  ip:
+    query: false
+  label_selector:
+    query: false
+  name:
+    query: false
+  page:
+    query: false
+  per_page:
+    query: false
+  sort:
+    query: false
+  start:
+    query: false
+  status:
+    query: false
+  step:
+    query: false
+  type:
+    query: false
+validServerUrls: {}
