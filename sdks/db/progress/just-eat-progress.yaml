@@ -1,0 +1,357 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /applications/orderpad-app/restaurants/{tenant}/device-tokens:
+    post: ManageOrderJourney_linkRestaurantToOrderpad
+  /applications/orderpad-app/restaurants/{tenant}/login-sessions:
+    post: ManageOrderJourney_createRestaurantLoginSession
+  /applications/orderpad-app/restaurants/{tenant}/{restaurantId}/registration-codes:
+    post: ManageOrderJourney_createOrderRegistrationCode
+  /attempted-delivery-query-resolved:
+    put: ApiPartnerManagementGateway_resolveDeliveryQuery
+  /brands/{brand_slug}/orders:
+    get: PartnerManagement_getBrandOrders
+  /brands/{brand_slug}/orders/{orderID}:
+    get: PartnerManagement_getOrderDetails
+  /consumers/{tenant}/me/exclusions:
+    get: CustomerExperience_consumerExclusionsGet
+  /consumers/{tenant}/me/exclusions/{productType}:
+    put: CustomerExperience_createOrUpdateExclusion
+  /delivery-failed:
+    put: ApiPartnerManagementGateway_attemptedDeliveryPut
+  /delivery-fees/{tenant}:
+    get: LogisticManagement_getRestaurantDeliveryFees
+  /delivery/pools:
+    get: LogisticManagement_getDeliveryPools
+    post: LogisticManagement_createDeliveryPool
+  /delivery/pools/{deliveryPoolId}:
+    delete: LogisticManagement_removeDeliveryPool
+    get: LogisticManagement_getDeliveryPool
+    patch: LogisticManagement_modifyDeliveryPool
+    put: LogisticManagement_replaceDeliveryPool
+  /delivery/pools/{deliveryPoolId}/availability/relative:
+    get: LogisticManagement_getPickupETA
+    put: LogisticManagement_setPickupETA
+  /delivery/pools/{deliveryPoolId}/change-risk:
+    post: LogisticManagement_updateDeliveryPoolRiskSignal
+  /delivery/pools/{deliveryPoolId}/hours:
+    put: LogisticManagement_setDeliveryPoolHours
+  /delivery/pools/{deliveryPoolId}/offline-events:
+    delete: LogisticManagement_deleteOfflineEvents
+    post: LogisticManagement_takePoolOffline
+  /delivery/pools/{deliveryPoolId}/restaurants:
+    delete: LogisticManagement_removeDeliveryPoolRestaurants
+    put: LogisticManagement_addRestaurantsToDeliveryPool
+  /delivery/pools/{deliveryPoolId}/status:
+    get: LogisticManagement_getDeliveryPoolStatus
+  /discovery/{tenant}/restaurants/enriched:
+    get: SearchOrchestrator_getEnrichedRestaurants
+  /discovery/{tenant}/restaurants/enriched/bypostcode/{postcode}:
+    get: SearchOrchestrator_getEnrichedRestaurantsByPostcode
+  /driver-assigned-to-delivery:
+    put: ApiPartnerManagementGateway_assignDriverToDelivery
+  /driver-at-delivery-address:
+    put: ApiPartnerManagementGateway_updateDriverDeliveryAddress
+  /driver-at-restaurant:
+    put: ApiPartnerManagementGateway_confirmDriverAtRestaurant
+  /driver-has-delivered-order:
+    put: ApiPartnerManagementGateway_updateDriverDeliveryStatus
+  /driver-location:
+    put: ApiPartnerManagementGateway_updateDriverLocation
+  /driver-on-their-way-to-delivery-address:
+    put: ApiPartnerManagementGateway_updateDriverLocationToDeliveryAddress
+  /final/{finalPickedOrder}:
+    post: JetConnectForManageOrderStatus_receiveFinalPickedOrder
+  /initial/{receiveOrder}:
+    post: JetConnectForManageOrderStatus_receiveOrderPost
+  /item-availability:
+    post: JetConnectForManageProductCatalogue_updateItemAvailability
+  /late-order-compensation-query:
+    post: ApiPartnerManagementGateway_queryRestaurantResponseRequired
+  /late-order-query:
+    post: ApiPartnerManagementGateway_restaurantResponseRequired
+  /locations/{locationID}/orders:
+    get: PartnerManagement_listLocationOrders
+  /menu-ingestion-complete:
+    post: ApiPartnerManagementGateway_confirmMenuIngestionCompletion
+  /menus:
+    post: JetConnectForManageProductCatalogue_ingestMenuFromPos
+  /order-accepted:
+    post: ApiPartnerManagementGateway_orderAcceptedPost
+  /order-cancelled:
+    post: ApiPartnerManagementGateway_orderCancelledPost
+  /order-eligible-for-restaurant-compensation:
+    post: ApiPartnerManagementGateway_checkOrderCompensationEligibility
+  /order-is-ready-for-pickup:
+    put: ApiPartnerManagementGateway_orderReadyForCollectionPut
+  /order-ready-for-preparation-async:
+    post: ApiPartnerManagementGateway_recordOrderPreparation
+  /order-ready-for-preparation-sync:
+    post: ApiPartnerManagementGateway_recordOrderPreparation
+  /order-rejected:
+    post: ApiPartnerManagementGateway_notifyOrderRejection
+  /order-requires-delivery-acceptance:
+    put: ApiPartnerManagementGateway_scheduleOrderPickup
+  /order-time-updated:
+    post: ApiPartnerManagementGateway_updateOrderTime
+  /order/{id}/sent-to-pos-failed:
+    post: JetConnectForManageOrderStatus_markOrderInjectionFailed
+  /order/{id}/sent-to-pos-success:
+    post: JetConnectForManageOrderStatus_updateOrderStatusSuccess
+  /orderdispatchwebhooks:
+    post: ApiPartnerManagementGateway_createRestaurantOrder
+  /orders:
+    post: CustomerExperience_createOrder
+  /orders/deliverystate/driverlocation:
+    put: ManageOrderJourney_updateDriverLocationsBulkUpload
+  /orders/{brandSlug}/{orderId}/amend:
+    get: JetConnectForManageOrderStatus_getAmendmentProgress
+    post: JetConnectForManageOrderStatus_amendOrderProgress
+  /orders/{brandSlug}/{orderId}/cancel:
+    post: JetConnectForManageOrderStatus_cancelOrder
+  /orders/{orderId}/accept:
+    put: ManageOrderJourney_acceptOrder
+  /orders/{orderId}/beingprepared:
+    post: ManageOrderJourney_updateOrderBeingPrepared
+  /orders/{orderId}/cancel:
+    put: ManageOrderJourney_cancelOrder
+  /orders/{orderId}/complete:
+    post: ManageOrderJourney_markOrderComplete
+  /orders/{orderId}/deliverystate/atdeliveryaddress:
+    put: ManageOrderJourney_updateDeliveredDetails
+  /orders/{orderId}/deliverystate/atrestaurant:
+    put: ManageOrderJourney_updateDriverAtRestaurantDetails
+  /orders/{orderId}/deliverystate/atrestauranteta:
+    put: ManageOrderJourney_updateDriverAtRestaurantEta
+  /orders/{orderId}/deliverystate/delivered:
+    put: ManageOrderJourney_updateDeliveredDetails
+  /orders/{orderId}/deliverystate/driverassigned:
+    put: ManageOrderJourney_updateOrderDriverAssignedDetails
+  /orders/{orderId}/deliverystate/driverlocation:
+    put: ManageOrderJourney_updateDriverLocationETA
+  /orders/{orderId}/deliverystate/driverunassigned:
+    put: ManageOrderJourney_updateDriverUnassignedDetails
+  /orders/{orderId}/deliverystate/onitsway:
+    put: ManageOrderJourney_updateDriverOnitsWayDetails
+  /orders/{orderId}/dispatchedtocustomer:
+    put: ManageOrderJourney_markOrderDispatchedToCustomer
+  /orders/{orderId}/duedate:
+    put: ManageOrderJourney_updateOrderEta
+  /orders/{orderId}/readyforcollection:
+    post: ManageOrderJourney_markReadyForCollection
+  /orders/{orderId}/reject:
+    put: ManageOrderJourney_rejectOrder
+  /redelivery-requested:
+    put: ApiPartnerManagementGateway_customerResponseRedelivery
+  /restaurant-offline-status:
+    put: ApiPartnerManagementGateway_updateRestaurantOfflineStatus
+  /restaurant-online-status:
+    put: ApiPartnerManagementGateway_updateRestaurantOnlineStatus
+  /restaurants/bylatlong:
+    get: SearchOrchestrator_getRestaurantsByLocation
+  /restaurants/bypostcode/{postcode}:
+    get: SearchOrchestrator_getRestaurantsByPostcode
+  /restaurants/driver/eta:
+    put: LogisticManagement_setPickupETA
+  /restaurants/{restaurantReference}/offline:
+    put: JetConnectForManagePartnerAvailability_setRestaurantOffline
+  /restaurants/{restaurantReference}/online:
+    put: JetConnectForManagePartnerAvailability_setRestaurantOnline
+  /restaurants/{restaurantReference}/servicetimes:
+    put: JetConnectForManagePartnerAvailability_updateRestaurantServiceTimes
+  /restaurants/{tenant}:
+    post: PartnerManagement_createRestaurant
+  /restaurants/{tenant}/{restaurantId}/creation-status:
+    get: PartnerManagement_getRestaurantCreationStatus
+    post: PartnerManagement_updateCreationStatus
+  /search/autocomplete/{tenant}:
+    get: CustomerExperience_getAutoCompletedSearchTerms
+  /search/menu/{tenant}/{restaurantId}:
+    get: CustomerExperience_searchMenuProducts
+  /search/restaurants/{tenant}:
+    get: CustomerExperience_searchRestaurantsByLatLong
+  /send-to-pos-failed:
+    post: ApiPartnerManagementGateway_handlePosFailed
+  /your-cancel-order-notification-endpoint:
+    post: JetConnectForManageOrderStatus_notifyOrderCancellation
+  /your-driver-status-notification-endpoint:
+    post: JetConnectForManageOrderStatus_receiveDriverStatusUpdate
+  /your-failed-order-for-backup-flow-endpoint:
+    post: JetConnectForManageOrderStatus_notifyFailedOrderBackupFlow
+  /your-restaurant-temp-offline-endpoint:
+    post: JetConnectForManagePartnerAvailability_notifyRestaurantTempOffline
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /delivery/pools/{deliveryPoolId}/offline-events:
+    post:
+      application/json: LogisticManagementTakePoolOfflineRequest
+  /delivery/pools/{deliveryPoolId}/restaurants:
+    delete:
+      application/json: LogisticManagementRemoveDeliveryPoolRestaurantsRequest
+  /final/{finalPickedOrder}:
+    post:
+      application/json: JetConnectForManageOrderStatusReceiveFinalPickedOrderRequest
+  /initial/{receiveOrder}:
+    post:
+      application/json: JetConnectForManageOrderStatusReceiveOrderPostRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /brands/{brand_slug}/orders:
+    get:
+      '200':
+        application/json: PartnerManagementGetBrandOrdersResponse
+  /delivery-fees/{tenant}:
+    get:
+      '200':
+        application/json: LogisticManagementGetRestaurantDeliveryFeesResponse
+  /delivery/pools:
+    get:
+      '200':
+        application/json: LogisticManagementGetDeliveryPoolsResponse
+    post:
+      '400':
+        application/json: LogisticManagementCreateDeliveryPoolResponse
+  /delivery/pools/{deliveryPoolId}:
+    get:
+      '200':
+        application/json: LogisticManagementGetDeliveryPoolResponse
+    patch:
+      '202':
+        application/json: LogisticManagementModifyDeliveryPoolResponse
+      '400':
+        application/json: LogisticManagementModifyDeliveryPool400Response
+    put:
+      '202':
+        application/json: LogisticManagementReplaceDeliveryPoolResponse
+      '400':
+        application/json: LogisticManagementReplaceDeliveryPool400Response
+  /delivery/pools/{deliveryPoolId}/availability/relative:
+    get:
+      '200':
+        application/json: LogisticManagementGetPickupEtaResponse
+  /delivery/pools/{deliveryPoolId}/status:
+    get:
+      '200':
+        application/json: LogisticManagementGetDeliveryPoolStatusResponse
+  /order-is-ready-for-pickup:
+    put:
+      default:
+        application/json: ApiPartnerManagementGatewayOrderReadyForCollectionPutResponse
+  /order-requires-delivery-acceptance:
+    put:
+      default:
+        application/json: ApiPartnerManagementGatewayScheduleOrderPickupResponse
+  /orders:
+    post:
+      '201':
+        application/json: CustomerExperienceCreateOrderResponse
+      '409':
+        application/json: CustomerExperienceCreateOrder409Response
+  /orders/{orderId}/deliverystate/atrestauranteta:
+    put:
+      '400':
+        application/json: ManageOrderJourneyUpdateDriverAtRestaurantEtaResponse
+  /orders/{orderId}/deliverystate/driverassigned:
+    put:
+      '400':
+        application/json: ManageOrderJourneyUpdateOrderDriverAssignedDetailsResponse
+  /orders/{orderId}/deliverystate/driverlocation:
+    put:
+      '400':
+        application/json: ManageOrderJourneyUpdateDriverLocationEtaResponse
+  /restaurants/bylatlong:
+    get:
+      '200':
+        application/json: SearchOrchestratorGetRestaurantsByLocationResponse
+      '400':
+        application/json: SearchOrchestratorGetRestaurantsByLocation400Response
+      '401':
+        application/json: SearchOrchestratorGetRestaurantsByLocation401Response
+      '500':
+        application/json: SearchOrchestratorGetRestaurantsByLocation500Response
+  /restaurants/bypostcode/{postcode}:
+    get:
+      '200':
+        application/json: SearchOrchestratorGetRestaurantsByPostcodeResponse
+      '400':
+        application/json: SearchOrchestratorGetRestaurantsByPostcode400Response
+      '401':
+        application/json: SearchOrchestratorGetRestaurantsByPostcode401Response
+      '500':
+        application/json: SearchOrchestratorGetRestaurantsByPostcode500Response
+  /search/autocomplete/{tenant}:
+    get:
+      '400':
+        application/json: CustomerExperienceGetAutoCompletedSearchTermsResponse
+      '503':
+        application/json: CustomerExperienceGetAutoCompletedSearchTerms503Response
+  /search/menu/{tenant}/{restaurantId}:
+    get:
+      '422':
+        application/json: CustomerExperienceSearchMenuProductsResponse
+      '503':
+        application/json: CustomerExperienceSearchMenuProducts503Response
+  /search/restaurants/{tenant}:
+    get:
+      '503':
+        application/json: CustomerExperienceSearchRestaurantsByLatLongResponse
+securityParameters:
+  Accept-Tenant:
+    header: false
+  X-JET-Connect-Hash:
+    header: false
+  brandName:
+    query: false
+  cuisine:
+    query: false
+  deliveryTime:
+    query: false
+  excluded-result-types:
+    query: false
+  from:
+    query: false
+  include-test-partners:
+    query: false
+  latitude:
+    query: false
+  latlong:
+    query: false
+  limit:
+    query: false
+  locations:
+    query: false
+  longitude:
+    query: false
+  page:
+    query: false
+  ratingsOutOfFive:
+    query: false
+  reason:
+    query: false
+  restaurantIds:
+    query: false
+  restaurantName:
+    query: false
+  searchTerm:
+    query: false
+  serviceType:
+    query: false
+  size:
+    query: false
+  status:
+    query: false
+  to:
+    query: false
+  x-je-api-version:
+    header: false
+  x-je-conversation:
+    header: false
+  x-jet-application:
+    header: false
+  zone:
+    query: false
+validServerUrls: {}
