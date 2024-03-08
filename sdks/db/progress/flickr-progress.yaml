@@ -1,0 +1,278 @@
+examples: {}
+examples_2: {}
+examples_3:
+  /upload:
+    post:
+      '200':
+        application/json: {}
+fixOnlyOneTagName: false
+ignoreObjectsWithNoProperties: true
+operationIds:
+  /oauth/access_token:
+    get: Public_getAccessToken
+  /oauth/request_token:
+    get: Public_getOAuthToken
+  /rest?method=flickr.favorites.getContext:
+    get: Public_getFavoritesContext
+  /rest?method=flickr.favorites.getList:
+    get: Public_getFavoritePhotos
+  /rest?method=flickr.galleries.getPhotos:
+    get: Public_getGalleryPhotos
+  /rest?method=flickr.groups.discuss.replies.getInfo:
+    get: Public_getGroupTopicRepliesInfo
+  /rest?method=flickr.groups.discuss.topics.getInfo:
+    get: Public_getGroupTopicInfo
+  /rest?method=flickr.groups.discuss.topics.getList:
+    get: Public_getGroupDiscussionTopics
+  /rest?method=flickr.groups.getInfo:
+    get: Public_getGroupInfo
+  /rest?method=flickr.groups.pools.getContext:
+    get: Public_flickrGroupsPoolsGetContext
+  /rest?method=flickr.groups.pools.getPhotos:
+    get: Public_getGroupPoolPhotos
+  /rest?method=flickr.people.getInfo:
+    get: Public_getPersonInformation
+  /rest?method=flickr.people.getPhotos:
+    get: Public_getUserPhotos
+  /rest?method=flickr.photolist.getContext:
+    get: Public_getPhotoListContext
+  /rest?method=flickr.photos.getContext:
+    get: Public_getPhotostreamContext
+  /rest?method=flickr.photos.getExif:
+    get: Public_getPhotoExif
+  /rest?method=flickr.photos.getInfo:
+    get: Public_getPhotoInfo
+  /rest?method=flickr.photos.getSizes:
+    get: Public_getPhotoSizes
+  /rest?method=flickr.photos.licenses.getInfo:
+    get: Public_getPhotoLicenses
+  /rest?method=flickr.photos.search:
+    get: Public_searchPhotos
+  /rest?method=flickr.photosets.getContext:
+    get: Public_getPhotoSetContext
+  /rest?method=flickr.photosets.getList:
+    get: Public_getUserAlbums
+  /rest?method=flickr.photosets.getPhotos:
+    get: Public_getAlbumPhotos
+  /rest?method=flickr.test.echo:
+    get: Public_getFlickrTestEcho
+  /upload:
+    post: Public_uploadPhoto
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /upload:
+    post:
+      multipart/form-data: PublicUploadPhotoRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /oauth/access_token:
+    get:
+      '200':
+        application/json: PublicGetAccessTokenResponse
+  /oauth/request_token:
+    get:
+      '200':
+        application/json: PublicGetOAuthTokenResponse
+  /rest?method=flickr.favorites.getContext:
+    get:
+      '200':
+        application/json: PublicGetFavoritesContextResponse
+  /rest?method=flickr.favorites.getList:
+    get:
+      '200':
+        application/json: PublicGetFavoritePhotosResponse
+  /rest?method=flickr.galleries.getPhotos:
+    get:
+      '200':
+        application/json: PublicGetGalleryPhotosResponse
+  /rest?method=flickr.groups.discuss.replies.getInfo:
+    get:
+      '200':
+        application/json: PublicGetGroupTopicRepliesInfoResponse
+  /rest?method=flickr.groups.discuss.topics.getInfo:
+    get:
+      '200':
+        application/json: PublicGetGroupTopicInfoResponse
+  /rest?method=flickr.groups.discuss.topics.getList:
+    get:
+      '200':
+        application/json: PublicGetGroupDiscussionTopicsResponse
+  /rest?method=flickr.groups.getInfo:
+    get:
+      '200':
+        application/json: PublicGetGroupInfoResponse
+  /rest?method=flickr.groups.pools.getContext:
+    get:
+      '200':
+        application/json: PublicFlickrGroupsPoolsGetContextResponse
+  /rest?method=flickr.groups.pools.getPhotos:
+    get:
+      '200':
+        application/json: PublicGetGroupPoolPhotosResponse
+  /rest?method=flickr.people.getInfo:
+    get:
+      '200':
+        application/json: PublicGetPersonInformationResponse
+  /rest?method=flickr.people.getPhotos:
+    get:
+      '200':
+        application/json: PublicGetUserPhotosResponse
+  /rest?method=flickr.photolist.getContext:
+    get:
+      '200':
+        application/json: PublicGetPhotoListContextResponse
+  /rest?method=flickr.photos.getContext:
+    get:
+      '200':
+        application/json: PublicGetPhotostreamContextResponse
+  /rest?method=flickr.photos.getExif:
+    get:
+      '200':
+        application/json: PublicGetPhotoExifResponse
+  /rest?method=flickr.photos.getInfo:
+    get:
+      '200':
+        application/json: PublicGetPhotoInfoResponse
+  /rest?method=flickr.photos.getSizes:
+    get:
+      '200':
+        application/json: PublicGetPhotoSizesResponse
+  /rest?method=flickr.photos.licenses.getInfo:
+    get:
+      '200':
+        application/json: PublicGetPhotoLicensesResponse
+  /rest?method=flickr.photos.search:
+    get:
+      '200':
+        application/json: PublicSearchPhotosResponse
+  /rest?method=flickr.photosets.getContext:
+    get:
+      '200':
+        application/json: PublicGetPhotoSetContextResponse
+  /rest?method=flickr.photosets.getList:
+    get:
+      '200':
+        application/json: PublicGetUserAlbumsResponse
+  /rest?method=flickr.photosets.getPhotos:
+    get:
+      '200':
+        application/json: PublicGetAlbumPhotosResponse
+  /rest?method=flickr.test.echo:
+    get:
+      '200':
+        application/json: PublicGetFlickrTestEchoResponse
+  /upload:
+    post:
+      '200':
+        application/json: PublicUploadPhotoResponse
+securityParameters:
+  accuracy:
+    query: false
+  api_key:
+    query: false
+  bbox:
+    query: false
+  contacts:
+    query: false
+  content_type:
+    query: false
+  echo:
+    query: false
+  gallery_id:
+    query: false
+  geo_context:
+    query: false
+  group_id:
+    query: false
+  group_path_alias:
+    query: false
+  has_geo:
+    query: false
+  in_gallery:
+    query: false
+  is_commons:
+    query: false
+  is_getty:
+    query: false
+  lang:
+    query: false
+  lat:
+    query: false
+  license:
+    query: false
+  lon:
+    query: false
+  machine_tag_mode:
+    query: false
+  machine_tags:
+    query: false
+  max_fave_date:
+    query: false
+  max_taken_date:
+    query: false
+  max_upload_date:
+    query: false
+  media:
+    query: false
+  min_fave_date:
+    query: false
+  min_taken_date:
+    query: false
+  min_upload_date:
+    query: false
+  oauth_callback:
+    query: false
+  oauth_consumer_key:
+    query: false
+  oauth_nonce:
+    query: false
+  oauth_signature:
+    query: false
+  oauth_signature_method:
+    query: false
+  oauth_timestamp:
+    query: false
+  oauth_token:
+    query: false
+  oauth_verifier:
+    query: false
+  oauth_version:
+    query: false
+  page:
+    query: false
+  per_page:
+    query: false
+  photo_id:
+    query: false
+  photolist_id:
+    query: false
+  photoset_id:
+    query: false
+  place_id:
+    query: false
+  privacy_filter:
+    query: false
+  radius:
+    query: false
+  radius_units:
+    query: false
+  reply_id:
+    query: false
+  safe_search:
+    query: false
+  secret:
+    query: false
+  sort:
+    query: false
+  tags:
+    query: false
+  text:
+    query: false
+  topic_id:
+    query: false
+  user_id:
+    query: false
+  woe_id:
+    query: false
+validServerUrls: {}
