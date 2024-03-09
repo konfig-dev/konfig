@@ -1,0 +1,631 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /admin/backups.json:
+    get: Backups_list
+    post: Backups_createBackupRequest
+  /admin/backups/{filename}:
+    get: Backups_downloadBackup
+    put: Backups_sendDownloadBackupEmail
+  /admin/badges.json:
+    get: Badges_list
+    post: Badges_createBadge
+  /admin/badges/{id}.json:
+    delete: Badges_deleteByIdJson
+    put: Badges_updateBadgeByIdJson
+  /admin/groups.json:
+    post: Groups_createNewGroup
+  /admin/groups/{id}.json:
+    delete: Groups_deleteGroupByIdJson
+  /admin/users/list/{flag}.json:
+    get: Users_getListOfUsers
+  /admin/users/{id}.json:
+    delete: Users_deleteUserByIdJson
+    get: Users_getUserByIdJson
+  /admin/users/{id}/activate.json:
+    put: Users_activateUser
+  /admin/users/{id}/anonymize.json:
+    put: Users_anonymizeByIdJson
+  /admin/users/{id}/deactivate.json:
+    put: Users_deactivateUser
+  /admin/users/{id}/log_out.json:
+    post: Users_logOutUserAction
+  /admin/users/{id}/silence.json:
+    put: Users_silenceById
+  /admin/users/{id}/suspend.json:
+    put: Users_suspendByIdJson
+  /c/{id}/show.json:
+    get: Categories_getCategoryByIdJson
+  /c/{slug}/{id}.json:
+    get: Categories_listTopics
+  /categories.json:
+    get: Categories_list
+    post: Categories_createCategoryRequest
+  /categories/{id}.json:
+    put: Categories_updateCategoryByIdJson
+  /directory_items.json:
+    get: Users_listPublicUser
+  /groups.json:
+    get: Groups_list
+  /groups/{id}.json:
+    get: Groups_getGroupById
+    put: Groups_updateGroupByIdJson
+  /groups/{id}/members.json:
+    delete: Groups_removeMembers
+    get: Groups_listMembersJson
+    put: Groups_addMembersToGroup
+  /invites.json:
+    post: Invites_createInvite
+  /invites/create-multiple.json:
+    post: Invites_createMultipleInvites
+  /latest.json:
+    get: Topics_getLatestTopics
+  /notifications.json:
+    get: Notifications_getUserNotifications
+  /notifications/mark-read.json:
+    put: Notifications_markAsRead
+  /post_actions.json:
+    post: Posts_likePostAction
+  /posts.json:
+    get: Posts_listLatestPostsAcrossTopics
+    post: Posts_createTopicPostMessage
+  /posts/{id}.json:
+    delete: Posts_deleteSinglePost
+    get: Posts_getSinglePostLikes
+    put: Posts_updateSinglePostJson
+  /posts/{id}/locked.json:
+    put: Posts_lockPostAction
+  /posts/{id}/replies.json:
+    get: Posts_listRepliesToPost
+  /search.json:
+    get: Search_termResults
+  /session/forgot_password.json:
+    post: Users_sendPasswordResetEmail
+  /site.json:
+    get: Site_getCategoriesAndSubcategories
+  /t/-/{id}.json:
+    put: Topics_updateTopicByIdJson
+  /t/external_id/{external_id}.json:
+    get: Topics_getByExternalId
+  /t/{id}.json:
+    delete: Topics_removeTopicById
+    get: Topics_getSingleTopic
+  /t/{id}/bookmark.json:
+    put: Topics_updateBookmark
+  /t/{id}/change-timestamp.json:
+    put: Topics_updateTimestampJson
+  /t/{id}/invite.json:
+    post: Topics_sendInviteToTopic
+  /t/{id}/notifications.json:
+    post: Topics_setNotificationLevel
+  /t/{id}/posts.json:
+    get: Topics_getSpecificPosts
+  /t/{id}/status.json:
+    put: Topics_updateStatusOfTopic
+  /t/{id}/timer.json:
+    post: Topics_createTopicTimer
+  /tag/{name}.json:
+    get: Tags_getSpecificTag
+  /tag_groups.json:
+    get: Tags_getTagGroups
+    post: Tags_createTagGroup
+  /tag_groups/{id}.json:
+    get: Tags_getSingleTagGroup
+    put: Tags_updateTagGroup
+  /tags.json:
+    get: Tags_list
+  /top.json:
+    get: Topics_getTopTopicsByPeriod
+  /topics/private-messages-sent/{username}.json:
+    get: PrivateMessages_listSentForUser
+  /topics/private-messages/{username}.json:
+    get: PrivateMessages_listForUser
+  /u/by-external/{external_id}.json:
+    get: Users_getUserByExternalId
+  /u/by-external/{provider}/{external_id}.json:
+    get: Users_getIdentityProviderExternalId
+  /u/{username}.json:
+    get: Users_getUserByUsername
+    put: Users_updateUserDetails
+  /u/{username}/emails.json:
+    get: Users_getEmails
+  /u/{username}/preferences/avatar/pick.json:
+    put: Users_updateAvatar
+  /u/{username}/preferences/email.json:
+    put: Users_updateEmailPreferences
+  /u/{username}/preferences/username.json:
+    put: Users_updatePreferencesJson
+  /uploads.json:
+    post: Uploads_createNewUpload
+  /uploads/abort-multipart.json:
+    post: Uploads_abortMultipartUpload
+  /uploads/batch-presign-multipart-parts.json:
+    post: Uploads_generatePresignedUrlsForMultipartParts
+  /uploads/complete-external-upload.json:
+    post: Uploads_completeExternalUpload
+  /uploads/complete-multipart.json:
+    post: Uploads_completeMultipartUpload
+  /uploads/create-multipart.json:
+    post: Uploads_createMultipartExternalUpload
+  /uploads/generate-presigned-put.json:
+    post: Uploads_initiateDirectExternalUpload
+  /user-badges/{username}.json:
+    get: Badges_listUserBadges
+  /user_actions.json:
+    get: Users_listUserActions
+  /user_avatar/{username}/refresh_gravatar.json:
+    post: Users_refreshGravatarPost
+  /users.json:
+    post: Users_createUser
+  /users/password-reset/{token}.json:
+    put: Users_changePasswordAction
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /admin/backups.json:
+    post:
+      application/json: BackupsCreateBackupRequestRequest
+  /admin/badges.json:
+    post:
+      application/json: BadgesCreateBadgeRequest
+  /admin/badges/{id}.json:
+    put:
+      application/json: BadgesUpdateBadgeByIdJsonRequest
+  /admin/groups.json:
+    post:
+      application/json: GroupsCreateNewGroupRequest
+  /admin/users/{id}.json:
+    delete:
+      application/json: UsersDeleteUserByIdJsonRequest
+  /admin/users/{id}/silence.json:
+    put:
+      application/json: UsersSilenceByIdRequest
+  /admin/users/{id}/suspend.json:
+    put:
+      application/json: UsersSuspendByIdJsonRequest
+  /categories.json:
+    post:
+      application/json: CategoriesCreateCategoryRequestRequest
+  /categories/{id}.json:
+    put:
+      application/json: CategoriesUpdateCategoryByIdJsonRequest
+  /groups/{id}.json:
+    put:
+      application/json: GroupsUpdateGroupByIdJsonRequest
+  /groups/{id}/members.json:
+    delete:
+      application/json: GroupsRemoveMembersRequest
+    put:
+      application/json: GroupsAddMembersToGroupRequest
+  /invites.json:
+    post:
+      application/json: InvitesCreateInviteRequest
+  /invites/create-multiple.json:
+    post:
+      application/json: InvitesCreateMultipleInvitesRequest
+  /notifications/mark-read.json:
+    put:
+      application/json: NotificationsMarkAsReadRequest
+  /post_actions.json:
+    post:
+      application/json: PostsLikePostActionRequest
+  /posts.json:
+    post:
+      application/json: PostsCreateTopicPostMessageRequest
+  /posts/{id}.json:
+    delete:
+      application/json: PostsDeleteSinglePostRequest
+    put:
+      application/json: PostsUpdateSinglePostJsonRequest
+  /posts/{id}/locked.json:
+    put:
+      application/json: PostsLockPostActionRequest
+  /session/forgot_password.json:
+    post:
+      application/json: UsersSendPasswordResetEmailRequest
+  /t/-/{id}.json:
+    put:
+      application/json: TopicsUpdateTopicByIdJsonRequest
+  /t/{id}/change-timestamp.json:
+    put:
+      application/json: TopicsUpdateTimestampJsonRequest
+  /t/{id}/invite.json:
+    post:
+      application/json: TopicsSendInviteToTopicRequest
+  /t/{id}/notifications.json:
+    post:
+      application/json: TopicsSetNotificationLevelRequest
+  /t/{id}/posts.json:
+    get:
+      application/json: TopicsGetSpecificPostsRequest
+  /t/{id}/status.json:
+    put:
+      application/json: TopicsUpdateStatusOfTopicRequest
+  /t/{id}/timer.json:
+    post:
+      application/json: TopicsCreateTopicTimerRequest
+  /tag_groups.json:
+    post:
+      application/json: TagsCreateTagGroupRequest
+  /tag_groups/{id}.json:
+    put:
+      application/json: TagsUpdateTagGroupRequest
+  /u/{username}.json:
+    put:
+      application/json: UsersUpdateUserDetailsRequest
+  /u/{username}/preferences/avatar/pick.json:
+    put:
+      application/json: UsersUpdateAvatarRequest
+  /u/{username}/preferences/email.json:
+    put:
+      application/json: UsersUpdateEmailPreferencesRequest
+  /u/{username}/preferences/username.json:
+    put:
+      application/json: UsersUpdatePreferencesJsonRequest
+  /uploads.json:
+    post:
+      multipart/form-data: UploadsCreateNewUploadRequest
+  /uploads/abort-multipart.json:
+    post:
+      application/json: UploadsAbortMultipartUploadRequest
+  /uploads/batch-presign-multipart-parts.json:
+    post:
+      application/json: UploadsGeneratePresignedUrlsForMultipartPartsRequest
+  /uploads/complete-external-upload.json:
+    post:
+      application/json: UploadsCompleteExternalUploadRequest
+  /uploads/complete-multipart.json:
+    post:
+      application/json: UploadsCompleteMultipartUploadRequest
+  /uploads/create-multipart.json:
+    post:
+      application/json: UploadsCreateMultipartExternalUploadRequest
+  /uploads/generate-presigned-put.json:
+    post:
+      application/json: UploadsInitiateDirectExternalUploadRequest
+  /users.json:
+    post:
+      application/json: UsersCreateUserRequest
+  /users/password-reset/{token}.json:
+    put:
+      application/json: UsersChangePasswordActionRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /admin/backups.json:
+    get:
+      '200':
+        application/json: BackupsListResponse
+    post:
+      '200':
+        application/json: BackupsCreateBackupRequestResponse
+  /admin/badges.json:
+    get:
+      '200':
+        application/json: BadgesListResponse
+    post:
+      '200':
+        application/json: BadgesCreateBadgeResponse
+  /admin/badges/{id}.json:
+    put:
+      '200':
+        application/json: BadgesUpdateBadgeByIdJsonResponse
+  /admin/groups.json:
+    post:
+      '200':
+        application/json: GroupsCreateNewGroupResponse
+  /admin/groups/{id}.json:
+    delete:
+      '200':
+        application/json: GroupsDeleteGroupByIdJsonResponse
+  /admin/users/list/{flag}.json:
+    get:
+      '200':
+        application/json: UsersGetListOfUsersResponse
+  /admin/users/{id}.json:
+    delete:
+      '200':
+        application/json: UsersDeleteUserByIdJsonResponse
+    get:
+      '200':
+        application/json: UsersGetUserByIdJsonResponse
+  /admin/users/{id}/activate.json:
+    put:
+      '200':
+        application/json: UsersActivateUserResponse
+  /admin/users/{id}/anonymize.json:
+    put:
+      '200':
+        application/json: UsersAnonymizeByIdJsonResponse
+  /admin/users/{id}/deactivate.json:
+    put:
+      '200':
+        application/json: UsersDeactivateUserResponse
+  /admin/users/{id}/log_out.json:
+    post:
+      '200':
+        application/json: UsersLogOutUserActionResponse
+  /admin/users/{id}/silence.json:
+    put:
+      '200':
+        application/json: UsersSilenceByIdResponse
+  /admin/users/{id}/suspend.json:
+    put:
+      '200':
+        application/json: UsersSuspendByIdJsonResponse
+  /c/{id}/show.json:
+    get:
+      '200':
+        application/json: CategoriesGetCategoryByIdJsonResponse
+  /c/{slug}/{id}.json:
+    get:
+      '200':
+        application/json: CategoriesListTopicsResponse
+  /categories.json:
+    get:
+      '200':
+        application/json: CategoriesListResponse
+    post:
+      '200':
+        application/json: CategoriesCreateCategoryRequestResponse
+  /categories/{id}.json:
+    put:
+      '200':
+        application/json: CategoriesUpdateCategoryByIdJsonResponse
+  /directory_items.json:
+    get:
+      '200':
+        application/json: UsersListPublicUserResponse
+  /groups.json:
+    get:
+      '200':
+        application/json: GroupsListResponse
+  /groups/{id}.json:
+    get:
+      '200':
+        application/json: GroupsGetGroupByIdResponse
+    put:
+      '200':
+        application/json: GroupsUpdateGroupByIdJsonResponse
+  /groups/{id}/members.json:
+    delete:
+      '200':
+        application/json: GroupsRemoveMembersResponse
+    get:
+      '200':
+        application/json: GroupsListMembersJsonResponse
+    put:
+      '200':
+        application/json: GroupsAddMembersToGroupResponse
+  /invites.json:
+    post:
+      '200':
+        application/json: InvitesCreateInviteResponse
+  /invites/create-multiple.json:
+    post:
+      '200':
+        application/json: InvitesCreateMultipleInvitesResponse
+  /latest.json:
+    get:
+      '200':
+        application/json: TopicsGetLatestTopicsResponse
+  /notifications.json:
+    get:
+      '200':
+        application/json: NotificationsGetUserNotificationsResponse
+  /notifications/mark-read.json:
+    put:
+      '200':
+        application/json: NotificationsMarkAsReadResponse
+  /post_actions.json:
+    post:
+      '200':
+        application/json: PostsLikePostActionResponse
+  /posts.json:
+    get:
+      '200':
+        application/json: PostsListLatestPostsAcrossTopicsResponse
+    post:
+      '200':
+        application/json: PostsCreateTopicPostMessageResponse
+  /posts/{id}.json:
+    get:
+      '200':
+        application/json: PostsGetSinglePostLikesResponse
+    put:
+      '200':
+        application/json: PostsUpdateSinglePostJsonResponse
+  /posts/{id}/locked.json:
+    put:
+      '200':
+        application/json: PostsLockPostActionResponse
+  /posts/{id}/replies.json:
+    get:
+      '200':
+        application/json: PostsListRepliesToPostResponse
+  /search.json:
+    get:
+      '200':
+        application/json: SearchTermResultsResponse
+  /session/forgot_password.json:
+    post:
+      '200':
+        application/json: UsersSendPasswordResetEmailResponse
+  /site.json:
+    get:
+      '200':
+        application/json: SiteGetCategoriesAndSubcategoriesResponse
+  /t/-/{id}.json:
+    put:
+      '200':
+        application/json: TopicsUpdateTopicByIdJsonResponse
+  /t/{id}.json:
+    get:
+      '200':
+        application/json: TopicsGetSingleTopicResponse
+  /t/{id}/change-timestamp.json:
+    put:
+      '200':
+        application/json: TopicsUpdateTimestampJsonResponse
+  /t/{id}/invite.json:
+    post:
+      '200':
+        application/json: TopicsSendInviteToTopicResponse
+  /t/{id}/notifications.json:
+    post:
+      '200':
+        application/json: TopicsSetNotificationLevelResponse
+  /t/{id}/posts.json:
+    get:
+      '200':
+        application/json: TopicsGetSpecificPostsResponse
+  /t/{id}/status.json:
+    put:
+      '200':
+        application/json: TopicsUpdateStatusOfTopicResponse
+  /t/{id}/timer.json:
+    post:
+      '200':
+        application/json: TopicsCreateTopicTimerResponse
+  /tag/{name}.json:
+    get:
+      '200':
+        application/json: TagsGetSpecificTagResponse
+  /tag_groups.json:
+    get:
+      '200':
+        application/json: TagsGetTagGroupsResponse
+    post:
+      '200':
+        application/json: TagsCreateTagGroupResponse
+  /tag_groups/{id}.json:
+    get:
+      '200':
+        application/json: TagsGetSingleTagGroupResponse
+    put:
+      '200':
+        application/json: TagsUpdateTagGroupResponse
+  /tags.json:
+    get:
+      '200':
+        application/json: TagsListResponse
+  /top.json:
+    get:
+      '200':
+        application/json: TopicsGetTopTopicsByPeriodResponse
+  /topics/private-messages-sent/{username}.json:
+    get:
+      '200':
+        application/json: PrivateMessagesListSentForUserResponse
+  /topics/private-messages/{username}.json:
+    get:
+      '200':
+        application/json: PrivateMessagesListForUserResponse
+  /u/by-external/{external_id}.json:
+    get:
+      '200':
+        application/json: UsersGetUserByExternalIdResponse
+  /u/by-external/{provider}/{external_id}.json:
+    get:
+      '200':
+        application/json: UsersGetIdentityProviderExternalIdResponse
+  /u/{username}.json:
+    get:
+      '200':
+        application/json: UsersGetUserByUsernameResponse
+    put:
+      '200':
+        application/json: UsersUpdateUserDetailsResponse
+  /u/{username}/emails.json:
+    get:
+      '200':
+        application/json: UsersGetEmailsResponse
+  /u/{username}/preferences/avatar/pick.json:
+    put:
+      '200':
+        application/json: UsersUpdateAvatarResponse
+  /uploads.json:
+    post:
+      '200':
+        application/json: UploadsCreateNewUploadResponse
+  /uploads/abort-multipart.json:
+    post:
+      '200':
+        application/json: UploadsAbortMultipartUploadResponse
+  /uploads/batch-presign-multipart-parts.json:
+    post:
+      '200':
+        application/json: UploadsGeneratePresignedUrlsForMultipartPartsResponse
+  /uploads/complete-external-upload.json:
+    post:
+      '200':
+        application/json: UploadsCompleteExternalUploadResponse
+  /uploads/complete-multipart.json:
+    post:
+      '200':
+        application/json: UploadsCompleteMultipartUploadResponse
+  /uploads/create-multipart.json:
+    post:
+      '200':
+        application/json: UploadsCreateMultipartExternalUploadResponse
+  /uploads/generate-presigned-put.json:
+    post:
+      '200':
+        application/json: UploadsInitiateDirectExternalUploadResponse
+  /user-badges/{username}.json:
+    get:
+      '200':
+        application/json: BadgesListUserBadgesResponse
+  /user_actions.json:
+    get:
+      '200':
+        application/json: UsersListUserActionsResponse
+  /user_avatar/{username}/refresh_gravatar.json:
+    post:
+      '200':
+        application/json: UsersRefreshGravatarPostResponse
+  /users.json:
+    post:
+      '200':
+        application/json: UsersCreateUserResponse
+securityParameters:
+  Api-Key:
+    header: false
+  Api-Username:
+    header: false
+  asc:
+    query: false
+  ascending:
+    query: false
+  before:
+    query: false
+  email:
+    query: false
+  filter:
+    query: false
+  include_subcategories:
+    query: false
+  ip:
+    query: false
+  offset:
+    query: false
+  order:
+    query: false
+  page:
+    query: false
+  period:
+    query: false
+  q:
+    query: false
+  show_emails:
+    query: false
+  stats:
+    query: false
+  token:
+    query: false
+  username:
+    query: false
+validServerUrls:
+  https://{defaultHost}:
+    url: https://{defaultHost}

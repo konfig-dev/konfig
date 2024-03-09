@@ -16,7 +16,7 @@ export default function ElevenLabsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/elevenlabs/logo.png"
       clientNameCamelCase="elevenLabs"
       homepage="elevenlabs.com"
-      lastUpdated={new Date("2024-03-08T23:53:01.279Z")}
+      lastUpdated={new Date("2024-03-09T00:41:22.919Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/elevenlabs/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

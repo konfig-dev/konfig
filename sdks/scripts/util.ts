@@ -2,15 +2,49 @@ import * as path from "path";
 import { SdkPageProps } from "../../generator/konfig-docs/src/components/SdkComponentProps";
 import { AdditionalSpecDataProps } from "./collect";
 import { SecuritySchemes, Spec, getOperations, resolveRef } from "konfig-lib";
+import { z } from "zod";
 import kebabcase from "lodash.kebabcase";
+import * as fs from "fs-extra";
 
 export const dbFolder = path.join(path.dirname(__dirname), "db");
 export const specFolder = path.join(dbFolder, "spec-data");
 export const browserDownloadsFolder = path.join(dbFolder, "browser-downloads");
+export const customRequestLastFetchedJsonPath = path.join(
+  dbFolder,
+  "custom-request-last-fetched.json"
+);
 export const customRequestSpecsDir = path.join(
   dbFolder,
   "custom-request-specs"
 );
+
+const lastUpdatedSchema = z.object({
+  lastUpdated: z.record(z.coerce.date()),
+});
+
+export function getCustomRequestLastFetched(key: string): Date | undefined {
+  const lastUpdated = fs.readFileSync(
+    customRequestLastFetchedJsonPath,
+    "utf-8"
+  );
+  const parsed = lastUpdatedSchema.parse(JSON.parse(lastUpdated));
+  return parsed.lastUpdated[key];
+}
+
+export function saveCustomRequestLastFetched(date: Date, keys: string[]): void {
+  const lastUpdated = fs.readFileSync(
+    customRequestLastFetchedJsonPath,
+    "utf-8"
+  );
+  const parsed = lastUpdatedSchema.parse(JSON.parse(lastUpdated));
+  for (const key of keys) {
+    parsed.lastUpdated[key] = date;
+  }
+  fs.writeFileSync(
+    customRequestLastFetchedJsonPath,
+    JSON.stringify(parsed, null, 2)
+  );
+}
 
 /**
  * Sometimes the published properties should be always defined so this type is

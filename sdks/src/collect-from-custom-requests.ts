@@ -25,6 +25,8 @@ import {
   getServiceName,
   getVersion,
   browserDownloadsFolder,
+  getCustomRequestLastFetched,
+  saveCustomRequestLastFetched,
 } from "../scripts/util";
 import { PuppeteerBlocker } from "@cliqz/adblocker-puppeteer";
 import fetch from "cross-fetch"; // required 'fetch'
@@ -144,15 +146,14 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://raw.githubusercontent.com/docusign/eSign-OpenAPI-Specification/master/esignature.rest.swagger-v2.1.json",
   },
+  "discourse.org": {
+    type: "GET",
+    url: "http://docs.discourse.org/openapi.json",
+  },
   "elevenlabs.com": {
-    lambda: async () => {
-      const url = "https://api.elevenlabs.io/openapi.json";
-      const rawSpecString = await fetch(url).then((res) => res.text());
-      const parsed = JSON.parse(rawSpecString);
-      // add "https://api.elevenlabs.io" to servers
-      parsed.servers = [{ url: "https://api.elevenlabs.io" }];
-      return JSON.stringify(parsed);
-    },
+    type: "GET",
+    url: "https://api.elevenlabs.io/openapi.json",
+    apiBaseUrl: "https://api.elevenlabs.io",
   },
   "finicity.com": {
     type: "GET",
@@ -671,22 +672,50 @@ export async function collectFromCustomRequests(): Promise<Db> {
     devtools: true,
   });
   for (const key in customRequests) {
+    const specFilename = `${key}.yaml`;
+    const customRequestSpecFilePath = path.join(
+      customRequestSpecsDir,
+      specFilename
+    );
+
+    // if fetched in the last day, skip
     if (process.env.FILTER_CUSTOM !== undefined) {
       if (!key.includes(process.env.FILTER_CUSTOM)) {
         continue;
       }
     }
+
     const customRequest = customRequests[key];
     if (customRequest === undefined)
       throw Error("Expect customRequest to be defined");
 
-    const rawSpecString = await executeCustomRequest(
-      key,
-      customRequest,
-      browser
-    );
+    const lastFetched = getCustomRequestLastFetched(key);
 
-    if (rawSpecString === undefined) {
+    let rawSpecStringCurrent: string | null = null;
+    if (
+      lastFetched !== undefined &&
+      process.env.FILTER_CUSTOMER === undefined &&
+      lastFetched > new Date(Date.now() - 1000 * 60 * 60 * 24)
+    ) {
+      console.log(`Skip fetching ${key} due to last fetched being recent`);
+    } else {
+      rawSpecStringCurrent = await executeCustomRequest(
+        key,
+        customRequest,
+        browser
+      );
+    }
+    let rawSpecStringLastFetched: string | null = null;
+    if (fs.existsSync(customRequestSpecFilePath)) {
+      rawSpecStringLastFetched = fs.readFileSync(
+        customRequestSpecFilePath,
+        "utf-8"
+      );
+    }
+
+    const rawSpecString = rawSpecStringCurrent ?? rawSpecStringLastFetched;
+
+    if (rawSpecString === null) {
       throw Error("Expect rawSpecString to be defined");
     }
 
@@ -712,13 +741,13 @@ export async function collectFromCustomRequests(): Promise<Db> {
     if (apiBaseUrl === undefined) {
       if (customRequest.apiBaseUrl !== undefined) {
         apiBaseUrl = customRequest.apiBaseUrl;
+        spec.spec.servers = [{ url: apiBaseUrl }];
       } else {
         console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
         continue;
       }
     }
 
-    const specFilename = `${key}.yaml`;
     db.specifications[`from-custom-request_${key}`] = {
       providerName: getProviderName(spec),
       openApiRaw: getOpenApiRaw(spec),
@@ -746,12 +775,11 @@ export async function collectFromCustomRequests(): Promise<Db> {
       ),
     };
     console.log(`Writing post request spec to disk for ${key}`);
-    fs.writeFileSync(
-      path.join(customRequestSpecsDir, specFilename),
-      yaml.dump(spec.spec)
-    );
+    fs.writeFileSync(customRequestSpecFilePath, yaml.dump(spec.spec));
   }
   browser.close();
+
+  saveCustomRequestLastFetched(new Date(), Object.keys(customRequests));
 
   return db;
 }
