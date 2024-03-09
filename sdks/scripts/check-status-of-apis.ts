@@ -3,10 +3,12 @@
  * OpenAPI specifications and checking the status of the server URLs in the specs.
  */
 import { z } from "zod";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import * as path from "path";
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import * as yaml from "js-yaml";
+import { Listr, delay } from "listr2";
+import { OpenAPIV3_XDocument } from "konfig-lib";
 
 // Define Zod schemas
 const ApiStatusEntrySchema = z.object({
@@ -26,7 +28,6 @@ const ApiStatusLogSchema = z.object({
 
 // Define TypeScript types
 type ApiStatusEntry = z.infer<typeof ApiStatusEntrySchema>;
-type ServerStatusLog = z.infer<typeof ServerStatusLogSchema>;
 type ApiStatusLog = z.infer<typeof ApiStatusLogSchema>;
 
 // Function to check the status of an API
@@ -42,17 +43,20 @@ async function checkApiStatus(url: string): Promise<ApiStatusEntry> {
     entry.status = response.status;
     entry.responseTime = `${Date.now() - start}ms`;
   } catch (error: any) {
-    entry.reachable = false; // The API is not reachable
-    entry.responseTime = `N/A`;
-
-    if (error.response) {
-      // Server responded with a status code outside the 2xx range
-      entry.status = error.response.status;
-      entry.reachable = true; // Update to true as we did get a response
+    if (error instanceof AxiosError) {
+      if (error.response) {
+        // Server responded with a status code outside the 2xx range
+        entry.status = error.response.status;
+        entry.responseTime = `${Date.now() - start}ms`;
+        entry.reachable = true; // Update to true as we did get a response
+      } else {
+        entry.reachable = false; // The API is not reachable
+        entry.responseTime = `N/A`;
+      }
+    } else {
+      throw error;
     }
   }
-
-  console.log(`Checked ${url} - ${entry.reachable ? "✅" : "❌"}`);
 
   return entry;
 }
@@ -73,6 +77,17 @@ function updateLogWithNewEntry(
   return log;
 }
 
+type SubtaskCtx = {
+  spec: OpenAPIV3_XDocument;
+  logs: ApiStatusLog;
+  logFilePath: string;
+};
+type Ctx = {
+  apis: Record<string, SubtaskCtx>;
+};
+
+const STATUS_LOG_FILENAME = "status_log.yaml";
+
 async function main() {
   const OPENAPI_EXAMPLES_PATH = path.join(
     path.dirname(__dirname),
@@ -84,35 +99,165 @@ async function main() {
       withFileTypes: true,
       recursive: true,
     })
-    .filter((dirent) => dirent.isFile() && dirent.name.endsWith(".yaml"))
-    .map((dirent) => path.join(OPENAPI_EXAMPLES_PATH, dirent.name));
+    .filter(
+      (dirent) =>
+        dirent.isFile() &&
+        dirent.name.endsWith(".yaml") &&
+        !dirent.name.endsWith(STATUS_LOG_FILENAME)
+    )
+    .map((dirent) => {
+      // get the absolute path of file
+      const absolutePathToFile = path.join(dirent.path, dirent.name);
+      return {
+        absolutePathToFile: absolutePathToFile,
+        relativePathToFile: path.relative(
+          OPENAPI_EXAMPLES_PATH,
+          absolutePathToFile
+        ),
+        absolutePathToDirectory: path.dirname(absolutePathToFile),
+        relativePathToDirectory: path.relative(
+          OPENAPI_EXAMPLES_PATH,
+          path.dirname(absolutePathToFile)
+        ),
+      };
+    });
 
-  // Assume openapiFiles array is populated as before
-  await Promise.all(
-    openapiFiles.map(async (openapiFile) => {
-      const openapiSpec = fs.readFileSync(openapiFile, "utf8");
-      const spec: any = yaml.load(openapiSpec);
-
-      if (spec.servers) {
-        const logFilePath = path.join(
-          path.dirname(openapiFile),
-          "status_log.yaml"
-        );
-        let log: ApiStatusLog = { logs: {} };
-
-        if (fs.existsSync(logFilePath)) {
-          const existingLog = yaml.load(fs.readFileSync(logFilePath, "utf8"));
-          log = ApiStatusLogSchema.parse(existingLog);
-        }
-
-        for (const server of spec.servers) {
-          const statusEntry = await checkApiStatus(server.url);
-          log = updateLogWithNewEntry(log, server.url, statusEntry);
-        }
-        fs.writeFileSync(logFilePath, yaml.dump(log));
+  const openapiFilesFiltered = openapiFiles.filter(
+    ({ relativePathToDirectory }) => {
+      if (process.env.FILTER) {
+        return relativePathToDirectory.includes(process.env.FILTER);
       }
-    })
+      return true;
+    }
   );
+
+  if (openapiFilesFiltered.length === 0) {
+    console.log("No files to process");
+    return;
+  }
+
+  const initialContext: Ctx = {
+    apis: Object.fromEntries(
+      openapiFilesFiltered.map(
+        ({ absolutePathToDirectory, absolutePathToFile }) => [
+          absolutePathToFile,
+          {
+            spec: {} as OpenAPIV3_XDocument,
+            logs: { logs: {} },
+            logFilePath: path.join(
+              absolutePathToDirectory,
+              STATUS_LOG_FILENAME
+            ),
+          },
+        ]
+      )
+    ),
+  };
+
+  const tasks = new Listr<Ctx>(
+    openapiFilesFiltered.map(
+      ({ absolutePathToFile, relativePathToFile, relativePathToDirectory }) => {
+        return {
+          title: `Processing ${relativePathToFile}`,
+          task: (_ctx, task) =>
+            task.newListr(
+              [
+                {
+                  title: `Loading OpenAPI spec ${relativePathToFile}`,
+                  task: async (ctx) => {
+                    const openapiSpec = fs.readFileSync(
+                      absolutePathToFile,
+                      "utf8"
+                    );
+                    ctx.apis[absolutePathToFile].spec = yaml.load(
+                      openapiSpec
+                    ) as OpenAPIV3_XDocument;
+                  },
+                  rendererOptions: {},
+                },
+                {
+                  title: `Reading existing log file if exists ${relativePathToDirectory}`,
+                  task: async (ctx) => {
+                    if (
+                      fs.existsSync(ctx.apis[absolutePathToFile].logFilePath)
+                    ) {
+                      const existingLog = yaml.load(
+                        fs.readFileSync(
+                          ctx.apis[absolutePathToFile].logFilePath,
+                          "utf8"
+                        )
+                      );
+                      ctx.apis[absolutePathToFile].logs =
+                        ApiStatusLogSchema.parse(existingLog);
+                    }
+                  },
+                },
+                {
+                  title: "Checking server statuses",
+                  task: async (ctx, task) => {
+                    const servers = ctx.apis[absolutePathToFile].spec.servers;
+                    if (servers === undefined) {
+                      return task.skip("No servers defined in spec");
+                    }
+
+                    return task.newListr<SubtaskCtx>(
+                      servers.map((server) => ({
+                        title: `Checking status of ${server.url}`,
+                        task: async (subtaskCtx, task) => {
+                          const statusEntry = await checkApiStatus(server.url);
+                          if (!statusEntry.reachable) {
+                            task.output = `❌ Unreachable ${server.url}`;
+                          } else {
+                            task.output = `✅ ${server.url} - ${statusEntry.status} - ${statusEntry.responseTime}`;
+                          }
+                          subtaskCtx.logs = updateLogWithNewEntry(
+                            subtaskCtx.logs,
+                            server.url,
+                            statusEntry
+                          );
+                        },
+                        rendererOptions: {
+                          persistentOutput: true,
+                          bottomBar: Infinity,
+                        },
+                        retry: 3,
+                      })),
+                      {
+                        ctx: ctx.apis[absolutePathToFile],
+                        concurrent: true,
+                      }
+                    );
+                  },
+                },
+                {
+                  title: `Writing logs to file ${relativePathToDirectory}`,
+                  task: async (ctx) => {
+                    for (const context of Object.values(ctx.apis)) {
+                      fs.writeFileSync(
+                        context.logFilePath,
+                        yaml.dump(context.logs)
+                      );
+                    }
+                  },
+                },
+              ],
+              { concurrent: false, exitOnError: true }
+            ),
+        };
+      }
+    ),
+    {
+      ctx: initialContext,
+      concurrent: true,
+      exitOnError: false,
+      registerSignalListeners: true,
+      rendererOptions: {
+        collapseSubtasks: false,
+      },
+    }
+  );
+
+  await tasks.run();
 }
 
 main()
