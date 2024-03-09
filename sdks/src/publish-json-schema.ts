@@ -10,6 +10,7 @@ export const publishJsonSchema = z.object({
         clientName: z.string(),
         metaDescription: z.string().optional(),
         apiDescription: z.string().optional(),
+        apiStatusUrls: z.string().array().or(z.literal(false)).optional(),
         securitySchemes: z
           .record(
             z.union([
