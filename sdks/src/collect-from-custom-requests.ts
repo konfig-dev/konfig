@@ -140,6 +140,10 @@ const customRequests: Record<string, CustomRequest> = {
       );
     },
   },
+  "docusign.com": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/docusign/eSign-OpenAPI-Specification/master/esignature.rest.swagger-v2.1.json",
+  },
   "elevenlabs.com": {
     lambda: async () => {
       const url = "https://api.elevenlabs.io/openapi.json";
