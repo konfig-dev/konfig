@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.36.13
+
+### Patch Changes
+
+- [#629](https://github.com/konfig-dev/konfig/pull/629) [`548236b5`](https://github.com/konfig-dev/konfig/commit/548236b53b88c14ae5a8b002d0f15a67b4e506fd) Thanks [@dphuang2](https://github.com/dphuang2)! - patch small fixes when converting swagger to OAS3
+
 ## 1.36.12
 
 ### Patch Changes
