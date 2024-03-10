@@ -1,0 +1,37 @@
+name: Check Status of APIs for openapi-examples
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  # Run manually
+  workflow_dispatch: {}
+
+jobs:
+  update:
+    runs-on: ubicloud
+    defaults:
+      run:
+        working-directory: sdks/
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.SUBMODULES_ACCESS_TOKEN }}
+        continue-on-error: true
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: yarn
+          cache-dependency-path: sdks/yarn.lock
+      - run: yarn install --network-timeout 600000
+      - run: yarn check-status-of-apis
+      - name: Commit and push changes
+        if: success()
+        run: |
+          git config --global user.email "publisher@konfigthis.com"
+          git commit -am "🤖 automation: update status of APIs"
+          git push
+
