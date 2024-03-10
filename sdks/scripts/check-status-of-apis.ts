@@ -198,12 +198,17 @@ async function main() {
                   title: "Checking server statuses",
                   task: async (ctx, task) => {
                     const servers = ctx.apis[absolutePathToFile].spec.servers;
-                    const apiStatusUrls: string[] = (
+                    const apiStatusUrls: string[] | false = (
                       ctx.apis[absolutePathToFile].spec.info as any
                     )["x-api-status-urls"];
                     if (servers === undefined && apiStatusUrls === undefined) {
                       return task.skip(
                         "No servers defined in the OpenAPI spec"
+                      );
+                    }
+                    if (apiStatusUrls === false) {
+                      return task.skip(
+                        "API status check is disabled for this API"
                       );
                     }
 
@@ -216,7 +221,7 @@ async function main() {
                         task: async (subtaskCtx, task) => {
                           const statusEntry = await checkApiStatus(serverUrl);
                           if (!statusEntry.reachable) {
-                            task.output = `❌ Unreachable ${serverUrl}`;
+                            task.output = `❌ Unreachable ${serverUrl} for "${relativePathToDirectory}"`;
                           } else {
                             task.output = `✅ ${serverUrl} - ${statusEntry.status} - ${statusEntry.responseTime}`;
                           }

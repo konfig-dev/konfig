@@ -490,7 +490,7 @@ async function getApiStatusUrls(): Promise<string[] | false> {
       type: "input",
       name: "apiStatusUrls",
       message:
-        "What URLs should we check for API Status? Enter as a comma separated list. (e.g. enter nothing to inherit URLs from OpenAPI spec)",
+        "What URLs should we check for API Status? Enter as a comma separated list. (e.g. enter nothing to disable API status checks for this API)",
     })
   ).apiStatusUrls;
 
