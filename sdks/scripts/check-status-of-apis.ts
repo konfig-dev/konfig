@@ -268,6 +268,7 @@ async function main() {
       registerSignalListeners: true,
       rendererOptions: {
         collapseSubtasks: false,
+        collapseSkips: false,
       },
     }
   );
