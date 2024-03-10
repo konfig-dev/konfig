@@ -38,8 +38,10 @@ async function checkApiStatus(url: string): Promise<ApiStatusEntry> {
     reachable: true, // Assume reachable until proven otherwise
   };
 
+  const urlWithProtocol = url.startsWith("https://") ? url : `https://${url}`;
+
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(urlWithProtocol);
     entry.status = response.status;
     entry.responseTime = `${Date.now() - start}ms`;
   } catch (error: any) {
@@ -196,23 +198,31 @@ async function main() {
                   title: "Checking server statuses",
                   task: async (ctx, task) => {
                     const servers = ctx.apis[absolutePathToFile].spec.servers;
-                    if (servers === undefined) {
-                      return task.skip("No servers defined in spec");
+                    const apiStatusUrls: string[] = (
+                      ctx.apis[absolutePathToFile].spec.info as any
+                    )["x-api-status-urls"];
+                    if (servers === undefined && apiStatusUrls === undefined) {
+                      return task.skip(
+                        "No servers defined in the OpenAPI spec"
+                      );
                     }
 
+                    const urls =
+                      apiStatusUrls ?? servers?.map(({ url }) => url);
+
                     return task.newListr<SubtaskCtx>(
-                      servers.map((server) => ({
-                        title: `Checking status of ${server.url}`,
+                      urls.map((serverUrl) => ({
+                        title: `Checking status of ${serverUrl}`,
                         task: async (subtaskCtx, task) => {
-                          const statusEntry = await checkApiStatus(server.url);
+                          const statusEntry = await checkApiStatus(serverUrl);
                           if (!statusEntry.reachable) {
-                            task.output = `❌ Unreachable ${server.url}`;
+                            task.output = `❌ Unreachable ${serverUrl}`;
                           } else {
-                            task.output = `✅ ${server.url} - ${statusEntry.status} - ${statusEntry.responseTime}`;
+                            task.output = `✅ ${serverUrl} - ${statusEntry.status} - ${statusEntry.responseTime}`;
                           }
                           subtaskCtx.logs = updateLogWithNewEntry(
                             subtaskCtx.logs,
-                            server.url,
+                            serverUrl,
                             statusEntry
                           );
                         },

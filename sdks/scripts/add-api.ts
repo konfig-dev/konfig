@@ -500,8 +500,14 @@ async function getApiStatusUrls(): Promise<string[] | false> {
 
   const urls = apiStatusUrls.split(",").map((url) => url.trim());
 
-  // remove "https://" or "http://" from the beginning of the string
-  return urls.map((url) => url.replace(/^(https?:\/\/)/, ""));
+  // ensure https://" or "http://" are at beginning of the string
+  const urlWithProtocol = urls.map((url) => {
+    if (!/^https?:\/\//i.test(url)) {
+      return "https://" + url;
+    }
+    return url;
+  });
+  return urlWithProtocol;
 }
 
 async function getCompany(): Promise<string> {
@@ -555,7 +561,7 @@ class PublishJson {
       ?.developerDocumentation;
   }
 
-  static getApiStatusUrls(api: string): string[] | undefined {
+  static getApiStatusUrls(api: string): string[] | false | undefined {
     return PublishJson._currentPublishJson().publish[api]?.apiStatusUrls;
   }
 

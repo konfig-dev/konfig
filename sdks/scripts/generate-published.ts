@@ -203,6 +203,11 @@ async function main() {
       );
     }
 
+    if (publishData.apiStatusUrls) {
+      if (!oas.spec.info) oas.spec.info = {} as any;
+      (oas.spec.info as any)["x-api-status-urls"] = publishData.apiStatusUrls;
+    }
+
     const openapiFilename = "openapi.yaml";
     const fixedSpecFileName = getFixedSpecFileName(publishData.sdkName);
     fixedSpecFileNames[spec] = fixedSpecFileName;
