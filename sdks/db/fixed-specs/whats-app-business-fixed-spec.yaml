@@ -1,47 +1,50 @@
 openapi: 3.0.0
-servers:
-  - url: http://whatsapp.local
-  - url: http://example.com/v1
 info:
+  title: WhatsApp Business API
+  description: See https://developers.facebook.com/docs/whatsapp
+  version: '1.0'
   contact:
     x-twitter: WhatsApp
-  description: See https://developers.facebook.com/docs/whatsapp
-  title: WhatsApp Business API
-  version: '1.0'
   x-apisguru-categories:
     - messaging
   x-logo:
     url: https://twitter.com/WhatsApp/profile_image?size=original
   x-origin:
-    - format: openapi
+    - version: '3.0'
+      format: openapi
       url: >-
         https://raw.githubusercontent.com/unblu/WhatsApp-Business-API-OpenAPI/master/openapi.yaml
-      version: '3.0'
   x-providerName: whatsapp.local
   x-unofficialSpec: true
   x-api-status-urls: false
-security:
-  - bearerAuth: []
+  x-konfig-ignore:
+    object-with-no-properties: true
+servers:
+  - url: http://whatsapp.local
+  - url: http://example.com/v1
 tags:
-  - name: Users
-  - name: Application
-  - name: Backup/Restore
-  - name: Business Profile
-  - name: Profile
-  - name: Two-Step Verification
-  - name: Registration
-  - name: Contacts
-  - name: Messages
   - name: Groups
-  - name: Media
+  - name: Application
+  - name: Users
+  - name: Profile
   - name: Health
   - name: Certificates
+  - name: Media
+  - name: Backup/Restore
+  - name: Business Profile
+  - name: Two-Step Verification
+  - name: Registration
+  - name: Messages
+  - name: Contacts
 paths:
   /account:
     post:
-      deprecated: false
-      operationId: RequestCode
+      tags:
+        - Registration
+      summary: Request-Code
+      operationId: Registration_requestCode
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -52,7 +55,6 @@ paths:
               pin: <Two-Step Verification PIN
             schema:
               $ref: '#/components/schemas/Request-Code-Request-Body'
-        description: ''
         required: true
       responses:
         '201':
@@ -60,22 +62,23 @@ paths:
             Created: the account already exists. You are already registered, so
             you do not need to do anything else.
         '202':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Request-Code-Response'
           description: >-
             Created: the account does not exist. Depending on the method
             selected in the request, check your SMS or voice number for the
             registration code.
-      summary: Request-Code
-      tags:
-        - Registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request-Code-Response'
+      deprecated: false
   /account/shards:
     post:
-      deprecated: false
-      operationId: SetShards
+      tags:
+        - Application
+      summary: Set-Shards
+      operationId: Application_setShards
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -85,109 +88,108 @@ paths:
               shards: 32
             schema:
               $ref: '#/components/schemas/Set-Shards-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Set-Shards
-      tags:
-        - Application
+      deprecated: false
   /account/verify:
     post:
-      deprecated: false
-      operationId: RegisterAccount
+      tags:
+        - Registration
+      summary: Register-Account
+      operationId: Registration_verifyAccount
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               code: <Registration Code Received via SMS/Voice>
             schema:
               $ref: '#/components/schemas/Register-Account-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Register-Account
-      tags:
-        - Registration
+      deprecated: false
   /certificates/external:
     post:
-      deprecated: false
-      operationId: UploadCertificate
+      tags:
+        - Certificates
+      summary: Upload-Certificate
+      operationId: Certificates_uploadExternalCertificate
       requestBody:
         content:
           text/plain:
             schema:
-              format: binary
-              type: string
+              $ref: >-
+                #/components/schemas/CertificatesUploadExternalCertificateRequest
       responses:
         '200':
           description: ''
-      summary: Upload-Certificate
-      tags:
-        - Certificates
+      deprecated: false
   /certificates/external/ca:
     get:
-      deprecated: false
-      operationId: DownloadCaCertificate
+      tags:
+        - Certificates
+      summary: Download-CA-Certificate
+      operationId: Certificates_downloadCaCertificate
       responses:
         '200':
+          description: ''
           content:
             text/plain:
               schema:
-                format: binary
-                type: string
-          description: ''
-      summary: Download-CA-Certificate
-      tags:
-        - Certificates
+                $ref: '#/components/schemas/CertificatesDownloadCaCertificateResponse'
+      deprecated: false
   /certificates/webhooks/ca:
     delete:
-      deprecated: false
-      operationId: DeleteWebhookCaCertificate
+      tags:
+        - Certificates
+      summary: Delete Webhook CA Certificate
+      operationId: Certificates_deleteWebhookCa
       responses:
         '200':
           description: ''
-      summary: Delete Webhook CA Certificate
+      deprecated: false
+    get:
       tags:
         - Certificates
-    get:
-      deprecated: false
-      operationId: DownloadWebhookCaCertificate
+      summary: Download Webhook CA Certificate
+      operationId: Certificates_downloadWebhookCaCertificate
       responses:
         '200':
+          description: ''
           content:
             text/plain:
               schema:
-                format: binary
-                type: string
-          description: ''
-      summary: Download Webhook CA Certificate
+                $ref: >-
+                  #/components/schemas/CertificatesDownloadWebhookCaCertificateResponse
+      deprecated: false
+    post:
       tags:
         - Certificates
-    post:
-      deprecated: false
-      operationId: UploadWebhookCaCertificate
+      summary: Upload Webhook CA Certificate
+      operationId: Certificates_uploadWebhookCaCertificate
       requestBody:
         content:
           text/plain:
             schema:
-              format: binary
-              type: string
+              $ref: >-
+                #/components/schemas/CertificatesUploadWebhookCaCertificateRequest
         required: false
       responses:
         '200':
           description: ''
-      summary: Upload Webhook CA Certificate
-      tags:
-        - Certificates
+      deprecated: false
   /contacts:
     post:
-      deprecated: false
-      operationId: CheckContact
+      tags:
+        - Contacts
+      summary: Check-Contact
+      operationId: Contacts_createContact
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -196,58 +198,57 @@ paths:
                 - '{{Recipient-WA-ID}}'
             schema:
               $ref: '#/components/schemas/Check-Contact-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Check-Contact-Response'
-          description: ''
-      summary: Check-Contact
-      tags:
-        - Contacts
+      deprecated: false
   /groups:
     get:
-      deprecated: false
-      operationId: GetAllGroups
+      tags:
+        - Groups
+      summary: Get-All-Groups
+      operationId: Groups_getAll
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Groups-Response'
-          description: ''
-      summary: Get-All-Groups
+      deprecated: false
+    post:
       tags:
         - Groups
-    post:
-      deprecated: false
-      operationId: CreateGroup
+      summary: Create-Group
+      operationId: Groups_createGroup
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               subject: <Group Subject>
             schema:
               $ref: '#/components/schemas/Create-Group-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Groups-Response'
-          description: ''
-      summary: Create-Group
-      tags:
-        - Groups
+      deprecated: false
   /groups/{GroupId}:
     get:
-      deprecated: false
-      operationId: GetGroupInfo
+      tags:
+        - Groups
+      summary: Get-Group-Info
+      operationId: Groups_getInfo
       parameters:
         - description: ''
           explode: false
@@ -259,17 +260,17 @@ paths:
           style: simple
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group-Response'
-          description: ''
-      summary: Get-Group-Info
+      deprecated: false
+    put:
       tags:
         - Groups
-    put:
-      deprecated: false
-      operationId: UpdateGroupInfo
+      summary: Update-Group-Info
+      operationId: Groups_updateInfo
       parameters:
         - description: ''
           explode: false
@@ -280,52 +281,24 @@ paths:
             type: string
           style: simple
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               subject: <New Group Subject>
             schema:
               $ref: '#/components/schemas/Update-Group-Info-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Update-Group-Info
-      tags:
-        - Groups
+      deprecated: false
   /groups/{GroupId}/admins:
     delete:
-      deprecated: false
-      operationId: DemoteGroupAdmin
-      parameters:
-        - description: ''
-          explode: false
-          in: path
-          name: GroupId
-          required: true
-          schema:
-            type: string
-          style: simple
-      requestBody:
-        content:
-          application/json:
-            example:
-              wa_ids:
-                - <Recipient WA-ID, from Contacts API>
-            schema:
-              $ref: '#/components/schemas/Group-Admin-Request-Body'
-        description: ''
-        required: true
-      responses:
-        '200':
-          description: ''
+      tags:
+        - Groups
       summary: Demote-Group-Admin
-      tags:
-        - Groups
-    patch:
-      deprecated: false
-      operationId: PromoteToGroupAdmin
+      operationId: Groups_demoteAdmin
       parameters:
         - description: ''
           explode: false
@@ -336,6 +309,7 @@ paths:
             type: string
           style: simple
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -343,66 +317,45 @@ paths:
                 - <Recipient WA-ID, from Contacts API>
             schema:
               $ref: '#/components/schemas/Group-Admin-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Promote-To-Group-Admin
+      deprecated: false
+    patch:
       tags:
         - Groups
+      summary: Promote-To-Group-Admin
+      operationId: Groups_promoteToAdmin
+      parameters:
+        - description: ''
+          explode: false
+          in: path
+          name: GroupId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            example:
+              wa_ids:
+                - <Recipient WA-ID, from Contacts API>
+            schema:
+              $ref: '#/components/schemas/Group-Admin-Request-Body'
+        required: true
+      responses:
+        '200':
+          description: ''
+      deprecated: false
   /groups/{GroupId}/icon:
     delete:
-      deprecated: false
-      operationId: DeleteGroupIcon
-      parameters:
-        - description: ''
-          explode: false
-          in: path
-          name: GroupId
-          required: true
-          schema:
-            type: string
-          style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              properties:
-                File:
-                  format: binary
-                  type: string
-              required:
-                - File
-              type: object
-        required: false
-      responses:
-        '200':
-          description: ''
+      tags:
+        - Groups
       summary: Delete-Group-Icon
-      tags:
-        - Groups
-    get:
-      deprecated: false
-      operationId: GetGroupIconBinary
-      parameters:
-        - description: ''
-          explode: false
-          in: path
-          name: GroupId
-          required: true
-          schema:
-            type: string
-          style: simple
-      responses:
-        '200':
-          description: ''
-      summary: Get-Group-Icon-Binary
-      tags:
-        - Groups
-    post:
-      deprecated: false
-      operationId: SetGroupIcon
+      operationId: Groups_deleteGroupIcon
       parameters:
         - description: ''
           explode: false
@@ -416,24 +369,60 @@ paths:
         content:
           multipart/form-data:
             schema:
-              properties:
-                File:
-                  format: binary
-                  type: string
-              required:
-                - File
-              type: object
+              $ref: '#/components/schemas/GroupsDeleteGroupIconRequest'
         required: false
       responses:
         '200':
           description: ''
-      summary: Set-Group-Icon
+      deprecated: false
+    get:
       tags:
         - Groups
+      summary: Get-Group-Icon-Binary
+      operationId: Groups_getIconBinary
+      parameters:
+        - description: ''
+          explode: false
+          in: path
+          name: GroupId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          description: ''
+      deprecated: false
+    post:
+      tags:
+        - Groups
+      summary: Set-Group-Icon
+      operationId: Groups_setGroupIcon
+      parameters:
+        - description: ''
+          explode: false
+          in: path
+          name: GroupId
+          required: true
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GroupsSetGroupIconRequest'
+        required: false
+      responses:
+        '200':
+          description: ''
+      deprecated: false
   /groups/{GroupId}/invite:
     delete:
-      deprecated: false
-      operationId: DeleteGroupInvite
+      tags:
+        - Groups
+      summary: Delete-Group-Invite
+      operationId: Groups_deleteInvite
       parameters:
         - description: ''
           explode: false
@@ -446,12 +435,12 @@ paths:
       responses:
         '200':
           description: ''
-      summary: Delete-Group-Invite
+      deprecated: false
+    get:
       tags:
         - Groups
-    get:
-      deprecated: false
-      operationId: GetGroupInvite
+      summary: Get-Group-Invite
+      operationId: Groups_getInviteDetails
       parameters:
         - description: ''
           explode: false
@@ -463,18 +452,18 @@ paths:
           style: simple
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group-Invite-Response'
-          description: ''
-      summary: Get-Group-Invite
-      tags:
-        - Groups
+      deprecated: false
   /groups/{GroupId}/leave:
     post:
-      deprecated: false
-      operationId: LeaveGroup
+      tags:
+        - Groups
+      summary: Leave-Group
+      operationId: Groups_leaveGroup
       parameters:
         - description: ''
           explode: false
@@ -487,13 +476,13 @@ paths:
       responses:
         '200':
           description: ''
-      summary: Leave-Group
-      tags:
-        - Groups
+      deprecated: false
   /groups/{GroupId}/participants:
     delete:
-      deprecated: false
-      operationId: RemoveGroupParticipant
+      tags:
+        - Groups
+      summary: Remove-Group-Participant
+      operationId: Groups_removeParticipant
       parameters:
         - description: ''
           explode: false
@@ -504,6 +493,7 @@ paths:
             type: string
           style: simple
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -511,119 +501,86 @@ paths:
                 - '{{Recipient-WA-ID}}'
             schema:
               $ref: '#/components/schemas/Remove-Group-Participant-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Remove-Group-Participant
-      tags:
-        - Groups
+      deprecated: false
   /health:
     get:
-      deprecated: false
-      operationId: CheckHealth
+      tags:
+        - Health
+      summary: Check-Health
+      operationId: Health_checkStatus
       responses:
         '200':
           description: ''
-      summary: Check-Health
-      tags:
-        - Health
+      deprecated: false
   /media:
     post:
-      deprecated: false
-      operationId: UploadMedia
+      tags:
+        - Media
+      summary: Upload-Media
+      operationId: Media_uploadMedia
       requestBody:
         content:
           application/msword:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest'
           application/pdf:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest1'
           application/vnd.ms-excel:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest2'
           application/vnd.ms-powerpoint:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest3'
           audio/acc:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest4'
           audio/amr:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest5'
           audio/mp4:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest6'
           audio/mpeg:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest7'
           audio/ogg:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest8'
           codecs=opus:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest9'
           image/jpeg:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest10'
           image/png:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest11'
           text/plain:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest12'
           video/mp4:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/MediaUploadMediaRequest13'
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Upload-Media-Response'
-          description: ''
-      summary: Upload-Media
-      tags:
-        - Media
+      deprecated: false
   /media/{MediaId}:
     delete:
-      deprecated: false
-      operationId: DeleteMedia
-      parameters:
-        - description: ''
-          explode: false
-          in: path
-          name: MediaId
-          required: true
-          schema:
-            type: string
-          style: simple
-      responses:
-        '200':
-          description: ''
+      tags:
+        - Media
       summary: Delete-Media
-      tags:
-        - Media
-    get:
-      deprecated: false
-      operationId: DownloadMedia
+      operationId: Media_removeMedia
       parameters:
         - description: ''
           explode: false
@@ -635,17 +592,38 @@ paths:
           style: simple
       responses:
         '200':
-          content:
-            application/json: {}
           description: ''
-      summary: Download-Media
+      deprecated: false
+    get:
       tags:
         - Media
+      summary: Download-Media
+      operationId: Media_download
+      parameters:
+        - description: ''
+          explode: false
+          in: path
+          name: MediaId
+          required: true
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaDownloadResponse'
+      deprecated: false
   /messages:
     post:
-      deprecated: false
-      operationId: SendMessage
+      tags:
+        - Messages
+      summary: Send-Message
+      operationId: Messages_sendMessage
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -656,22 +634,21 @@ paths:
               type: text
             schema:
               $ref: '#/components/schemas/Send-Message-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Message-Response'
-          description: ''
-      summary: Send-Message
-      tags:
-        - Messages
+      deprecated: false
   /messages/{MessageID}:
     put:
-      deprecated: false
-      operationId: MarkMessageAsRead
+      tags:
+        - Messages
+      summary: Mark-Message-As-Read
+      operationId: Messages_markAsRead
       parameters:
         - description: Message ID from Webhook
           in: path
@@ -680,24 +657,24 @@ paths:
           schema:
             type: string
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               status: read
             schema:
               $ref: '#/components/schemas/Mark-Message-As-Read-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Mark-Message-As-Read
-      tags:
-        - Messages
+      deprecated: false
   /metrics:
     get:
-      deprecated: false
-      operationId: GetMetrics
+      tags:
+        - Health
+      summary: Get-Metrics (since v2.21.3)
+      operationId: Health_getMetricsData
       parameters:
         - description: ''
           example: prometheus
@@ -707,69 +684,92 @@ paths:
             type: string
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/HealthGetMetricsDataResponse'
             text/plain:
               schema:
-                type: string
-          description: ''
-      summary: Get-Metrics (since v2.21.3)
-      tags:
-        - Health
+                $ref: '#/components/schemas/HealthGetMetricsData200Response'
+      deprecated: false
   /settings/account/two-step:
     delete:
-      deprecated: false
-      operationId: DisableTwoStep
+      tags:
+        - Two-Step Verification
+      summary: Disable-Two-Step
+      operationId: TwoStepVerification_disable
       responses:
         '200':
           description: ''
-      summary: Disable-Two-Step
+      deprecated: false
+    post:
       tags:
         - Two-Step Verification
-    post:
-      deprecated: false
-      operationId: EnableTwoStep
+      summary: Enable-Two-Step
+      operationId: TwoStepVerification_enableAccount
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               pin: <Two-Step Verification PIN>
             schema:
               $ref: '#/components/schemas/Enable-Two-Step-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Enable-Two-Step
-      tags:
-        - Two-Step Verification
+      deprecated: false
   /settings/application:
     delete:
-      deprecated: false
-      operationId: ResetApplicationSettings
+      tags:
+        - Application
+      summary: Reset-Application-Settings
+      operationId: Application_resetSettings
       responses:
         '200':
           description: ''
-      summary: Reset-Application-Settings
+      deprecated: false
+    get:
       tags:
         - Application
-    get:
-      deprecated: false
-      operationId: GetApplicationSettings
+      summary: Get-Application-Settings
+      operationId: Application_getSettings
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application-Settings'
-          description: ''
-      summary: Get-Application-Settings
+      deprecated: false
+    patch:
       tags:
         - Application
-    patch:
+      summary: Update-Application-Settings
+      operationId: Application_updateSettings
+      description: >-
+        If a field is not present in the request, no change is made to that
+        setting. For example, if on_call_pager is not sent with the request, the
+        existing configuration for on_call_pager is unchanged.
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            example:
+              webhooks:
+                url: <Webhook URL, https>
+            schema:
+              $ref: '#/components/schemas/Application-Settings'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
       callbacks:
         incomingWebhook:
           '{$request.body#/webhooks.url}':
@@ -783,49 +783,27 @@ paths:
                 '200':
                   description: OK
       deprecated: false
-      description: >-
-        If a field is not present in the request, no change is made to that
-        setting. For example, if on_call_pager is not sent with the request, the
-        existing configuration for on_call_pager is unchanged.
-      operationId: UpdateApplicationSettings
-      requestBody:
-        content:
-          application/json:
-            example:
-              webhooks:
-                url: <Webhook URL, https>
-            schema:
-              $ref: '#/components/schemas/Application-Settings'
-        description: ''
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-          description: ''
-      summary: Update-Application-Settings
-      tags:
-        - Application
   /settings/application/media/providers:
     get:
-      deprecated: false
-      operationId: GetMediaProviders
+      tags:
+        - Application
+      summary: Get-Media-Providers
+      operationId: Application_listMediaProviders
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Get-Media-Providers-Response'
-          description: ''
-      summary: Get-Media-Providers
+      deprecated: false
+    post:
       tags:
         - Application
-    post:
-      deprecated: false
-      operationId: UpdateMediaProviders
+      summary: Update-Media-Providers
+      operationId: Application_updateMediaProviders
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -834,22 +812,18 @@ paths:
                 name: <Provider Name>
                 type: www
             schema:
-              description: ''
-              items:
-                $ref: '#/components/schemas/Media-Provider'
-              type: array
-        description: ''
+              $ref: '#/components/schemas/ApplicationUpdateMediaProvidersRequest'
         required: true
       responses:
         '200':
           description: ''
-      summary: Update-Media-Providers
-      tags:
-        - Application
+      deprecated: false
   /settings/application/media/providers/{ProviderName}:
     delete:
-      deprecated: false
-      operationId: DeleteMediaProviders
+      tags:
+        - Application
+      summary: Delete-Media-Providers
+      operationId: Application_removeProvider
       parameters:
         - description: Provider Name
           in: path
@@ -860,55 +834,56 @@ paths:
       responses:
         '200':
           description: ''
-      summary: Delete-Media-Providers
-      tags:
-        - Application
+      deprecated: false
   /settings/backup:
     post:
-      deprecated: false
-      operationId: BackupSettings
+      tags:
+        - Backup/Restore
+      summary: Backup-Settings
+      operationId: BackupRestore_settingsPost
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               password: <Password for Backup>
             schema:
               $ref: '#/components/schemas/Backup-Settings-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Backup-Settings-Response'
-          description: ''
-      summary: Backup-Settings
-      tags:
-        - Backup/Restore
+      deprecated: false
   /settings/business/profile:
     get:
-      deprecated: false
-      operationId: GetBusinessProfile
+      tags:
+        - Business Profile
+      summary: Get-Business-Profile
+      operationId: BusinessProfile_get
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Get-Business-Profile-Response'
-          description: ''
-      summary: Get-Business-Profile
+      deprecated: false
+    post:
       tags:
         - Business Profile
-    post:
-      deprecated: false
-      operationId: updateBusinessProfile
+      summary: Update-Business-Profile
+      operationId: BusinessProfile_update
       requestBody:
+        description: ''
         content:
           application/json:
             example:
-              address: <Business Profile Address>
               description: <Business Profile Description>
+              address: <Business Profile Address>
               email: <Business Profile Email>
               vertical: <Business Profile Vertical>
               websites:
@@ -916,56 +891,57 @@ paths:
                 - https://www.facebook.com
             schema:
               $ref: '#/components/schemas/Business-Profile'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Update-Business-Profile
-      tags:
-        - Business Profile
+      deprecated: false
   /settings/profile/about:
     get:
-      deprecated: false
-      operationId: GetProfileAbout
+      tags:
+        - Profile
+      summary: Get-Profile-About
+      operationId: Profile_getAbout
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Get-Profile-About-Response'
-          description: ''
-      summary: Get-Profile-About
+      deprecated: false
+    patch:
       tags:
         - Profile
-    patch:
-      deprecated: false
-      operationId: UpdateProfileAbout
+      summary: Update-Profile-About
+      operationId: Profile_updateAbout
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               text: <About Profile>
             schema:
               $ref: '#/components/schemas/Profile-About'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Update-Profile-About
-      tags:
-        - Profile
+      deprecated: false
   /settings/profile/photo:
     delete:
-      operationId: DeleteProfilePhoto
+      tags:
+        - Profile
+      summary: Delete-Profile-Photo
+      operationId: Profile_removePhoto
       responses:
         '200':
           description: ''
-      summary: Delete-Profile-Photo
     get:
-      deprecated: false
-      operationId: GetProfilePhoto
+      tags:
+        - Profile
+      summary: Get-Profile-Photo
+      operationId: Profile_getPhoto
       parameters:
         - description: ''
           example: link
@@ -975,44 +951,38 @@ paths:
             type: string
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Get-Profile-Photo-Response'
             image/jpeg:
               schema:
-                format: binary
-                type: string
-          description: ''
-      summary: Get-Profile-Photo
+                $ref: '#/components/schemas/ProfileGetPhotoResponse'
+      deprecated: false
+    post:
       tags:
         - Profile
-    post:
-      deprecated: false
-      operationId: UpdateProfilePhoto
+      summary: Update-Profile-Photo
+      operationId: Profile_updatePhoto
       requestBody:
         content:
           multipart/form-data:
             schema:
-              properties:
-                File:
-                  format: binary
-                  type: string
-              required:
-                - File
-              type: object
+              $ref: '#/components/schemas/ProfileUpdatePhotoRequest'
         required: false
       responses:
         '200':
           description: ''
-      summary: Update-Profile-Photo
-      tags:
-        - Profile
+      deprecated: false
   /settings/restore:
     post:
-      deprecated: false
-      operationId: RestoreSettings
+      tags:
+        - Backup/Restore
+      summary: Restore-Settings
+      operationId: BackupRestore_settingsPost
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -1020,18 +990,17 @@ paths:
               password: <Password for Backup>
             schema:
               $ref: '#/components/schemas/Restore-Settings-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
           description: ''
-      summary: Restore-Settings
-      tags:
-        - Backup/Restore
+      deprecated: false
   /stats/app:
     get:
-      deprecated: false
-      operationId: GetAppStats
+      tags:
+        - Health
+      summary: Get-App-Stats
+      operationId: Health_getAppStats
       parameters:
         - description: ''
           example: prometheus
@@ -1041,21 +1010,21 @@ paths:
             type: string
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/HealthGetAppStatsResponse'
             text/plain:
               schema:
-                type: string
-          description: ''
-      summary: Get-App-Stats
-      tags:
-        - Health
+                $ref: '#/components/schemas/HealthGetAppStats200Response'
+      deprecated: false
   /stats/db:
     get:
-      deprecated: false
-      operationId: GetDbStats
+      tags:
+        - Health
+      summary: Get-DB-Stats
+      operationId: Health_getDbStats
       parameters:
         - description: ''
           example: prometheus
@@ -1065,36 +1034,37 @@ paths:
             type: string
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/HealthGetDbStatsResponse'
             text/plain:
               schema:
-                type: string
-          description: ''
-      summary: Get-DB-Stats
-      tags:
-        - Health
+                $ref: '#/components/schemas/HealthGetDbStats200Response'
+      deprecated: false
   /support:
     get:
-      deprecated: false
-      operationId: GetSupportInfo
+      tags:
+        - Health
+      summary: Get-Support-Info
+      operationId: Health_getSupportInfo
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
-                type: object
-          description: ''
-      summary: Get-Support-Info
-      tags:
-        - Health
+                $ref: '#/components/schemas/HealthGetSupportInfoResponse'
+      deprecated: false
   /users:
     post:
-      deprecated: false
-      operationId: CreateUser
+      tags:
+        - Users
+      summary: Create-User
+      operationId: Users_createUser
       requestBody:
+        description: ''
         content:
           application/json:
             example:
@@ -1102,22 +1072,23 @@ paths:
               username: '{{UserUsername}}'
             schema:
               $ref: '#/components/schemas/Create-User-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User-Response'
-          description: ''
-      summary: Create-User
-      tags:
-        - Users
+      deprecated: false
   /users/login:
     post:
-      deprecated: false
-      operationId: LoginUser
+      tags:
+        - Users
+      summary: Login-User
+      operationId: Users_performLogin
+      security:
+        - httpBasic: []
       requestBody:
         content:
           application/json:
@@ -1126,30 +1097,28 @@ paths:
         required: false
       responses:
         '200':
+          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User-Login-Response'
-          description: OK
-      security:
-        - httpBasic: []
-      summary: Login-User
-      tags:
-        - Users
+      deprecated: false
   /users/logout:
     post:
-      deprecated: false
-      operationId: LogoutUser
+      tags:
+        - Users
+      summary: Logout-User
+      operationId: Users_performLogout
       responses:
         '200':
           description: ''
-      summary: Logout-User
-      tags:
-        - Users
+      deprecated: false
   /users/{UserUsername}:
     delete:
-      deprecated: false
-      operationId: DeleteUser
+      tags:
+        - Users
+      summary: Delete-User
+      operationId: Users_removeUser
       parameters:
         - description: ''
           explode: false
@@ -1161,17 +1130,17 @@ paths:
           style: simple
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User-Response'
-          description: ''
-      summary: Delete-User
+      deprecated: false
+    get:
       tags:
         - Users
-    get:
-      deprecated: false
-      operationId: GetUser
+      summary: Get-User
+      operationId: Users_getByUsername
       parameters:
         - description: ''
           explode: false
@@ -1183,17 +1152,17 @@ paths:
           style: simple
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Detailed-User-Response'
-          description: ''
-      summary: Get-User
+      deprecated: false
+    put:
       tags:
         - Users
-    put:
-      deprecated: false
-      operationId: UpdateUser
+      summary: Update-User
+      operationId: Users_updateUser
       parameters:
         - description: ''
           explode: false
@@ -1204,27 +1173,26 @@ paths:
             type: string
           style: simple
       requestBody:
+        description: ''
         content:
           application/json:
             example:
               password: <New Password>
             schema:
               $ref: '#/components/schemas/Update-User-Request-Body'
-        description: ''
         required: true
       responses:
         '200':
+          description: ''
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/User-Response'
-          description: ''
-      summary: Update-User
-      tags:
-        - Users
+      deprecated: false
 components:
   schemas:
     Address:
+      title: Address
       example:
         city: Menlo Park
         country: United States
@@ -1263,9 +1231,9 @@ components:
         - street
         - type
         - zip
-      title: Address
       type: object
     Application-Settings:
+      title: Update-Application-Settings-Request-Body
       example:
         callback_backoff_delay_ms: 3000
         callback_persist: true
@@ -1283,7 +1251,6 @@ components:
           url: <Webhook URL, https>
       properties:
         callback_backoff_delay_ms:
-          default: '3000'
           description: >-
             Backoff delay for a failed callback in milliseconds
 
@@ -1292,22 +1259,23 @@ components:
             increases linearly by this value each time a callback fails to get a
             HTTPS 200 OK response. The backoff delay is capped by the
             max_callback_backoff_delay_ms setting.
+          default: '3000'
           type: string
         callback_persist:
-          default: true
           description: >-
             Stores callbacks on disk until they are successfully acknowledged by
             the Webhook or not. Restart required.
+          default: true
           type: boolean
         heartbeat_interval:
-          default: 5
           description: >-
             Multiconnect: Interval of the Master node monitoring of Coreapp
             nodes in seconds
+          default: 5
           type: integer
         max_callback_backoff_delay_ms:
-          default: '900000'
           description: Maximum delay for a failed callback in milliseconds
+          default: '900000'
           type: string
         media:
           $ref: '#/components/schemas/Media'
@@ -1317,7 +1285,6 @@ components:
             critical errors and messages.
           type: string
         pass_through:
-          default: true
           description: >-
             When true, removes messages from the local database after they are
             delivered to or read by the recipient. When false, saves all
@@ -1327,33 +1294,34 @@ components:
             database is used as the application's history. Since the business
             keeps its own history, you can specify whether you want message
             pass_through or not. Restart required.
+          default: true
           type: boolean
         sent_status:
-          default: false
           description: >-
             Receive a notification that a message is sent to server. When true,
             you will receive a message indicating that a message has been sent.
             If false (default), you will not receive notification.
+          default: false
           type: boolean
         unhealthy_interval:
-          default: 30
           description: >-
             Multiconnect: Maximum amount of seconds a Master node waits for a
             Coreapp node to respond to a heartbeat before considering it
             unhealthy and starting the failover process.
+          default: 30
           type: integer
         webhooks:
           $ref: '#/components/schemas/Webhooks'
-      title: Update-Application-Settings-Request-Body
       type: object
     Audio:
+      title: Audio
       description: The media object containing audio
       oneOf:
         - $ref: '#/components/schemas/AudioById'
         - $ref: '#/components/schemas/AudioByProvider'
-      title: Audio
       type: object
     AudioById:
+      title: AudioById
       example:
         id: <Media Id, from Media API>
       properties:
@@ -1361,9 +1329,9 @@ components:
           type: string
       required:
         - id
-      title: AudioById
       type: object
     AudioByProvider:
+      title: AudioByProvider
       example:
         link: <Link to Audio, https>
         provider:
@@ -1376,9 +1344,9 @@ components:
       required:
         - provider
         - link
-      title: AudioByProvider
       type: object
     Backup-Settings:
+      title: Root Type for Backup-Settings
       description: ''
       example:
         data: encrypted-backup-data
@@ -1386,9 +1354,9 @@ components:
         data:
           description: The data that has been backed up, encrypted for security.
           type: string
-      title: Root Type for Backup-Settings
       type: object
     Backup-Settings-Request-Body:
+      title: Backup-Settings-Request
       example:
         password: <Password for Backup>
       properties:
@@ -1397,9 +1365,9 @@ components:
           type: string
       required:
         - password
-      title: Backup-Settings-Request
       type: object
     Backup-Settings-Response:
+      title: Root Type for Backup-Settings-Response
       description: >-
         Save the data value as that will be used along with your password to
         restore the information.
@@ -1409,9 +1377,9 @@ components:
       properties:
         settings:
           $ref: '#/components/schemas/Backup-Settings'
-      title: Root Type for Backup-Settings-Response
       type: object
     Basic:
+      title: Root Type for Basic
       description: ''
       example:
         password: your-password
@@ -1421,26 +1389,26 @@ components:
           type: string
         username:
           type: string
-      title: Root Type for Basic
       type: object
     Business-Profile:
+      title: Set-Business-Profile-Request
       example:
-        address: <Business Profile Address>
         description: <Business Profile Description>
+        address: <Business Profile Address>
         email: <Business Profile Email>
         vertical: <Business Profile Vertical>
         websites:
           - https://www.whatsapp.com
           - https://www.facebook.com
       properties:
-        address:
-          description: |-
-            Address of the business
-            Maximum of 256 characters
-          type: string
         description:
           description: |-
             Description of the business
+            Maximum of 256 characters
+          type: string
+        address:
+          description: |-
+            Address of the business
             Maximum of 256 characters
           type: string
         email:
@@ -1468,15 +1436,15 @@ components:
         - email
         - vertical
         - websites
-      title: Set-Business-Profile-Request
       type: object
     Business-Settings:
+      title: Root Type for Business-Settings
       description: ''
       example:
         business:
           profile:
-            address: new-business-address
             description: business-description
+            address: new-business-address
             email: new-business-email
             vertical: business-industry
             websites:
@@ -1485,14 +1453,14 @@ components:
       properties:
         business:
           $ref: '#/components/schemas/Business-Settings-Business'
-      title: Root Type for Business-Settings
       type: object
     Business-Settings-Business:
+      title: Root Type for Business-Settings-Business
       description: ''
       example:
         profile:
-          address: new-business-address
           description: business-description
+          address: new-business-address
           email: new-business-email
           vertical: business-industry
           websites:
@@ -1501,9 +1469,9 @@ components:
       properties:
         profile:
           $ref: '#/components/schemas/Business-Profile'
-      title: Root Type for Business-Settings-Business
       type: object
     Check-Contact:
+      title: Check-Contact
       description: ''
       example:
         input: +1 (516) 283-7151
@@ -1531,19 +1499,19 @@ components:
             WhatsApp user identifier that can be used in other API calls. Only
             returned if the status is valid.
           type: string
-      title: Check-Contact
       type: object
     Check-Contact-Request-Body:
+      title: Check-Contact-Request
       example:
         blocking: wait
         contacts:
           - '{{Recipient-WA-ID}}'
       properties:
         blocking:
-          default: no_wait
           description: >-
             Blocking determines whether the request should wait for the
             processing to complete (synchronous) or not (asynchronous).
+          default: no_wait
           enum:
             - no_wait
             - wait
@@ -1557,9 +1525,10 @@ components:
           type: array
       required:
         - contacts
-      title: Check-Contact-Request
       type: object
     Check-Contact-Response:
+      title: Check-Contact-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -1568,7 +1537,6 @@ components:
                 $ref: '#/components/schemas/Check-Contact'
               type: array
           type: object
-      description: ''
       example:
         contacts:
           - input: 1-631-555-1002
@@ -1580,9 +1548,9 @@ components:
           - input: +1 (516) 283-7151
             status: valid
             wa_id: '15162837151'
-      title: Check-Contact-Response
       type: object
     Check-Health-Response:
+      title: Root Type for Check-Health-Response
       description: ''
       example:
         health:
@@ -1599,14 +1567,14 @@ components:
             - additionalProperties:
                 $ref: '#/components/schemas/Gateway-Node-Status'
               type: object
-      title: Root Type for Check-Health-Response
       type: object
     Config:
+      title: Config
       oneOf:
         - $ref: '#/components/schemas/Config-Bearer'
         - $ref: '#/components/schemas/Config-Basic'
-      title: Config
     Config-Basic:
+      title: Config
       example:
         basic:
           password: your-password
@@ -1614,9 +1582,9 @@ components:
       properties:
         basic:
           $ref: '#/components/schemas/Basic'
-      title: Config
       type: object
     Config-Bearer:
+      title: Config
       example:
         bearer: <Bearer Auth Token>
       properties:
@@ -1624,9 +1592,9 @@ components:
           type: string
       required:
         - bearer
-      title: Config
       type: object
     Contact:
+      title: Contact
       example:
         addresses:
           - city: Menlo Park
@@ -1654,9 +1622,9 @@ components:
           formatted_name: John Smith
           last_name: Smith
         org:
+          title: Manager
           company: WhatsApp
           department: Design
-          title: Manager
         phones:
           - phone: +1 (940) 555-1234
             type: HOME
@@ -1699,9 +1667,9 @@ components:
           items:
             $ref: '#/components/schemas/Url'
           type: array
-      title: Contact
       type: object
     Create-Group-Request-Body:
+      title: Create-Group-Request
       example:
         subject: <Group Subject>
       properties:
@@ -1709,9 +1677,9 @@ components:
           type: string
       required:
         - subject
-      title: Create-Group-Request
       type: object
     Create-User-Request-Body:
+      title: Create-User-Request
       example:
         password: password
         username: username
@@ -1725,9 +1693,9 @@ components:
       required:
         - username
         - password
-      title: Create-User-Request
       type: object
     Currency:
+      title: Currency
       description: ''
       example:
         amount_1000: 100990
@@ -1741,9 +1709,9 @@ components:
       required:
         - amount_1000
         - currency_code
-      title: Currency
       type: object
     Date-Time-Component:
+      title: Date-Time-Component
       description: Date/time by component
       example:
         day_of_month: 25
@@ -1803,9 +1771,9 @@ components:
           description: The year
           format: int32
           type: integer
-      title: Date-Time-Component
       type: object
     Date-Time-Object:
+      title: Date-Time
       description: >-
         The Whatsapp Business API Client will attempt to format the date/time
         based on a specified localization.
@@ -1822,9 +1790,9 @@ components:
           $ref: '#/components/schemas/Date-Time-Component'
         unix_epoch:
           $ref: '#/components/schemas/Date-Time-Unix-Epoch'
-      title: Date-Time
       type: object
     Date-Time-Unix-Epoch:
+      title: Date-Time-Unix-Epoch
       description: Date/time by Unix epoch
       example:
         timestamp: 123456789
@@ -1833,9 +1801,10 @@ components:
           description: Epoch timestamp in seconds
           format: int32
           type: integer
-      title: Date-Time-Unix-Epoch
       type: object
     Detailed-User-Response:
+      title: Root Type for Detailed-User-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -1844,14 +1813,13 @@ components:
                 $ref: '#/components/schemas/Detailed-User-Response-Item'
               type: array
           type: object
-      description: ''
       example:
         users:
           - ROLES: ROLE_USER
             username: username
-      title: Root Type for Detailed-User-Response
       type: object
     Detailed-User-Response-Item:
+      title: Root Type for Detailed-Response-Item
       description: ''
       example:
         ROLES: ROLE_USER
@@ -1861,20 +1829,20 @@ components:
           $ref: '#/components/schemas/User-Role'
         username:
           type: string
-      title: Root Type for Detailed-Response-Item
       type: object
     Document:
+      title: Document
       description: The media object containing a document
       oneOf:
         - $ref: '#/components/schemas/DocumentById'
         - $ref: '#/components/schemas/DocumentByProvider'
-      title: Document
       type: object
     DocumentById:
+      title: Document
       example:
         caption: <Message Caption>
         filename: <Filename>
-        id: <Media Id, from Media API>
+        id: <Media Id, from Media API>X
       properties:
         caption:
           type: string
@@ -1886,9 +1854,9 @@ components:
         - caption
         - id
         - filename
-      title: Document
       type: object
     DocumentByProvider:
+      title: Document1
       example:
         caption: <Message Caption>
         filename: <Filename>
@@ -1909,9 +1877,9 @@ components:
         - caption
         - link
         - filename
-      title: Document1
       type: object
     Email:
+      title: Email
       example:
         email: <Contact's Email>
         type: <Contact's Email Type>
@@ -1923,9 +1891,9 @@ components:
       required:
         - email
         - type
-      title: Email
       type: object
     Enable-Two-Step-Request-Body:
+      title: Enable-Two-Step-Request
       example:
         pin: your-6-digit-pin
       properties:
@@ -1933,15 +1901,18 @@ components:
           type: string
       required:
         - pin
-      title: Enable-Two-Step-Request
       type: object
     Error:
+      title: Error
       description: ''
       example:
+        title: error-code-title
         code: 1234
         details: optional-detailed-error-message
-        title: error-code-title
       properties:
+        title:
+          description: error title
+          type: string
         code:
           description: >-
             See the https://developers.facebook.com/docs/whatsapp/api/errors for
@@ -1954,12 +1925,9 @@ components:
         href:
           description: location for error detail
           type: string
-        title:
-          description: error title
-          type: string
-      title: Error
       type: object
     Gateway-Node-Status:
+      title: Root Type for Gateway-Node-Status
       description: ''
       example:
         gateway_status: connected
@@ -1973,7 +1941,6 @@ components:
             - secondary_master
             - coreapp
           type: string
-      title: Root Type for Gateway-Node-Status
       type: object
     Gateway-Status:
       description: ''
@@ -1985,34 +1952,35 @@ components:
         - unregistered
       type: string
     Get-Business-Profile-Response:
+      title: Root Type for Get-Business-Profile-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
             settings:
               $ref: '#/components/schemas/Business-Settings'
           type: object
-      description: ''
       example:
         settings:
           business:
             profile:
-              address: new-business-address
               description: business-description
+              address: new-business-address
               email: new-business-email
               vertical: business-industry
               websites:
                 - website-1
                 - website-2
-      title: Root Type for Get-Business-Profile-Response
       type: object
     Get-Media-Providers-Response:
+      title: Root Type for Get-Media-Providers-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
             settings:
               $ref: '#/components/schemas/Media-Provider-Settings'
           type: object
-      description: ''
       example:
         settings:
           application:
@@ -2028,9 +1996,9 @@ components:
                     bearer: your-bearer-token
                   name: your-second-provider
                   type: www
-      title: Root Type for Get-Media-Providers-Response
       type: object
     Get-Profile-About-Response:
+      title: Root Type for Get-Profile-About-Response
       description: ''
       example:
         settings:
@@ -2040,9 +2008,9 @@ components:
       properties:
         settings:
           $ref: '#/components/schemas/Profile-About-Settings'
-      title: Root Type for Get-Profile-About-Response
       type: object
     Get-Profile-Photo-Response:
+      title: Root Type for Get-Profile-Photo-Response
       description: ''
       example:
         settings:
@@ -2052,9 +2020,9 @@ components:
       properties:
         settings:
           $ref: '#/components/schemas/Profile-Photo-Settings'
-      title: Root Type for Get-Profile-Photo-Response
       type: object
     Group:
+      title: Groups-Response-Item
       description: ''
       example:
         creation_time: 123456789
@@ -2066,9 +2034,9 @@ components:
           type: integer
         id:
           type: string
-      title: Groups-Response-Item
       type: object
     Group-Admin-Request-Body:
+      title: Group-Admin-Request
       example:
         wa_ids:
           - <Recipient WA-ID, from Contacts API>
@@ -2082,9 +2050,9 @@ components:
           type: array
       required:
         - wa_ids
-      title: Group-Admin-Request
       type: object
     Group-Info:
+      title: Group-Response-Item
       description: ''
       example:
         admins:
@@ -2124,18 +2092,19 @@ components:
         subject:
           description: Subject of the group
           type: string
-      title: Group-Response-Item
       type: object
     Group-Invite:
+      title: Group-Invite
       description: ''
       example:
         link: group-invite-link
       properties:
         link:
           type: string
-      title: Group-Invite
       type: object
     Group-Invite-Response:
+      title: Group-Invite-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -2144,13 +2113,13 @@ components:
                 $ref: '#/components/schemas/Group-Invite'
               type: array
           type: object
-      description: ''
       example:
         groups:
           - link: group-invite-link
-      title: Group-Invite-Response
       type: object
     Group-Response:
+      title: Group-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -2159,7 +2128,6 @@ components:
                 $ref: '#/components/schemas/Group-Info'
               type: array
           type: object
-      description: ''
       example:
         groups:
           - admins:
@@ -2172,9 +2140,10 @@ components:
               - whatsapp-id-4
               - whatsapp-id-5
             subject: your-group-subject
-      title: Group-Response
       type: object
     Groups-Response:
+      title: GroupsResponse
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -2183,14 +2152,13 @@ components:
                 $ref: '#/components/schemas/Group'
               type: array
           type: object
-      description: ''
       example:
         groups:
           - creation_time: 123456789
-            id: your-group-id
-      title: GroupsResponse
+            id: your-group-idX
       type: object
     Hsm:
+      title: Hsm
       description: >-
         The containing element for the message content — Indicates that the
         message is highly structured. Parameters contained within provide the
@@ -2226,19 +2194,19 @@ components:
         - element_name
         - language
         - localizable_params
-      title: Hsm
       type: object
     Image:
+      title: Image
       description: The media object containing an image
       oneOf:
         - $ref: '#/components/schemas/ImageById'
         - $ref: '#/components/schemas/ImageByProvider'
-      title: Image
       type: object
     ImageById:
+      title: ImageById
       example:
         caption: <Message Caption>
-        id: <Media Id, from Media API>
+        id: <Media Id, from Media API>X
       properties:
         caption:
           type: string
@@ -2247,9 +2215,9 @@ components:
       required:
         - caption
         - id
-      title: ImageById
       type: object
     ImageByProvider:
+      title: ImageByProvider
       example:
         caption: <Media Caption>
         link: <Link to Image, https>
@@ -2266,9 +2234,9 @@ components:
         - provider
         - link
         - caption
-      title: ImageByProvider
       type: object
     Language:
+      title: Language
       example:
         code: en
         policy: deterministic
@@ -2287,9 +2255,9 @@ components:
       required:
         - policy
         - code
-      title: Language
       type: object
     LocalizableParam:
+      title: LocalizableParam
       example:
         default: <param value>
       properties:
@@ -2302,9 +2270,9 @@ components:
           type: string
       required:
         - default
-      title: LocalizableParam
       type: object
     Location:
+      title: Location
       example:
         address: <Location's Address>
         latitude: <Latitude>
@@ -2328,9 +2296,9 @@ components:
         - latitude
         - name
         - address
-      title: Location
       type: object
     Login-Admin-Request-Body:
+      title: Login-Admin-Request
       example:
         new_password: <New Admin Password>
       properties:
@@ -2338,9 +2306,9 @@ components:
           type: string
       required:
         - new_password
-      title: Login-Admin-Request
       type: object
     Mark-Message-As-Read-Request-Body:
+      title: Mark-Message-As-Read-Request
       example:
         status: read
       properties:
@@ -2349,9 +2317,9 @@ components:
           type: string
       required:
         - status
-      title: Mark-Message-As-Read-Request
       type: object
     Media:
+      title: Media
       example:
         auto_download:
           - image
@@ -2371,9 +2339,9 @@ components:
           type: array
       required:
         - auto_download
-      title: Media
       type: object
     Media-Provider:
+      title: Update-Media-Providers-Request
       example:
         config:
           bearer: <Bearer Auth Token>
@@ -2388,9 +2356,9 @@ components:
         type:
           description: The type of provider
           type: string
-      title: Update-Media-Providers-Request
       type: object
     Media-Provider-Settings:
+      title: Root Type for Settings
       description: ''
       example:
         application:
@@ -2409,9 +2377,9 @@ components:
       properties:
         application:
           $ref: '#/components/schemas/Media-Provider-Settings-Application'
-      title: Root Type for Settings
       type: object
     Media-Provider-Settings-Application:
+      title: Root Type for Settings-Application
       description: ''
       example:
         media:
@@ -2429,9 +2397,9 @@ components:
       properties:
         media:
           $ref: '#/components/schemas/Media-Provider-Settings-Application-Media'
-      title: Root Type for Settings-Application
       type: object
     Media-Provider-Settings-Application-Media:
+      title: Root Type for Settings-Application-Media
       description: ''
       example:
         providers:
@@ -2450,18 +2418,18 @@ components:
           items:
             $ref: '#/components/schemas/Media-Provider'
           type: array
-      title: Root Type for Settings-Application-Media
       type: object
     Message:
+      title: Message
       description: ''
       example:
         id: gBEGkYiEB1VXAglK1ZEqA1YKPrU
       properties:
         id:
           type: string
-      title: Message
       type: object
     Message-Context:
+      title: Root Type for Message-Context
       description: ''
       example:
         from: sender-wa-id-of-context-message
@@ -2485,9 +2453,10 @@ components:
           items:
             type: string
           type: array
-      title: Root Type for Message-Context
       type: object
     Message-Response:
+      title: Message-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -2496,15 +2465,13 @@ components:
                 $ref: '#/components/schemas/Message'
               type: array
           type: object
-      description: ''
       example:
         messages:
-          - id: gBEGkYiEB1VXAglK1ZEqA1YKPrU
-      title: Message-Response
+          - id: gBEGkYiEB1VXAglK1ZEqA1YKPrUX
       type: object
     Message-Type:
-      default: text
       description: type of the message
+      default: text
       enum:
         - audio
         - contacts
@@ -2518,24 +2485,25 @@ components:
         - unknown
       type: string
     Meta:
+      title: Meta
       description: >-
         Contains generic information such as WhatsApp Business API Client
         version.
       example:
-        api_status: stable
         version: whatsapp-business-api-client-version
+        api_status: stable
       properties:
+        version:
+          type: string
         api_status:
           enum:
             - deprecated
             - experimental
             - stable
           type: string
-        version:
-          type: string
-      title: Meta
       type: object
     Name:
+      title: Name
       description: Full contact name
       example:
         first_name: John
@@ -2559,29 +2527,29 @@ components:
           type: string
       required:
         - formatted_name
-      title: Name
       type: object
     Org:
+      title: Org
       description: Contact organization information
       example:
+        title: Manager
         company: WhatsApp
         department: Design
-        title: Manager
       properties:
+        title:
+          description: Contact's business title
+          type: string
         company:
           description: Name of the contact's company
           type: string
         department:
           description: Name of the contact's department
           type: string
-        title:
-          description: Contact's business title
-          type: string
       required:
         - company
-      title: Org
       type: object
     Phone:
+      title: Phone
       example:
         phone: +1 (650) 555-1234
         type: WORK
@@ -2595,9 +2563,9 @@ components:
         wa_id:
           description: WhatsApp ID
           type: string
-      title: Phone
       type: object
     Profile-About:
+      title: Set-Profile-About-Request
       example:
         text: <About Profile>
       properties:
@@ -2608,9 +2576,9 @@ components:
           type: string
       required:
         - text
-      title: Set-Profile-About-Request
       type: object
     Profile-About-Settings:
+      title: Root Type for Profile-About-Settings
       description: ''
       example:
         profile:
@@ -2619,9 +2587,9 @@ components:
       properties:
         profile:
           $ref: '#/components/schemas/Profile-About-Settings-Profile'
-      title: Root Type for Profile-About-Settings
       type: object
     Profile-About-Settings-Profile:
+      title: Root Type for About-XXX
       description: ''
       example:
         about:
@@ -2629,9 +2597,9 @@ components:
       properties:
         about:
           $ref: '#/components/schemas/Profile-About'
-      title: Root Type for About-XXX
       type: object
     Profile-Photo-Settings:
+      title: Root Type for Profile-Photo-Settings
       description: ''
       example:
         profile:
@@ -2646,9 +2614,9 @@ components:
                   type: string
               type: object
           type: object
-      title: Root Type for Profile-Photo-Settings
       type: object
     Profile-Photo-Settings-Profile:
+      title: Root Type for Profile-Photo-Settings-Profile
       description: ''
       example:
         photo:
@@ -2656,18 +2624,18 @@ components:
       properties:
         photo:
           $ref: '#/components/schemas/Profile-Photo-Settings-Profile-Photo'
-      title: Root Type for Profile-Photo-Settings-Profile
       type: object
     Profile-Photo-Settings-Profile-Photo:
+      title: Root Type for Profile-Photo-Settings-Profile-Photo
       description: ''
       example:
         link: profile-photo-url
       properties:
         link:
           type: string
-      title: Root Type for Profile-Photo-Settings-Profile-Photo
       type: object
     Provider:
+      title: Provider
       example:
         name: <Provider Name from Media Provider API, optional
       properties:
@@ -2675,9 +2643,9 @@ components:
           type: string
       required:
         - name
-      title: Provider
       type: object
     Register-Account-Request-Body:
+      title: Register-Account-Request
       example:
         code: your-registration-code-received-by-sms-or-voice-call
       properties:
@@ -2685,9 +2653,9 @@ components:
           type: string
       required:
         - code
-      title: Register-Account-Request
       type: object
     Remove-Group-Participant-Request-Body:
+      title: Remove-Group-Participant-Request
       example:
         wa_ids:
           - '{{Recipient-WA-ID}}'
@@ -2699,18 +2667,18 @@ components:
           type: array
       required:
         - wa_ids
-      title: Remove-Group-Participant-Request
       type: object
     Request-Code-Account:
+      title: Root Type for Request-Code-Account
       description: ''
       example:
         vname: decoded-vname-from-cert
       properties:
         vname:
           type: string
-      title: Root Type for Request-Code-Account
       type: object
     Request-Code-Request-Body:
+      title: Request-Code-Request
       example:
         cc: <Country Code>
         cert: <Valid Cert from Business Manager>
@@ -2745,9 +2713,9 @@ components:
         - phone_number
         - method
         - cert
-      title: Request-Code-Request
       type: object
     Request-Code-Response:
+      title: Root Type for Request-Code-Response
       description: ''
       example:
         account:
@@ -2757,18 +2725,18 @@ components:
           items:
             $ref: '#/components/schemas/Request-Code-Account'
           type: array
-      title: Root Type for Request-Code-Response
       type: object
     Response:
+      title: Response
       description: ''
       example:
         errors:
-          - code: 1234
+          - title: error-code-title
+            code: 1234
             details: optional-detailed-error-message
-            title: error-code-title
         meta:
-          api_status: deprecated
           version: whatsapp-business-api-client-version
+          api_status: deprecated
       properties:
         errors:
           description: >-
@@ -2779,9 +2747,9 @@ components:
           type: array
         meta:
           $ref: '#/components/schemas/Meta'
-      title: Response
       type: object
     Restore-Settings-Request-Body:
+      title: Restore-Settings-Request
       example:
         data: <Data to Restore, from Backup API>
         password: <Password for Backup>
@@ -2797,9 +2765,9 @@ components:
       required:
         - password
         - data
-      title: Restore-Settings-Request
       type: object
     Send-Message-Request-Body:
+      title: Send-Text-Message-Request
       example:
         preview_url: true
         recipient_type: individual
@@ -2833,7 +2801,6 @@ components:
             information, see the Sending URLs in Text Messages section.
           type: boolean
         recipient_type:
-          default: individual
           description: >-
             Determines whether the recipient is an individual or a group
 
@@ -2843,6 +2810,7 @@ components:
             However, recipient_type is required when using group. If sending a
             text message to a group, see the Sending Group Messages
             documentation.
+          default: individual
           enum:
             - individual
             - group
@@ -2863,9 +2831,9 @@ components:
           $ref: '#/components/schemas/Video'
       required:
         - to
-      title: Send-Text-Message-Request
       type: object
     Set-Shards-Request-Body:
+      title: Set-Shards-Request
       example:
         cc: <Country Code>
         phone_number: <Phone Number>
@@ -2893,9 +2861,9 @@ components:
         - phone_number
         - shards
         - pin
-      title: Set-Shards-Request
       type: object
     Text:
+      title: Text
       example:
         body: <Message Text>
       properties:
@@ -2903,9 +2871,9 @@ components:
           type: string
       required:
         - body
-      title: Text
       type: object
     Update-Group-Info-Request-Body:
+      title: Update-Group-Info-Request
       example:
         subject: <New Group Subject>
       properties:
@@ -2913,9 +2881,9 @@ components:
           type: string
       required:
         - subject
-      title: Update-Group-Info-Request
       type: object
     Update-User-Request-Body:
+      title: Update-User-Request
       example:
         password: New Password
       properties:
@@ -2924,18 +2892,19 @@ components:
           type: string
       required:
         - password
-      title: Update-User-Request
       type: object
     Upload-Media:
+      title: Root Type for Upload-Media
       description: ''
       example:
         id: f043afd0-f0ae-4b9c-ab3d-696fb4c8cd68
       properties:
         id:
           type: string
-      title: Root Type for Upload-Media
       type: object
     Upload-Media-Response:
+      title: Root Type for Upload-Media-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -2944,13 +2913,12 @@ components:
                 $ref: '#/components/schemas/Upload-Media'
               type: array
           type: object
-      description: ''
       example:
         media:
-          - id: f043afd0-f0ae-4b9c-ab3d-696fb4c8cd68
-      title: Root Type for Upload-Media-Response
+          - id: f043afd0-f0ae-4b9c-ab3d-696fb4c8cd68X
       type: object
     Url:
+      title: Root Type for Url
       description: 'Standard Values: HOME, WORK'
       example:
         type: WORK
@@ -2962,9 +2930,10 @@ components:
         url:
           description: URL
           type: string
-      title: Root Type for Url
       type: object
     User-Login-Response:
+      title: UserLoginResponse
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -2973,14 +2942,13 @@ components:
                 $ref: '#/components/schemas/User-Login-Response-Item'
               type: array
           type: object
-      description: ''
       example:
         users:
           - expires_after: '2018-03-01T15:29:26.000Z'
             token: eyJhbGciOHlXVCJ9.eyJ1c2VyIjoNTIzMDE2Nn0.mEoF0COaO00Z1cANo
-      title: UserLoginResponse
       type: object
     User-Login-Response-Item:
+      title: UserLoginResponseItem
       description: ''
       example:
         expires_after: '2018-03-01T15:29:26.000Z'
@@ -2998,9 +2966,10 @@ components:
 
             Authorization: Bearer <authentication-token>
           type: string
-      title: UserLoginResponseItem
       type: object
     User-Response:
+      title: Root Type for User-Create-Response
+      description: ''
       allOf:
         - $ref: '#/components/schemas/Response'
         - properties:
@@ -3009,20 +2978,18 @@ components:
                 $ref: '#/components/schemas/User-Response-Item'
               type: array
           type: object
-      description: ''
       example:
         users:
           - username: username
-      title: Root Type for User-Create-Response
       type: object
     User-Response-Item:
+      title: Root Type for User-Create-Response-Item
       description: ''
       example:
         username: username
       properties:
         username:
           type: string
-      title: Root Type for User-Create-Response-Item
       type: object
     User-Role:
       description: ''
@@ -3031,16 +2998,17 @@ components:
         - ROLE_USER
       type: string
     Video:
+      title: Video
       description: The media object containing a video
       oneOf:
         - $ref: '#/components/schemas/VideoById'
         - $ref: '#/components/schemas/VideoByProvider'
-      title: Video
       type: object
     VideoById:
+      title: VideoById
       example:
         caption: <Message Caption>
-        id: <Media Id, from Media API>
+        id: <Media Id, from Media API>X
       properties:
         caption:
           type: string
@@ -3049,9 +3017,9 @@ components:
       required:
         - caption
         - id
-      title: VideoById
       type: object
     VideoByProvider:
+      title: ByProvider
       example:
         caption: <Message Caption>
         link: <Link to Video, https>
@@ -3068,9 +3036,9 @@ components:
         - provider
         - caption
         - link
-      title: ByProvider
       type: object
     Webhook-Audio:
+      title: Root Type for Webhook-Audio
       description: ''
       example:
         file: absolute-filepath-on-coreapp
@@ -3083,10 +3051,10 @@ components:
           description: Optional. Only present if specified.
           type: string
         file:
-          deprecated: true
           description: >-
             Absolute filename and location on media volume. This parameter is
             deprecated.
+          deprecated: true
           type: string
         filename:
           description: >-
@@ -3106,9 +3074,9 @@ components:
         sha256:
           description: Checksum
           type: string
-      title: Root Type for Webhook-Audio
       type: object
     Webhook-Contact:
+      title: Root Type for Webhook-Contact
       description: ''
       example:
         profile:
@@ -3120,9 +3088,9 @@ components:
         wa_id:
           description: The WhatsApp ID of the contact
           type: string
-      title: Root Type for Webhook-Contact
       type: object
     Webhook-Contact-Profile:
+      title: Root Type for Webhook-Contact-Profile
       description: ''
       example:
         name: sender-profile-name
@@ -3130,9 +3098,9 @@ components:
         name:
           description: Optional. As of v2.21.4, contains the sender's profile name.
           type: string
-      title: Root Type for Webhook-Contact-Profile
       type: object
     Webhook-Document:
+      title: Root Type for Webhook-Document
       description: ''
       example:
         caption: 80skaraokesonglistartist
@@ -3145,10 +3113,10 @@ components:
           description: Optional. Only present if specified.
           type: string
         file:
-          deprecated: true
           description: >-
             Absolute filename and location on media volume. This parameter is
             deprecated.
+          deprecated: true
           type: string
         filename:
           description: >-
@@ -3168,9 +3136,9 @@ components:
         sha256:
           description: Checksum
           type: string
-      title: Root Type for Webhook-Document
       type: object
     Webhook-Event:
+      title: Root Type for Webhook-Event
       description: ''
       example:
         contacts:
@@ -3201,9 +3169,9 @@ components:
           items:
             $ref: '#/components/schemas/Webhook-Status'
           type: array
-      title: Root Type for Webhook-Event
       type: object
     Webhook-Image:
+      title: Root Type for Webhook-Image
       description: ''
       example:
         caption: Check out my new phone!
@@ -3216,10 +3184,10 @@ components:
           description: Optional. Only present if specified.
           type: string
         file:
-          deprecated: true
           description: >-
             Absolute filename and location on media volume. This parameter is
             deprecated.
+          deprecated: true
           type: string
         id:
           description: >-
@@ -3234,9 +3202,9 @@ components:
         sha256:
           description: Checksum
           type: string
-      title: Root Type for Webhook-Image
       type: object
     Webhook-Location:
+      title: Root Type for Webhook-Location
       description: ''
       example:
         address: Main Street Beach, Santa Cruz, CA
@@ -3264,13 +3232,13 @@ components:
             URL for the website where the user downloaded the location
             information
           type: string
-      title: Root Type for Webhook-Location
       type: object
     Webhook-Message:
+      title: Root Type for Webhook-Message
       description: ''
       example:
         from: '16315551234'
-        id: ABGGFlA5FpafAgo6tHcNmNjXmuSf
+        id: ABGGFlA5FpafAgo6tHcNmNjXmuSfX
         text:
           body: Hello this is an answer
         timestamp: '1518694235'
@@ -3316,17 +3284,17 @@ components:
           $ref: '#/components/schemas/Webhook-Video'
         voice:
           $ref: '#/components/schemas/Webhook-Voice'
-      title: Root Type for Webhook-Message
       type: object
     Webhook-Status:
+      title: Root Type for Webhook-Status
       description: ''
       example:
         errors:
-          - code: 470
-            title: >-
+          - title: >-
               Failed to send message because you are outside the support window
               for freeform messages to this user. Please use a valid HSM
               notification or reconsider.
+            code: 470
         id: gBGGEgZHMlEfAgkM1RBkhDRr7t8
         recipient_id: '12064001000'
         status: failed
@@ -3362,9 +3330,9 @@ components:
         timestamp:
           description: Timestamp of the status message
           type: string
-      title: Root Type for Webhook-Status
       type: object
     Webhook-System:
+      title: Root Type for Webhook-System
       description: ''
       example:
         body: +1 (650) 387-5246 added +1 (650) 644-8470
@@ -3421,9 +3389,9 @@ components:
             - Broadcast list created
             - Group ended
             - Error attempting to add a user that blocked the adder
-      title: Root Type for Webhook-System
       type: object
     Webhook-Text:
+      title: Root Type for Webhook-Text
       description: ''
       example:
         body: text-message-content
@@ -3431,13 +3399,13 @@ components:
         body:
           description: Message text
           type: string
-      title: Root Type for Webhook-Text
       type: object
     Webhook-Video:
+      title: Root Type for Webhook-Video
       description: ''
       example:
         file: absolute-filepath-on-coreapp
-        id: media-id
+        id: media-idX
         link: link-to-video-file
         mime_type: media-mime-type
         sha256: checksum
@@ -3446,10 +3414,10 @@ components:
           description: Optional. Only present if specified.
           type: string
         file:
-          deprecated: true
           description: >-
             Absolute filename and location on media volume. This parameter is
             deprecated.
+          deprecated: true
           type: string
         id:
           description: >-
@@ -3464,9 +3432,9 @@ components:
         sha256:
           description: Checksum
           type: string
-      title: Root Type for Webhook-Video
       type: object
     Webhook-Voice:
+      title: Root Type for Webhook-Voice
       description: ''
       example:
         file: /usr/local/wamedia/shared/463e/b7ec/ff4e4d9bb1101879cbd411b2
@@ -3478,10 +3446,10 @@ components:
           description: Optional. Only present if specified.
           type: string
         file:
-          deprecated: true
           description: >-
             Absolute filename and location on media volume. This parameter is
             deprecated.
+          deprecated: true
           type: string
         id:
           description: >-
@@ -3496,18 +3464,18 @@ components:
         sha256:
           description: Checksum
           type: string
-      title: Root Type for Webhook-Voice
       type: object
     Webhooks:
+      title: Webhooks
       example:
         max_concurrent_requests: 12
         url: <Webhook URL, https>
       properties:
         max_concurrent_requests:
-          default: 6
           description: >-
             Configures the maximum number of inflight callback requests that are
             sent out. Can be set to 6 (default), 12, 18, or 24.
+          default: 6
           enum:
             - '6'
             - '12'
@@ -3520,8 +3488,119 @@ components:
             Inbound and outbound notifications are routed to this URL. A
             HTTPS-based endpoint is required; HTTP will not work.
           type: string
-      title: Webhooks
       type: object
+    CertificatesUploadExternalCertificateRequest:
+      format: binary
+      type: string
+    CertificatesUploadWebhookCaCertificateRequest:
+      format: binary
+      type: string
+    GroupsDeleteGroupIconRequest:
+      properties:
+        File:
+          format: binary
+          type: string
+      required:
+        - File
+      type: object
+    GroupsSetGroupIconRequest:
+      properties:
+        File:
+          format: binary
+          type: string
+      required:
+        - File
+      type: object
+    MediaUploadMediaRequest:
+      format: binary
+      type: string
+    MediaUploadMediaRequest1:
+      format: binary
+      type: string
+    MediaUploadMediaRequest2:
+      format: binary
+      type: string
+    MediaUploadMediaRequest3:
+      format: binary
+      type: string
+    MediaUploadMediaRequest4:
+      format: binary
+      type: string
+    MediaUploadMediaRequest5:
+      format: binary
+      type: string
+    MediaUploadMediaRequest6:
+      format: binary
+      type: string
+    MediaUploadMediaRequest7:
+      format: binary
+      type: string
+    MediaUploadMediaRequest8:
+      format: binary
+      type: string
+    MediaUploadMediaRequest9:
+      format: binary
+      type: string
+    MediaUploadMediaRequest10:
+      format: binary
+      type: string
+    MediaUploadMediaRequest11:
+      format: binary
+      type: string
+    MediaUploadMediaRequest12:
+      format: binary
+      type: string
+    MediaUploadMediaRequest13:
+      format: binary
+      type: string
+    ApplicationUpdateMediaProvidersRequest:
+      description: ''
+      items:
+        $ref: '#/components/schemas/Media-Provider'
+      type: array
+    ProfileUpdatePhotoRequest:
+      properties:
+        File:
+          format: binary
+          type: string
+      required:
+        - File
+      type: object
+    CertificatesDownloadCaCertificateResponse:
+      format: binary
+      type: string
+    CertificatesDownloadWebhookCaCertificateResponse:
+      format: binary
+      type: string
+    MediaDownloadResponse:
+      type: object
+      properties: {}
+      example: {}
+    HealthGetMetricsDataResponse:
+      type: object
+      properties: {}
+      example: {}
+    HealthGetMetricsData200Response:
+      type: string
+    ProfileGetPhotoResponse:
+      format: binary
+      type: string
+    HealthGetAppStatsResponse:
+      type: object
+      properties: {}
+      example: {}
+    HealthGetAppStats200Response:
+      type: string
+    HealthGetDbStatsResponse:
+      type: object
+      properties: {}
+      example: {}
+    HealthGetDbStats200Response:
+      type: string
+    HealthGetSupportInfoResponse:
+      type: object
+      properties: {}
+      example: {}
   securitySchemes:
     bearerAuth:
       bearerFormat: token
@@ -3530,3 +3609,5 @@ components:
     httpBasic:
       scheme: basic
       type: http
+security:
+  - bearerAuth: []

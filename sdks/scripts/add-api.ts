@@ -484,15 +484,18 @@ async function getDeveloperDocumentation(): Promise<string> {
   return developerDocumentation.replace(/^(https?:\/\/)/, "");
 }
 
-async function getApiStatusUrls(): Promise<string[] | false> {
+async function getApiStatusUrls(): Promise<string[] | false | "inherit"> {
   const apiStatusUrls: string = (
     await inquirer.prompt({
       type: "input",
       name: "apiStatusUrls",
-      message:
-        "What URLs should we check for API Status? Enter as a comma separated list. (e.g. enter nothing to disable API status checks for this API)",
+      message: `What URLs should we check for API Status? Enter as a comma separated list. (e.g. enter nothing to disable API status checks for this API or "inherit" to use URLs from OpenAPI specification)`,
     })
   ).apiStatusUrls;
+
+  if (apiStatusUrls === "inherit") {
+    return "inherit";
+  }
 
   if (apiStatusUrls.length === 0) {
     return false;
@@ -561,7 +564,9 @@ class PublishJson {
       ?.developerDocumentation;
   }
 
-  static getApiStatusUrls(api: string): string[] | false | undefined {
+  static getApiStatusUrls(
+    api: string
+  ): string[] | false | "inherit" | undefined {
     return PublishJson._currentPublishJson().publish[api]?.apiStatusUrls;
   }
 
@@ -631,7 +636,10 @@ class PublishJson {
   );
 
   static saveApiStatusUrls = this._writeToDiskAfter(
-    ({ apiStatusUrls }: { apiStatusUrls: string[] | false }, progress) => {
+    (
+      { apiStatusUrls }: { apiStatusUrls: string[] | false | "inherit" },
+      progress
+    ) => {
       progress.apiStatusUrls = apiStatusUrls;
     }
   );

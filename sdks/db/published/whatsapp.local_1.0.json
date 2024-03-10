@@ -26,9 +26,11 @@
   "difficulty": "Medium",
   "company": "WhatsApp",
   "serviceName": "Business",
-  "sdkName": "whatsapp-{language}-sdk",
-  "clientName": "WhatsApp",
+  "sdkName": "whats-app-business-{language}-sdk",
+  "clientName": "WhatsAppBusiness",
   "metaDescription": "Use WhatsApp Messenger to stay in touch with friends and family. WhatsApp is free and offers simple, secure, reliable messaging and calling, available on phones all over the world.",
+  "apiStatusUrls": false,
+  "developerDocumentation": "developers.facebook.com/docs/whatsapp/cloud-api/get-started",
   "categories": [
     "messaging",
     "sms"
@@ -36,7 +38,7 @@
   "methods": [
     {
       "url": "/account",
-      "method": "accountCreation",
+      "method": "requestCode",
       "httpMethod": "post",
       "tag": "Registration",
       "typeScriptTag": "registration",
@@ -148,7 +150,7 @@
     },
     {
       "url": "/certificates/external",
-      "method": "uploadExternal",
+      "method": "uploadExternalCertificate",
       "httpMethod": "post",
       "tag": "Certificates",
       "typeScriptTag": "certificates",
@@ -208,7 +210,7 @@
     },
     {
       "url": "/certificates/webhooks/ca",
-      "method": "uploadWebhookCa",
+      "method": "uploadWebhookCaCertificate",
       "httpMethod": "post",
       "tag": "Certificates",
       "typeScriptTag": "certificates",
@@ -310,7 +312,7 @@
     },
     {
       "url": "/groups/{GroupId}",
-      "method": "updateGroupInfo",
+      "method": "updateInfo",
       "httpMethod": "put",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -394,7 +396,7 @@
     },
     {
       "url": "/groups/{GroupId}/icon",
-      "method": "deleteIcon",
+      "method": "deleteGroupIcon",
       "httpMethod": "delete",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -422,7 +424,7 @@
     },
     {
       "url": "/groups/{GroupId}/icon",
-      "method": "getGroupIcon",
+      "method": "getIconBinary",
       "httpMethod": "get",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -444,7 +446,7 @@
     },
     {
       "url": "/groups/{GroupId}/icon",
-      "method": "setIcon",
+      "method": "setGroupIcon",
       "httpMethod": "post",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -472,7 +474,7 @@
     },
     {
       "url": "/groups/{GroupId}/invite",
-      "method": "deleteGroupInvite",
+      "method": "deleteInvite",
       "httpMethod": "delete",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -494,7 +496,7 @@
     },
     {
       "url": "/groups/{GroupId}/invite",
-      "method": "getInvite",
+      "method": "getInviteDetails",
       "httpMethod": "get",
       "tag": "Groups",
       "typeScriptTag": "groups",
@@ -581,7 +583,7 @@
     },
     {
       "url": "/media",
-      "method": "upload",
+      "method": "uploadMedia",
       "httpMethod": "post",
       "tag": "Media",
       "typeScriptTag": "media",
@@ -596,7 +598,7 @@
     },
     {
       "url": "/media/{MediaId}",
-      "method": "remove",
+      "method": "removeMedia",
       "httpMethod": "delete",
       "tag": "Media",
       "typeScriptTag": "media",
@@ -618,7 +620,7 @@
     },
     {
       "url": "/media/{MediaId}",
-      "method": "downloadMedia",
+      "method": "download",
       "httpMethod": "get",
       "tag": "Media",
       "typeScriptTag": "media",
@@ -762,7 +764,7 @@
     },
     {
       "url": "/metrics",
-      "method": "getMetrics",
+      "method": "getMetricsData",
       "httpMethod": "get",
       "tag": "Health",
       "typeScriptTag": "health",
@@ -798,7 +800,7 @@
     },
     {
       "url": "/settings/account/two-step",
-      "method": "enableAccountSecurity",
+      "method": "enableAccount",
       "httpMethod": "post",
       "tag": "Two-Step Verification",
       "typeScriptTag": "twoStepVerification",
@@ -916,7 +918,7 @@
     },
     {
       "url": "/settings/application/media/providers",
-      "method": "getMediaProviders",
+      "method": "listMediaProviders",
       "httpMethod": "get",
       "tag": "Application",
       "typeScriptTag": "application",
@@ -946,7 +948,7 @@
     },
     {
       "url": "/settings/application/media/providers/{ProviderName}",
-      "method": "deleteMediaProvider",
+      "method": "removeProvider",
       "httpMethod": "delete",
       "tag": "Application",
       "typeScriptTag": "application",
@@ -990,7 +992,7 @@
     },
     {
       "url": "/settings/business/profile",
-      "method": "getProfile",
+      "method": "get",
       "httpMethod": "get",
       "tag": "Business Profile",
       "typeScriptTag": "businessProfile",
@@ -1005,7 +1007,7 @@
     },
     {
       "url": "/settings/business/profile",
-      "method": "updateProfile",
+      "method": "update",
       "httpMethod": "post",
       "tag": "Business Profile",
       "typeScriptTag": "businessProfile",
@@ -1124,7 +1126,7 @@
     },
     {
       "url": "/settings/profile/photo",
-      "method": "uploadPhoto",
+      "method": "updatePhoto",
       "httpMethod": "post",
       "tag": "Profile",
       "typeScriptTag": "profile",
@@ -1195,7 +1197,7 @@
     },
     {
       "url": "/stats/db",
-      "method": "dbStatsGet",
+      "method": "getDbStats",
       "httpMethod": "get",
       "tag": "Health",
       "typeScriptTag": "health",
@@ -1340,7 +1342,7 @@
     },
     {
       "url": "/users/{UserUsername}",
-      "method": "updateUserByUsername",
+      "method": "updateUser",
       "httpMethod": "put",
       "tag": "Users",
       "typeScriptTag": "users",
@@ -1371,8 +1373,8 @@
   "logo": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/logo.png",
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/favicon.png",
-  "clientNameCamelCase": "whatsApp",
-  "lastUpdated": "2024-03-08T23:27:40.536Z",
-  "typescriptSdkUsageCode": "import { WhatsApp } from 'whatsapp-typescript-sdk';\n\nconst whatsApp = new WhatsApp({\n    token: \"TOKEN\",\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n})",
-  "fixedSpecFileName": "whatsapp-fixed-spec.yaml"
+  "clientNameCamelCase": "whatsAppBusiness",
+  "lastUpdated": "2024-03-10T00:37:58.119Z",
+  "typescriptSdkUsageCode": "import { WhatsAppBusiness } from 'whats-app-business-typescript-sdk';\n\nconst whatsAppBusiness = new WhatsAppBusiness({\n    token: \"TOKEN\",\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n})",
+  "fixedSpecFileName": "whats-app-business-fixed-spec.yaml"
 }
