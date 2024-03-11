@@ -75,14 +75,14 @@ export function Sdk({
       description={description}
     >
       <Head>
-        <link
+        {/* <link
           rel="icon"
           href={
             faviconUrl
               ? faviconUrl
               : `http://www.google.com/s2/favicons?domain=${homepage}&sz=128`
           }
-        />
+        /> */}
         <meta property="og:image" content={previewLinkImage} />
         <meta property="og:description" content={description} />
         <style>
