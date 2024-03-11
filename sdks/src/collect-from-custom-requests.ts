@@ -72,7 +72,7 @@ function parseOAS(oas: string, regex: string | undefined): any {
   }
 }
 
-export const REGEX_FOR_BROKEN_LINKS = /\([\/|#][\w-]+?\)/g;
+export const REGEX_FOR_BROKEN_LINKS = /\([\/|#][{}%~\/\w-]+?\)/g;
 async function executeCustomRequest(
   key: string,
   customRequest: CustomRequest,
@@ -540,6 +540,10 @@ const customRequests: Record<string, CustomRequest> = {
         browser,
       });
     },
+  },
+  "griffin.com": {
+    type: "GET",
+    url: "http://docs.griffin.com/redocusaurus/plugin-redoc-0.yaml",
   },
   "resend.com": {
     type: "GET",

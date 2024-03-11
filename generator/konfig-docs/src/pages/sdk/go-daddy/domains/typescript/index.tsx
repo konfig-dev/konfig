@@ -12,12 +12,11 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       sdkName="godaddy-typescript-sdk"
       metaDescription="All the help and tools you need to grow online: Websites, Domains, Digital and Social Marketing - plus GoDaddy Guides with you every step of the way."
       company="GoDaddy"
-      doesNotHaveApiDescription={true}
       serviceName="Domains"
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/logo.png"
       clientNameCamelCase="goDaddy"
       homepage="developer.godaddy.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

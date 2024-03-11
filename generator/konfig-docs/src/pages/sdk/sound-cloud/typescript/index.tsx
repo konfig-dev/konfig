@@ -12,12 +12,11 @@ export default function SoundCloudTypeScriptSdk() {
       sdkName="soundcloud-typescript-sdk"
       metaDescription="Discover and play over 320 million music tracks. Join the world’s largest online community of artists, bands, DJs, and audio creators."
       company="SoundCloud"
-      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/logo.jpg"
       clientNameCamelCase="soundCloud"
       homepage="developers.soundcloud.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/favicon.jpeg"
       contactUrl="https://github.com/soundcloud/api"
       // Missing contactEmail

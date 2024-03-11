@@ -16,7 +16,7 @@ export default function ZuoraTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/logo.png"
       clientNameCamelCase="zuora"
       homepage="zuora.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:37:37.247Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png"
       // Missing contactUrl
       contactEmail="docs@zuora.com"

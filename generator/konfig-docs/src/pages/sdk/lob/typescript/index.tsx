@@ -16,7 +16,7 @@ export default function LobTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/logo.svg"
       clientNameCamelCase="lob"
       homepage="lob.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:37:37.247Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png"
       contactUrl="https://support.lob.com/"
       contactEmail="lob-openapi@lob.com"

@@ -17,7 +17,7 @@ export default function RottenTomatoesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/logo.png"
       clientNameCamelCase="rottenTomatoes"
       homepage="developer.fandango.com/rotten_tomatoes"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:37:37.247Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/favicon.png"
       contactUrl="https://github.com/mermade/mashery2openapi"
       contactEmail="mike.ralphson@gmail.com"

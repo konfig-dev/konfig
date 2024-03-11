@@ -12,12 +12,11 @@ export default function MailchimpTypeScriptSdk() {
       sdkName="mailchimp-typescript-sdk"
       metaDescription="Mailchimp is a marketing platform for small businesses. It offers an all-in-one marketing solution that includes email marketing, ads, landing pages, and automation. With Mailchimp, businesses can design and send targeted campaigns, analyze their performance, and grow their audience."
       company="Mailchimp"
-      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mailchimp/logo.png"
       clientNameCamelCase="mailchimp"
       homepage="mailchimp.com/"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mailchimp/favicon.png"
       // Missing contactUrl
       contactEmail="apihelp@mailchimp.com"

@@ -20,12 +20,11 @@ Cancellation insights: Learn exactly why your customers cancel, calculate lost r
 
 Flightpath: Plan for the future with flexible financial modeling tools built for growing SaaS companies."
       company="Baremetrics"
-      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/logo.png"
       clientNameCamelCase="baremetrics"
       homepage="baremetrics.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

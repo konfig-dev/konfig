@@ -12,12 +12,11 @@ export default function SnykTypeScriptSdk() {
       sdkName="snyk-typescript-sdk"
       metaDescription="Snyk helps software-driven businesses develop fast and stay secure. Continuously find and fix vulnerabilities for npm, Maven, NuGet, RubyGems, PyPI and more."
       company="Snyk"
-      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail

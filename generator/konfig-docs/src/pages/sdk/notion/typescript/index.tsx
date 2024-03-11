@@ -12,12 +12,11 @@ export default function NotionTypeScriptSdk() {
       sdkName="notion-typescript-sdk"
       metaDescription="Notion is a new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team."
       company="Notion"
-      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notion/logo.png"
       clientNameCamelCase="notion"
       homepage="developers.notion.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notion/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

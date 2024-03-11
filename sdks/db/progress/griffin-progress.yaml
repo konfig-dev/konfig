@@ -1,0 +1,474 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /v0/admissions/{admission-id}:
+    get: Payments_getAdmission
+  /v0/api-keys/{api-key-id}:
+    delete: ApiKeys_removeApiKey
+    get: ApiKeys_getKeyDetails
+  /v0/bank/accounts/{bank-account-id}:
+    get: BankAccounts_getAccount
+    patch: BankAccounts_updateBankAccount
+  /v0/bank/accounts/{bank-account-id}/actions/close:
+    post: BankAccounts_closeAccount
+  /v0/bank/accounts/{bank-account-id}/admissions:
+    get: Payments_listBankAccountAdmissions
+  /v0/bank/accounts/{bank-account-id}/membership:
+    get: PooledAccountMembership_listLegalPersons
+  /v0/bank/accounts/{bank-account-id}/membership-updates:
+    post: PooledAccountMembership_manageLegalPersons
+  /v0/bank/accounts/{bank-account-id}/payments:
+    get: Payments_getBankAccountPayments
+    post: Payments_createRequest
+  /v0/bank/accounts/{bank-account-id}/submissions:
+    get: Payments_listSubmissions
+  /v0/bank/accounts/{bank-account-id}/transactions:
+    get: Transactions_listBalanceChanges
+  /v0/bank/transactions/{transaction-id}:
+    get: Transactions_getTransactionById
+  /v0/companies-house/companies/{company-number}:
+    get: CompaniesHouse_getCompanyDetails
+  /v0/events/{event-id}:
+    get: Events_getEvent
+  /v0/index:
+    get: Navigation_globalPathsFetch
+  /v0/legal-persons/{legal-person-id}:
+    get: LegalPersons_getLegalPerson
+    put: LegalPersons_updateLegalPerson
+  /v0/legal-persons/{legal-person-id}/bank/payees:
+    get: Payees_listLegalPersonPayees
+    post: Payees_registerNewPayee
+  /v0/legal-persons/{legal-person-id}/claims:
+    get: Claims_getAllClaims
+    post: Claims_createNewClaim
+  /v0/legal-persons/{legal-person-id}/decisions:
+    get: Decisions_listForLegalPerson
+    post: Decisions_createDecision
+  /v0/legal-persons/{legal-person-id}/history:
+    get: LegalPersonHistory_listEvents
+  /v0/legal-persons/{legal-person-id}/verifications:
+    get: Verifications_listForLegalPerson
+    post: Verifications_initiateVerification
+  /v0/memberships/{membership-id}:
+    delete: Memberships_removeMember
+    get: Memberships_getMembershipInfo
+  /v0/memberships/{membership-id}/roles:
+    get: Roles_getMembershipRoles
+    put: Roles_assignMembershipRoles
+  /v0/onboarding/applications/{onboarding-application-id}:
+    get: RelianceOnboarding_getApplication
+  /v0/organizations/{organization-id}:
+    get: Organizations_getDetails
+  /v0/organizations/{organization-id}/api-keys:
+    get: ApiKeys_listActiveKeys
+    post: ApiKeys_createKey
+  /v0/organizations/{organization-id}/bank/accounts:
+    get: BankAccounts_list
+    post: BankAccounts_createNewAccount
+  /v0/organizations/{organization-id}/events:
+    get: Events_getAllOrganizationEvents
+  /v0/organizations/{organization-id}/invitations:
+    post: Invitations_sendEmail
+  /v0/organizations/{organization-id}/legal-persons:
+    get: LegalPersons_listLegalPersons
+    post: LegalPersons_createNewLegalPerson
+  /v0/organizations/{organization-id}/memberships:
+    get: Memberships_listOrganizationMemberships
+  /v0/organizations/{organization-id}/onboarding/applications:
+    post: RelianceOnboarding_createApplication
+  /v0/organizations/{organization-id}/webhooks:
+    get: Webhooks_getAll
+    post: Webhooks_createWebhook
+  /v0/organizations/{organization-id}/workflows:
+    get: Workflows_listOrganizationWorkflows
+  /v0/payees/{payee-id}:
+    get: Payees_getDetails
+    patch: Payees_updatePayee
+  /v0/payments/{payment-id}:
+    get: Payments_getDetails
+  /v0/payments/{payment-id}/admissions:
+    get: Payments_listAdmissions
+  /v0/payments/{payment-id}/submissions:
+    get: Payments_listSubmissions
+    post: Payments_submitPaymentSubmission
+  /v0/ping:
+    get: Connectivity_checkConnection
+  /v0/roles:
+    get: Roles_listAllRoles
+  /v0/roles/{role-id}:
+    get: Roles_getRole
+  /v0/submissions/{submission-id}:
+    get: Payments_getSubmission
+  /v0/users/{user-id}:
+    get: Users_getUserResource
+  /v0/users/{user-id}/api-keys:
+    get: ApiKeys_listActiveKeys
+  /v0/users/{user-id}/memberships:
+    get: Memberships_listUserMemberships
+  /v0/verifications/{verification-id}:
+    get: Verifications_getVerification
+  /v0/webhooks/{webhook-id}:
+    delete: Webhooks_deleteWebhook
+    get: Webhooks_getWebhook
+    patch: Webhooks_updateWebhook
+  /v0/webhooks/{webhook-id}/actions/activate:
+    post: Webhooks_activateAction
+  /v0/webhooks/{webhook-id}/actions/deactivate:
+    post: Webhooks_deactivateAction
+  /v0/webhooks/{webhook-id}/actions/test:
+    get: Webhooks_getLatestTestStatus
+    post: Webhooks_sendTestEvent
+  /v0/workflows/{workflow-id}:
+    get: Workflows_getWorkflow
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /v0/bank/accounts/{bank-account-id}:
+    patch:
+      application/json: BankAccountsUpdateBankAccountRequest
+  /v0/bank/accounts/{bank-account-id}/membership-updates:
+    post:
+      application/json: PooledAccountMembershipManageLegalPersonsRequest
+  /v0/bank/accounts/{bank-account-id}/payments:
+    post:
+      application/json: PaymentsCreateRequestRequest
+  /v0/legal-persons/{legal-person-id}:
+    put:
+      application/json: LegalPersonsUpdateLegalPersonRequest
+  /v0/legal-persons/{legal-person-id}/bank/payees:
+    post:
+      application/json: PayeesRegisterNewPayeeRequest
+  /v0/legal-persons/{legal-person-id}/claims:
+    post:
+      application/json: ClaimsCreateNewClaimRequest
+  /v0/legal-persons/{legal-person-id}/decisions:
+    post:
+      application/json: DecisionsCreateDecisionRequest
+  /v0/legal-persons/{legal-person-id}/verifications:
+    post:
+      application/json: VerificationsInitiateVerificationRequest
+  /v0/memberships/{membership-id}/roles:
+    put:
+      application/json: RolesAssignMembershipRolesRequest
+  /v0/organizations/{organization-id}/api-keys:
+    post:
+      application/json: ApiKeysCreateKeyRequest
+  /v0/organizations/{organization-id}/bank/accounts:
+    post:
+      application/json: BankAccountsCreateNewAccountRequest
+  /v0/organizations/{organization-id}/invitations:
+    post:
+      application/json: InvitationsSendEmailRequest
+  /v0/organizations/{organization-id}/legal-persons:
+    post:
+      application/json: LegalPersonsCreateNewLegalPersonRequest
+  /v0/organizations/{organization-id}/onboarding/applications:
+    post:
+      application/json: RelianceOnboardingCreateApplicationRequest
+  /v0/organizations/{organization-id}/webhooks:
+    post:
+      application/json: WebhooksCreateWebhookRequest
+  /v0/payees/{payee-id}:
+    patch:
+      application/json: PayeesUpdatePayeeRequest
+  /v0/payments/{payment-id}/submissions:
+    post:
+      application/json: PaymentsSubmitPaymentSubmissionRequest
+  /v0/webhooks/{webhook-id}:
+    patch:
+      application/json: WebhooksUpdateWebhookRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /v0/admissions/{admission-id}:
+    get:
+      '200':
+        application/json: PaymentsGetAdmissionResponse
+  /v0/api-keys/{api-key-id}:
+    get:
+      '200':
+        application/json: ApiKeysGetKeyDetailsResponse
+  /v0/bank/accounts/{bank-account-id}:
+    get:
+      '200':
+        application/json: BankAccountsGetAccountResponse
+    patch:
+      '200':
+        application/json: BankAccountsUpdateBankAccountResponse
+  /v0/bank/accounts/{bank-account-id}/actions/close:
+    post:
+      '200':
+        application/json: BankAccountsCloseAccountResponse
+  /v0/bank/accounts/{bank-account-id}/admissions:
+    get:
+      '200':
+        application/json: PaymentsListBankAccountAdmissionsResponse
+  /v0/bank/accounts/{bank-account-id}/membership:
+    get:
+      '200':
+        application/json: PooledAccountMembershipListLegalPersonsResponse
+  /v0/bank/accounts/{bank-account-id}/membership-updates:
+    post:
+      '200':
+        application/json: PooledAccountMembershipManageLegalPersonsResponse
+  /v0/bank/accounts/{bank-account-id}/payments:
+    get:
+      '200':
+        application/json: PaymentsGetBankAccountPaymentsResponse
+    post:
+      '201':
+        application/json: PaymentsCreateRequestResponse
+  /v0/bank/accounts/{bank-account-id}/submissions:
+    get:
+      '200':
+        application/json: PaymentsListSubmissionsResponse
+  /v0/bank/accounts/{bank-account-id}/transactions:
+    get:
+      '200':
+        application/json: TransactionsListBalanceChangesResponse
+  /v0/bank/transactions/{transaction-id}:
+    get:
+      '200':
+        application/json: TransactionsGetTransactionByIdResponse
+  /v0/companies-house/companies/{company-number}:
+    get:
+      '200':
+        application/json: CompaniesHouseGetCompanyDetailsResponse
+  /v0/events/{event-id}:
+    get:
+      '200':
+        application/json: EventsGetEventResponse
+  /v0/index:
+    get:
+      '200':
+        application/json: NavigationGlobalPathsFetchResponse
+  /v0/legal-persons/{legal-person-id}:
+    get:
+      '200':
+        application/json: LegalPersonsGetLegalPersonResponse
+    put:
+      '200':
+        application/json: LegalPersonsUpdateLegalPersonResponse
+  /v0/legal-persons/{legal-person-id}/bank/payees:
+    get:
+      '200':
+        application/json: PayeesListLegalPersonPayeesResponse
+    post:
+      '201':
+        application/json: PayeesRegisterNewPayeeResponse
+  /v0/legal-persons/{legal-person-id}/claims:
+    get:
+      '200':
+        application/json: ClaimsGetAllClaimsResponse
+    post:
+      '201':
+        application/json: ClaimsCreateNewClaimResponse
+  /v0/legal-persons/{legal-person-id}/decisions:
+    get:
+      '200':
+        application/json: DecisionsListForLegalPersonResponse
+    post:
+      '201':
+        application/json: DecisionsCreateDecisionResponse
+  /v0/legal-persons/{legal-person-id}/history:
+    get:
+      '200':
+        application/json: LegalPersonHistoryListEventsResponse
+  /v0/legal-persons/{legal-person-id}/verifications:
+    get:
+      '200':
+        application/json: VerificationsListForLegalPersonResponse
+    post:
+      '201':
+        application/json: VerificationsInitiateVerificationResponse
+  /v0/memberships/{membership-id}:
+    get:
+      '200':
+        application/json: MembershipsGetMembershipInfoResponse
+  /v0/memberships/{membership-id}/roles:
+    get:
+      '200':
+        application/json: RolesGetMembershipRolesResponse
+    put:
+      '200':
+        application/json: RolesAssignMembershipRolesResponse
+  /v0/onboarding/applications/{onboarding-application-id}:
+    get:
+      '200':
+        application/json: RelianceOnboardingGetApplicationResponse
+  /v0/organizations/{organization-id}:
+    get:
+      '200':
+        application/json: OrganizationsGetDetailsResponse
+  /v0/organizations/{organization-id}/api-keys:
+    get:
+      '200':
+        application/json: ApiKeysListActiveKeysResponse
+    post:
+      '201':
+        application/json: ApiKeysCreateKeyResponse
+  /v0/organizations/{organization-id}/bank/accounts:
+    get:
+      '200':
+        application/json: BankAccountsListResponse
+    post:
+      '201':
+        application/json: BankAccountsCreateNewAccountResponse
+  /v0/organizations/{organization-id}/events:
+    get:
+      '200':
+        application/json: EventsGetAllOrganizationEventsResponse
+  /v0/organizations/{organization-id}/legal-persons:
+    get:
+      '200':
+        application/json: LegalPersonsListLegalPersonsResponse
+    post:
+      '201':
+        application/json: LegalPersonsCreateNewLegalPersonResponse
+  /v0/organizations/{organization-id}/memberships:
+    get:
+      '200':
+        application/json: MembershipsListOrganizationMembershipsResponse
+  /v0/organizations/{organization-id}/onboarding/applications:
+    post:
+      '201':
+        application/json: RelianceOnboardingCreateApplicationResponse
+  /v0/organizations/{organization-id}/webhooks:
+    get:
+      '200':
+        application/json: WebhooksGetAllResponse
+    post:
+      '201':
+        application/json: WebhooksCreateWebhookResponse
+  /v0/organizations/{organization-id}/workflows:
+    get:
+      '200':
+        application/json: WorkflowsListOrganizationWorkflowsResponse
+  /v0/payees/{payee-id}:
+    get:
+      '200':
+        application/json: PayeesGetDetailsResponse
+    patch:
+      '200':
+        application/json: PayeesUpdatePayeeResponse
+  /v0/payments/{payment-id}:
+    get:
+      '200':
+        application/json: PaymentsGetDetailsResponse
+  /v0/payments/{payment-id}/admissions:
+    get:
+      '200':
+        application/json: PaymentsListAdmissionsResponse
+  /v0/payments/{payment-id}/submissions:
+    get:
+      '200':
+        application/json: PaymentsListSubmissions200Response
+    post:
+      '200':
+        application/json: PaymentsSubmitPaymentSubmissionResponse
+  /v0/roles:
+    get:
+      '200':
+        application/json: RolesListAllRolesResponse
+  /v0/roles/{role-id}:
+    get:
+      '200':
+        application/json: RolesGetRoleResponse
+  /v0/submissions/{submission-id}:
+    get:
+      '200':
+        application/json: PaymentsGetSubmissionResponse
+  /v0/users/{user-id}:
+    get:
+      '200':
+        application/json: UsersGetUserResourceResponse
+  /v0/users/{user-id}/api-keys:
+    get:
+      '200':
+        application/json: ApiKeysListActiveKeys200Response
+  /v0/users/{user-id}/memberships:
+    get:
+      '200':
+        application/json: MembershipsListUserMembershipsResponse
+  /v0/verifications/{verification-id}:
+    get:
+      '200':
+        application/json: VerificationsGetVerificationResponse
+  /v0/webhooks/{webhook-id}:
+    get:
+      '200':
+        application/json: WebhooksGetWebhookResponse
+    patch:
+      '200':
+        application/json: WebhooksUpdateWebhookResponse
+  /v0/webhooks/{webhook-id}/actions/activate:
+    post:
+      '200':
+        application/json: WebhooksActivateActionResponse
+  /v0/webhooks/{webhook-id}/actions/deactivate:
+    post:
+      '200':
+        application/json: WebhooksDeactivateActionResponse
+  /v0/webhooks/{webhook-id}/actions/test:
+    get:
+      '200':
+        application/json: WebhooksGetLatestTestStatusResponse
+    post:
+      '201':
+        application/json: WebhooksSendTestEventResponse
+  /v0/workflows/{workflow-id}:
+    get:
+      '200':
+        application/json: WorkflowsGetWorkflowResponse
+securityParameters:
+  filter[account-restricted][in][]:
+    query: false
+  filter[account-status][in][]:
+    query: false
+  filter[admission-status][in]:
+    query: false
+  filter[application-status][eq]:
+    query: false
+  filter[bank-product-type][in][]:
+    query: false
+  filter[beneficiary][eq]:
+    query: false
+  filter[created-at][gt]:
+    query: false
+  filter[created-at][gte]:
+    query: false
+  filter[created-at][lt]:
+    query: false
+  filter[created-at][lte]:
+    query: false
+  filter[event-type][eq]:
+    query: false
+  filter[has][]:
+    query: false
+  filter[owner][eq]:
+    query: false
+  filter[pooled-funds][eq]:
+    query: false
+  filter[post-datetime][gt]:
+    query: false
+  filter[post-datetime][gte]:
+    query: false
+  filter[post-datetime][lt]:
+    query: false
+  filter[post-datetime][lte]:
+    query: false
+  filter[submission-status][in]:
+    query: false
+  include:
+    query: false
+  page[after]:
+    query: false
+  page[before]:
+    query: false
+  page[size]:
+    query: false
+  sort:
+    query: false
+validServerUrls: {}

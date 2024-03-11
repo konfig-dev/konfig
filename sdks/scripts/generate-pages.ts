@@ -173,6 +173,9 @@ function generateDescriptionMdx({ apiDescription }: Published): string {
   if (apiDescription === undefined) {
     return "";
   }
+  if (apiDescription === "Missing description placeholder") {
+    return "";
+  }
   // replace any strings wrapped in curly braces with brackets (e.g. {foo} -> [foo])
   apiDescription = apiDescription.replace(/{/g, "[").replace(/}/g, "]");
 

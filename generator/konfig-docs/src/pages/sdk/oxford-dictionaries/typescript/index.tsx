@@ -12,12 +12,11 @@ export default function OxfordDictionariesTypeScriptSdk() {
       sdkName="oxford-dictionaries-typescript-sdk"
       metaDescription="Oxford Dictionaries, part of the Oxford Language Division, is a leading authority on the English language. It offers a wide range of language resources, including dictionaries, thesauruses, grammar guides, and language learning tools. Oxford Dictionaries provides accurate and up-to-date definitions, word origins, and usage examples to support language comprehension and communication."
       company="Oxford Dictionaries"
-      doesNotHaveApiDescription={true}
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/oxford-dictionaries/logo.png"
       clientNameCamelCase="oxfordDictionaries"
       homepage="developer.oxforddictionaries.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/oxford-dictionaries/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

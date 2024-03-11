@@ -1,4 +1,4 @@
-hash: d3a8b6af7d1fb1df25003e711d648a8650afdff87e17db35975b3e3a6597637f
+hash: fb2ce7c8857201849ca7671d8b553d8ecf628088fdca2effe2e9f480fce46010
 methodObjects:
   - url: /lists.json
     method: getBestSellers
@@ -238,3 +238,90 @@ methodObjects:
       - statusCode: '200'
         description: ''
 numberOfSchemas: 6
+apiDescription: >
+  The Books API provides information about book reviews and The New York Times
+  Best Sellers lists.
+
+
+  ## Best Sellers Lists Services
+
+  ### List Names
+
+  The lists/names service returns a list of all the NYT Best Sellers Lists. 
+  Some lists are published weekly and others monthly.  The response includes
+  when each list was first published and last published.
+
+
+  ```
+
+  /lists/names.json
+
+  ```
+
+
+  ### List Data
+
+
+  The lists/{date}/{name} service returns the books on the best sellers list for
+  the specified date and list name.
+
+
+  ```
+
+  /lists/2019-01-20/hardcover-fiction.json
+
+  ```
+
+
+  Use "current" for {date} to get the latest list.
+
+  ```
+
+  /lists/current/hardcover-fiction.json
+
+  ```
+
+
+  ## Book Reviews Services
+
+
+  The book reviews service lets you get NYT book review by author, ISBN, or
+  title.
+
+
+  ```
+
+  /reviews.json?author=Michelle+Obama
+
+  ```
+
+
+  ```
+
+  /reviews.json?isbn=9781524763138
+
+  ```
+
+
+  ```
+
+  /reviews.json?title=Becoming
+
+  ```
+
+
+  ## Example Calls
+
+
+  ```
+
+  https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=yourkey
+
+  ```
+
+
+  ```
+
+  https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=yourkey
+
+  ```
