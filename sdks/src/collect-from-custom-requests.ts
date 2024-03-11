@@ -587,6 +587,10 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://raw.githubusercontent.com/box/box-openapi/en/openapi.json",
   },
+  "asana.com": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml",
+  },
   "hsbc.com_AccountInformationCE": {
     lambda: async (browser) => {
       const url =

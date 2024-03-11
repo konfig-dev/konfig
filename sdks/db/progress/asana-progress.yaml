@@ -1,0 +1,1298 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /attachments:
+    get: Attachments_getAllForObject
+    post: Attachments_uploadAttachment
+  /attachments/{attachment_gid}:
+    delete: Attachments_deleteSpecific
+    get: Attachments_getAttachmentRecord
+  /batch:
+    post: BatchApi_submitParallelRequests
+  /custom_fields:
+    post: CustomFields_createNewFieldRecord
+  /custom_fields/{custom_field_gid}:
+    delete: CustomFields_deleteFieldRecord
+    get: CustomFields_getMetadata
+    put: CustomFields_updateFieldRecord
+  /custom_fields/{custom_field_gid}/enum_options:
+    post: CustomFields_addEnumOption
+  /custom_fields/{custom_field_gid}/enum_options/insert:
+    post: CustomFields_reorderEnumOption
+  /enum_options/{enum_option_gid}:
+    put: CustomFields_updateEnumOption
+  /events:
+    get: Events_getResourceEvents
+  /goal_relationships:
+    get: GoalRelationships_getCompactRecords
+  /goal_relationships/{goal_relationship_gid}:
+    get: GoalRelationships_getRecordById
+    put: GoalRelationships_updateGoalRelationshipRecord
+  /goals:
+    get: Goals_getCompactRecords
+    post: Goals_createNewGoalRecord
+  /goals/{goal_gid}:
+    delete: Goals_deleteRecord
+    get: Goals_getGoalRecord
+    put: Goals_updateGoalRecord
+  /goals/{goal_gid}/addFollowers:
+    post: Goals_addCollaboratorsToGoal
+  /goals/{goal_gid}/addSupportingRelationship:
+    post: GoalRelationships_createSupportingRelationship
+  /goals/{goal_gid}/parentGoals:
+    get: Goals_getParentGoals
+  /goals/{goal_gid}/removeFollowers:
+    post: Goals_removeFollowersFromGoal
+  /goals/{goal_gid}/removeSupportingRelationship:
+    post: GoalRelationships_removeSupportingRelationship
+  /goals/{goal_gid}/setMetric:
+    post: Goals_createMetric
+  /goals/{goal_gid}/setMetricCurrentValue:
+    post: Goals_updateMetricCurrentValue
+  /jobs/{job_gid}:
+    get: Jobs_getById
+  /memberships:
+    get: Memberships_getMultiple
+    post: Memberships_createNewRecord
+  /memberships/{membership_gid}:
+    delete: Memberships_deleteRecord
+    get: Memberships_getMembershipRecord
+  /organization_exports:
+    post: OrganizationExports_createExportRequest
+  /organization_exports/{organization_export_gid}:
+    get: OrganizationExports_getExportDetails
+  /portfolio_memberships:
+    get: PortfolioMemberships_listMultipleMemberships
+  /portfolio_memberships/{portfolio_membership_gid}:
+    get: PortfolioMemberships_getCompleteRecord
+  /portfolios:
+    get: Portfolios_listMultiplePortfolios
+    post: Portfolios_createNewPortfolioRecord
+  /portfolios/{portfolio_gid}:
+    delete: Portfolios_deleteRecord
+    get: Portfolios_getRecord
+    put: Portfolios_updatePortfolioRecord
+  /portfolios/{portfolio_gid}/addCustomFieldSetting:
+    post: Portfolios_addCustomFieldSetting
+  /portfolios/{portfolio_gid}/addItem:
+    post: Portfolios_addPortfolioItem
+  /portfolios/{portfolio_gid}/addMembers:
+    post: Portfolios_addMembersToPortfolio
+  /portfolios/{portfolio_gid}/custom_field_settings:
+    get: CustomFieldSettings_getPortfolioCustomFieldSettings
+  /portfolios/{portfolio_gid}/items:
+    get: Portfolios_getItems
+  /portfolios/{portfolio_gid}/portfolio_memberships:
+    get: PortfolioMemberships_getCompact
+  /portfolios/{portfolio_gid}/removeCustomFieldSetting:
+    post: Portfolios_removeCustomFieldSetting
+  /portfolios/{portfolio_gid}/removeItem:
+    post: Portfolios_removeItemFromPortfolio
+  /portfolios/{portfolio_gid}/removeMembers:
+    post: Portfolios_removeMembersFromPortfolio
+  /project_briefs/{project_brief_gid}:
+    delete: ProjectBriefs_removeBrief
+    get: ProjectBriefs_getFullRecord
+    put: ProjectBriefs_updateBriefRecord
+  /project_memberships/{project_membership_gid}:
+    get: ProjectMemberships_getRecord
+  /project_statuses/{project_status_gid}:
+    delete: ProjectStatuses_deleteSpecificStatusUpdate
+    get: ProjectStatuses_getStatusUpdateRecord
+  /project_templates:
+    get: ProjectTemplates_listMultiple
+  /project_templates/{project_template_gid}:
+    delete: ProjectTemplates_deleteTemplateRecord
+    get: ProjectTemplates_getRecord
+  /project_templates/{project_template_gid}/instantiateProject:
+    post: ProjectTemplates_instantiateProjectJob
+  /projects:
+    get: Projects_listMultiple
+    post: Projects_createNewProjectRecord
+  /projects/{project_gid}:
+    delete: Projects_deleteProjectById
+    get: Projects_getProjectRecord
+    put: Projects_updateProjectRecord
+  /projects/{project_gid}/addCustomFieldSetting:
+    post: Projects_addCustomFieldSetting
+  /projects/{project_gid}/addFollowers:
+    post: Projects_addFollowersToProject
+  /projects/{project_gid}/addMembers:
+    post: Projects_addMembersToProject
+  /projects/{project_gid}/custom_field_settings:
+    get: CustomFieldSettings_getProjectCustomFieldSettings
+  /projects/{project_gid}/duplicate:
+    post: Projects_duplicateProjectJob
+  /projects/{project_gid}/project_briefs:
+    post: ProjectBriefs_createNewRecord
+  /projects/{project_gid}/project_memberships:
+    get: ProjectMemberships_getCompactRecords
+  /projects/{project_gid}/project_statuses:
+    get: ProjectStatuses_getProjectUpdates
+    post: ProjectStatuses_createNewStatusUpdateRecord
+  /projects/{project_gid}/removeCustomFieldSetting:
+    post: Projects_removeCustomField
+  /projects/{project_gid}/removeFollowers:
+    post: Projects_removeProjectFollowers
+  /projects/{project_gid}/removeMembers:
+    post: Projects_removeMembersFromProject
+  /projects/{project_gid}/saveAsTemplate:
+    post: Projects_createProjectTemplateJob
+  /projects/{project_gid}/sections:
+    get: Sections_listProjectSections
+    post: Sections_createNewSection
+  /projects/{project_gid}/sections/insert:
+    post: Sections_moveOrInsert
+  /projects/{project_gid}/task_counts:
+    get: Projects_getTaskCounts
+  /projects/{project_gid}/tasks:
+    get: Tasks_getTasksByProject
+  /rule_triggers/{rule_trigger_gid}/run:
+    post: Rules_triggerRuleRequest
+  /sections/{section_gid}:
+    delete: Sections_deleteSection
+    get: Sections_getRecord
+    put: Sections_updateSectionRecord
+  /sections/{section_gid}/addTask:
+    post: Sections_addTaskToSection
+  /sections/{section_gid}/tasks:
+    get: Tasks_getSectionTasks
+  /status_updates:
+    get: StatusUpdates_getCompactRecords
+    post: StatusUpdates_createNewStatusUpdateRecord
+  /status_updates/{status_update_gid}:
+    delete: StatusUpdates_deleteSpecificStatusUpdate
+    get: StatusUpdates_getRecordById
+  /stories/{story_gid}:
+    delete: Stories_deleteStoryRecord
+    get: Stories_getFullRecord
+    put: Stories_updateFullRecord
+  /tags:
+    get: Tags_listFilteredTags
+    post: Tags_createNewTagRecord
+  /tags/{tag_gid}:
+    delete: Tags_removeTag
+    get: Tags_getRecord
+    put: Tags_updateTagRecord
+  /tags/{tag_gid}/tasks:
+    get: Tasks_getMultipleWithTag
+  /task_templates:
+    get: TaskTemplates_listMultiple
+  /task_templates/{task_template_gid}:
+    delete: TaskTemplates_deleteTaskTemplate
+    get: TaskTemplates_getSingleTemplate
+  /task_templates/{task_template_gid}/instantiateTask:
+    post: TaskTemplates_instantiateTaskJob
+  /tasks:
+    get: Tasks_getMultiple
+    post: Tasks_createNewTask
+  /tasks/{task_gid}:
+    delete: Tasks_deleteTask
+    get: Tasks_getTaskRecord
+    put: Tasks_updateTaskRecord
+  /tasks/{task_gid}/addDependencies:
+    post: Tasks_setDependenciesForTask
+  /tasks/{task_gid}/addDependents:
+    post: Tasks_setTaskDependents
+  /tasks/{task_gid}/addFollowers:
+    post: Tasks_addFollowersToTask
+  /tasks/{task_gid}/addProject:
+    post: Tasks_addProjectToTask
+  /tasks/{task_gid}/addTag:
+    post: Tasks_addTagToTask
+  /tasks/{task_gid}/dependencies:
+    get: Tasks_getAllDependencies
+  /tasks/{task_gid}/dependents:
+    get: Tasks_getDependents
+  /tasks/{task_gid}/duplicate:
+    post: Tasks_duplicateTaskJob
+  /tasks/{task_gid}/projects:
+    get: Projects_taskProjectsList
+  /tasks/{task_gid}/removeDependencies:
+    post: Tasks_unlinkDependenciesFromTask
+  /tasks/{task_gid}/removeDependents:
+    post: Tasks_unlinkDependents
+  /tasks/{task_gid}/removeFollowers:
+    post: Tasks_removeFollowersFromTask
+  /tasks/{task_gid}/removeProject:
+    post: Tasks_removeProjectFromTask
+  /tasks/{task_gid}/removeTag:
+    post: Tasks_removeTagFromTask
+  /tasks/{task_gid}/setParent:
+    post: Tasks_setParentTask
+  /tasks/{task_gid}/stories:
+    get: Stories_getTaskStories
+    post: Stories_createComment
+  /tasks/{task_gid}/subtasks:
+    get: Tasks_getSubtaskList
+    post: Tasks_createSubtaskRecord
+  /tasks/{task_gid}/tags:
+    get: Tags_getTaskTags
+  /tasks/{task_gid}/time_tracking_entries:
+    get: TimeTrackingEntries_getForTask
+    post: TimeTrackingEntries_createNewTimeEntryRecord
+  /team_memberships:
+    get: TeamMemberships_getCompactRecords
+  /team_memberships/{team_membership_gid}:
+    get: TeamMemberships_getRecordById
+  /teams:
+    post: Teams_createTeamRecord
+  /teams/{team_gid}:
+    get: Teams_getTeamRecord
+    put: Teams_updateTeamRecord
+  /teams/{team_gid}/addUser:
+    post: Teams_addUserToTeam
+  /teams/{team_gid}/project_templates:
+    get: ProjectTemplates_getAllTemplateRecords
+  /teams/{team_gid}/projects:
+    get: Projects_getTeamProjects
+    post: Projects_createProjectForTeam
+  /teams/{team_gid}/removeUser:
+    post: Teams_removeUserFromTeam
+  /teams/{team_gid}/team_memberships:
+    get: TeamMemberships_getCompact
+  /teams/{team_gid}/users:
+    get: Users_listTeamUsers
+  /time_periods:
+    get: TimePeriods_getCompactTimePeriods
+  /time_periods/{time_period_gid}:
+    get: TimePeriods_getFullRecord
+  /time_tracking_entries/{time_tracking_entry_gid}:
+    delete: TimeTrackingEntries_deleteTimeEntry
+    get: TimeTrackingEntries_getRecord
+    put: TimeTrackingEntries_updateTimeTrackingEntry
+  /user_task_lists/{user_task_list_gid}:
+    get: UserTaskLists_getRecord
+  /user_task_lists/{user_task_list_gid}/tasks:
+    get: Tasks_getUserTaskListTasks
+  /users:
+    get: Users_listMultipleUsers
+  /users/{user_gid}:
+    get: Users_getUserRecord
+  /users/{user_gid}/favorites:
+    get: Users_getFavoritesForUser
+  /users/{user_gid}/team_memberships:
+    get: TeamMemberships_getUserCompact
+  /users/{user_gid}/teams:
+    get: Teams_getUserTeams
+  /users/{user_gid}/user_task_list:
+    get: UserTaskLists_getUserTaskList
+  /users/{user_gid}/workspace_memberships:
+    get: WorkspaceMemberships_getUserMemberships
+  /webhooks:
+    get: Webhooks_listMultipleWebhooks
+    post: Webhooks_establishWebhook
+  /webhooks/{webhook_gid}:
+    delete: Webhooks_removeWebhook
+    get: Webhooks_getWebhookRecord
+    put: Webhooks_updateWebhookFilters
+  /workspace_memberships/{workspace_membership_gid}:
+    get: WorkspaceMemberships_getRecordById
+  /workspaces:
+    get: Workspaces_listMultiple
+  /workspaces/{workspace_gid}:
+    get: Workspaces_getWorkspaceRecord
+    put: Workspaces_updateWorkspaceRecord
+  /workspaces/{workspace_gid}/addUser:
+    post: Workspaces_addUserToWorkspace
+  /workspaces/{workspace_gid}/audit_log_events:
+    get: AuditLogApi_getAuditLogEvents
+  /workspaces/{workspace_gid}/custom_fields:
+    get: CustomFields_listWorkspaceCustomFields
+  /workspaces/{workspace_gid}/projects:
+    get: Projects_getAllInWorkspace
+    post: Projects_createInWorkspace
+  /workspaces/{workspace_gid}/removeUser:
+    post: Workspaces_removeUserFromWorkspace
+  /workspaces/{workspace_gid}/tags:
+    get: Tags_getFilteredTags
+    post: Tags_createTagInWorkspace
+  /workspaces/{workspace_gid}/tasks/custom_id/{custom_id}:
+    get: Tasks_getByCustomId
+  /workspaces/{workspace_gid}/tasks/search:
+    get: Tasks_searchInWorkspace
+  /workspaces/{workspace_gid}/teams:
+    get: Teams_listWorkspaceTeams
+  /workspaces/{workspace_gid}/typeahead:
+    get: Typeahead_getResults
+  /workspaces/{workspace_gid}/users:
+    get: Users_listWorkspaceUsers
+  /workspaces/{workspace_gid}/workspace_memberships:
+    get: WorkspaceMemberships_listForWorkspace
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /batch:
+    post:
+      application/json: BatchApiSubmitParallelRequestsRequest
+  /custom_fields:
+    post:
+      application/json: CustomFieldsCreateNewFieldRecordRequest
+  /custom_fields/{custom_field_gid}:
+    put:
+      application/json: CustomFieldsUpdateFieldRecordRequest
+  /custom_fields/{custom_field_gid}/enum_options:
+    post:
+      application/json: CustomFieldsAddEnumOptionRequest
+  /custom_fields/{custom_field_gid}/enum_options/insert:
+    post:
+      application/json: CustomFieldsReorderEnumOptionRequest
+  /enum_options/{enum_option_gid}:
+    put:
+      application/json: CustomFieldsUpdateEnumOptionRequest
+  /goal_relationships/{goal_relationship_gid}:
+    put:
+      application/json: GoalRelationshipsUpdateGoalRelationshipRecordRequest
+  /goals:
+    post:
+      application/json: GoalsCreateNewGoalRecordRequest
+  /goals/{goal_gid}:
+    put:
+      application/json: GoalsUpdateGoalRecordRequest
+  /goals/{goal_gid}/addFollowers:
+    post:
+      application/json: GoalsAddCollaboratorsToGoalRequest
+  /goals/{goal_gid}/addSupportingRelationship:
+    post:
+      application/json: GoalRelationshipsCreateSupportingRelationshipRequest
+  /goals/{goal_gid}/removeFollowers:
+    post:
+      application/json: GoalsRemoveFollowersFromGoalRequest
+  /goals/{goal_gid}/removeSupportingRelationship:
+    post:
+      application/json: GoalRelationshipsRemoveSupportingRelationshipRequest
+  /goals/{goal_gid}/setMetric:
+    post:
+      application/json: GoalsCreateMetricRequest
+  /goals/{goal_gid}/setMetricCurrentValue:
+    post:
+      application/json: GoalsUpdateMetricCurrentValueRequest
+  /memberships:
+    post:
+      application/json: MembershipsCreateNewRecordRequest
+  /organization_exports:
+    post:
+      application/json: OrganizationExportsCreateExportRequestRequest
+  /portfolios:
+    post:
+      application/json: PortfoliosCreateNewPortfolioRecordRequest
+  /portfolios/{portfolio_gid}:
+    put:
+      application/json: PortfoliosUpdatePortfolioRecordRequest
+  /portfolios/{portfolio_gid}/addCustomFieldSetting:
+    post:
+      application/json: PortfoliosAddCustomFieldSettingRequest
+  /portfolios/{portfolio_gid}/addItem:
+    post:
+      application/json: PortfoliosAddPortfolioItemRequest
+  /portfolios/{portfolio_gid}/addMembers:
+    post:
+      application/json: PortfoliosAddMembersToPortfolioRequest
+  /portfolios/{portfolio_gid}/removeCustomFieldSetting:
+    post:
+      application/json: PortfoliosRemoveCustomFieldSettingRequest
+  /portfolios/{portfolio_gid}/removeItem:
+    post:
+      application/json: PortfoliosRemoveItemFromPortfolioRequest
+  /portfolios/{portfolio_gid}/removeMembers:
+    post:
+      application/json: PortfoliosRemoveMembersFromPortfolioRequest
+  /project_briefs/{project_brief_gid}:
+    put:
+      application/json: ProjectBriefsUpdateBriefRecordRequest
+  /project_templates/{project_template_gid}/instantiateProject:
+    post:
+      application/json: ProjectTemplatesInstantiateProjectJobRequest
+  /projects:
+    post:
+      application/json: ProjectsCreateNewProjectRecordRequest
+  /projects/{project_gid}:
+    put:
+      application/json: ProjectsUpdateProjectRecordRequest
+  /projects/{project_gid}/addCustomFieldSetting:
+    post:
+      application/json: ProjectsAddCustomFieldSettingRequest
+  /projects/{project_gid}/addFollowers:
+    post:
+      application/json: ProjectsAddFollowersToProjectRequest
+  /projects/{project_gid}/addMembers:
+    post:
+      application/json: ProjectsAddMembersToProjectRequest
+  /projects/{project_gid}/duplicate:
+    post:
+      application/json: ProjectsDuplicateProjectJobRequest
+  /projects/{project_gid}/project_briefs:
+    post:
+      application/json: ProjectBriefsCreateNewRecordRequest
+  /projects/{project_gid}/project_statuses:
+    post:
+      application/json: ProjectStatusesCreateNewStatusUpdateRecordRequest
+  /projects/{project_gid}/removeCustomFieldSetting:
+    post:
+      application/json: ProjectsRemoveCustomFieldRequest
+  /projects/{project_gid}/removeFollowers:
+    post:
+      application/json: ProjectsRemoveProjectFollowersRequest
+  /projects/{project_gid}/removeMembers:
+    post:
+      application/json: ProjectsRemoveMembersFromProjectRequest
+  /projects/{project_gid}/saveAsTemplate:
+    post:
+      application/json: ProjectsCreateProjectTemplateJobRequest
+  /projects/{project_gid}/sections:
+    post:
+      application/json: SectionsCreateNewSectionRequest
+  /projects/{project_gid}/sections/insert:
+    post:
+      application/json: SectionsMoveOrInsertRequest
+  /rule_triggers/{rule_trigger_gid}/run:
+    post:
+      application/json: RulesTriggerRuleRequestRequest
+  /sections/{section_gid}:
+    put:
+      application/json: SectionsUpdateSectionRecordRequest
+  /sections/{section_gid}/addTask:
+    post:
+      application/json: SectionsAddTaskToSectionRequest
+  /status_updates:
+    post:
+      application/json: StatusUpdatesCreateNewStatusUpdateRecordRequest
+  /stories/{story_gid}:
+    put:
+      application/json: StoriesUpdateFullRecordRequest
+  /tags:
+    post:
+      application/json: TagsCreateNewTagRecordRequest
+  /task_templates/{task_template_gid}/instantiateTask:
+    post:
+      application/json: TaskTemplatesInstantiateTaskJobRequest
+  /tasks:
+    post:
+      application/json: TasksCreateNewTaskRequest
+  /tasks/{task_gid}:
+    put:
+      application/json: TasksUpdateTaskRecordRequest
+  /tasks/{task_gid}/addDependencies:
+    post:
+      application/json: TasksSetDependenciesForTaskRequest
+  /tasks/{task_gid}/addDependents:
+    post:
+      application/json: TasksSetTaskDependentsRequest
+  /tasks/{task_gid}/addFollowers:
+    post:
+      application/json: TasksAddFollowersToTaskRequest
+  /tasks/{task_gid}/addProject:
+    post:
+      application/json: TasksAddProjectToTaskRequest
+  /tasks/{task_gid}/addTag:
+    post:
+      application/json: TasksAddTagToTaskRequest
+  /tasks/{task_gid}/duplicate:
+    post:
+      application/json: TasksDuplicateTaskJobRequest
+  /tasks/{task_gid}/removeDependencies:
+    post:
+      application/json: TasksUnlinkDependenciesFromTaskRequest
+  /tasks/{task_gid}/removeDependents:
+    post:
+      application/json: TasksUnlinkDependentsRequest
+  /tasks/{task_gid}/removeFollowers:
+    post:
+      application/json: TasksRemoveFollowersFromTaskRequest
+  /tasks/{task_gid}/removeProject:
+    post:
+      application/json: TasksRemoveProjectFromTaskRequest
+  /tasks/{task_gid}/removeTag:
+    post:
+      application/json: TasksRemoveTagFromTaskRequest
+  /tasks/{task_gid}/setParent:
+    post:
+      application/json: TasksSetParentTaskRequest
+  /tasks/{task_gid}/stories:
+    post:
+      application/json: StoriesCreateCommentRequest
+  /tasks/{task_gid}/subtasks:
+    post:
+      application/json: TasksCreateSubtaskRecordRequest
+  /tasks/{task_gid}/time_tracking_entries:
+    post:
+      application/json: TimeTrackingEntriesCreateNewTimeEntryRecordRequest
+  /teams:
+    post:
+      application/json: TeamsCreateTeamRecordRequest
+  /teams/{team_gid}:
+    put:
+      application/json: TeamsUpdateTeamRecordRequest
+  /teams/{team_gid}/addUser:
+    post:
+      application/json: TeamsAddUserToTeamRequest
+  /teams/{team_gid}/projects:
+    post:
+      application/json: ProjectsCreateProjectForTeamRequest
+  /teams/{team_gid}/removeUser:
+    post:
+      application/json: TeamsRemoveUserFromTeamRequest
+  /time_tracking_entries/{time_tracking_entry_gid}:
+    put:
+      application/json: TimeTrackingEntriesUpdateTimeTrackingEntryRequest
+  /webhooks:
+    post:
+      application/json: WebhooksEstablishWebhookRequest
+  /webhooks/{webhook_gid}:
+    put:
+      application/json: WebhooksUpdateWebhookFiltersRequest
+  /workspaces/{workspace_gid}:
+    put:
+      application/json: WorkspacesUpdateWorkspaceRecordRequest
+  /workspaces/{workspace_gid}/addUser:
+    post:
+      application/json: WorkspacesAddUserToWorkspaceRequest
+  /workspaces/{workspace_gid}/projects:
+    post:
+      application/json: ProjectsCreateInWorkspaceRequest
+  /workspaces/{workspace_gid}/removeUser:
+    post:
+      application/json: WorkspacesRemoveUserFromWorkspaceRequest
+  /workspaces/{workspace_gid}/tags:
+    post:
+      application/json: TagsCreateTagInWorkspaceRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /attachments:
+    get:
+      '200':
+        application/json: AttachmentsGetAllForObjectResponse
+    post:
+      '200':
+        application/json: AttachmentsUploadAttachmentResponse
+  /attachments/{attachment_gid}:
+    delete:
+      '200':
+        application/json: AttachmentsDeleteSpecificResponse
+    get:
+      '200':
+        application/json: AttachmentsGetAttachmentRecordResponse
+  /batch:
+    post:
+      '200':
+        application/json: BatchApiSubmitParallelRequestsResponse
+  /custom_fields:
+    post:
+      '201':
+        application/json: CustomFieldsCreateNewFieldRecordResponse
+  /custom_fields/{custom_field_gid}:
+    delete:
+      '200':
+        application/json: CustomFieldsDeleteFieldRecordResponse
+    get:
+      '200':
+        application/json: CustomFieldsGetMetadataResponse
+    put:
+      '200':
+        application/json: CustomFieldsUpdateFieldRecordResponse
+  /custom_fields/{custom_field_gid}/enum_options:
+    post:
+      '201':
+        application/json: CustomFieldsAddEnumOptionResponse
+  /custom_fields/{custom_field_gid}/enum_options/insert:
+    post:
+      '200':
+        application/json: CustomFieldsReorderEnumOptionResponse
+  /enum_options/{enum_option_gid}:
+    put:
+      '200':
+        application/json: CustomFieldsUpdateEnumOptionResponse
+  /events:
+    get:
+      '200':
+        application/json: EventsGetResourceEventsResponse
+      '412':
+        application/json: EventsGetResourceEvents412Response
+  /goal_relationships:
+    get:
+      '200':
+        application/json: GoalRelationshipsGetCompactRecordsResponse
+  /goal_relationships/{goal_relationship_gid}:
+    get:
+      '200':
+        application/json: GoalRelationshipsGetRecordByIdResponse
+    put:
+      '200':
+        application/json: GoalRelationshipsUpdateGoalRelationshipRecordResponse
+  /goals:
+    get:
+      '200':
+        application/json: GoalsGetCompactRecordsResponse
+    post:
+      '201':
+        application/json: GoalsCreateNewGoalRecordResponse
+  /goals/{goal_gid}:
+    delete:
+      '200':
+        application/json: GoalsDeleteRecordResponse
+    get:
+      '200':
+        application/json: GoalsGetGoalRecordResponse
+    put:
+      '200':
+        application/json: GoalsUpdateGoalRecordResponse
+  /goals/{goal_gid}/addFollowers:
+    post:
+      '200':
+        application/json: GoalsAddCollaboratorsToGoalResponse
+  /goals/{goal_gid}/addSupportingRelationship:
+    post:
+      '200':
+        application/json: GoalRelationshipsCreateSupportingRelationshipResponse
+  /goals/{goal_gid}/parentGoals:
+    get:
+      '200':
+        application/json: GoalsGetParentGoalsResponse
+  /goals/{goal_gid}/removeFollowers:
+    post:
+      '200':
+        application/json: GoalsRemoveFollowersFromGoalResponse
+  /goals/{goal_gid}/removeSupportingRelationship:
+    post:
+      '200':
+        application/json: GoalRelationshipsRemoveSupportingRelationshipResponse
+  /goals/{goal_gid}/setMetric:
+    post:
+      '200':
+        application/json: GoalsCreateMetricResponse
+  /goals/{goal_gid}/setMetricCurrentValue:
+    post:
+      '200':
+        application/json: GoalsUpdateMetricCurrentValueResponse
+  /jobs/{job_gid}:
+    get:
+      '200':
+        application/json: JobsGetByIdResponse
+  /memberships:
+    get:
+      '200':
+        application/json: MembershipsGetMultipleResponse
+    post:
+      '201':
+        application/json: MembershipsCreateNewRecordResponse
+  /memberships/{membership_gid}:
+    delete:
+      '200':
+        application/json: MembershipsDeleteRecordResponse
+    get:
+      '200':
+        application/json: MembershipsGetMembershipRecordResponse
+  /organization_exports:
+    post:
+      '201':
+        application/json: OrganizationExportsCreateExportRequestResponse
+  /organization_exports/{organization_export_gid}:
+    get:
+      '200':
+        application/json: OrganizationExportsGetExportDetailsResponse
+  /portfolio_memberships:
+    get:
+      '200':
+        application/json: PortfolioMembershipsListMultipleMembershipsResponse
+  /portfolio_memberships/{portfolio_membership_gid}:
+    get:
+      '200':
+        application/json: PortfolioMembershipsGetCompleteRecordResponse
+  /portfolios:
+    get:
+      '200':
+        application/json: PortfoliosListMultiplePortfoliosResponse
+    post:
+      '201':
+        application/json: PortfoliosCreateNewPortfolioRecordResponse
+  /portfolios/{portfolio_gid}:
+    delete:
+      '200':
+        application/json: PortfoliosDeleteRecordResponse
+    get:
+      '200':
+        application/json: PortfoliosGetRecordResponse
+    put:
+      '200':
+        application/json: PortfoliosUpdatePortfolioRecordResponse
+  /portfolios/{portfolio_gid}/addCustomFieldSetting:
+    post:
+      '200':
+        application/json: PortfoliosAddCustomFieldSettingResponse
+  /portfolios/{portfolio_gid}/addItem:
+    post:
+      '200':
+        application/json: PortfoliosAddPortfolioItemResponse
+  /portfolios/{portfolio_gid}/addMembers:
+    post:
+      '200':
+        application/json: PortfoliosAddMembersToPortfolioResponse
+  /portfolios/{portfolio_gid}/custom_field_settings:
+    get:
+      '200':
+        application/json: CustomFieldSettingsGetPortfolioCustomFieldSettingsResponse
+  /portfolios/{portfolio_gid}/items:
+    get:
+      '200':
+        application/json: PortfoliosGetItemsResponse
+  /portfolios/{portfolio_gid}/portfolio_memberships:
+    get:
+      '200':
+        application/json: PortfolioMembershipsGetCompactResponse
+  /portfolios/{portfolio_gid}/removeCustomFieldSetting:
+    post:
+      '200':
+        application/json: PortfoliosRemoveCustomFieldSettingResponse
+  /portfolios/{portfolio_gid}/removeItem:
+    post:
+      '200':
+        application/json: PortfoliosRemoveItemFromPortfolioResponse
+  /portfolios/{portfolio_gid}/removeMembers:
+    post:
+      '200':
+        application/json: PortfoliosRemoveMembersFromPortfolioResponse
+  /project_briefs/{project_brief_gid}:
+    delete:
+      '200':
+        application/json: ProjectBriefsRemoveBriefResponse
+    get:
+      '200':
+        application/json: ProjectBriefsGetFullRecordResponse
+    put:
+      '200':
+        application/json: ProjectBriefsUpdateBriefRecordResponse
+  /project_memberships/{project_membership_gid}:
+    get:
+      '200':
+        application/json: ProjectMembershipsGetRecordResponse
+  /project_statuses/{project_status_gid}:
+    delete:
+      '200':
+        application/json: ProjectStatusesDeleteSpecificStatusUpdateResponse
+    get:
+      '200':
+        application/json: ProjectStatusesGetStatusUpdateRecordResponse
+  /project_templates:
+    get:
+      '200':
+        application/json: ProjectTemplatesListMultipleResponse
+  /project_templates/{project_template_gid}:
+    delete:
+      '200':
+        application/json: ProjectTemplatesDeleteTemplateRecordResponse
+    get:
+      '200':
+        application/json: ProjectTemplatesGetRecordResponse
+  /project_templates/{project_template_gid}/instantiateProject:
+    post:
+      '201':
+        application/json: ProjectTemplatesInstantiateProjectJobResponse
+  /projects:
+    get:
+      '200':
+        application/json: ProjectsListMultipleResponse
+    post:
+      '201':
+        application/json: ProjectsCreateNewProjectRecordResponse
+  /projects/{project_gid}:
+    delete:
+      '200':
+        application/json: ProjectsDeleteProjectByIdResponse
+    get:
+      '200':
+        application/json: ProjectsGetProjectRecordResponse
+    put:
+      '200':
+        application/json: ProjectsUpdateProjectRecordResponse
+  /projects/{project_gid}/addCustomFieldSetting:
+    post:
+      '200':
+        application/json: ProjectsAddCustomFieldSettingResponse
+  /projects/{project_gid}/addFollowers:
+    post:
+      '200':
+        application/json: ProjectsAddFollowersToProjectResponse
+  /projects/{project_gid}/addMembers:
+    post:
+      '200':
+        application/json: ProjectsAddMembersToProjectResponse
+  /projects/{project_gid}/custom_field_settings:
+    get:
+      '200':
+        application/json: CustomFieldSettingsGetProjectCustomFieldSettingsResponse
+  /projects/{project_gid}/duplicate:
+    post:
+      '201':
+        application/json: ProjectsDuplicateProjectJobResponse
+  /projects/{project_gid}/project_briefs:
+    post:
+      '201':
+        application/json: ProjectBriefsCreateNewRecordResponse
+  /projects/{project_gid}/project_memberships:
+    get:
+      '200':
+        application/json: ProjectMembershipsGetCompactRecordsResponse
+  /projects/{project_gid}/project_statuses:
+    get:
+      '200':
+        application/json: ProjectStatusesGetProjectUpdatesResponse
+    post:
+      '201':
+        application/json: ProjectStatusesCreateNewStatusUpdateRecordResponse
+  /projects/{project_gid}/removeCustomFieldSetting:
+    post:
+      '200':
+        application/json: ProjectsRemoveCustomFieldResponse
+  /projects/{project_gid}/removeFollowers:
+    post:
+      '200':
+        application/json: ProjectsRemoveProjectFollowersResponse
+  /projects/{project_gid}/removeMembers:
+    post:
+      '200':
+        application/json: ProjectsRemoveMembersFromProjectResponse
+  /projects/{project_gid}/saveAsTemplate:
+    post:
+      '201':
+        application/json: ProjectsCreateProjectTemplateJobResponse
+  /projects/{project_gid}/sections:
+    get:
+      '200':
+        application/json: SectionsListProjectSectionsResponse
+    post:
+      '201':
+        application/json: SectionsCreateNewSectionResponse
+  /projects/{project_gid}/sections/insert:
+    post:
+      '200':
+        application/json: SectionsMoveOrInsertResponse
+  /projects/{project_gid}/task_counts:
+    get:
+      '200':
+        application/json: ProjectsGetTaskCountsResponse
+  /projects/{project_gid}/tasks:
+    get:
+      '200':
+        application/json: TasksGetTasksByProjectResponse
+  /rule_triggers/{rule_trigger_gid}/run:
+    post:
+      '200':
+        application/json: RulesTriggerRuleRequestResponse
+  /sections/{section_gid}:
+    delete:
+      '200':
+        application/json: SectionsDeleteSectionResponse
+    get:
+      '200':
+        application/json: SectionsGetRecordResponse
+    put:
+      '200':
+        application/json: SectionsUpdateSectionRecordResponse
+  /sections/{section_gid}/addTask:
+    post:
+      '200':
+        application/json: SectionsAddTaskToSectionResponse
+  /sections/{section_gid}/tasks:
+    get:
+      '200':
+        application/json: TasksGetSectionTasksResponse
+  /status_updates:
+    get:
+      '200':
+        application/json: StatusUpdatesGetCompactRecordsResponse
+    post:
+      '201':
+        application/json: StatusUpdatesCreateNewStatusUpdateRecordResponse
+  /status_updates/{status_update_gid}:
+    delete:
+      '200':
+        application/json: StatusUpdatesDeleteSpecificStatusUpdateResponse
+    get:
+      '200':
+        application/json: StatusUpdatesGetRecordByIdResponse
+  /stories/{story_gid}:
+    delete:
+      '200':
+        application/json: StoriesDeleteStoryRecordResponse
+    get:
+      '200':
+        application/json: StoriesGetFullRecordResponse
+    put:
+      '200':
+        application/json: StoriesUpdateFullRecordResponse
+  /tags:
+    get:
+      '200':
+        application/json: TagsListFilteredTagsResponse
+    post:
+      '201':
+        application/json: TagsCreateNewTagRecordResponse
+  /tags/{tag_gid}:
+    delete:
+      '200':
+        application/json: TagsRemoveTagResponse
+    get:
+      '200':
+        application/json: TagsGetRecordResponse
+    put:
+      '200':
+        application/json: TagsUpdateTagRecordResponse
+  /tags/{tag_gid}/tasks:
+    get:
+      '200':
+        application/json: TasksGetMultipleWithTagResponse
+  /task_templates:
+    get:
+      '200':
+        application/json: TaskTemplatesListMultipleResponse
+  /task_templates/{task_template_gid}:
+    delete:
+      '200':
+        application/json: TaskTemplatesDeleteTaskTemplateResponse
+    get:
+      '200':
+        application/json: TaskTemplatesGetSingleTemplateResponse
+  /task_templates/{task_template_gid}/instantiateTask:
+    post:
+      '201':
+        application/json: TaskTemplatesInstantiateTaskJobResponse
+  /tasks:
+    get:
+      '200':
+        application/json: TasksGetMultipleResponse
+    post:
+      '201':
+        application/json: TasksCreateNewTaskResponse
+  /tasks/{task_gid}:
+    delete:
+      '200':
+        application/json: TasksDeleteTaskResponse
+    get:
+      '200':
+        application/json: TasksGetTaskRecordResponse
+    put:
+      '200':
+        application/json: TasksUpdateTaskRecordResponse
+  /tasks/{task_gid}/addDependencies:
+    post:
+      '200':
+        application/json: TasksSetDependenciesForTaskResponse
+  /tasks/{task_gid}/addDependents:
+    post:
+      '200':
+        application/json: TasksSetTaskDependentsResponse
+  /tasks/{task_gid}/addFollowers:
+    post:
+      '200':
+        application/json: TasksAddFollowersToTaskResponse
+  /tasks/{task_gid}/addProject:
+    post:
+      '200':
+        application/json: TasksAddProjectToTaskResponse
+  /tasks/{task_gid}/addTag:
+    post:
+      '200':
+        application/json: TasksAddTagToTaskResponse
+  /tasks/{task_gid}/dependencies:
+    get:
+      '200':
+        application/json: TasksGetAllDependenciesResponse
+  /tasks/{task_gid}/dependents:
+    get:
+      '200':
+        application/json: TasksGetDependentsResponse
+  /tasks/{task_gid}/duplicate:
+    post:
+      '201':
+        application/json: TasksDuplicateTaskJobResponse
+  /tasks/{task_gid}/projects:
+    get:
+      '200':
+        application/json: ProjectsTaskProjectsListResponse
+  /tasks/{task_gid}/removeDependencies:
+    post:
+      '200':
+        application/json: TasksUnlinkDependenciesFromTaskResponse
+  /tasks/{task_gid}/removeDependents:
+    post:
+      '200':
+        application/json: TasksUnlinkDependentsResponse
+  /tasks/{task_gid}/removeFollowers:
+    post:
+      '200':
+        application/json: TasksRemoveFollowersFromTaskResponse
+  /tasks/{task_gid}/removeProject:
+    post:
+      '200':
+        application/json: TasksRemoveProjectFromTaskResponse
+  /tasks/{task_gid}/removeTag:
+    post:
+      '200':
+        application/json: TasksRemoveTagFromTaskResponse
+  /tasks/{task_gid}/setParent:
+    post:
+      '200':
+        application/json: TasksSetParentTaskResponse
+  /tasks/{task_gid}/stories:
+    get:
+      '200':
+        application/json: StoriesGetTaskStoriesResponse
+    post:
+      '201':
+        application/json: StoriesCreateCommentResponse
+  /tasks/{task_gid}/subtasks:
+    get:
+      '200':
+        application/json: TasksGetSubtaskListResponse
+    post:
+      '201':
+        application/json: TasksCreateSubtaskRecordResponse
+  /tasks/{task_gid}/tags:
+    get:
+      '200':
+        application/json: TagsGetTaskTagsResponse
+  /tasks/{task_gid}/time_tracking_entries:
+    get:
+      '200':
+        application/json: TimeTrackingEntriesGetForTaskResponse
+    post:
+      '201':
+        application/json: TimeTrackingEntriesCreateNewTimeEntryRecordResponse
+  /team_memberships:
+    get:
+      '200':
+        application/json: TeamMembershipsGetCompactRecordsResponse
+  /team_memberships/{team_membership_gid}:
+    get:
+      '200':
+        application/json: TeamMembershipsGetRecordByIdResponse
+  /teams:
+    post:
+      '201':
+        application/json: TeamsCreateTeamRecordResponse
+  /teams/{team_gid}:
+    get:
+      '200':
+        application/json: TeamsGetTeamRecordResponse
+    put:
+      '200':
+        application/json: TeamsUpdateTeamRecordResponse
+  /teams/{team_gid}/addUser:
+    post:
+      '200':
+        application/json: TeamsAddUserToTeamResponse
+  /teams/{team_gid}/project_templates:
+    get:
+      '200':
+        application/json: ProjectTemplatesGetAllTemplateRecordsResponse
+  /teams/{team_gid}/projects:
+    get:
+      '200':
+        application/json: ProjectsGetTeamProjectsResponse
+    post:
+      '201':
+        application/json: ProjectsCreateProjectForTeamResponse
+  /teams/{team_gid}/removeUser:
+    post:
+      '204':
+        application/json: TeamsRemoveUserFromTeamResponse
+  /teams/{team_gid}/team_memberships:
+    get:
+      '200':
+        application/json: TeamMembershipsGetCompactResponse
+  /teams/{team_gid}/users:
+    get:
+      '200':
+        application/json: UsersListTeamUsersResponse
+  /time_periods:
+    get:
+      '200':
+        application/json: TimePeriodsGetCompactTimePeriodsResponse
+  /time_periods/{time_period_gid}:
+    get:
+      '200':
+        application/json: TimePeriodsGetFullRecordResponse
+  /time_tracking_entries/{time_tracking_entry_gid}:
+    delete:
+      '200':
+        application/json: TimeTrackingEntriesDeleteTimeEntryResponse
+    get:
+      '200':
+        application/json: TimeTrackingEntriesGetRecordResponse
+    put:
+      '200':
+        application/json: TimeTrackingEntriesUpdateTimeTrackingEntryResponse
+  /user_task_lists/{user_task_list_gid}:
+    get:
+      '200':
+        application/json: UserTaskListsGetRecordResponse
+  /user_task_lists/{user_task_list_gid}/tasks:
+    get:
+      '200':
+        application/json: TasksGetUserTaskListTasksResponse
+  /users/{user_gid}:
+    get:
+      '200':
+        application/json: UsersGetUserRecordResponse
+  /users/{user_gid}/favorites:
+    get:
+      '200':
+        application/json: UsersGetFavoritesForUserResponse
+  /users/{user_gid}/team_memberships:
+    get:
+      '200':
+        application/json: TeamMembershipsGetUserCompactResponse
+  /users/{user_gid}/teams:
+    get:
+      '200':
+        application/json: TeamsGetUserTeamsResponse
+  /users/{user_gid}/user_task_list:
+    get:
+      '200':
+        application/json: UserTaskListsGetUserTaskListResponse
+  /users/{user_gid}/workspace_memberships:
+    get:
+      '200':
+        application/json: WorkspaceMembershipsGetUserMembershipsResponse
+  /webhooks:
+    get:
+      '200':
+        application/json: WebhooksListMultipleWebhooksResponse
+    post:
+      '201':
+        application/json: WebhooksEstablishWebhookResponse
+  /webhooks/{webhook_gid}:
+    delete:
+      '200':
+        application/json: WebhooksRemoveWebhookResponse
+    get:
+      '200':
+        application/json: WebhooksGetWebhookRecordResponse
+    put:
+      '200':
+        application/json: WebhooksUpdateWebhookFiltersResponse
+  /workspace_memberships/{workspace_membership_gid}:
+    get:
+      '200':
+        application/json: WorkspaceMembershipsGetRecordByIdResponse
+  /workspaces:
+    get:
+      '200':
+        application/json: WorkspacesListMultipleResponse
+  /workspaces/{workspace_gid}:
+    get:
+      '200':
+        application/json: WorkspacesGetWorkspaceRecordResponse
+    put:
+      '200':
+        application/json: WorkspacesUpdateWorkspaceRecordResponse
+  /workspaces/{workspace_gid}/addUser:
+    post:
+      '200':
+        application/json: WorkspacesAddUserToWorkspaceResponse
+  /workspaces/{workspace_gid}/audit_log_events:
+    get:
+      '200':
+        application/json: AuditLogApiGetAuditLogEventsResponse
+  /workspaces/{workspace_gid}/custom_fields:
+    get:
+      '200':
+        application/json: CustomFieldsListWorkspaceCustomFieldsResponse
+  /workspaces/{workspace_gid}/projects:
+    get:
+      '200':
+        application/json: ProjectsGetAllInWorkspaceResponse
+    post:
+      '201':
+        application/json: ProjectsCreateInWorkspaceResponse
+  /workspaces/{workspace_gid}/removeUser:
+    post:
+      '204':
+        application/json: WorkspacesRemoveUserFromWorkspaceResponse
+  /workspaces/{workspace_gid}/tags:
+    get:
+      '200':
+        application/json: TagsGetFilteredTagsResponse
+    post:
+      '201':
+        application/json: TagsCreateTagInWorkspaceResponse
+  /workspaces/{workspace_gid}/tasks/custom_id/{custom_id}:
+    get:
+      '200':
+        application/json: TasksGetByCustomIdResponse
+  /workspaces/{workspace_gid}/tasks/search:
+    get:
+      '200':
+        application/json: TasksSearchInWorkspaceResponse
+  /workspaces/{workspace_gid}/teams:
+    get:
+      '200':
+        application/json: TeamsListWorkspaceTeamsResponse
+  /workspaces/{workspace_gid}/typeahead:
+    get:
+      '200':
+        application/json: TypeaheadGetResultsResponse
+  /workspaces/{workspace_gid}/users:
+    get:
+      '200':
+        application/json: UsersListWorkspaceUsersResponse
+  /workspaces/{workspace_gid}/workspace_memberships:
+    get:
+      '200':
+        application/json: WorkspaceMembershipsListForWorkspaceResponse
+securityParameters:
+  archived:
+    query: false
+  assignee:
+    query: false
+  completed_since:
+    query: false
+  created_since:
+    query: false
+  end_on:
+    query: false
+  is_workspace_level:
+    query: false
+  limit:
+    query: false
+  member:
+    query: false
+  modified_since:
+    query: false
+  offset:
+    query: false
+  opt_fields:
+    query: false
+  opt_pretty:
+    query: false
+  owner:
+    query: false
+  parent:
+    query: false
+  portfolio:
+    query: false
+  project:
+    query: false
+  resource:
+    query: false
+  resource_subtype:
+    query: false
+  section:
+    query: false
+  start_on:
+    query: false
+  supported_goal:
+    query: false
+  task:
+    query: false
+  team:
+    query: false
+  time_periods:
+    query: false
+  user:
+    query: false
+  workspace:
+    query: false
+validServerUrls: {}

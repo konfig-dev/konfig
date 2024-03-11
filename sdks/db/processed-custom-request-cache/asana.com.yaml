@@ -1,0 +1,51 @@
+processed:
+  securitySchemes:
+    personalAccessToken:
+      type: http
+      description: >-
+        A personal access token allows access to the api for the user who
+        created it. This should be kept a secret and be treated like a password.
+      scheme: bearer
+    oauth2:
+      type: oauth2
+      description: >-
+        We require that applications designed to access the Asana API on behalf
+        of multiple users implement OAuth 2.0.
+
+        Asana supports the Authorization Code Grant flow.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.asana.com/-/oauth_authorize
+          tokenUrl: https://app.asana.com/-/oauth_token
+          refreshUrl: https://app.asana.com/-/oauth_token
+          scopes:
+            default: >-
+              Provides access to all endpoints documented in our API reference.
+              If no scopes are requested, this scope is assumed by default.
+            openid: >-
+              Provides access to OpenID Connect ID tokens and the OpenID Connect
+              user info endpoint.
+            email: >-
+              Provides access to the user’s email through the OpenID Connect
+              user info endpoint.
+            profile: >-
+              Provides access to the user’s name and profile photo through the
+              OpenID Connect user info endpoint.
+  apiBaseUrl: https://app.asana.com/api/1.0
+  apiVersion: '1.0'
+  apiDescription: >-
+    This is the interface for interacting with the [Asana
+    Platform](https://developers.asana.com). Our API reference is generated from
+    our [OpenAPI spec]
+    (https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml).
+  apiTitle: Asana
+  endpoints: 135
+  sdkMethods: 317
+  schemas: 191
+  parameters: 311
+  contactUrl: https://asana.com/support
+  originalCustomRequest:
+    type: GET
+    url: https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml
+  customRequestSpecFilename: asana.com.yaml
+  difficultyScore: 490.25
