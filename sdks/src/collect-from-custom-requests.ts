@@ -587,6 +587,18 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://raw.githubusercontent.com/box/box-openapi/en/openapi.json",
   },
+  "appwrite.io_Client": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/appwrite/appwrite/main/app/config/specs/open-api3-latest-client.json",
+  },
+  "appwrite.io_Server": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/appwrite/appwrite/main/app/config/specs/open-api3-latest-server.json",
+  },
+  "appwrite.io_Console": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/appwrite/appwrite/main/app/config/specs/open-api3-latest-console.json",
+  },
   "asana.com": {
     type: "GET",
     url: "https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml",

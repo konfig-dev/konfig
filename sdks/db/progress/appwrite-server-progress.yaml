@@ -1,0 +1,860 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /account:
+    get: Account_getCurrentUser
+    post: Account_createNewUser
+  /account/email:
+    patch: Account_updateEmailAddress
+  /account/identities:
+    get: Account_listIdentities
+  /account/identities/{identityId}:
+    delete: Account_deleteIdentityById
+  /account/jwt:
+    post: Account_createJwt
+  /account/logs:
+    get: Account_listLogs
+  /account/mfa:
+    patch: Account_updateMfaStatus
+  /account/mfa/authenticators/{type}:
+    delete: Account_deleteAuthenticatorById
+    post: Account_addAuthenticatorApp
+    put: Account_verifyAuthenticator
+  /account/mfa/challenge:
+    post: Account_beginMfaVerification
+    put: Account_completeMfaChallenge
+  /account/mfa/factors:
+    get: Account_listMfaFactors
+  /account/mfa/recovery-codes:
+    get: Account_getMfaRecoveryCodes
+    patch: Account_regenerateMfaRecoveryCodes
+    post: Account_generateRecoveryCodes
+  /account/name:
+    patch: Account_updateNameOperation
+  /account/password:
+    patch: Account_updatePasswordOperation
+  /account/phone:
+    patch: Account_updatePhone
+  /account/prefs:
+    get: Account_getPrefs
+    patch: Account_updatePreferences
+  /account/recovery:
+    post: Account_createPasswordRecovery
+    put: Account_completePasswordRecovery
+  /account/sessions:
+    delete: Account_deleteUserSessions
+    get: Account_listSessions
+  /account/sessions/anonymous:
+    post: Account_createAnonymousSession
+  /account/sessions/email:
+    post: Account_createEmailPasswordSession
+  /account/sessions/magic-url:
+    put: Account_updateMagicUrlSession
+  /account/sessions/phone:
+    put: Account_updatePhoneSession
+  /account/sessions/token:
+    post: Account_createTokenSession
+  /account/sessions/{sessionId}:
+    delete: Account_logoutSessionById
+    get: Account_getSessionById
+    patch: Account_extendSessionLength
+  /account/status:
+    patch: Account_blockCurrentUserStatus
+  /account/tokens/email:
+    post: Account_createEmailToken
+  /account/tokens/magic-url:
+    post: Account_createMagicUrlToken
+  /account/tokens/oauth2/{provider}:
+    get: Account_createOAuth2Token
+  /account/tokens/phone:
+    post: Account_createPhoneToken
+  /account/verification:
+    post: Account_createEmailVerification
+    put: Account_completeEmailVerification
+  /account/verification/phone:
+    post: Account_createPhoneVerification
+    put: Account_confirmPhoneVerification
+  /avatars/browsers/{code}:
+    get: Avatars_getBrowserIcon
+  /avatars/credit-cards/{code}:
+    get: Avatars_getCreditCardIcon
+  /avatars/favicon:
+    get: Avatars_getFavicon
+  /avatars/flags/{code}:
+    get: Avatars_getCountryFlag
+  /avatars/image:
+    get: Avatars_getRemoteImage
+  /avatars/initials:
+    get: Avatars_getUserInitials
+  /avatars/qr:
+    get: Avatars_generateQrCode
+  /databases:
+    get: Databases_listAll
+    post: Databases_createDatabase
+  /databases/{databaseId}:
+    delete: Databases_deleteById
+    get: Databases_getById
+    put: Databases_updateById
+  /databases/{databaseId}/collections:
+    get: Databases_listCollections
+    post: Databases_createCollection
+  /databases/{databaseId}/collections/{collectionId}:
+    delete: Databases_deleteCollectionById
+    get: Databases_getCollectionById
+    put: Databases_updateCollectionById
+  /databases/{databaseId}/collections/{collectionId}/attributes:
+    get: Databases_listCollectionAttributes
+  /databases/{databaseId}/collections/{collectionId}/attributes/boolean:
+    post: Databases_createBooleanAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}:
+    patch: Databases_updateBooleanAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/datetime:
+    post: Databases_createDatetimeAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}:
+    patch: Databases_updateDatetimeAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/email:
+    post: Databases_createEmailAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/email/{key}:
+    patch: Databases_updateEmailAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/enum:
+    post: Databases_createEnumAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}:
+    patch: Databases_updateEnumAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/float:
+    post: Databases_createFloatAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/float/{key}:
+    patch: Databases_updateFloatAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/integer:
+    post: Databases_createIntegerAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}:
+    patch: Databases_updateIntegerAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/ip:
+    post: Databases_createIpAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}:
+    patch: Databases_updateIpAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/relationship:
+    post: Databases_createRelationshipAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/string:
+    post: Databases_createStringAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/string/{key}:
+    patch: Databases_updateStringAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/url:
+    post: Databases_createUrlAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/url/{key}:
+    patch: Databases_updateUrlAttribute
+  /databases/{databaseId}/collections/{collectionId}/attributes/{key}:
+    delete: Databases_deleteAttributeById
+    get: Databases_getAttributeById
+  /databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship:
+    patch: Databases_updateRelationshipAttribute
+  /databases/{databaseId}/collections/{collectionId}/documents:
+    get: Databases_listCollectionDocuments
+    post: Databases_createDocument
+  /databases/{databaseId}/collections/{collectionId}/documents/{documentId}:
+    delete: Databases_deleteDocumentById
+    get: Databases_getDocumentById
+    patch: Databases_updateDocumentById
+  /databases/{databaseId}/collections/{collectionId}/indexes:
+    get: Databases_listIndexes
+    post: Databases_createIndex
+  /databases/{databaseId}/collections/{collectionId}/indexes/{key}:
+    delete: Databases_deleteIndex
+    get: Databases_getIndexById
+  /functions:
+    get: Functions_listAllFunctions
+    post: Functions_createNewFunction
+  /functions/runtimes:
+    get: Functions_listRuntimes
+  /functions/{functionId}:
+    delete: Functions_deleteById
+    get: Functions_getById
+    put: Functions_updateById
+  /functions/{functionId}/deployments:
+    get: Functions_listDeployments
+    post: Functions_createDeploymentFunctionCode
+  /functions/{functionId}/deployments/{deploymentId}:
+    delete: Functions_deleteDeployment
+    get: Functions_getDeploymentById
+    patch: Functions_updateDeploymentFunctionCode
+  /functions/{functionId}/deployments/{deploymentId}/builds/{buildId}:
+    post: Functions_createBuild
+  /functions/{functionId}/deployments/{deploymentId}/download:
+    get: Functions_getDeploymentContents
+  /functions/{functionId}/executions:
+    get: Functions_listExecutions
+    post: Functions_triggerExecution
+  /functions/{functionId}/executions/{executionId}:
+    get: Functions_getExecutionLog
+  /functions/{functionId}/variables:
+    get: Functions_listVariables
+    post: Functions_createVariable
+  /functions/{functionId}/variables/{variableId}:
+    delete: Functions_deleteVariableById
+    get: Functions_getVariableById
+    put: Functions_updateVariableById
+  /graphql:
+    post: Graphql_executeMutation
+  /graphql/mutation:
+    post: Graphql_executeMutation
+  /health:
+    get: Health_checkServerStatus
+  /health/anti-virus:
+    get: Health_checkAntivirusStatus
+  /health/cache:
+    get: Health_checkCacheStatus
+  /health/certificate:
+    get: Health_getSslCert
+  /health/db:
+    get: Health_checkDbStatus
+  /health/pubsub:
+    get: Health_checkPubsubServerStatus
+  /health/queue:
+    get: Health_getQueueStatus
+  /health/queue/builds:
+    get: Health_getBuildsQueue
+  /health/queue/certificates:
+    get: Health_queueCertificatesGet
+  /health/queue/databases:
+    get: Health_getDatabasesQueue
+  /health/queue/deletes:
+    get: Health_getDeletesQueue
+  /health/queue/failed/{name}:
+    get: Health_getFailedJobs
+  /health/queue/functions:
+    get: Health_functionsQueueCount
+  /health/queue/logs:
+    get: Health_getQueueLogs
+  /health/queue/mails:
+    get: Health_getMailQueueSize
+  /health/queue/messaging:
+    get: Health_getQueueMessaging
+  /health/queue/migrations:
+    get: Health_getMigrationsQueue
+  /health/queue/usage:
+    get: Health_getQueueUsage
+  /health/queue/usage-dump:
+    get: Health_getQueueUsageDump
+  /health/queue/webhooks:
+    get: Health_getWebhooksQueue
+  /health/storage:
+    get: Health_checkStorageStatus
+  /health/storage/local:
+    get: Health_checkLocalStorageStatus
+  /health/time:
+    get: Health_getTimeInformation
+  /locale:
+    get: Locale_getUserLocaleData
+  /locale/codes:
+    get: Locale_listCodes
+  /locale/continents:
+    get: Locale_listContinents
+  /locale/countries:
+    get: Locale_listCountries
+  /locale/countries/eu:
+    get: Locale_listEuCountries
+  /locale/countries/phones:
+    get: Locale_listPhoneCodes
+  /locale/currencies:
+    get: Locale_listCurrenciesData
+  /locale/languages:
+    get: Locale_getLanguageList
+  /messaging/messages:
+    get: Messaging_listMessages
+  /messaging/messages/email:
+    post: Messaging_createEmailMessage
+  /messaging/messages/email/{messageId}:
+    patch: Messaging_updateEmailById
+  /messaging/messages/push:
+    post: Messaging_createPushNotification
+  /messaging/messages/push/{messageId}:
+    patch: Messaging_updatePushNotification
+  /messaging/messages/sms:
+    post: Messaging_createSmsMessage
+  /messaging/messages/sms/{messageId}:
+    patch: Messaging_updateSmsMessage
+  /messaging/messages/{messageId}:
+    delete: Messaging_deleteMessageById
+    get: Messaging_getMessageById
+  /messaging/messages/{messageId}/logs:
+    get: Messaging_getMessageLogs
+  /messaging/messages/{messageId}/targets:
+    get: Messaging_listMessageTargets
+  /messaging/providers:
+    get: Messaging_listProviders
+  /messaging/providers/apns:
+    post: Messaging_createApnsProvider
+  /messaging/providers/apns/{providerId}:
+    patch: Messaging_updateApnsProvider
+  /messaging/providers/fcm:
+    post: Messaging_createFcmProvider
+  /messaging/providers/fcm/{providerId}:
+    patch: Messaging_updateFcmProviderById
+  /messaging/providers/mailgun:
+    post: Messaging_createProvider
+  /messaging/providers/mailgun/{providerId}:
+    patch: Messaging_updateMailgunProvider
+  /messaging/providers/msg91:
+    post: Messaging_createMsg91Provider
+  /messaging/providers/msg91/{providerId}:
+    patch: Messaging_updateMsg91Provider
+  /messaging/providers/sendgrid:
+    post: Messaging_createSendgridProvider
+  /messaging/providers/sendgrid/{providerId}:
+    patch: Messaging_updateProvider
+  /messaging/providers/smtp:
+    post: Messaging_createSmtpProvider
+  /messaging/providers/smtp/{providerId}:
+    patch: Messaging_updateProviderById
+  /messaging/providers/telesign:
+    post: Messaging_createTelesignProvider
+  /messaging/providers/telesign/{providerId}:
+    patch: Messaging_updateTelesignProvider
+  /messaging/providers/textmagic:
+    post: Messaging_createTextmagicProvider
+  /messaging/providers/textmagic/{providerId}:
+    patch: Messaging_updateTextmagicProvider
+  /messaging/providers/twilio:
+    post: Messaging_createTwilioProvider
+  /messaging/providers/twilio/{providerId}:
+    patch: Messaging_updateTwilioProvider
+  /messaging/providers/vonage:
+    post: Messaging_createVonageProvider
+  /messaging/providers/vonage/{providerId}:
+    patch: Messaging_updateVonageProvider
+  /messaging/providers/{providerId}:
+    delete: Messaging_deleteProviderById
+    get: Messaging_getProviderById
+  /messaging/providers/{providerId}/logs:
+    get: Messaging_listProviderLogs
+  /messaging/subscribers/{subscriberId}/logs:
+    get: Messaging_listSubscriberLogs
+  /messaging/topics:
+    get: Messaging_listTopics
+    post: Messaging_createTopic
+  /messaging/topics/{topicId}:
+    delete: Messaging_deleteTopicById
+    get: Messaging_getTopicById
+    patch: Messaging_updateTopicById
+  /messaging/topics/{topicId}/logs:
+    get: Messaging_listTopicLogs
+  /messaging/topics/{topicId}/subscribers:
+    get: Messaging_listSubscribers
+    post: Messaging_createSubscriber
+  /messaging/topics/{topicId}/subscribers/{subscriberId}:
+    delete: Messaging_deleteSubscriberById
+    get: Messaging_getSubscriberById
+  /storage/buckets:
+    get: Storage_listBuckets
+    post: Storage_createNewBucket
+  /storage/buckets/{bucketId}:
+    delete: Storage_deleteBucketById
+    get: Storage_getBucketById
+    put: Storage_updateBucketById
+  /storage/buckets/{bucketId}/files:
+    get: Storage_listFiles
+    post: Storage_createFile
+  /storage/buckets/{bucketId}/files/{fileId}:
+    delete: Storage_deleteFileById
+    get: Storage_getFileById
+    put: Storage_updateFileById
+  /storage/buckets/{bucketId}/files/{fileId}/download:
+    get: Storage_getFileDownload
+  /storage/buckets/{bucketId}/files/{fileId}/preview:
+    get: Storage_getFilePreviewImage
+  /storage/buckets/{bucketId}/files/{fileId}/view:
+    get: Storage_getFileView
+  /teams:
+    get: Teams_getUserTeams
+    post: Teams_createNewTeam
+  /teams/{teamId}:
+    delete: Teams_removeTeamById
+    get: Teams_getById
+    put: Teams_updateNameById
+  /teams/{teamId}/memberships:
+    get: Teams_listMemberships
+    post: Teams_createMembershipRequest
+  /teams/{teamId}/memberships/{membershipId}:
+    delete: Teams_deleteMembership
+    get: Teams_getMembership
+    patch: Teams_updateMembershipRoles
+  /teams/{teamId}/memberships/{membershipId}/status:
+    patch: Teams_updateMembershipStatus
+  /teams/{teamId}/prefs:
+    get: Teams_getPrefsById
+    put: Teams_updatePrefsById
+  /users:
+    get: Users_listAll
+    post: Users_createNewUser
+  /users/argon2:
+    post: Users_createArgon2User
+  /users/bcrypt:
+    post: Users_createBcryptUser
+  /users/identities:
+    get: Users_listIdentities
+  /users/identities/{identityId}:
+    delete: Users_deleteIdentityById
+  /users/md5:
+    post: Users_createMd5User
+  /users/phpass:
+    post: Users_createPhpassUser
+  /users/scrypt:
+    post: Users_createScryptUser
+  /users/scrypt-modified:
+    post: Users_createScryptModifiedUser
+  /users/sha:
+    post: Users_createShaUser
+  /users/{userId}:
+    delete: Users_deleteUserById
+    get: Users_getById
+  /users/{userId}/email:
+    patch: Users_updateEmailById
+  /users/{userId}/labels:
+    put: Users_updateLabelsById
+  /users/{userId}/logs:
+    get: Users_listUserLogs
+  /users/{userId}/memberships:
+    get: Users_listMemberships
+  /users/{userId}/mfa:
+    patch: Users_updateMfaStatus
+  /users/{userId}/mfa/authenticators/{type}:
+    delete: Users_deleteAuthenticator
+  /users/{userId}/mfa/factors:
+    get: Users_listFactors
+  /users/{userId}/mfa/recovery-codes:
+    get: Users_getMfaRecoveryCodes
+    patch: Users_createMfaRecoveryCodes
+    put: Users_regenerateMfaRecoveryCodes
+  /users/{userId}/name:
+    patch: Users_updateUserByName
+  /users/{userId}/password:
+    patch: Users_updatePasswordById
+  /users/{userId}/phone:
+    patch: Users_updatePhoneById
+  /users/{userId}/prefs:
+    get: Users_getUserPrefs
+    patch: Users_updatePreferencesById
+  /users/{userId}/sessions:
+    delete: Users_deleteUserSessions
+    get: Users_listSessions
+    post: Users_createSession
+  /users/{userId}/sessions/{sessionId}:
+    delete: Users_deleteSessionById
+  /users/{userId}/status:
+    patch: Users_updateStatus
+  /users/{userId}/targets:
+    get: Users_listTargets
+    post: Users_createTargetMessaging
+  /users/{userId}/targets/{targetId}:
+    delete: Users_deleteTargetMessaging
+    get: Users_getUserTargetById
+    patch: Users_updateTargetMessaging
+  /users/{userId}/tokens:
+    post: Users_createTokenSession
+  /users/{userId}/verification:
+    patch: Users_updateEmailVerification
+  /users/{userId}/verification/phone:
+    patch: Users_updatePhoneVerification
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /account:
+    post:
+      application/json: AccountCreateNewUserRequest
+  /account/email:
+    patch:
+      application/json: AccountUpdateEmailAddressRequest
+  /account/mfa:
+    patch:
+      application/json: AccountUpdateMfaStatusRequest
+  /account/mfa/authenticators/{type}:
+    delete:
+      application/json: AccountDeleteAuthenticatorByIdRequest
+    put:
+      application/json: AccountVerifyAuthenticatorRequest
+  /account/mfa/challenge:
+    post:
+      application/json: AccountBeginMfaVerificationRequest
+    put:
+      application/json: AccountCompleteMfaChallengeRequest
+  /account/name:
+    patch:
+      application/json: AccountUpdateNameOperationRequest
+  /account/password:
+    patch:
+      application/json: AccountUpdatePasswordOperationRequest
+  /account/phone:
+    patch:
+      application/json: AccountUpdatePhoneRequest
+  /account/prefs:
+    patch:
+      application/json: AccountUpdatePreferencesRequest
+  /account/recovery:
+    post:
+      application/json: AccountCreatePasswordRecoveryRequest
+    put:
+      application/json: AccountCompletePasswordRecoveryRequest
+  /account/sessions/email:
+    post:
+      application/json: AccountCreateEmailPasswordSessionRequest
+  /account/sessions/magic-url:
+    put:
+      application/json: AccountUpdateMagicUrlSessionRequest
+  /account/sessions/phone:
+    put:
+      application/json: AccountUpdatePhoneSessionRequest
+  /account/sessions/token:
+    post:
+      application/json: AccountCreateTokenSessionRequest
+  /account/tokens/email:
+    post:
+      application/json: AccountCreateEmailTokenRequest
+  /account/tokens/magic-url:
+    post:
+      application/json: AccountCreateMagicUrlTokenRequest
+  /account/tokens/phone:
+    post:
+      application/json: AccountCreatePhoneTokenRequest
+  /account/verification:
+    post:
+      application/json: AccountCreateEmailVerificationRequest
+    put:
+      application/json: AccountCompleteEmailVerificationRequest
+  /account/verification/phone:
+    put:
+      application/json: AccountConfirmPhoneVerificationRequest
+  /databases:
+    post:
+      application/json: DatabasesCreateDatabaseRequest
+  /databases/{databaseId}:
+    put:
+      application/json: DatabasesUpdateByIdRequest
+  /databases/{databaseId}/collections:
+    post:
+      application/json: DatabasesCreateCollectionRequest
+  /databases/{databaseId}/collections/{collectionId}:
+    put:
+      application/json: DatabasesUpdateCollectionByIdRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/boolean:
+    post:
+      application/json: DatabasesCreateBooleanAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/boolean/{key}:
+    patch:
+      application/json: DatabasesUpdateBooleanAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/datetime:
+    post:
+      application/json: DatabasesCreateDatetimeAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/datetime/{key}:
+    patch:
+      application/json: DatabasesUpdateDatetimeAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/email:
+    post:
+      application/json: DatabasesCreateEmailAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/email/{key}:
+    patch:
+      application/json: DatabasesUpdateEmailAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/enum:
+    post:
+      application/json: DatabasesCreateEnumAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/enum/{key}:
+    patch:
+      application/json: DatabasesUpdateEnumAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/float:
+    post:
+      application/json: DatabasesCreateFloatAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/float/{key}:
+    patch:
+      application/json: DatabasesUpdateFloatAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/integer:
+    post:
+      application/json: DatabasesCreateIntegerAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/integer/{key}:
+    patch:
+      application/json: DatabasesUpdateIntegerAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/ip:
+    post:
+      application/json: DatabasesCreateIpAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/ip/{key}:
+    patch:
+      application/json: DatabasesUpdateIpAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/relationship:
+    post:
+      application/json: DatabasesCreateRelationshipAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/string:
+    post:
+      application/json: DatabasesCreateStringAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/string/{key}:
+    patch:
+      application/json: DatabasesUpdateStringAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/url:
+    post:
+      application/json: DatabasesCreateUrlAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/url/{key}:
+    patch:
+      application/json: DatabasesUpdateUrlAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/attributes/{key}/relationship:
+    patch:
+      application/json: DatabasesUpdateRelationshipAttributeRequest
+  /databases/{databaseId}/collections/{collectionId}/documents:
+    post:
+      application/json: DatabasesCreateDocumentRequest
+  /databases/{databaseId}/collections/{collectionId}/documents/{documentId}:
+    patch:
+      application/json: DatabasesUpdateDocumentByIdRequest
+  /databases/{databaseId}/collections/{collectionId}/indexes:
+    post:
+      application/json: DatabasesCreateIndexRequest
+  /functions:
+    post:
+      application/json: FunctionsCreateNewFunctionRequest
+  /functions/{functionId}:
+    put:
+      application/json: FunctionsUpdateByIdRequest
+  /functions/{functionId}/deployments:
+    post:
+      multipart/form-data: FunctionsCreateDeploymentFunctionCodeRequest
+  /functions/{functionId}/executions:
+    post:
+      application/json: FunctionsTriggerExecutionRequest
+  /functions/{functionId}/variables:
+    post:
+      application/json: FunctionsCreateVariableRequest
+  /functions/{functionId}/variables/{variableId}:
+    put:
+      application/json: FunctionsUpdateVariableByIdRequest
+  /messaging/messages/email:
+    post:
+      application/json: MessagingCreateEmailMessageRequest
+  /messaging/messages/email/{messageId}:
+    patch:
+      application/json: MessagingUpdateEmailByIdRequest
+  /messaging/messages/push:
+    post:
+      application/json: MessagingCreatePushNotificationRequest
+  /messaging/messages/push/{messageId}:
+    patch:
+      application/json: MessagingUpdatePushNotificationRequest
+  /messaging/messages/sms:
+    post:
+      application/json: MessagingCreateSmsMessageRequest
+  /messaging/messages/sms/{messageId}:
+    patch:
+      application/json: MessagingUpdateSmsMessageRequest
+  /messaging/providers/apns:
+    post:
+      application/json: MessagingCreateApnsProviderRequest
+  /messaging/providers/apns/{providerId}:
+    patch:
+      application/json: MessagingUpdateApnsProviderRequest
+  /messaging/providers/fcm:
+    post:
+      application/json: MessagingCreateFcmProviderRequest
+  /messaging/providers/fcm/{providerId}:
+    patch:
+      application/json: MessagingUpdateFcmProviderByIdRequest
+  /messaging/providers/mailgun:
+    post:
+      application/json: MessagingCreateProviderRequest
+  /messaging/providers/mailgun/{providerId}:
+    patch:
+      application/json: MessagingUpdateMailgunProviderRequest
+  /messaging/providers/msg91:
+    post:
+      application/json: MessagingCreateMsg91ProviderRequest
+  /messaging/providers/msg91/{providerId}:
+    patch:
+      application/json: MessagingUpdateMsg91ProviderRequest
+  /messaging/providers/sendgrid:
+    post:
+      application/json: MessagingCreateSendgridProviderRequest
+  /messaging/providers/sendgrid/{providerId}:
+    patch:
+      application/json: MessagingUpdateProviderRequest
+  /messaging/providers/smtp:
+    post:
+      application/json: MessagingCreateSmtpProviderRequest
+  /messaging/providers/smtp/{providerId}:
+    patch:
+      application/json: MessagingUpdateProviderByIdRequest
+  /messaging/providers/telesign:
+    post:
+      application/json: MessagingCreateTelesignProviderRequest
+  /messaging/providers/telesign/{providerId}:
+    patch:
+      application/json: MessagingUpdateTelesignProviderRequest
+  /messaging/providers/textmagic:
+    post:
+      application/json: MessagingCreateTextmagicProviderRequest
+  /messaging/providers/textmagic/{providerId}:
+    patch:
+      application/json: MessagingUpdateTextmagicProviderRequest
+  /messaging/providers/twilio:
+    post:
+      application/json: MessagingCreateTwilioProviderRequest
+  /messaging/providers/twilio/{providerId}:
+    patch:
+      application/json: MessagingUpdateTwilioProviderRequest
+  /messaging/providers/vonage:
+    post:
+      application/json: MessagingCreateVonageProviderRequest
+  /messaging/providers/vonage/{providerId}:
+    patch:
+      application/json: MessagingUpdateVonageProviderRequest
+  /messaging/topics:
+    post:
+      application/json: MessagingCreateTopicRequest
+  /messaging/topics/{topicId}:
+    patch:
+      application/json: MessagingUpdateTopicByIdRequest
+  /messaging/topics/{topicId}/subscribers:
+    post:
+      application/json: MessagingCreateSubscriberRequest
+  /storage/buckets:
+    post:
+      application/json: StorageCreateNewBucketRequest
+  /storage/buckets/{bucketId}:
+    put:
+      application/json: StorageUpdateBucketByIdRequest
+  /storage/buckets/{bucketId}/files:
+    post:
+      multipart/form-data: StorageCreateFileRequest
+  /storage/buckets/{bucketId}/files/{fileId}:
+    put:
+      application/json: StorageUpdateFileByIdRequest
+  /teams:
+    post:
+      application/json: TeamsCreateNewTeamRequest
+  /teams/{teamId}:
+    put:
+      application/json: TeamsUpdateNameByIdRequest
+  /teams/{teamId}/memberships:
+    post:
+      application/json: TeamsCreateMembershipRequestRequest
+  /teams/{teamId}/memberships/{membershipId}:
+    patch:
+      application/json: TeamsUpdateMembershipRolesRequest
+  /teams/{teamId}/memberships/{membershipId}/status:
+    patch:
+      application/json: TeamsUpdateMembershipStatusRequest
+  /teams/{teamId}/prefs:
+    put:
+      application/json: TeamsUpdatePrefsByIdRequest
+  /users:
+    post:
+      application/json: UsersCreateNewUserRequest
+  /users/argon2:
+    post:
+      application/json: UsersCreateArgon2UserRequest
+  /users/bcrypt:
+    post:
+      application/json: UsersCreateBcryptUserRequest
+  /users/md5:
+    post:
+      application/json: UsersCreateMd5UserRequest
+  /users/phpass:
+    post:
+      application/json: UsersCreatePhpassUserRequest
+  /users/scrypt:
+    post:
+      application/json: UsersCreateScryptUserRequest
+  /users/scrypt-modified:
+    post:
+      application/json: UsersCreateScryptModifiedUserRequest
+  /users/sha:
+    post:
+      application/json: UsersCreateShaUserRequest
+  /users/{userId}/email:
+    patch:
+      application/json: UsersUpdateEmailByIdRequest
+  /users/{userId}/labels:
+    put:
+      application/json: UsersUpdateLabelsByIdRequest
+  /users/{userId}/mfa:
+    patch:
+      application/json: UsersUpdateMfaStatusRequest
+  /users/{userId}/name:
+    patch:
+      application/json: UsersUpdateUserByNameRequest
+  /users/{userId}/password:
+    patch:
+      application/json: UsersUpdatePasswordByIdRequest
+  /users/{userId}/phone:
+    patch:
+      application/json: UsersUpdatePhoneByIdRequest
+  /users/{userId}/prefs:
+    patch:
+      application/json: UsersUpdatePreferencesByIdRequest
+  /users/{userId}/status:
+    patch:
+      application/json: UsersUpdateStatusRequest
+  /users/{userId}/targets:
+    post:
+      application/json: UsersCreateTargetMessagingRequest
+  /users/{userId}/targets/{targetId}:
+    patch:
+      application/json: UsersUpdateTargetMessagingRequest
+  /users/{userId}/tokens:
+    post:
+      application/json: UsersCreateTokenSessionRequest
+  /users/{userId}/verification:
+    patch:
+      application/json: UsersUpdateEmailVerificationRequest
+  /users/{userId}/verification/phone:
+    patch:
+      application/json: UsersUpdatePhoneVerificationRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /databases/{databaseId}/collections/{collectionId}/attributes/{key}:
+    get:
+      '200':
+        application/json: DatabasesGetAttributeByIdResponse
+securityParameters:
+  background:
+    query: false
+  borderColor:
+    query: false
+  borderRadius:
+    query: false
+  borderWidth:
+    query: false
+  domain:
+    query: false
+  download:
+    query: false
+  failure:
+    query: false
+  gravity:
+    query: false
+  height:
+    query: false
+  margin:
+    query: false
+  name:
+    query: false
+  opacity:
+    query: false
+  output:
+    query: false
+  quality:
+    query: false
+  queries:
+    query: false
+  rotation:
+    query: false
+  scopes:
+    query: false
+  search:
+    query: false
+  size:
+    query: false
+  success:
+    query: false
+  text:
+    query: false
+  threshold:
+    query: false
+  url:
+    query: false
+  width:
+    query: false
+validServerUrls: {}

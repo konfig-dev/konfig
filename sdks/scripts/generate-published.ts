@@ -298,7 +298,8 @@ async function main() {
         JSON.stringify(publishData) &&
       fixedSpecCache.rawSpecString === rawSpecString &&
       fixedSpecCache.konfigCliVersion === getLocalKonfigCliVersion() &&
-      fs.existsSync(fixedSpecPath)
+      fs.existsSync(fixedSpecPath) &&
+      fs.readFileSync(fixedSpecPath, "utf-8").length > 0
     ) {
       console.log(`⚪️ Skipping fixing of ${spec} because it is cached`);
       continue;
@@ -407,7 +408,7 @@ async function main() {
     const fixedSpecPath = path.join(fixedSpecsOutputPath, fixedSpecFileName);
     const fixedSpecString = fs.readFileSync(fixedSpecPath, "utf-8");
     if (fixedSpecString === "") {
-      throw Error(`❌ ERROR: ${fixedSpecPath} is empty`);
+      throw Error(`❌ ERROR: ${fixedSpecPath} is empty for ${spec}`);
     }
     const openapiExamplesFilePath = path.join(
       openapiExamplesDirPath,

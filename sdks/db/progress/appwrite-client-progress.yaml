@@ -1,0 +1,324 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+operationIds:
+  /account:
+    get: Account_getCurrentUser
+    post: Account_registerUser
+  /account/email:
+    patch: Account_updateUserEmail
+  /account/identities:
+    get: Account_listIdentities
+  /account/identities/{identityId}:
+    delete: Account_deleteIdentityById
+  /account/jwt:
+    post: Account_createJwt
+  /account/logs:
+    get: Account_listLogs
+  /account/mfa:
+    patch: Account_updateMfaStatus
+  /account/mfa/authenticators/{type}:
+    delete: Account_deleteAuthenticator
+    post: Account_addAuthenticator
+    put: Account_verifyAuthenticator
+  /account/mfa/challenge:
+    post: Account_createMfaChallenge
+    put: Account_completeMfaChallenge
+  /account/mfa/factors:
+    get: Account_listMfaFactors
+  /account/mfa/recovery-codes:
+    get: Account_getMfaRecoveryCodes
+    patch: Account_regenerateMfaRecoveryCodes
+    post: Account_createMfaRecoveryCodes
+  /account/name:
+    patch: Account_updateNameOperation
+  /account/password:
+    patch: Account_updatePassword
+  /account/phone:
+    patch: Account_updatePhone
+  /account/prefs:
+    get: Account_getPrefs
+    patch: Account_updatePreferences
+  /account/recovery:
+    post: Account_createPasswordRecovery
+    put: Account_completePasswordRecovery
+  /account/sessions:
+    delete: Account_removeSessions
+    get: Account_listSessions
+  /account/sessions/anonymous:
+    post: Account_createAnonymousSession
+  /account/sessions/email:
+    post: Account_createEmailPasswordSession
+  /account/sessions/magic-url:
+    put: Account_updateMagicUrlSession
+  /account/sessions/oauth2/{provider}:
+    get: Account_createOAuth2Session
+  /account/sessions/phone:
+    put: Account_updatePhoneSession
+  /account/sessions/token:
+    post: Account_createSessionFromToken
+  /account/sessions/{sessionId}:
+    delete: Account_logoutSessionById
+    get: Account_getSession
+    patch: Account_extendSessionLength
+  /account/status:
+    patch: Account_blockUserStatus
+  /account/targets/push:
+    post: Account_createPushTarget
+  /account/targets/{targetId}/push:
+    delete: Account_deletePushTarget
+    put: Account_updatePushTarget
+  /account/tokens/email:
+    post: Account_createEmailToken
+  /account/tokens/magic-url:
+    post: Account_createMagicUrlToken
+  /account/tokens/oauth2/{provider}:
+    get: Account_createOAuth2Token
+  /account/tokens/phone:
+    post: Account_createPhoneToken
+  /account/verification:
+    post: Account_createEmailVerification
+    put: Account_createEmailVerification
+  /account/verification/phone:
+    post: Account_createPhoneVerification
+    put: Account_confirmPhoneVerification
+  /avatars/browsers/{code}:
+    get: Avatars_getBrowserIconByCode
+  /avatars/credit-cards/{code}:
+    get: Avatars_getCreditCardIcon
+  /avatars/favicon:
+    get: Avatars_getFavicon
+  /avatars/flags/{code}:
+    get: Avatars_getCountryFlagByCode
+  /avatars/image:
+    get: Avatars_getRemoteImage
+  /avatars/initials:
+    get: Avatars_getUserInitials
+  /avatars/qr:
+    get: Avatars_generateQrCodeImage
+  /databases/{databaseId}/collections/{collectionId}/documents:
+    get: Databases_listUserDocuments
+    post: Databases_createDocument
+  /databases/{databaseId}/collections/{collectionId}/documents/{documentId}:
+    delete: Databases_deleteDocumentById
+    get: Databases_getDocumentById
+    patch: Databases_updateDocumentById
+  /functions/{functionId}/executions:
+    get: Functions_listExecutions
+    post: Functions_triggerFunctionExecution
+  /functions/{functionId}/executions/{executionId}:
+    get: Functions_getExecutionLog
+  /graphql:
+    post: Graphql_executeMutation
+  /graphql/mutation:
+    post: Graphql_executeMutationOperation
+  /locale:
+    get: Locale_getUserLocale
+  /locale/codes:
+    get: Locale_listCodes
+  /locale/continents:
+    get: Locale_listContinents
+  /locale/countries:
+    get: Locale_listCountries
+  /locale/countries/eu:
+    get: Locale_getEUCountries
+  /locale/countries/phones:
+    get: Locale_listCountriesPhones
+  /locale/currencies:
+    get: Locale_getCurrencies
+  /locale/languages:
+    get: Locale_listLanguages
+  /messaging/topics/{topicId}/subscribers:
+    post: Messaging_addNewSubscriber
+  /messaging/topics/{topicId}/subscribers/{subscriberId}:
+    delete: Messaging_deleteSubscriberById
+  /storage/buckets/{bucketId}/files:
+    get: Storage_listFiles
+    post: Storage_createFile
+  /storage/buckets/{bucketId}/files/{fileId}:
+    delete: Storage_deleteFileById
+    get: Storage_getFileById
+    put: Storage_updateFileById
+  /storage/buckets/{bucketId}/files/{fileId}/download:
+    get: Storage_getFileDownload
+  /storage/buckets/{bucketId}/files/{fileId}/preview:
+    get: Storage_getFilePreviewImage
+  /storage/buckets/{bucketId}/files/{fileId}/view:
+    get: Storage_getFileForView
+  /teams:
+    get: Teams_getUserMemberships
+    post: Teams_createNewTeam
+  /teams/{teamId}:
+    delete: Teams_removeTeam
+    get: Teams_getById
+    put: Teams_updateNameById
+  /teams/{teamId}/memberships:
+    get: Teams_listMemberships
+    post: Teams_createMembership
+  /teams/{teamId}/memberships/{membershipId}:
+    delete: Teams_deleteMembership
+    get: Teams_getMembership
+    patch: Teams_updateMembershipRoles
+  /teams/{teamId}/memberships/{membershipId}/status:
+    patch: Teams_updateMembershipStatus
+  /teams/{teamId}/prefs:
+    get: Teams_getPrefs
+    put: Teams_updatePrefsById
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /account:
+    post:
+      application/json: AccountRegisterUserRequest
+  /account/email:
+    patch:
+      application/json: AccountUpdateUserEmailRequest
+  /account/mfa:
+    patch:
+      application/json: AccountUpdateMfaStatusRequest
+  /account/mfa/authenticators/{type}:
+    delete:
+      application/json: AccountDeleteAuthenticatorRequest
+    put:
+      application/json: AccountVerifyAuthenticatorRequest
+  /account/mfa/challenge:
+    post:
+      application/json: AccountCreateMfaChallengeRequest
+    put:
+      application/json: AccountCompleteMfaChallengeRequest
+  /account/name:
+    patch:
+      application/json: AccountUpdateNameOperationRequest
+  /account/password:
+    patch:
+      application/json: AccountUpdatePasswordRequest
+  /account/phone:
+    patch:
+      application/json: AccountUpdatePhoneRequest
+  /account/prefs:
+    patch:
+      application/json: AccountUpdatePreferencesRequest
+  /account/recovery:
+    post:
+      application/json: AccountCreatePasswordRecoveryRequest
+    put:
+      application/json: AccountCompletePasswordRecoveryRequest
+  /account/sessions/email:
+    post:
+      application/json: AccountCreateEmailPasswordSessionRequest
+  /account/sessions/magic-url:
+    put:
+      application/json: AccountUpdateMagicUrlSessionRequest
+  /account/sessions/phone:
+    put:
+      application/json: AccountUpdatePhoneSessionRequest
+  /account/sessions/token:
+    post:
+      application/json: AccountCreateSessionFromTokenRequest
+  /account/targets/push:
+    post:
+      application/json: AccountCreatePushTargetRequest
+  /account/targets/{targetId}/push:
+    put:
+      application/json: AccountUpdatePushTargetRequest
+  /account/tokens/email:
+    post:
+      application/json: AccountCreateEmailTokenRequest
+  /account/tokens/magic-url:
+    post:
+      application/json: AccountCreateMagicUrlTokenRequest
+  /account/tokens/phone:
+    post:
+      application/json: AccountCreatePhoneTokenRequest
+  /account/verification:
+    post:
+      application/json: AccountCreateEmailVerificationRequest
+    put:
+      application/json: AccountCreateEmailVerificationRequest1
+  /account/verification/phone:
+    put:
+      application/json: AccountConfirmPhoneVerificationRequest
+  /databases/{databaseId}/collections/{collectionId}/documents:
+    post:
+      application/json: DatabasesCreateDocumentRequest
+  /databases/{databaseId}/collections/{collectionId}/documents/{documentId}:
+    patch:
+      application/json: DatabasesUpdateDocumentByIdRequest
+  /functions/{functionId}/executions:
+    post:
+      application/json: FunctionsTriggerFunctionExecutionRequest
+  /messaging/topics/{topicId}/subscribers:
+    post:
+      application/json: MessagingAddNewSubscriberRequest
+  /storage/buckets/{bucketId}/files:
+    post:
+      multipart/form-data: StorageCreateFileRequest
+  /storage/buckets/{bucketId}/files/{fileId}:
+    put:
+      application/json: StorageUpdateFileByIdRequest
+  /teams:
+    post:
+      application/json: TeamsCreateNewTeamRequest
+  /teams/{teamId}:
+    put:
+      application/json: TeamsUpdateNameByIdRequest
+  /teams/{teamId}/memberships:
+    post:
+      application/json: TeamsCreateMembershipRequest
+  /teams/{teamId}/memberships/{membershipId}:
+    patch:
+      application/json: TeamsUpdateMembershipRolesRequest
+  /teams/{teamId}/memberships/{membershipId}/status:
+    patch:
+      application/json: TeamsUpdateMembershipStatusRequest
+  /teams/{teamId}/prefs:
+    put:
+      application/json: TeamsUpdatePrefsByIdRequest
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  background:
+    query: false
+  borderColor:
+    query: false
+  borderRadius:
+    query: false
+  borderWidth:
+    query: false
+  download:
+    query: false
+  failure:
+    query: false
+  gravity:
+    query: false
+  height:
+    query: false
+  margin:
+    query: false
+  name:
+    query: false
+  opacity:
+    query: false
+  output:
+    query: false
+  quality:
+    query: false
+  queries:
+    query: false
+  rotation:
+    query: false
+  scopes:
+    query: false
+  search:
+    query: false
+  size:
+    query: false
+  success:
+    query: false
+  text:
+    query: false
+  url:
+    query: false
+  width:
+    query: false
+validServerUrls: {}
