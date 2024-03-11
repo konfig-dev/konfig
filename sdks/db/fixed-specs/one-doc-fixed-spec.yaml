@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: API Doc
+  description: Missing description placeholder
+  version: '1.0'
+servers:
+  - url: https://app.onedoclabs.com
+tags:
+  - name: Document
+paths:
+  /api/docs/generate:
+    post:
+      tags:
+        - Document
+      summary: Generates a PDF from a specified bucket.
+      operationId: Document_generatePdfFromBucket
+      security:
+        - ApiKeyAuth: []
+      description: >-
+        This route is responsible for generating a PDF from a bucket.  It
+        expects a JSON body with details of the bucket, user credentials, and
+        PDF generation options.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentGeneratePdfFromBucketRequest'
+      responses:
+        '200':
+          description: PDF generated and returned successfully.
+          content:
+            application/pdf:
+              schema:
+                $ref: '#/components/schemas/DocumentGeneratePdfFromBucketResponse'
+        '400':
+          description: Bad request, missing or incorrect data.
+        '401':
+          description: Unauthorized, no API key found or invalid API key.
+        '404':
+          description: Bucket not found.
+        '500':
+          description: Server error or unable to process the request.
+  /api/docs/initiate:
+    post:
+      tags:
+        - Document
+      summary: Initiates a document's rendering
+      operationId: Document_renderingBucket
+      security:
+        - ApiKeyAuth: []
+      description: >-
+        This endpoint creates a bucket for the html and all specified assets. It
+        returns signed urls to the buckets.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentRenderingBucketRequest'
+      responses:
+        '200':
+          description: >-
+            Successfully generated and returned signed URLs along with user
+            credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentRenderingBucketResponse'
+        '401':
+          description: Unauthorized, no API key found or invalid API key.
+        '500':
+          description: Server error or unable to process the request.
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+  schemas:
+    DocumentGeneratePdfFromBucketRequest:
+      type: object
+      properties:
+        title:
+          description: The title of the PDF, defaults to "document".
+          type: string
+          default: document
+        bucket:
+          description: The identifier of the bucket.
+          type: string
+        password:
+          description: The password of the bucket.
+          type: string
+        username:
+          description: The username of the bucket.
+          type: string
+        test:
+          description: Whether or not to generate a test PDF, defaults to true.
+          type: boolean
+          default: true
+        save:
+          description: Whether or not to save the PDF to the bucket, defaults to false.
+          type: boolean
+          default: false
+        expiresIn:
+          description: The expiration time of the PDF in days, default is 1 day.
+          type: integer
+    DocumentRenderingBucketRequest:
+      type: object
+      properties:
+        assets:
+          description: Array of assets to generate signed URLs for.
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                description: Relative path where the asset will be stored in the bucket.
+                type: string
+              content:
+                oneOf:
+                  - description: The content of the asset in string.
+                    type: string
+                  - description: A Base64-encoded string representing binary data (Buffer)
+                    type: string
+    DocumentGeneratePdfFromBucketResponse:
+      type: string
+      format: binary
+    DocumentRenderingBucketResponse:
+      type: object
+      properties:
+        uploadURL:
+          description: URL for the upload.
+          type: string
+        username:
+          description: Generated username.
+          type: string
+        password:
+          description: Generated password.
+          type: string
+        bucket:
+          description: Identifier of the bucket.
+          type: string
+        signedUrls:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                description: The relative path of the asset in the bucket.
+                type: string
+              token:
+                description: Access token for the signed Url.
+                type: string
+              signedUrl:
+                description: The signed URL to the bucket for the asset in path.
+                type: string
+security: []

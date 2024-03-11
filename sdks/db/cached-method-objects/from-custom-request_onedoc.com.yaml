@@ -1,0 +1,60 @@
+hash: d99033341d89870effdfebb2ce5625cceab697fb749b4e4e298e0cde1b8d0675
+methodObjects:
+  - url: /api/docs/generate
+    method: generatePdfFromBucket
+    httpMethod: post
+    tag: Document
+    typeScriptTag: document
+    description: Generates a PDF from a specified bucket.
+    parameters:
+      - name: title
+        schema: string
+        description: ''
+      - name: bucket
+        schema: string
+        description: ''
+      - name: password
+        schema: string
+        description: ''
+      - name: username
+        schema: string
+        description: ''
+      - name: test
+        schema: boolean
+        description: ''
+      - name: save
+        schema: boolean
+        description: ''
+      - name: expiresIn
+        schema: integer
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: Bad request, missing or incorrect data.
+      - statusCode: '401'
+        description: Unauthorized, no API key found or invalid API key.
+      - statusCode: '404'
+        description: Bucket not found.
+      - statusCode: '500'
+        description: Server error or unable to process the request.
+  - url: /api/docs/initiate
+    method: renderingBucket
+    httpMethod: post
+    tag: Document
+    typeScriptTag: document
+    description: Initiates a document's rendering
+    parameters:
+      - name: assets
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '401'
+        description: Unauthorized, no API key found or invalid API key.
+      - statusCode: '500'
+        description: Server error or unable to process the request.
+numberOfSchemas: 4
+apiDescription: Missing description placeholder

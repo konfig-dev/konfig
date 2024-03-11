@@ -153,6 +153,11 @@ const customRequests: Record<string, CustomRequest> = {
     },
     defaultUrlForBrokenLinks: "https://clickup.com/api",
   },
+  "onedoc.com": {
+    type: "GET",
+    url: "https://app.onedoclabs.com/api/api-doc",
+    apiBaseUrl: "https://app.onedoclabs.com",
+  },
   "baseten.co": {
     type: "GET",
     url: "https://api.baseten.co/v1/spec",
@@ -983,8 +988,7 @@ async function processCustomRequest({
       apiBaseUrl = customRequest.apiBaseUrl;
       spec.spec.servers = [{ url: apiBaseUrl }];
     } else {
-      console.log(`❌ Skipping ${key} due to missing apiBaseUrl.`);
-      return;
+      throw Error(`❌ ${key} is missing apiBaseUrl.`);
     }
   }
 

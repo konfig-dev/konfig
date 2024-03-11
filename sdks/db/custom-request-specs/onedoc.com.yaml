@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: API Doc
+  version: '1.0'
+security: []
+paths:
+  /api/docs/generate:
+    post:
+      summary: Generates a PDF from a specified bucket.
+      description: >-
+        This route is responsible for generating a PDF from a bucket.  It
+        expects a JSON body with details of the bucket, user credentials, and
+        PDF generation options.
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bucket:
+                  type: string
+                  description: The identifier of the bucket.
+                password:
+                  type: string
+                  description: The password of the bucket.
+                username:
+                  type: string
+                  description: The username of the bucket.
+                title:
+                  type: string
+                  default: document
+                  description: The title of the PDF, defaults to "document".
+                test:
+                  type: boolean
+                  default: true
+                  description: Whether or not to generate a test PDF, defaults to true.
+                save:
+                  type: boolean
+                  default: false
+                  description: >-
+                    Whether or not to save the PDF to the bucket, defaults to
+                    false.
+                expiresIn:
+                  type: integer
+                  description: The expiration time of the PDF in days, default is 1 day.
+      responses:
+        '200':
+          description: PDF generated and returned successfully.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request, missing or incorrect data.
+        '401':
+          description: Unauthorized, no API key found or invalid API key.
+        '404':
+          description: Bucket not found.
+        '500':
+          description: Server error or unable to process the request.
+  /api/docs/initiate:
+    post:
+      summary: Initiates a document's rendering
+      description: >-
+        This endpoint creates a bucket for the html and all specified assets. It
+        returns signed urls to the buckets.
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                assets:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      path:
+                        type: string
+                        description: >-
+                          Relative path where the asset will be stored in the
+                          bucket.
+                      content:
+                        oneOf:
+                          - type: string
+                            description: The content of the asset in string.
+                          - type: string
+                            description: >-
+                              A Base64-encoded string representing binary data
+                              (Buffer)
+                  description: Array of assets to generate signed URLs for.
+      responses:
+        '200':
+          description: >-
+            Successfully generated and returned signed URLs along with user
+            credentials.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uploadURL:
+                    type: string
+                    description: URL for the upload.
+                  username:
+                    type: string
+                    description: Generated username.
+                  password:
+                    type: string
+                    description: Generated password.
+                  bucket:
+                    type: string
+                    description: Identifier of the bucket.
+                  signedUrls:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: string
+                          description: The relative path of the asset in the bucket.
+                        token:
+                          type: string
+                          description: Access token for the signed Url.
+                        signedUrl:
+                          type: string
+                          description: The signed URL to the bucket for the asset in path.
+        '401':
+          description: Unauthorized, no API key found or invalid API key.
+        '500':
+          description: Server error or unable to process the request.
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+tags: []
+servers:
+  - url: https://app.onedoclabs.com
