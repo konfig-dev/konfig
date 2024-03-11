@@ -1,0 +1,867 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignoreObjectsWithNoProperties: true
+ignorePotentialIncorrectType: true
+operationIds:
+  /collaboration_whitelist_entries:
+    get: DomainRestrictionsForCollaborations_listAllowedCollaborationDomains
+    post: DomainRestrictionsForCollaborations_addAllowedDomainEntry
+  /collaboration_whitelist_entries/{collaboration_whitelist_entry_id}:
+    delete: DomainRestrictionsForCollaborations_removeAllowedDomainEntry
+    get: DomainRestrictionsForCollaborations_allowedCollaborationDomain
+  /collaboration_whitelist_exempt_targets:
+    get: DomainRestrictionsUserExemptions_listExemptUsers
+    post: >-
+      DomainRestrictionsUserExemptions_createUserExemptionFromCollaborationDomainRestrictions
+  /collaboration_whitelist_exempt_targets/{collaboration_whitelist_exempt_target_id}:
+    delete: DomainRestrictionsUserExemptions_removeExemption
+    get: DomainRestrictionsUserExemptions_getUserExemption
+  /collaborations/{collaboration_id}:
+    delete: Collaborations_removeSingleCollaboration
+    get: Collaborations_getSingleCollaboration
+    put: Collaborations_updateCollaboration
+  /collections/{collection_id}/items:
+    get: Collections_listItems
+  /comments/{comment_id}:
+    delete: Comments_removeById
+    get: Comments_getById
+    put: Comments_updateMessage
+  /device_pinners/{device_pinner_id}:
+    delete: DevicePinners_removeDevicePin
+    get: DevicePinners_getPinnerInfo
+  /enterprises/{enterprise_id}/device_pinners:
+    get: DevicePinners_listPinnerInfo
+  /file_requests/{file_request_id}:
+    delete: FileRequests_deletePermanently
+    get: FileRequests_getInformation
+    put: FileRequests_updateRequest
+  /file_requests/{file_request_id}/copy:
+    post: FileRequests_copyRequestToFolder
+  /file_version_legal_holds:
+    get: FileVersionLegalHolds_listFileVersionLegalHolds
+  /file_version_legal_holds/{file_version_legal_hold_id}:
+    get: FileVersionLegalHolds_getFileVersionLegalHoldInfo
+  /file_version_retentions:
+    get: FileVersionRetentions_listRetentions
+  /file_version_retentions/{file_version_retention_id}:
+    get: FileVersionRetentions_getFileVersionRetentionInfo
+  /files/content:
+    options: Files_preflightCheckBeforeUpload
+    post: Uploads_smallFile
+  /files/upload_sessions:
+    post: UploadsChunked_createSessionForUpload
+  /files/upload_sessions/{upload_session_id}:
+    delete: UploadsChunked_removeUploadSession
+    get: UploadsChunked_info
+    put: UploadsChunked_filePartUpdate
+  /files/upload_sessions/{upload_session_id}/commit:
+    post: UploadsChunked_commitSession
+  /files/upload_sessions/{upload_session_id}/parts:
+    get: UploadsChunked_listParts
+  /files/{file_id}:
+    delete: Files_deleteFile
+    get: Files_getDetails
+    post: TrashedFiles_restoreFile
+    put: Files_updateFile
+  /files/{file_id}#add_shared_link:
+    put: SharedLinksFiles_addSharedLinkToFile
+  /files/{file_id}#get_shared_link:
+    get: SharedLinksFiles_getSharedLinkInfo
+  /files/{file_id}#remove_shared_link:
+    put: SharedLinksFiles_removeSharedLink
+  /files/{file_id}#update_shared_link:
+    put: SharedLinksFiles_updateLinkOnFile
+  /files/{file_id}/collaborations:
+    get: CollaborationsList_fileAccessList
+  /files/{file_id}/comments:
+    get: Comments_listFileComments
+  /files/{file_id}/content:
+    get: Downloads_fileContentGet
+    post: Uploads_fileContentUpdate
+  /files/{file_id}/copy:
+    post: Files_createCopy
+  /files/{file_id}/metadata:
+    get: MetadataInstancesFiles_listFileMetadata
+  /files/{file_id}/metadata/enterprise/securityClassification-6VMVochwUWo:
+    delete: ClassificationsOnFiles_removeClassification
+    get: ClassificationsOnFiles_getClassificationMetadataInstance
+    post: ClassificationsOnFiles_addClassification
+    put: ClassificationsOnFiles_updateClassificationMetadataInstance
+  /files/{file_id}/metadata/global/boxSkillsCards:
+    delete: Skills_removeBoxSkillCards
+    get: Skills_listBoxSkillCards
+    post: Skills_applyBoxSkillCards
+    put: Skills_updateBoxSkillCardsOnFile
+  /files/{file_id}/metadata/{scope}/{template_key}:
+    delete: MetadataInstancesFiles_removeInstance
+    get: MetadataInstancesFiles_getInstance
+    post: MetadataInstancesFiles_applyTemplate
+    put: MetadataInstancesFiles_updateInstanceOnFile
+  /files/{file_id}/tasks:
+    get: Tasks_listOnFile
+  /files/{file_id}/thumbnail.{extension}:
+    get: Files_getThumbnail
+  /files/{file_id}/trash:
+    delete: TrashedFiles_permanentlyRemoveFile
+    get: TrashedFiles_getFile
+  /files/{file_id}/upload_sessions:
+    post: UploadsChunked_createSessionForUpload
+  /files/{file_id}/versions:
+    get: FileVersions_listAllVersions
+  /files/{file_id}/versions/current:
+    post: FileVersions_promoteFileVersion
+  /files/{file_id}/versions/{file_version_id}:
+    delete: FileVersions_moveToTrash
+    get: FileVersions_getSpecificVersion
+    put: FileVersions_restoreVersion
+  /files/{file_id}/watermark:
+    delete: WatermarksFiles_removeWatermark
+    get: WatermarksFiles_get
+    put: WatermarksFiles_applyWatermarkToFile
+  /folder_locks:
+    get: FolderLocks_listDetails
+    post: FolderLocks_create
+  /folder_locks/{folder_lock_id}:
+    delete: FolderLocks_deleteFolderLock
+  /folders/trash/items:
+    get: TrashedItems_listRetrievedItems
+  /folders/{folder_id}:
+    delete: Folders_deleteById
+    get: Folders_getFolderDetails
+    post: TrashedFolders_restoreFolder
+    put: Folders_updateFolder
+  /folders/{folder_id}#add_shared_link:
+    put: SharedLinksFolders_addLinkToFolder
+  /folders/{folder_id}#get_shared_link:
+    get: SharedLinksFolders_getSharedLinkForFolder
+  /folders/{folder_id}#remove_shared_link:
+    put: SharedLinksFolders_removeFromFolder
+  /folders/{folder_id}#update_shared_link:
+    put: SharedLinksFolders_updateFolderSharedLink
+  /folders/{folder_id}/collaborations:
+    get: CollaborationsList_folderAccess
+  /folders/{folder_id}/copy:
+    post: Folders_createCopy
+  /folders/{folder_id}/items:
+    get: Folders_listItemsInFolder
+  /folders/{folder_id}/metadata:
+    get: MetadataInstancesFolders_listOnFolder
+  /folders/{folder_id}/metadata/enterprise/securityClassification-6VMVochwUWo:
+    delete: ClassificationsOnFolders_removeFromFolder
+    get: ClassificationsOnFolders_getClassificationMetadata
+    post: ClassificationsOnFolders_addClassificationToFolder
+    put: ClassificationsOnFolders_updateClassification
+  /folders/{folder_id}/metadata/{scope}/{template_key}:
+    delete: MetadataInstancesFolders_removeInstance
+    get: MetadataInstancesFolders_getFolderMetadataInstance
+    post: MetadataInstancesFolders_applyTemplate
+    put: MetadataInstancesFolders_updateInstanceOnFolder
+  /folders/{folder_id}/trash:
+    delete: TrashedFolders_permanentlyRemoveFolder
+    get: TrashedFolders_getdFolder
+  /folders/{folder_id}/watermark:
+    delete: WatermarksFolders_removeFolderWatermark
+    get: WatermarksFolders_getFolderWatermark
+    put: WatermarksFolders_applyToFolder
+  /group_memberships:
+    post: GroupMemberships_createMembership
+  /group_memberships/{group_membership_id}:
+    delete: GroupMemberships_removeUserFromGroup
+    get: GroupMemberships_getSpecificMembership
+    put: GroupMemberships_updateMembership
+  /groups/terminate_sessions:
+    post: SessionTermination_createTerminationJobs
+  /groups/{group_id}:
+    delete: Groups_remove
+    get: Groups_getInfo
+    put: Groups_updateGroup
+  /groups/{group_id}/collaborations:
+    get: CollaborationsList_groupAccessDetails
+  /groups/{group_id}/memberships:
+    get: GroupMemberships_listMembersOfGroup
+  /integration_mappings/slack:
+    get: IntegrationMappings_listSlackMappings
+    post: IntegrationMappings_createSlackMapping
+  /integration_mappings/slack/{integration_mapping_id}:
+    delete: IntegrationMappings_deleteSlackMapping
+    put: IntegrationMappings_updateSlackMapping
+  /invites/{invite_id}:
+    get: Invites_getUserInviteStatus
+  /legal_hold_policies:
+    get: LegalHoldPolicies_listAll
+    post: LegalHoldPolicies_createNewPolicy
+  /legal_hold_policies/{legal_hold_policy_id}:
+    delete: LegalHoldPolicies_removePolicy
+    get: LegalHoldPolicies_getPolicy
+    put: LegalHoldPolicies_updatePolicy
+  /legal_hold_policy_assignments:
+    get: LegalHoldPolicyAssignments_getListItems
+    post: LegalHoldPolicyAssignments_assignFileLegalHold
+  /legal_hold_policy_assignments/{legal_hold_policy_assignment_id}:
+    delete: LegalHoldPolicyAssignments_unassignPolicy
+    get: LegalHoldPolicyAssignments_getAssignment
+  /legal_hold_policy_assignments/{legal_hold_policy_assignment_id}/file_versions_on_hold:
+    get: LegalHoldPolicyAssignments_listPreviousFileVersions
+  /legal_hold_policy_assignments/{legal_hold_policy_assignment_id}/files_on_hold:
+    get: LegalHoldPolicyAssignments_listFileVersions
+  /metadata_cascade_policies:
+    get: MetadataCascadePolicies_list
+    post: MetadataCascadePolicies_createPolicy
+  /metadata_cascade_policies/{metadata_cascade_policy_id}:
+    delete: MetadataCascadePolicies_removePolicy
+    get: MetadataCascadePolicies_getPolicyAssignedToFolder
+  /metadata_cascade_policies/{metadata_cascade_policy_id}/apply:
+    post: MetadataCascadePolicies_applyToChildren
+  /metadata_queries/execute_read:
+    post: Search_itemsByMetadata
+  /metadata_templates:
+    get: MetadataTemplates_findByInstanceId
+  /metadata_templates/enterprise:
+    get: MetadataTemplates_listForEnterprise
+  /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema:
+    get: Classifications_listAllClassifications
+  /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema#add:
+    put: Classifications_addNewClassifications
+  /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema#update:
+    put: Classifications_updateLabelsDescriptions
+  /metadata_templates/global:
+    get: MetadataTemplates_listGlobal
+  /metadata_templates/schema:
+    post: MetadataTemplates_createNewTemplate
+  /metadata_templates/schema#classifications:
+    post: Classifications_initializeTemplate
+  /metadata_templates/{scope}/{template_key}/schema:
+    delete: MetadataTemplates_deleteSchema
+    get: MetadataTemplates_getByNameSchema
+    put: MetadataTemplates_updateSchema
+  /metadata_templates/{template_id}:
+    get: MetadataTemplates_getById
+  /oauth2/revoke:
+    post: Authorization_revokeAccessToken
+  /oauth2/token:
+    post: Authorization_requestAccessToken
+  /oauth2/token#refresh:
+    post: Authorization_refreshAccessToken
+  /recent_items:
+    get: RecentItems_listAccessedItems
+  /retention_policies:
+    get: RetentionPolicies_listAll
+    post: RetentionPolicies_createPolicy
+  /retention_policies/{retention_policy_id}:
+    delete: RetentionPolicies_deletePolicy
+    get: RetentionPolicies_getPolicy
+    put: RetentionPolicies_updatePolicy
+  /retention_policies/{retention_policy_id}/assignments:
+    get: RetentionPolicyAssignments_listAllAssignments
+  /retention_policy_assignments:
+    post: RetentionPolicyAssignments_createRetentionAssignment
+  /retention_policy_assignments/{retention_policy_assignment_id}:
+    delete: RetentionPolicyAssignments_removeAssignment
+    get: RetentionPolicyAssignments_getAssignment
+  /retention_policy_assignments/{retention_policy_assignment_id}/file_versions_under_retention:
+    get: RetentionPolicyAssignments_listFileVersionsUnderRetention
+  /retention_policy_assignments/{retention_policy_assignment_id}/files_under_retention:
+    get: RetentionPolicyAssignments_listFilesUnderRetention
+  /shared_items:
+    get: SharedLinksFiles_getBySharedLink
+  /shared_items#folders:
+    get: SharedLinksFolders_findFolderBySharedLink
+  /shared_items#web_links:
+    get: SharedLinksWebLinks_findSharedWebLink
+  /shield_information_barrier_reports:
+    get: ShieldInformationBarrierReports_listReports
+    post: ShieldInformationBarrierReports_createReport
+  /shield_information_barrier_reports/{shield_information_barrier_report_id}:
+    get: ShieldInformationBarrierReports_getById
+  /shield_information_barrier_segment_members:
+    get: ShieldInformationBarrierSegmentMembers_listSegmentMembersBasedOnIds
+    post: ShieldInformationBarrierSegmentMembers_createNewMember
+  /shield_information_barrier_segment_members/{shield_information_barrier_segment_member_id}:
+    delete: ShieldInformationBarrierSegmentMembers_removeById
+    get: ShieldInformationBarrierSegmentMembers_getById
+  /shield_information_barrier_segment_restrictions:
+    get: ShieldInformationBarrierSegmentRestrictions_listBasedOnSegmentId
+    post: ShieldInformationBarrierSegmentRestrictions_createBarrierObject
+  /shield_information_barrier_segment_restrictions/{shield_information_barrier_segment_restriction_id}:
+    delete: ShieldInformationBarrierSegmentRestrictions_removeById
+    get: ShieldInformationBarrierSegmentRestrictions_getById
+  /shield_information_barrier_segments:
+    get: ShieldInformationBarrierSegments_listInformationObjects
+    post: ShieldInformationBarrierSegments_createSegment
+  /shield_information_barrier_segments/{shield_information_barrier_segment_id}:
+    delete: ShieldInformationBarrierSegments_deleteSegmentById
+    get: ShieldInformationBarrierSegments_getById
+    put: ShieldInformationBarrierSegments_updateById
+  /shield_information_barriers:
+    get: ShieldInformationBarriers_listInformationObjects
+    post: ShieldInformationBarriers_createBarrier
+  /shield_information_barriers/change_status:
+    post: ShieldInformationBarriers_addChangedStatus
+  /shield_information_barriers/{shield_information_barrier_id}:
+    get: ShieldInformationBarriers_getById
+  /sign_requests:
+    get: SignRequests_list
+    post: SignRequests_createRequest
+  /sign_requests/{sign_request_id}:
+    get: SignRequests_getById
+  /sign_requests/{sign_request_id}/cancel:
+    post: SignRequests_cancelRequest
+  /sign_requests/{sign_request_id}/resend:
+    post: SignRequests_resendSignRequestEmails
+  /sign_templates:
+    get: SignTemplates_listTemplates
+  /sign_templates/{template_id}:
+    get: SignTemplates_getDetails
+  /skill_invocations/{skill_id}:
+    put: Skills_updateAllBoxSkillCards
+  /storage_policies:
+    get: StandardAndZonesStoragePolicies_listPolicies
+  /storage_policies/{storage_policy_id}:
+    get: StandardAndZonesStoragePolicies_getSpecific
+  /storage_policy_assignments:
+    get: StandardAndZonesStoragePolicyAssignments_listAssignments
+    post: StandardAndZonesStoragePolicyAssignments_createAssignment
+  /storage_policy_assignments/{storage_policy_assignment_id}:
+    delete: StandardAndZonesStoragePolicyAssignments_unassignStoragePolicy
+    get: StandardAndZonesStoragePolicyAssignments_getSpecificAssignment
+    put: StandardAndZonesStoragePolicyAssignments_updateSpecificAssignment
+  /task_assignments:
+    post: TaskAssignments_assignMultipleUsers
+  /task_assignments/{task_assignment_id}:
+    delete: TaskAssignments_deleteSpecificAssignment
+    get: TaskAssignments_getTaskAssignmentInfo
+    put: TaskAssignments_updateStateAssignedToUser
+  /tasks/{task_id}:
+    delete: Tasks_removeFile
+    get: Tasks_getInfo
+    put: Tasks_updateTaskConfiguration
+  /tasks/{task_id}/assignments:
+    get: TaskAssignments_listForTask
+  /terms_of_service_user_statuses:
+    get: TermsOfServiceUserStatuses_listUserStatuses
+    post: TermsOfServiceUserStatuses_createUserStatus
+  /terms_of_service_user_statuses/{terms_of_service_user_status_id}:
+    put: TermsOfServiceUserStatuses_updateUserStatus
+  /terms_of_services:
+    get: TermsOfService_getSettings
+    post: TermsOfService_createForEnterpriseAndType
+  /terms_of_services/{terms_of_service_id}:
+    get: TermsOfService_getSpecific
+    put: TermsOfService_updateSpecificTerm
+  /users/me:
+    get: Users_getCurrentUser
+  /users/terminate_sessions:
+    post: SessionTermination_createSessionTerminationJobs
+  /users/{user_id}:
+    delete: Users_deleteUser
+    get: Users_getUserInfo
+    put: Users_updateManagedUser
+  /users/{user_id}/avatar:
+    delete: UserAvatars_removeExisting
+    get: UserAvatars_getImage
+    post: UserAvatars_addOrUpdateImage
+  /users/{user_id}/email_aliases:
+    get: EmailAliases_listUserEmailAliases
+    post: EmailAliases_createNewAlias
+  /users/{user_id}/email_aliases/{email_alias_id}:
+    delete: EmailAliases_removeAlias
+  /users/{user_id}/folders/0:
+    put: TransferFolders_toDestination
+  /users/{user_id}/memberships:
+    get: GroupMemberships_getAll
+  /web_links:
+    post: WebLinks_createObject
+  /web_links/{web_link_id}:
+    delete: WebLinks_removeLink
+    get: WebLinks_getInformation
+    post: TrashedWebLinks_restoreWebLink
+    put: WebLinks_updateObject
+  /web_links/{web_link_id}#add_shared_link:
+    put: SharedLinksWebLinks_addLinkToWebLink
+  /web_links/{web_link_id}#get_shared_link:
+    get: SharedLinksWebLinks_getLinkInfo
+  /web_links/{web_link_id}#remove_shared_link:
+    put: SharedLinksWebLinks_removeSharedLink
+  /web_links/{web_link_id}#update_shared_link:
+    put: SharedLinksWebLinks_updateSharedLink
+  /web_links/{web_link_id}/trash:
+    delete: TrashedWebLinks_permanentlyRemove
+    get: TrashedWebLinks_getTrashedLink
+  /webhooks/{webhook_id}:
+    delete: Webhooks_remove
+    get: Webhooks_getSpecificWebhook
+    put: Webhooks_updateWebhook
+  /workflows/{workflow_id}/start:
+    post: Workflows_startBasedOnRequest
+  /zip_downloads:
+    post: ZipDownloads_createRequest
+  /zip_downloads/{zip_download_id}/content:
+    get: ZipDownloads_getContentById
+  /zip_downloads/{zip_download_id}/status:
+    get: ZipDownloads_getStatus
+operationTags: {}
+renameTags: {}
+requestSchemaNames:
+  /collaboration_whitelist_entries:
+    post:
+      application/json: DomainRestrictionsForCollaborationsAddAllowedDomainEntryRequest
+  /collaboration_whitelist_exempt_targets:
+    post:
+      application/json: >-
+        DomainRestrictionsUserExemptionsCreateUserExemptionFromCollaborationDomainRestrictionsRequest
+  /collaborations:
+    post:
+      application/json: PostCollaborationsRequest
+  /collaborations/{collaboration_id}:
+    put:
+      application/json: CollaborationsUpdateCollaborationRequest
+  /comments:
+    post:
+      application/json: PostCommentsRequest
+  /comments/{comment_id}:
+    put:
+      application/json: CommentsUpdateMessageRequest
+  /files/content:
+    options:
+      application/json: FilesPreflightCheckBeforeUploadRequest
+    post:
+      multipart/form-data: UploadsSmallFileRequest
+  /files/upload_sessions:
+    post:
+      application/json: UploadsChunkedCreateSessionForUploadRequest
+  /files/upload_sessions/{upload_session_id}:
+    put:
+      application/octet-stream: UploadsChunkedFilePartUpdateRequest
+  /files/upload_sessions/{upload_session_id}/commit:
+    post:
+      application/json: UploadsChunkedCommitSessionRequest
+  /files/{file_id}:
+    post:
+      application/json: TrashedFilesRestoreFileRequest
+    put:
+      application/json: FilesUpdateFileRequest
+  /files/{file_id}#add_shared_link:
+    put:
+      application/json: SharedLinksFilesAddSharedLinkToFileRequest
+  /files/{file_id}#remove_shared_link:
+    put:
+      application/json: SharedLinksFilesRemoveSharedLinkRequest
+  /files/{file_id}#update_shared_link:
+    put:
+      application/json: SharedLinksFilesUpdateLinkOnFileRequest
+  /files/{file_id}/content:
+    post:
+      multipart/form-data: UploadsFileContentUpdateRequest
+  /files/{file_id}/copy:
+    post:
+      application/json: FilesCreateCopyRequest
+  /files/{file_id}/metadata/enterprise/securityClassification-6VMVochwUWo:
+    post:
+      application/json: ClassificationsOnFilesAddClassificationRequest
+    put:
+      application/json-patch+json: ClassificationsOnFilesUpdateClassificationMetadataInstanceRequest
+  /files/{file_id}/metadata/global/boxSkillsCards:
+    post:
+      application/json: SkillsApplyBoxSkillCardsRequest
+    put:
+      application/json-patch+json: SkillsUpdateBoxSkillCardsOnFileRequest
+  /files/{file_id}/metadata/{scope}/{template_key}:
+    post:
+      application/json: MetadataInstancesFilesApplyTemplateRequest
+    put:
+      application/json-patch+json: MetadataInstancesFilesUpdateInstanceOnFileRequest
+  /files/{file_id}/upload_sessions:
+    post:
+      application/json: UploadsChunkedCreateSessionForUploadRequest1
+  /files/{file_id}/versions/current:
+    post:
+      application/json: FileVersionsPromoteFileVersionRequest
+  /files/{file_id}/versions/{file_version_id}:
+    put:
+      application/json: FileVersionsRestoreVersionRequest
+  /files/{file_id}/watermark:
+    put:
+      application/json: WatermarksFilesApplyWatermarkToFileRequest
+  /folder_locks:
+    post:
+      application/json: FolderLocksCreateRequest
+  /folders:
+    post:
+      application/json: PostFoldersRequest
+  /folders/{folder_id}:
+    post:
+      application/json: TrashedFoldersRestoreFolderRequest
+    put:
+      application/json: FoldersUpdateFolderRequest
+  /folders/{folder_id}#add_shared_link:
+    put:
+      application/json: SharedLinksFoldersAddLinkToFolderRequest
+  /folders/{folder_id}#remove_shared_link:
+    put:
+      application/json: SharedLinksFoldersRemoveFromFolderRequest
+  /folders/{folder_id}#update_shared_link:
+    put:
+      application/json: SharedLinksFoldersUpdateFolderSharedLinkRequest
+  /folders/{folder_id}/copy:
+    post:
+      application/json: FoldersCreateCopyRequest
+  /folders/{folder_id}/metadata/enterprise/securityClassification-6VMVochwUWo:
+    post:
+      application/json: ClassificationsOnFoldersAddClassificationToFolderRequest
+    put:
+      application/json-patch+json: ClassificationsOnFoldersUpdateClassificationRequest
+  /folders/{folder_id}/metadata/{scope}/{template_key}:
+    post:
+      application/json: MetadataInstancesFoldersApplyTemplateRequest
+    put:
+      application/json-patch+json: MetadataInstancesFoldersUpdateInstanceOnFolderRequest
+  /folders/{folder_id}/watermark:
+    put:
+      application/json: WatermarksFoldersApplyToFolderRequest
+  /group_memberships:
+    post:
+      application/json: GroupMembershipsCreateMembershipRequest
+  /group_memberships/{group_membership_id}:
+    put:
+      application/json: GroupMembershipsUpdateMembershipRequest
+  /groups:
+    post:
+      application/json: PostGroupsRequest
+  /groups/terminate_sessions:
+    post:
+      application/json: SessionTerminationCreateTerminationJobsRequest
+  /groups/{group_id}:
+    put:
+      application/json: GroupsUpdateGroupRequest
+  /integration_mappings/slack/{integration_mapping_id}:
+    put:
+      application/json: IntegrationMappingsUpdateSlackMappingRequest
+  /invites:
+    post:
+      application/json: PostInvitesRequest
+  /legal_hold_policies:
+    post:
+      application/json: LegalHoldPoliciesCreateNewPolicyRequest
+  /legal_hold_policies/{legal_hold_policy_id}:
+    put:
+      application/json: LegalHoldPoliciesUpdatePolicyRequest
+  /legal_hold_policy_assignments:
+    post:
+      application/json: LegalHoldPolicyAssignmentsAssignFileLegalHoldRequest
+  /metadata_cascade_policies:
+    post:
+      application/json: MetadataCascadePoliciesCreatePolicyRequest
+  /metadata_cascade_policies/{metadata_cascade_policy_id}/apply:
+    post:
+      application/json: MetadataCascadePoliciesApplyToChildrenRequest
+  /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema#add:
+    put:
+      application/json: ClassificationsAddNewClassificationsRequest
+  /metadata_templates/enterprise/securityClassification-6VMVochwUWo/schema#update:
+    put:
+      application/json-patch+json: ClassificationsUpdateLabelsDescriptionsRequest
+  /metadata_templates/schema:
+    post:
+      application/json: MetadataTemplatesCreateNewTemplateRequest
+  /metadata_templates/schema#classifications:
+    post:
+      application/json: ClassificationsInitializeTemplateRequest
+  /metadata_templates/{scope}/{template_key}/schema:
+    put:
+      application/json-patch+json: MetadataTemplatesUpdateSchemaRequest
+  /retention_policies:
+    post:
+      application/json: RetentionPoliciesCreatePolicyRequest
+  /retention_policies/{retention_policy_id}:
+    put:
+      application/json: RetentionPoliciesUpdatePolicyRequest
+  /retention_policy_assignments:
+    post:
+      application/json: RetentionPolicyAssignmentsCreateRetentionAssignmentRequest
+  /shield_information_barrier_segment_members:
+    post:
+      application/json: ShieldInformationBarrierSegmentMembersCreateNewMemberRequest
+  /shield_information_barrier_segment_restrictions:
+    post:
+      application/json: ShieldInformationBarrierSegmentRestrictionsCreateBarrierObjectRequest
+  /shield_information_barrier_segments:
+    post:
+      application/json: ShieldInformationBarrierSegmentsCreateSegmentRequest
+  /shield_information_barrier_segments/{shield_information_barrier_segment_id}:
+    put:
+      application/json: ShieldInformationBarrierSegmentsUpdateByIdRequest
+  /shield_information_barriers:
+    post:
+      application/json: ShieldInformationBarriersCreateBarrierRequest
+  /shield_information_barriers/change_status:
+    post:
+      application/json: ShieldInformationBarriersAddChangedStatusRequest
+  /skill_invocations/{skill_id}:
+    put:
+      application/json: SkillsUpdateAllBoxSkillCardsRequest
+  /storage_policy_assignments:
+    post:
+      application/json: StandardAndZonesStoragePolicyAssignmentsCreateAssignmentRequest
+  /storage_policy_assignments/{storage_policy_assignment_id}:
+    put:
+      application/json: StandardAndZonesStoragePolicyAssignmentsUpdateSpecificAssignmentRequest
+  /task_assignments:
+    post:
+      application/json: TaskAssignmentsAssignMultipleUsersRequest
+  /task_assignments/{task_assignment_id}:
+    put:
+      application/json: TaskAssignmentsUpdateStateAssignedToUserRequest
+  /tasks:
+    post:
+      application/json: PostTasksRequest
+  /tasks/{task_id}:
+    put:
+      application/json: TasksUpdateTaskConfigurationRequest
+  /terms_of_service_user_statuses:
+    post:
+      application/json: TermsOfServiceUserStatusesCreateUserStatusRequest
+  /terms_of_service_user_statuses/{terms_of_service_user_status_id}:
+    put:
+      application/json: TermsOfServiceUserStatusesUpdateUserStatusRequest
+  /terms_of_services:
+    post:
+      application/json: TermsOfServiceCreateForEnterpriseAndTypeRequest
+  /terms_of_services/{terms_of_service_id}:
+    put:
+      application/json: TermsOfServiceUpdateSpecificTermRequest
+  /users:
+    post:
+      application/json: PostUsersRequest
+  /users/terminate_sessions:
+    post:
+      application/json: SessionTerminationCreateSessionTerminationJobsRequest
+  /users/{user_id}:
+    put:
+      application/json: UsersUpdateManagedUserRequest
+  /users/{user_id}/avatar:
+    post:
+      multipart/form-data: UserAvatarsAddOrUpdateImageRequest
+  /users/{user_id}/email_aliases:
+    post:
+      application/json: EmailAliasesCreateNewAliasRequest
+  /users/{user_id}/folders/0:
+    put:
+      application/json: TransferFoldersToDestinationRequest
+  /web_links:
+    post:
+      application/json: WebLinksCreateObjectRequest
+  /web_links/{web_link_id}:
+    post:
+      application/json: TrashedWebLinksRestoreWebLinkRequest
+    put:
+      application/json: WebLinksUpdateObjectRequest
+  /web_links/{web_link_id}#add_shared_link:
+    put:
+      application/json: SharedLinksWebLinksAddLinkToWebLinkRequest
+  /web_links/{web_link_id}#remove_shared_link:
+    put:
+      application/json: SharedLinksWebLinksRemoveSharedLinkRequest
+  /web_links/{web_link_id}#update_shared_link:
+    put:
+      application/json: SharedLinksWebLinksUpdateSharedLinkRequest
+  /webhooks:
+    post:
+      application/json: PostWebhooksRequest
+  /webhooks/{webhook_id}:
+    put:
+      application/json: WebhooksUpdateWebhookRequest
+  /workflows/{workflow_id}/start:
+    post:
+      application/json: WorkflowsStartBasedOnRequestRequest
+responseDescriptions: {}
+responseSchemaNames:
+  /authorize:
+    get:
+      '200':
+        text/html: GetAuthorizeResponse
+      default:
+        text/html: GetAuthorizedefaultResponse
+  /files/{file_id}/content:
+    get:
+      '200':
+        application/octet-stream: DownloadsFileContentGetResponse
+  /files/{file_id}/thumbnail.{extension}:
+    get:
+      '200':
+        image/jpg: FilesGetThumbnail200Response
+        image/png: FilesGetThumbnailResponse
+  /search:
+    get:
+      '200':
+        application/json: GetSearchResponse
+  /users/{user_id}/avatar:
+    get:
+      '200':
+        image/jpg: UserAvatarsGetImageResponse
+  /zip_downloads/{zip_download_id}/content:
+    get:
+      '200':
+        application/octet-stream: ZipDownloadsGetContentByIdResponse
+securityParameters:
+  access_token:
+    query: false
+  ancestor_folder_ids:
+    query: false
+  assign_to_id:
+    query: false
+  assign_to_type:
+    query: false
+  box_item_id:
+    query: false
+  box_item_type:
+    query: false
+  boxapi:
+    header: false
+  client_id:
+    query: false
+  content-md5:
+    header: false
+  content-range:
+    header: false
+  content_types:
+    query: false
+  created_after:
+    query: false
+  created_at_range:
+    query: false
+  created_before:
+    query: false
+  created_by_user_id:
+    query: false
+  deleted_at_range:
+    query: false
+  deleted_user_ids:
+    query: false
+  digest:
+    header: false
+  direction:
+    query: false
+  disposition_action:
+    query: false
+  disposition_after:
+    query: false
+  disposition_before:
+    query: false
+  event_type:
+    query: false
+  external_app_user_id:
+    query: false
+  fields:
+    query: false
+  file_extensions:
+    query: false
+  file_id:
+    query: false
+  file_version_id:
+    query: false
+  filter_term:
+    query: false
+  folder_id:
+    query: false
+  force:
+    query: false
+  if-match:
+    header: false
+  if-none-match:
+    header: false
+  include_recent_shared_links:
+    query: false
+  is_manually_created:
+    query: false
+  limit:
+    query: false
+  marker:
+    query: false
+  max_height:
+    query: false
+  max_width:
+    query: false
+  mdfilters:
+    query: false
+  metadata_instance_id:
+    query: false
+  min_height:
+    query: false
+  min_width:
+    query: false
+  notify:
+    query: false
+  offset:
+    query: false
+  owner_enterprise_id:
+    query: false
+  owner_user_ids:
+    query: false
+  partner_item_id:
+    query: false
+  partner_item_type:
+    query: false
+  policy_id:
+    query: false
+  policy_name:
+    query: false
+  policy_type:
+    query: false
+  query:
+    query: false
+  range:
+    header: false
+  recent_updater_user_ids:
+    query: false
+  recursive:
+    query: false
+  redirect_uri:
+    query: false
+  resolved_for_id:
+    query: false
+  resolved_for_type:
+    query: false
+  response_type:
+    query: false
+  scope:
+    query: false
+  shield_information_barrier_id:
+    query: false
+  shield_information_barrier_segment_id:
+    query: false
+  size_range:
+    query: false
+  sort:
+    query: false
+  state:
+    query: false
+  status:
+    query: false
+  stream_position:
+    query: false
+  stream_type:
+    query: false
+  tos_id:
+    query: false
+  tos_type:
+    query: false
+  trash_content:
+    query: false
+  trigger_type:
+    query: false
+  type:
+    query: false
+  updated_at_range:
+    query: false
+  usemarker:
+    query: false
+  user_id:
+    query: false
+  user_type:
+    query: false
+  version:
+    query: false
+  x-rep-hints:
+    header: false
+validServerUrls: {}

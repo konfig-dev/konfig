@@ -583,6 +583,10 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://docs.hetzner.cloud/spec.json",
   },
+  "box.com": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/box/box-openapi/en/openapi.json",
+  },
   "hsbc.com_AccountInformationCE": {
     lambda: async (browser) => {
       const url =
