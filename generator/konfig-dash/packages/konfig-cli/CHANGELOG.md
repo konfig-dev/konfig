@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.29
+
+### Patch Changes
+
+- [#632](https://github.com/konfig-dev/konfig/pull/632) [`025a5ab1`](https://github.com/konfig-dev/konfig/commit/025a5ab1071faca0a054ecfb4212fb78564139b5) Thanks [@dphuang2](https://github.com/dphuang2)! - fix bug when handling "tags: []"
+
 ## 1.38.28
 
 ### Patch Changes
