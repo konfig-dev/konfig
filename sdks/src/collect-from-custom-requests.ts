@@ -239,6 +239,10 @@ const customRequests: Record<string, CustomRequest> = {
       return JSON.stringify(openapi);
     },
   },
+  "1password.com_Connect": {
+    type: "GET",
+    url: "https://i.1password.com/media/1password-connect/1password-connect-api.yaml",
+  },
   "vimeo.com": {
     lambda: async () => {
       const response = await fetch("https://api.vimeo.com/?openapi=1", {

@@ -230,6 +230,10 @@ function generateIndexTsx({
   parameters,
   apiDescription,
 }: Published): string {
+  // If name starts with a number or contains special characters, prepend a "Sdk_"
+  const codeFriendlyCompanyName =
+    company.search(/^[0-9]/) !== -1 ? `Sdk_${company}` : company;
+  console.log(company, codeFriendlyCompanyName);
   return `import React from "react";
 import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 // @ts-ignore
@@ -238,7 +242,9 @@ import Description from "./_description.mdx";
 import GettingStarted from "./_getting-started.mdx";
 import { Sdk } from "@site/src/components/Sdk";
 
-export default function ${camelcase(company, { pascalCase: true })}${
+export default function ${camelcase(codeFriendlyCompanyName, {
+    pascalCase: true,
+  })}${
     serviceName ? camelcase(serviceName, { pascalCase: true }) : ""
   }TypeScriptSdk() {
   return (
