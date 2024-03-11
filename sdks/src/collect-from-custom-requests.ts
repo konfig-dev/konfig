@@ -587,6 +587,10 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://raw.githubusercontent.com/box/box-openapi/en/openapi.json",
   },
+  "api.video": {
+    type: "GET",
+    url: "https://raw.githubusercontent.com/apivideo/api.video-documentation/main/openapi.yaml",
+  },
   "appwrite.io_Client": {
     type: "GET",
     url: "https://raw.githubusercontent.com/appwrite/appwrite/main/app/config/specs/open-api3-latest-client.json",

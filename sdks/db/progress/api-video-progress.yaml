@@ -1,0 +1,114 @@
+examples: {}
+examples_2: {}
+examples_3: {}
+ignorePotentialIncorrectType: true
+operationIds:
+  /analytics/live-streams/plays:
+    get: Analytics_getLiveStreamPlays
+  /analytics/videos/plays:
+    get: Analytics_getVideoPlays
+  /auth/api-key:
+    post: AdvancedAuthentication_getBearerToken
+  /auth/refresh:
+    post: AdvancedAuthentication_refreshBearerToken
+  /live-streams:
+    get: LiveStreams_listAll
+    post: LiveStreams_createLivestreamObject
+  /live-streams/{liveStreamId}:
+    delete: LiveStreams_deleteLivestream
+    get: LiveStreams_getLivestreamById
+    patch: LiveStreams_updateLivestreamObject
+  /live-streams/{liveStreamId}/thumbnail:
+    delete: LiveStreams_deleteThumbnail
+    post: LiveStreams_uploadThumbnail
+  /players/{playerId}:
+    delete: PlayerThemes_deletePlayer
+    get: PlayerThemes_getThemeByPlayerId
+    patch: PlayerThemes_updatePlayerDetails
+  /players/{playerId}/logo:
+    delete: PlayerThemes_removeLogo
+    post: PlayerThemes_uploadLogo
+  /upload-tokens:
+    get: UploadTokens_listActiveDelegatedTokens
+    post: UploadTokens_generateToken
+  /upload-tokens/{uploadToken}:
+    delete: UploadTokens_deleteToken
+    get: UploadTokens_getDetails
+  /videos:
+    get: Videos_listAllObjects
+    post: Videos_createObject
+  /videos/{videoId}:
+    delete: Videos_deleteVideoObject
+    get: Videos_getVideoObject
+    patch: Videos_updateVideoObjectParameters
+  /videos/{videoId}/captions:
+    get: Captions_listByVideoId
+  /videos/{videoId}/captions/{language}:
+    delete: Captions_deleteByLanguage
+    get: Captions_getByLanguage
+    patch: Captions_updateSettings
+    post: Captions_uploadVttFile
+  /videos/{videoId}/chapters:
+    get: Chapters_listByVideo
+  /videos/{videoId}/chapters/{language}:
+    delete: Chapters_deleteChapterInLanguage
+    get: Chapters_getChapterByLanguage
+    post: Chapters_uploadVttFile
+  /videos/{videoId}/source:
+    post: Videos_ingestVideoFromSource
+  /videos/{videoId}/status:
+    get: Videos_getVideoStatusAndDetails
+  /videos/{videoId}/thumbnail:
+    patch: Videos_setThumbnailFromInterval
+    post: Videos_uploadThumbnail
+  /watermarks:
+    get: Watermarks_listAll
+  /webhooks:
+    get: Webhooks_listAll
+    post: Webhooks_createWebhookEvent
+  /webhooks/{webhookId}:
+    delete: Webhooks_deleteWebhook
+    get: Webhooks_getDetailsById
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  Content-Range:
+    header: false
+  currentPage:
+    query: false
+  description:
+    query: false
+  dimension:
+    query: false
+  events:
+    query: false
+  filter:
+    query: false
+  from:
+    query: false
+  liveStreamId:
+    query: false
+  metadata:
+    query: false
+  name:
+    query: false
+  pageSize:
+    query: false
+  sortBy:
+    query: false
+  sortOrder:
+    query: false
+  streamKey:
+    query: false
+  tags[]:
+    query: false
+  title:
+    query: false
+  to:
+    query: false
+  token:
+    query: false
+validServerUrls: {}
