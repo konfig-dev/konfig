@@ -24,6 +24,7 @@ export async function fixOnlyOneTagName({
   alwaysYes: boolean
 }): Promise<number> {
   if (spec.tags === undefined) return 0
+  if (spec.tags.length === 0) return 0
   if (spec.tags.length > 1) return 0
   const savedTags = progress.getFixOnlyOneTagName()
   if (savedTags !== undefined) {
