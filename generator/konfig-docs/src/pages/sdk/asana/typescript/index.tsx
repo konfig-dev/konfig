@@ -16,7 +16,7 @@ export default function AsanaTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/asana/logo.png"
       clientNameCamelCase="asana"
       homepage="asana.com"
-      lastUpdated={new Date("2024-03-11T17:14:01.702Z")}
+      lastUpdated={new Date("2024-03-11T17:20:37.894Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/asana/favicon.png"
       contactUrl="https://asana.com/support"
       // Missing contactEmail
