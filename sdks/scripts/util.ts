@@ -57,6 +57,7 @@ export function saveCustomRequestLastFetched(date: Date, keys: string[]): void {
  */
 type ExtraOrOverwriteProperties = {
   categories: string[];
+  useNewPage?: boolean;
   faviconUrl: string;
 };
 

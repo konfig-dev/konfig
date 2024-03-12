@@ -1,6 +1,9 @@
 import Instructor from "@instructor-ai/instructor";
 import OpenAI from "openai";
 import { z } from "zod";
+import * as path from "path";
+import { dbFolder } from "./util";
+import * as fs from "fs-extra";
 
 const GH_DESC_CHAR_LIMIT = 350;
 const DescriptionSchema = z.object({ description: z.string().max(350) });
@@ -11,11 +14,28 @@ const client = Instructor({
   mode: "FUNCTIONS",
 });
 
+export const processedCustomRequestCacheDir = path.join(
+  dbFolder,
+  "generate-repository-description-cache"
+);
+
 export async function generateRepositoryDescription(
   companyName: string,
   serviceName: string | undefined,
   metaDescription: string
 ): Promise<string> {
+  const cachePath = path.join(
+    processedCustomRequestCacheDir,
+    `${companyName}${serviceName ? `-${serviceName}` : ""}.json`
+  );
+  if (fs.existsSync(cachePath)) {
+    const cache: Record<string, string> = JSON.parse(
+      fs.readFileSync(cachePath, "utf-8")
+    );
+    const cached = cache[metaDescription];
+    if (cached) return cached;
+  }
+
   const serviceNameSuffix = serviceName ? `for ${serviceName} API ` : "";
   let description = metaDescription.trim().replace(/\n/g, " ");
   if (!description.endsWith(".")) description = description + ".";
@@ -24,8 +44,24 @@ export async function generateRepositoryDescription(
   if (description.length > GH_DESC_CHAR_LIMIT)
     description = await shortenDescriptionWithAI(description);
   const concatted = `${description} ${konfigDescription}`;
-  if (concatted.length > GH_DESC_CHAR_LIMIT) return description;
-  return concatted;
+  let result = concatted.length > GH_DESC_CHAR_LIMIT ? description : concatted;
+
+  if (!fs.existsSync(processedCustomRequestCacheDir)) {
+    fs.mkdirSync(processedCustomRequestCacheDir, { recursive: true });
+  }
+  if (!fs.existsSync(cachePath)) {
+    fs.writeFileSync(
+      cachePath,
+      JSON.stringify({ [metaDescription]: result }, null, 2)
+    );
+  } else {
+    const cache: Record<string, string> = JSON.parse(
+      fs.readFileSync(cachePath, "utf-8")
+    );
+    cache[metaDescription] = result;
+    fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2));
+  }
+  return result;
 }
 
 async function shortenDescriptionWithAI(description: string): Promise<string> {
