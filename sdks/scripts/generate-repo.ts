@@ -74,6 +74,8 @@ function generateSdkRepository(
 
   // Create and clone repository
   if (!fs.existsSync(sdksDir)) fs.mkdirSync(sdksDir);
+  if (data.repositoryDescription == undefined)
+    throw Error(`${data.company} is missing repository description.`);
   const repoDescription = data.repositoryDescription.replace(
     "{language}",
     capitalizedLanguage[language]
