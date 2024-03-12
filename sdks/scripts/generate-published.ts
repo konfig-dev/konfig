@@ -14,6 +14,7 @@ import { PublishJson, publishJsonSchema } from "../src/publish-json-schema";
 import { getLocalKonfigCliVersion } from "../src/get-local-konfig-cli-version";
 import { hashRawSpecString } from "../src/hash-raw-spec-string";
 import { REGEX_FOR_BROKEN_LINKS } from "../src/collect-from-custom-requests";
+import { generateRepositoryDescription } from "./generate-repository-description";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
@@ -480,6 +481,13 @@ async function main() {
       throw Error(`❌ ERROR: apiDescription is empty for ${spec}`);
     }
 
+    const serviceName = getServiceName({ publishData, specData });
+    const repositoryDescription = await generateRepositoryDescription(
+      publishData.company,
+      serviceName,
+      metaDescription
+    );
+
     /**
      * 2.c Prepare to write to published/
      */
@@ -491,6 +499,7 @@ async function main() {
       categories: nonEmptyCategories,
       methods,
       metaDescription,
+      repositoryDescription,
       originalSpecUrl: specData.openApiRaw,
       logo: `${githubUrlPrefix}${logoPath}`,
       openApiRaw: `${githubUrlPrefix}${openapiFilename}`,
@@ -500,7 +509,7 @@ async function main() {
       lastUpdated: now,
       typescriptSdkUsageCode,
       fixedSpecFileName: fixedSpecFileNames[spec],
-      serviceName: getServiceName({ publishData, specData }),
+      serviceName,
     };
 
     if (
