@@ -170,7 +170,7 @@ request_query_set_page_as_boundary = api_client.QueryParameter(
 request_query_embedding_model = api_client.QueryParameter(
     name="embedding_model",
     style=api_client.ParameterStyle.FORM,
-    schema=TextEmbeddingGenerators,
+    schema=TextEmbeddingGeneratorsSchema,
     explode=True,
 )
 request_query_use_ocr = api_client.QueryParameter(
