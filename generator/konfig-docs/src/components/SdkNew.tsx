@@ -6,7 +6,7 @@
  * For an explanation of the new pSEO page, see the ticket here:
  * https://www.notion.so/konfigthis/Restructure-pSEO-pages-based-on-Zapier-5ff64f53351a4ae2bf728e338b56e57d?pvs=4
  */
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { Sdk, SdkMethod } from "./Sdk";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
@@ -189,6 +189,12 @@ function HeroSection({
   serviceNameSubstring?: string;
   logo: string;
 }) {
+  const [showGraphic, setShowGraphic] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowGraphic(true);
+    }, 500);
+  }, []);
   return (
     <div className="mx-auto max-w-[375px] px-3 sm:max-w-none sm:px-8 lg:px-20 py-12">
       <div className="mx-auto flex flex-col items-center sm:max-w-[625px] lg:max-w-none lg:flex-row gap-2 lg:gap-20">
@@ -209,7 +215,10 @@ function HeroSection({
             serviceNameSubString={serviceNameSubstring}
           />
         </div>
-        <div className="flex items-center flex-col lg:min-w-[400px] xl:min-w-[540px]">
+        <div
+          aria-hidden={!showGraphic}
+          className="opacity-1 aria-hidden:opacity-0 flex items-center flex-col lg:min-w-[400px] xl:min-w-[540px] transition-all duration-1000"
+        >
           <div className="my-5 bg-white p-4 shadow-xl rounded-sm w-fit">
             <img className="sm:h-16" src={logo} alt={`${company} logo`} />
           </div>
