@@ -30,6 +30,7 @@ import { LoadingIcon } from "./LoadingIcon";
 type ReactProps = {
   GettingStarted: React.ComponentType;
   Description: React.ComponentType;
+  FirstRequest?: React.ComponentType;
   language?: string;
   doesNotHaveApiDescription?: boolean;
 };
@@ -243,7 +244,7 @@ function AboutContentSection({
   return <div className={clsx({ "mb-10": !noBottomMargin })}>{children}</div>;
 }
 
-function SdkMethod({
+export function SdkMethod({
   method,
   url,
   httpMethod,
@@ -279,15 +280,17 @@ function SdkMethod({
         <div className="flex flex-col items-start">
           <h4
             className={clsx(
-              "font-bold whitespace-nowrap mb-1 text-xs lg:text-sm font-mono text-slate-800"
+              "font-bold mb-1 text-base md:text-lg text-slate-800"
             )}
           >
-            {typeScriptTag !== undefined
-              ? `${clientNameCamelCase}.${typeScriptTag}.${method}()`
-              : `${clientNameCamelCase}.${method}()`}
+            {<Markdown markdownText={description} />}
           </h4>
           <div className={clsx("mb-0 flex w-full justify-between")}>
-            {<Markdown markdownText={description} />}
+            <span className="font-mono whitespace-nowrap">
+              {typeScriptTag !== undefined
+                ? `${clientNameCamelCase}.${typeScriptTag}.${method}()`
+                : `${clientNameCamelCase}.${method}()`}
+            </span>
             <IconChevronDown
               className={clsx("h-4 transition-transform shrink-0", {
                 "rotate-180": expanded,
