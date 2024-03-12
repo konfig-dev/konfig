@@ -47,7 +47,7 @@ ProblematicParameterSchema = ProblematicEnumSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
-        'problematicParameter': typing.Union[ProblematicEnum, ],
+        'problematicParameter': typing.Union[ProblematicEnumSchema, ],
     }
 )
 RequestOptionalQueryParams = typing_extensions.TypedDict(
