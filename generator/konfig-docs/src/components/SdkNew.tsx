@@ -102,7 +102,7 @@ function MakeYourFirstRequest({
 }) {
   const [showMore, setShowMore] = useState(false);
   const numberOfMethods = methods.length;
-  methods = showMore ? methods : methods.slice(0, 4);
+  methods = showMore ? methods : methods.slice(0, 6);
   return (
     <div className="bg-white py-10 px-3">
       <h2 className="text-2xl mb-0 sm:text-3xl text-slate-800 text-center font-bold">
