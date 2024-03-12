@@ -13,6 +13,7 @@ import Head from "@docusaurus/Head";
 import {
   IconArrowsDownUp,
   IconChevronRight,
+  IconExternalLink,
   IconPencil,
 } from "@tabler/icons-react";
 import { TsIcon } from "./TsIcon";
@@ -20,6 +21,7 @@ import { useSdkSignup } from "../util/use-sdk-signup";
 import clsx from "clsx";
 import { LoadingIcon } from "./LoadingIcon";
 import { Method } from "./SdkComponentProps";
+import camelcase from "camelcase";
 
 type InputPropsFromOriginalSdkComponent = React.ComponentProps<typeof Sdk>;
 
@@ -33,6 +35,9 @@ export function SdkNew({
   GettingStarted,
   FirstRequest,
   clientNameCamelCase,
+  homepage,
+  metaDescription,
+  categories,
 }: InputPropsFromOriginalSdkComponent) {
   const serviceNameSubstring =
     serviceName !== undefined ? ` ${serviceName}` : "";
@@ -41,6 +46,9 @@ export function SdkNew({
     throw new Error(
       "FirstRequest is required for the SdkNew component. It is used to render the 'MakeYourFirstRequest' section."
     );
+  }
+  if (categories === undefined) {
+    throw new Error("categories is required for the SdkNew component");
   }
   return (
     <Layout
@@ -79,7 +87,183 @@ export function SdkNew({
         methods={methods}
         FirstRequest={FirstRequest}
       />
+      <HowKonfigWorks />
+      <AboutCompany
+        homepage={homepage}
+        metaDescription={metaDescription}
+        logo={logo}
+        company={company}
+        categories={categories}
+      />
+      <BottomCTA
+        company={company}
+        language={language}
+        serviceNane={serviceName}
+        serviceNameSubString={serviceNameSubstring}
+      />
     </Layout>
+  );
+}
+
+function BottomCTA({
+  company,
+  language,
+  serviceNane,
+  serviceNameSubString,
+}: {
+  company: string;
+  language: string;
+  serviceNane?: string;
+  serviceNameSubString?: string;
+}) {
+  return (
+    <div className="py-16 px-8 md:px-48 bg-gradient-to-tl from-[var(--ifm-color-primary-darkest)] to-[var(--ifm-color-primary)]">
+      <h2 className="text-3xl text-white">
+        Start integrating {company}'s{serviceNameSubString} API with Konfig
+      </h2>
+      <SignupForm
+        company={company}
+        language={language}
+        serviceName={serviceNane}
+        serviceNameSubString={serviceNameSubString}
+        doNotShowQuestion
+      />
+    </div>
+  );
+}
+
+function AboutCompany({
+  company,
+  logo,
+  metaDescription,
+  homepage,
+  categories,
+}: {
+  company: string;
+  logo: string;
+  metaDescription: string;
+  homepage: string;
+  categories: string[];
+}) {
+  return (
+    <div className="py-20 px-8 md:px-32">
+      <div className="w-fit">
+        <div className="shadow-inner w-fit rounded-md border p-4">
+          <img className="max-w-[200px]" src={logo} alt={company} />
+        </div>
+        <div className="flex items-end gap-4">
+          <h2 className="mt-4 mb-0 text-3xl text-slate-800">About {company}</h2>
+          <a
+            className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 hover:no-underline"
+            target="_blank"
+            href={`https://${homepage}`}
+          >
+            <div>{homepage}</div>
+            <IconExternalLink height="11.5" />
+          </a>
+        </div>
+        <p className="mt-2">{metaDescription}</p>
+      </div>
+      <div className="mt-4">
+        <h3 className="mb-2">Categories</h3>
+        <div className="flex gap-4">
+          {categories.map((category) => {
+            return (
+              <button className="z-10 flex items-center gap-1 border font-medium rounded-md text-xs px-2 py-1 transition-all bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800">
+                <span>{category}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HowKonfigWorks() {
+  return (
+    <div className="py-20 px-3 bg-gradient-to-br from-[rgb(8,17,25)] to-[hsl(243_75%_20%)]">
+      <h2 className="text-2xl sm:text-3xl text-white text-center font-bold">
+        How Konfig Works
+      </h2>
+      <p className="px-8 mx-auto text-base sm:text-xl text-center max-w-[550px] text-[hsl(243_75%_95%)]">
+        Konfig collects APIs and automatically generates SDKs so you can focus
+        on building your application.
+      </p>
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-24 px-16 py-20 items-center">
+        <div className="shadow-xl  lg:w-[500px] shrink-0 rounded-md overflow-hidden">
+          <a
+            target="_blank"
+            href="https://github.com/konfig-sdks/openapi-examples"
+          >
+            <img src="/img/openapi-examples.png" alt="openapi-examples" />
+          </a>
+        </div>
+        <div className="grow-0">
+          <h3 className="text-[hsl(243_75%_97%)] text-2xl leading-tight sm:text-3xl">
+            Konfig maintains the highest quality collection of OpenAPI
+            Specifications on the internet in a{" "}
+            <a
+              target="_blank"
+              className="text-white hover:text-white hover:no-underline border-b-2 hover:border-b-4 border-b-[hsl(243_75%_70%)]"
+              href="https://github.com/konfig-sdks/openapi-examples"
+            >
+              GitHub repository
+            </a>
+          </h3>
+          <p className="text-xl text-[hsl(243_75%_95%)]">
+            We pull OpenAPI Specifications from public sources, fix any errors,
+            and make sure they pass our{" "}
+            <a
+              className="text-white hover:text-white hover:no-underline border-b hover:border-b-2 border-b-[hsl(243_75%_70%)]"
+              href="/docs/lint-rules/"
+            >
+              lint rules
+            </a>
+            . We continually make sure the repository is up-to-date and collect
+            up-time and response time metrics for every API.
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-24 px-16 py-20 items-center">
+        <div className="shadow-xl  lg:w-[500px] shrink-0 rounded-md overflow-hidden">
+          <img
+            src="/img/openapi-examples-to-konfig.png"
+            alt="openapi-examples-to-konfig"
+          />
+        </div>
+        <div className="grow-0">
+          <h3 className="text-[hsl(243_75%_97%)] text-2xl leading-tight sm:text-3xl">
+            Generates SDKs from{" "}
+            <span className="font-mono whitespace-nowrap">
+              openapi-examples
+            </span>
+          </h3>
+          <p className="text-xl text-[hsl(243_75%_95%)]">
+            Our SDK generator is trusted by growing API companies and goes
+            through a rigorous testing process to ensure the generated SDKs are
+            high-quality and easy to use.
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-24 px-16 py-20 items-center">
+        <div className="shadow-xl  lg:w-[500px] shrink-0 rounded-md overflow-hidden">
+          <img
+            src="/img/konfig-to-package-managers.png"
+            alt="konfig-to-package-managers"
+          />
+        </div>
+        <div className="grow-0">
+          <h3 className="text-[hsl(243_75%_97%)] text-2xl leading-tight sm:text-3xl">
+            Publishes to standard package managers
+          </h3>
+          <p className="text-xl text-[hsl(243_75%_95%)]">
+            We publish to standard package managers like npm, PyPI, and Maven so
+            you can easily integrate the SDK into your application.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -248,11 +432,13 @@ function SignupForm({
   serviceName,
   language,
   serviceNameSubString,
+  doNotShowQuestion,
 }: {
   company: string;
   serviceName?: string;
   language: string;
   serviceNameSubString?: string;
+  doNotShowQuestion?: boolean;
 }) {
   const { setEmail, signedUp, signedUpEmail, loading, handleSubmit, email } =
     useSdkSignup({
@@ -268,15 +454,17 @@ function SignupForm({
       className="p-8 rounded-md bg-blue-100 ring-1 transition-all hover:scale-[1.01] hover:shadow-lg shadow-md mb-8"
     >
       <div className="flex flex-col">
-        <h2
-          className={clsx("text-base md:text-lg text-blue-900 font-bold", {
-            "mb-3": !signedUp,
-          })}
-        >
-          {signedUp
-            ? `Thanks for signing up for access to ${company}'s ${language} SDK 🎉!`
-            : `Need a ${language} SDK for ${company}'s${serviceNameSubString} API?`}
-        </h2>
+        {((!signedUp && !doNotShowQuestion) || signedUp) && (
+          <h2
+            className={clsx("text-base md:text-lg text-blue-900 font-bold", {
+              "mb-3": !signedUp,
+            })}
+          >
+            {signedUp
+              ? `Thanks for signing up for access to ${company}'s ${language} SDK 🎉!`
+              : `Need a ${language} SDK for ${company}'s${serviceNameSubString} API?`}
+          </h2>
+        )}
         {signedUp ? (
           <>
             <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you by email soon.`}</p>

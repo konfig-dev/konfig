@@ -33,6 +33,7 @@ type ReactProps = {
   FirstRequest?: React.ComponentType;
   language?: string;
   doesNotHaveApiDescription?: boolean;
+  categories?: string[];
 };
 
 export function Sdk({

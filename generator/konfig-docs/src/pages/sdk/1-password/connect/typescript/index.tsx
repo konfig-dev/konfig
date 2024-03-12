@@ -541,6 +541,11 @@ As an integral layer of the Identity and Access Management (IAM) stack, 1Passwor
       schemas={18}
       parameters={22}
       difficulty="Easy"
+      categories={[
+        "security",
+        "identity_and_access_management",
+        "password_management",
+      ]}
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/1-password/connect/openapi.yaml"
     />
   );
