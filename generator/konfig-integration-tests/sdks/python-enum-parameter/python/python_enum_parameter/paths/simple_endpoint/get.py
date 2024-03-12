@@ -65,7 +65,7 @@ class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams)
 request_query_problematic_parameter = api_client.QueryParameter(
     name="problematicParameter",
     style=api_client.ParameterStyle.FORM,
-    schema=ProblematicEnum,
+    schema=ProblematicEnumSchema,
     required=True,
     explode=True,
 )
