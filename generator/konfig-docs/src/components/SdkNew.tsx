@@ -166,10 +166,10 @@ function AboutCompany({
       </div>
       <div className="mt-4">
         <h3 className="mb-2">Categories</h3>
-        <div className="flex gap-4">
+        <div className="flex gap-x-4 gap-y-2 flex-wrap">
           {categories.map((category) => {
             return (
-              <button className="z-10 flex items-center gap-1 border font-medium rounded-md text-xs px-2 py-1 transition-all bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800">
+              <button className="z-10 flex items-center gap-1 border font-medium rounded-md px-2 py-1 transition-all bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800">
                 <span>{category}</span>
               </button>
             );
