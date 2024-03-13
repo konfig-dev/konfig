@@ -18,7 +18,7 @@ export default function BrexPaymentsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/logo.png"
       clientNameCamelCase="brexPayments"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
+      lastUpdated={new Date("2024-03-13T22:23:48.955Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"

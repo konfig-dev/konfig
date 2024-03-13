@@ -18,7 +18,7 @@ export default function SnykTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/logo.png"
       clientNameCamelCase="snyk"
       homepage="docs.snyk.io/snyk-api/snyk-rest-api-overview"
-      lastUpdated={new Date("2024-03-13T16:59:14.076Z")}
+      lastUpdated={new Date("2024-03-13T17:55:08.060Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/snyk/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail

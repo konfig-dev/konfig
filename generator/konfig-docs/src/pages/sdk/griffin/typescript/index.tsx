@@ -22,7 +22,7 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/logo.webp"
       clientNameCamelCase="griffin"
       homepage="griffin.com"
-      lastUpdated={new Date("2024-03-13T16:59:14.076Z")}
+      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

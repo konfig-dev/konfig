@@ -28,7 +28,7 @@ we're building a suite of audio / video models to change how we live, work, and 
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sync-labs/logo.png"
       clientNameCamelCase="syncLabs"
       homepage="synclabs.so"
-      lastUpdated={new Date("2024-03-13T17:38:35.018Z")}
+      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sync-labs/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

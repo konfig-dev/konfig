@@ -18,7 +18,7 @@ export default function ZapierEmbedTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/embed/logo.png"
       clientNameCamelCase="zapierEmbed"
       homepage="zapier.com"
-      lastUpdated={new Date("2024-03-13T17:02:14.069Z")}
+      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/embed/favicon.png"
       contactUrl="https://help.zapier.com/hc/en-us"
       contactEmail="contact@zapier.com"

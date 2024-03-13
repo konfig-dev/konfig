@@ -18,7 +18,7 @@ export default function HttpbinTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/httpbin/logo.svg"
       clientNameCamelCase="httpbin"
       homepage="httpbin.org"
-      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
+      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/httpbin/favicon.png"
       contactUrl="https://kennethreitz.org"
       contactEmail="me@kennethreitz.org"
