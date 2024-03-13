@@ -17,7 +17,7 @@ export default function DigitalOceanTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/digitalocean/logo.png"
       clientNameCamelCase="digitalOcean"
       homepage="digitalocean.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/digitalocean/favicon.png"
       // Missing contactUrl
       contactEmail="api-engineering@digitalocean.com"

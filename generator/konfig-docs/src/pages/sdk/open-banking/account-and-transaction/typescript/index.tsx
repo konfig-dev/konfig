@@ -17,7 +17,7 @@ export default function OpenBankingAccountAndTransactionTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/logo.svg"
       clientNameCamelCase="openBankingAccountAndTransaction"
       homepage="www.openbanking.org.uk/"
-      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
+      lastUpdated={new Date("2024-03-13T02:00:36.999Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/open-banking/account-and-transaction/favicon.png"
       // Missing contactUrl
       contactEmail="ServiceDesk@openbanking.org.uk"

@@ -17,7 +17,7 @@ export default function OxfordDictionariesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/oxford-dictionaries/logo.png"
       clientNameCamelCase="oxfordDictionaries"
       homepage="developer.oxforddictionaries.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/oxford-dictionaries/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

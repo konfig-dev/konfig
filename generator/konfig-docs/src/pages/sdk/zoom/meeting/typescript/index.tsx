@@ -17,7 +17,7 @@ export default function ZoomMeetingTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/logo.png"
       clientNameCamelCase="zoomMeeting"
       homepage="zoom.us/"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/favicon.png"
       contactUrl="https://developer.zoom.us/"
       // Missing contactEmail

@@ -17,7 +17,7 @@ export default function NotionTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notion/logo.png"
       clientNameCamelCase="notion"
       homepage="developers.notion.com"
-      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
+      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notion/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

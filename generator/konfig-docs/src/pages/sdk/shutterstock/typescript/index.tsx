@@ -17,7 +17,7 @@ export default function ShutterstockTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/logo.png"
       clientNameCamelCase="shutterstock"
       homepage="developers.shutterstock.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail

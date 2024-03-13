@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function BrexPaymentsTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="brex-payments-typescript-sdk"
       metaDescription="Brex is the AI-powered spend platform. We transform finance teams from reactive no-sayers to proactive growth drivers. With Brex, companies spend with confidence by empowering employees to make smarter financial decisions from anywhere. Brex provides corporate cards, business accounts, and global payments, plus intuitive software for travel and expenses, that make it easy to plan and track all company spend in one place, in real time. Over 20,000 companies from startups to global enterprises — including DoorDash, Flexport, and Compass — use Brex to proactively control spend, reduce costs, and increase efficiency on a global scale."
       company="Brex"
@@ -17,14 +18,14 @@ export default function BrexPaymentsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/logo.png"
       clientNameCamelCase="brexPayments"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T02:00:36.999Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance","payments","online_payments","fintech","automation","global_payments","travel_expenses","banking"]}
       methods={[
   {

@@ -17,7 +17,12 @@ export function generateTypescriptSdkFirstRequestCode({
 }): string {
   const firstMethod = methods[0];
   const parameters = firstMethod.parameters.filter(
-    (parameter) => parameter.required || parameter.example || parameter.default
+    (parameter) =>
+      (parameter.required &&
+        parameter.schema !== "object" &&
+        parameter.schema !== "array") ||
+      parameter.example ||
+      parameter.default
   );
   const hasParameters = parameters.length > 0;
   const lines: string[] = [
@@ -26,7 +31,9 @@ export function generateTypescriptSdkFirstRequestCode({
       firstMethod.tag ? `.${camelcase(firstMethod.tag)}` : ""
     }.${firstMethod.method}${hasParameters ? "({" : "()"}`,
     ...parameters.map((parameter) => {
-      return `    ${parameter.name}: ${parameter.example ?? parameter.default}`;
+      return `    ${parameter.name}: ${JSON.stringify(
+        parameter.example ?? parameter.default
+      )}`;
     }),
     ...(hasParameters ? [`})`] : []),
   ];
