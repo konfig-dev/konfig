@@ -40,7 +40,7 @@ export function SdkNew({
 }: InputPropsFromOriginalSdkComponent) {
   const serviceNameSubstring =
     serviceName !== undefined ? ` ${serviceName}` : "";
-  const description = `Explore the ${company}${serviceNameSubstring} TypeScript SDK. Dive into comprehensive documentation and utilize ${methods.length} methods to integrate ${company}'s${serviceNameSubstring} API into your application.`;
+  const description = `Explore the ${company}${serviceNameSubstring} TypeScript SDK. Discover SDK ${methods.length} methods to integrate ${company}'s${serviceNameSubstring} API into your application.`;
   if (FirstRequest === undefined) {
     throw new Error(
       "FirstRequest is required for the SdkNew component. It is used to render the 'MakeYourFirstRequest' section."
