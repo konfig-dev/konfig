@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function XkcdTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="xkcd-typescript-sdk"
       metaDescription="xkcd is a webcomic of romance, sarcasm, math, and language. It delivers a mix of humor and intelligence through its stick-figure comics that explore various topics such as science, technology, and pop culture in a witty and insightful manner."
       company="xkcd"
@@ -24,7 +25,7 @@ export default function XkcdTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/xkcd/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["media"]}
       methods={[
   {

@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function ShutterstockTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="shutterstock-typescript-sdk"
       metaDescription="Download the best royalty free images from Shutterstock, including photos, vectors, and illustrations. Enjoy straightforward pricing and simple licensing."
       company="Shutterstock"
@@ -24,7 +25,7 @@ export default function ShutterstockTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["media"]}
       methods={[
   {

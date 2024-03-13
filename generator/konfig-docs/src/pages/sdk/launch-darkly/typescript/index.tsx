@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function LaunchDarklyTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="launch-darkly-typescript-sdk"
       metaDescription="LaunchDarkly is a feature management platform that empowers software teams to build better software faster with feature flags. By decoupling features from code deployments, teams can control and manage feature releases, target specific user segments, and monitor feature performance in real-time. With LaunchDarkly, teams can mitigate risks, optimize development workflows, and deliver value to customers with confidence."
       company="LaunchDarkly"
@@ -24,7 +25,7 @@ export default function LaunchDarklyTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["developer_tools","automation","feature_management","software_development","feature_flags","analytics"]}
       methods={[
   {

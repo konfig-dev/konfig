@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function YouNeedABudgetTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="ynab-typescript-sdk"
       metaDescription="Working hard with nothing to show for it? Use your money more efficiently and control your spending and saving with the YNAB app."
       company="You Need A Budget"
@@ -24,7 +25,7 @@ export default function YouNeedABudgetTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance"]}
       methods={[
   {

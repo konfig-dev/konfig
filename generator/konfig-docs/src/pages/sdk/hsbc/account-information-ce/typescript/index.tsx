@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function HsbcAccountInformationCeTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="hsbc-account-information-ce-typescript-sdk"
       metaDescription="HSBC, also known as The Hongkong and Shanghai Banking Corporation, is a multinational banking and financial services organization. It offers a wide range of services including retail banking, wealth management, commercial banking, and global banking and markets. HSBC operates in numerous countries and territories, serving millions of customers worldwide with its comprehensive banking solutions."
       company="HSBC"
@@ -24,7 +25,7 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance","banking","payments","online_payments","fintech","checkout_experience","multinational","financial_services","wealth_management","global_banking","retail_banking","commercial_banking","open_banking"]}
       methods={[
   {

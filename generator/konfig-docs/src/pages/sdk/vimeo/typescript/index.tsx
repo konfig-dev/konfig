@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function VimeoTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="vimeo-typescript-sdk"
       metaDescription="Join the world's leading professional video platform and grow your business with easy-to-use, high-quality video creation, hosting, and marketing tools."
       company="Vimeo"
@@ -24,7 +25,7 @@ export default function VimeoTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["media"]}
       methods={[
   {

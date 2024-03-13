@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function ZoomMeetingTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="zoom-meeting-typescript-sdk"
       metaDescription="Zoom is a video conferencing platform that allows users to connect remotely for virtual meetings, webinars, online events, and collaborative work sessions. With features like screen sharing, virtual backgrounds, and chat functionality, Zoom is a popular tool for individuals and businesses to communicate and collaborate in real-time."
       company="Zoom"
@@ -24,7 +25,7 @@ export default function ZoomMeetingTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["productivity","collaboration","video","conferencing","webinar","communications"]}
       methods={[
   {

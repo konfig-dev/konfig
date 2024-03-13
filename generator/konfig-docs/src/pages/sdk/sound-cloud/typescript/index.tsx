@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function SoundCloudTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="soundcloud-typescript-sdk"
       metaDescription="Discover and play over 320 million music tracks. Join the world’s largest online community of artists, bands, DJs, and audio creators."
       company="SoundCloud"
@@ -24,7 +25,7 @@ export default function SoundCloudTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["media"]}
       methods={[
   {

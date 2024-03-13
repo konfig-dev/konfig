@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function MultiwovenTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="multiwoven-typescript-sdk"
       metaDescription="Open-source Reverse ETL that makes data segmentation, sync and activation both easy and fully secure."
       company="Multiwoven"
@@ -24,7 +25,7 @@ export default function MultiwovenTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/multiwoven/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["open_source","automation","data_management","open_source","developer_tools","reverse_etl","data_segmentation","data_sync","data_activation"]}
       methods={[
   {

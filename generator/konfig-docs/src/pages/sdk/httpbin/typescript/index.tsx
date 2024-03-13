@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function HttpbinTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="httpbin-typescript-sdk"
       metaDescription="httpbin is a simple HTTP request and response service that provides a variety of endpoints to test HTTP methods, headers, and status codes. It is useful for developers to debug and test their HTTP client libraries and tools. httpbin allows users to simulate different scenarios and observe the behavior of their HTTP requests in a controlled environment."
       company="httpbin"
@@ -24,7 +25,7 @@ export default function HttpbinTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/httpbin/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["developer_tools","automation","testing","http"]}
       methods={[
   {

@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function WikimediaTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="wikimedia-typescript-sdk"
       metaDescription="Wikimedia is a global movement whose mission is to bring free educational content to the world."
       company="Wikimedia"
@@ -24,7 +25,7 @@ export default function WikimediaTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["media"]}
       methods={[
   {

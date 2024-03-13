@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function SlackWebTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="slack-web-typescript-sdk"
       metaDescription="Slack is a popular messaging platform designed for teams and workplaces. It offers real-time messaging, file sharing, and collaboration tools to help teams communicate and work together effectively. Users can create channels for different topics, send direct messages, and integrate with other apps for seamless workflow management."
       company="Slack"
@@ -24,7 +25,7 @@ export default function SlackWebTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["collaboration","messaging","automation"]}
       methods={[
   {

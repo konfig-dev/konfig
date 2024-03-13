@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function JustEatTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="just-eat-typescript-sdk"
       metaDescription="Just Eat is an online food ordering and delivery platform that connects users with a wide range of restaurants in their area. Users can browse menus, place orders, and have food delivered straight to their doorstep. Just Eat offers a convenient and easy way to satisfy food cravings from the comfort of home."
       company="Just Eat"
@@ -24,7 +25,7 @@ export default function JustEatTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["ecommerce","food_delivery","online_food_ordering"]}
       methods={[
   {

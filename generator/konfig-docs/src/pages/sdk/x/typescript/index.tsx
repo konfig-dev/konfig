@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function XTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="x-typescript-sdk"
       metaDescription="Publish & analyze posts, optimize ads, & create unique customer experiences with the X API, X Ads API, & X Embeds."
       company="X"
@@ -24,7 +25,7 @@ export default function XTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["social"]}
       methods={[
   {

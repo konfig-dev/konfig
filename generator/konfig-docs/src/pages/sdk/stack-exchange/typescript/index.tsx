@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function StackExchangeTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="stack-exchange-typescript-sdk"
       metaDescription="We make Stack Overflow and 170+ other community-powered Q&A sites."
       company="Stack Exchange"
@@ -24,7 +25,7 @@ export default function StackExchangeTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/stack-exchange/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["collaboration","developer_tools","support"]}
       methods={[
   {

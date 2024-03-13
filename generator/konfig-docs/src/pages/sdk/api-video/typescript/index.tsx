@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function ApiVideoTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="api-video-typescript-sdk"
       metaDescription="Deliver high-quality videos directly from your website, software, or app. 
 
@@ -27,7 +28,7 @@ The service handles the end-to-end workflow, from video ingestion to worldwide v
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/api-video/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["video","developer_tools","platform","storage","online_video","video_encoding","video_streaming","live_streaming","video_analytics","video_api","video_ondemand"]}
       methods={[
   {

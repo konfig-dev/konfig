@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function MeilisearchTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="meilisearch-typescript-sdk"
       metaDescription="Meilisearch is a powerful, fast, open-source, and easy-to-use search engine that provides instant search results for large datasets. It offers features like typo-tolerance, faceting, filters, and customizable ranking to enhance search experiences for developers and users alike."
       company="Meilisearch"
@@ -24,7 +25,7 @@ export default function MeilisearchTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/meilisearch/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["database","search","cloud","open_source","geosearch","nlp"]}
       methods={[
   {

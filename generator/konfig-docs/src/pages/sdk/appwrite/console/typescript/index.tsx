@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function AppwriteConsoleTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="appwrite-console-typescript-sdk"
       metaDescription="Appwrite's open-source development platform lets you build any application at any scale, own your data, and use your preferred coding languages and tools.
 
@@ -26,7 +27,7 @@ Build like a team of hundreds."
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/appwrite/console/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["developer_tools","open_source","storage","platform","data_ownership","db","database","auth","functions"]}
       methods={[
   {

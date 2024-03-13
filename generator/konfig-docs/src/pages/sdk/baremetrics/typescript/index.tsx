@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function BaremetricsTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="baremetrics-typescript-sdk"
       metaDescription="Baremetrics provides real-time subscription metrics for teams built with Stripe, Shopify Partners, Braintree, Recurly, Chargebee, Google Play, and App Store Connect. 
 
@@ -32,7 +33,7 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance","payments","online_payments","fintech","developer_tools","automation","analytics","metrics","forecasting","subscription"]}
       methods={[
   {

@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function GriffinTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="griffin-typescript-sdk"
       metaDescription="Griffin is the bank you can build on. We make it simple, quick and cost-effective to build and launch financial products. 
 
@@ -28,7 +29,7 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance","banking","payments","online_payments","fintech","automation","open_banking","wealth_management","global_banking","retail_banking","commercial_banking","multinational_financial_services","financial_technology","financial_services"]}
       methods={[
   {

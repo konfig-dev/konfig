@@ -47,6 +47,9 @@ function main() {
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const json: Published = JSON.parse(fileContent);
 
+    // set all pages to refactored page
+    json.useNewPage = true;
+
     const indexTsx = generateIndexTsx(json);
 
     const company = kebabcase(json.company);

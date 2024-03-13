@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function KlarnaPaymentsTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="klarna-payments-typescript-sdk"
       metaDescription="Klarna is a Swedish bank that provides online financial services such as payment solutions for online storefronts. It offers customers the ability to buy now and pay later, as well as other financing options. Klarna has gained popularity for its smooth checkout experience and customer-friendly payment options."
       company="Klarna"
@@ -24,7 +25,7 @@ export default function KlarnaPaymentsTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/payments/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance","payments","online_payments","fintech","checkout_experience"]}
       methods={[
   {

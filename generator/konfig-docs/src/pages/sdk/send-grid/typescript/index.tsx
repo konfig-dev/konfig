@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function SendGridTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="send-grid-typescript-sdk"
       metaDescription="SendGrid is a cloud-based email delivery service that assists businesses in sending transactional and marketing emails. With a focus on reliability and deliverability, SendGrid helps developers send emails efficiently and effectively to their audiences."
       company="SendGrid"
@@ -24,7 +25,7 @@ export default function SendGridTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["email","marketing"]}
       methods={[
   {

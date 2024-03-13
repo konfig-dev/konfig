@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function QualtricsSurveyTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="qualtrics-survey-typescript-sdk"
       metaDescription="Know what your customers and employees need, when they need it, and deliver it every time with powerful, AI driven Experience Management (XM) software."
       company="Qualtrics"
@@ -24,7 +25,7 @@ export default function QualtricsSurveyTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["survey"]}
       methods={[
   {

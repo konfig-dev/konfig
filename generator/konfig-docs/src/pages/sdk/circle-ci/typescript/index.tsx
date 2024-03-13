@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function CircleCiTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="circle-ci-typescript-sdk"
       metaDescription="CircleCI is the software delivery engine for teams who want to ship software faster and with confidence. 
 We do this today by building the world's best platform for Continuous Integration and Continuous Delivery (CI/CD). Ultimately, we plan to map every source of change for software teams, so they can accelerate innovation and growth. 
@@ -29,7 +30,7 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["developer_tools","automation","collaboration","continuous_integration","continuous_delivery","continuous_integration","continuous_delivery","continuous_deployment","containers","devops","cicd","ci","cd","software_delivery","ci_platform","software_testing","developer_experience"]}
       methods={[
   {

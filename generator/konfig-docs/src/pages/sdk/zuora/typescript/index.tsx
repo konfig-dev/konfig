@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function ZuoraTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="zuora-typescript-sdk"
       metaDescription="Zuora is a subscription management platform that helps businesses manage their subscription-based services efficiently. It provides tools for billing, revenue recognition, subscription analytics, and more. Zuora empowers companies to launch and scale subscription models, optimize pricing strategies, and enhance customer relationships."
       company="Zuora"
@@ -24,7 +25,7 @@ export default function ZuoraTypeScriptSdk() {
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["finance","developer_tools","billing","payments"]}
       methods={[
   {
