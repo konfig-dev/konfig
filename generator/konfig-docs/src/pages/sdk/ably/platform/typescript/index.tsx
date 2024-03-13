@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function AblyPlatformTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="ably-platform-typescript-sdk"
       metaDescription="Ably provides a suite of APIs to build, extend, and deliver powerful digital experiences in realtime. Organizations like Toyota, Bloomberg, HubSpot, and Hopin depend on Ably’s platform to offload the growing complexity of business-critical realtime data synchronization at global scale."
       company="Ably"
@@ -17,14 +18,14 @@ export default function AblyPlatformTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/logo.png"
       clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:28:28.435Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/favicon.ico"
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/imagePreview.jpeg"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["cloud"]}
       methods={[
   {

@@ -162,7 +162,7 @@ function AboutCompany({
             <IconExternalLink height="11.5" />
           </a>
         </div>
-        <p className="mt-2">{metaDescription}</p>
+        <p className="mt-2 max-w-[800px]">{metaDescription}</p>
       </div>
       <div className="mt-4">
         <h3 className="mb-2">Categories</h3>
@@ -288,14 +288,14 @@ function MakeYourFirstRequest({
   const numberOfMethods = methods.length;
   methods = showMore ? methods : methods.slice(0, 6);
   return (
-    <div className="bg-white py-10 px-3">
+    <div className="bg-white pt-10 pb-20 px-3">
       <h2 className="text-2xl mb-0 sm:text-3xl text-slate-800 text-center font-bold">
         First, instantiate the SDK
       </h2>
       <p className="px-8 text-lg sm:text-xl text-center text-slate-600">
         It only takes a few lines of code.
       </p>
-      <div className="sm:w-fit w-full mx-auto">
+      <div className="px-8 sm:w-fit sm:max-w-[720px] mx-auto">
         <GettingStarted />
       </div>
       <h2 className="mt-16 mb-0 text-2xl sm:text-3xl text-slate-800 text-center font-bold">
@@ -304,7 +304,7 @@ function MakeYourFirstRequest({
       <p className="px-8 text-lg sm:text-xl text-center text-slate-600">
         We made it really easy.
       </p>
-      <div className="sm:w-fit w-full mx-auto">
+      <div className="sm:w-fit sm:max-w-[720px] px-8 mx-auto">
         <FirstRequest />
       </div>
       <h2 className="mt-16 mb-4 text-2xl sm:text-3xl text-slate-800 text-center font-bold">
