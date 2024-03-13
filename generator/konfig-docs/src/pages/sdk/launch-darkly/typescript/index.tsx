@@ -17,7 +17,7 @@ export default function LaunchDarklyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/logo.png"
       clientNameCamelCase="launchDarkly"
       homepage="launchdarkly.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/favicon.png"
       contactUrl="https://support.launchdarkly.com"
       contactEmail="support@launchdarkly.com"

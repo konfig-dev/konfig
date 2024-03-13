@@ -17,7 +17,7 @@ export default function YouNeedABudgetTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/logo.png"
       clientNameCamelCase="ynab"
       homepage="api.youneedabudget.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

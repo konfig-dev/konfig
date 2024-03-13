@@ -17,7 +17,7 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/logo.png"
       clientNameCamelCase="ticketmaster"
       homepage="developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/favicon.ico"
       contactUrl="http://developer.ticketmaster.com/support/contact-us/"
       // Missing contactEmail

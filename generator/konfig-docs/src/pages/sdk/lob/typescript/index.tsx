@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function LobTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="lob-typescript-sdk"
       metaDescription="Lob provides a suite of APIs to deliver mail, including address verification, mail tracking, and more. Our print & mail API is used by companies large and small to send postcards, letters, and checks."
       company="Lob"
@@ -17,14 +18,14 @@ export default function LobTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/logo.svg"
       clientNameCamelCase="lob"
       homepage="lob.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png"
       contactUrl="https://support.lob.com/"
       contactEmail="lob-openapi@lob.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["printing","mail"]}
       methods={[
   {

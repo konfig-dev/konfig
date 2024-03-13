@@ -17,7 +17,7 @@ export default function XTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.jpg"
       clientNameCamelCase="x"
       homepage="developer.x.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/favicon.ico"
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail
