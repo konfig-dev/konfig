@@ -284,9 +284,9 @@ function MakeYourFirstRequest({
   methods: Method[];
   clientNameCamelCase: string;
 }) {
-  const [showMore, setShowMore] = useState(false);
+  const [amountToShow, setAmountToShow] = useState(6);
   const numberOfMethods = methods.length;
-  methods = showMore ? methods : methods.slice(0, 6);
+  methods = methods.slice(0, amountToShow);
   return (
     <div className="bg-white pt-10 pb-20 px-3">
       <h2 className="text-2xl mb-0 sm:text-3xl text-slate-800 text-center font-bold">
@@ -321,8 +321,10 @@ function MakeYourFirstRequest({
           })}
         </div>
         <button
-          onClick={() => setShowMore(!showMore)}
-          aria-hidden={showMore}
+          onClick={() => {
+            setAmountToShow((amount) => amount + 6);
+          }}
+          aria-hidden={amountToShow >= numberOfMethods}
           className="aria-hidden:hidden mt-4 mx-auto group flex gap-3 hover:gap-2 items-center transition-all bg-gradient-to-br text-white w-fit text-center font-semibold px-3 py-2 from-blue-600 to-blue-800 rounded-md text-1xl"
         >
           Show More
