@@ -337,8 +337,8 @@ public class DefaultGenerator implements Generator {
             config.additionalProperties().put("unescapedAppDescription", info.getDescription());
             boolean omitInfoDescription = (boolean) config.additionalProperties().getOrDefault("omitInfoDescription",
                     false);
-            config.additionalProperties().put("leftAlignDescription",
-                    info.getDescription().contains("\n") && !omitInfoDescription);
+            boolean leftAlignDescription = info.getDescription().contains("\n") || info.getDescription().contains("<br") || info.getDescription().length() > 100;
+            config.additionalProperties().put("leftAlignDescription", !omitInfoDescription && leftAlignDescription);
         }
 
         if (info.getContact() != null) {
