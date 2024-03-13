@@ -331,6 +331,11 @@ async function main() {
         (oas.spec.info as any)["x-api-status-urls"] = publishData.apiStatusUrls;
     }
 
+    // if the spec is missing a description, add the company's metaDescription
+    if (oas.spec.info === undefined) oas.spec.info = {} as any;
+    if (oas.spec.info.description === undefined)
+      oas.spec.info.description = publishData.metaDescription;
+
     /**
      * 1.b Write to intermediate-fixed-specs/ to be later fixed in 1.c
      */
