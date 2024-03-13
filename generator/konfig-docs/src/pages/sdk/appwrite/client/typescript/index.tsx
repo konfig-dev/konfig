@@ -20,7 +20,7 @@ Build like a team of hundreds."
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/appwrite/client/logo.png"
       clientNameCamelCase="appwriteClient"
       homepage="appwrite.io"
-      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/appwrite/client/favicon.png"
       contactUrl="https://appwrite.io/support"
       contactEmail="team@appwrite.io"
@@ -2854,6 +2854,8 @@ Build like a team of hundreds."
       parameters={193}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/appwrite/client/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/appwrite/client/openapi.yaml"
+      developerDocumentation="appwrite.io/docs/references#api"
     />
   );
 }

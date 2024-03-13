@@ -18,7 +18,7 @@ export default function BrexExpensesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/logo.png"
       clientNameCamelCase="brexExpenses"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
@@ -298,6 +298,8 @@ export default function BrexExpensesTypeScriptSdk() {
       parameters={17}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brex/expenses/openapi.yaml"
+      developerDocumentation="developer.brex.com/openapi/expenses_api/"
     />
   );
 }

@@ -18,7 +18,7 @@ export default function BrexTransactionsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/transactions/logo.png"
       clientNameCamelCase="brexTransactions"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/transactions/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
@@ -356,6 +356,8 @@ export default function BrexTransactionsTypeScriptSdk() {
       parameters={15}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/transactions/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brex/transactions/openapi.yaml"
+      developerDocumentation="developer.brex.com/openapi/transactions_api/"
     />
   );
 }

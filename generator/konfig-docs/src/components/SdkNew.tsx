@@ -37,6 +37,8 @@ export function SdkNew({
   homepage,
   metaDescription,
   categories,
+  openApiGitHubUi,
+  developerDocumentation,
 }: InputPropsFromOriginalSdkComponent) {
   const serviceNameSubstring =
     serviceName !== undefined ? ` ${serviceName}` : "";
@@ -93,6 +95,8 @@ export function SdkNew({
         logo={logo}
         company={company}
         categories={categories}
+        openApiGitHubUi={openApiGitHubUi}
+        developerDocumentation={developerDocumentation}
       />
       <BottomCTA
         company={company}
@@ -137,12 +141,16 @@ function AboutCompany({
   metaDescription,
   homepage,
   categories,
+  openApiGitHubUi,
+  developerDocumentation,
 }: {
   company: string;
   logo: string;
   metaDescription: string;
   homepage: string;
   categories: string[];
+  openApiGitHubUi: string;
+  developerDocumentation?: string;
 }) {
   return (
     <div className="py-20 px-8 md:px-32">
@@ -162,6 +170,30 @@ function AboutCompany({
           </a>
         </div>
         <p className="mt-2 max-w-[800px]">{metaDescription}</p>
+      </div>
+      <div className="mt-4 flex gap-2">
+        <a
+          href={openApiGitHubUi}
+          className="hover:no-underline"
+          target="_blank"
+        >
+          <button className="border hover:shadow-xl hover:bg-blue-50 border-blue-600 text-blue-600 transition-all hover:border-blue-800 hover:text-blue-800 rounded-md px-2 py-1 items-center flex gap-2">
+            <span className="font-semibold">OpenAPI</span>
+            <IconExternalLink className="h-5" />
+          </button>
+        </a>
+        {developerDocumentation && (
+          <a
+            href={`https://${developerDocumentation}`}
+            className="hover:no-underline"
+            target="_blank"
+          >
+            <button className="border hover:shadow-xl hover:bg-blue-50 border-blue-600 text-blue-600 transition-all hover:border-blue-800 hover:text-blue-800 rounded-md px-2 py-1 items-center flex gap-2">
+              <span className="font-semibold">API Documentation</span>
+              <IconExternalLink className="h-5" />
+            </button>
+          </a>
+        )}
       </div>
       <div className="mt-4">
         <h3 className="mb-2">Categories</h3>

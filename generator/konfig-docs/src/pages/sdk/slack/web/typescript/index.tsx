@@ -18,7 +18,7 @@ export default function SlackWebTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/logo.png"
       clientNameCamelCase="slackWeb"
       homepage="slack.dev"
-      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/favicon.png"
       contactUrl="https://api.slack.com/support"
       // Missing contactEmail
@@ -7480,6 +7480,8 @@ export default function SlackWebTypeScriptSdk() {
       parameters={671}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/slack/web/openapi.yaml"
+      
     />
   );
 }

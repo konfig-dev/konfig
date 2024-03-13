@@ -18,7 +18,7 @@ export default function BrexPaymentsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/logo.png"
       clientNameCamelCase="brexPayments"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T02:00:36.999Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
@@ -482,6 +482,8 @@ export default function BrexPaymentsTypeScriptSdk() {
       parameters={34}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/payments/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brex/payments/openapi.yaml"
+      developerDocumentation="developer.brex.com/openapi/payments_api/"
     />
   );
 }

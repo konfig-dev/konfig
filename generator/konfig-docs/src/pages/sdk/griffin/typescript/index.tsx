@@ -22,7 +22,7 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/logo.webp"
       clientNameCamelCase="griffin"
       homepage="griffin.com"
-      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3239,6 +3239,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
       parameters={199}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/griffin/openapi.yaml"
+      developerDocumentation="docs.griffin.com/api"
     />
   );
 }

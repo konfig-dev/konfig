@@ -18,7 +18,7 @@ export default function SendGridTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/logo.png"
       clientNameCamelCase="sendGrid"
       homepage="sendgrid.com/en-us"
-      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -12395,6 +12395,8 @@ export default function SendGridTypeScriptSdk() {
       parameters={781}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/sendgrid/openapi.yaml"
+      developerDocumentation="docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication"
     />
   );
 }

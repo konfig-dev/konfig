@@ -18,7 +18,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/logo.jpg"
       clientNameCamelCase="paylocity"
       homepage="developer.paylocity.com"
-      lastUpdated={new Date("2024-03-13T01:51:56.035Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/favicon.jpg"
       // Missing contactUrl
       contactEmail="webservices@paylocity.com"
@@ -3141,6 +3141,8 @@ export default function PaylocityWeblinkTypeScriptSdk() {
       parameters={403}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/paylocity/weblink/openapi.yaml"
+      
     />
   );
 }

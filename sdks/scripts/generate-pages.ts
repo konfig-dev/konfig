@@ -247,10 +247,12 @@ function generateIndexTsx({
   faviconUrl,
   clientNameCamelCase,
   openApiRaw,
+  openApiGitHubUi,
   parameters,
   apiDescription,
   useNewPage,
   categories,
+  developerDocumentation,
 }: Published): string {
   // If name starts with a number or contains special characters, prepend a "Sdk_"
   const codeFriendlyCompanyName =
@@ -343,6 +345,12 @@ export default function ${camelcase(codeFriendlyCompanyName, {
       parameters={${parameters}}
       difficulty="${difficulty}"
       openApiRaw="${openApiRaw}"
+      openApiGitHubUi="${openApiGitHubUi}"
+      ${
+        developerDocumentation !== undefined
+          ? `developerDocumentation="${developerDocumentation}"`
+          : ""
+      }
     />
   );
 }

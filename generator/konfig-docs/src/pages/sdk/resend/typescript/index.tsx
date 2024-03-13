@@ -18,7 +18,7 @@ export default function ResendTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/resend/logo.png"
       clientNameCamelCase="resend"
       homepage="resend.com"
-      lastUpdated={new Date("2024-03-13T02:00:36.999Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/resend/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -693,6 +693,8 @@ export default function ResendTypeScriptSdk() {
       parameters={46}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/resend/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/resend/openapi.yaml"
+      developerDocumentation="resend.com/docs/introduction"
     />
   );
 }

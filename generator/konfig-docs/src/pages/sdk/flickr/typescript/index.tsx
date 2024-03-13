@@ -18,7 +18,7 @@ export default function FlickrTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/flickr/logo.png"
       clientNameCamelCase="flickr"
       homepage="flickr.com"
-      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/flickr/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1209,6 +1209,8 @@ export default function FlickrTypeScriptSdk() {
       parameters={127}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/flickr/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/flickr/openapi.yaml"
+      developerDocumentation="www.flickr.com/services/api/"
     />
   );
 }

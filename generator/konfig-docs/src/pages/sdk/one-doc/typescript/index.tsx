@@ -18,7 +18,7 @@ export default function OneDocTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/onedoc/logo.png"
       clientNameCamelCase="oneDoc"
       homepage="onedoc.com"
-      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/onedoc/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -139,6 +139,8 @@ export default function OneDocTypeScriptSdk() {
       parameters={8}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/onedoc/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/onedoc/openapi.yaml"
+      developerDocumentation="docs.onedoclabs.com/api-reference/introduction"
     />
   );
 }

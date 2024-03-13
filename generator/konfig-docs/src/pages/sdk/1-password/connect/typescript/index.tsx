@@ -22,7 +22,7 @@ As an integral layer of the Identity and Access Management (IAM) stack, 1Passwor
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/1-password/connect/logo.png"
       clientNameCamelCase="onePasswordConnect"
       homepage="1password.com"
-      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/1-password/connect/favicon.png"
       contactUrl="https://support.1password.com/"
       contactEmail="support@1password.com"
@@ -562,6 +562,8 @@ As an integral layer of the Identity and Access Management (IAM) stack, 1Passwor
       parameters={22}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/1-password/connect/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/1-password/connect/openapi.yaml"
+      developerDocumentation="developer.1password.com/docs/connect/connect-api-reference/"
     />
   );
 }

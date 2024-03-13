@@ -59,6 +59,7 @@ type ExtraOrOverwriteProperties = {
   categories: string[];
   useNewPage?: boolean;
   faviconUrl: string;
+  openApiGitHubUi: string;
 };
 
 export type Published = SdkPageProps & {

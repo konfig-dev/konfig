@@ -18,7 +18,7 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/logo.png"
       clientNameCamelCase="hsbcAccountInformationCe"
       homepage="hsbc.com"
-      lastUpdated={new Date("2024-03-13T02:00:36.999Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1105,6 +1105,8 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
       parameters={80}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/hsbc/accountinformationce/openapi.yaml"
+      developerDocumentation="develop.hsbc.com/ob-api-documentation/account-information-ce-hsbcnet/endpoints"
     />
   );
 }

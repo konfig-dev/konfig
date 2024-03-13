@@ -18,7 +18,7 @@ export default function BrexTeamTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/logo.png"
       clientNameCamelCase="brexTeam"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:51:56.035Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
@@ -954,6 +954,8 @@ export default function BrexTeamTypeScriptSdk() {
       parameters={81}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brex/team/openapi.yaml"
+      developerDocumentation="developer.brex.com/openapi/team_api/"
     />
   );
 }

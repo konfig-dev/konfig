@@ -18,7 +18,7 @@ export default function KlarnaCheckoutTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/checkout/logo.png"
       clientNameCamelCase="klarnaCheckout"
       homepage="klarna.com"
-      lastUpdated={new Date("2024-03-13T02:00:36.999Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/checkout/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -619,6 +619,8 @@ export default function KlarnaCheckoutTypeScriptSdk() {
       parameters={74}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/checkout/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/klarna/checkout/openapi.yaml"
+      
     />
   );
 }

@@ -18,7 +18,7 @@ export default function DocusignTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/docusign/logo.png"
       clientNameCamelCase="docusign"
       homepage="docusign.com"
-      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/docusign/favicon.png"
       contactUrl="https://developers.docusign.com/"
       contactEmail="devcenter@docusign.com"
@@ -32214,6 +32214,8 @@ export default function DocusignTypeScriptSdk() {
       parameters={4443}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/docusign/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/docusign/openapi.yaml"
+      developerDocumentation="developers.docusign.com/docs/esign-rest-api/reference/"
     />
   );
 }

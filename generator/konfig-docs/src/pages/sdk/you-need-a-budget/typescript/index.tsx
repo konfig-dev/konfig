@@ -18,7 +18,7 @@ export default function YouNeedABudgetTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/logo.png"
       clientNameCamelCase="ynab"
       homepage="api.youneedabudget.com"
-      lastUpdated={new Date("2024-03-13T01:40:02.817Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1219,6 +1219,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
       parameters={73}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/you-need-a-budget/openapi.yaml"
+      
     />
   );
 }

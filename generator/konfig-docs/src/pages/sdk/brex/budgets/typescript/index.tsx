@@ -18,7 +18,7 @@ export default function BrexBudgetsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/budgets/logo.png"
       clientNameCamelCase="brexBudgets"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:51:56.035Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/budgets/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
@@ -621,6 +621,8 @@ export default function BrexBudgetsTypeScriptSdk() {
       parameters={46}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/budgets/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brex/budgets/openapi.yaml"
+      developerDocumentation="developer.brex.com/openapi/budgets_api/"
     />
   );
 }

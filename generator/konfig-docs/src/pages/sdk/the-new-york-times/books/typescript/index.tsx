@@ -18,7 +18,7 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/logo.png"
       clientNameCamelCase="nyt"
       homepage="developer.nytimes.com"
-      lastUpdated={new Date("2024-03-13T01:59:29.812Z")}
+      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -258,6 +258,8 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
       parameters={20}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/openapi.yaml"
+      openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/the-new-york-times/books/openapi.yaml"
+      
     />
   );
 }

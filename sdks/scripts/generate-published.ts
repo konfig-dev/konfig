@@ -140,6 +140,7 @@ function collectAllPublishData() {
       }
 
       const githubUrlPrefix = `https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/${dynamicPath}/`;
+      const githubUiUrlPrefix = `https://github.com/konfig-sdks/openapi-examples/tree/HEAD/${dynamicPath}/`;
 
       const nonEmptyCategories =
         publishData.categories ?? specData.categories ?? [];
@@ -155,6 +156,7 @@ function collectAllPublishData() {
           openapiExamplesDirPath,
           publishData,
           githubUrlPrefix,
+          githubUiUrlPrefix,
           imagePreviewPath,
           faviconPath,
           logoPath,
@@ -396,6 +398,7 @@ async function main() {
       nonEmptyCategories,
       publishData,
       githubUrlPrefix,
+      githubUiUrlPrefix,
       logoPath,
       imagePreviewPath,
       faviconPath,
@@ -512,6 +515,7 @@ async function main() {
       originalSpecUrl: specData.openApiRaw,
       logo: `${githubUrlPrefix}${logoPath}`,
       openApiRaw: `${githubUrlPrefix}${openapiFilename}`,
+      openApiGitHubUi: `${githubUiUrlPrefix}${openapiFilename}`,
       previewLinkImage: `${githubUrlPrefix}${imagePreviewPath}`,
       faviconUrl: `${githubUrlPrefix}${faviconPath}`,
       clientNameCamelCase: camelcase(publishData.clientName),
