@@ -10,7 +10,7 @@ export function Breadcrumbs({
   serviceName,
 }: {
   company: string;
-  language: string;
+  language?: string;
   serviceName?: string;
 }) {
   return (
@@ -23,9 +23,15 @@ export function Breadcrumbs({
           </li>
           <BreadcrumbSeparator />
           <li>
-            <BreadcrumbNonLink>{company}</BreadcrumbNonLink>
+            {language ? (
+              <BreadcrumbLink href={`/sdk/${company}`}>
+                {company}
+              </BreadcrumbLink>
+            ) : (
+              <BreadcrumbNonLink>{company}</BreadcrumbNonLink>
+            )}
           </li>
-          <BreadcrumbSeparator />
+          {(serviceName || language) && <BreadcrumbSeparator />}
           {serviceName && (
             <>
               <li>
@@ -34,9 +40,11 @@ export function Breadcrumbs({
               <BreadcrumbSeparator />
             </>
           )}
-          <li>
-            <BreadcrumbNonLink>{language}</BreadcrumbNonLink>
-          </li>
+          {language && (
+            <li>
+              <BreadcrumbNonLink>{language}</BreadcrumbNonLink>
+            </li>
+          )}
         </ol>
       </nav>
       {/* Mobile */}

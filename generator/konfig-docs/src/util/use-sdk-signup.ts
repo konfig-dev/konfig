@@ -6,8 +6,8 @@ export function useSdkSignup({
   language,
 }: {
   company: string;
-  serviceName: string;
-  language: string;
+  serviceName?: string;
+  language?: string;
 }) {
   const url =
     process.env.NODE_ENV === "development"

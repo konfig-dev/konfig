@@ -94,11 +94,13 @@ async function createPageInDatabase({
         },
       ],
     },
-    [databaseProperties.Language.name]: {
+  }
+  if (language !== undefined) {
+    properties[databaseProperties.Language.name] = {
       select: {
         name: language,
       },
-    },
+    }
   }
   if (service !== undefined) {
     properties[databaseProperties.Service.name] = {
@@ -198,7 +200,7 @@ const sdkSignupFormSchema = z.object({
   email: z.string(),
   company: z.string(),
   service: z.string().optional(),
-  language: z.union([z.literal('TypeScript'), z.literal('Python')]),
+  language: z.union([z.literal('TypeScript'), z.literal('Python')]).optional(),
 })
 
 type SdkSignupForm = z.infer<typeof sdkSignupFormSchema>
