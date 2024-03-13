@@ -17,7 +17,7 @@ export default function KlarnaPaymentsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/payments/logo.png"
       clientNameCamelCase="klarnaPayments"
       homepage="klarna.com"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/payments/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

@@ -17,7 +17,7 @@ export default function SpotifyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/logo.png"
       clientNameCamelCase="spotify"
       homepage="developer.spotify.com"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/favicon.ico"
       contactUrl="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer"
       // Missing contactEmail

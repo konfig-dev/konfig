@@ -22,7 +22,7 @@ As an integral layer of the Identity and Access Management (IAM) stack, 1Passwor
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/1-password/connect/logo.png"
       clientNameCamelCase="onePasswordConnect"
       homepage="1password.com"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/1-password/connect/favicon.png"
       contactUrl="https://support.1password.com/"
       contactEmail="support@1password.com"

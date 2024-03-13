@@ -20,7 +20,7 @@ The service handles the end-to-end workflow, from video ingestion to worldwide v
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/api-video/logo.png"
       clientNameCamelCase="apiVideo"
       homepage="api.video"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/api-video/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

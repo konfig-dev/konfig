@@ -17,7 +17,7 @@ export default function JustEatTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/logo.png"
       clientNameCamelCase="justEat"
       homepage="developers.just-eat.com/"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/favicon.png"
       contactUrl="https://developers.just-eat.com/"
       contactEmail="david.handley@justeattakeaway.com"

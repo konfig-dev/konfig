@@ -19,7 +19,7 @@ export function generateTypescriptSdkFirstRequestCode({
   const lines: string[] = [
     `// ${firstMethod.description}`,
     `const ${firstMethod.method}Response = ${camelcase(clientName)}${
-      firstMethod.tag ? `.${firstMethod.tag}` : ""
+      firstMethod.tag ? `.${camelcase(firstMethod.tag)}` : ""
     }.${firstMethod.method}({`,
     ...firstMethod.parameters.map((parameter) => {
       return `    ${parameter.name}: ${parameter.example ?? parameter.default}`;

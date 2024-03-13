@@ -17,7 +17,7 @@ export default function TheNewYorkTimesBooksTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/logo.png"
       clientNameCamelCase="nyt"
       homepage="developer.nytimes.com"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/the-new-york-times/books/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

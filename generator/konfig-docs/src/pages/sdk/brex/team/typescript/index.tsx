@@ -17,7 +17,7 @@ export default function BrexTeamTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/logo.png"
       clientNameCamelCase="brexTeam"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
+      lastUpdated={new Date("2024-03-13T01:35:30.474Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
