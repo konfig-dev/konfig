@@ -21,7 +21,6 @@ import { useSdkSignup } from "../util/use-sdk-signup";
 import clsx from "clsx";
 import { LoadingIcon } from "./LoadingIcon";
 import { Method } from "./SdkComponentProps";
-import camelcase from "camelcase";
 
 type InputPropsFromOriginalSdkComponent = React.ComponentProps<typeof Sdk>;
 
@@ -386,13 +385,13 @@ function HeroSection({
       <div className="mx-auto flex flex-col items-center sm:max-w-[625px] lg:max-w-none lg:flex-row gap-2 lg:gap-20">
         <div className="text-left sm:text-center lg:text-left lg:w-full">
           <h1 className="mb-8 text-3xl sm:text-4xl leading-tight lg:text-5xl lg:leading-tight text-blue-200">
-            Easily Integrate{" "}
+            Easily Integrate
+            <br />
             <span className="text-white">
               {" "}
               {company}'s{serviceNameSubstring} API{" "}
             </span>{" "}
-            into your application using{" "}
-            <span className="text-white">Konfig's {language} SDK</span>
+            using <span className="text-white">Konfig's {language} SDK</span>
           </h1>
           <SignupForm
             language={language}
