@@ -279,6 +279,7 @@ export function SdkMethod({
         }}
       >
         <div className="flex flex-col items-start">
+          <div className="text-slate-500 font-mono font-semibold">{tag}</div>
           <h4
             className={clsx(
               "font-bold mb-1 text-base md:text-lg text-slate-800"
